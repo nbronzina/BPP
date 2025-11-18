@@ -72,11 +72,19 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--color-text);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: -0.02em;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            transition: opacity 0.3s;
+        }
+
+        .logo img:hover {
+            opacity: 0.8;
         }
 
         .nav-links {
@@ -654,6 +662,10 @@
                 z-index: 1001;
             }
 
+            .logo img {
+                height: 35px;
+            }
+
             .hero {
                 padding: 100px 1.5rem 60px;
             }
@@ -731,7 +743,9 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">BPP</a>
+            <a href="#" class="logo">
+                <img src="img/logo.svg" alt="BPP Analytics & Design">
+            </a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú de navegación" aria-expanded="false">
                 <span></span>
                 <span></span>
