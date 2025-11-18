@@ -532,6 +532,74 @@
             transform: translateX(5px);
         }
 
+        /* Equipo Section */
+        .equipo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .equipo-card {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .equipo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .equipo-photo {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-accent);
+            transition: border-color 0.3s;
+        }
+
+        .equipo-card:hover .equipo-photo {
+            border-color: var(--color-text);
+        }
+
+        .equipo-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+        .equipo-card:hover .equipo-photo img {
+            filter: grayscale(0%);
+        }
+
+        .equipo-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .equipo-role {
+            font-size: 1rem;
+            color: var(--color-accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .equipo-bio {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            text-align: left;
+        }
+
         /* Animations */
         [data-animate] {
             opacity: 0;
@@ -545,6 +613,13 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .equipo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
         @media (max-width: 900px) {
             .services-grid {
                 grid-template-columns: 1fr;
@@ -640,6 +715,20 @@
             .actividad-card h3 {
                 font-size: 1.4rem;
             }
+
+            .equipo-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .equipo-photo {
+                width: 180px;
+                height: 180px;
+            }
+
+            .equipo-bio {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -656,6 +745,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#hero">Inicio</a></li>
                 <li><a href="#about">Nosotros</a></li>
+                <li><a href="#equipo">Equipo</a></li>
                 <li><a href="#services">Servicios</a></li>
                 <li><a href="#actividades">Actividades</a></li>
                 <li><a href="#contact">Contacto</a></li>
@@ -713,6 +803,42 @@
                     datos conviven con la intuición y donde el diseño se convierte en una herramienta para pensar, sentir y transformar.
                 </p>
             </div>
+        </div>
+    </section>
+
+    <!-- Equipo Section -->
+    <section id="equipo" class="section">
+        <div class="services-header">
+            <h2>Equipo</h2>
+        </div>
+
+        <div class="equipo-grid">
+            <article class="equipo-card" data-animate>
+                <div class="equipo-photo">
+                    <img src="img/DitherME.jpg" alt="Nicolás Bronzina" loading="lazy">
+                </div>
+                <h3>Nicolás Bronzina</h3>
+                <p class="equipo-role">Design Researcher & Managing Partner</p>
+                <p class="equipo-bio">Sociólogo y diseñador de experiencia especializado en diseño de futuros. Co-fundador de Heated Studio y Managing Partner en BPP. Colaboró con Near Future Laboratory y Girardin & Nova en proyectos de design fiction para telecomunicaciones, finanzas y movilidad. Facilita talleres de design fiction potenciado con IA.</p>
+            </article>
+
+            <article class="equipo-card" data-animate>
+                <div class="equipo-photo">
+                    <img src="img/EzequielPoliti.jpg" alt="Ezequiel Politi" loading="lazy">
+                </div>
+                <h3>Ezequiel Politi</h3>
+                <p class="equipo-role">Data & Strategy Analyst</p>
+                <p class="equipo-bio">Sociólogo especializado en análisis de datos y estrategia. Combina estadística social, herramientas de BI, UX Research y metodologías Agile con visión estratégica. Transforma datos en insights accionables para la toma de decisiones organizacionales.</p>
+            </article>
+
+            <article class="equipo-card" data-animate>
+                <div class="equipo-photo">
+                    <img src="img/SergioPetrocelli.jpg" alt="Sergio Petrocelli" loading="lazy">
+                </div>
+                <h3>Sergio Petrocelli</h3>
+                <p class="equipo-role">Strategic Planning & Communication</p>
+                <p class="equipo-bio">Sociólogo especializado en comunicación estratégica institucional y branding corporativo. Experto en análisis de dinámicas sociales y culturales que influyen en la comunicación organizacional. Experiencia en gestión de crisis y construcción de coaliciones estratégicas.</p>
+            </article>
         </div>
     </section>
 
