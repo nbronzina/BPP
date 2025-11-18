@@ -240,6 +240,7 @@
 
         .services-grid {
             display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 3rem;
         }
 
@@ -251,6 +252,7 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .service-card::before {
@@ -268,6 +270,7 @@
         .service-card:hover {
             border-color: var(--color-accent);
             transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(217, 143, 110, 0.2);
         }
 
         .service-card:hover::before {
@@ -372,7 +375,25 @@
             font-size: 0.9rem;
         }
 
+        /* Animations */
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        [data-animate].visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             :root {
                 --spacing-section: 80px;
@@ -476,7 +497,7 @@
 
     <!-- About Section -->
     <section id="about" class="section">
-        <div class="executive-summary">
+        <div class="executive-summary" data-animate>
             <p>
                 BPP es una consultora que combina análisis cuantitativo y cualitativo, investigación en profundidad,
                 diseño especulativo y comunicación estratégica para acompañar procesos de toma de decisiones en contextos complejos.
@@ -488,7 +509,7 @@
             </p>
         </div>
 
-        <div class="philosophy-quote">
+        <div class="philosophy-quote" data-animate>
             <blockquote>"El futuro no se predice, se diseña"</blockquote>
         </div>
     </section>
@@ -496,7 +517,7 @@
     <!-- Mission Section -->
     <section class="section">
         <div class="mission-vision-section">
-            <div class="mv-block">
+            <div class="mv-block" data-animate>
                 <h2>Misión</h2>
                 <p class="lead">Dar sentido a lo complejo y traducirlo en acción.</p>
                 <p>
@@ -506,7 +527,7 @@
                 </p>
             </div>
 
-            <div class="mv-block">
+            <div class="mv-block" data-animate>
                 <h2>Visión</h2>
                 <p class="lead">Un futuro que no se impone, se imagina y se construye colectivamente.</p>
                 <p>
@@ -524,7 +545,7 @@
         </div>
 
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card" data-animate>
                 <div class="service-header">
                     <div class="service-number">01/</div>
                     <div>
@@ -539,7 +560,7 @@
                 </ul>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" data-animate>
                 <div class="service-header">
                     <div class="service-number">02/</div>
                     <div>
@@ -555,7 +576,7 @@
                 </ul>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" data-animate>
                 <div class="service-header">
                     <div class="service-number">03/</div>
                     <div>
@@ -571,7 +592,7 @@
                 </ul>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" data-animate>
                 <div class="service-header">
                     <div class="service-number">04/</div>
                     <div>
@@ -644,6 +665,22 @@
                 }
             });
         });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
