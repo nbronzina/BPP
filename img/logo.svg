@@ -1,34 +1,19 @@
-<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Símbolo arquitectónico -->
-  <g transform="scale(0.42)">
-    <!-- Fondo naranja -->
-    <rect x="0" y="0" width="50" height="120" fill="#D98F6E"/>
-    
-    <!-- Espacios blancos/beige que forman el patrón -->
-    
-    <!-- Bloque superior izquierdo -->
-    <path d="M5 5 H25 V25 L15 40 L5 25 Z" fill="#E8E5E0"/>
-    
-    <!-- Bloque superior derecho con diagonal -->
-    <path d="M28 5 H45 V25 L28 42 Z" fill="#E8E5E0"/>
-    
-    <!-- Bloque medio izquierdo -->
-    <path d="M5 45 H22 V75 L5 75 Z" fill="#E8E5E0"/>
-    
-    <!-- Bloque medio derecho -->
-    <path d="M28 50 H45 V80 L35 95 L28 80 Z" fill="#E8E5E0"/>
-    
-    <!-- Bloque inferior izquierdo con diagonal -->
-    <path d="M5 85 H25 L40 105 L5 105 Z" fill="#E8E5E0"/>
-    
-    <!-- Bloque inferior derecho -->
-    <path d="M32 95 H45 V115 L32 115 Z" fill="#E8E5E0"/>
-  </g>
+<svg width="180" height="50" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rectángulo base naranja -->
+  <rect x="0" y="0" width="21" height="50" fill="#D98F6E"/>
+  
+  <!-- Formas blancas/beige internas -->
+  <path d="M2 2 H10.5 V10.5 L6.25 16.7 L2 10.5 Z" fill="#E8E5E0"/>
+  <path d="M11.7 2 H18.8 V10.5 L11.7 17.5 Z" fill="#E8E5E0"/>
+  <path d="M2 18.8 H9.2 V31.3 L2 31.3 Z" fill="#E8E5E0"/>
+  <path d="M11.7 20.8 H18.8 V33.3 L14.6 39.6 L11.7 33.3 Z" fill="#E8E5E0"/>
+  <path d="M2 35.4 H10.5 L16.7 43.8 L2 43.8 Z" fill="#E8E5E0"/>
+  <path d="M13.4 39.6 H18.8 V47.9 L13.4 47.9 Z" fill="#E8E5E0"/>
   
   <!-- Texto BPP -->
-  <text x="32" y="28" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#1a1a1a" letter-spacing="-0.5">BPP</text>
+  <text x="28" y="28" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="currentColor">BPP</text>
   
-  <!-- Analytics & Design -->
-  <text x="32" y="38" font-family="Inter, sans-serif" font-size="8" font-weight="400" fill="#D98F6E" letter-spacing="0.3">Analytics</text>
-  <text x="32" y="46" font-family="Inter, sans-serif" font-size="8" font-weight="400" fill="#D98F6E" letter-spacing="0.3">& Design</text>
+  <!-- Subtexto -->
+  <text x="28" y="38" font-family="Inter, sans-serif" font-size="8" font-weight="400" fill="#D98F6E">Analytics</text>
+  <text x="28" y="46" font-family="Inter, sans-serif" font-size="8" font-weight="400" fill="#D98F6E">&amp; Design</text>
 </svg>
