@@ -26,8 +26,9 @@
             --color-text: #ffffff;
             --color-text-light: #f0f0f0;
             --color-accent: #D98F6E;
+            --color-accent-bright: #E8A67D;
             --color-text-secondary: #b0b0b0;
-            --spacing-section: 120px;
+            --spacing-section: 80px;
         }
 
         html {
@@ -40,6 +41,12 @@
             color: var(--color-text-light);
             line-height: 1.7;
             overflow-x: hidden;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Navigation */
@@ -147,9 +154,28 @@
             margin: 0 1rem;
         }
 
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--color-accent);
+            background: transparent;
+            color: var(--color-accent);
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-top: 2.5rem;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--color-accent);
+            color: #0f0f0f;
+        }
+
         /* Section Container */
         .section {
-            padding: var(--spacing-section) 2rem;
+            padding: 60px 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -253,6 +279,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
         }
 
         .service-card::before {
@@ -271,10 +298,15 @@
             border-color: var(--color-accent);
             transform: translateY(-5px);
             box-shadow: 0 8px 30px rgba(217, 143, 110, 0.2);
+            background: rgba(26, 26, 26, 0.5);
         }
 
         .service-card:hover::before {
             transform: scaleY(1);
+        }
+
+        .service-card:hover li::before {
+            color: var(--color-accent-bright);
         }
 
         .service-header {
@@ -282,6 +314,15 @@
             align-items: flex-start;
             gap: 2rem;
             margin-bottom: 1.5rem;
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 1rem;
+            stroke: var(--color-accent);
+            stroke-width: 2;
+            fill: none;
         }
 
         .service-number {
@@ -361,9 +402,14 @@
             color: var(--color-text-secondary);
             text-decoration: none;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         .footer-section a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-section a:hover p {
             color: var(--color-accent);
         }
 
@@ -396,7 +442,11 @@
 
         @media (max-width: 768px) {
             :root {
-                --spacing-section: 80px;
+                --spacing-section: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
             }
 
             .nav-links {
@@ -428,7 +478,7 @@
             }
 
             .section {
-                padding: 60px 1.5rem;
+                padding: 40px 1.5rem;
             }
 
             .executive-summary {
@@ -492,6 +542,7 @@
                 <span>/</span>
                 <span>Madrid</span>
             </div>
+            <a href="#contact" class="cta-button">Hablemos</a>
         </div>
     </section>
 
@@ -546,6 +597,9 @@
 
         <div class="services-grid">
             <div class="service-card" data-animate>
+                <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L12 8M12 8C10.3431 8 9 9.34315 9 11C9 12.6569 10.3431 14 12 14C13.6569 14 15 12.6569 15 11C15 9.34315 13.6569 8 12 8ZM5 11L8 11M16 11L19 11M7.05 7.05L9.17 9.17M14.83 9.17L16.95 7.05M7.05 14.95L9.17 12.83M14.83 12.83L16.95 14.95M12 14L12 22"/>
+                </svg>
                 <div class="service-header">
                     <div class="service-number">01/</div>
                     <div>
@@ -561,6 +615,11 @@
             </div>
 
             <div class="service-card" data-animate>
+                <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+                    <path d="M2 17L12 22L22 17"/>
+                    <path d="M2 12L12 17L22 12"/>
+                </svg>
                 <div class="service-header">
                     <div class="service-number">02/</div>
                     <div>
@@ -577,6 +636,14 @@
             </div>
 
             <div class="service-card" data-animate>
+                <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="2"/>
+                    <circle cx="19" cy="5" r="2"/>
+                    <circle cx="5" cy="5" r="2"/>
+                    <circle cx="19" cy="19" r="2"/>
+                    <circle cx="5" cy="19" r="2"/>
+                    <path d="M10.5 10.5L7 7M13.5 10.5L17 7M10.5 13.5L7 17M13.5 13.5L17 17"/>
+                </svg>
                 <div class="service-header">
                     <div class="service-number">03/</div>
                     <div>
@@ -593,6 +660,9 @@
             </div>
 
             <div class="service-card" data-animate>
+                <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 8L18 4M18 4L22 8M18 4V14C18 16.2091 16.2091 18 14 18H12M6 10H2V14H6L10 18V6L6 10Z"/>
+                </svg>
                 <div class="service-header">
                     <div class="service-number">04/</div>
                     <div>
@@ -631,7 +701,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 BPP Analytics & Design. Todos los derechos reservados.</p>
+            <p>&copy; <span id="currentYear"></span> BPP Analytics & Design. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -681,6 +751,9 @@
         }, observerOptions);
 
         document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+        // Set current year dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
