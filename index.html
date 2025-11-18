@@ -264,6 +264,16 @@
             line-height: 1.7;
             color: var(--color-text-secondary);
             font-weight: 300;
+            margin-bottom: 0.8rem;
+        }
+
+        .about-card p:first-of-type {
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .about-card p:last-child {
+            margin-bottom: 0;
         }
 
         .about-description {
@@ -272,6 +282,11 @@
             color: var(--color-text-secondary);
             max-width: 900px;
             font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .about-description:last-of-type {
+            margin-bottom: 3rem;
         }
 
         /* Services Section */
@@ -329,9 +344,33 @@
 
         .service-content h3 {
             font-size: 1.4rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             font-weight: 600;
             line-height: 1.4;
+        }
+
+        .service-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-content li {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.7rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-weight: 300;
+        }
+
+        .service-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 400;
         }
 
         /* Philosophy Quote */
@@ -557,21 +596,30 @@
     <!-- About Section -->
     <section id="about">
         <h2 class="section-title">¿Quiénes <span class="section-accent">somos?</span></h2>
+        <p class="about-description">
+            BPP es una consultora que combina análisis cuantitativo y cualitativo, investigación en profundidad,
+            diseño especulativo y comunicación estratégica para acompañar procesos de toma de decisiones en contextos complejos.
+        </p>
+        <p class="about-description">
+            Colaboramos con equipos, proyectos e iniciativas que buscan comprender entornos cambiantes, anticipar posibles
+            escenarios y activar estrategias claras y efectivas. Desarrollamos marcos analíticos, artefactos y narrativas
+            visuales que ayudan a interpretar el cambio y actuar con intención.
+        </p>
         <div class="about-grid">
             <div class="about-card">
                 <h3>Misión</h3>
-                <p>Dar sentido a lo complejo y traducirlo en acción</p>
+                <p>Dar sentido a lo complejo y traducirlo en acción.</p>
+                <p>Acompañamos a personas, equipos y organizaciones a tomar decisiones significativas en entornos inciertos.
+                Combinamos análisis riguroso, pensamiento crítico y herramientas creativas para transformar la complejidad
+                en caminos claros, tangibles y adaptables.</p>
             </div>
             <div class="about-card">
                 <h3>Visión</h3>
-                <p>Un futuro que no se impone, se imagina y se construye colectivamente</p>
+                <p>Un futuro que no se impone, se imagina y se construye colectivamente.</p>
+                <p>Visualizamos un mundo donde el pensamiento estratégico se cruza con la sensibilidad social, donde los
+                datos conviven con la intuición y donde el diseño se convierte en una herramienta para pensar, sentir y transformar.</p>
             </div>
         </div>
-        <p class="about-description">
-            Somos una consultora que combina análisis cuantitativo y cualitativo, investigación en profundidad,
-            diseño especulativo y comunicación estratégica. Transformamos lo abstracto en tangible, con un
-            enfoque riguroso que abarca la complejidad desde múltiples dimensiones.
-        </p>
     </section>
 
     <!-- Philosophy Section -->
@@ -589,24 +637,51 @@
                 <div class="service-number">01</div>
                 <div class="service-content">
                     <h3>Investigación Exploratoria, Análisis de Señales Débiles y Tendencias Emergentes</h3>
+                    <ul>
+                        <li>Analizamos profundamente Drivers y señales débiles en múltiples sectores</li>
+                        <li>Aplicamos marcos especulativos para análisis PESTEL profundo</li>
+                        <li>Trabajamos con datos históricos y actuales para insights basados en evidencia</li>
+                        <li>Permitimos visualizar futuros posibles</li>
+                    </ul>
                 </div>
             </div>
             <div class="service-item">
                 <div class="service-number">02</div>
                 <div class="service-content">
                     <h3>Diseño de Prototipos y Escenarios Futuros</h3>
+                    <ul>
+                        <li>Creamos artefactos diegéticos que simulan futuros posibles</li>
+                        <li>Convertimos ideas abstractas en representaciones físicas y/o digitales</li>
+                        <li>Aplicamos diseño ficción y especulativo</li>
+                        <li>Usamos tecnologías emergentes, simulaciones e historias visuales</li>
+                        <li>Ofrecemos experiencias inmersivas para reflexión y toma de decisiones</li>
+                    </ul>
                 </div>
             </div>
             <div class="service-item">
                 <div class="service-number">03</div>
                 <div class="service-content">
                     <h3>Estrategia de Implementación</h3>
+                    <ul>
+                        <li>Desarrollamos estrategias prácticas basadas en investigación y prototipos</li>
+                        <li>Ayudamos a conectar realidades actuales con oportunidades futuras</li>
+                        <li>Enfoque colaborativo para diseñar marcos estratégicos</li>
+                        <li>Soluciones prácticas, escalables y adaptables</li>
+                        <li>Garantizamos implementación fluida e impacto duradero</li>
+                    </ul>
                 </div>
             </div>
             <div class="service-item">
                 <div class="service-number">04</div>
                 <div class="service-content">
                     <h3>Branding y Comunicación Estratégica</h3>
+                    <ul>
+                        <li>Estrategias alineadas con soluciones estratégicas y de prototipado</li>
+                        <li>Creamos identidades visuales y mensajes coherentes</li>
+                        <li>Integramos análisis de tendencias y escenarios futuros</li>
+                        <li>Diseñamos identidades de marca adaptables al cambio</li>
+                        <li>Comunicación clara e impactante en cada fase evolutiva</li>
+                    </ul>
                 </div>
             </div>
         </div>
