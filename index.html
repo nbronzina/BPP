@@ -208,6 +208,9 @@
             padding: 8rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        section:not(.hero):not(.philosophy) {
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 1s ease-out, transform 1s ease-out;
@@ -424,6 +427,7 @@
                 padding: 5rem 2rem;
                 gap: 2rem;
                 transition: var(--transition);
+                z-index: 999;
             }
 
             .nav-links.active {
@@ -629,7 +633,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 BPP Analytics & Design. Todos los derechos reservados.</p>
+            <p>&copy; 2025 BPP Analytics & Design. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -681,8 +685,8 @@
             });
         }, observerOptions);
 
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
+        // Observe all sections except hero and philosophy
+        document.querySelectorAll('section:not(.hero):not(.philosophy)').forEach(section => {
             observer.observe(section);
         });
 
@@ -708,15 +712,6 @@
                 scrollIndicator.style.opacity = '0';
             } else if (scrollIndicator) {
                 scrollIndicator.style.opacity = '1';
-            }
-        });
-
-        // Parallax effect for hero background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
         });
     </script>
