@@ -8,6 +8,35 @@
     <meta name="author" content="BPP Analytics & Design">
     <title>BPP Analytics & Design | Diseño Estratégico & Análisis de Futuros</title>
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nbronzina.github.io/BPP/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nbronzina.github.io/BPP/">
+    <meta property="og:title" content="BPP Analytics & Design | Diseño Estratégico & Análisis de Futuros">
+    <meta property="og:description" content="Consultora de diseño estratégico y análisis de futuros en Buenos Aires y Madrid. Diseño, datos y estrategia para imaginar decisiones futuras.">
+    <meta property="og:image" content="https://nbronzina.github.io/BPP/img/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="BPP Analytics & Design">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nbronzina.github.io/BPP/">
+    <meta name="twitter:title" content="BPP Analytics & Design | Diseño Estratégico & Análisis de Futuros">
+    <meta name="twitter:description" content="Consultora de diseño estratégico y análisis de futuros en Buenos Aires y Madrid. Diseño, datos y estrategia para imaginar decisiones futuras.">
+    <meta name="twitter:image" content="https://nbronzina.github.io/BPP/img/logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0f0f0f">
+    <meta name="msapplication-TileColor" content="#0f0f0f">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,6 +113,7 @@
             z-index: 1000;
             padding: 1.5rem 2rem;
             background-color: rgba(15, 15, 15, 0.95);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(217, 143, 110, 0.1);
         }
@@ -994,6 +1024,70 @@
             }
         }
     </style>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "BPP Analytics & Design",
+      "url": "https://nbronzina.github.io/BPP/",
+      "logo": "https://nbronzina.github.io/BPP/img/logo.png",
+      "description": "Consultora de diseño estratégico y análisis de futuros en Buenos Aires y Madrid",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Franklin 2190, oficina 4113",
+          "addressLocality": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "C. de Pablo Vidal 4",
+          "addressLocality": "Madrid",
+          "addressCountry": "ES"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "bppanalyticsanddesign@gmail.com",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://instagram.com/bppanalyticsanddesign",
+        "https://www.linkedin.com/company/103852773"
+      ],
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Nicolás Bronzina",
+          "jobTitle": "Design Researcher",
+          "description": "Sociólogo y Magíster en Diseño de Experiencia de Usuario especializado en diseño de futuros"
+        },
+        {
+          "@type": "Person",
+          "name": "Ezequiel Politi",
+          "jobTitle": "Data & Strategy Analyst",
+          "description": "Sociólogo especializado en análisis de datos y estrategia"
+        },
+        {
+          "@type": "Person",
+          "name": "Sergio Petrocelli",
+          "jobTitle": "Strategic Planning & Communication",
+          "description": "Sociólogo especializado en comunicación estratégica institucional y branding corporativo"
+        }
+      ],
+      "serviceType": [
+        "Strategic Design",
+        "Futures Analysis",
+        "Data Analytics",
+        "Strategic Communication"
+      ]
+    }
+    </script>
+
+    <!-- Plausible Analytics (Privacy-friendly, no cookies) -->
+    <script defer data-domain="nbronzina.github.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
     <!-- Skip link para accesibilidad -->
@@ -1004,7 +1098,7 @@
         <div class="nav-container">
             <div class="logo">
                 <a href="#hero">
-                    <img src="img/logo.png" alt="BPP Analytics & Design">
+                    <img src="img/logo.png" alt="BPP Analytics & Design" width="180" height="45">
                 </a>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
@@ -1027,7 +1121,7 @@
     <section id="hero" class="hero">
         <div class="hero-content">
             <div class="hero-logo">
-                <img src="img/logo.png" alt="BPP">
+                <img src="img/logo.png" alt="BPP" width="640" height="160">
             </div>
 
             <h1 class="tagline">Creating connections,<br>driving innovation</h1>
@@ -1089,16 +1183,16 @@
         <div class="socios-grid">
             <article class="socios-card" tabindex="0" data-animate>
                 <div class="socios-photo">
-                    <img src="img/DitherME.jpg" alt="Nicolás Bronzina, Design Researcher y Managing Partner de BPP" loading="lazy">
+                    <img src="img/DitherME.jpg" alt="Nicolás Bronzina, Design Researcher y Managing Partner de BPP" loading="lazy" width="220" height="220">
                 </div>
                 <h3>Nicolás Bronzina</h3>
                 <p class="socios-role">Design Researcher</p>
-                <p class="socios-bio">Sociólogo y Magíster en Diseño de Experiencia de Usuario especializado en diseño de futuros. Co-fundador de Heated Studio, colaboró con Near Future Laboratory y Girardin & Nova en proyectos de design fiction para telecomunicaciones, finanzas, movilidad, entre otros sectores. Facilita tallores de design fiction potenciado con IA para instituciones educativas y organizaciones.</p>
+                <p class="socios-bio">Sociólogo y Magíster en Diseño de Experiencia de Usuario especializado en diseño de futuros. Co-fundador de Heated Studio, colaboró con Near Future Laboratory y Girardin & Nova en proyectos de design fiction para telecomunicaciones, finanzas, movilidad, entre otros sectores. Facilita talleres de design fiction potenciado con IA para instituciones educativas y organizaciones.</p>
             </article>
 
             <article class="socios-card" tabindex="0" data-animate>
                 <div class="socios-photo">
-                    <img src="img/EzequielPoliti.jpg" alt="Ezequiel Politi, Data & Strategy Analyst en BPP" loading="lazy">
+                    <img src="img/EzequielPoliti.jpg" alt="Ezequiel Politi, Data & Strategy Analyst en BPP" loading="lazy" width="220" height="220">
                 </div>
                 <h3>Ezequiel Politi</h3>
                 <p class="socios-role">Data & Strategy Analyst</p>
@@ -1107,7 +1201,7 @@
 
             <article class="socios-card" tabindex="0" data-animate>
                 <div class="socios-photo">
-                    <img src="img/SergioPetrocelli.jpg" alt="Sergio Petrocelli, Strategic Planning & Communication en BPP" loading="lazy">
+                    <img src="img/SergioPetrocelli.jpg" alt="Sergio Petrocelli, Strategic Planning & Communication en BPP" loading="lazy" width="220" height="220">
                 </div>
                 <h3>Sergio Petrocelli</h3>
                 <p class="socios-role">Strategic Planning & Communication</p>
@@ -1220,10 +1314,10 @@
         <div class="actividades-container">
             <article class="actividad-card" tabindex="0" data-animate>
                 <div class="actividad-image">
-                    <img src="img/JornadaCESBA.jpg" alt="Jornada de diseño de futuros en CESBA Buenos Aires con panel de expertos en prospectiva estratégica y gestión pública" loading="lazy">
+                    <img src="img/JornadaCESBA.jpg" alt="Jornada de diseño de futuros en CESBA Buenos Aires con panel de expertos en prospectiva estratégica y gestión pública" loading="lazy" width="1200" height="800">
                 </div>
                 <div class="actividad-content">
-                    <time class="actividad-date">Octubre 2024</time>
+                    <time class="actividad-date">Octubre 2025</time>
                     <h3>Jornada de Diseño de Futuros para la Gestión Pública</h3>
                     <p>Jornada estratégica organizada con el CESBA (Consejo Económico y Social de la Ciudad de Buenos Aires) sobre diseño de futuros aplicado a gestión pública. Nicolás Bronzina presentó metodologías de prospectiva estratégica junto a referentes internacionales como Fabien Girardin (Near Future Laboratory), Ezequiel Politi y Miriam Latorre.</p>
                     <a href="https://cesba.gob.ar/noticias/como-el-diseno-de-futuros-impulsa-la-gestion-publica-en-buenos-aires/" target="_blank" rel="noopener noreferrer" class="actividad-link">
@@ -1265,6 +1359,9 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; <span id="currentYear"></span> BPP Analytics & Design. Todos los derechos reservados.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="/BPP/privacidad.html">Política de Privacidad</a>
+            </p>
         </div>
     </footer>
 
@@ -1338,6 +1435,15 @@
 
         // Set current year dynamically
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Register service worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker registrado'))
+                    .catch(err => console.log('Error al registrar SW:', err));
+            });
+        }
     </script>
 </body>
 </html>

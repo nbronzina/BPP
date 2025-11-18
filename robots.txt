@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nbronzina.github.io/BPP/sitemap.xml
