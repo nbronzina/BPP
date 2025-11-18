@@ -1,0 +1,26 @@
+<svg width="180" height="50" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Marco naranja -->
+  <rect x="0" y="0" width="50" height="50" fill="#D98F6E"/>
+  
+  <!-- Espacios blancos/beige - Sección superior izquierda -->
+  <path d="M5 5 L25 5 L25 20 L15 30 L5 20 Z" fill="#F5F3F0"/>
+  
+  <!-- Espacio superior derecho -->
+  <path d="M30 5 L45 5 L45 20 L30 35 Z" fill="#F5F3F0"/>
+  
+  <!-- Espacio inferior izquierdo -->
+  <path d="M5 25 L20 25 L20 45 L5 45 Z" fill="#F5F3F0"/>
+  
+  <!-- Espacio central inferior -->
+  <path d="M25 30 L45 30 L45 45 L35 45 L25 35 Z" fill="#F5F3F0"/>
+  
+  <!-- Barra diagonal inferior -->
+  <path d="M5 38 L25 38 L35 48 L5 48 Z" fill="#F5F3F0"/>
+  
+  <!-- Texto BPP -->
+  <text x="58" y="30" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#1a1a1a">BPP</text>
+  
+  <!-- Analytics & Design -->
+  <text x="58" y="39" font-family="Inter, sans-serif" font-size="8.5" font-weight="400" fill="#D98F6E">Analytics</text>
+  <text x="58" y="47" font-family="Inter, sans-serif" font-size="8.5" font-weight="400" fill="#D98F6E">& Design</text>
+</svg>
