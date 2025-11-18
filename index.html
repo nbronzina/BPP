@@ -71,20 +71,38 @@
             align-items: center;
         }
 
+        /* Logo en navbar */
         .logo {
             display: flex;
             align-items: center;
-            text-decoration: none;
+        }
+
+        .logo a {
+            display: block;
+            line-height: 0;
         }
 
         .logo img {
-            height: 40px;
+            height: 45px;
             width: auto;
+            display: block;
             transition: opacity 0.3s;
         }
 
         .logo img:hover {
-            opacity: 0.8;
+            opacity: 0.85;
+        }
+
+        /* Logo en hero */
+        .hero-logo {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .hero-logo img {
+            height: 120px;
+            width: auto;
+            opacity: 0.9;
         }
 
         .nav-links {
@@ -663,7 +681,15 @@
             }
 
             .logo img {
-                height: 35px;
+                height: 38px;
+            }
+
+            .hero-logo {
+                margin-bottom: 2rem;
+            }
+
+            .hero-logo img {
+                height: 90px;
             }
 
             .hero {
@@ -743,9 +769,11 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="img/logo.svg" alt="BPP Analytics & Design">
-            </a>
+            <div class="logo">
+                <a href="#hero">
+                    <img src="img/logo.png" alt="BPP Analytics & Design">
+                </a>
+            </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú de navegación" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -765,6 +793,10 @@
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-content">
+            <div class="hero-logo">
+                <img src="img/logo.png" alt="BPP">
+            </div>
+
             <h1 class="tagline">Creating connections,<br>driving innovation</h1>
             <p class="subtitle">Diseño, datos y estrategia para imaginar decisiones futuras</p>
             <div class="locations">Buenos Aires  /  Madrid</div>
