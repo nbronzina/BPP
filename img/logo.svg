@@ -18,8 +18,8 @@
   <path d="M5 38 L25 38 L35 48 L5 48 Z" fill="#F5F3F0"/>
   
   <!-- Texto BPP -->
-  <text x="58" y="30" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#1a1a1a">BPP</text>
-  
+  <text x="58" y="30" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#ffffff">BPP</text>
+
   <!-- Analytics & Design -->
   <text x="58" y="39" font-family="Inter, sans-serif" font-size="8.5" font-weight="400" fill="#D98F6E">Analytics</text>
   <text x="58" y="47" font-family="Inter, sans-serif" font-size="8.5" font-weight="400" fill="#D98F6E">& Design</text>
