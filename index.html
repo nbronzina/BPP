@@ -38,7 +38,7 @@
     <meta name="msapplication-TileColor" content="#0f0f0f">
 
     <!-- Security Policies -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co https://plausible.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co https://plausible.io; base-uri 'self'; form-action 'self' https://formsubmit.co;">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -1364,7 +1364,7 @@
     <section id="hero" class="hero">
         <div class="hero-content">
             <div class="hero-logo">
-                <img src="img/logo.png" alt="BPP" width="640" height="160">
+                <img src="img/logo.png" alt="BPP" width="640" height="160" fetchpriority="high">
             </div>
 
             <h1 class="tagline">Creating connections,<br>driving innovation</h1>
@@ -1655,17 +1655,17 @@
     <footer id="contact" role="contentinfo">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Argentina</h4>
+                <h3>Argentina</h3>
                 <p>Franklin 2190, oficina 4113</p>
                 <p>Buenos Aires, Argentina</p>
             </div>
             <div class="footer-section">
-                <h4>España</h4>
+                <h3>España</h3>
                 <p>C. de Pablo Vidal 4</p>
                 <p>Madrid, España</p>
             </div>
             <div class="footer-section">
-                <h4>Seguinos</h4>
+                <h3>Seguinos</h3>
                 <div class="social-icons">
                     <a href="https://instagram.com/bppanalyticsanddesign" target="_blank" rel="noopener noreferrer" aria-label="Seguinos en Instagram">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
