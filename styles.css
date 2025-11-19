@@ -1564,6 +1564,17 @@ img {
     color: var(--color-bg);
 }
 
+/* Estilo de enlaces en Política de Privacidad */
+.legal-page a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+.legal-page a:hover {
+    color: var(--color-accent-bright);
+}
+
 /* ──────────────────────────────────────────────
    Reporte de Impacto
 ──────────────────────────────────────────────*/
