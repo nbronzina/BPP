@@ -838,10 +838,12 @@
   filter: grayscale(100%);
 }
 
-/* Ajuste de encuadre vertical para socios 1 y 3 */
+/* Ajuste unificado para socios 1 y 3 (Nicolás y Ezequiel) */
 .socios-card:nth-child(1) .socios-photo img,
 .socios-card:nth-child(3) .socios-photo img {
   object-position: center 20%;
+  transform: scale(0.97);
+  transform-origin: center;
 }
         .socios-card h3 {
             font-size: var(--font-size-h3);
