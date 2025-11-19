@@ -712,10 +712,14 @@
         }
 
         /* Actividades Section */
-        .actividades-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+.actividades-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columnas */
+    gap: 2.5rem;
+    align-items: stretch;
+}
 
         .actividad-card {
             background: var(--color-bg-light);
@@ -1011,11 +1015,15 @@
             }
         }
 
-        @media (max-width: 900px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .actividades-container {
+        grid-template-columns: 1fr;  /* en mobile, una debajo de la otra */
+    }
+}
 
         @media (max-width: 768px) {
             :root {
@@ -1708,24 +1716,30 @@
                 </div>
             </article>
 
-            <article class="actividad-card" data-animate tabindex="0">
-  <div class="actividad-img">
-    <picture>
-      <!-- Optimizado WebP -->
-      <source srcset="img/reporte-impacto.webp" type="image/webp">
-      <!-- Fallback PNG/JPG -->
-      <img src="img/reporte-impacto.png" alt="Reporte de impacto sobre caída de natalidad" loading="lazy">
-    </picture>
-  </div>
+           <article class="actividad-card" data-animate tabindex="0">
+    <div class="actividad-image">
+        <picture>
+            <!-- Cuando tengas la imagen, actualizás los nombres de archivo -->
+            <source srcset="img/reporte-impacto.webp" type="image/webp">
+            <img src="img/reporte-impacto.png"
+                 alt="Reporte de impacto sobre caída de natalidad"
+                 loading="lazy"
+                 width="1200"
+                 height="800">
+        </picture>
+    </div>
 
-  <div class="actividad-content">
-    <h3>Impacto de la caída de la natalidad</h3>
-    <p>
-      Análisis de tendencias demográficas y su efecto directo en matrículas escolares.
-      Estudio estratégico con proyecciones al 2035.
-    </p>
-    <a href="reporte-impacto.html" class="btn-card" tabindex="0">Leer más</a>
-  </div>
+    <div class="actividad-content">
+        <time class="actividad-date">2025</time>
+        <h3>Impacto de la caída de la natalidad</h3>
+        <p>
+            Análisis de tendencias demográficas y su efecto directo en matrículas escolares.
+            Estudio estratégico con proyecciones al 2035.
+        </p>
+        <a href="reporte-impacto.html" class="actividad-link">
+            Leer más →
+        </a>
+    </div>
 </article>
             
         </div>
