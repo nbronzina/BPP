@@ -1386,6 +1386,10 @@ img {
   color: var(--color-background, #1E1D1E);
 }
 
+.btn-download-main {
+  margin-right: 0.75rem;
+}
+
 /* Adaptación responsive tarjetas impacto */
 @media (max-width: 768px) {
   .impact-card {
@@ -1476,6 +1480,12 @@ img {
     color: var(--color-text-secondary);
     max-width: 900px;
     margin: 0 auto;
+}
+
+.hero-sub-secondary {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
 }
 
 /* Contenedor principal del reporte */
@@ -1621,10 +1631,35 @@ img {
     color: var(--color-accent);
 }
 
-/* En la página de reporte, no ocultar el contenido con data-animate */
-.reporte-page [data-animate] {
-  opacity: 1 !important;
-  transform: none !important;
+.report-scenarios-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .report-scenarios-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.report-toc-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+.report-toc-list a {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.report-toc-list a:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 
 /* Responsive */
