@@ -838,6 +838,11 @@
   filter: grayscale(100%);
 }
 
+/* Ajuste de encuadre vertical para socios 1 y 3 */
+.socios-card:nth-child(1) .socios-photo img,
+.socios-card:nth-child(3) .socios-photo img {
+  object-position: center 60%;
+}
         .socios-card h3 {
             font-size: var(--font-size-h3);
             font-weight: 600;
@@ -863,11 +868,6 @@
             text-align: left;
         }
 
-        .socios-card:nth-child(1) .socios-photo img,
-.socios-card:nth-child(3) .socios-photo img {
-  transform: scale(0.955);
-  transform-origin: center;
-}
 
         /* Animations */
         [data-animate] {
