@@ -1621,6 +1621,12 @@ img {
     color: var(--color-accent);
 }
 
+/* En la página de reporte, no ocultar el contenido con data-animate */
+.reporte-page [data-animate] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .reporte-page .hero-section {
