@@ -8,6 +8,168 @@
   <!-- Tipografía y estilos base (igual que index) -->
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="favicon-32x32.png">
+
+  <style>
+  /* RESET */
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  :root {
+      --color-bg: #0f0f0f;
+      --color-text: #f0f0f0;
+      --color-text-muted: #b0b0b0;
+      --color-accent: #D98F6E;
+      --color-accent-hover: #E8A67D;
+      --color-card-bg: #161616;
+      --color-border: #292929;
+      --transition: 0.3s ease;
+  }
+
+  body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+  }
+
+  img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+  }
+
+  a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color var(--transition);
+  }
+  a:hover {
+      color: var(--color-accent-hover);
+  }
+
+  /* HEADER */
+  .header {
+      width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 15, 15, 0.8);
+  }
+
+  .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+  }
+
+  .nav-links a {
+      color: var(--color-text);
+      font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section-wide {
+      padding-top: calc(7rem + 50px); /* Igual que index */
+      padding-bottom: 4rem;
+      max-width: 1200px;
+      margin-inline: auto;
+      width: 90%;
+  }
+
+  .hero-section h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+  }
+
+  .hero-sub {
+      margin-top: 1rem;
+      color: var(--color-text-muted);
+      font-weight: 400;
+  }
+
+  /* CARDS BASE */
+  .actividad-card, .card-static {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .actividad-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+     /* DISEÑO PARTICULAR DEL REPORTE */
+
+  .reporte-section {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+      grid-template-columns: 1fr;
+  }
+
+  /* Tarjetas principales */
+  .impact-card,
+  .actividad-card--light {
+      background: #1b1b1b;
+      border: 1px solid #303030;
+      border-radius: 12px;
+      padding: 2rem;
+  }
+
+  .impact-top {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+  }
+
+  .impact-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-accent);
+  }
+
+  .impact-list li {
+      margin-bottom: 0.5rem;
+      color: var(--color-text-muted);
+  }
+
+  /* Ajuste de imagen para que se vea entera */
+  .impact-chart img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: contain;
+  }
+
+  .btn-download {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--color-accent);
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all var(--transition);
+  }
+
+  .btn-download:hover {
+      background: var(--color-accent);
+      color: var(--color-bg);
+  }
+    
+</style>
+  
 </head>
 
 <body>
