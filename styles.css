@@ -1513,3 +1513,110 @@ img {
         padding: 2rem;
     }
 }
+
+/* ──────────────────────────────────────────────
+   ESTILOS ESPECÍFICOS DE PÁGINAS INTERNAS
+──────────────────────────────────────────────*/
+
+/* Política de Privacidad */
+.legal-page .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.legal-page h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.legal-page h2 {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.legal-page p,
+.legal-page li {
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.legal-page ul {
+    margin-left: 2rem;
+}
+
+.legal-page .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--color-accent);
+    border-radius: 4px;
+    color: var(--color-accent);
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.legal-page .back-link:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+}
+
+/* ──────────────────────────────────────────────
+   Reporte de Impacto
+──────────────────────────────────────────────*/
+
+.reporte-page .hero-section {
+    padding: calc(var(--spacing-section) + 60px) 2rem 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.reporte-page .hero-section h1 {
+    font-size: var(--font-size-h2);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+}
+
+.reporte-page .hero-sub {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.reporte-page .content-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem var(--spacing-section);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.reporte-page .actividad-card--light {
+    background: var(--color-bg-light);
+    border: 1px solid rgba(203, 112, 67, 0.4);
+    border-radius: 12px;
+}
+
+.reporte-page .impact-number {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .reporte-page .hero-section {
+        padding: 110px 1.5rem 32px;
+    }
+
+    .reporte-page .content-section {
+        padding: 0 1.5rem 40px;
+    }
+}
