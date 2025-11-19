@@ -1283,6 +1283,113 @@
                 flex-direction: column;
             }
         }
+
+        /* ===============================
+   Tarjetas de impacto (reporte)
+   =============================== */
+
+.impact-card {
+  background: var(--color-background-card, #1E1D1E);
+  border: 1px solid var(--color-border-card, #2A2A2A);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: var(--font-family-base, 'Inter', system-ui, sans-serif);
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.impact-card:hover,
+.impact-card:focus {
+  border-color: var(--color-accent, #CB7043);
+  box-shadow: 0 0 12px rgba(203,112,67,0.2);
+  transform: translateY(-3px);
+}
+
+/* Header de la tarjeta (icono + título) */
+.impact-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.impact-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Número destacado */
+.impact-number {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--color-accent, #CB7043);
+  margin: 1rem 0;
+}
+
+/* Lista dentro de tarjeta */
+.impact-list {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+}
+
+.impact-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Gráficos */
+.impact-chart img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-top: 1rem;
+  display: block;
+}
+
+/* Variante sin animación hover (intro + descarga) */
+.card-static {
+  background: var(--color-background-card, #1E1D1E);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+/* Botón de descarga PDF */
+.btn-download {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border: 1px solid var(--color-accent, #CB7043);
+  color: var(--color-accent, #CB7043);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-download:hover,
+.btn-download:focus {
+  background-color: var(--color-accent, #CB7043);
+  color: var(--color-background, #1E1D1E);
+}
+
+/* Adaptación responsive */
+@media (max-width: 768px) {
+  .impact-card {
+    padding: 1.5rem;
+  }
+
+  .impact-number {
+    font-size: 2rem;
+  }
+
+  .impact-icon {
+    font-size: 1.4rem;
+  }
+}
     </style>
 
     <!-- Schema.org Structured Data -->
@@ -1600,6 +1707,27 @@
                     </a>
                 </div>
             </article>
+
+            <article class="actividad-card" data-animate tabindex="0">
+  <div class="actividad-img">
+    <picture>
+      <!-- Optimizado WebP -->
+      <source srcset="img/reporte-impacto.webp" type="image/webp">
+      <!-- Fallback PNG/JPG -->
+      <img src="img/reporte-impacto.png" alt="Reporte de impacto sobre caída de natalidad" loading="lazy">
+    </picture>
+  </div>
+
+  <div class="actividad-content">
+    <h3>Impacto de la caída de la natalidad</h3>
+    <p>
+      Análisis de tendencias demográficas y su efecto directo en matrículas escolares.
+      Estudio estratégico con proyecciones al 2035.
+    </p>
+    <a href="reporte-impacto.html" class="btn-card" tabindex="0">Leer más</a>
+  </div>
+</article>
+            
         </div>
     </section>
 
