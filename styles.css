@@ -176,7 +176,7 @@ nav {
 
 .hero-content {
     max-width: 1000px;
-    text-align: center;
+    text-align:center;
 }
 
 .tagline {
@@ -361,6 +361,7 @@ nav {
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
 .service-card::before {
@@ -474,6 +475,8 @@ footer {
     text-align: center;
 }
 
+/* Soporte para el uso actual de <p class="footer-heading"> */
+.footer-heading,
 .footer-section h3,
 .footer-section h4 {
     font-size: 1.3rem;
@@ -693,7 +696,7 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columnas */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2.5rem;
     align-items: stretch;
 }
@@ -786,6 +789,7 @@ footer {
 .socios-card {
     text-align: center;
     transition: transform 0.3s;
+    cursor: pointer;
 }
 
 .socios-card:hover {
@@ -806,7 +810,7 @@ footer {
     border-color: var(--color-text);
 }
 
-/* Ajuste de encuadre para la foto del segundo socio */
+/* Ajuste preciso de imágenes en sección Socios */
 .socios-photo picture {
     width: 100%;
     height: 100%;
@@ -827,6 +831,7 @@ footer {
     object-position: center 20%;
 }
 
+/* TEST rápido (solo para probar en navegador local) */
 .socios-card:nth-child(2) .socios-photo img {
     transform: scale(1.1);
     object-position: center 42%;
@@ -840,20 +845,19 @@ footer {
 }
 
 .socios-role {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--color-accent);
     font-weight: 500;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: 0.9rem;
 }
 
 .socios-bio {
     font-size: 1rem;
     color: var(--color-text-secondary);
     line-height: var(--line-height-body);
-    letter-spacing: 0.01em;  /* Mejorar legibilidad */
+    letter-spacing: 0.01em;
     text-align: left;
 }
 
@@ -875,6 +879,13 @@ footer {
 /* =========================
    Consistencia / Base de Cards
    ========================= */
+
+.service-card,
+.mv-block,
+.actividad-card,
+.socios-card {
+    cursor: pointer;
+}
 
 /* Estandarizar transiciones */
 a,
@@ -1007,7 +1018,7 @@ img {
     }
 
     .actividades-container {
-        grid-template-columns: 1fr;  /* en mobile, una debajo de la otra */
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1037,7 +1048,7 @@ img {
 
     .nav-links a {
         font-size: 1.1rem;
-        padding: 12px 20px;  /* Área táctil 44x44px mínimo */
+        padding: 12px 20px;
         display: block;
     }
 
@@ -1181,8 +1192,9 @@ img {
 
 @media (prefers-reduced-motion: reduce) {
     *,
-    *::before,
-    *::after {
+
+*::before,
+*::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -1398,8 +1410,8 @@ img {
 /* === ESTILO REPORTE IMPACTO (alineado con index) === */
 
 .actividad-card--light {
-  background: #1E1D1E; /* Mismo base oscuro del index */
-  border: 1px solid rgba(203, 112, 67, 0.45); /* BPP soft orange */
+  background: #1E1D1E;
+  border: 1px solid rgba(203, 112, 67, 0.45);
   padding: 2rem;
   border-radius: 14px;
 }
@@ -1518,61 +1530,76 @@ img {
    ESTILOS ESPECÍFICOS DE PÁGINAS INTERNAS
 ──────────────────────────────────────────────*/
 
-/* Política de Privacidad */
+/* Política de Privacidad / Páginas legales */
+.legal-page {
+  background-color: var(--color-bg);
+  color: var(--color-text-light);
+  line-height: var(--line-height-body);
+}
+
 .legal-page .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
 }
 
 .legal-page h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    color: var(--color-text);
-    margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--color-text);
+  margin-bottom: 1rem;
 }
 
 .legal-page h2 {
-    font-size: 1.8rem;
-    color: var(--color-accent);
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: var(--color-accent);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
-.legal-page p,
-.legal-page li {
-    color: var(--color-text-secondary);
-    margin-bottom: 1.5rem;
+.legal-page p {
+  margin-bottom: 1.5rem;
+  color: var(--color-text-secondary);
 }
 
 .legal-page ul {
-    margin-left: 2rem;
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
 }
 
+.legal-page li {
+  margin-bottom: 0.5rem;
+  color: var(--color-text-secondary);
+}
+
+/* Botón "Volver al inicio" */
 .legal-page .back-link {
-    display: inline-block;
-    margin-bottom: 2rem;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid var(--color-accent);
-    border-radius: 4px;
-    color: var(--color-accent);
-    font-weight: 600;
-    transition: all 0.3s;
+  display: inline-block;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.legal-page .back-link:hover {
-    background: var(--color-accent);
-    color: var(--color-bg);
+.legal-page .back-link:hover,
+.legal-page .back-link:focus-visible {
+  background: var(--color-accent);
+  color: #0f0f0f;
 }
 
-/* Estilo de enlaces en Política de Privacidad */
-.legal-page a {
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: color var(--transition-normal);
+/* Estilo de la fecha */
+.legal-page .date {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 3rem;
 }
 
-.legal-page a:hover {
-    color: var(--color-accent-bright);
+/* Utilidad opcional para espaciados extras si se necesita */
+.legal-page .legal-spacing {
+  margin-top: 3rem;
 }
 
 /* ──────────────────────────────────────────────
@@ -1661,79 +1688,4 @@ img {
     .reporte-page .content-section {
         padding: 0 1.5rem 40px;
     }
-}
-
-/* =======================================
-   PÁGINAS LEGALES (PRIVACIDAD)
-======================================= */
-
-.legal-page {
-  background-color: var(--color-bg);
-  color: var(--color-text-light);
-  line-height: var(--line-height-body);
-}
-
-.legal-page .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-}
-
-.legal-page h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: var(--color-text);
-  margin-bottom: 1rem;
-}
-
-.legal-page h2 {
-  font-size: 1.8rem;
-  color: var(--color-accent);
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-}
-
-.legal-page p {
-  margin-bottom: 1.5rem;
-  color: var(--color-text-secondary);
-}
-
-.legal-page ul {
-  margin-left: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.legal-page li {
-  margin-bottom: 0.5rem;
-  color: var(--color-text-secondary);
-}
-
-/* Botón "Volver al inicio" */
-.legal-page .back-link {
-  display: inline-block;
-  margin-bottom: 2rem;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid var(--color-accent);
-  border-radius: 4px;
-  color: var(--color-accent);
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.legal-page .back-link:hover,
-.legal-page .back-link:focus-visible {
-  background: var(--color-accent);
-  color: #0f0f0f;
-}
-
-/* Estilo de la fecha */
-.legal-page .date {
-  color: var(--color-text-secondary);
-  font-size: 0.95rem;
-  margin-bottom: 3rem;
-}
-
-/* Utilidad opcional para espaciados extras si se necesita */
-.legal-page .legal-spacing {
-  margin-top: 3rem;
 }
