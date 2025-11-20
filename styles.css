@@ -1717,6 +1717,7 @@ img {
   color: var(--color-text-secondary);
 }
 
+/* Botón "Volver al inicio" */
 .legal-page .back-link {
   display: inline-block;
   margin-bottom: 2rem;
@@ -1735,13 +1736,14 @@ img {
   color: #0f0f0f;
 }
 
+/* Estilo de la fecha */
 .legal-page .date {
   color: var(--color-text-secondary);
   font-size: 0.95rem;
   margin-bottom: 3rem;
 }
 
-/* 👇 Tu clase para margen específico */
+/* Utilidad opcional para espaciados extras si se necesita */
 .legal-page .legal-spacing {
   margin-top: 3rem;
 }
