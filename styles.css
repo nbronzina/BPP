@@ -1689,3 +1689,21 @@ img {
         padding: 0 1.5rem 40px;
     }
 }
+
+/* ==========================
+   Estilo de enlaces legales
+   (política de privacidad)
+   ========================== */
+.legal-link {
+  color: var(--color-accent); /* Usa el naranja de marca (#CB7043) */
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.legal-link:hover,
+.legal-link:focus {
+  opacity: 0.9;
+  text-decoration: underline;
+  outline: none;
+}
