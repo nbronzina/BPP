@@ -1672,3 +1672,76 @@ img {
         padding: 0 1.5rem 40px;
     }
 }
+
+/* =======================================
+   PÁGINAS LEGALES (PRIVACIDAD)
+======================================= */
+
+.legal-page {
+  background-color: var(--color-bg);
+  color: var(--color-text-light);
+  line-height: var(--line-height-body);
+}
+
+.legal-page .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.legal-page h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.legal-page h2 {
+  font-size: 1.8rem;
+  color: var(--color-accent);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.legal-page p {
+  margin-bottom: 1.5rem;
+  color: var(--color-text-secondary);
+}
+
+.legal-page ul {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.legal-page li {
+  margin-bottom: 0.5rem;
+  color: var(--color-text-secondary);
+}
+
+.legal-page .back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.legal-page .back-link:hover,
+.legal-page .back-link:focus-visible {
+  background: var(--color-accent);
+  color: #0f0f0f;
+}
+
+.legal-page .date {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 3rem;
+}
+
+/* 👇 Tu clase para margen específico */
+.legal-page .legal-spacing {
+  margin-top: 3rem;
+}
