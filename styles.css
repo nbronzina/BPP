@@ -1707,3 +1707,33 @@ img {
   text-decoration: underline;
   outline: none;
 }
+
+/* =======================================
+   Enlaces internos en páginas legales
+   y de reporte (mail, volver, etc.)
+======================================= */
+
+.legal-page a,
+.reporte-page a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+.legal-page a:hover,
+.reporte-page a:hover {
+  color: var(--color-accent-bright);
+}
+
+.legal-page a:visited,
+.reporte-page a:visited {
+  color: var(--color-accent);
+}
+
+/* Botón/enlace de retorno en reporte de impacto */
+.report-back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
