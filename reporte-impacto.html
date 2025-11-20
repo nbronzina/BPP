@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reporte de Impacto – BPP Analytics & Design</title>
+  <!-- Metadatos -->
+<meta name="description" content="Reporte de impacto sobre la caída de la natalidad en Argentina y su efecto en las matrículas escolares. Análisis estratégico 2025 realizado por BPP Analytics & Design para el Colegio Francesco Faà di Bruno y su entorno regional. Incluye escenarios prospectivos, oportunidades y próximos pasos para la toma de decisiones.">
+
+<!-- Favicons (alineados con index.html) -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
   <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,9 +20,6 @@
 
   <!-- Estilos globales -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Favicon básico -->
-  <link rel="icon" type="image/png" href="favicon-32x32.png">
 </head>
 
 <body class="reporte-page">
@@ -68,11 +73,12 @@
 <section class="content-section reporte-section report-toc">
   <h2>Secciones del reporte</h2>
   <ul class="report-toc-list">
-    <li><a href="#sec-contexto">1. Contexto general</a></li>
+    <li><a href="#sec-contexto">0. Resumen ejecutivo</a></li>
+    <li><a href="#sec-contexto-general">1. Contexto general</a></li>
     <li><a href="#sec-metodologia">2. Cómo miramos este problema</a></li>
     <li><a href="#sec-escenarios">3. Escenarios posibles</a></li>
     <li><a href="#sec-oportunidades">4. Oportunidades</a></li>
-    <li><a href="#sec-pasos">6. Próximos pasos</a></li>
+    <li><a href="#sec-pasos">6. Próximos pasos recomendados</a></li>
   </ul>
 </section>
 
@@ -122,7 +128,7 @@
     </section>
 
     <!-- CONTEXTO GENERAL -->
-    <section class="content-section reporte-section">
+    <section class="content-section reporte-section" id="sec-contexto-general">
       <article class="actividad-card actividad-card--light">
         <h2>1. Contexto general</h2>
         <p>
@@ -377,13 +383,17 @@
           <li>Estudio demográfico regional – San Antonio de Areco y San Andrés de Giles.</li>
         </ul>
 
-        <!-- Ajustá las rutas href a donde coloques los PDFs en tu repo (por ejemplo /docs/...) -->
-        <a href="docs/impacto-caida-natalidad-2025.pdf" class="btn-download btn-download-main">
-          Descargar informe principal
-        </a>
-        <a href="docs/estudio-demografico-regional.pdf" class="btn-download btn-download-main">
-          Descargar estudio regional
-        </a>
+<a href="docs/impacto-caida-natalidad-2025.pdf"
+   class="btn-download btn-download-main"
+   download>
+  Descargar informe principal
+</a>
+
+<a href="docs/estudio-demografico-regional.pdf"
+   class="btn-download"
+   download>
+  Descargar estudio regional
+</a>
       </article>
     </section>
   </main>
