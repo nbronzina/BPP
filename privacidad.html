@@ -3,8 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Política de Privacidad - BPP Analytics & Design">
+  <meta name="description" content="Política de privacidad de BPP Analytics & Design. Información sobre cómo recopilamos, usamos y protegemos tus datos personales cuando nos contactás a través del sitio.">
+  <meta name="author" content="BPP Analytics & Design">
   <title>Política de Privacidad | BPP Analytics & Design</title>
+
+  <!-- Seguridad y privacidad (alineado al index) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co https://plausible.io; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.bppanalyticsanddesign.com/privacidad.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Política de Privacidad | BPP Analytics & Design">
+  <meta property="og:description" content="Conocé cómo BPP Analytics & Design recopila, utiliza y protege tus datos personales.">
+  <meta property="og:url" content="https://www.bppanalyticsanddesign.com/privacidad.html">
+  <meta property="og:site_name" content="BPP Analytics & Design">
+  <meta property="og:image" content="https://www.bppanalyticsanddesign.com/img/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Política de Privacidad | BPP Analytics & Design">
+  <meta name="twitter:description" content="Información sobre el tratamiento de datos personales en BPP Analytics & Design.">
+  <meta name="twitter:image" content="https://www.bppanalyticsanddesign.com/img/og-image.jpg">
 
   <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,13 +37,22 @@
   <!-- Estilos globales -->
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Favicon básico (opcional, si ya lo tenés en index no es obligatorio repetir todo) -->
-  <link rel="icon" type="image/png" href="favicon-32x32.png">
+  <!-- Favicons (alineados con el sitio) -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <!-- Plausible Analytics (privacy-friendly, sin cookies) -->
+  <script defer data-domain="bppanalyticsanddesign.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="legal-page">
 
+  <!-- Skip link accesible -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
   <!-- Contenido principal -->
-  <div class="container">
+  <div class="container" id="main-content">
     <a href="index.html" class="back-link">← Volver al inicio</a>
 
     <h1>Política de Privacidad</h1>
@@ -107,7 +139,7 @@
     </p>
     <p>
       <strong>Email:</strong>
-      <a href="mailto:bppanalyticsanddesign@gmail.com">bppanalyticsanddesign@gmail.com</a>
+      <a href="mailto:bppanalyticsanddesign@gmail.com" id="privacyEmailLink">bppanalyticsanddesign@gmail.com</a>
     </p>
 
     <p style="margin-top: 3rem;">
@@ -116,7 +148,7 @@
     </p>
   </div>
 
-  <!-- FOOTER (igual estructura que reporte) -->
+  <!-- FOOTER (igual estructura que reporte/index) -->
   <footer role="contentinfo">
     <div class="footer-content">
       <div class="footer-section">
@@ -153,7 +185,36 @@
     </div>
   </footer>
 
-  <!-- JS opcional si querés reutilizar cosas (como el year dinámico) -->
+  <!-- JS base (script general) -->
   <script src="script.js"></script>
+
+  <!-- JS específico de la página de privacidad: año dinámico + eventos Plausible -->
+  <script>
+    // Año dinámico (por si script.js no lo setea acá)
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Helper de tracking seguro
+    function trackEvent(name, props) {
+      if (window.plausible && typeof window.plausible === 'function') {
+        window.plausible(name, { props: props || {} });
+      }
+    }
+
+    // Evento de vista de página de privacidad (4.3 adaptado)
+    window.addEventListener('load', function () {
+      trackEvent('Pagina_privacidad_vista');
+    });
+
+    // Tracking de click en email de contacto desde la política (útil para ver cuánta gente llega hasta acá)
+    const privacyEmailLink = document.getElementById('privacyEmailLink');
+    if (privacyEmailLink) {
+      privacyEmailLink.addEventListener('click', function () {
+        trackEvent('Privacidad_contacto_click');
+      });
+    }
+  </script>
 </body>
 </html>
