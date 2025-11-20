@@ -131,7 +131,7 @@
         <div class="nav-container">
             <div class="logo">
                 <a href="#hero">
-                    <img src="img/logo.png" alt="BPP Analytics & Design" width="180" height="45" loading="lazy" decoding="async">
+                    <img src="img/logo.png" alt="Logotipo de BPP Analytics &amp; Design" width="180" height="45" loading="lazy" decoding="async">
                 </a>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
@@ -140,7 +140,7 @@
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#hero" aria-current="page">Inicio</a></li>
                 <li><a href="#about">Nosotros</a></li>
                 <li><a href="#socios">Socios</a></li>
                 <li><a href="#services">Servicios</a></li>
@@ -157,7 +157,7 @@
     <section id="hero" class="hero">
         <div class="hero-content">
             <div class="hero-logo">
-                <img src="img/logo.png" alt="BPP" width="640" height="160" fetchpriority="high" decoding="async">
+                <img src="img/logo.png" alt="Logotipo de BPP Analytics &amp; Design" width="640" height="160" fetchpriority="high" decoding="async">
             </div>
 
             <h1 class="tagline">Creating connections,<br>driving innovation</h1>
@@ -169,6 +169,7 @@
 
     <!-- About Section -->
     <section id="about" class="section">
+        <h2>Sobre BPP</h2>
         <div class="executive-summary" data-animate>
             <p>
                 BPP es una consultora que combina análisis cuantitativo y cualitativo, investigación en profundidad,
@@ -221,7 +222,7 @@
                 <div class="socios-photo">
                     <picture>
                         <source srcset="img/NicolasWeb.webp" type="image/webp">
-                        <img src="img/NicolasOptima.png" alt="Nicolás Bronzina, Design Researcher" loading="lazy" decoding="async" width="220" height="220">
+                        <img src="img/NicolasOptima.png" alt="Retrato de Nicolás Bronzina, Design Researcher en BPP" loading="lazy" decoding="async" width="220" height="220">
                     </picture>
                 </div>
                 <h3>Nicolás Bronzina</h3>
@@ -233,7 +234,7 @@
                 <div class="socios-photo">
                     <picture>
                         <source srcset="img/SergioWeb.webp" type="image/webp">
-                        <img src="img/SergioOptima.png" alt="Sergio Petrocelli, Strategic Planning & Communication" loading="lazy" decoding="async" width="220" height="220">
+                        <img src="img/SergioOptima.png" alt="Retrato de Sergio Petrocelli, Strategic Planning &amp; Communication en BPP" loading="lazy" decoding="async" width="220" height="220">
                     </picture>
                 </div>
                 <h3>Sergio Petrocelli</h3>
@@ -245,7 +246,7 @@
                 <div class="socios-photo">
                     <picture>
                         <source srcset="img/EzequielWeb.webp" type="image/webp">
-                        <img src="img/EzequielOptima.jpeg" alt="Ezequiel Politi, Data & Strategy Analyst" loading="lazy" decoding="async" width="220" height="220">
+                        <img src="img/EzequielOptima.jpeg" alt="Retrato de Ezequiel Politi, Data &amp; Strategy Analyst en BPP" loading="lazy" decoding="async" width="220" height="220">
                     </picture>
                 </div>
                 <h3>Ezequiel Politi</h3>
@@ -368,7 +369,13 @@
                     <time class="actividad-date">Octubre 2025</time>
                     <h3>Jornada de Diseño de Futuros para la Gestión Pública</h3>
                     <p>Jornada estratégica organizada con el CESBA (Consejo Económico y Social de la Ciudad de Buenos Aires) sobre diseño de futuros aplicado a gestión pública. Nicolás Bronzina presentó metodologías de prospectiva estratégica junto a referentes internacionales como Fabien Girardin (Near Future Laboratory), Ezequiel Politi y Miriam Latorre.</p>
-                    <a href="https://cesba.gob.ar/noticias/como-el-diseno-de-futuros-impulsa-la-gestion-publica-en-buenos-aires/" target="_blank" rel="noopener noreferrer" class="actividad-link actividad-link-externa" id="linkCesba">
+                    <a
+                        href="https://cesba.gob.ar/noticias/como-el-diseno-de-futuros-impulsa-la-gestion-publica-en-buenos-aires/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="actividad-link actividad-link-externa"
+                        id="linkCesba"
+                        aria-label="Leer más sobre la Jornada de Diseño de Futuros para la Gestión Pública en CESBA">
                         Leer más →
                     </a>
                 </div>
@@ -379,7 +386,7 @@
                     <picture>
                         <source srcset="img/NatalidadWeb.webp" type="image/webp">
                         <img src="img/NatalidadOptima.png"
-                             alt="Reporte de impacto sobre caída de natalidad"
+                             alt="Ilustración del reporte de impacto sobre caída de natalidad y matrículas escolares"
                              loading="lazy"
                              decoding="async"
                              width="1200"
@@ -394,7 +401,11 @@
                         Análisis de tendencias demográficas y su efecto directo en matrículas escolares.
                         Estudio estratégico con proyecciones al 2035.
                     </p>
-                    <a href="reporte-impacto.html" class="actividad-link" id="linkReporteNatalidad">
+                    <a
+                        href="reporte-impacto.html"
+                        class="actividad-link"
+                        id="linkReporteNatalidad"
+                        aria-label="Leer más sobre el reporte de impacto de la caída de la natalidad en las matrículas escolares">
                         Leer más →
                     </a>
                 </div>
@@ -522,6 +533,7 @@
         mobileMenuBtn.addEventListener('click', () => {
             const isExpanded = navLinks.classList.toggle('active');
             mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+            mobileMenuBtn.setAttribute('aria-label', isExpanded ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
         });
 
         // Close mobile menu when clicking on a link
@@ -529,6 +541,7 @@
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.setAttribute('aria-label', 'Abrir menú de navegación');
             });
         });
 
@@ -537,6 +550,7 @@
             if (e.key === 'Escape' && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.setAttribute('aria-label', 'Abrir menú de navegación');
                 mobileMenuBtn.focus(); // Devolver foco al botón
             }
         });
@@ -548,15 +562,17 @@
                 !mobileMenuBtn.contains(e.target)) {
                 navLinks.classList.remove('active');
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.setAttribute('aria-label', 'Abrir menú de navegación');
             }
         });
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Smooth scroll for navigation links (sin afectar la skip-link)
+        document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const href = this.getAttribute('href');
+                const target = document.querySelector(href);
                 if (target) {
+                    e.preventDefault();
                     const offsetTop = target.offsetTop - 80;
                     window.scrollTo({
                         top: offsetTop,
