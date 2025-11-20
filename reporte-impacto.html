@@ -9,6 +9,11 @@
   <meta name="description" content="Reporte de impacto sobre la caída de la natalidad en Argentina y su efecto en las matrículas escolares. Análisis estratégico 2025 realizado por BPP Analytics & Design para el Colegio Francesco Faà di Bruno y su entorno regional. Incluye escenarios prospectivos, oportunidades y próximos pasos para la toma de decisiones.">
   <meta name="author" content="BPP Analytics & Design">
 
+  <!-- Seguridad y privacidad (alineado al index) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://plausible.io; base-uri 'self'; form-action 'self';">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   <!-- Canonical propio del reporte -->
   <link rel="canonical" href="https://www.bppanalyticsanddesign.com/reporte-impacto.html">
 
@@ -39,6 +44,9 @@
 
   <!-- Estilos globales -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Plausible Analytics (sin cookies, alineado al index) -->
+  <script defer data-domain="bppanalyticsanddesign.com" src="https://plausible.io/js/script.js"></script>
 
   <!-- Structured Data: Report -->
   <script type="application/ld+json">
@@ -83,7 +91,7 @@
     <div class="nav-container">
       <div class="logo">
         <a href="index.html#hero">
-          <img src="img/logo.png" alt="BPP Analytics & Design" width="180" height="45">
+          <img src="img/logo.png" alt="BPP Analytics & Design" width="180" height="45" loading="lazy" decoding="async">
         </a>
       </div>
 
@@ -227,7 +235,7 @@
         <div class="impact-chart">
           <picture>
             <source srcset="img/CuadroMatriculaWeb.webp" type="image/webp">
-            <img src="img/CuadroMatriculaOptima.png" alt="Gráfico de proyección de matrícula">
+            <img src="img/CuadroMatriculaOptima.png" alt="Gráfico de proyección de matrícula" loading="lazy" decoding="async">
           </picture>
         </div>
       </article>
@@ -249,7 +257,7 @@
         <div class="impact-chart">
           <picture>
             <source srcset="img/MapaMatriculaWeb.webp" type="image/webp">
-            <img src="img/MapaMatriculaOptima.png" alt="Mapa regional de impacto">
+            <img src="img/MapaMatriculaOptima.png" alt="Mapa regional de impacto" loading="lazy" decoding="async">
           </picture>
         </div>
       </article>
@@ -437,12 +445,14 @@
 
         <a href="docs/impacto-caida-natalidad-2025.pdf"
            class="btn-download btn-download-main"
+           id="downloadInformePrincipal"
            download>
           Descargar informe principal
         </a>
 
         <a href="docs/estudio-demografico-regional.pdf"
            class="btn-download"
+           id="downloadEstudioRegional"
            download>
           Descargar estudio regional
         </a>
@@ -487,7 +497,114 @@
     </div>
   </footer>
 
-  <!-- JS base (mismo que index) -->
-  <script src="script.js"></script>
+  <!-- JS base para navegación, tracking y año dinámico -->
+  <script>
+    // Helper de tracking seguro con Plausible
+    function trackEvent(name, props) {
+      if (window.plausible && typeof window.plausible === 'function') {
+        window.plausible(name, { props: props || {} });
+      }
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isExpanded = navLinks.classList.toggle('active');
+        mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Close mobile menu with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          mobileMenuBtn.focus();
+        }
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('active') &&
+            !navLinks.contains(e.target) &&
+            !mobileMenuBtn.contains(e.target)) {
+          navLinks.classList.remove('active');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Smooth scroll para anclas internas del reporte
+    document.querySelectorAll('a[href^="#sec-"], a[href="#main-content"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            const offsetTop = target.offsetTop - 80;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Año dinámico en el footer
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Tracking de secciones del reporte (4.3 adaptado a este archivo)
+    const reporteSections = document.querySelectorAll('section.reporte-section');
+    const seenSections = new Set();
+
+    if (reporteSections.length > 0 && 'IntersectionObserver' in window) {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const section = entry.target;
+            if (section.id && !seenSections.has(section.id)) {
+              seenSections.add(section.id);
+              trackEvent('Reporte_seccion_vista', { id: section.id });
+            }
+          }
+        });
+      }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      reporteSections.forEach(sec => sectionObserver.observe(sec));
+    }
+
+    // Tracking de descargas de PDFs (4.5)
+    const downloadInformePrincipal = document.getElementById('downloadInformePrincipal');
+    if (downloadInformePrincipal) {
+      downloadInformePrincipal.addEventListener('click', () => {
+        trackEvent('PDF_descarga', { tipo: 'reporte_principal' });
+      });
+    }
+
+    const downloadEstudioRegional = document.getElementById('downloadEstudioRegional');
+    if (downloadEstudioRegional) {
+      downloadEstudioRegional.addEventListener('click', () => {
+        trackEvent('PDF_descarga', { tipo: 'estudio_regional' });
+      });
+    }
+  </script>
 </body>
 </html>
