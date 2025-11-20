@@ -1192,9 +1192,8 @@ img {
 
 @media (prefers-reduced-motion: reduce) {
     *,
-
-*::before,
-*::after {
+    *::before,
+    *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -1369,7 +1368,7 @@ img {
   margin: 2rem auto;
 }
 
-/* Botón de descarga PDF */
+/* Botón de descarga PDF (estilo base) */
 .btn-download {
   display: inline-block;
   margin-top: 1.5rem;
@@ -1377,15 +1376,15 @@ img {
   border-radius: 8px;
   text-decoration: none;
   font-size: 0.95rem;
-  border: 1px solid var(--color-accent, #CB7043);
-  color: var(--color-accent, #CB7043);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-download:hover,
 .btn-download:focus {
-  background-color: var(--color-accent, #CB7043);
-  color: var(--color-background, #1E1D1E);
+  background-color: var(--color-accent);
+  color: #0f0f0f;
 }
 
 .btn-download-main {
@@ -1443,19 +1442,24 @@ img {
   height: auto;
 }
 
+/* Botones de descarga dentro del reporte:
+   versión rellena, coherente con el botón principal del sitio */
 .reporte-section .btn-download {
-  background: #CB7043;
-  color: #1E1D1E;
+  background: var(--color-accent);
+  color: #0f0f0f;
   font-weight: 600;
   padding: 0.8rem 1.4rem;
   border-radius: 10px;
   display: inline-block;
+  border: 1px solid var(--color-accent);
   text-decoration: none;
-  transition: background 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
-.reporte-section .btn-download:hover {
-  background: #d67e52;
+.reporte-section .btn-download:hover,
+.reporte-section .btn-download:focus-visible {
+  background: var(--color-accent-bright);
+  color: #0f0f0f;
 }
 
 /* =========================
@@ -1694,8 +1698,9 @@ img {
    Estilo de enlaces legales
    (política de privacidad)
    ========================== */
+
 .legal-link {
-  color: var(--color-accent); /* Usa el naranja de marca (#CB7043) */
+  color: var(--color-accent);
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.2s ease;
@@ -1736,37 +1741,4 @@ img {
   margin-top: 2rem;
   font-size: 0.95rem;
   font-weight: 600;
-}
-
-/* =======================================
-   Corrección: mantener estilo de botones
-   de descarga (.btn-download) intacto
-======================================= */
-.btn-download,
-.btn-download:visited {
-  background-color: var(--color-accent);
-  color: var(--color-black);
-  text-decoration: none;
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-base);
-  font-weight: 600;
-  transition: background-color var(--transition-normal);
-}
-
-.btn-download:hover,
-.btn-download:focus {
-  background-color: var(--color-accent-bright);
-  color: var(--color-black);
-  text-decoration: none;
-  outline: none;
-}
-
-.btn-download-main {
-  background-color: var(--color-accent);
-}
-
-.reporte-page a.btn-download,
-.reporte-page a.btn-download:visited {
-  color: var(--color-black);
 }
