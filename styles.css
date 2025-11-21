@@ -1442,26 +1442,6 @@ img {
   height: auto;
 }
 
-/* Botones de descarga dentro del reporte:
-   versión rellena, coherente con el botón principal del sitio */
-.reporte-section .btn-download {
-  background: var(--color-accent);
-  color: #0f0f0f;
-  font-weight: 600;
-  padding: 0.8rem 1.4rem;
-  border-radius: 10px;
-  display: inline-block;
-  border: 1px solid var(--color-accent);
-  text-decoration: none;
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-.reporte-section .btn-download:hover,
-.reporte-section .btn-download:focus-visible {
-  background: var(--color-accent-bright);
-  color: #0f0f0f;
-}
-
 /* =========================
    Layout específico Reporte
    ========================= */
