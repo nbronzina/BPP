@@ -1750,3 +1750,20 @@ img {
   margin-bottom: 0.2rem;   /* reduce espacio entre líneas de texto */
   line-height: 1.4;        /* igual que en index */
 }
+
+
+/* Corrección homogénea para separación de texto en los footers */
+footer p {
+  margin-bottom: 0.2rem;   /* Reduce espacio entre frases */
+  line-height: 1.4;        /* Consistencia con index */
+}
+
+/*
+Si quisieras mantener control por página, también podrías usar esto:
+.legal-page footer p,
+.reporte-page footer p,
+:not(.legal-page):not(.reporte-page) footer p {
+  margin-bottom: 0.2rem;
+  line-height: 1.4;
+}
+*/
