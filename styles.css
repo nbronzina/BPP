@@ -1744,3 +1744,9 @@ img {
   background: var(--color-accent);
   color: #0f0f0f; /* texto oscuro para que se lea sobre el botón naranja */
 }
+
+/* Corrección específica para la separación de oraciones en privacidad */
+.legal-page footer p {
+  margin-bottom: 0.2rem;   /* reduce espacio entre líneas de texto */
+  line-height: 1.4;        /* igual que en index */
+}
