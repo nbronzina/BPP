@@ -1744,23 +1744,3 @@ img {
   background: var(--color-accent);
   color: #0f0f0f; /* texto oscuro para que se lea sobre el botón naranja */
 }
-
-/* Asegura que el footer tenga el mismo espaciado en TODAS las páginas */
-footer {
-  padding: 3rem 2rem;
-  margin-top: 4rem;
-}
-
-/* Si existen estilos que lo modifican por página, los neutralizamos */
-.legal-page footer,
-.reporte-page footer {
-  padding: 3rem 2rem;
-  margin-top: 4rem;
-}
-
-/* Asegura que el contenido anterior no empuje distinto */
-.legal-page main,
-.reporte-page main,
-main {
-  margin-bottom: 6rem;
-}
