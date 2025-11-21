@@ -1,5 +1,16 @@
+// =====================================================
+// main.js – Comportamiento global del sitio de BPP
+// -----------------------------------------------------
+// Contiene navegación responsive, animaciones de scroll,
+// tracking con Plausible, formulario de contacto,
+// soporte PWA y lógica específica para páginas internas
+// (política de privacidad y reporte de impacto).
+// =====================================================
+
 // =========================
 // Helper de tracking (Plausible)
+// Centraliza los eventos para evitar errores si el script
+// aún no cargó o no está disponible.
 // =========================
 function trackEvent(name, props) {
   if (window.plausible && typeof window.plausible === "function") {
@@ -10,9 +21,16 @@ function trackEvent(name, props) {
 document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
 
-  // =========================
+  // =====================================================
+  // BLOQUE NAV / NAVEGACIÓN
+  // -----------------------------------------------------
+  // Controla el menú mobile, cierre por clic externo,
+  // tecla Escape y smooth scroll para anclas internas.
+  // =====================================================
+
+  // -------------------------
   // Navegación / Mobile menu
-  // =========================
+  // -------------------------
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
   const navLinks = document.getElementById("navLinks");
 
@@ -54,9 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // =========================
+  // -------------------------
   // Smooth scroll para anclas internas
-  // =========================
+  // (solo para IDs en la misma página)
+// -------------------------
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const href = anchor.getAttribute("href");
     if (!href || href === "#") return;
@@ -65,7 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        const offsetTop = target.getBoundingClientRect().top + window.scrollY - 80;
+        const offsetTop =
+          target.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({
           top: offsetTop,
           behavior: "smooth",
@@ -74,10 +94,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // =========================
-  // Animaciones de aparición (index)
-  // + tracking de secciones vistas
-  // =========================
+  // =====================================================
+  // BLOQUE TRACKING / ANIMACIONES
+  // -----------------------------------------------------
+  // IntersectionObserver para animar elementos con
+  // [data-animate] y registrar secciones vistas.
+// =====================================================
+
   const animatedEls = document.querySelectorAll("[data-animate]");
   const trackedSections = new Set();
 
@@ -105,17 +128,20 @@ document.addEventListener("DOMContentLoaded", function () {
     animatedEls.forEach((el) => observer.observe(el));
   }
 
-  // =========================
   // Año dinámico en el footer
-  // =========================
   const yearSpan = document.getElementById("currentYear");
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
   }
 
-  // =========================
+  // =====================================================
+  // BLOQUE PWA / SERVICE WORKER
+  // -----------------------------------------------------
+  // Registra el Service Worker y gestiona el prompt de
+  // instalación en páginas que no son legales ni reporte.
+  // =====================================================
+
   // Service Worker (PWA)
-  // =========================
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker
@@ -126,9 +152,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // =========================
-  // Contact form (index)
-  // =========================
+  // =====================================================
+  // BLOQUE FORMULARIO DE CONTACTO
+  // -----------------------------------------------------
+  // Envía el formulario via fetch a FormSubmit, muestra
+  // mensajes de éxito/error y trackea envíos válidos.
+  // =====================================================
+
   const contactForm = document.getElementById("contactForm");
   const formMessage = document.getElementById("formMessage");
 
@@ -178,9 +208,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // =========================
-  // Tracking específico index (CTA + actividades)
-  // =========================
+  // =====================================================
+  // BLOQUE TRACKING ESPECÍFICO INDEX
+  // -----------------------------------------------------
+  // Eventos de clic en CTA principal y tarjetas de
+  // actividades que llevan a CESBA o al reporte interno.
+// =====================================================
+
   const ctaHero = document.getElementById("ctaHero");
   if (ctaHero) {
     ctaHero.addEventListener("click", () => {
@@ -208,10 +242,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // =========================
-  // PWA Install Prompt
-  // (solo en páginas no legales ni reporte)
-  // =========================
+  // =====================================================
+  // BLOQUE PWA INSTALL PROMPT
+  // -----------------------------------------------------
+  // Muestra un pequeño aviso para instalar la PWA en
+  // páginas regulares. Respeta el “no ahora” con localStorage.
+// =====================================================
+
   if (
     !body.classList.contains("legal-page") &&
     !body.classList.contains("reporte-page")
@@ -224,8 +261,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <p><strong>Instalá BPP</strong></p>
         <p>Accedé más rápido desde tu pantalla de inicio</p>
         <div class="pwa-install-buttons">
-          <button class="pwa-install-btn" id="installPWA">Instalar</button>
-          <button class="pwa-dismiss-btn" id="dismissPWA">Ahora no</button>
+          <button type="button" class="pwa-install-btn" id="installPWA">Instalar</button>
+          <button type="button" class="pwa-dismiss-btn" id="dismissPWA">Ahora no</button>
         </div>
       </div>
     `;
@@ -272,9 +309,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // =========================
-  // Página de Privacidad (legal-page)
-  // =========================
+  // =====================================================
+  // BLOQUE PÁGINA DE PRIVACIDAD (legal-page)
+  // -----------------------------------------------------
+  // Eventos de tracking específicos para la política de
+  // privacidad: vista de página y clic en mail de contacto.
+  // =====================================================
+
   if (body.classList.contains("legal-page")) {
     window.addEventListener("load", function () {
       trackEvent("Pagina_privacidad_vista");
@@ -288,9 +329,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // =========================
-  // Reporte de Impacto (reporte-page)
-  // =========================
+  // =====================================================
+  // BLOQUE REPORTE DE IMPACTO (reporte-page)
+  // -----------------------------------------------------
+  // Trackea qué secciones del reporte se vieron y las
+  // descargas de PDFs asociados.
+// =====================================================
+
   if (body.classList.contains("reporte-page")) {
     const reporteSections = document.querySelectorAll("section.reporte-section");
     const seenReportSections = new Set();
