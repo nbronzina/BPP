@@ -1767,3 +1767,14 @@ Si quisieras mantener control por página, también podrías usar esto:
   line-height: 1.4;
 }
 */
+/* Recupera el espaciado correcto en los bloques de direcciones solo en el footer */
+footer .footer-section p:nth-child(2),
+footer .footer-section p:nth-child(3) {
+  margin-bottom: 0.8rem; /* restauramos margen similar al diseño original */
+  line-height: 1.4;      /* mantiene consistencia */
+}
+
+/* Evita que el último párrafo de cada columna genere exceso de espacio */
+footer .footer-section p:last-child {
+  margin-bottom: 0;
+}
