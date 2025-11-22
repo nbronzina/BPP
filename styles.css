@@ -286,51 +286,6 @@ nav {
 }
 
 /* =========================
-   Misión & Visión
-   ========================= */
-
-.mission-vision-section {
-    display: grid;
-    gap: 4rem;
-}
-
-.mv-block {
-    background: var(--color-bg-light);
-    padding: 3rem;
-    border-radius: 8px;
-    border: 1px solid rgba(217, 143, 110, 0.15);
-    transition: all 0.3s;
-}
-
-.mv-block:hover {
-    transform: translateY(-3px);
-    border-color: var(--color-accent);
-}
-
-.mv-block h2 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 2rem;
-    letter-spacing: -0.02em;
-}
-
-.mv-block .lead {
-    font-size: 1.4rem;
-    color: var(--color-accent);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-    line-height: 1.6;
-}
-
-.mv-block p {
-    font-size: 1.15rem;
-    line-height: var(--line-height-body);
-    color: var(--color-text-secondary);
-    letter-spacing: 0.01em;  /* Mejorar legibilidad */
-}
-
-/* =========================
    Services
    ========================= */
 
@@ -881,7 +836,6 @@ footer {
    ========================= */
 
 .service-card,
-.mv-block,
 .actividad-card,
 .socios-card {
     cursor: pointer;
@@ -891,7 +845,6 @@ footer {
 a,
 button,
 .service-card,
-.mv-block,
 .actividad-card,
 .socios-card,
 img {
@@ -937,7 +890,6 @@ img {
 
 /* Focus en cards - hacerlas navegables por teclado */
 .service-card:focus-visible,
-.mv-block:focus-visible,
 .actividad-card:focus-visible,
 .socios-card:focus-visible {
     border-color: var(--color-accent);
@@ -1093,10 +1045,6 @@ img {
         font-size: 1.1rem;
     }
 
-    .mv-block {
-        padding: 2.5rem;
-    }
-
     .service-card {
         padding: 2rem;
     }
@@ -1156,10 +1104,6 @@ img {
     }
 
     .service-card,
-    .mv-block {
-        padding: 1.5rem;
-    }
-
     .actividad-content {
         padding: 1.5rem;
     }
