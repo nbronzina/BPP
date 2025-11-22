@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="BPP Analytics &amp; Design es una consultora de diseño estratégico, análisis de futuros, datos, branding y comunicación en Buenos Aires y Madrid. Usamos investigación, prototipos y narrativas visuales para imaginar decisiones futuras y decidir qué hacer hoy.">
-    <meta name="keywords" content="diseño estratégico, análisis de futuros, diseño prospectivo, consultora, Buenos Aires, Madrid, innovación, estrategia, branding, comunicación estratégica">
+    <!-- Meta keywords removido - obsoleto desde 2009 -->
     <meta name="author" content="BPP Analytics &amp; Design">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <title>BPP Analytics &amp; Design | Diseño Estratégico &amp; Análisis de Futuros</title>
 
     <!-- Canonical URL -->
@@ -48,8 +49,16 @@
     <link rel="preconnect" href="https://formsubmit.co">
     <link rel="preconnect" href="https://plausible.io">
 
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="styles.min.css" as="style">
+    <link rel="preload" href="main.min.js" as="script">
+
+    <!-- DNS Prefetch para servicios externos -->
+    <link rel="dns-prefetch" href="https://formsubmit.co">
+    <link rel="dns-prefetch" href="https://plausible.io">
+
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.min.css">
 
     <!-- Schema.org Structured Data: Organization -->
     <script type="application/ld+json">
@@ -119,6 +128,121 @@
       "@type": "WebSite",
       "name": "BPP Analytics & Design",
       "url": "https://www.bppanalyticsanddesign.com/"
+    }
+    </script>
+
+    <!-- Schema.org FAQ para rich snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Qué es el diseño de futuros?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El diseño de futuros es una metodología que combina prospectiva estratégica, design fiction y análisis de tendencias para anticipar escenarios posibles y diseñar decisiones informadas en contextos de incertidumbre."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Cuánto dura un proyecto típico de BPP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Los proyectos varían entre 8-16 semanas dependiendo del alcance. Ofrecemos desde diagnósticos rápidos de 4 semanas hasta acompañamientos estratégicos de largo plazo con revisiones periódicas."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Con qué tipo de organizaciones trabaja BPP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trabajamos con instituciones educativas, organismos públicos, ONGs y empresas B2B que enfrentan cambios estructurales y necesitan anticipar tendencias para tomar decisiones estratégicas basadas en análisis prospectivo."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿En qué se diferencia BPP de otras consultoras?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Combinamos sociología, diseño especulativo, análisis de datos y prospectiva estratégica. No solo diagnosticamos tendencias, diseñamos artefactos y narrativas que hacen tangibles los futuros posibles para facilitar la toma de decisiones."
+        }
+      }]
+    }
+    </script>
+
+    <!-- Schema.org Professional Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "BPP Analytics & Design",
+      "image": "https://www.bppanalyticsanddesign.com/img/logo.png",
+      "priceRange": "$$",
+      "email": "bppanalyticsanddesign@gmail.com",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Franklin 2190, oficina 4113",
+          "addressLocality": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "C. de Pablo Vidal 4",
+          "addressLocality": "Madrid",
+          "addressCountry": "ES"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Argentina"
+        },
+        {
+          "@type": "Country",
+          "name": "España"
+        },
+        {
+          "@type": "Country",
+          "name": "América Latina"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Consultoría Estratégica",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Investigación Exploratoria y Análisis de Tendencias",
+              "description": "Detectamos señales débiles, drivers de cambio y tendencias emergentes en sectores específicos mediante análisis cuantitativo y cualitativo."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Diseño de Prototipos y Escenarios Futuros",
+              "description": "Creamos artefactos diegéticos y narrativas visuales que hacen tangibles futuros posibles para facilitar la toma de decisiones estratégicas."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Estrategia de Implementación",
+              "description": "Convertimos hallazgos de investigación en hojas de ruta priorizadas, co-diseñamos marcos estratégicos y acompañamos la implementación."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Branding y Comunicación Estratégica",
+              "description": "Alineamos identidad, narrativa y comunicación con decisiones estratégicas y escenarios prospectivos trabajados."
+            }
+          }
+        ]
+      }
     }
     </script>
 
@@ -564,6 +688,6 @@
     </footer>
 
     <!-- JS global unificado -->
-    <script src="main.js" defer></script>
+    <script src="main.min.js" defer></script>
 </body>
 </html>
