@@ -1792,6 +1792,7 @@ footer .footer-section p:last-child {
 
   display: flex;
   align-items: center;
+  align-content: center;
   justify-content: center;
 
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1841,6 +1842,42 @@ footer .footer-section p:last-child {
   filter: grayscale(0%) brightness(1);
   opacity: 1;
   transform: scale(1.05);
+}
+
+/* Eliminar cualquier línea o borde extra */
+.logo-item::after {
+  display: none;
+}
+
+.clientes-section hr,
+.clientes-section .divider {
+  display: none;
+}
+
+/* Invertir colores del logo CESBA para mejor contraste */
+.logo-item img[alt*="CESBA"],
+.logo-item img[alt*="cesba"] {
+  filter: grayscale(100%) brightness(1.3) invert(1);
+  opacity: 0.65;
+}
+
+.logo-item:hover img[alt*="CESBA"],
+.logo-item:hover img[alt*="cesba"] {
+  filter: grayscale(0%) invert(1);
+  opacity: 1;
+}
+
+/* Eliminar glow del logo Francesco */
+.logo-item img[alt*="Francesco"],
+.logo-item img[alt*="francesco"] {
+  filter: grayscale(100%) brightness(1.2) drop-shadow(0 0 0 transparent);
+  box-shadow: none !important;
+}
+
+.logo-item:hover img[alt*="Francesco"],
+.logo-item:hover img[alt*="francesco"] {
+  filter: grayscale(0%) brightness(1) drop-shadow(0 0 0 transparent);
+  box-shadow: none !important;
 }
 
 /* Responsive adjustments */
