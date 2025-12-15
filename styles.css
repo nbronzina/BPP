@@ -1870,24 +1870,7 @@ footer .footer-section p:last-child {
   opacity: 1;
 }
 
-/* Eliminar glow del logo Francesco/Colegio */
-.logo-item img[alt*="Francesco"],
-.logo-item img[alt*="francesco"],
-.logo-item img[alt*="Colegio"] {
-  filter: grayscale(100%) brightness(0.8) !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-
-.logo-item:hover img[alt*="Francesco"],
-.logo-item:hover img[alt*="francesco"],
-.logo-item:hover img[alt*="Colegio"] {
-  filter: grayscale(0%) brightness(1) !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-
-/* Eliminar glow del logo Olam Studio, centrar y recortar espacio inferior */
+/* Logo Olam Studio - centrar y recortar espacio inferior */
 .logo-item img[alt*="Olam"],
 .logo-item img[alt*="Studio"] {
   filter: grayscale(100%) brightness(0.8) !important;
@@ -1896,10 +1879,10 @@ footer .footer-section p:last-child {
   object-position: center top !important;
   margin: auto !important;
   display: block !important;
-  max-width: 300px !important;
-  max-height: 160px !important;
+  max-width: 220px !important;
+  max-height: 110px !important;
   object-fit: cover !important;
-  clip-path: inset(0 0 30% 0) !important;
+  clip-path: inset(0 0 35% 0) !important;
 }
 
 .logo-item:hover img[alt*="Olam"],
@@ -1910,10 +1893,10 @@ footer .footer-section p:last-child {
   object-position: center top !important;
   margin: auto !important;
   display: block !important;
-  max-width: 300px !important;
-  max-height: 160px !important;
+  max-width: 220px !important;
+  max-height: 110px !important;
   object-fit: cover !important;
-  clip-path: inset(0 0 30% 0) !important;
+  clip-path: inset(0 0 35% 0) !important;
 }
 
 /* Responsive adjustments */
