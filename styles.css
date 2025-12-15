@@ -1722,3 +1722,154 @@ footer .footer-section p:nth-child(3) {
 footer .footer-section p:last-child {
   margin-bottom: 0;
 }
+
+/* ========================================
+   CLIENTES SECTION - GLASSMORPHISM
+   ======================================== */
+
+.clientes-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.clientes-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(255, 107, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 107, 0, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.clientes-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.clientes-section h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.clientes-intro {
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--color-text-secondary);
+  margin-bottom: 4rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.logo-item {
+  /* Glassmorphism card effect */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle glow on hover */
+.logo-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.logo-item:hover::before {
+  opacity: 1;
+}
+
+.logo-item:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 107, 0, 0.3);
+  box-shadow: 0 12px 40px rgba(255, 107, 0, 0.15);
+}
+
+.logo-item img {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  /* Grayscale by default */
+  filter: grayscale(100%) brightness(0.8);
+  opacity: 0.6;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Color on hover */
+.logo-item:hover img {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .clientes-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .logos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .logo-item {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .logo-item img {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logos-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .clientes-intro {
+    margin-bottom: 3rem;
+  }
+}
