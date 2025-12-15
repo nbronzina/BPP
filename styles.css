@@ -1789,6 +1789,7 @@ footer .footer-section p:last-child {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 3rem 2rem;
+  min-height: 200px;
 
   display: flex;
   align-items: center;
@@ -1826,10 +1827,12 @@ footer .footer-section p:last-child {
 }
 
 .logo-item img {
-  max-width: 200px;
+  max-width: 250px;
+  max-height: 140px;
   width: 100%;
   height: auto;
   object-fit: contain;
+  object-position: center;
 
   /* Grayscale by default */
   filter: grayscale(100%) brightness(0.8);
@@ -1869,15 +1872,34 @@ footer .footer-section p:last-child {
 
 /* Eliminar glow del logo Francesco */
 .logo-item img[alt*="Francesco"],
-.logo-item img[alt*="francesco"] {
-  filter: grayscale(100%) brightness(1.2) drop-shadow(0 0 0 transparent);
+.logo-item img[alt*="francesco"],
+.logo-item img[alt*="Colegio"] {
+  filter: grayscale(100%) brightness(0.8) !important;
   box-shadow: none !important;
+  background: transparent !important;
 }
 
 .logo-item:hover img[alt*="Francesco"],
-.logo-item:hover img[alt*="francesco"] {
-  filter: grayscale(0%) brightness(1) drop-shadow(0 0 0 transparent);
+.logo-item:hover img[alt*="francesco"],
+.logo-item:hover img[alt*="Colegio"] {
+  filter: grayscale(0%) brightness(1) !important;
   box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Eliminar glow del logo Olam Studio */
+.logo-item img[alt*="Olam"],
+.logo-item img[alt*="Studio"] {
+  filter: grayscale(100%) brightness(0.8) !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.logo-item:hover img[alt*="Olam"],
+.logo-item:hover img[alt*="Studio"] {
+  filter: grayscale(0%) brightness(1) !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 /* Responsive adjustments */
@@ -1896,7 +1918,8 @@ footer .footer-section p:last-child {
   }
 
   .logo-item img {
-    max-width: 160px;
+    max-width: 200px;
+    max-height: 120px;
   }
 }
 
