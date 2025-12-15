@@ -1877,17 +1877,14 @@ footer .footer-section p:last-child {
   filter: grayscale(100%) brightness(0.8) !important;
   box-shadow: none !important;
   background: transparent !important;
-  mix-blend-mode: multiply !important;
-  isolation: isolate !important;
 }
 
 .logo-item:hover img[alt*="Francesco"],
 .logo-item:hover img[alt*="francesco"],
 .logo-item:hover img[alt*="Colegio"] {
-  filter: grayscale(0%) brightness(0.95) !important;
+  filter: grayscale(0%) brightness(1) !important;
   box-shadow: none !important;
   background: transparent !important;
-  mix-blend-mode: normal !important;
 }
 
 /* Eliminar glow del logo Olam Studio y centrar */
