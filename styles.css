@@ -1887,12 +1887,15 @@ footer .footer-section p:last-child {
   background: transparent !important;
 }
 
-/* Eliminar glow del logo Olam Studio */
+/* Eliminar glow del logo Olam Studio y centrar */
 .logo-item img[alt*="Olam"],
 .logo-item img[alt*="Studio"] {
   filter: grayscale(100%) brightness(0.8) !important;
   box-shadow: none !important;
   background: transparent !important;
+  object-position: center center !important;
+  margin: auto !important;
+  display: block !important;
 }
 
 .logo-item:hover img[alt*="Olam"],
@@ -1900,6 +1903,9 @@ footer .footer-section p:last-child {
   filter: grayscale(0%) brightness(1) !important;
   box-shadow: none !important;
   background: transparent !important;
+  object-position: center center !important;
+  margin: auto !important;
+  display: block !important;
 }
 
 /* Responsive adjustments */
