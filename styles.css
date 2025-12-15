@@ -1877,10 +1877,10 @@ footer .footer-section p:last-child {
   box-shadow: none !important;
   background: transparent !important;
   object-position: center center !important;
-  margin: 1rem auto 0 auto !important;
+  margin: 2rem auto 0 auto !important;
   display: block !important;
-  max-width: 360px !important;
-  max-height: 190px !important;
+  max-width: 400px !important;
+  max-height: 210px !important;
   object-fit: contain !important;
   border: none !important;
 }
@@ -1891,10 +1891,10 @@ footer .footer-section p:last-child {
   box-shadow: none !important;
   background: transparent !important;
   object-position: center center !important;
-  margin: 1rem auto 0 auto !important;
+  margin: 2rem auto 0 auto !important;
   display: block !important;
-  max-width: 360px !important;
-  max-height: 190px !important;
+  max-width: 400px !important;
+  max-height: 210px !important;
   object-fit: contain !important;
   border: none !important;
 }
