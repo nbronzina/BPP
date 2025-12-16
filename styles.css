@@ -1781,8 +1781,8 @@ footer .footer-section p:last-child {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  padding: 3rem 2rem;
-  min-height: 200px;
+  padding: 2rem;
+  min-height: 180px;
 
   display: flex;
   align-items: center;
@@ -1870,7 +1870,7 @@ footer .footer-section p:last-child {
   box-shadow: none !important;
   background: transparent !important;
   object-position: center center !important;
-  margin: 2rem auto 0 auto !important;
+  margin: 0 auto !important;
   display: block !important;
   max-width: 400px !important;
   max-height: 210px !important;
@@ -1884,7 +1884,7 @@ footer .footer-section p:last-child {
   box-shadow: none !important;
   background: transparent !important;
   object-position: center center !important;
-  margin: 2rem auto 0 auto !important;
+  margin: 0 auto !important;
   display: block !important;
   max-width: 400px !important;
   max-height: 210px !important;
