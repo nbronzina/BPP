@@ -1872,8 +1872,8 @@ footer .footer-section p:last-child {
   object-position: center center !important;
   margin: 1.5rem auto 0 auto !important;
   display: block !important;
-  max-width: 280px !important;
-  max-height: 140px !important;
+  max-width: 300px !important;
+  max-height: 150px !important;
   object-fit: contain !important;
   border: none !important;
 }
@@ -1886,8 +1886,8 @@ footer .footer-section p:last-child {
   object-position: center center !important;
   margin: 1.5rem auto 0 auto !important;
   display: block !important;
-  max-width: 280px !important;
-  max-height: 140px !important;
+  max-width: 300px !important;
+  max-height: 150px !important;
   object-fit: contain !important;
   border: none !important;
 }
