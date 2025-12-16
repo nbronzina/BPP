@@ -1729,7 +1729,7 @@ footer .footer-section p:last-child {
 
 .clientes-section {
   padding: 6rem 2rem;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: var(--color-bg);
   position: relative;
   overflow: hidden;
 }
