@@ -1870,7 +1870,7 @@ footer .footer-section p:last-child {
   box-shadow: none !important;
   background: transparent !important;
   object-position: center center !important;
-  margin: 0.5rem auto 0 auto !important;
+  margin: auto !important;
   display: block !important;
   max-width: 320px !important;
   max-height: 170px !important;
@@ -1884,7 +1884,7 @@ footer .footer-section p:last-child {
   box-shadow: none !important;
   background: transparent !important;
   object-position: center center !important;
-  margin: 0.5rem auto 0 auto !important;
+  margin: auto !important;
   display: block !important;
   max-width: 320px !important;
   max-height: 170px !important;
