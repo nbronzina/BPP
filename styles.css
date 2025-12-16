@@ -1735,16 +1735,7 @@ footer .footer-section p:last-child {
 }
 
 .clientes-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(255, 107, 0, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255, 107, 0, 0.05) 0%, transparent 50%);
-  pointer-events: none;
+  display: none;
 }
 
 .clientes-section .container {
