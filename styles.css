@@ -237,58 +237,10 @@ nav {
     padding: var(--spacing-section) 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
-    transition: all var(--transition-normal);
 }
 
 .section-wide {
     max-width: 1400px;
-}
-
-/* Transiciones suaves entre secciones */
-section {
-    position: relative;
-    padding-top: var(--spacing-section);
-    padding-bottom: var(--spacing-section);
-    transition: all var(--transition-normal);
-}
-
-/* Gradiente sutil de transición entre secciones */
-section::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15));
-    pointer-events: none;
-    opacity: 0.4;
-    z-index: 0;
-}
-
-/* No aplicar gradiente a última sección ni a secciones con backgrounds especiales */
-section:last-of-type::after,
-section.clientes-section::after {
-    display: none;
-}
-
-/* Fade-in suave para secciones (solo si el usuario prefiere animaciones) */
-@media (prefers-reduced-motion: no-preference) {
-    section {
-        animation: fadeInUp 0.8s ease-out;
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* =========================
@@ -1077,11 +1029,6 @@ img {
         padding: 100px 1.5rem 60px;
     }
 
-    section {
-        padding-top: 60px;
-        padding-bottom: 60px;
-    }
-
     .section {
         padding: 40px 1.5rem;
     }
@@ -1781,8 +1728,8 @@ footer .footer-section p:last-child {
    ======================================== */
 
 .clientes-section {
-  padding: 100px 2rem;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  padding: 6rem 2rem;
+  background: var(--color-bg);
   position: relative;
   overflow: hidden;
 }
@@ -1963,7 +1910,7 @@ footer .footer-section p:last-child {
 
 @media (max-width: 768px) {
   .clientes-section {
-    padding: 70px 1.5rem;
+    padding: 4rem 1.5rem;
   }
 
   .logos-grid {
