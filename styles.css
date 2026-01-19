@@ -124,6 +124,7 @@ nav {
     height: 160px;
     width: auto;
     opacity: 0.9;
+    max-width: min(640px, 90vw);
 }
 
 .nav-links {
