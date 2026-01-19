@@ -1,17 +1,16 @@
-const CACHE_NAME = 'bpp-v2';
+const CACHE_NAME = 'bpp-v3';
 const urlsToCache = [
   '/',
   '/index.html',
   '/offline.html',
+  '/styles.min.css',
+  '/main.min.js',
   '/img/logo.png',
-  '/img/DitherME.webp',
-  '/img/DitherME-opt.jpg',
-  '/img/EzequielPoliti.webp',
-  '/img/EzequielPoliti-opt.jpg',
-  '/img/SergioPetrocelli.webp',
-  '/img/SergioPetrocelli-opt.jpg',
+  '/img/logo.webp',
+  '/img/NicolasOptima.webp',
+  '/img/SergioOptima.webp',
+  '/img/EzequielOptima.webp',
   '/img/JornadaCESBA.webp',
-  '/img/JornadaCESBA-opt.jpg',
   '/favicon-32x32.png',
   '/apple-touch-icon.png'
 ];
