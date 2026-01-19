@@ -1700,7 +1700,6 @@ img {
   line-height: 1.4;        /* igual que en index */
 }
 
-
 /* Corrección homogénea para separación de texto en los footers */
 footer p {
   margin-bottom: 0.2rem;   /* Reduce espacio entre frases */

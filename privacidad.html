@@ -32,16 +32,20 @@
   <meta name="twitter:description" content="Información clara sobre el tratamiento de datos personales en BPP Analytics &amp; Design, alineada con buenas prácticas de protección de datos (RGPD/GDPR).">
   <meta name="twitter:image" content="https://www.bppanalyticsanddesign.com/img/og-image.jpg">
 
-  <!-- Tipografía -->
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
 
   <!-- DNS Prefetch para servicios externos -->
   <link rel="dns-prefetch" href="https://plausible.io">
 
-  <!-- Estilos globales -->
-  <link rel="stylesheet" href="styles.min.css">
+  <!-- Google Fonts (Async) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+  <!-- Estilos globales (Async) -->
+  <link rel="preload" href="styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
 
   <!-- Favicons (alineados con el sitio) -->
   <link rel="icon" href="favicon.ico" sizes="any">
