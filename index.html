@@ -251,9 +251,6 @@
       }
     }
     </script>
-
-    <!-- Plausible Analytics (Privacy-friendly, no cookies) -->
-    <script defer data-domain="bppanalyticsanddesign.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
     <!-- Skip link para accesibilidad -->
@@ -851,5 +848,8 @@
 
     <!-- JS global unificado -->
     <script src="main.min.js" defer></script>
+
+    <!-- Plausible Analytics (Privacy-friendly, no cookies) - Cargado al final para evitar forced reflows -->
+    <script defer data-domain="bppanalyticsanddesign.com" src="https://plausible.io/js/script.js"></script>
 </body>
 </html>
