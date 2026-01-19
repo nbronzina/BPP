@@ -46,6 +46,12 @@
   <!-- DNS Prefetch para servicios externos -->
   <link rel="dns-prefetch" href="https://plausible.io">
 
+  <!-- Critical CSS for Font Fallback (reduces CLS) -->
+  <style>
+@font-face{font-family:'Inter Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}
+body{font-family:'Inter','Inter Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+  </style>
+
   <!-- Google Fonts (Async) -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
@@ -101,7 +107,7 @@
       <div class="logo">
         <a href="../index.html#hero">
           <picture>
-            <source srcset="../img/logo-480.webp 480w, ../img/logo.webp 640w" type="image/webp">
+            <source srcset="../img/logo-160.webp 160w, ../img/logo-320.webp 320w" sizes="180px" type="image/webp">
             <img src="../img/logo.png" alt="BPP Analytics &amp; Design" width="180" height="45" loading="lazy" decoding="async">
           </picture>
         </a>
