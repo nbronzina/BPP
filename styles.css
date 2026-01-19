@@ -114,7 +114,10 @@ nav {
 /* Logo en hero */
 .hero-logo {
     margin-bottom: 3rem;
-    text-align: center;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-logo img {
