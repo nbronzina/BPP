@@ -84,11 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        const offsetTop =
-          target.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({
-          top: offsetTop,
+        target.scrollIntoView({
           behavior: "smooth",
+          block: "start"
         });
       }
     });
