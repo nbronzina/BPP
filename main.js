@@ -105,6 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const trackedSections = new Set();
 
   if (animatedEls.length && "IntersectionObserver" in window) {
+    // Mark elements as ready for animation
+    animatedEls.forEach(el => el.classList.add('animate-ready'));
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -141,8 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // instalación en páginas que no son legales ni reporte.
   // =====================================================
 
-  // Service Worker (PWA) - DISABLED FOR DEBUG
-  /*
+  // Service Worker (PWA)
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker
@@ -152,7 +154,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
   }
-  */
 
   // =====================================================
   // BLOQUE FORMULARIO DE CONTACTO
