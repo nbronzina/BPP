@@ -141,7 +141,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // instalación en páginas que no son legales ni reporte.
   // =====================================================
 
-  // Service Worker (PWA)
+  // Service Worker (PWA) - DISABLED FOR DEBUG
+  /*
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker
@@ -151,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
   }
+  */
 
   // =====================================================
   // BLOQUE FORMULARIO DE CONTACTO
