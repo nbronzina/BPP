@@ -35,11 +35,12 @@
     <meta name="msapplication-TileColor" content="#0f0f0f">
 
     <!-- Security Policies -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co https://plausible.io; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co https://plausible.io; base-uri 'self'; form-action 'self' https://formsubmit.co;">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Preconnect to External Services -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://formsubmit.co">
     <link rel="preconnect" href="https://plausible.io">
@@ -52,29 +53,203 @@
     <link rel="preload" as="image" href="img/logo.webp" type="image/webp">
     <link rel="preload" href="main.min.js" as="script">
 
-    <!-- Critical CSS Inline (incluye fuentes Inter) -->
+    <!-- Google Fonts (Async) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <!-- Critical CSS Inline -->
     <style>
-@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyf.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiA.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZ9hiA.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Inter Fallback';src:local('Arial');size-adjust:107%;ascent-override:90%;descent-override:22%;line-gap-override:0%}:root{--color-bg:#0f0f0f;--color-text:#e0e0e0;--color-text-light:#c5c5c5;--color-accent:#D98F6E;--color-accent-hover:#E8A67D;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}body{font-family:'Inter','Inter Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}nav{position:sticky;top:0;z-index:1000;background:rgba(15,15,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.05)}.nav-container{max-width:1400px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo img{max-width:180px;height:auto}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--color-text-light);text-decoration:none;font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--color-accent)}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;background:linear-gradient(180deg,rgba(15,15,15,1) 0%,rgba(30,20,15,1) 100%)}.hero-content{max-width:900px}.hero-logo{margin-bottom:3rem;min-height:160px;display:flex;align-items:center;justify-content:center}.hero-logo img{height:160px;width:auto;opacity:0.9;max-width:min(640px,90vw)}.tagline{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1.5rem;color:var(--color-text)}.subtitle{font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:2rem;color:var(--color-text-light)}.locations{font-size:1rem;color:var(--color-accent);margin-bottom:2.5rem}.cta-button{display:inline-block;padding:1rem 2.5rem;background:var(--color-accent);color:#0f0f0f;text-decoration:none;border-radius:var(--border-radius);font-weight:600;transition:all 0.3s;font-size:1.1rem}.cta-button:hover{background:var(--color-accent-hover);transform:translateY(-2px)}[data-animate]{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease}[data-animate].animate-ready:not(.visible){opacity:0;transform:translateY(30px)}
+@font-face{font-family:'Inter Fallback';src:local('Arial');size-adjust:107%;ascent-override:90%;descent-override:22%;line-gap-override:0%}:root{--color-bg:#0f0f0f;--color-text:#e0e0e0;--color-text-light:#c5c5c5;--color-accent:#D98F6E;--color-accent-hover:#E8A67D;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}body{font-family:'Inter','Inter Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}nav{position:sticky;top:0;z-index:1000;background:rgba(15,15,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.05)}.nav-container{max-width:1400px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo img{max-width:180px;height:auto}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--color-text-light);text-decoration:none;font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--color-accent)}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;background:linear-gradient(180deg,rgba(15,15,15,1) 0%,rgba(30,20,15,1) 100%)}.hero-content{max-width:900px}.hero-logo{margin-bottom:3rem;min-height:160px;display:flex;align-items:center;justify-content:center}.hero-logo img{height:160px;width:auto;opacity:0.9;max-width:min(640px,90vw)}.tagline{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1.5rem;color:var(--color-text)}.subtitle{font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:2rem;color:var(--color-text-light)}.locations{font-size:1rem;color:var(--color-accent);margin-bottom:2.5rem}.cta-button{display:inline-block;padding:1rem 2.5rem;background:var(--color-accent);color:#0f0f0f;text-decoration:none;border-radius:var(--border-radius);font-weight:600;transition:all 0.3s;font-size:1.1rem}.cta-button:hover{background:var(--color-accent-hover);transform:translateY(-2px)}[data-animate]{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease}[data-animate].animate-ready:not(.visible){opacity:0;transform:translateY(30px)}
     </style>
 
     <!-- Full Styles (Async) -->
     <link rel="preload" href="styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
 
+    <!-- Schema.org Structured Data: Organization -->
     <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"BPP Analytics & Design","url":"https://www.bppanalyticsanddesign.com/","logo":"https://www.bppanalyticsanddesign.com/img/logo.png","description":"Consultora de diseño estratégico, diseño prospectivo y análisis de futuros en Buenos Aires y Madrid","address":[{"@type":"PostalAddress","streetAddress":"Franklin 2190, oficina 4113","addressLocality":"Buenos Aires","addressCountry":"AR"},{"@type":"PostalAddress","streetAddress":"C. de Pablo Vidal 4","addressLocality":"Madrid","addressCountry":"ES"}],"contactPoint":{"@type":"ContactPoint","email":"bppanalyticsanddesign@gmail.com","contactType":"customer service"},"sameAs":["https://instagram.com/bppanalyticsanddesign","https://www.linkedin.com/company/103852773"],"founders":[{"@type":"Person","name":"Nicolás Bronzina","jobTitle":"Design Researcher","description":"Sociólogo y Magíster en Diseño de Experiencia de Usuario especializado en diseño de futuros"},{"@type":"Person","name":"Sergio Petrocelli","jobTitle":"Strategic Planning & Communication","description":"Sociólogo especializado en comunicación estratégica institucional y branding corporativo"},{"@type":"Person","name":"Ezequiel Politi","jobTitle":"Data & Strategy Analyst","description":"Sociólogo especializado en análisis de datos, estrategia y gestión de proyectos"}],"serviceType":["Strategic Design","Futures Analysis","Data Analytics","Strategic Communication"]}
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "BPP Analytics & Design",
+      "url": "https://www.bppanalyticsanddesign.com/",
+      "logo": "https://www.bppanalyticsanddesign.com/img/logo.png",
+      "description": "Consultora de diseño estratégico, diseño prospectivo y análisis de futuros en Buenos Aires y Madrid",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Franklin 2190, oficina 4113",
+          "addressLocality": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "C. de Pablo Vidal 4",
+          "addressLocality": "Madrid",
+          "addressCountry": "ES"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "bppanalyticsanddesign@gmail.com",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://instagram.com/bppanalyticsanddesign",
+        "https://www.linkedin.com/company/103852773"
+      ],
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Nicolás Bronzina",
+          "jobTitle": "Design Researcher",
+          "description": "Sociólogo y Magíster en Diseño de Experiencia de Usuario especializado en diseño de futuros"
+        },
+        {
+          "@type": "Person",
+          "name": "Sergio Petrocelli",
+          "jobTitle": "Strategic Planning & Communication",
+          "description": "Sociólogo especializado en comunicación estratégica institucional y branding corporativo"
+        },
+        {
+          "@type": "Person",
+          "name": "Ezequiel Politi",
+          "jobTitle": "Data & Strategy Analyst",
+          "description": "Sociólogo especializado en análisis de datos, estrategia y gestión de proyectos"
+        }
+      ],
+      "serviceType": [
+        "Strategic Design",
+        "Futures Analysis",
+        "Data Analytics",
+        "Strategic Communication"
+      ]
+    }
     </script>
 
+    <!-- Schema.org Structured Data: WebSite (básico) -->
     <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"BPP Analytics & Design","url":"https://www.bppanalyticsanddesign.com/"}
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "BPP Analytics & Design",
+      "url": "https://www.bppanalyticsanddesign.com/"
+    }
     </script>
 
+    <!-- Schema.org FAQ para rich snippets -->
     <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué es el diseño de futuros?","acceptedAnswer":{"@type":"Answer","text":"El diseño de futuros es una metodología que combina prospectiva estratégica, design fiction y análisis de tendencias para anticipar escenarios posibles y diseñar decisiones informadas en contextos de incertidumbre."}},{"@type":"Question","name":"¿Cuánto dura un proyecto típico de BPP?","acceptedAnswer":{"@type":"Answer","text":"Los proyectos varían entre 8-16 semanas dependiendo del alcance. Ofrecemos desde diagnósticos rápidos de 4 semanas hasta acompañamientos estratégicos de largo plazo con revisiones periódicas."}},{"@type":"Question","name":"¿Con qué tipo de organizaciones trabaja BPP?","acceptedAnswer":{"@type":"Answer","text":"Trabajamos con instituciones educativas, organismos públicos, ONGs y empresas B2B que enfrentan cambios estructurales y necesitan anticipar tendencias para tomar decisiones estratégicas basadas en análisis prospectivo."}},{"@type":"Question","name":"¿En qué se diferencia BPP de otras consultoras?","acceptedAnswer":{"@type":"Answer","text":"Combinamos sociología, diseño especulativo, análisis de datos y prospectiva estratégica. No solo diagnosticamos tendencias, diseñamos artefactos y narrativas que hacen tangibles los futuros posibles para facilitar la toma de decisiones."}}]}
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Qué es el diseño de futuros?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El diseño de futuros es una metodología que combina prospectiva estratégica, design fiction y análisis de tendencias para anticipar escenarios posibles y diseñar decisiones informadas en contextos de incertidumbre."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Cuánto dura un proyecto típico de BPP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Los proyectos varían entre 8-16 semanas dependiendo del alcance. Ofrecemos desde diagnósticos rápidos de 4 semanas hasta acompañamientos estratégicos de largo plazo con revisiones periódicas."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Con qué tipo de organizaciones trabaja BPP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trabajamos con instituciones educativas, organismos públicos, ONGs y empresas B2B que enfrentan cambios estructurales y necesitan anticipar tendencias para tomar decisiones estratégicas basadas en análisis prospectivo."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿En qué se diferencia BPP de otras consultoras?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Combinamos sociología, diseño especulativo, análisis de datos y prospectiva estratégica. No solo diagnosticamos tendencias, diseñamos artefactos y narrativas que hacen tangibles los futuros posibles para facilitar la toma de decisiones."
+        }
+      }]
+    }
     </script>
 
+    <!-- Schema.org Professional Service -->
     <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"BPP Analytics & Design","image":"https://www.bppanalyticsanddesign.com/img/logo.png","priceRange":"$$","email":"bppanalyticsanddesign@gmail.com","address":[{"@type":"PostalAddress","streetAddress":"Franklin 2190, oficina 4113","addressLocality":"Buenos Aires","addressCountry":"AR"},{"@type":"PostalAddress","streetAddress":"C. de Pablo Vidal 4","addressLocality":"Madrid","addressCountry":"ES"}],"areaServed":[{"@type":"Country","name":"Argentina"},{"@type":"Country","name":"España"},{"@type":"Country","name":"América Latina"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Servicios de Consultoría Estratégica","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Investigación Exploratoria y Análisis de Tendencias","description":"Detectamos señales débiles, drivers de cambio y tendencias emergentes en sectores específicos mediante análisis cuantitativo y cualitativo."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Diseño de Prototipos y Escenarios Futuros","description":"Creamos artefactos diegéticos y narrativas visuales que hacen tangibles futuros posibles para facilitar la toma de decisiones estratégicas."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Estrategia de Implementación","description":"Convertimos hallazgos de investigación en hojas de ruta priorizadas, co-diseñamos marcos estratégicos y acompañamos la implementación."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Branding y Comunicación Estratégica","description":"Alineamos identidad, narrativa y comunicación con decisiones estratégicas y escenarios prospectivos trabajados."}}]}}
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "BPP Analytics & Design",
+      "image": "https://www.bppanalyticsanddesign.com/img/logo.png",
+      "priceRange": "$$",
+      "email": "bppanalyticsanddesign@gmail.com",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Franklin 2190, oficina 4113",
+          "addressLocality": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "C. de Pablo Vidal 4",
+          "addressLocality": "Madrid",
+          "addressCountry": "ES"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Argentina"
+        },
+        {
+          "@type": "Country",
+          "name": "España"
+        },
+        {
+          "@type": "Country",
+          "name": "América Latina"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Consultoría Estratégica",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Investigación Exploratoria y Análisis de Tendencias",
+              "description": "Detectamos señales débiles, drivers de cambio y tendencias emergentes en sectores específicos mediante análisis cuantitativo y cualitativo."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Diseño de Prototipos y Escenarios Futuros",
+              "description": "Creamos artefactos diegéticos y narrativas visuales que hacen tangibles futuros posibles para facilitar la toma de decisiones estratégicas."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Estrategia de Implementación",
+              "description": "Convertimos hallazgos de investigación en hojas de ruta priorizadas, co-diseñamos marcos estratégicos y acompañamos la implementación."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Branding y Comunicación Estratégica",
+              "description": "Alineamos identidad, narrativa y comunicación con decisiones estratégicas y escenarios prospectivos trabajados."
+            }
+          }
+        ]
+      }
+    }
     </script>
 
     <!-- Plausible Analytics (Privacy-friendly, no cookies) -->

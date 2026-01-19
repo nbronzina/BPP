@@ -86,8 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         target.scrollIntoView({
           behavior: "smooth",
-          block: "start",
-          inline: "nearest"
+          block: "start"
         });
       }
     });
