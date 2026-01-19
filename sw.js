@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v14';
+const CACHE_NAME = 'bpp-v15';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -6,10 +6,14 @@ const urlsToCache = [
   '/styles.min.css',
   '/main.min.js',
   '/img/logo.png',
-  '/img/logo.webp',
-  '/img/NicolasOptima.webp',
-  '/img/SergioOptima.webp',
-  '/img/EzequielOptima.webp',
+  '/img/logo-160.webp',
+  '/img/logo-320.webp',
+  '/img/Nicolas-240.webp',
+  '/img/Nicolas-480.webp',
+  '/img/Sergio-240.webp',
+  '/img/Sergio-480.webp',
+  '/img/Ezequiel-240.webp',
+  '/img/Ezequiel-480.webp',
   '/img/JornadaCESBA.webp',
   '/favicon-32x32.png',
   '/apple-touch-icon.png'

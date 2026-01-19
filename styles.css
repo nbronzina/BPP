@@ -1030,10 +1030,11 @@ img {
 
     .hero-logo {
         margin-bottom: 2rem;
+        height: 120px;
     }
 
     .hero-logo img {
-        height: 120px;
+        max-height: 120px;
     }
 
     .hero {
@@ -1106,8 +1107,12 @@ img {
 
 /* Mobile pequeño */
 @media (max-width: 390px) {
-    .hero-logo img {
+    .hero-logo {
         height: 90px;
+    }
+
+    .hero-logo img {
+        max-height: 90px;
     }
 
     .tagline {
@@ -1134,10 +1139,11 @@ img {
 
     .hero-logo {
         margin-bottom: 1.5rem;
+        height: 80px;
     }
 
     .hero-logo img {
-        height: 80px;
+        max-height: 80px;
     }
 }
 
