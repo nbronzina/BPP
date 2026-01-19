@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v27';
+const CACHE_NAME = 'bpp-v28';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -9,6 +9,7 @@ const urlsToCache = [
   '/img/logo-160.webp',
   '/img/logo-320.webp',
   '/img/Nicolas-240.webp',
+  '/img/Nicolas-320.webp',
   '/img/Nicolas-480.webp',
   '/img/Sergio-240.webp',
   '/img/Sergio-480.webp',
