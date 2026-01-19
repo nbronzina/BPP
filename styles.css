@@ -121,9 +121,12 @@ nav {
 }
 
 .hero-logo img {
-    width: 87px;
-    height: 160px;
+    max-width: 100%;
+    max-height: 160px;
+    width: auto;
+    height: auto;
     opacity: 0.9;
+    object-fit: contain;
 }
 
 .nav-links {
