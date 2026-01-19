@@ -120,11 +120,18 @@ nav {
     justify-content: center;
 }
 
+.hero-logo picture {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    aspect-ratio: 4/1;
+}
+
 .hero-logo img {
-    height: 160px;
-    width: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/1;
     opacity: 0.9;
-    max-width: min(640px, 90vw);
 }
 
 .nav-links {
@@ -171,6 +178,7 @@ nav {
 
 .hero {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -179,7 +187,9 @@ nav {
 }
 
 .hero-content {
-    max-width: 1000px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
     text-align:center;
 }
 
