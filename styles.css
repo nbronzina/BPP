@@ -125,6 +125,7 @@ nav {
     width: auto;
     opacity: 0.9;
     max-width: min(640px, 90vw);
+    aspect-ratio: 737/1358;
 }
 
 .nav-links {
