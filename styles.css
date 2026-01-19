@@ -114,18 +114,16 @@ nav {
 /* Logo en hero */
 .hero-logo {
     margin-bottom: 3rem;
-    min-height: 160px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .hero-logo img {
+    width: 87px;
     height: 160px;
-    width: auto;
     opacity: 0.9;
-    max-width: min(640px, 90vw);
-    aspect-ratio: 737/1358;
 }
 
 .nav-links {
