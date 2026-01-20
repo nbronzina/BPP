@@ -991,6 +991,22 @@ img {
     .actividades-container {
         grid-template-columns: 1fr;
     }
+
+    /* Ajustar tarjetas para mobile */
+    .actividad-image {
+        height: 250px;
+    }
+
+    .actividad-content {
+        padding: 1.5rem;
+    }
+
+    /* Resetear regla de centrado en mobile - ocupar todo el ancho */
+    .actividad-card:last-child:nth-child(odd) {
+        grid-column: 1;
+        max-width: none;
+        margin: 0;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1084,14 +1100,6 @@ img {
 
     .footer-content {
         gap: 1.5rem;
-    }
-
-    .actividad-image {
-        height: 250px;
-    }
-
-    .actividad-content {
-        padding: 2rem;
     }
 
     .actividad-card h3 {
