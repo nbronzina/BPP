@@ -670,6 +670,14 @@ footer {
     transition: all 0.3s;
 }
 
+/* Centrar última tarjeta cuando es impar */
+.actividad-card:last-child:nth-child(odd) {
+    grid-column: span 2;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
 .actividad-card:hover {
     border-color: var(--color-accent);
     transform: translateY(-3px);
