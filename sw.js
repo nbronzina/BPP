@@ -18,7 +18,7 @@ const urlsToCache = [
   '/img/JornadaCESBA.webp',
   '/img/Ajedrez.webp',
   '/img/micelio.webp',
-  '/img/Dassen.webp',
+  '/img/dassen1.webp',
   '/favicon-32x32.png',
   '/apple-touch-icon.png'
 ];
