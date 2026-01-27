@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v32';
+const CACHE_NAME = 'bpp-v33';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -17,6 +17,8 @@ const urlsToCache = [
   '/img/Ezequiel-480.webp',
   '/img/JornadaCESBA.webp',
   '/img/Ajedrez.webp',
+  '/img/workshop-latam2036.webp',
+  '/img/workshop-latam2036.png',
   '/img/micelio.webp',
   '/img/dassen1.webp',
   '/favicon-32x32.png',
