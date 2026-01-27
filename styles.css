@@ -657,7 +657,7 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2.5rem;
     align-items: stretch;
 }
@@ -668,14 +668,6 @@ footer {
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s;
-}
-
-/* Centrar última tarjeta cuando es impar */
-.actividad-card:last-child:nth-child(odd) {
-    grid-column: span 2;
-    max-width: 600px;
-    margin: 0 auto;
-    width: 100%;
 }
 
 .actividad-card:hover {
@@ -983,6 +975,12 @@ img {
     }
 }
 
+@media (max-width: 1200px) {
+    .actividades-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 900px) {
     .services-grid {
         grid-template-columns: 1fr;
@@ -999,13 +997,6 @@ img {
 
     .actividad-content {
         padding: 1.5rem;
-    }
-
-    /* Resetear regla de centrado en mobile - ocupar todo el ancho */
-    .actividad-card:last-child:nth-child(odd) {
-        grid-column: 1;
-        max-width: none;
-        margin: 0;
     }
 }
 
