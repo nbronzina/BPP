@@ -1,0 +1,15 @@
+# Habilitar mod_rewrite
+RewriteEngine On
+
+# Redirigir URLs con .html a versiones sin extensión
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# Servir archivo .html cuando se accede sin extensión
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L,QSA]
+
+# Asegurar que index.html se sirve como raíz
+DirectoryIndex index.html
