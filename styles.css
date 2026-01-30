@@ -662,6 +662,11 @@ footer {
     align-items: stretch;
 }
 
+/* Grilla 2x2 para home (solo muestra 4 tarjetas recientes) */
+.actividades-home {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .actividad-card {
     background: var(--color-bg-light);
     border: 1px solid rgba(217, 143, 110, 0.2);
