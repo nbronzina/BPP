@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v45';
+const CACHE_NAME = 'bpp-v46';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -29,6 +29,8 @@ const urlsToCache = [
   '/img/dassen1.webp',
   '/img/lab-logo-coral.webp',
   '/img/lab-logo-coral.png',
+  '/img/otros-futuros.webp',
+  '/img/otros-futuros.png',
   '/favicon-32x32.png',
   '/apple-touch-icon.png'
 ];
