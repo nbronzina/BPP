@@ -797,7 +797,6 @@ footer {
     object-position: center 20%;
 }
 
-/* TEST rápido (solo para probar en navegador local) */
 .socios-card:nth-child(2) .socios-photo img {
     transform: scale(1.1);
     object-position: center 42%;
@@ -1975,4 +1974,55 @@ footer .footer-section p:last-child {
   .clientes-intro {
     margin-bottom: 3rem;
   }
+}
+
+/* Utility classes to replace inline styles */
+.service-description--meta {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.philosophy-quote--spaced {
+  margin-top: 4rem;
+}
+
+.philosophy-quote__question {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.cta-section {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.cta-button--block {
+  display: inline-block;
+}
+
+.footer-tagline {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.footer-brand {
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+.honeypot {
+  display: none;
+}
+
+.footer-legal {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.footer-copyright {
+  margin-top: 0.5rem;
 }

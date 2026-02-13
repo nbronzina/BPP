@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v67';
+const CACHE_NAME = 'bpp-v68';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -28,6 +28,21 @@ const urlsToCache = [
   '/img/otros-futuros-ied.webp',
   '/img/otros-futuros-ied.png',
   '/img/micelio.webp',
+  '/img/micelio.png',
+  '/img/Heated.webp',
+  '/img/Heated.png',
+  '/img/logo-cesba.webp',
+  '/img/logo-cesba.png',
+  '/img/trace-logo.webp',
+  '/img/trace-logo.png',
+  '/img/hermanas-minimas-logo.webp',
+  '/img/hermanas-minimas-logo.png',
+  '/img/escudocolegio.webp',
+  '/img/escudocolegio.png',
+  '/img/olamestudio.webp',
+  '/img/olamestudio.png',
+  '/img/og-image.jpg',
+  '/img/Ajedrez.png',
   '/img/dassen1.webp',
   '/img/lab-logo-coral.webp',
   '/img/lab-logo-coral.png',
@@ -45,10 +60,7 @@ const urlsToCache = [
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
+      .then(cache => cache.addAll(urlsToCache))
       .then(() => self.skipWaiting())
   );
 });
@@ -103,15 +115,11 @@ self.addEventListener('activate', event => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
-            console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
       );
-    }).then(() => {
-      console.log('Service Worker activated');
-      return self.clients.claim();
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
@@ -123,6 +131,5 @@ self.addEventListener('sync', event => {
 });
 
 async function syncForms() {
-  console.log('Syncing offline form submissions...');
   // Implement form sync logic here if needed
 }

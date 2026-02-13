@@ -163,10 +163,10 @@
         </p>
 
         <div class="button-group">
-            <button class="btn-primary" onclick="location.reload()">
+            <button class="btn-primary" id="retryBtn">
                 Reintentar
             </button>
-            <button class="btn-secondary" onclick="goHome()">
+            <button class="btn-secondary" id="homeBtn">
                 Ir al Inicio
             </button>
         </div>
@@ -178,17 +178,21 @@
     </div>
 
     <script>
-        function goHome() {
+        // Button event listeners
+        document.getElementById('retryBtn')?.addEventListener('click', () => {
+            location.reload();
+        });
+
+        document.getElementById('homeBtn')?.addEventListener('click', () => {
             if (window.history.length > 1) {
                 window.history.back();
             } else {
                 window.location.href = '/';
             }
-        }
+        });
 
         // Auto-retry when online
         window.addEventListener('online', () => {
-            console.log('Conexión restaurada, recargando...');
             location.reload();
         });
     </script>
