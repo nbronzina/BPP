@@ -282,9 +282,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const dismissed = localStorage.getItem("pwa-dismissed");
       if (!dismissed) return true;
 
+      // Migración automática: convertir formato antiguo "true" a timestamp
+      if (dismissed === "true") {
+        localStorage.removeItem("pwa-dismissed");
+        return true;
+      }
+
       const daysSinceDismiss = (Date.now() - parseInt(dismissed)) / (1000 * 60 * 60 * 24);
       return daysSinceDismiss > 30;
     };
+
+    // Flag para mostrar solo una vez por sesión
+    let promptShownThisSession = sessionStorage.getItem("pwa-prompt-shown-session");
 
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
@@ -296,12 +305,19 @@ document.addEventListener("DOMContentLoaded", function () {
         manualInstallBtn.style.display = "inline-flex";
       }
 
-      // Mostrar prompt automático después de 5s si pasaron 30 días
-      setTimeout(() => {
-        if (shouldShowPrompt()) {
+      // Mostrar prompt automático al hacer scroll (50% de la página)
+      const handleScroll = () => {
+        const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+
+        if (scrollPercent > 50 && !promptShownThisSession && shouldShowPrompt()) {
           showInstallPrompt();
+          sessionStorage.setItem("pwa-prompt-shown-session", "true");
+          promptShownThisSession = true;
+          window.removeEventListener("scroll", handleScroll);
         }
-      }, 5000);
+      };
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
     });
 
     document.addEventListener("click", async (e) => {
