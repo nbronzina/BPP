@@ -147,8 +147,8 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("load", () => {
       navigator.serviceWorker
         .register("/sw.js")
-        .catch((err) => {
-          console.log("Error al registrar SW:", err);
+        .catch(() => {
+          // Error silently ignored in production
         });
     });
   }
