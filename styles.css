@@ -997,17 +997,26 @@ img {
         grid-template-columns: 1fr;
     }
 
+    /* MOBILE-010: Mantener 2 columnas en actividades hasta breakpoint más bajo */
+    .actividades-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* MOBILE-001: Aumentar altura para mejorar legibilidad de logos/textos */
+    .actividad-image {
+        height: 320px;
+    }
+
+    /* MOBILE-006: Padding intermedio para tablet */
+    .actividad-content {
+        padding: 1.8rem;
+    }
+}
+
+/* MOBILE-010: Cambiar a 1 columna solo en mobile */
+@media (max-width: 600px) {
     .actividades-container {
         grid-template-columns: 1fr;
-    }
-
-    /* Ajustar tarjetas para mobile */
-    .actividad-image {
-        height: 250px;
-    }
-
-    .actividad-content {
-        padding: 1.5rem;
     }
 }
 
@@ -1025,7 +1034,8 @@ img {
         top: 0;
         right: -100%;
         height: 100vh;
-        width: 70%;
+        width: 80%; /* MOBILE-012: Aumentado de 70% para mejor legibilidad */
+        min-width: 260px; /* MOBILE-012: Ancho mínimo para textos largos */
         background-color: rgba(15, 15, 15, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
@@ -1113,13 +1123,36 @@ img {
         gap: 3rem;
     }
 
+    /* MOBILE-005: Fotos más grandes en mobile al ser 1 columna */
     .socios-photo {
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
     }
 
+    /* MOBILE-005: Bio alineada a izquierda para mejor lectura */
     .socios-bio {
-        text-align: center;
+        text-align: left;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    /* MOBILE-002: Optimización de formulario de contacto */
+    .contact-form-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-form label {
+        font-size: 1.05rem;
+    }
+
+    .contact-form textarea {
+        min-height: 150px;
+    }
+
+    /* MOBILE-009: Social icons táctiles (mínimo 48x48px) */
+    .social-icons svg {
+        width: 48px;
+        height: 48px;
     }
 }
 
@@ -1145,6 +1178,36 @@ img {
     .cta-button {
         padding: 0.875rem 2rem;
         font-size: 0.95rem;
+    }
+}
+
+/* MOBILE-004: Mobile extra pequeño (320-360px) */
+@media (max-width: 360px) {
+    .hero {
+        padding: 100px 1rem 60px;
+    }
+
+    .hero-logo {
+        height: 100px;
+    }
+
+    .hero-logo img {
+        max-height: 100px;
+    }
+
+    .tagline {
+        font-size: 1.75rem;
+        line-height: 1.2;
+    }
+
+    /* MOBILE-008: Service cards padding mínimo */
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    /* MOBILE-006: Actividad content padding mínimo */
+    .actividad-content {
+        padding: 1.2rem;
     }
 }
 
@@ -1968,9 +2031,10 @@ footer .footer-section p:last-child {
     padding: 2.5rem 1.5rem;
   }
 
+  /* MOBILE-003: Reducir tamaño de logos para evitar saturación visual */
   .logo-item img {
-    max-width: 200px;
-    max-height: 120px;
+    max-width: 140px;
+    max-height: 100px;
   }
 }
 
@@ -1982,6 +2046,33 @@ footer .footer-section p:last-child {
 
   .clientes-intro {
     margin-bottom: 3rem;
+  }
+
+  /* MOBILE-003: Logos aún más pequeños en mobile */
+  .logo-item img {
+    max-width: 120px;
+    max-height: 90px;
+  }
+
+  /* MOBILE-007: Botón CTA más compacto */
+  .cta-button {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* MOBILE-008: Service cards padding reducido */
+  .service-card {
+    padding: 1.8rem;
+  }
+
+  /* MOBILE-006: Actividad content padding intermedio */
+  .actividad-content {
+    padding: 1.5rem;
+  }
+
+  /* MOBILE-011: Footer gap reducido */
+  .footer-content {
+    gap: 1rem;
   }
 }
 

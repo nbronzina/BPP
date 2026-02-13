@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v69';
+const CACHE_NAME = 'bpp-v70';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -21,12 +21,18 @@ const urlsToCache = [
   '/img/Ajedrez.webp',
   '/img/workshop-latam2036.webp',
   '/img/workshop-latam2036.png',
+  '/img/workshop-latam2036-mobile.webp',
+  '/img/workshop-latam2036-mobile.png',
   '/img/inhabiting-future.webp',
   '/img/inhabiting-future.jpg',
   '/img/alquileres-negociacion.webp',
   '/img/alquileres-negociacion.png',
   '/img/otros-futuros-ied.webp',
   '/img/otros-futuros-ied.png',
+  '/img/otros-futuros-ied-mobile.webp',
+  '/img/otros-futuros-ied-mobile.png',
+  '/img/NatalidadOptima-mobile.webp',
+  '/img/NatalidadOptima-mobile.png',
   '/img/micelio.webp',
   '/img/micelio.png',
   '/img/Heated.webp',
