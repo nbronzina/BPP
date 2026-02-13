@@ -1926,6 +1926,8 @@ footer .footer-section p:last-child {
   max-width: 300px !important;
   max-height: 200px !important;
   width: auto !important;
+  object-position: center center !important;
+  align-self: center !important;
 }
 
 .logo-item:hover img[alt*="Otros Futuros"],
@@ -1933,6 +1935,8 @@ footer .footer-section p:last-child {
   max-width: 300px !important;
   max-height: 200px !important;
   width: auto !important;
+  object-position: center center !important;
+  align-self: center !important;
 }
 
 /* Responsive adjustments */
