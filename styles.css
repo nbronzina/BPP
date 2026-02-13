@@ -530,6 +530,38 @@ footer {
     outline-offset: 2px;
 }
 
+/* Botón de instalación manual PWA */
+.install-pwa-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: none;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.5rem;
+    border-radius: 4px;
+    transition: all var(--transition-normal);
+}
+
+.install-pwa-link:hover {
+    color: var(--color-accent-bright);
+    background: rgba(217, 143, 110, 0.1);
+}
+
+.install-pwa-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.install-pwa-link svg {
+    width: 16px;
+    height: 16px;
+}
+
 /* =========================
    Contact Form
    ========================= */
