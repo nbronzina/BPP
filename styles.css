@@ -1920,6 +1920,19 @@ footer .footer-section p:last-child {
   border: none !important;
 }
 
+/* Logos más grandes: Otros Futuros y Comunicaciones S&P */
+.logo-item img[alt*="Otros Futuros"],
+.logo-item img[alt*="Comunicaciones S&P"] {
+  max-width: 400px !important;
+  max-height: 280px !important;
+}
+
+.logo-item:hover img[alt*="Otros Futuros"],
+.logo-item:hover img[alt*="Comunicaciones S&P"] {
+  max-width: 400px !important;
+  max-height: 280px !important;
+}
+
 /* Responsive adjustments */
 @media (max-width: 968px) {
   .logos-grid {
