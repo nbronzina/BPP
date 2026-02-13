@@ -268,20 +268,44 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
 
+    // Función helper para mostrar el prompt
+    const showInstallPrompt = () => {
+      if (deferredPrompt && !document.querySelector('.pwa-install-prompt.show')) {
+        document.body.appendChild(installPrompt);
+        installPrompt.classList.add("show");
+        trackEvent("PWA_prompt_mostrado");
+      }
+    };
+
+    // Función helper para checkear si pasaron 30 días
+    const shouldShowPrompt = () => {
+      const dismissed = localStorage.getItem("pwa-dismissed");
+      if (!dismissed) return true;
+
+      const daysSinceDismiss = (Date.now() - parseInt(dismissed)) / (1000 * 60 * 60 * 24);
+      return daysSinceDismiss > 30;
+    };
+
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       deferredPrompt = e;
 
+      // Mostrar botón manual en footer
+      const manualInstallBtn = document.getElementById("manual-install-pwa");
+      if (manualInstallBtn) {
+        manualInstallBtn.style.display = "inline-flex";
+      }
+
+      // Mostrar prompt automático después de 5s si pasaron 30 días
       setTimeout(() => {
-        if (!localStorage.getItem("pwa-dismissed")) {
-          document.body.appendChild(installPrompt);
-          installPrompt.classList.add("show");
-          trackEvent("PWA_prompt_mostrado");
+        if (shouldShowPrompt()) {
+          showInstallPrompt();
         }
       }, 5000);
     });
 
     document.addEventListener("click", async (e) => {
+      // Botón "Instalar" del prompt automático
       if (e.target && e.target.id === "installPWA") {
         if (deferredPrompt) {
           installPrompt.classList.remove("show");
@@ -293,11 +317,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
+      // Botón "Ahora no" - guardar timestamp
       if (e.target && e.target.id === "dismissPWA") {
         installPrompt.classList.remove("show");
         setTimeout(() => installPrompt.remove(), 300);
-        localStorage.setItem("pwa-dismissed", "true");
+        localStorage.setItem("pwa-dismissed", Date.now().toString());
         trackEvent("PWA_accion", { accion: "dismissed" });
+      }
+
+      // Botón manual en footer
+      if (e.target && e.target.id === "manual-install-pwa") {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          trackEvent("PWA_accion", { accion: outcome, source: "manual_button" });
+
+          if (outcome === "accepted") {
+            e.target.style.display = "none";
+          }
+        }
       }
     });
 
@@ -306,6 +344,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (installPrompt.parentNode) {
         installPrompt.remove();
       }
+
+      // Ocultar botón manual
+      const manualInstallBtn = document.getElementById("manual-install-pwa");
+      if (manualInstallBtn) {
+        manualInstallBtn.style.display = "none";
+      }
+
       trackEvent("PWA_instalada");
     });
   }
