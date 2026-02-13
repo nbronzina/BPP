@@ -1923,14 +1923,14 @@ footer .footer-section p:last-child {
 /* Logos más grandes: Otros Futuros y Comunicaciones S&P */
 .logo-item img[alt*="Otros Futuros"],
 .logo-item img[alt*="Comunicaciones S&P"] {
-  max-width: 400px !important;
-  max-height: 280px !important;
+  max-width: 500px !important;
+  max-height: 350px !important;
 }
 
 .logo-item:hover img[alt*="Otros Futuros"],
 .logo-item:hover img[alt*="Comunicaciones S&P"] {
-  max-width: 400px !important;
-  max-height: 280px !important;
+  max-width: 500px !important;
+  max-height: 350px !important;
 }
 
 /* Responsive adjustments */
