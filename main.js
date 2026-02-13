@@ -295,6 +295,51 @@ document.addEventListener("DOMContentLoaded", function () {
     // Flag para mostrar solo una vez por sesión
     let promptShownThisSession = sessionStorage.getItem("pwa-prompt-shown-session");
 
+    // Detectar iOS para mostrar instrucciones específicas
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+
+    // Si es iOS y no está instalada, mostrar instrucciones después de scroll
+    if (isIOS && !isStandalone) {
+      const showIOSInstructions = () => {
+        const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+
+        if (scrollPercent > 50 && !promptShownThisSession && shouldShowPrompt()) {
+          const iosPrompt = document.createElement("div");
+          iosPrompt.className = "pwa-install-prompt";
+          iosPrompt.innerHTML = `
+            <div class="pwa-install-content">
+              <p><strong>Instalá BPP en tu iPhone</strong></p>
+              <p style="font-size: 0.9rem; line-height: 1.5;">
+                1. Tocá el ícono <strong style="font-size: 1.2rem;">⎙</strong> (Compartir)<br>
+                2. Seleccioná <strong>"Agregar a pantalla de inicio"</strong><br>
+                3. Confirmá con <strong>"Agregar"</strong>
+              </p>
+              <div class="pwa-install-buttons">
+                <button type="button" class="pwa-dismiss-btn" id="dismissIOSPrompt">Entendido</button>
+              </div>
+            </div>
+          `;
+          document.body.appendChild(iosPrompt);
+          setTimeout(() => iosPrompt.classList.add("show"), 100);
+          sessionStorage.setItem("pwa-prompt-shown-session", "true");
+          promptShownThisSession = true;
+          trackEvent("PWA_prompt_iOS_mostrado");
+
+          document.getElementById("dismissIOSPrompt")?.addEventListener("click", () => {
+            iosPrompt.classList.remove("show");
+            setTimeout(() => iosPrompt.remove(), 300);
+            localStorage.setItem("pwa-dismissed", Date.now().toString());
+            trackEvent("PWA_accion", { accion: "dismissed", platform: "iOS" });
+          });
+
+          window.removeEventListener("scroll", showIOSInstructions);
+        }
+      };
+
+      window.addEventListener("scroll", showIOSInstructions, { passive: true });
+    }
+
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       deferredPrompt = e;
