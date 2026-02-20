@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v74';
+const CACHE_NAME = 'bpp-v75';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -43,8 +43,8 @@ const urlsToCache = [
   '/img/trace-logo.png',
   '/img/hermanas-minimas-logo.webp',
   '/img/hermanas-minimas-logo.png',
-  '/img/escudocolegio.webp',
-  '/img/escudocolegio.png',
+  '/img/EscInn.webp',
+  '/img/EscInn.png',
   '/img/olamestudio.webp',
   '/img/olamestudio.png',
   '/img/og-image.jpg',
