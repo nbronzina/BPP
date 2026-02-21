@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v80';
+const CACHE_NAME = 'bpp-v81';
 const urlsToCache = [
   '/',
   '/index.html',
