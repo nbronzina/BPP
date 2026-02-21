@@ -2021,6 +2021,10 @@ footer .footer-section p:last-child {
   border: none !important;
 }
 
+.logo-item img[alt*="Otros Futuros"] {
+  max-width: 70%;
+}
+
 /* Responsive adjustments */
 @media (max-width: 968px) {
   .logos-grid {
