@@ -2027,6 +2027,10 @@ footer .footer-section p:last-child {
   margin: 0 auto;
 }
 
+.logo-item img[alt*="Dassen"] {
+  margin-top: 1rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 968px) {
   .logos-grid {
@@ -2062,8 +2066,7 @@ footer .footer-section p:last-child {
   }
 
   .logo-item img[alt*="Dassen"] {
-    object-position: center bottom;
-    padding-top: 0.5rem;
+    margin-top: 1rem;
   }
 }
 
