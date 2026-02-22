@@ -2045,30 +2045,28 @@ footer .footer-section p:last-child {
   }
 
   .logo-item {
-    padding: 1rem;
+    padding: 0.75rem;
   }
 
-  /* MOBILE-003: Reducir tamaño de logos para evitar saturación visual */
   .logo-item img {
-    max-width: 140px;
-    max-height: 100px;
+    max-width: 160px;
+    max-height: 90px;
   }
 }
 
 @media (max-width: 480px) {
   .logos-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .clientes-intro {
     margin-bottom: 3rem;
   }
 
-  /* MOBILE-003: Logos aún más pequeños en mobile */
   .logo-item img {
-    max-width: 120px;
-    max-height: 90px;
+    max-width: 130px;
+    max-height: 80px;
   }
 
   /* MOBILE-007: Botón CTA más compacto */
