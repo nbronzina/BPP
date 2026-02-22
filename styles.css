@@ -2052,6 +2052,19 @@ footer .footer-section p:last-child {
     max-width: 160px;
     max-height: 90px;
   }
+
+  .logo-item img[alt*="Otros Futuros"] {
+    max-width: 50%;
+  }
+
+  .logo-item img[alt*="ITBA"] {
+    max-width: 200px;
+  }
+
+  .logo-item img[alt*="Dassen"] {
+    object-position: center bottom;
+    padding-top: 0.5rem;
+  }
 }
 
 @media (max-width: 480px) {
