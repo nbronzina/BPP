@@ -2028,8 +2028,7 @@ footer .footer-section p:last-child {
 }
 
 .logo-item img[alt*="Dassen"] {
-  object-position: center bottom;
-  padding-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 /* Responsive adjustments */
@@ -2067,8 +2066,7 @@ footer .footer-section p:last-child {
   }
 
   .logo-item img[alt*="Dassen"] {
-    object-position: center bottom;
-    padding-top: 0.5rem;
+    margin-top: 1rem;
   }
 }
 
