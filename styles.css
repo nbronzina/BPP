@@ -83,7 +83,7 @@ nav {
     background-color: rgba(15, 15, 15, 0.95);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(217, 143, 110, 0.1);
+    border-bottom: 1px solid rgba(206, 115, 82, 0.1);
 }
 
 /* Layout compartido: index (.nav-container) y reporte (.nav) */
@@ -425,7 +425,7 @@ nav {
 footer {
     background: var(--color-bg-light);
     padding: 3rem 2rem 2rem;
-    border-top: 1px solid rgba(217, 143, 110, 0.2);
+    border-top: 1px solid rgba(206, 115, 82, 0.2);
     margin-top: var(--spacing-section);
 }
 
@@ -509,7 +509,7 @@ footer {
 .footer-bottom {
     text-align: center;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(217, 143, 110, 0.1);
+    border-top: 1px solid rgba(206, 115, 82, 0.1);
     color: var(--color-text-secondary);
     font-size: 0.9rem;
 }
@@ -549,7 +549,7 @@ footer {
 
 .install-pwa-link:hover {
     color: var(--color-accent-bright);
-    background: rgba(217, 143, 110, 0.1);
+    background: rgba(206, 115, 82, 0.1);
 }
 
 .install-pwa-link:focus-visible {
@@ -625,7 +625,7 @@ footer {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(217, 143, 110, 0.1);
+    box-shadow: 0 0 0 3px rgba(206, 115, 82, 0.1);
 }
 
 .form-group textarea {
@@ -1349,7 +1349,7 @@ img {
 }
 
 .pwa-dismiss-btn:hover {
-    background: rgba(217, 143, 110, 0.1);
+    background: rgba(206, 115, 82, 0.1);
 }
 
 .pwa-install-btn:focus-visible,
