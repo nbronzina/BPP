@@ -193,6 +193,7 @@ These terms refer to the same section but use different wording intentionally �
 - **Accessibility**: ARIA labels on buttons, semantic headings (h1 → h2 → h3)
 - **Progressive enhancement**: Works without JS (forms still submit, links still work)
 - **Structured data**: JSON-LD scripts for SEO (FAQ, ProfessionalService)
+- **NEVER assume a file is unused based on index.html alone** — the site has multiple HTML files: index.html, proyectos/index.html, reporte-impacto/index.html, privacidad/index.html. Always grep all HTML files before archiving or deleting any asset: `grep -r "filename" *.html **/*.html`
 
 ### Commit Format
 ```
