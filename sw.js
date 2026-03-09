@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v89';
+const CACHE_NAME = 'bpp-v90';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -17,8 +17,9 @@ const urlsToCache = [
   '/img/Sergio-480.webp',
   '/img/Ezequiel-240.webp',
   '/img/Ezequiel-480.webp',
-  '/img/JornadaCESBA.webp',
-  '/img/Ajedrez.webp',
+  '/img/NicolasOptima.png',
+  '/img/SergioOptima.png',
+  '/img/EzequielOptima.jpeg',
   '/img/workshop-latam2036.webp',
   '/img/workshop-latam2036.png',
   '/img/workshop-latam2036-mobile.webp',
@@ -48,7 +49,6 @@ const urlsToCache = [
   '/img/olamestudio.webp',
   '/img/olamestudio.png',
   '/img/og-image.jpg',
-  '/img/Ajedrez.png',
   '/img/dassen1.webp',
   '/img/lab-logo-coral.webp',
   '/img/lab-logo-coral.png',
