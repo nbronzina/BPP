@@ -35,3 +35,15 @@ description: Apply BPP Analytics & Design brand guidelines when creating any vis
 - OBS overlays and streaming assets
 - LinkedIn content and social posts
 - Any external-facing material
+
+## Pairing with frontend-design
+When working on any BPP frontend task, activate alongside /frontend-design skill.
+The aesthetic direction is already defined — do not invent a new one:
+- Dark backgrounds (#0a2540 or similar dark navy)
+- Orange accent #ce7352 — never substitute
+- Corner brackets as framing device
+- Glow effects on key elements
+- Editorial feel, not corporate
+- Work Sans typography — already loaded via Google Fonts
+- White text at varying opacities for hierarchy
+When frontend-design asks for aesthetic direction, the answer is always: "refined dark editorial with warm orange accent". Never drift toward generic AI defaults.
