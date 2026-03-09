@@ -157,6 +157,21 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 - **Jargon-free**: Explain technical concepts simply
 - **Action-oriented**: Clear CTAs ("Hablemos de tu proyecto")
 
+### Content Wording Distinctions
+
+#### "Hechos" vs "Lo hecho"
+These terms refer to the same section but use different wording intentionally — **never unify them**.
+
+- **"Hechos"** (noun): Section heading in the content (`<h2 id="actividades-heading">Hechos</h2>`)
+  - Meaning: "Facts" / "Accomplishments" / "Things Done"
+  - Usage: Section titles, headings, content structure
+
+- **"Lo hecho"** (past participle): Navigation link pointing to the Hechos section
+  - Meaning: "What has been done" / "The work accomplished"
+  - Usage: CTAs, navigation links, action-oriented references
+
+**Rationale**: "Hechos" = direct noun for section identity; "Lo hecho" = narrative/action framing for user navigation. Reflects brand voice: direct, practitioner-level, avoiding corporate uniformity.
+
 ---
 
 ## 6. Code Style Guide
