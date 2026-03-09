@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v90';
+const CACHE_NAME = 'bpp-v91';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -58,6 +58,20 @@ const urlsToCache = [
   '/img/manifiesto-bar.png',
   '/img/comunicaciones-syp.webp',
   '/img/comunicaciones-syp.png',
+  '/img/Ajedrez.webp',
+  '/img/Ajedrez.png',
+  '/img/JornadaCESBA-480.webp',
+  '/img/JornadaCESBA-800.webp',
+  '/img/JornadaCESBA-1200.webp',
+  '/img/JornadaCESBA.webp',
+  '/img/JornadaCESBA.jpg',
+  '/img/JornadaCESBA-opt.jpg',
+  '/img/VacaMuertaOptima.webp',
+  '/img/VacaMuertaOptima.png',
+  '/img/CuadroMatriculaOptima.webp',
+  '/img/CuadroMatriculaOptima.png',
+  '/img/MapaMatriculaOptima.webp',
+  '/img/MapaMatriculaOptima.png',
   '/favicon-32x32.png',
   '/apple-touch-icon.png'
 ];
