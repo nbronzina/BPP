@@ -306,7 +306,7 @@ nav.nav--scrolled {
 
 .about-grid {
     display: grid;
-    grid-template-columns: 180px 1fr;
+    grid-template-columns: 1fr 180px;
     gap: 0 3rem;
     align-items: start;
     max-width: 1200px;
@@ -325,10 +325,12 @@ nav.nav--scrolled {
     color: var(--color-accent);
     opacity: 0.7;
     line-height: 1.5;
+    grid-column: 2;
+    text-align: right;
 }
 
 .about-content {
-    /* Container for right column content */
+    grid-column: 1;
 }
 
 .about-headline {
@@ -959,12 +961,12 @@ footer {
 
 .equipo-grid {
     display: grid;
-    grid-template-columns: 180px 1fr;
+    grid-template-columns: 1fr 180px;
     gap: 0 3rem;
     align-items: start;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 8rem;
 }
 
 .equipo-label {
@@ -978,10 +980,12 @@ footer {
     color: var(--color-accent);
     opacity: 0.7;
     line-height: 1.5;
+    grid-column: 2;
+    text-align: right;
 }
 
 .equipo-content {
-    /* Container for right column content */
+    grid-column: 1;
 }
 
 .equipo-perfil {
@@ -1309,6 +1313,12 @@ img {
         position: static;
         display: block;
         margin-bottom: 1.5rem;
+        grid-column: auto;
+        text-align: left;
+    }
+
+    .about-content {
+        grid-column: auto;
     }
 
     .service-card {
@@ -1345,6 +1355,12 @@ img {
         position: static;
         display: block;
         margin-bottom: 1.5rem;
+        grid-column: auto;
+        text-align: left;
+    }
+
+    .equipo-content {
+        grid-column: auto;
     }
 
     /* MOBILE-002: Optimización de formulario de contacto */
