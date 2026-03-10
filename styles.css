@@ -416,111 +416,74 @@ nav.nav--scrolled {
 }
 
 /* =========================
-   Services
+   Services - Editorial Blocks
    ========================= */
 
-.services-header {
-    text-align: left;
-    margin-bottom: 3rem;
+.services-container {
     max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 2rem;
+    margin: 0 auto;
+    padding: 0 8rem;
 }
 
-.services-header h2 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+.services-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    opacity: 0.7;
+    margin-bottom: 4rem;
+}
+
+.service-block {
+    padding: 5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.service-category {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.service-title {
+    font-family: 'Work Sans', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 700;
     color: var(--color-text);
+    opacity: 1;
+    line-height: 1.1;
     margin-bottom: 1rem;
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-}
-
-.service-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(206, 115, 82, 0.2);
-    padding: 3rem;
-    border-radius: 8px;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-}
-
-.service-card:hover {
-    border-color: var(--color-accent);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(206, 115, 82, 0.2);
-    background: rgba(10, 10, 10, 0.5);
-}
-
-.service-card:hover li::before {
-    color: var(--color-accent-bright);
-}
-
-.service-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.service-icon {
-    width: 40px;
-    height: 40px;
-    stroke: var(--color-accent);
-    stroke-width: 2;
-    fill: none;
-    flex-shrink: 0;
-}
-
-.service-number {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--color-accent);
-    line-height: 1;
-    min-width: 80px;
-}
-
-.service-card h3 {
-    font-size: var(--font-size-h3);
-    font-weight: 600;
+.service-lead {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
     color: var(--color-text);
-    line-height: var(--line-height-heading);
-    margin-bottom: 1.5rem;
+    opacity: 0.6;
+    line-height: 1.6;
+    max-width: 600px;
 }
 
-.service-description {
-    font-size: 1.05rem;
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
+.services-cta {
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.service-card ul {
-    list-style: none;
-}
-
-.service-card li {
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 0.8rem;
-    padding-left: 1.5rem;
-    position: relative;
-    line-height: 1.7;
-}
-
-.service-card li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
+.services-cta-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.95rem;
     color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.services-cta-link:hover {
+    opacity: 0.8;
 }
 
 /* =========================
@@ -828,19 +791,14 @@ footer {
 /* Corner brackets - top corners */
 .actividad-card::before,
 .actividad-card::after,
-.service-card::before,
-.service-card::after {
+/* Esquina superior izquierda */
+.actividad-card::before {
     content: '';
     position: absolute;
     width: 30px;
     height: 30px;
     pointer-events: none;
     transition: border-color 0.3s ease, filter 0.3s ease;
-}
-
-/* Esquina superior izquierda */
-.actividad-card::before,
-.service-card::before {
     top: -1px;
     left: -1px;
     border-top: 2px solid rgba(206, 115, 82, 0.6);
@@ -848,8 +806,13 @@ footer {
 }
 
 /* Esquina superior derecha */
-.actividad-card::after,
-.service-card::after {
+.actividad-card::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    transition: border-color 0.3s ease, filter 0.3s ease;
     top: -1px;
     right: -1px;
     border-top: 2px solid rgba(206, 115, 82, 0.6);
@@ -887,11 +850,7 @@ footer {
 .actividad-card:hover::before,
 .actividad-card:hover::after,
 .actividad-card:hover .card-brackets::before,
-.actividad-card:hover .card-brackets::after,
-.service-card:hover::before,
-.service-card:hover::after,
-.service-card:hover .card-brackets::before,
-.service-card:hover .card-brackets::after {
+.actividad-card:hover .card-brackets::after {
     border-color: var(--color-accent);
     filter: drop-shadow(0 0 8px rgba(206, 115, 82, 0.4));
 }
@@ -1078,7 +1037,6 @@ footer {
    Consistencia / Base de Cards
    ========================= */
 
-.service-card,
 .actividad-card {
     cursor: pointer;
 }
@@ -1086,7 +1044,6 @@ footer {
 /* Estandarizar transiciones */
 a,
 button,
-.service-card,
 .actividad-card,
 img {
     transition: all var(--transition-normal);
@@ -1130,7 +1087,6 @@ img {
 }
 
 /* Focus en cards - hacerlas navegables por teclado */
-.service-card:focus-visible,
 .actividad-card:focus-visible {
     border-color: var(--color-accent);
     transform: translateY(-5px);
@@ -1208,8 +1164,8 @@ img {
 }
 
 @media (max-width: 900px) {
-    .services-grid {
-        grid-template-columns: 1fr;
+    .services-container {
+        padding: 0 3rem;
     }
 
     /* MOBILE-010: Mantener 2 columnas en actividades hasta breakpoint más bajo */
@@ -1240,8 +1196,16 @@ img {
         --spacing-section: 40px;
     }
 
-    .services-grid {
-        grid-template-columns: 1fr;
+    .services-container {
+        padding: 0 1.5rem;
+    }
+
+    .service-block {
+        padding: 3rem 0;
+    }
+
+    .service-title {
+        font-size: clamp(1.6rem, 6vw, 2.5rem);
     }
 
     /* Ocultar ícono centrado en mobile */
@@ -1325,14 +1289,6 @@ img {
         padding: 2rem;
     }
 
-    .service-header {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .service-number {
-        font-size: 2.5rem;
-    }
 
     footer {
         padding: 2rem 1.5rem 1.5rem;
@@ -1411,10 +1367,6 @@ img {
         line-height: 1.2;
     }
 
-    /* MOBILE-008: Service cards padding mínimo */
-    .service-card {
-        padding: 1.5rem;
-    }
 
     /* MOBILE-006: Actividad content padding mínimo */
     .actividad-content {
@@ -2275,22 +2227,6 @@ footer .footer-section p:last-child {
   }
 }
 
-/* Utility classes to replace inline styles */
-.service-description--meta {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  opacity: 0.7;
-}
-
-.philosophy-quote--spaced {
-  margin-top: 4rem;
-}
-
-.philosophy-quote__question {
-  font-size: 1.2rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 1.5rem;
-}
 
 .cta-section {
   text-align: center;
