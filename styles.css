@@ -278,30 +278,99 @@ nav.nav--scrolled {
     text-transform: uppercase;
 }
 
-.cta-button {
+/* =========================
+   CTA Buttons - Sistema Unificado
+   ========================= */
+
+/* Base común para todos los botones CTA */
+.cta-button,
+.form-submit,
+.btn-download,
+.pwa-install-btn,
+.pwa-dismiss-btn {
     display: inline-block;
     min-height: 44px;
-    padding: 1rem 2.5rem;
-    border: 2px solid var(--color-accent);
-    background: transparent;
-    color: var(--color-accent);
-    border-radius: 4px;
+    font-family: 'Work Sans', sans-serif;
     font-weight: 600;
     text-decoration: none;
-    transition: all var(--transition-normal);
-    margin-top: 3rem;
+    border-radius: 4px;
     cursor: pointer;
+    transition: all var(--transition-normal);
+    border: 2px solid var(--color-accent);
+    text-align: center;
 }
 
-.cta-button:hover {
+/* Variante Primary (filled) - Acciones principales */
+.cta-button,
+.pwa-install-btn {
     background: var(--color-accent);
-    color: var(--color-text);
+    color: #0f0f0f;
+    padding: 1rem 2.5rem;
+}
+
+.cta-button:hover,
+.pwa-install-btn:hover {
+    background: var(--color-accent-bright);
+    border-color: var(--color-accent-bright);
+    transform: scale(1.02);
+    color: #0f0f0f;
+}
+
+/* Variante Secondary (outlined) - Acciones secundarias */
+.form-submit,
+.btn-download,
+.pwa-dismiss-btn {
+    background: transparent;
+    color: var(--color-accent);
+    padding: 0.75rem 1.5rem;
+}
+
+.form-submit:hover,
+.btn-download:hover,
+.pwa-dismiss-btn:hover {
+    background: var(--color-accent);
+    color: #0f0f0f;
     transform: scale(1.02);
 }
 
-.cta-button:active {
+/* Tamaño small para downloads */
+.btn-download {
+    padding: 0.6rem 1.2rem;
+    font-size: var(--font-size-sm);
+}
+
+/* Estados comunes */
+.cta-button:active,
+.form-submit:active,
+.btn-download:active,
+.pwa-install-btn:active,
+.pwa-dismiss-btn:active {
     transform: scale(0.98);
     transition-duration: 0.1s;
+}
+
+.form-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.form-submit:disabled:hover {
+    background: transparent;
+    color: var(--color-accent);
+}
+
+/* Estilos específicos heredados */
+.cta-button {
+    margin-top: 3rem;
+}
+
+.btn-download {
+    margin-top: 1.5rem;
+}
+
+.btn-download-main {
+    margin-right: 0.75rem;
 }
 
 /* =========================
@@ -421,10 +490,25 @@ nav.nav--scrolled {
     margin-bottom: 1.5rem;
 }
 
-.about-cta {
+/* Links CTA - Variante terciaria (solo texto) */
+.about-cta,
+.services-cta-link,
+.actividades-cta-link {
     font-family: 'IBM Plex Mono', monospace;
     font-size: var(--font-size-sm);
     color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    display: inline-block;
+}
+
+.about-cta:hover,
+.services-cta-link:hover,
+.actividades-cta-link:hover {
+    opacity: 0.8;
+}
+
+.about-cta {
     margin-top: 1.5rem;
 }
 
@@ -480,21 +564,10 @@ nav.nav--scrolled {
     max-width: 600px;
 }
 
+/* services-cta-link ahora usa estilos unificados (ver línea 438) */
 .services-cta {
     padding: 3rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.services-cta-link {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-sm);
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-}
-
-.services-cta-link:hover {
-    opacity: 0.8;
 }
 
 /* =========================
@@ -753,26 +826,9 @@ footer {
     resize: vertical;
 }
 
+/* form-submit ahora usa estilos unificados (ver línea 281) */
 .form-submit {
-    border: 1px solid var(--color-accent);
-    color: var(--color-accent);
-    background: transparent;
-    font-family: 'IBM Plex Mono', monospace;
-    padding: 0.8rem 1.5rem;
-    font-size: var(--font-size-sm);
-    cursor: pointer;
-    transition: all 0.2s ease;
     align-self: flex-start;
-}
-
-.form-submit:hover {
-    background: var(--color-accent);
-    color: var(--color-text);
-}
-
-.form-submit:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
 }
 
 /* Form messages */
@@ -913,21 +969,10 @@ footer {
     opacity: 1;
 }
 
+/* actividades-cta-link ahora usa estilos unificados (ver línea 438) */
 .actividades-cta {
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     padding: 2.5rem 0;
-}
-
-.actividades-cta-link {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-sm);
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-}
-
-.actividades-cta-link:hover {
-    opacity: 0.8;
 }
 
 /* =========================
@@ -1438,6 +1483,7 @@ img {
     margin-bottom: 1rem;
 }
 
+/* PWA buttons ahora usan estilos unificados (ver línea 281) */
 .pwa-install-buttons {
     display: flex;
     gap: 0.75rem;
@@ -1447,32 +1493,7 @@ img {
 .pwa-dismiss-btn {
     flex: 1;
     padding: 0.75rem 1rem;
-    border-radius: 4px;
-    font-weight: 600;
     font-size: var(--font-size-sm);
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    border: 2px solid var(--color-accent);
-}
-
-.pwa-install-btn {
-    background: var(--color-accent);
-    color: #0f0f0f;
-}
-
-.pwa-install-btn:hover {
-    background: var(--color-accent-bright);
-    border-color: var(--color-accent-bright);
-    transform: scale(1.02);
-}
-
-.pwa-dismiss-btn {
-    background: transparent;
-    color: var(--color-accent);
-}
-
-.pwa-dismiss-btn:hover {
-    background: rgba(206, 115, 82, 0.1);
 }
 
 .pwa-install-btn:focus-visible,
@@ -1565,28 +1586,7 @@ img {
   margin: 2rem auto;
 }
 
-/* Botón de descarga PDF (estilo base) */
-.btn-download {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: var(--font-size-sm);
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-download:hover,
-.btn-download:focus {
-  background-color: var(--color-accent);
-  color: var(--color-text);
-}
-
-.btn-download-main {
-  margin-right: 0.75rem;
-}
+/* btn-download ahora usa estilos unificados (ver línea 281) */
 
 /* Adaptación responsive tarjetas impacto */
 @media (max-width: 768px) {
