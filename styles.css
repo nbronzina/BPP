@@ -63,6 +63,34 @@ body {
     line-height: 1.7;
     overflow-x: hidden;
     animation: fadeIn 0.6s ease-in;
+    position: relative;
+    z-index: 1;
+}
+
+/* Grain texture global */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Vignette perimetral global */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 0%,
+        rgba(10, 10, 10, 0.4) 80%,
+        rgba(10, 10, 10, 0.8) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
 }
 
 @keyframes fadeIn {
@@ -205,42 +233,14 @@ nav.nav--scrolled {
     padding: 120px 8rem 80px;
     position: relative;
     background: #0a0a0a;
-    overflow: hidden;
 }
-
-/* Grain texture */
-.hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.035;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Vignette perimetral */
-.hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        ellipse at center,
-        transparent 0%,
-        rgba(10, 10, 10, 0.4) 80%,
-        rgba(10, 10, 10, 0.8) 100%
-    );
-    pointer-events: none;
-    z-index: 2;
-}
-
 
 .hero-content {
     max-width: 60vw;
     padding-left: 4rem;
     text-align: left;
     position: relative;
-    z-index: 3;
+    z-index: 1;
 }
 
 .tagline {
