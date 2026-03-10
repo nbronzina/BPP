@@ -321,7 +321,7 @@ nav.nav--scrolled {
 .about-grid {
     display: grid;
     grid-template-columns: 180px 1fr;
-    gap: 0 5rem;
+    gap: 0 3rem;
     align-items: start;
     max-width: 1200px;
     margin: 0 auto;
@@ -357,8 +357,8 @@ nav.nav--scrolled {
 
 .about-pain-list {
     list-style: none;
-    padding: 0;
-    margin: 0 0 2rem 0;
+    padding: 0 0 2.5rem 0;
+    margin: 0;
 }
 
 .about-pain-list li {
@@ -392,6 +392,7 @@ nav.nav--scrolled {
     font-weight: 600;
     opacity: 0.95;
     margin-bottom: 1rem;
+    padding-top: 2.5rem;
 }
 
 .about-mission {
