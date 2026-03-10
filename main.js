@@ -92,6 +92,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // -------------------------
+  // Navbar scroll behavior
+  // -------------------------
+  const nav = document.querySelector("nav");
+  if (nav) {
+    const handleNavScroll = () => {
+      if (window.scrollY > 80) {
+        nav.classList.add("nav--scrolled");
+      } else {
+        nav.classList.remove("nav--scrolled");
+      }
+    };
+
+    window.addEventListener("scroll", handleNavScroll, { passive: true });
+    handleNavScroll(); // Check initial state
+  }
+
   // =====================================================
   // BLOQUE TRACKING / ANIMACIONES
   // -----------------------------------------------------
