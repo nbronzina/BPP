@@ -2025,7 +2025,7 @@ footer .footer-section p:last-child {
 }
 
 .logo-item img {
-  height: 36px;
+  height: 48px;
   width: auto;
   object-fit: contain;
   opacity: 0.4;
@@ -2054,7 +2054,7 @@ footer .footer-section p:last-child {
   }
 
   .logo-item img {
-    height: 28px;
+    height: 38px;
   }
 }
 
