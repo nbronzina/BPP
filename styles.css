@@ -127,9 +127,7 @@ nav {
 }
 
 nav.nav--scrolled {
-    background-color: rgba(10, 10, 10, 0.92);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    background-color: rgba(10, 10, 10, 0.98);
 }
 
 /* Layout compartido: index (.nav-container) y reporte (.nav) */
@@ -1811,7 +1809,7 @@ img {
 ──────────────────────────────────────────────*/
 
 .reporte-page .hero-section {
-    padding: calc(var(--spacing-section) + 60px) 2rem 40px;
+    padding: 100px 2rem 40px;
     max-width: 1200px;
     margin: 0 auto;
     text-align: left;
@@ -1936,7 +1934,7 @@ img {
 /* Responsive */
 @media (max-width: 768px) {
     .reporte-page .hero-section {
-        padding: 110px 1.5rem 32px;
+        padding: 90px 1.5rem 32px;
     }
 
     .reporte-page .content-section {
