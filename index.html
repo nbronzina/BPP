@@ -59,7 +59,7 @@
 
     <!-- Critical CSS Inline -->
     <style>
-@font-face{font-family:'Work Sans Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}:root{--color-bg:#0f0f0f;--color-text:#e0e0e0;--color-text-light:#c5c5c5;--color-accent:#ce7352;--color-accent-hover:#d4845e;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}body{font-family:'Work Sans','Work Sans Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}nav{position:sticky;top:0;z-index:1000;background:rgba(15,15,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.05)}.nav-container{max-width:1400px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo img{max-width:180px;height:auto}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--color-text-light);text-decoration:none;font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--color-accent)}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}.hero-content{max-width:900px}.hero-logo{margin-bottom:3rem;height:160px;display:flex;align-items:center;justify-content:center}.hero-logo img{max-width:100%;max-height:160px;width:auto;height:auto;opacity:0.9;object-fit:contain}.tagline{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1.5rem;color:var(--color-text)}.subtitle{font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:2rem;color:var(--color-text-light)}.locations{font-size:1rem;color:var(--color-accent);margin-bottom:2.5rem}.cta-button{display:inline-block;padding:1rem 2.5rem;background:var(--color-accent);color:#0f0f0f;text-decoration:none;border-radius:var(--border-radius);font-weight:600;transition:all 0.3s;font-size:1.1rem}.cta-button:hover{background:var(--color-accent-hover);transform:translateY(-2px)}[data-animate]{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease}[data-animate].animate-ready:not(.visible){opacity:0;transform:translateY(30px)}
+@font-face{font-family:'Work Sans Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}:root{--color-bg:#0f0f0f;--color-text:#e0e0e0;--color-text-light:#c5c5c5;--color-accent:#ce7352;--color-accent-hover:#d4845e;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}body{font-family:'Work Sans','Work Sans Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}nav{position:sticky;top:0;z-index:1000;background:rgba(15,15,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.05)}.nav-container{max-width:1400px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:relative}.nav-wordmark{font-family:'Work Sans',sans-serif;font-weight:600;font-size:0.9rem;color:rgba(255,255,255,0.9);text-decoration:none;transition:color 0.3s}.nav-logo-icon{position:absolute;left:50%;transform:translateX(-50%);display:block;line-height:0}.nav-logo-icon img{height:36px;width:auto;display:block;transition:opacity 0.3s}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--color-text-light);text-decoration:none;font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--color-accent)}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}.hero-content{max-width:900px}.hero-logo{margin-bottom:3rem;height:160px;display:flex;align-items:center;justify-content:center}.hero-logo img{max-width:100%;max-height:160px;width:auto;height:auto;opacity:0.9;object-fit:contain}.tagline{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1.5rem;color:var(--color-text)}.subtitle{font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:2rem;color:var(--color-text-light)}.locations{font-size:1rem;color:var(--color-accent);margin-bottom:2.5rem}.cta-button{display:inline-block;padding:1rem 2.5rem;background:var(--color-accent);color:#0f0f0f;text-decoration:none;border-radius:var(--border-radius);font-weight:600;transition:all 0.3s;font-size:1.1rem}.cta-button:hover{background:var(--color-accent-hover);transform:translateY(-2px)}[data-animate]{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease}[data-animate].animate-ready:not(.visible){opacity:0;transform:translateY(30px)}
     </style>
 
     <!-- Full Styles (Async) -->
@@ -222,19 +222,27 @@
     <!-- Navigation -->
     <nav role="navigation" aria-label="Navegación principal de BPP Analytics &amp; Design">
         <div class="nav-container">
+            <!-- Wordmark (izquierda) -->
             <div class="logo">
-                <a href="#hero">
-                    <picture>
-                        <source srcset="img/logo-160.webp 160w, img/logo-320.webp 320w" sizes="180px" type="image/webp">
-                        <img src="img/logo.png" alt="Logotipo de BPP Analytics &amp; Design" width="180" height="45" loading="lazy" decoding="async">
-                    </picture>
-                </a>
+                <a href="#hero" class="nav-wordmark">BPP Analytics &amp; Design</a>
             </div>
+
+            <!-- Ícono BPP centrado (position absolute) -->
+            <a href="#hero" class="nav-logo-icon" aria-label="Inicio - BPP Analytics &amp; Design">
+                <picture>
+                    <source srcset="img/logo-160.webp" type="image/webp">
+                    <img src="img/logo.png" alt="Ícono BPP" width="36" height="36" loading="eager" decoding="async">
+                </picture>
+            </a>
+
+            <!-- Mobile menu button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+
+            <!-- Links (derecha) -->
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">Quiénes somos</a></li>
                 <li><a href="#socios">Equipo</a></li>

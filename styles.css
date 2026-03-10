@@ -99,6 +99,7 @@ nav.nav--scrolled {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Necesario para el ícono centrado con position absolute */
 }
 
 /* Logo en navbar */
@@ -109,17 +110,40 @@ nav.nav--scrolled {
 
 .logo a {
     display: block;
+    line-height: 1;
+}
+
+/* Wordmark textual (izquierda) */
+.nav-wordmark {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-wordmark:hover {
+    color: var(--color-accent);
+}
+
+/* Ícono BPP centrado (position absolute) */
+.nav-logo-icon {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
     line-height: 0;
 }
 
-.logo img {
-    height: 44px;
+.nav-logo-icon img {
+    height: 36px;
     width: auto;
     display: block;
     transition: opacity 0.3s;
 }
 
-.logo img:hover {
+.nav-logo-icon:hover img {
     opacity: 0.85;
 }
 
@@ -1145,6 +1169,11 @@ img {
 
     .services-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Ocultar ícono centrado en mobile */
+    .nav-logo-icon {
+        display: none;
     }
 
     .nav-links {
