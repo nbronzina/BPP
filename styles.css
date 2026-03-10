@@ -9,8 +9,8 @@
 }
 
 :root {
-    --color-bg: #0f0f0f;
-    --color-bg-light: #1a1a1a;
+    --color-bg: #0a0a0a;
+    --color-bg-light: #0a0a0a;
     --color-text: #ffffff;
     --color-text-light: #f0f0f0;
     --color-accent: #ce7352;
@@ -53,6 +53,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;  /* Altura del navbar sticky */
+    background: #0a0a0a;
 }
 
 body {
@@ -465,7 +466,7 @@ nav.nav--scrolled {
     border-color: var(--color-accent);
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(206, 115, 82, 0.2);
-    background: rgba(26, 26, 26, 0.5);
+    background: rgba(10, 10, 10, 0.5);
 }
 
 .service-card:hover li::before {
@@ -1258,7 +1259,7 @@ img {
         height: 100vh;
         width: 80%; /* MOBILE-012: Aumentado de 70% para mejor legibilidad */
         min-width: 260px; /* MOBILE-012: Ancho mínimo para textos largos */
-        background-color: rgba(15, 15, 15, 0.98);
+        background-color: rgba(10, 10, 10, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 5rem 2rem;
@@ -1541,7 +1542,7 @@ img {
    =============================== */
 
 .impact-card {
-  background: var(--color-background-card, #1E1D1E);
+  background: var(--color-background-card, #0a0a0a);
   border: 1px solid var(--color-border-card, #2A2A2A);
   border-radius: 12px;
   padding: 2rem;
@@ -1602,7 +1603,7 @@ img {
 
 /* Variante sin animación hover (intro + descarga) */
 .card-static {
-  background: var(--color-background-card, #1E1D1E);
+  background: var(--color-background-card, #0a0a0a);
   border-radius: 12px;
   padding: 2rem;
   max-width: 900px;
@@ -1650,7 +1651,7 @@ img {
 /* === ESTILO REPORTE IMPACTO (alineado con index) === */
 
 .actividad-card--light {
-  background: #1E1D1E;
+  background: #0a0a0a;
   border: 1px solid rgba(203, 112, 67, 0.45);
   padding: 2rem;
   border-radius: 14px;
