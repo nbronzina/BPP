@@ -2038,6 +2038,13 @@ footer .footer-section p:last-child {
   filter: grayscale(0%);
 }
 
+/* Logos específicos más grandes */
+.logo-item img[alt*="ITBA"],
+.logo-item img[alt*="Dassen"],
+.logo-item img[alt*="Olam"] {
+  height: 64px;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .clientes-section {
@@ -2055,6 +2062,12 @@ footer .footer-section p:last-child {
 
   .logo-item img {
     height: 38px;
+  }
+
+  .logo-item img[alt*="ITBA"],
+  .logo-item img[alt*="Dassen"],
+  .logo-item img[alt*="Olam"] {
+    height: 52px;
   }
 }
 
