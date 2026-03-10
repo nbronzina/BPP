@@ -56,7 +56,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text-light);
     line-height: 1.7;
@@ -616,7 +616,7 @@ footer {
     border: 1px solid rgba(206, 115, 82, 0.2);
     border-radius: var(--border-radius);
     color: var(--color-text);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Work Sans', sans-serif;
     font-size: 1rem;
     transition: all var(--transition-normal);
 }
@@ -1379,7 +1379,7 @@ img {
   border-radius: 12px;
   padding: 2rem;
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  font-family: var(--font-family-base, 'Inter', system-ui, sans-serif);
+  font-family: var(--font-family-base, 'Work Sans', system-ui, sans-serif);
   max-width: 900px;
   margin: 2rem auto;
 }
