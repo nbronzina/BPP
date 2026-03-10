@@ -118,23 +118,7 @@ nav {
     opacity: 0.85;
 }
 
-/* Logo en hero */
-.hero-logo {
-    margin-bottom: 3rem;
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-logo img {
-    max-width: 100%;
-    max-height: 160px;
-    width: auto;
-    height: auto;
-    opacity: 0.9;
-    object-fit: contain;
-}
+/* Hero logo removed - logo lives only in navbar */
 
 .nav-links {
     display: flex;
@@ -179,47 +163,128 @@ nav {
    Hero
    ========================= */
 
+/* =========================
+   Hero Section
+   ========================= */
+
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 120px 2rem 80px;
+    justify-content: flex-start;
+    padding: 120px 8rem 80px;
     position: relative;
+    background: #0a0a0a;
+    overflow: hidden;
+}
+
+/* Grain texture */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Vignette perimetral */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 0%,
+        rgba(10, 10, 10, 0.4) 80%,
+        rgba(10, 10, 10, 0.8) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Corner brackets asimétricos */
+.hero-bracket {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.hero-bracket--tl {
+    top: 2rem;
+    left: 2rem;
+    border-top: 3px solid rgba(206, 115, 82, 0.5);
+    border-left: 3px solid rgba(206, 115, 82, 0.5);
+    filter: drop-shadow(0 0 12px rgba(206, 115, 82, 0.3));
+}
+
+.hero-bracket--br {
+    bottom: 2rem;
+    right: 2rem;
+    border-bottom: 3px solid rgba(206, 115, 82, 0.5);
+    border-right: 3px solid rgba(206, 115, 82, 0.5);
+    filter: drop-shadow(0 0 12px rgba(206, 115, 82, 0.3));
+}
+
+/* Separador inferior con gradiente naranja */
+.hero-separator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(206, 115, 82, 0.3) 20%,
+        rgba(206, 115, 82, 0.8) 50%,
+        rgba(206, 115, 82, 0.3) 80%,
+        transparent 100%
+    );
+    z-index: 3;
 }
 
 .hero-content {
-    max-width: 1000px;
-    text-align:center;
+    max-width: 900px;
+    text-align: left;
+    position: relative;
+    z-index: 3;
 }
 
 .tagline {
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-size: clamp(3rem, 8vw, 7rem);
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.05;
     margin-bottom: 2rem;
-    letter-spacing: -0.03em;
-    color: var(--color-text);
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    text-transform: lowercase;
 }
 
 .subtitle {
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
     color: var(--color-accent);
     margin-bottom: 2.5rem;
     font-weight: 400;
+    opacity: 0.95;
+    max-width: 600px;
 }
 
 .locations {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    color: var(--color-text-secondary);
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
 }
 
 .cta-button {
     display: inline-block;
-    min-height: 44px;  /* Área táctil mínima */
+    min-height: 44px;
     padding: 1rem 2.5rem;
     border: 2px solid var(--color-accent);
     background: transparent;
@@ -228,13 +293,13 @@ nav {
     font-weight: 600;
     text-decoration: none;
     transition: all var(--transition-normal);
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     cursor: pointer;
 }
 
 .cta-button:hover {
     background: var(--color-accent);
-    color: #0f0f0f;
+    color: #0a0a0a;
     transform: scale(1.02);
 }
 
@@ -1153,17 +1218,26 @@ img {
         height: 38px;
     }
 
-    .hero-logo {
-        margin-bottom: 2rem;
-        height: 120px;
-    }
-
-    .hero-logo img {
-        max-height: 120px;
-    }
+    /* Hero logo removed */
 
     .hero {
-        padding: 100px 1.5rem 60px;
+        padding: 100px 2rem 60px;
+        justify-content: center;
+    }
+
+    .hero-bracket {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hero-bracket--tl {
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .hero-bracket--br {
+        bottom: 1rem;
+        right: 1rem;
     }
 
     .section {
@@ -1247,14 +1321,6 @@ img {
 
 /* Mobile pequeño */
 @media (max-width: 390px) {
-    .hero-logo {
-        height: 90px;
-    }
-
-    .hero-logo img {
-        max-height: 90px;
-    }
-
     .tagline {
         font-size: 2rem;
     }
@@ -1276,12 +1342,19 @@ img {
         padding: 100px 1rem 60px;
     }
 
-    .hero-logo {
-        height: 100px;
+    .hero-bracket {
+        width: 48px;
+        height: 48px;
     }
 
-    .hero-logo img {
-        max-height: 100px;
+    .hero-bracket--tl {
+        top: 0.75rem;
+        left: 0.75rem;
+    }
+
+    .hero-bracket--br {
+        bottom: 0.75rem;
+        right: 0.75rem;
     }
 
     .tagline {
@@ -1305,15 +1378,6 @@ img {
     .hero {
         min-height: auto;
         padding: 80px 1.5rem 40px;
-    }
-
-    .hero-logo {
-        margin-bottom: 1.5rem;
-        height: 80px;
-    }
-
-    .hero-logo img {
-        max-height: 80px;
     }
 }
 
