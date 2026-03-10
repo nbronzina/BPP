@@ -688,69 +688,77 @@
     </section>
 
     <!-- Contact Form Section -->
-    <section id="contact" class="contact-form-section" data-animate aria-labelledby="contact-heading">
-        <div class="contact-form-header">
-            <h2 id="contact-heading">Conversemos de tu próxima decisión crítica</h2>
-            <p class="footer-tagline">
-                ¿Qué te quita el sueño?
-            </p>
-            <p>
-                Decisiones estratégicas sin datos claros. Cambios que no sabés cómo anticipar. Análisis que no llevan a acción.
-            </p>
-            <p class="footer-brand">
-                Te respondemos en menos de 24 horas con ideas concretas.
-            </p>
+    <section id="contact" class="contact-form-section" data-animate>
+        <div class="contact-grid">
+            <div class="contact-label">CONVERSEMOS</div>
+
+            <div class="contact-inner">
+                <!-- Columna izquierda: contexto narrativo -->
+                <div class="contact-context">
+                    <h2 id="contact-heading">¿Qué te quita el sueño?</h2>
+                    <p>Decisiones estratégicas sin datos claros. Cambios que no sabés cómo anticipar. Análisis que no llevan a acción.</p>
+                    <p class="contact-response">Te respondemos en menos de 24 horas con ideas concretas. Sin compromiso.</p>
+
+                    <div class="contact-separator"></div>
+
+                    <div class="contact-addresses">
+                        <div class="contact-address">
+                            <p class="contact-city">Buenos Aires</p>
+                            <p class="contact-street">Franklin 2190, Of. 4113<br>Buenos Aires, Argentina</p>
+                        </div>
+                        <div class="contact-address">
+                            <p class="contact-city">Madrid</p>
+                            <p class="contact-street">C. de Pablo Vidal 4<br>Madrid, España</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: formulario -->
+                <form class="contact-form" id="contactForm" action="https://formsubmit.co/bppanalyticsanddesign@gmail.com" method="POST">
+                    <div id="formMessage" class="form-message" aria-live="polite"></div>
+
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="Nuevo contacto desde BPP Analytics &amp; Design">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="text" name="_honey" class="honeypot" autocomplete="off">
+
+                    <div class="form-group">
+                        <label for="name">NOMBRE</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            autocomplete="name"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">EMAIL</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            autocomplete="email"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">TU DESAFÍO</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">Quiero esa conversación →</button>
+                </form>
+            </div>
         </div>
-
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/bppanalyticsanddesign@gmail.com" method="POST">
-            <div id="formMessage" class="form-message" aria-live="polite"></div>
-
-            <!-- FormSubmit Configuration -->
-            <input type="hidden" name="_subject" value="Nuevo contacto desde BPP Analytics &amp; Design">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="box">
-            <input type="text" name="_honey" class="honeypot" autocomplete="off">
-
-            <div class="form-group">
-                <label for="name">Nombre *</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Ej: María González"
-                    autocomplete="name"
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email *</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="Ej: maria@tuempresa.com"
-                    autocomplete="email"
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="message">Tu desafío *</label>
-                <textarea
-                    id="message"
-                    name="message"
-                    required
-                    placeholder='Ej: "Necesitamos anticipar cambios en nuestro sector pero no sabemos cómo empezar"'
-                ></textarea>
-            </div>
-
-            <button type="submit" class="form-submit">Quiero esa conversación →</button>
-            <p class="footer-legal">
-                ✓ Sin compromiso<br>
-                ✓ Respuesta en 24hs
-            </p>
-        </form>
     </section>
 
     </main>
