@@ -25,7 +25,7 @@
     --font-size-body-lg: 1.1rem;
     --font-size-body: 1rem;
     --font-size-small: 0.9rem;
-    --font-size-label: 0.7rem;
+    --font-size-label: 0.875rem;
     --line-height-heading: 1.2;
     --line-height-body: 1.7;
 
@@ -323,18 +323,13 @@ nav.nav--scrolled {
 }
 
 .about-label {
-    position: sticky;
-    top: 5rem;
-    align-self: start;
     font-family: 'IBM Plex Mono', monospace;
     font-size: var(--font-size-label);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
     opacity: 0.7;
-    line-height: 1.5;
-    grid-column: 2;
-    text-align: right;
+    margin-bottom: 3rem;
 }
 
 .about-content {
@@ -438,7 +433,7 @@ nav.nav--scrolled {
     letter-spacing: 0.08em;
     color: var(--color-accent);
     opacity: 0.7;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .service-block {
@@ -635,15 +630,13 @@ footer {
 }
 
 .contact-label {
-    position: sticky;
-    top: 5rem;
-    align-self: start;
     font-family: 'IBM Plex Mono', monospace;
     font-size: var(--font-size-label);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
     opacity: 0.7;
+    margin-bottom: 3rem;
 }
 
 .contact-inner {
@@ -940,18 +933,13 @@ footer {
 }
 
 .equipo-label {
-    position: sticky;
-    top: 5rem;
-    align-self: start;
     font-family: 'IBM Plex Mono', monospace;
     font-size: var(--font-size-label);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
     opacity: 0.7;
-    line-height: 1.5;
-    grid-column: 2;
-    text-align: right;
+    margin-bottom: 3rem;
 }
 
 .equipo-content {
