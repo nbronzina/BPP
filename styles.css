@@ -79,7 +79,7 @@ nav {
     left: 0;
     right: 0;
     z-index: var(--z-nav);
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 0;
     background-color: transparent;
     border-bottom: none;
     transition: all 0.3s ease;
@@ -94,8 +94,8 @@ nav.nav--scrolled {
 /* Layout compartido: index (.nav-container) y reporte (.nav) */
 .nav-container,
 .nav {
-    max-width: 1400px;
-    margin: 0 auto;
+    width: 100%;
+    padding: 0 4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
