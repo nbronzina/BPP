@@ -217,7 +217,7 @@
 </head>
 <body>
     <!-- Skip link para accesibilidad -->
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <a href="#main-content" class="skip-link" aria-label="Saltar navegación e ir directamente al contenido principal">Saltar al contenido principal</a>
 
     <!-- Navigation -->
     <nav role="navigation" aria-label="Navegación principal de BPP Analytics &amp; Design">
@@ -563,7 +563,7 @@
 
         <div class="actividades-container">
             <!-- Entrada 1: Otros Futuros - IED Madrid -->
-            <article class="actividad-entrada" data-animate>
+            <article class="actividad-entrada" data-animate aria-label="Otros Futuros - Tutor invitado en defensa de proyecto IED Madrid">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="img/otros-futuros-ied-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -587,6 +587,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       class="actividad-link"
+                      aria-label="Abrir post sobre Otros Futuros en LinkedIn (nueva pestaña)"
                     >
                         ↗ Ver post en LinkedIn
                     </a>
@@ -594,7 +595,7 @@
             </article>
 
             <!-- Entrada 2: Alquileres -->
-            <article class="actividad-entrada" data-animate>
+            <article class="actividad-entrada" data-animate aria-label="Tesis sobre negociación de alquileres en Buenos Aires y asimetrías estructurales del mercado">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="img/alquileres-negociacion.webp 1200w" type="image/webp">
@@ -616,6 +617,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       class="actividad-link"
+                      aria-label="Abrir artículo sobre negociación de alquileres en LinkedIn (nueva pestaña)"
                     >
                         ↗ Leer artículo completo
                     </a>
@@ -623,7 +625,7 @@
             </article>
 
             <!-- Entrada 3: Inhabiting the Future -->
-            <article class="actividad-entrada" data-animate>
+            <article class="actividad-entrada" data-animate aria-label="Charla outdoor Inhabiting the Future sobre adaptación climática en Matadero Madrid">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="img/inhabiting-future.webp 1200w" type="image/webp">
@@ -645,6 +647,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       class="actividad-link"
+                      aria-label="Abrir artículo Inhabiting the Future en Medium (nueva pestaña)"
                     >
                         ↗ Leer artículo en Medium
                     </a>
@@ -652,7 +655,7 @@
             </article>
 
             <!-- Entrada 4: Workshop LATAM·2036 -->
-            <article class="actividad-entrada" data-animate>
+            <article class="actividad-entrada" data-animate aria-label="Workshop LATAM·2036 sobre diseño de futuros desde la fuga">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="img/workshop-latam2036-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -676,6 +679,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       class="actividad-link"
+                      aria-label="Abrir artículo Workshop LATAM·2036 en Medium (nueva pestaña)"
                     >
                         ↗ Leer artículo en Medium
                     </a>
@@ -685,7 +689,7 @@
 
         <!-- CTA final -->
         <div class="actividades-cta">
-            <a href="proyectos/" class="actividades-cta-link">Lo hecho →</a>
+            <a href="proyectos/" class="actividades-cta-link" aria-label="Ver todos los proyectos y publicaciones de BPP">Lo hecho →</a>
         </div>
     </section>
 
@@ -723,7 +727,7 @@
                     <input type="hidden" name="_subject" value="Nuevo contacto desde BPP Analytics &amp; Design">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="box">
-                    <input type="text" name="_honey" class="honeypot" autocomplete="off">
+                    <input type="text" name="_honey" class="honeypot" autocomplete="off" aria-hidden="true" tabindex="-1">
 
                     <div class="form-group">
                         <label for="name">NOMBRE</label>
@@ -789,7 +793,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; <span id="currentYear"></span> BPP Analytics &amp; Design · <a href="mailto:bppanalyticsanddesign@gmail.com">bppanalyticsanddesign@gmail.com</a> · <a href="privacidad/">Política de Privacidad</a><button type="button" id="manual-install-pwa" class="install-pwa-link" style="display:none;" aria-label="Instalar BPP como aplicación"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2L12 14M12 14L8 10M12 14L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Instalar app</button></p>
+        <p>&copy; <span id="currentYear"></span> BPP Analytics &amp; Design · <a href="mailto:bppanalyticsanddesign@gmail.com">bppanalyticsanddesign@gmail.com</a> · <a href="privacidad/">Política de Privacidad</a><button type="button" id="manual-install-pwa" class="install-pwa-link" style="display:none;" aria-label="Instalar BPP Analytics & Design como aplicación web" title="Instalar como aplicación web progresiva (PWA)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2L12 14M12 14L8 10M12 14L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Instalar app</button></p>
       </div>
     </footer>
 
