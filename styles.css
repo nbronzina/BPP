@@ -18,14 +18,29 @@
     --color-text-secondary: #c5c5c5;
     --spacing-section: 80px;
 
-    /* Typography */
-    --font-size-h1: clamp(3rem, 8vw, 7rem);
-    --font-size-h2: clamp(1.8rem, 3vw, 2.8rem);
-    --font-size-h3: clamp(1.3rem, 2.5vw, 1.8rem);
-    --font-size-body-lg: 1.1rem;
-    --font-size-body: 1rem;
-    --font-size-small: 0.9rem;
-    --font-size-label: 0.875rem;
+    /* Typography - Base scale (fixed sizes) */
+    --font-size-xs: 0.75rem;        /* 12px - muy pequeño */
+    --font-size-sm: 0.875rem;       /* 14px - labels, metadata */
+    --font-size-base: 1rem;         /* 16px - cuerpo principal */
+    --font-size-md: 1.125rem;       /* 18px - texto destacado */
+    --font-size-lg: 1.25rem;        /* 20px - lead text */
+
+    /* Typography - Headings scale (responsive) */
+    --font-size-h6: clamp(1rem, 2vw, 1.125rem);
+    --font-size-h5: clamp(1.125rem, 2.5vw, 1.375rem);
+    --font-size-h4: clamp(1.25rem, 3vw, 1.75rem);
+    --font-size-h3: clamp(1.5rem, 3.5vw, 2rem);
+    --font-size-h2: clamp(2rem, 4.5vw, 3rem);
+    --font-size-h1: clamp(2.5rem, 6vw, 4.5rem);
+    --font-size-display: clamp(3rem, 8vw, 7rem);
+
+    /* Typography - Special (numbers, icons) */
+    --font-size-number-sm: 2rem;
+    --font-size-number-md: 2.5rem;
+    --font-size-number-lg: 3rem;
+    --font-size-icon: 1.75rem;
+
+    /* Typography - Line heights */
     --line-height-heading: 1.2;
     --line-height-body: 1.7;
 
@@ -143,7 +158,7 @@ nav.nav--scrolled {
 .nav-wordmark {
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: color 0.3s;
@@ -185,7 +200,7 @@ nav.nav--scrolled {
 .nav-links a {
     color: var(--color-text-light);
     text-decoration: none;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     font-weight: 400;
     transition: color 0.3s;
 }
@@ -241,7 +256,7 @@ nav.nav--scrolled {
 }
 
 .tagline {
-    font-size: var(--font-size-h1);
+    font-size: var(--font-size-display);
     font-weight: 700;
     line-height: 1.05;
     margin-bottom: 2rem;
@@ -251,7 +266,7 @@ nav.nav--scrolled {
 }
 
 .subtitle {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-size: var(--font-size-h4);
     color: var(--color-accent);
     margin-bottom: 2.5rem;
     font-weight: 400;
@@ -261,7 +276,7 @@ nav.nav--scrolled {
 
 .locations {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     color: rgba(255, 255, 255, 0.5);
     font-weight: 400;
     letter-spacing: 0.15em;
@@ -324,7 +339,7 @@ nav.nav--scrolled {
 
 .about-label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
@@ -354,7 +369,7 @@ nav.nav--scrolled {
 
 .about-pain-list li {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-base);
     font-weight: 400;
     opacity: 0.55;
     line-height: 1.7;
@@ -379,7 +394,7 @@ nav.nav--scrolled {
 
 .about-purpose {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-base);
     font-weight: 600;
     opacity: 0.95;
     margin-bottom: 1rem;
@@ -388,7 +403,7 @@ nav.nav--scrolled {
 
 .about-mission {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-base);
     font-weight: 400;
     opacity: 0.75;
     margin-bottom: 2rem;
@@ -396,7 +411,7 @@ nav.nav--scrolled {
 
 .about-transformation {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-base);
     font-weight: 400;
     opacity: 0.65;
     line-height: 1.7;
@@ -405,7 +420,7 @@ nav.nav--scrolled {
 
 .about-audience {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-base);
     font-weight: 400;
     opacity: 0.75;
     margin-bottom: 1.5rem;
@@ -413,7 +428,7 @@ nav.nav--scrolled {
 
 .about-cta {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     color: var(--color-accent);
     margin-top: 1.5rem;
 }
@@ -428,7 +443,7 @@ nav.nav--scrolled {
 
 .services-label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
@@ -443,7 +458,7 @@ nav.nav--scrolled {
 
 .service-category {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     opacity: 0.5;
     margin-bottom: 1.5rem;
@@ -452,7 +467,7 @@ nav.nav--scrolled {
 
 .service-title {
     font-family: 'Work Sans', sans-serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: var(--font-size-h1);
     font-weight: 700;
     color: var(--color-text);
     opacity: 1;
@@ -462,7 +477,7 @@ nav.nav--scrolled {
 
 .service-lead {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-body-lg);
+    font-size: var(--font-size-md);
     font-weight: 400;
     color: var(--color-text);
     opacity: 0.6;
@@ -477,7 +492,7 @@ nav.nav--scrolled {
 
 .services-cta-link {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     color: var(--color-accent);
     text-decoration: none;
     transition: opacity 0.2s ease;
@@ -507,7 +522,7 @@ footer {
 
 .footer-brand {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     font-weight: 600;
     color: var(--color-text);
     opacity: 0.9;
@@ -551,7 +566,7 @@ footer {
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     color: var(--color-text);
     line-height: 1.6;
 }
@@ -586,7 +601,7 @@ footer {
     background: none;
     border: none;
     color: var(--color-accent);
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     font-family: inherit;
     cursor: pointer;
     padding: 0.25rem 0.5rem;
@@ -631,7 +646,7 @@ footer {
 
 .contact-label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
@@ -659,7 +674,7 @@ footer {
 
 .contact-context p {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text);
     opacity: 0.6;
@@ -683,7 +698,7 @@ footer {
 
 .contact-city {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     color: var(--color-accent);
     opacity: 0.7;
@@ -692,7 +707,7 @@ footer {
 
 .contact-street {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     color: var(--color-text);
     opacity: 0.4;
     line-height: 1.6;
@@ -710,7 +725,7 @@ footer {
 
 .form-group label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
@@ -727,7 +742,7 @@ footer {
     border-radius: 0;
     color: rgba(255, 255, 255, 0.9);
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-base);
     padding: 0.6rem 0;
     width: 100%;
     outline: none;
@@ -749,7 +764,7 @@ footer {
     background: transparent;
     font-family: 'IBM Plex Mono', monospace;
     padding: 0.8rem 1.5rem;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     cursor: pointer;
     transition: all 0.2s ease;
     align-self: flex-start;
@@ -801,7 +816,7 @@ footer {
 
 .actividades-label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
@@ -851,7 +866,7 @@ footer {
 
 .actividad-meta {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     margin-bottom: 0.75rem;
 }
@@ -881,7 +896,7 @@ footer {
 
 .actividad-descripcion {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     font-weight: 400;
     color: var(--color-text);
     opacity: 0.6;
@@ -891,7 +906,7 @@ footer {
 
 .actividad-link {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     color: var(--color-accent);
     opacity: 0.7;
     text-decoration: none;
@@ -910,7 +925,7 @@ footer {
 
 .actividades-cta-link {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     color: var(--color-accent);
     text-decoration: none;
     transition: opacity 0.2s ease;
@@ -934,7 +949,7 @@ footer {
 
 .equipo-label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
@@ -977,7 +992,7 @@ footer {
 
 .perfil-name {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-body-lg);
+    font-size: var(--font-size-md);
     font-weight: 700;
     color: var(--color-text);
     opacity: 1;
@@ -987,7 +1002,7 @@ footer {
 
 .perfil-tagline {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sm);
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -998,7 +1013,7 @@ footer {
 
 .perfil-bio {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     font-weight: 400;
     color: var(--color-text-secondary);
     opacity: 0.6;
@@ -1167,7 +1182,7 @@ img {
     }
 
     .service-title {
-        font-size: clamp(1.6rem, 6vw, 2.5rem);
+        font-size: var(--font-size-h2);
     }
 
     /* Ocultar ícono centrado en mobile */
@@ -1192,7 +1207,7 @@ img {
     }
 
     .nav-links a {
-        font-size: var(--font-size-body-lg);
+        font-size: var(--font-size-lg);
         padding: 12px 20px;
         display: block;
     }
@@ -1324,7 +1339,7 @@ img {
     }
 
     .contact-form label {
-        font-size: var(--font-size-body);
+        font-size: var(--font-size-md);
     }
 
     .contact-form textarea {
@@ -1341,13 +1356,13 @@ img {
 /* Mobile pequeño */
 @media (max-width: 390px) {
     .tagline {
-        font-size: 2rem;
+        font-size: var(--font-size-h1);
     }
 
     .service-card,
     .cta-button {
         padding: 0.875rem 2rem;
-        font-size: var(--font-size-small);
+        font-size: var(--font-size-sm);
     }
 }
 
@@ -1358,7 +1373,7 @@ img {
     }
 
     .tagline {
-        font-size: 1.75rem;
+        font-size: var(--font-size-h2);
         line-height: 1.2;
     }
 
@@ -1424,7 +1439,7 @@ img {
 
 .pwa-install-content p:last-of-type {
     color: var(--color-text-secondary);
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     margin-bottom: 1rem;
 }
 
@@ -1439,7 +1454,7 @@ img {
     padding: 0.75rem 1rem;
     border-radius: 4px;
     font-weight: 600;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-sm);
     cursor: pointer;
     transition: all var(--transition-normal);
     border: 2px solid var(--color-accent);
@@ -1512,7 +1527,7 @@ img {
 }
 
 .impact-icon {
-  font-size: 1.75rem;
+  font-size: var(--font-size-icon);
   line-height: 1;
   display: flex;
   align-items: center;
@@ -1520,7 +1535,7 @@ img {
 
 /* Número destacado */
 .impact-number {
-  font-size: 2.5rem;
+  font-size: var(--font-size-number-md);
   font-weight: 600;
   color: var(--color-accent, #CB7043);
   margin: 1rem 0;
@@ -1562,7 +1577,7 @@ img {
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
   text-decoration: none;
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-sm);
   border: 1px solid var(--color-accent);
   color: var(--color-accent);
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -1585,11 +1600,11 @@ img {
   }
 
   .impact-number {
-    font-size: 2rem;
+    font-size: var(--font-size-number-sm);
   }
 
   .impact-icon {
-    font-size: var(--font-size-body-lg);
+    font-size: var(--font-size-md);
   }
 }
 
@@ -1607,14 +1622,14 @@ img {
 }
 
 .actividad-card--light .impact-number {
-  font-size: 3rem;
+  font-size: var(--font-size-number-lg);
   font-weight: 700;
   color: #CB7043;
   margin-top: -0.5rem;
 }
 
 .actividad-card--light .impact-icon {
-  font-size: 1.6rem;
+  font-size: var(--font-size-icon);
   vertical-align: middle;
   margin-right: 0.5rem;
 }
@@ -1649,14 +1664,14 @@ img {
 }
 
 .hero-sub {
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     max-width: 900px;
 }
 
 .hero-sub-secondary {
   margin-top: 0.75rem;
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-sm);
   opacity: 0.9;
 }
 
@@ -1679,7 +1694,7 @@ img {
 .reporte-section p,
 .reporte-section li {
     color: var(--color-text-secondary);
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-base);
 }
 
 @media (max-width: 768px) {
@@ -1714,7 +1729,7 @@ img {
 }
 
 .legal-page h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: var(--font-size-h2);
   color: var(--color-text);
   margin-bottom: 1rem;
 }
@@ -1763,7 +1778,7 @@ img {
 /* Estilo de la fecha */
 .legal-page .date {
   color: var(--color-text-secondary);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-sm);
   margin-bottom: 3rem;
 }
 
@@ -1791,7 +1806,7 @@ img {
 }
 
 .reporte-page .hero-sub {
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     max-width: 900px;
 }
@@ -1812,7 +1827,7 @@ img {
 }
 
 .reporte-page .impact-number {
-    font-size: 2.4rem;
+    font-size: var(--font-size-number-md);
     font-weight: 600;
     color: var(--color-accent);
 }
@@ -1837,7 +1852,7 @@ img {
 }
 
 .report-toc-list a {
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   text-decoration: none;
   border-bottom: 1px solid transparent;
@@ -1904,7 +1919,7 @@ img {
 .report-back-link {
   display: inline-block;
   margin-top: 2rem;
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-sm);
   font-weight: 600;
 }
 
@@ -1945,7 +1960,7 @@ img {
 
 .clientes-label {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: var(--font-size-label);
+  font-size: var(--font-size-sm);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-accent);
@@ -2045,7 +2060,7 @@ img {
   /* MOBILE-007: Botón CTA más compacto */
   .cta-button {
     padding: 0.9rem 2rem;
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-md);
   }
 
   /* MOBILE-008: Service cards padding reducido */
