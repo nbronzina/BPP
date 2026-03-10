@@ -118,32 +118,32 @@ nav::before {
 }
 
 .nav-bracket--tl {
-    top: 0;
-    left: 0;
+    top: 8px;
+    left: 8px;
     border-top: 3px solid rgba(206, 115, 82, 0.6);
     border-left: 3px solid rgba(206, 115, 82, 0.6);
     filter: drop-shadow(0 0 8px rgba(206, 115, 82, 0.3));
 }
 
 .nav-bracket--tr {
-    top: 0;
-    right: 0;
+    top: 8px;
+    right: 8px;
     border-top: 3px solid rgba(206, 115, 82, 0.6);
     border-right: 3px solid rgba(206, 115, 82, 0.6);
     filter: drop-shadow(0 0 8px rgba(206, 115, 82, 0.3));
 }
 
 .nav-bracket--bl {
-    bottom: 0;
-    left: 0;
+    bottom: 8px;
+    left: 8px;
     border-bottom: 3px solid rgba(206, 115, 82, 0.6);
     border-left: 3px solid rgba(206, 115, 82, 0.6);
     filter: drop-shadow(0 0 8px rgba(206, 115, 82, 0.3));
 }
 
 .nav-bracket--br {
-    bottom: 0;
-    right: 0;
+    bottom: 8px;
+    right: 8px;
     border-bottom: 3px solid rgba(206, 115, 82, 0.6);
     border-right: 3px solid rgba(206, 115, 82, 0.6);
     filter: drop-shadow(0 0 8px rgba(206, 115, 82, 0.3));
@@ -173,7 +173,7 @@ nav::before {
 }
 
 .logo img {
-    max-width: 120px;
+    max-width: 180px;
     height: auto;
     display: block;
     transition: opacity 0.3s;
