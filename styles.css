@@ -752,157 +752,129 @@ footer {
    Últimas Actividades
    ========================= */
 
+/* =========================
+   Actividades - Editorial Layout
+   ========================= */
+
+.actividades-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    opacity: 0.7;
+    margin-bottom: 3rem;
+}
+
 .actividades-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.actividad-entrada {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
     align-items: stretch;
+    min-height: 420px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Grilla 2x2 para home (solo muestra 4 tarjetas recientes) */
-.actividades-home {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Alternating layout: even entries swap image/text positions */
+.actividad-entrada:nth-child(even) {
+    direction: rtl;
 }
 
-.actividad-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(206, 115, 82, 0.2);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.3s;
+.actividad-entrada:nth-child(even) > * {
+    direction: ltr;
 }
 
-.actividad-card:hover {
-    border-color: var(--color-accent);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(206, 115, 82, 0.2);
-}
-
-/* Corner brackets - top corners */
-.actividad-card::before,
-.actividad-card::after,
-/* Esquina superior izquierda */
-.actividad-card::before {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    pointer-events: none;
-    transition: border-color 0.3s ease, filter 0.3s ease;
-    top: -1px;
-    left: -1px;
-    border-top: 2px solid rgba(206, 115, 82, 0.6);
-    border-left: 2px solid rgba(206, 115, 82, 0.6);
-}
-
-/* Esquina superior derecha */
-.actividad-card::after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    pointer-events: none;
-    transition: border-color 0.3s ease, filter 0.3s ease;
-    top: -1px;
-    right: -1px;
-    border-top: 2px solid rgba(206, 115, 82, 0.6);
-    border-right: 2px solid rgba(206, 115, 82, 0.6);
-}
-
-/* Corner brackets - bottom corners via span helper */
-.card-brackets::before,
-.card-brackets::after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    pointer-events: none;
-    transition: border-color 0.3s ease, filter 0.3s ease;
-}
-
-/* Esquina inferior izquierda */
-.card-brackets::before {
-    bottom: -1px;
-    left: -1px;
-    border-bottom: 2px solid rgba(206, 115, 82, 0.6);
-    border-left: 2px solid rgba(206, 115, 82, 0.6);
-}
-
-/* Esquina inferior derecha */
-.card-brackets::after {
-    bottom: -1px;
-    right: -1px;
-    border-bottom: 2px solid rgba(206, 115, 82, 0.6);
-    border-right: 2px solid rgba(206, 115, 82, 0.6);
-}
-
-/* Hover states - all 4 corners */
-.actividad-card:hover::before,
-.actividad-card:hover::after,
-.actividad-card:hover .card-brackets::before,
-.actividad-card:hover .card-brackets::after {
-    border-color: var(--color-accent);
-    filter: drop-shadow(0 0 8px rgba(206, 115, 82, 0.4));
-}
-
-.actividad-image {
-    width: 100%;
-    height: 400px;
+.actividad-imagen {
     overflow: hidden;
 }
 
-.actividad-image img {
+.actividad-imagen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s;
 }
 
-.actividad-card:hover .actividad-image img {
-    transform: scale(1.05);
+.actividad-texto {
+    padding: 3rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.actividad-content {
-    padding: 2.5rem;
-}
-
-.actividad-date {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--color-accent);
+.actividad-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
-    font-weight: 500;
+    margin-bottom: 0.75rem;
 }
 
-.actividad-card h3 {
-    font-size: var(--font-size-h3);
-    font-weight: 600;
+.actividad-fecha {
+    color: var(--color-accent);
+    opacity: 0.7;
+}
+
+.actividad-separador {
+    color: var(--color-accent);
+}
+
+.actividad-tags {
+    opacity: 0.4;
+}
+
+.actividad-entrada h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 700;
     color: var(--color-text);
-    margin-bottom: 1rem;
-    line-height: var(--line-height-heading);
+    opacity: 1;
+    line-height: 1.3;
+    margin-top: 0.75rem;
 }
 
-.actividad-card p {
-    font-size: 1.05rem;
-    color: var(--color-text-secondary);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+.actividad-descripcion {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-text);
+    opacity: 0.6;
+    line-height: 1.6;
+    margin-top: 0.75rem;
 }
 
 .actividad-link {
-    display: inline-flex;
-    align-items: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
     color: var(--color-accent);
+    opacity: 0.7;
     text-decoration: none;
-    font-weight: 500;
-    transition: transform 0.3s;
+    margin-top: 1.5rem;
+    transition: opacity 0.2s ease;
 }
 
 .actividad-link:hover {
-    transform: translateX(5px);
+    opacity: 1;
+}
+
+.actividades-cta {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 2.5rem 0;
+}
+
+.actividades-cta-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.actividades-cta-link:hover {
+    opacity: 0.8;
 }
 
 /* =========================
@@ -1026,14 +998,9 @@ footer {
    Consistencia / Base de Cards
    ========================= */
 
-.actividad-card {
-    cursor: pointer;
-}
-
 /* Estandarizar transiciones */
 a,
 button,
-.actividad-card,
 img {
     transition: all var(--transition-normal);
 }
@@ -1075,14 +1042,6 @@ img {
     outline-offset: 4px;
 }
 
-/* Focus en cards - hacerlas navegables por teclado */
-.actividad-card:focus-visible {
-    border-color: var(--color-accent);
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-card-hover);
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-}
 
 /* Focus en footer links */
 .footer-section a:focus-visible {
@@ -1158,26 +1117,6 @@ img {
     }
 
     /* MOBILE-010: Mantener 2 columnas en actividades hasta breakpoint más bajo */
-    .actividades-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    /* MOBILE-001: Aumentar altura para mejorar legibilidad de logos/textos */
-    .actividad-image {
-        height: 320px;
-    }
-
-    /* MOBILE-006: Padding intermedio para tablet */
-    .actividad-content {
-        padding: 1.8rem;
-    }
-}
-
-/* MOBILE-010: Cambiar a 1 columna solo en mobile */
-@media (max-width: 600px) {
-    .actividades-container {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 768px) {
@@ -1287,10 +1226,6 @@ img {
         gap: 1.5rem;
     }
 
-    .actividad-card h3 {
-        font-size: 1.4rem;
-    }
-
     .equipo-grid {
         grid-template-columns: 1fr;
         padding: 0 1.5rem;
@@ -1306,6 +1241,28 @@ img {
 
     .equipo-content {
         grid-column: auto;
+    }
+
+    /* Actividades mobile: imagen arriba, texto abajo */
+    .actividad-entrada {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .actividad-entrada:nth-child(even) {
+        direction: ltr;
+    }
+
+    .actividad-imagen {
+        height: 260px;
+    }
+
+    .actividad-texto {
+        padding: 2rem 0;
+    }
+
+    .actividades-label {
+        margin-bottom: 2rem;
     }
 
     /* MOBILE-002: Optimización de formulario de contacto */
@@ -1335,10 +1292,6 @@ img {
     }
 
     .service-card,
-    .actividad-content {
-        padding: 1.5rem;
-    }
-
     .cta-button {
         padding: 0.875rem 2rem;
         font-size: 0.95rem;
@@ -1357,10 +1310,6 @@ img {
     }
 
 
-    /* MOBILE-006: Actividad content padding mínimo */
-    .actividad-content {
-        padding: 1.2rem;
-    }
 }
 
 /* Mobile landscape */
