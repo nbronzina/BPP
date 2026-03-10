@@ -1983,7 +1983,7 @@ img {
 /* Excepción: restaurar estilos normales del navbar en páginas reporte/legal */
 .reporte-page .nav-wordmark,
 .legal-page .nav-wordmark {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .reporte-page .nav-wordmark:hover,
