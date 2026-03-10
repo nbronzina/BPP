@@ -951,49 +951,57 @@ footer {
 }
 
 /* =========================
-   Socios
+   Equipo - Two Column Layout
    ========================= */
 
-.socios-grid {
+.equipo-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    grid-template-columns: 180px 1fr;
+    gap: 0 3rem;
+    align-items: start;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
-.socios-card {
-    text-align: center;
-    transition: transform 0.3s;
-    cursor: pointer;
+.equipo-label {
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    opacity: 0.7;
+    line-height: 1.5;
 }
 
-.socios-card:hover {
-    transform: translateY(-5px);
+.equipo-content {
+    /* Container for right column content */
 }
 
-.socios-photo {
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 2rem;
+.equipo-perfil {
+    /* Perfil container */
+}
+
+.perfil-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.perfil-photo {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid var(--color-accent);
-    transition: border-color 0.3s;
+    flex-shrink: 0;
 }
 
-.socios-card:hover .socios-photo {
-    border-color: var(--color-text);
-}
-
-/* Ajuste preciso de imágenes en sección Socios */
-.socios-photo picture {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.socios-photo img {
+.perfil-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1002,38 +1010,41 @@ footer {
     filter: grayscale(100%);
 }
 
-/* Ajuste preciso de encuadre para socios 1 y 3 */
-.socios-card:nth-child(1) .socios-photo img {
-    object-position: center 20%;
-}
-
-.socios-card:nth-child(2) .socios-photo img {
-    transform: scale(1.1);
-    object-position: center 42%;
-}
-
-.socios-card h3 {
-    font-size: var(--font-size-h3);
-    font-weight: 600;
+.perfil-name {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
     color: var(--color-text);
-    margin-bottom: 0.5rem;
+    opacity: 1;
+    margin: 0;
+    line-height: 1.2;
 }
 
-.socios-role {
-    font-size: 0.9rem;
+.perfil-tagline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
     color: var(--color-accent);
-    font-weight: 500;
-    margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
 }
 
-.socios-bio {
-    font-size: 1rem;
+.perfil-bio {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
     color: var(--color-text-secondary);
-    line-height: var(--line-height-body);
-    letter-spacing: 0.01em;
-    text-align: left;
+    opacity: 0.6;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.perfil-separator {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    margin: 2rem 0;
 }
 
 /* =========================
@@ -1061,8 +1072,7 @@ footer {
    ========================= */
 
 .service-card,
-.actividad-card,
-.socios-card {
+.actividad-card {
     cursor: pointer;
 }
 
@@ -1071,7 +1081,6 @@ a,
 button,
 .service-card,
 .actividad-card,
-.socios-card,
 img {
     transition: all var(--transition-normal);
 }
@@ -1115,8 +1124,7 @@ img {
 
 /* Focus en cards - hacerlas navegables por teclado */
 .service-card:focus-visible,
-.actividad-card:focus-visible,
-.socios-card:focus-visible {
+.actividad-card:focus-visible {
     border-color: var(--color-accent);
     transform: translateY(-5px);
     box-shadow: var(--shadow-card-hover);
@@ -1183,10 +1191,7 @@ img {
 }
 
 @media (max-width: 1024px) {
-    .socios-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem;
-    }
+    /* Equipo mantiene 2 columnas en tablet */
 }
 
 @media (max-width: 1200px) {
@@ -1328,22 +1333,15 @@ img {
         font-size: 1.4rem;
     }
 
-    .socios-grid {
+    .equipo-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        padding: 0 1.5rem;
     }
 
-    /* MOBILE-005: Fotos más grandes en mobile al ser 1 columna */
-    .socios-photo {
-        width: 200px;
-        height: 200px;
-    }
-
-    /* MOBILE-005: Bio alineada a izquierda para mejor lectura */
-    .socios-bio {
-        text-align: left;
-        max-width: 500px;
-        margin: 0 auto;
+    .equipo-label {
+        position: static;
+        display: block;
+        margin-bottom: 1.5rem;
     }
 
     /* MOBILE-002: Optimización de formulario de contacto */
