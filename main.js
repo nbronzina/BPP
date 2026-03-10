@@ -22,6 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
 
   // =====================================================
+  // SCROLL RESTORATION - Asegurar inicio en top
+  // =====================================================
+  // Prevenir que el navegador restaure la posición de scroll
+  // y asegurar que la página siempre inicie en el top
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // Forzar scroll al top cuando la página carga
+  window.scrollTo(0, 0);
+
+  // =====================================================
   // BLOQUE NAV / NAVEGACIÓN
   // -----------------------------------------------------
   // Controla el menú mobile, cierre por clic externo,
