@@ -382,7 +382,15 @@
     <!-- FOOTER -->
     <footer role="contentinfo">
       <div class="footer-grid">
-        <p class="footer-brand">BPP Analytics &amp; Design</p>
+        <div class="footer-left">
+          <span class="footer-brand">BPP Analytics &amp; Design</span>
+          <span class="footer-separator">·</span>
+          <span class="footer-copy">&copy; <span id="currentYear"></span></span>
+          <span class="footer-separator">·</span>
+          <a href="mailto:bppanalyticsanddesign@gmail.com" class="footer-link">bppanalyticsanddesign@gmail.com</a>
+          <span class="footer-separator">·</span>
+          <a href="../privacidad/" class="footer-link">Política de Privacidad</a>
+        </div>
         <div class="social-icons">
           <a href="https://instagram.com/bppanalyticsanddesign" target="_blank" rel="noopener noreferrer" aria-label="Seguinos en Instagram">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -401,10 +409,10 @@
           </a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; <span id="currentYear"></span> BPP Analytics &amp; Design · <a href="mailto:bppanalyticsanddesign@gmail.com">bppanalyticsanddesign@gmail.com</a> · <a href="../privacidad/">Política de Privacidad</a><button type="button" id="manual-install-pwa" class="install-pwa-link" style="display:none;" aria-label="Instalar BPP Analytics & Design como aplicación web" title="Instalar como aplicación web progresiva (PWA)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2L12 14M12 14L8 10M12 14L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Instalar app</button></p>
-      </div>
     </footer>
+
+    <!-- PWA install button (hidden by default, shown via JS) -->
+    <button type="button" id="manual-install-pwa" class="install-pwa-link" style="display:none;" aria-label="Instalar BPP Analytics & Design como aplicación web" title="Instalar como aplicación web progresiva (PWA)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2L12 14M12 14L8 10M12 14L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Instalar app</button>
 
     <!-- JS global unificado -->
     <script src="../main.min.js" defer></script>
