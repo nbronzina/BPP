@@ -314,42 +314,116 @@ nav.nav--scrolled {
    Executive Summary / About
    ========================= */
 
-.executive-summary {
-    text-align: center;
-    padding: var(--spacing-section) 2rem;
+/* =========================
+   About Section - Two Column Layout
+   ========================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0 5rem;
+    align-items: start;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
-.executive-summary p {
-    max-width: 900px;
-    margin: 0 auto 2.5rem;
-    line-height: var(--line-height-body);
-    letter-spacing: 0.01em;  /* Mejorar legibilidad */
-}
-
-.executive-summary p:first-child {
-    font-size: var(--font-size-body-lg);
-    color: var(--color-text);
-    font-weight: 400;
-}
-
-.executive-summary p:last-child {
-    font-size: 1.2rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 0;
-}
-
-.philosophy-quote {
-    text-align: center;
-    margin: 80px 0;
-}
-
-.philosophy-quote blockquote {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 300;
-    font-style: italic;
+.about-label {
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     color: var(--color-accent);
-    line-height: 1.3;
+    opacity: 0.7;
+    line-height: 1.5;
+}
+
+.about-content {
+    /* Container for right column content */
+}
+
+.about-headline {
+    font-family: 'Work Sans', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--color-text);
+    opacity: 1;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.about-pain-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+}
+
+.about-pain-list li {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.55;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.about-pain-list li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    opacity: 1;
+}
+
+.about-separator {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    margin: 2rem 0;
+}
+
+.about-purpose {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0.95;
+    margin-bottom: 1rem;
+}
+
+.about-mission {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.75;
+    margin-bottom: 2rem;
+}
+
+.about-transformation {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.65;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.about-audience {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.75;
+    margin-bottom: 1.5rem;
+}
+
+.about-cta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--color-accent);
+    margin-top: 1.5rem;
 }
 
 /* =========================
@@ -1231,16 +1305,15 @@ img {
         padding: 40px 1.5rem;
     }
 
-    .executive-summary {
-        padding: 40px 1.5rem;
+    .about-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
     }
 
-    .executive-summary p:first-child {
-        font-size: 1.3rem;
-    }
-
-    .executive-summary p:last-child {
-        font-size: 1.1rem;
+    .about-label {
+        position: static;
+        display: block;
+        margin-bottom: 1.5rem;
     }
 
     .service-card {
