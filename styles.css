@@ -2493,12 +2493,43 @@ img {
   }
 }
 
-/* Botón/enlace de retorno en reporte de impacto */
+/* Botón/enlace de retorno en reporte de impacto y proyectos */
 .report-back-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.75rem;
   margin-top: 2rem;
-  font-size: var(--font-size-sm);
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
   font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  background: transparent;
+  transition: all 0.3s ease;
+  min-height: 44px;
+}
+
+.report-back-link .arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.report-back-link:hover,
+.report-back-link:focus-visible {
+  background: var(--color-accent);
+  color: #0a0a0a;
+  transform: translateX(-4px);
+}
+
+.report-back-link:hover .arrow {
+  transform: translateX(-3px);
+}
+
+.report-back-link:focus-visible {
+  outline: 2px solid var(--color-accent-bright);
+  outline-offset: 4px;
 }
 
 /* Botones de descarga del reporte:

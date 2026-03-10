@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototipos - Botón Volver a Proyectos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0f0f0f;
+      --color-text: #e0e0e0;
+      --color-text-light: #c5c5c5;
+      --color-accent: #ce7352;
+      --color-accent-hover: #d4845e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Work Sans', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text-light);
+      line-height: 1.7;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: var(--color-text);
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+
+    .intro {
+      margin-bottom: 4rem;
+      color: var(--color-text-light);
+    }
+
+    .option-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .option-card h2 {
+      color: var(--color-accent);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .option-card .subtitle {
+      color: rgba(255, 255, 255, 0.5);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .option-card p {
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+
+    .demo-area {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 3rem;
+      margin-top: 2rem;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+    }
+
+    .pros-cons {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .pros-cons h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+      opacity: 0.6;
+    }
+
+    .pros-cons ul {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .pros-cons li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .pros li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #4ade80;
+    }
+
+    .cons li::before {
+      content: "×";
+      position: absolute;
+      left: 0;
+      color: #f87171;
+    }
+
+    /* ============================================
+       OPCIÓN A: Minimalista con flecha prominente
+       ============================================ */
+    .back-link-option-a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .back-link-option-a .arrow {
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .back-link-option-a:hover {
+      color: var(--color-accent-hover);
+    }
+
+    .back-link-option-a:hover .arrow {
+      transform: translateX(-6px);
+    }
+
+    /* ============================================
+       OPCIÓN B: Botón con borde (CTA secundario)
+       ============================================ */
+    .back-link-option-b {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1.75rem;
+      border: 2px solid var(--color-accent);
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-accent);
+      text-decoration: none;
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .back-link-option-b .arrow {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .back-link-option-b:hover {
+      background: var(--color-accent);
+      color: #0a0a0a;
+      transform: translateX(-4px);
+    }
+
+    .back-link-option-b:hover .arrow {
+      transform: translateX(-3px);
+    }
+
+    /* ============================================
+       OPCIÓN C: Link con fondo sutil y contexto
+       ============================================ */
+    .back-link-option-c {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: rgba(206, 115, 82, 0.08);
+      border-left: 3px solid var(--color-accent);
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--color-text);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .back-link-option-c .icon {
+      font-size: 1.3rem;
+      color: var(--color-accent);
+      transition: transform 0.3s ease;
+    }
+
+    .back-link-option-c:hover {
+      background: rgba(206, 115, 82, 0.12);
+      transform: translateX(-4px);
+    }
+
+    .back-link-option-c:hover .icon {
+      transform: translateX(-4px);
+    }
+
+    /* ============================================
+       OPCIÓN D: Breadcrumb contextual
+       ============================================ */
+    .back-link-option-d {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      text-decoration: none;
+      padding: 0.75rem 0;
+    }
+
+    .back-link-option-d .breadcrumb-home {
+      color: var(--color-accent);
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .back-link-option-d .separator {
+      opacity: 0.4;
+      margin: 0 0.25rem;
+    }
+
+    .back-link-option-d .breadcrumb-current {
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+
+    .back-link-option-d:hover .breadcrumb-home {
+      opacity: 1;
+    }
+
+    .back-link-option-d:hover .breadcrumb-current {
+      color: var(--color-accent-hover);
+    }
+
+    @media (max-width: 768px) {
+      .pros-cons {
+        grid-template-columns: 1fr;
+      }
+
+      .option-card {
+        padding: 2rem;
+      }
+
+      .demo-area {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Prototipos: Botón de retorno a Hechos</h1>
+  <p class="intro">
+    Evaluá estas 4 opciones de diseño para optimizar la navegación de retorno en los proyectos Trace Group y Reporte Impacto.
+    Cada opción tiene diferentes niveles de énfasis visual y se adapta a distintas preferencias de interacción.
+    El enlace apunta a la sección #actividades (Hechos) del sitio principal.
+  </p>
+
+  <!-- OPCIÓN A -->
+  <div class="option-card">
+    <h2>Opción A</h2>
+    <div class="subtitle">Minimalista con flecha prominente</div>
+    <p>
+      Enfoque tipográfico limpio con flecha grande. La flecha se desplaza horizontalmente al hover.
+      Usa IBM Plex Mono para consistencia con los links de actividades del sitio.
+    </p>
+
+    <div class="demo-area">
+      <a href="#" class="back-link-option-a" onclick="return false;">
+        <span class="arrow">←</span>
+        <span>Ver todos los hechos</span>
+      </a>
+    </div>
+
+    <p style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
+      <strong>Alternativas de texto:</strong> "Volver a Hechos" / "← Inicio" / "Ver más hechos"
+    </p>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Ventajas</h4>
+        <ul>
+          <li>Lectura fluida, no interrumpe el contenido</li>
+          <li>Consistente con estilo tipográfico del sitio</li>
+          <li>Animación sutil y elegante</li>
+          <li>Peso visual equilibrado</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Consideraciones</h4>
+        <ul>
+          <li>Menos prominente que opciones con borde</li>
+          <li>Puede pasar desapercibido en móvil</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPCIÓN B -->
+  <div class="option-card">
+    <h2>Opción B</h2>
+    <div class="subtitle">Botón con borde (CTA secundario)</div>
+    <p>
+      Estilo consistente con los botones CTA del sitio. Borde accent, relleno en hover,
+      desplazamiento horizontal. Máxima visibilidad y jerarquía clara.
+    </p>
+
+    <div class="demo-area">
+      <a href="#" class="back-link-option-b" onclick="return false;">
+        <span class="arrow">←</span>
+        <span>Ver todos los hechos</span>
+      </a>
+    </div>
+
+    <p style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
+      <strong>Alternativas de texto:</strong> "Volver a Hechos" / "← Inicio" / "Ver más hechos"
+    </p>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Ventajas</h4>
+        <ul>
+          <li>Alta visibilidad y jerarquía visual</li>
+          <li>Consistente con sistema de botones existente</li>
+          <li>Excelente área de click (accesibilidad)</li>
+          <li>Hover impactante con inversión de colores</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Consideraciones</h4>
+        <ul>
+          <li>Puede competir visualmente con CTAs del footer</li>
+          <li>Más peso visual que otras opciones</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPCIÓN C -->
+  <div class="option-card">
+    <h2>Opción C</h2>
+    <div class="subtitle">Link con fondo sutil y contexto</div>
+    <p>
+      Fondo semitransparente con borde lateral accent. Icono de navegación claro.
+      Balance entre destacar sin dominar. Diseño tipo "callout" integrado.
+    </p>
+
+    <div class="demo-area">
+      <a href="#" class="back-link-option-c" onclick="return false;">
+        <span class="icon">↩</span>
+        <span>Ver todos los hechos</span>
+      </a>
+    </div>
+
+    <p style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
+      <strong>Alternativas de texto:</strong> "Volver a Hechos" / "← Inicio" / "Ver más hechos"
+    </p>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Ventajas</h4>
+        <ul>
+          <li>Balance entre sutil y visible</li>
+          <li>Fondo ayuda a separar del contenido</li>
+          <li>Borde lateral da contexto visual</li>
+          <li>Diseño contemporáneo tipo "card"</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Consideraciones</h4>
+        <ul>
+          <li>Requiere más espacio vertical</li>
+          <li>Estilo diferente a otros elementos del sitio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPCIÓN D -->
+  <div class="option-card">
+    <h2>Opción D</h2>
+    <div class="subtitle">Breadcrumb contextual</div>
+    <p>
+      Navegación tipo breadcrumb que muestra la ruta jerárquica. Más informativo,
+      ayuda a la orientación espacial. Estilo utilizado en muchos sitios editoriales.
+    </p>
+
+    <div class="demo-area">
+      <a href="#" class="back-link-option-d" onclick="return false;">
+        <span class="breadcrumb-home">Inicio</span>
+        <span class="separator">/</span>
+        <span class="breadcrumb-current">Hechos</span>
+      </a>
+    </div>
+
+    <p style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
+      Esta opción muestra la jerarquía: Inicio → Hechos (ambos clickeables)
+    </p>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Ventajas</h4>
+        <ul>
+          <li>Orientación espacial clara (dónde estoy)</li>
+          <li>Patrón familiar y reconocible</li>
+          <li>Puede expandirse si hay más niveles</li>
+          <li>SEO-friendly (estructura jerárquica)</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Consideraciones</h4>
+        <ul>
+          <li>Más texto puede distraer</li>
+          <li>Menos llamativo visualmente</li>
+          <li>Requiere más ancho horizontal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 4rem; padding: 2rem; background: rgba(206, 115, 82, 0.1); border-radius: 8px;">
+    <h3 style="margin-bottom: 1rem; color: var(--color-accent);">Recomendación</h3>
+    <p style="margin-bottom: 1rem;">
+      <strong>Opción B (Botón con borde)</strong> es mi recomendación principal por:
+    </p>
+    <ul style="list-style: none; padding-left: 1rem;">
+      <li style="margin-bottom: 0.5rem;">→ Consistencia con el sistema de botones existente (.cta-button)</li>
+      <li style="margin-bottom: 0.5rem;">→ Alta accesibilidad (área de click grande, contraste claro)</li>
+      <li style="margin-bottom: 0.5rem;">→ Jerarquía visual apropiada para navegación de retorno</li>
+      <li style="margin-bottom: 0.5rem;">→ Funciona excelente en mobile y desktop</li>
+    </ul>
+    <p style="margin-top: 1.5rem; opacity: 0.8;">
+      Sin embargo, la <strong>Opción A</strong> es excelente si preferís un enfoque más minimalista que no compita
+      con otros CTAs. La decisión final depende de cuánto énfasis querés darle a la navegación de retorno.
+    </p>
+
+    <hr style="margin: 2rem 0; border: none; border-top: 1px solid rgba(255,255,255,0.1);">
+
+    <h4 style="margin-bottom: 1rem; color: var(--color-text); font-size: 1rem;">Sobre el texto del enlace</h4>
+    <p style="opacity: 0.8; margin-bottom: 0.5rem;">
+      Opciones contextuales para cada proyecto:
+    </p>
+    <ul style="list-style: none; padding-left: 1rem; font-size: 0.9rem;">
+      <li style="margin-bottom: 0.5rem;"><strong>Más directo:</strong> "← Inicio" / "Volver al inicio"</li>
+      <li style="margin-bottom: 0.5rem;"><strong>Más contextual:</strong> "Ver todos los hechos" / "Volver a Hechos"</li>
+      <li style="margin-bottom: 0.5rem;"><strong>Más editorial:</strong> "Más hechos →" / "Explorá más hechos"</li>
+    </ul>
+  </div>
+</body>
+</html>
