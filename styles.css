@@ -1581,7 +1581,7 @@ img {
 .btn-download:hover,
 .btn-download:focus {
   background-color: var(--color-accent);
-  color: #0f0f0f;
+  color: var(--color-text);
 }
 
 .btn-download-main {
@@ -2551,7 +2551,7 @@ img {
 .reporte-section a.btn-download:hover,
 .reporte-section a.btn-download:focus-visible {
   background: var(--color-accent);
-  color: #0f0f0f; /* texto oscuro para que se lea sobre el botón naranja */
+  color: var(--color-text);
 }
 
 /* Footer spacing - simplified with new footer structure */
