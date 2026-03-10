@@ -332,27 +332,11 @@ nav {
     cursor: pointer;
 }
 
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--color-accent);
-    transform: scaleY(0);
-    transition: transform 0.3s;
-}
-
 .service-card:hover {
     border-color: var(--color-accent);
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(206, 115, 82, 0.2);
     background: rgba(26, 26, 26, 0.5);
-}
-
-.service-card:hover::before {
-    transform: scaleY(1);
 }
 
 .service-card:hover li::before {
@@ -723,7 +707,9 @@ footer {
 
 /* Corner brackets - top corners */
 .actividad-card::before,
-.actividad-card::after {
+.actividad-card::after,
+.service-card::before,
+.service-card::after {
     content: '';
     position: absolute;
     width: 30px;
@@ -733,7 +719,8 @@ footer {
 }
 
 /* Esquina superior izquierda */
-.actividad-card::before {
+.actividad-card::before,
+.service-card::before {
     top: -1px;
     left: -1px;
     border-top: 2px solid rgba(206, 115, 82, 0.6);
@@ -741,7 +728,8 @@ footer {
 }
 
 /* Esquina superior derecha */
-.actividad-card::after {
+.actividad-card::after,
+.service-card::after {
     top: -1px;
     right: -1px;
     border-top: 2px solid rgba(206, 115, 82, 0.6);
@@ -779,7 +767,11 @@ footer {
 .actividad-card:hover::before,
 .actividad-card:hover::after,
 .actividad-card:hover .card-brackets::before,
-.actividad-card:hover .card-brackets::after {
+.actividad-card:hover .card-brackets::after,
+.service-card:hover::before,
+.service-card:hover::after,
+.service-card:hover .card-brackets::before,
+.service-card:hover .card-brackets::after {
     border-color: var(--color-accent);
     filter: drop-shadow(0 0 8px rgba(206, 115, 82, 0.4));
 }
