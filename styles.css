@@ -217,7 +217,7 @@ nav.nav--scrolled {
     justify-content: flex-start;
     padding: 120px 8rem 80px;
     position: relative;
-    background: #0a0a0a;
+    background: transparent;
 }
 
 .hero-content {
@@ -436,7 +436,7 @@ nav.nav--scrolled {
 }
 
 .service-card {
-    background: var(--color-bg-light);
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(206, 115, 82, 0.2);
     padding: 3rem;
     border-radius: 8px;
@@ -522,7 +522,7 @@ nav.nav--scrolled {
    ========================= */
 
 footer {
-    background: var(--color-bg-light);
+    background: transparent;
     padding: 3rem 2rem 2rem;
     border-top: 1px solid rgba(206, 115, 82, 0.2);
     margin-top: var(--spacing-section);
@@ -711,7 +711,7 @@ footer {
 .form-group input,
 .form-group textarea {
     padding: 1rem;
-    background: var(--color-bg-light);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(206, 115, 82, 0.2);
     border-radius: var(--border-radius);
     color: var(--color-text);
@@ -807,7 +807,7 @@ footer {
 
 .actividad-card {
     position: relative;
-    background: var(--color-bg-light);
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(206, 115, 82, 0.2);
     border-radius: 8px;
     overflow: hidden;
@@ -1442,7 +1442,7 @@ img {
     bottom: -200px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--color-bg-light);
+    background: rgba(255, 255, 255, 0.02);
     border: 2px solid var(--color-accent);
     border-radius: var(--border-radius);
     padding: 1.5rem;
