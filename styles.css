@@ -1966,233 +1966,97 @@ footer .footer-section p:last-child {
    ======================================== */
 
 .clientes-section {
-  padding: 6rem 2rem;
+  padding: 6rem 0;
   background: transparent;
   position: relative;
   overflow: hidden;
 }
 
-.clientes-section::before {
-  display: none;
+.clientes-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  opacity: 0.7;
+  padding-left: 12rem;
+  margin-bottom: 3rem;
+}
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
 }
 
-.clientes-section .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: var(--z-base);
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 30s linear infinite;
+  width: max-content;
 }
 
-.clientes-section h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: var(--color-text);
-  letter-spacing: -0.02em;
-}
-
-.clientes-intro {
-  text-align: center;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: var(--color-text-secondary);
-  margin-bottom: 4rem;
-  line-height: 1.6;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.logos-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  padding: 2rem 0;
-  max-width: 1100px;
-  margin: 0 auto;
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .logo-item {
-  /* Glassmorphism card effect */
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 0.75rem;
-
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  align-content: center;
   justify-content: center;
-
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Subtle glow on hover */
-.logo-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.logo-item:hover::before {
-  opacity: 1;
-}
-
-.logo-item:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 107, 0, 0.3);
-  box-shadow: 0 12px 40px rgba(255, 107, 0, 0.15);
 }
 
 .logo-item img {
-  max-width: 200px;
-  max-height: 100px;
-  width: 100%;
-  height: auto;
+  height: 36px;
+  width: auto;
   object-fit: contain;
-  object-position: center;
-
-  /* Grayscale by default */
-  filter: grayscale(100%) brightness(0.8);
-  opacity: 0.6;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.4;
+  filter: grayscale(100%);
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-/* Color on hover */
 .logo-item:hover img {
-  filter: grayscale(0%) brightness(1);
-  opacity: 1;
-  transform: scale(1.05);
+  opacity: 0.9;
+  filter: grayscale(0%);
 }
 
-/* Eliminar cualquier línea o borde extra */
-.logo-item::after {
-  display: none;
-}
-
-.clientes-section hr,
-.clientes-section .divider {
-  display: none;
-}
-
-/* Invertir colores del logo CESBA para mejor contraste */
-.logo-item img[alt*="CESBA"],
-.logo-item img[alt*="cesba"] {
-  filter: grayscale(100%) brightness(1.3) invert(1);
-  opacity: 0.65;
-}
-
-.logo-item:hover img[alt*="CESBA"],
-.logo-item:hover img[alt*="cesba"] {
-  filter: grayscale(0%) invert(1);
-  opacity: 1;
-}
-
-/* Logo Olam Studio - ajustar tamaño, posición y centrado
-   Note: !important necesario para sobrescribir reglas generales de .logo-item img */
-.logo-item img[alt*="Olam"],
-.logo-item img[alt*="Studio"] {
-  filter: grayscale(100%) brightness(1.3) drop-shadow(0 0 0 transparent) !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  object-position: center center !important;
-  margin: 0.5rem auto 0 auto !important;
-  display: block !important;
-  max-width: 200px !important;
-  max-height: 100px !important;
-  object-fit: contain !important;
-  border: none !important;
-}
-
-.logo-item:hover img[alt*="Olam"],
-.logo-item:hover img[alt*="Studio"] {
-  filter: grayscale(0%) brightness(1) drop-shadow(0 0 0 transparent) !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  object-position: center center !important;
-  margin: 0.5rem auto 0 auto !important;
-  display: block !important;
-  max-width: 200px !important;
-  max-height: 100px !important;
-  object-fit: contain !important;
-  border: none !important;
-}
-
-.logo-item img[alt*="Otros Futuros"] {
-  max-width: 70%;
-  display: block;
-  margin: 0 auto;
-}
-
-.logo-item img[alt*="Dassen"] {
-  margin-top: 1rem;
-}
-
-/* Responsive adjustments */
-@media (max-width: 968px) {
-  .logos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* Mobile */
 @media (max-width: 768px) {
   .clientes-section {
-    padding: 4rem 1.5rem;
+    padding: 4rem 0;
   }
 
-  .logos-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+  .clientes-label {
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
   }
 
-  .logo-item {
-    padding: 0.75rem;
+  .marquee-track {
+    gap: 3rem;
   }
 
   .logo-item img {
-    max-width: 160px;
-    max-height: 90px;
-  }
-
-  .logo-item img[alt*="Otros Futuros"] {
-    max-width: 50%;
-  }
-
-  .logo-item img[alt*="ITBA"] {
-    max-width: 200px;
-  }
-
-  .logo-item img[alt*="Dassen"] {
-    margin-top: 1rem;
+    height: 28px;
   }
 }
-
-@media (max-width: 480px) {
-  .logos-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  .clientes-intro {
-    margin-bottom: 3rem;
-  }
-
-  .logo-item img {
-    max-width: 130px;
-    max-height: 80px;
-  }
 
   /* MOBILE-007: Botón CTA más compacto */
   .cta-button {
