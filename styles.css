@@ -1996,7 +1996,7 @@ img {
 }
 
 .logo-item img {
-  height: 48px;
+  height: 64px;
   width: auto;
   object-fit: contain;
   opacity: 0.4;
@@ -2013,7 +2013,7 @@ img {
 .logo-item img[alt*="ITBA"],
 .logo-item img[alt*="Dassen"],
 .logo-item img[alt*="Olam"] {
-  height: 64px;
+  height: 80px;
 }
 
 /* Mobile */
