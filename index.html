@@ -54,8 +54,8 @@
     <link rel="preload" href="main.min.js" as="script">
 
     <!-- Google Fonts (Async) -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"></noscript>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
 
     <!-- Critical CSS Inline -->
     <style>
@@ -221,14 +221,23 @@
 
     <!-- Navigation -->
     <nav role="navigation" aria-label="Navegación principal de BPP Analytics &amp; Design">
+        <span class="nav-bracket nav-bracket--tl" aria-hidden="true"></span>
+        <span class="nav-bracket nav-bracket--tr" aria-hidden="true"></span>
+        <span class="nav-bracket nav-bracket--bl" aria-hidden="true"></span>
+        <span class="nav-bracket nav-bracket--br" aria-hidden="true"></span>
         <div class="nav-container">
             <div class="logo">
                 <a href="#hero">
                     <picture>
-                        <source srcset="img/logo-160.webp 160w, img/logo-320.webp 320w" sizes="180px" type="image/webp">
-                        <img src="img/logo.png" alt="Logotipo de BPP Analytics &amp; Design" width="180" height="45" loading="lazy" decoding="async">
+                        <source srcset="img/logo-160.webp 160w, img/logo-320.webp 320w" sizes="120px" type="image/webp">
+                        <img src="img/logo.png" alt="Logotipo de BPP Analytics &amp; Design" width="120" height="30" loading="lazy" decoding="async">
                     </picture>
                 </a>
+            </div>
+            <div class="nav-coordinates" aria-hidden="true">
+                <span class="nav-coord">-34.5827° S, -58.4013° W</span>
+                <span class="nav-coord-separator">/</span>
+                <span class="nav-coord">40.4168° N, -3.7038° W</span>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
                 <span></span>
