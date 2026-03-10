@@ -99,6 +99,9 @@
   <!-- Skip link (accesibilidad) -->
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="readingProgressBar" aria-hidden="true"></div>
+
   <!-- Navigation -->
   <nav role="navigation" aria-label="Navegación principal de BPP Analytics &amp; Design">
     <div class="nav-container">
@@ -135,8 +138,109 @@
 
   <main id="main-content">
 
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+      <nav aria-label="Breadcrumb">
+        <a href="../">Inicio</a>
+        <span class="separator">›</span>
+        <a href="../#actividades">Lo hecho</a>
+        <span class="separator">›</span>
+        <span class="current">Reporte de Impacto</span>
+      </nav>
+    </div>
+
+    <!-- Sticky TOC (Desktop) -->
+    <aside class="sticky-toc" id="stickyToc" aria-label="Índice del reporte">
+      <h3>Navegación</h3>
+      <ul>
+        <li><a href="#sec-contexto">Resumen ejecutivo</a></li>
+        <li><a href="#sec-contexto-general">Contexto general</a></li>
+        <li><a href="#sec-metodologia">Metodología</a></li>
+        <li><a href="#sec-escenarios">Escenarios</a></li>
+        <li><a href="#sec-oportunidades">Oportunidades</a></li>
+        <li><a href="#sec-estudio-regional">Estudio regional</a></li>
+        <li><a href="#sec-pasos">Próximos pasos</a></li>
+      </ul>
+    </aside>
+
+    <!-- Mobile TOC Button -->
+    <button class="mobile-toc-btn" id="mobileTocBtn" aria-label="Abrir índice de navegación">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"/>
+      </svg>
+    </button>
+
+    <!-- Mobile TOC Overlay -->
+    <div class="mobile-toc-overlay" id="mobileTocOverlay">
+      <button class="close-btn" id="closeMobileToc" aria-label="Cerrar índice">×</button>
+      <div class="toc-content">
+        <h2>Navegación del reporte</h2>
+        <ul class="report-toc-list editorial-list">
+          <li><span class="editorial-arrow">→</span> <a href="#sec-contexto">Resumen ejecutivo</a></li>
+          <li><span class="editorial-arrow">→</span> <a href="#sec-contexto-general">Contexto general</a></li>
+          <li><span class="editorial-arrow">→</span> <a href="#sec-metodologia">Metodología</a></li>
+          <li><span class="editorial-arrow">→</span> <a href="#sec-escenarios">Escenarios</a></li>
+          <li><span class="editorial-arrow">→</span> <a href="#sec-oportunidades">Oportunidades</a></li>
+          <li><span class="editorial-arrow">→</span> <a href="#sec-estudio-regional">Estudio regional</a></li>
+          <li><span class="editorial-arrow">→</span> <a href="#sec-pasos">Próximos pasos</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Share Buttons (Desktop) -->
+    <div class="share-buttons" id="shareButtons">
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.bppanalyticsanddesign.com/reporte-impacto/" target="_blank" rel="noopener noreferrer" aria-label="Compartir en LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <a href="https://twitter.com/intent/tweet?url=https://www.bppanalyticsanddesign.com/reporte-impacto/&text=Impacto%20de%20la%20ca%C3%ADda%20de%20la%20natalidad%20en%20las%20matr%C3%ADculas%20escolares" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <a href="mailto:?subject=Reporte%20de%20Impacto%20-%20BPP&body=Te%20comparto%20este%20reporte%20sobre%20el%20impacto%20de%20la%20ca%C3%ADda%20de%20la%20natalidad:%20https://www.bppanalyticsanddesign.com/reporte-impacto/" aria-label="Compartir por email">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+      </a>
+    </div>
+
     <!-- HERO DEL REPORTE -->
     <section class="hero-section section-wide">
+      <!-- Hero Background Pattern -->
+      <svg class="hero-background-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMaxYMid slice">
+        <defs>
+          <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ce7352;stop-opacity:0.4" />
+            <stop offset="100%" style="stop-color:#d4845e;stop-opacity:0.1" />
+          </linearGradient>
+        </defs>
+        <!-- Línea descendente representando caída de natalidad -->
+        <path d="M 50 100 Q 200 150, 350 250 T 750 500" stroke="url(#lineGradient)" stroke-width="3" fill="none" opacity="0.6">
+          <animate attributeName="stroke-dasharray" from="0 1000" to="1000 0" dur="3s" fill="freeze" />
+        </path>
+        <!-- Puntos de datos -->
+        <circle cx="50" cy="100" r="4" fill="#ce7352" opacity="0.5">
+          <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="350" cy="250" r="4" fill="#ce7352" opacity="0.5">
+          <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" begin="0.5s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="650" cy="450" r="4" fill="#ce7352" opacity="0.5">
+          <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" begin="1s" repeatCount="indefinite" />
+        </circle>
+        <!-- Grid sutil de fondo -->
+        <g opacity="0.08" stroke="#ce7352" stroke-width="1">
+          <line x1="0" y1="150" x2="800" y2="150" />
+          <line x1="0" y1="300" x2="800" y2="300" />
+          <line x1="0" y1="450" x2="800" y2="450" />
+          <line x1="200" y1="0" x2="200" y2="600" />
+          <line x1="400" y1="0" x2="400" y2="600" />
+          <line x1="600" y1="0" x2="600" y2="600" />
+        </g>
+      </svg>
+
       <p class="report-label">ANÁLISIS ESTRATÉGICO · 2025</p>
       <h1>Impacto de la caída de la natalidad en las matrículas escolares</h1>
       <p class="hero-sub">
@@ -185,6 +289,11 @@
           No solo entender el problema, sino actuar antes que sea tarde.
         </p>
       </article>
+
+      <!-- Pull Quote -->
+      <div class="pull-quote">
+        <p>Las escuelas que se preparan hoy lideran. Las que esperan, cierran.</p>
+      </div>
 
       <!-- STRIP DE KPIs -->
       <article class="actividad-card actividad-card--light">
@@ -252,13 +361,15 @@
           Es la caída estimada de la matrícula primaria entre 2023 y 2035 si
           no hacés nada diferente a lo que hacés hoy.
         </p>
-        <p><strong>Lo que esto significa para vos:</strong></p>
-        <ul class="impact-list">
-          <li>→ Cursos más chicos cada año</li>
-          <li>→ Aulas subutilizadas</li>
-          <li>→ Más presión sobre costos fijos</li>
-          <li>→ Necesidad de subir cuotas o ajustar gastos</li>
-        </ul>
+        <div class="highlight-box">
+          <p><strong>Lo que esto significa para vos:</strong></p>
+          <ul class="impact-list">
+            <li>→ Cursos más chicos cada año</li>
+            <li>→ Aulas subutilizadas</li>
+            <li>→ Más presión sobre costos fijos</li>
+            <li>→ Necesidad de subir cuotas o ajustar gastos</li>
+          </ul>
+        </div>
         <div class="impact-chart">
           <picture>
             <source srcset="../img/CuadroMatriculaOptima.webp 1174w" type="image/webp">
@@ -348,69 +459,78 @@
       </article>
 
       <div class="report-scenarios-grid">
-        <!-- Escenario 1 -->
-        <article class="actividad-card actividad-card--light" tabindex="0">
-          <div class="impact-top">
-            <span class="impact-icon" aria-hidden="true">⚪</span>
+        <!-- Escenario 1 - Accordion -->
+        <div class="scenario-accordion">
+          <button class="scenario-accordion-header" aria-expanded="false" aria-controls="scenario1Content">
+            <span class="icon">⚪</span>
             <h3>3.1. Escenario tendencial — sostener con lo mínimo</h3>
+            <span class="toggle-icon">▼</span>
+          </button>
+          <div class="scenario-accordion-content" id="scenario1Content">
+            <p>
+              El colegio mantiene su propuesta actual con pocos cambios. Se realizan ajustes graduales para adaptarse a la disminución de matrícula, pero sin transformaciones profundas.
+            </p>
+            <p><strong>CUÁNDO TIENE SENTIDO:</strong><br>Si tu matrícula actual es sostenible por 5-7 años más y preferís
+            cambios graduales a transformaciones abruptas.</p>
+            <p><strong>QUÉ PASA SI ELEGÍS ESTE CAMINO:</strong></p>
+            <ul class="impact-list">
+              <li>Matrícula en descenso progresivo, cursos más chicos, posible cierre de divisiones</li>
+              <li>Uso de infraestructura por debajo de capacidad</li>
+              <li>Mayor presión financiera, dependencia de aumentos de cuota</li>
+              <li>Dificultad para incorporar nuevas familias o alcanzar nuevos perfiles</li>
+            </ul>
           </div>
-          <p>
-            El colegio mantiene su propuesta actual con pocos cambios. Se realizan ajustes graduales para adaptarse a la disminución de matrícula, pero sin transformaciones profundas.
-          </p>
-          <p><strong>CUÁNDO TIENE SENTIDO:</strong><br>Si tu matrícula actual es sostenible por 5-7 años más y preferís
-          cambios graduales a transformaciones abruptas.</p>
-          <p><strong>QUÉ PASA SI ELEGÍS ESTE CAMINO:</strong></p>
-          <ul class="impact-list">
-            <li>Matrícula en descenso progresivo, cursos más chicos, posible cierre de divisiones</li>
-            <li>Uso de infraestructura por debajo de capacidad</li>
-            <li>Mayor presión financiera, dependencia de aumentos de cuota</li>
-            <li>Dificultad para incorporar nuevas familias o alcanzar nuevos perfiles</li>
-          </ul>
-        </article>
+        </div>
 
-        <!-- Escenario 2 -->
-        <article class="actividad-card actividad-card--light" tabindex="0">
-          <div class="impact-top">
-            <span class="impact-icon" aria-hidden="true">🟠</span>
+        <!-- Escenario 2 - Accordion -->
+        <div class="scenario-accordion">
+          <button class="scenario-accordion-header" aria-expanded="false" aria-controls="scenario2Content">
+            <span class="icon">🟠</span>
             <h3>3.2. Escenario transformador — reconvertir para sostener</h3>
+            <span class="toggle-icon">▼</span>
+          </button>
+          <div class="scenario-accordion-content" id="scenario2Content">
+            <p>
+              El colegio impulsa cambios significativos en su propuesta educativa y en la forma de vincularse con la comunidad, manteniendo su identidad institucional.
+            </p>
+            <p><strong>CUÁNDO TIENE SENTIDO:</strong><br>Si ves señales de caída próxima y querés adelantarte con innovación
+            que preserve tu esencia pero expanda tu alcance.</p>
+            <p><strong>QUÉ IMPLICA:</strong></p>
+            <ul class="impact-list">
+              <li>Revisión de formatos pedagógicos y curriculares.</li>
+              <li>Incorporación de talleres, actividades extracurriculares y servicios complementarios.</li>
+              <li>Uso más eficiente de la infraestructura en distintos horarios.</li>
+              <li>Apertura a alianzas con otras instituciones y organizaciones locales.</li>
+            </ul>
           </div>
-          <p>
-            El colegio impulsa cambios significativos en su propuesta educativa y en la forma de vincularse con la comunidad, manteniendo su identidad institucional.
-          </p>
-          <p><strong>CUÁNDO TIENE SENTIDO:</strong><br>Si ves señales de caída próxima y querés adelantarte con innovación
-          que preserve tu esencia pero expanda tu alcance.</p>
-          <p><strong>QUÉ IMPLICA:</strong></p>
-          <ul class="impact-list">
-            <li>Revisión de formatos pedagógicos y curriculares.</li>
-            <li>Incorporación de talleres, actividades extracurriculares y servicios complementarios.</li>
-            <li>Uso más eficiente de la infraestructura en distintos horarios.</li>
-            <li>Apertura a alianzas con otras instituciones y organizaciones locales.</li>
-          </ul>
-        </article>
+        </div>
 
-        <!-- Escenario 3 -->
-        <article class="actividad-card actividad-card--light" tabindex="0">
-          <div class="impact-top">
-            <span class="impact-icon" aria-hidden="true">🟢</span>
+        <!-- Escenario 3 - Accordion -->
+        <div class="scenario-accordion">
+          <button class="scenario-accordion-header" aria-expanded="false" aria-controls="scenario3Content">
+            <span class="icon">🟢</span>
             <h3>3.3. Escenario disruptivo — expandir la misión educativa</h3>
+            <span class="toggle-icon">▼</span>
+          </button>
+          <div class="scenario-accordion-content" id="scenario3Content">
+            <p>
+              El colegio se posiciona como un nodo educativo y comunitario ampliado. A partir de su identidad religiosa, diseña nuevas formas de acompañar trayectorias vitales y formativas en distintas etapas de la vida.
+            </p>
+            <p><strong>CUÁNDO TIENE SENTIDO:</strong><br>Si tenés capacidad de liderazgo para transformación profunda y comunidad
+            dispuesta a explorar nuevas formas de hacer escuela.</p>
+            <p><strong>QUÉ IMPLICA:</strong></p>
+            <ul class="impact-list">
+              <li>Propuestas educativas flexibles para infancias, adolescentes, adultos y personas mayores.</li>
+              <li>Formación continua, actividades culturales y espacios comunitarios.</li>
+              <li>Uso intensivo de infraestructura, incluyendo horarios extendidos y fines de semana.</li>
+              <li>Modelo de sostenibilidad basado en múltiples fuentes de ingreso y alianzas estratégicas.</li>
+            </ul>
+            <p>
+              <strong>NO SIGNIFICA</strong> abandonar la escuela actual, sino ampliar tu alcance y misión,
+              combinando educación formal, acompañamiento comunitario y espacios de encuentro.
+            </p>
           </div>
-          <p>
-            El colegio se posiciona como un nodo educativo y comunitario ampliado. A partir de su identidad religiosa, diseña nuevas formas de acompañar trayectorias vitales y formativas en distintas etapas de la vida.
-          </p>
-          <p><strong>CUÁNDO TIENE SENTIDO:</strong><br>Si tenés capacidad de liderazgo para transformación profunda y comunidad
-          dispuesta a explorar nuevas formas de hacer escuela.</p>
-          <p><strong>QUÉ IMPLICA:</strong></p>
-          <ul class="impact-list">
-            <li>Propuestas educativas flexibles para infancias, adolescentes, adultos y personas mayores.</li>
-            <li>Formación continua, actividades culturales y espacios comunitarios.</li>
-            <li>Uso intensivo de infraestructura, incluyendo horarios extendidos y fines de semana.</li>
-            <li>Modelo de sostenibilidad basado en múltiples fuentes de ingreso y alianzas estratégicas.</li>
-          </ul>
-          <p>
-            <strong>NO SIGNIFICA</strong> abandonar la escuela actual, sino ampliar tu alcance y misión,
-            combinando educación formal, acompañamiento comunitario y espacios de encuentro.
-          </p>
-        </article>
+        </div>
       </div>
     </section>
 
@@ -539,6 +659,14 @@
       </p>
     </section>
   </main>
+
+  <!-- Sticky Download Bar (Mobile) -->
+  <div class="sticky-download-bar" id="stickyDownloadBar">
+    <div class="download-buttons">
+      <a href="docs/impacto-caida-natalidad-2025.pdf" download>Descargar informe</a>
+      <a href="docs/estudio-demografico-regional.pdf" download>Estudio regional</a>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer role="contentinfo">
