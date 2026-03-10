@@ -209,32 +209,6 @@ nav.nav--scrolled {
     z-index: 2;
 }
 
-/* Corner brackets asimétricos */
-.hero-bracket {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    pointer-events: none;
-    z-index: 3;
-}
-
-.hero-bracket--tl {
-    top: 2rem;
-    left: 2rem;
-    border-top: 3px solid rgba(206, 115, 82, 0.5);
-    border-left: 3px solid rgba(206, 115, 82, 0.5);
-    filter: drop-shadow(0 0 12px rgba(206, 115, 82, 0.3));
-}
-
-.hero-bracket--br {
-    bottom: 2rem;
-    right: 2rem;
-    border-bottom: 3px solid rgba(206, 115, 82, 0.5);
-    border-right: 3px solid rgba(206, 115, 82, 0.5);
-    filter: drop-shadow(0 0 12px rgba(206, 115, 82, 0.3));
-}
-
-
 
 .hero-content {
     max-width: 60vw;
@@ -1224,21 +1198,6 @@ img {
         display: none;
     }
 
-    .hero-bracket {
-        width: 60px;
-        height: 60px;
-    }
-
-    .hero-bracket--tl {
-        top: 1rem;
-        left: 1rem;
-    }
-
-    .hero-bracket--br {
-        bottom: 1rem;
-        right: 1rem;
-    }
-
     .section {
         padding: 40px 1.5rem;
     }
@@ -1339,21 +1298,6 @@ img {
 @media (max-width: 360px) {
     .hero {
         padding: 100px 1rem 60px;
-    }
-
-    .hero-bracket {
-        width: 48px;
-        height: 48px;
-    }
-
-    .hero-bracket--tl {
-        top: 0.75rem;
-        left: 0.75rem;
-    }
-
-    .hero-bracket--br {
-        bottom: 0.75rem;
-        right: 0.75rem;
     }
 
     .tagline {
