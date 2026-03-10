@@ -295,7 +295,7 @@ nav.nav--scrolled {
 
 .cta-button:hover {
     background: var(--color-accent);
-    color: #0a0a0a;
+    color: var(--color-text);
     transform: scale(1.02);
 }
 
