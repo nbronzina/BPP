@@ -247,8 +247,26 @@ nav {
     z-index: 3;
 }
 
+/* Label vertical derecho */
+.hero-label-vertical {
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.25);
+    pointer-events: none;
+    z-index: 3;
+    white-space: nowrap;
+}
+
 .hero-content {
-    max-width: 900px;
+    max-width: 60vw;
+    padding-left: 4rem;
     text-align: left;
     position: relative;
     z-index: 3;
@@ -1223,6 +1241,15 @@ img {
     .hero {
         padding: 100px 2rem 60px;
         justify-content: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding-left: 0;
+    }
+
+    .hero-label-vertical {
+        display: none;
     }
 
     .hero-bracket {
