@@ -1527,7 +1527,7 @@ img {
    =============================== */
 
 .impact-card {
-  background: var(--color-background-card, #0a0a0a);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--color-border-card, #2A2A2A);
   border-radius: 12px;
   padding: 2rem;
@@ -1588,7 +1588,7 @@ img {
 
 /* Variante sin animación hover (intro + descarga) */
 .card-static {
-  background: var(--color-background-card, #0a0a0a);
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 12px;
   padding: 2rem;
   max-width: 900px;
@@ -1636,7 +1636,7 @@ img {
 /* === ESTILO REPORTE IMPACTO (alineado con index) === */
 
 .actividad-card--light {
-  background: #0a0a0a;
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(203, 112, 67, 0.45);
   padding: 2rem;
   border-radius: 14px;
@@ -1848,7 +1848,7 @@ img {
 }
 
 .reporte-page .actividad-card--light {
-    background: var(--color-bg-light);
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(203, 112, 67, 0.4);
     border-radius: 12px;
 }
@@ -2011,7 +2011,7 @@ footer .footer-section p:last-child {
 
 .clientes-section {
   padding: 6rem 2rem;
-  background: var(--color-bg);
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
