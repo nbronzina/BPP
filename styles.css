@@ -78,21 +78,6 @@ body::before {
     z-index: 0;
 }
 
-/* Vignette perimetral global */
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(
-        ellipse at center,
-        transparent 0%,
-        rgba(10, 10, 10, 0.4) 80%,
-        rgba(10, 10, 10, 0.8) 100%
-    );
-    pointer-events: none;
-    z-index: 0;
-}
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
