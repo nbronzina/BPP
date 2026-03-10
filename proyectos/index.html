@@ -57,11 +57,12 @@
 <body>
 
     <!-- Skip link -->
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <a href="#main-content" class="skip-link" aria-label="Saltar navegación e ir directamente al contenido principal">Saltar al contenido principal</a>
 
     <!-- Navigation -->
     <nav role="navigation" aria-label="Navegación principal de BPP Analytics & Design">
         <div class="nav-container">
+            <!-- Wordmark (izquierda) -->
             <div class="logo">
                 <a href="../#hero" class="nav-wordmark">BPP Analytics &amp; Design</a>
             </div>
@@ -95,19 +96,10 @@
     <!-- Main Content -->
     <main role="main" id="main-content">
 
-    <!-- Hero Section -->
-    <section id="hero-hechos" class="section" style="background-color: #0a0a0a; padding-top: 140px; padding-bottom: 80px;" aria-labelledby="proyectos-heading">
-        <div class="container">
-            <p class="section-label" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: #ce7352; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem; font-weight: 500;">HECHOS</p>
-            <h1 id="proyectos-heading" style="font-family: 'Work Sans', sans-serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 700; color: #ffffff; opacity: 1; margin-bottom: 1.5rem; line-height: 1.1;">Hechos</h1>
-            <p class="subtitle" style="font-family: 'Work Sans', sans-serif; font-size: 1rem; font-weight: 400; color: rgba(255, 255, 255, 0.6); max-width: 600px; line-height: 1.7;">
-                Diseño de futuros, investigación especulativa y análisis estratégico aplicado
-            </p>
-        </div>
-    </section>
-
-    <!-- Hechos Listing Section -->
-    <section id="proyectos-completos" class="section section-wide" aria-label="Lista de proyectos y hechos">
+    <!-- Hechos Section -->
+    <section id="actividades" class="section" aria-labelledby="proyectos-heading" style="padding-top: 140px;">
+        <div class="actividades-label">HECHOS</div>
+        <h1 id="proyectos-heading" class="sr-only">Hechos</h1>
 
         <div class="actividades-container">
             <!-- Entrada 1: Otros Futuros - IED Madrid -->
