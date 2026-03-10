@@ -767,7 +767,7 @@ footer {
 
 .form-submit:hover {
     background: var(--color-accent);
-    color: #0a0a0a;
+    color: var(--color-text);
 }
 
 .form-submit:disabled {
@@ -2519,7 +2519,7 @@ img {
 .report-back-link:hover,
 .report-back-link:focus-visible {
   background: var(--color-accent);
-  color: #0a0a0a;
+  color: var(--color-text);
   transform: translateX(-4px);
 }
 
