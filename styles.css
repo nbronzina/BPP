@@ -418,8 +418,12 @@ nav.nav--scrolled {
    ========================= */
 
 .services-header {
-    text-align: center;
-    margin-bottom: 5rem;
+    text-align: left;
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
 }
 
 .services-header h2 {
@@ -672,7 +676,7 @@ footer {
 }
 
 .contact-form-header {
-    text-align: center;
+    text-align: left;
     margin-bottom: 3rem;
 }
 
@@ -687,7 +691,6 @@ footer {
     font-size: 1.1rem;
     color: var(--color-text-secondary);
     max-width: 600px;
-    margin: 0 auto;
 }
 
 .contact-form {
@@ -1676,7 +1679,7 @@ img {
     padding: calc(var(--spacing-section) + 60px) 2rem 40px;
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
 }
 
 .hero-section h1 {
@@ -1690,7 +1693,6 @@ img {
     font-size: 1.05rem;
     color: var(--color-text-secondary);
     max-width: 900px;
-    margin: 0 auto;
 }
 
 .hero-sub-secondary {
@@ -1819,7 +1821,7 @@ img {
     padding: calc(var(--spacing-section) + 60px) 2rem 40px;
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
 }
 
 .reporte-page .hero-section h1 {
@@ -1833,7 +1835,6 @@ img {
     font-size: 1.05rem;
     color: var(--color-text-secondary);
     max-width: 900px;
-    margin: 0 auto;
 }
 
 .reporte-page .content-section {
