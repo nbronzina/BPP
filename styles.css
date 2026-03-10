@@ -2031,6 +2031,15 @@ img {
   height: 80px;
 }
 
+/* Logo CESBA: invertir para mostrarlo blanco */
+.logo-item img[alt*="CESBA"] {
+  filter: brightness(0) invert(1) grayscale(100%);
+}
+
+.logo-item:hover img[alt*="CESBA"] {
+  filter: brightness(0) invert(1) grayscale(0%);
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .clientes-section {
