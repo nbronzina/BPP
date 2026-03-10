@@ -504,5 +504,192 @@ document.addEventListener("DOMContentLoaded", function () {
         trackEvent("PDF_descarga", { tipo: "estudio_regional" });
       });
     }
+
+    // =====================================================
+    // OPTIMIZACIONES REPORTE DE IMPACTO
+    // -----------------------------------------------------
+    // Reading progress bar, sticky TOC, mobile TOC,
+    // scenario accordions, share buttons, sticky download bar
+    // =====================================================
+
+    // 1. Reading Progress Bar
+    const progressBar = document.getElementById("readingProgressBar");
+    if (progressBar) {
+      const updateProgressBar = () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const progress = (scrollTop / documentHeight) * 100;
+        progressBar.style.width = progress + "%";
+      };
+
+      window.addEventListener("scroll", updateProgressBar);
+      updateProgressBar();
+    }
+
+    // 2. Sticky TOC (Desktop)
+    const stickyToc = document.getElementById("stickyToc");
+    const shareButtons = document.getElementById("shareButtons");
+    if (stickyToc || shareButtons) {
+      const handleStickyElements = () => {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        const showThreshold = 400; // Show after scrolling 400px
+
+        if (stickyToc) {
+          if (scrollPosition > showThreshold) {
+            stickyToc.classList.add("visible");
+          } else {
+            stickyToc.classList.remove("visible");
+          }
+        }
+
+        if (shareButtons) {
+          if (scrollPosition > showThreshold) {
+            shareButtons.classList.add("visible");
+          } else {
+            shareButtons.classList.remove("visible");
+          }
+        }
+      };
+
+      window.addEventListener("scroll", handleStickyElements);
+      handleStickyElements();
+
+      // Highlight active section in TOC
+      if (stickyToc) {
+        const tocLinks = stickyToc.querySelectorAll("a");
+        const sections = document.querySelectorAll("section[id]");
+
+        const highlightTocLink = () => {
+          let current = "";
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 200) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          tocLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + current) {
+              link.classList.add("active");
+            }
+          });
+        };
+
+        window.addEventListener("scroll", highlightTocLink);
+        highlightTocLink();
+      }
+    }
+
+    // 3. Mobile TOC Toggle
+    const mobileTocBtn = document.getElementById("mobileTocBtn");
+    const mobileTocOverlay = document.getElementById("mobileTocOverlay");
+    const closeMobileToc = document.getElementById("closeMobileToc");
+
+    if (mobileTocBtn && mobileTocOverlay) {
+      mobileTocBtn.addEventListener("click", () => {
+        mobileTocOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+        trackEvent("Mobile_TOC_abierto");
+      });
+
+      const closeToc = () => {
+        mobileTocOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      };
+
+      if (closeMobileToc) {
+        closeMobileToc.addEventListener("click", closeToc);
+      }
+
+      mobileTocOverlay.addEventListener("click", (e) => {
+        if (e.target === mobileTocOverlay) {
+          closeToc();
+        }
+      });
+
+      // Close on link click
+      mobileTocOverlay.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeToc);
+      });
+    }
+
+    // 4. Scenario Accordions
+    const accordionHeaders = document.querySelectorAll(".scenario-accordion-header");
+    if (accordionHeaders.length) {
+      accordionHeaders.forEach((header) => {
+        header.addEventListener("click", () => {
+          const isActive = header.classList.contains("active");
+          const content = header.nextElementSibling;
+          const scenarioId = content.getAttribute("id");
+
+          // Close all other accordions (optional - remove if you want multiple open)
+          // accordionHeaders.forEach(h => {
+          //   if (h !== header) {
+          //     h.classList.remove("active");
+          //     h.setAttribute("aria-expanded", "false");
+          //     h.nextElementSibling.classList.remove("active");
+          //   }
+          // });
+
+          // Toggle current accordion
+          if (isActive) {
+            header.classList.remove("active");
+            header.setAttribute("aria-expanded", "false");
+            content.classList.remove("active");
+          } else {
+            header.classList.add("active");
+            header.setAttribute("aria-expanded", "true");
+            content.classList.add("active");
+            trackEvent("Escenario_expandido", { id: scenarioId });
+          }
+        });
+      });
+    }
+
+    // 5. Sticky Download Bar (Mobile)
+    const stickyDownloadBar = document.getElementById("stickyDownloadBar");
+    if (stickyDownloadBar) {
+      const handleDownloadBar = () => {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercentage = (scrollPosition / documentHeight) * 100;
+
+        // Show after 30% scroll, hide when near bottom (95%)
+        if (scrollPercentage > 30 && scrollPercentage < 95) {
+          stickyDownloadBar.classList.add("visible");
+        } else {
+          stickyDownloadBar.classList.remove("visible");
+        }
+      };
+
+      window.addEventListener("scroll", handleDownloadBar);
+      handleDownloadBar();
+
+      // Track download bar clicks
+      stickyDownloadBar.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          trackEvent("Descarga_sticky_bar", {
+            archivo: link.textContent.trim()
+          });
+        });
+      });
+    }
+
+    // 6. Share Button Tracking
+    if (shareButtons) {
+      shareButtons.querySelectorAll("a").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const platform = btn.getAttribute("aria-label").includes("LinkedIn")
+            ? "linkedin"
+            : btn.getAttribute("aria-label").includes("Twitter")
+            ? "twitter"
+            : "email";
+          trackEvent("Compartir_reporte", { plataforma: platform });
+        });
+      });
+    }
   }
 });
