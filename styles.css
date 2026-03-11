@@ -270,7 +270,7 @@ nav.nav--scrolled {
 }
 
 .locations {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     color: rgba(255, 255, 255, 0.5);
     font-weight: 400;
@@ -304,7 +304,7 @@ nav.nav--scrolled {
 .cta-button,
 .pwa-install-btn {
     background: var(--color-accent);
-    color: #0f0f0f;
+    color: #0a0a0a;
     padding: 1rem 2.5rem;
 }
 
@@ -313,7 +313,7 @@ nav.nav--scrolled {
     background: var(--color-accent-bright);
     border-color: var(--color-accent-bright);
     transform: scale(1.02);
-    color: #0f0f0f;
+    color: #0a0a0a;
 }
 
 /* Variante Secondary (outlined) - Acciones secundarias */
@@ -329,7 +329,7 @@ nav.nav--scrolled {
 .btn-download:hover,
 .pwa-dismiss-btn:hover {
     background: var(--color-accent);
-    color: #0f0f0f;
+    color: #0a0a0a;
     transform: scale(1.02);
 }
 
@@ -402,7 +402,7 @@ nav.nav--scrolled {
 }
 
 .about-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -494,7 +494,7 @@ nav.nav--scrolled {
 .about-cta,
 .services-cta-link,
 .actividades-cta-link {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     color: var(--color-accent);
     text-decoration: none;
@@ -521,7 +521,7 @@ nav.nav--scrolled {
 }
 
 .services-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -536,7 +536,7 @@ nav.nav--scrolled {
 }
 
 .service-category {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     opacity: 0.5;
@@ -610,14 +610,14 @@ footer {
 }
 
 .footer-copy {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: 0.65rem;
     color: var(--color-text);
     opacity: 0.3;
 }
 
 .footer-link {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: 0.65rem;
     color: var(--color-text);
     text-decoration: none;
@@ -626,7 +626,8 @@ footer {
 }
 
 .footer-link:hover {
-    opacity: 0.7;
+    opacity: 1;
+    color: #ce7352;
 }
 
 .footer-link:focus-visible {
@@ -721,7 +722,7 @@ footer {
 }
 
 .contact-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -773,7 +774,7 @@ footer {
 }
 
 .contact-city {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     color: var(--color-accent);
@@ -782,7 +783,7 @@ footer {
 }
 
 .contact-street {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     color: var(--color-text);
     opacity: 0.4;
@@ -800,7 +801,7 @@ footer {
 }
 
 .form-group label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -874,7 +875,7 @@ footer {
    ========================= */
 
 .actividades-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -924,7 +925,7 @@ footer {
 }
 
 .actividad-meta {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     margin-bottom: 0.75rem;
@@ -964,7 +965,7 @@ footer {
 }
 
 .actividad-link {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     color: var(--color-accent);
     opacity: 0.7;
@@ -996,7 +997,7 @@ footer {
 }
 
 .equipo-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1049,7 +1050,7 @@ footer {
 }
 
 .perfil-tagline {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     color: var(--color-accent);
     text-transform: uppercase;
@@ -1159,7 +1160,7 @@ img {
     top: -100px;
     left: 0;
     background: var(--color-accent);
-    color: #0f0f0f;
+    color: #0a0a0a;
     padding: 1rem 2rem;
     z-index: var(--z-modal);
     font-weight: 600;
@@ -1800,7 +1801,7 @@ img {
 .legal-page .back-link:hover,
 .legal-page .back-link:focus-visible {
   background: var(--color-accent);
-  color: #0f0f0f;
+  color: #0a0a0a;
 }
 
 /* Estilo de la fecha */
@@ -1827,7 +1828,7 @@ img {
 }
 
 .reporte-page .report-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     color: var(--color-accent);
     text-transform: uppercase;
@@ -1854,7 +1855,7 @@ img {
 }
 
 .reporte-page .report-tags {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     opacity: 0.5;
@@ -2002,8 +2003,8 @@ img {
 
 .legal-page .footer-link:hover,
 .reporte-page .footer-link:hover {
-  color: var(--color-text);
-  opacity: 0.7;
+  color: #ce7352;
+  opacity: 1;
 }
 
 /* Excepción: restaurar estilos normales del navbar en páginas reporte/legal */
@@ -2036,7 +2037,7 @@ img {
 .reporte-page .cta-button,
 .legal-page .cta-button {
   background: var(--color-accent);
-  color: #0f0f0f;
+  color: #0a0a0a;
   padding: 1rem 2.5rem;
   border: 2px solid var(--color-accent);
 }
@@ -2047,13 +2048,13 @@ img {
 .legal-page .cta-button:focus-visible {
   background: var(--color-accent-bright);
   border-color: var(--color-accent-bright);
-  color: #0f0f0f;
+  color: #0a0a0a;
   transform: scale(1.02);
 }
 
 .reporte-page .cta-button:visited,
 .legal-page .cta-button:visited {
-  color: #0f0f0f;
+  color: #0a0a0a;
 }
 
 /* ──────────────────────────────────────────────
@@ -2156,7 +2157,7 @@ img {
 .mobile-toc-btn svg {
   width: 24px;
   height: 24px;
-  fill: #0f0f0f;
+  fill: #0a0a0a;
 }
 
 /* Mobile TOC Overlay */
@@ -2446,7 +2447,7 @@ img {
 }
 
 .share-buttons a:hover svg {
-  fill: #0f0f0f;
+  fill: #0a0a0a;
 }
 
 /* Sticky Download Button (Mobile) */
@@ -2481,7 +2482,7 @@ img {
   text-align: center;
   padding: 0.75rem 1rem;
   background: var(--color-accent);
-  color: #0f0f0f;
+  color: #0a0a0a;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
@@ -2618,7 +2619,7 @@ img {
 }
 
 .clientes-label {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
   font-size: var(--font-size-sm);
   text-transform: uppercase;
   letter-spacing: 0.08em;
