@@ -2725,11 +2725,11 @@ img {
 }
 
 /* Logo CESBA: invertir para mostrarlo blanco */
-.logo-item img[alt*="CESBA"] {
+.logo-item img[src*="logo-cesba"] {
   filter: brightness(0) invert(1) grayscale(100%);
 }
 
-.logo-item:hover img[alt*="CESBA"] {
+.logo-item:hover img[src*="logo-cesba"] {
   filter: brightness(0) invert(1) grayscale(0%);
 }
 
@@ -2752,9 +2752,9 @@ img {
     height: 38px;
   }
 
-  .logo-item img[alt*="ITBA"],
-  .logo-item img[alt*="Dassen"],
-  .logo-item img[alt*="Olam"] {
+  .logo-item img[src*="EscInn"],
+  .logo-item img[src*="dassen"],
+  .logo-item img[src*="olamestudio"] {
     height: 52px;
   }
 }
