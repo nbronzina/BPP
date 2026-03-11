@@ -304,7 +304,7 @@ nav.nav--scrolled {
 .cta-button,
 .pwa-install-btn {
     background: var(--color-accent);
-    color: #0f0f0f;
+    color: #0a0a0a;
     padding: 1rem 2.5rem;
 }
 
@@ -313,7 +313,7 @@ nav.nav--scrolled {
     background: var(--color-accent-bright);
     border-color: var(--color-accent-bright);
     transform: scale(1.02);
-    color: #0f0f0f;
+    color: #0a0a0a;
 }
 
 /* Variante Secondary (outlined) - Acciones secundarias */
@@ -329,7 +329,7 @@ nav.nav--scrolled {
 .btn-download:hover,
 .pwa-dismiss-btn:hover {
     background: var(--color-accent);
-    color: #0f0f0f;
+    color: #0a0a0a;
     transform: scale(1.02);
 }
 
@@ -1159,7 +1159,7 @@ img {
     top: -100px;
     left: 0;
     background: var(--color-accent);
-    color: #0f0f0f;
+    color: #0a0a0a;
     padding: 1rem 2rem;
     z-index: var(--z-modal);
     font-weight: 600;
@@ -1800,7 +1800,7 @@ img {
 .legal-page .back-link:hover,
 .legal-page .back-link:focus-visible {
   background: var(--color-accent);
-  color: #0f0f0f;
+  color: #0a0a0a;
 }
 
 /* Estilo de la fecha */
@@ -2036,7 +2036,7 @@ img {
 .reporte-page .cta-button,
 .legal-page .cta-button {
   background: var(--color-accent);
-  color: #0f0f0f;
+  color: #0a0a0a;
   padding: 1rem 2.5rem;
   border: 2px solid var(--color-accent);
 }
@@ -2047,13 +2047,13 @@ img {
 .legal-page .cta-button:focus-visible {
   background: var(--color-accent-bright);
   border-color: var(--color-accent-bright);
-  color: #0f0f0f;
+  color: #0a0a0a;
   transform: scale(1.02);
 }
 
 .reporte-page .cta-button:visited,
 .legal-page .cta-button:visited {
-  color: #0f0f0f;
+  color: #0a0a0a;
 }
 
 /* ──────────────────────────────────────────────
@@ -2156,7 +2156,7 @@ img {
 .mobile-toc-btn svg {
   width: 24px;
   height: 24px;
-  fill: #0f0f0f;
+  fill: #0a0a0a;
 }
 
 /* Mobile TOC Overlay */
@@ -2446,7 +2446,7 @@ img {
 }
 
 .share-buttons a:hover svg {
-  fill: #0f0f0f;
+  fill: #0a0a0a;
 }
 
 /* Sticky Download Button (Mobile) */
@@ -2481,7 +2481,7 @@ img {
   text-align: center;
   padding: 0.75rem 1rem;
   background: var(--color-accent);
-  color: #0f0f0f;
+  color: #0a0a0a;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
