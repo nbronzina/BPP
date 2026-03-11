@@ -1998,13 +1998,16 @@ img {
 
 /* Footer links should not be accent color in legal/reporte pages */
 .legal-page .footer-link,
-.reporte-page .footer-link {
-  color: var(--color-text);
+.reporte-page .footer-link,
+.legal-page .footer-link:visited,
+.reporte-page .footer-link:visited {
+  color: var(--color-text) !important;
+  opacity: 0.5;
 }
 
 .legal-page .footer-link:hover,
 .reporte-page .footer-link:hover {
-  color: #ce7352;
+  color: #ce7352 !important;
   opacity: 0.9;
 }
 
