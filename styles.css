@@ -20,6 +20,7 @@
 
     /* Typography - Base scale (fixed sizes) */
     --font-size-xs: 0.75rem;        /* 12px - muy pequeño */
+    --font-size-label: 0.75rem;     /* 12px - labels, badges */
     --font-size-sm: 0.875rem;       /* 14px - labels, metadata */
     --font-size-base: 1rem;         /* 16px - cuerpo principal */
     --font-size-md: 1.125rem;       /* 18px - texto destacado */
@@ -597,36 +598,36 @@ footer {
 
 .footer-brand {
     font-family: 'Work Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: var(--color-text);
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 .footer-separator {
     font-family: 'Work Sans', sans-serif;
     color: var(--color-text);
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .footer-copy {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     color: var(--color-text);
-    opacity: 0.3;
+    opacity: 0.5;
 }
 
 .footer-link {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     color: var(--color-text);
     text-decoration: none;
-    opacity: 0.3;
+    opacity: 0.5;
     transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .footer-link:hover {
-    opacity: 1;
+    opacity: 0.9;
     color: #ce7352;
 }
 
@@ -2004,7 +2005,7 @@ img {
 .legal-page .footer-link:hover,
 .reporte-page .footer-link:hover {
   color: #ce7352;
-  opacity: 1;
+  opacity: 0.9;
 }
 
 /* Excepción: restaurar estilos normales del navbar en páginas reporte/legal */
