@@ -121,7 +121,7 @@ nav {
     padding: 1.5rem 0;
     background-color: transparent;
     border-bottom: none;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 nav.nav--scrolled {
@@ -296,7 +296,7 @@ nav.nav--scrolled {
     text-decoration: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: all var(--transition-normal);
+    transition: background-color var(--transition-normal), color var(--transition-normal), border-color var(--transition-normal), transform var(--transition-normal);
     border: 2px solid var(--color-accent);
     text-align: center;
 }
@@ -688,7 +688,7 @@ footer {
     padding: 0.25rem 0.5rem;
     margin-left: 0.5rem;
     border-radius: 4px;
-    transition: all var(--transition-normal);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 .install-pwa-link:hover {
@@ -1114,7 +1114,7 @@ footer {
 a,
 button,
 img {
-    transition: all var(--transition-normal);
+    transition: opacity var(--transition-normal);
 }
 
 /* =========================
@@ -1835,7 +1835,7 @@ img {
   color: var(--color-accent);
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .legal-page .back-link:hover,
@@ -2319,7 +2319,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.3s;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   margin-bottom: 0;
 }
 
@@ -2472,7 +2472,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   text-decoration: none;
 }
 
@@ -2601,7 +2601,7 @@ img {
   color: var(--color-accent);
   text-decoration: none;
   background: transparent;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease;
   min-height: 44px;
 }
 
@@ -2832,4 +2832,18 @@ img {
 
 .honeypot {
   display: none;
+}
+
+/* =========================
+   Accessibility: Reduce Motion
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
