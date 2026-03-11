@@ -4,7 +4,7 @@
 **Tech Stack**: Vanilla HTML/CSS/JS, Progressive Web App (PWA)
 **Build**: csso + terser for minification
 **Deploy**: GitHub Pages
-**Last Updated**: 2026-03-09
+**Last Updated**: 2026-03-11
 
 ---
 
@@ -27,7 +27,62 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 
 ---
 
-## 2. Architecture
+## 2. Claude Skills Available
+
+Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse antes de trabajar en diseño o código frontend:
+
+### Skills de Diseño y UX
+
+1. **frontend-design**
+   - Prevención de "AI slop" (estéticas genéricas generadas por IA)
+   - Tipografía distintiva (evitar Inter, Roboto, Space Grotesk)
+   - Selección de color y composición audaz
+   - Creación de atmósfera (gradientes, texturas, efectos)
+
+2. **ui-ux-pro-max**
+   - Base de datos con 50+ estilos, 161 paletas de color, 57 font pairings
+   - Sistema de razonamiento para matching producto-estilo-color
+   - Reglas de accesibilidad, performance, motion, navegación
+   - Búsqueda por dominio: `--design-system`, `--domain <ux|style|color|typography>`
+
+3. **bencium-innovative-ux-designer**
+   - Dirección creativa audaz con Design Thinking Protocol
+   - Pregunta primero (purpose, tone, constraints, differentiation)
+   - Luego comete BOLD: elige extremo estético y ejecuta con precisión
+   - Variante "innovative" con énfasis en composición no-predecible
+
+### Skills de Auditoría
+
+4. **web-design-guidelines**
+   - Auditoría automática contra 100+ reglas de Vercel Web Interface Guidelines
+   - Cubre accesibilidad (WCAG), performance (Core Web Vitals), UX patterns
+   - Fetch en vivo desde source URL: siempre actualizado
+   - Output terse: `file:line` format
+
+### Skills de Identidad
+
+5. **bpp-brand** *(SIEMPRE CARGAR ÚLTIMO - TIENE PRIORIDAD)*
+   - Identidad específica BPP: #ce7352 orange, dark backgrounds (#0a2540)
+   - Corner brackets, glow effects, editorial feel
+   - Voice: directo, first-person, practitioner-level (no académico, no corporativo)
+   - Pairing con frontend-design: dirección estética ya definida (refined dark editorial with warm orange accent)
+
+### Workflow Recomendado
+
+```bash
+# Al inicio de sesión de diseño/frontend:
+/frontend-design
+/ui-ux-pro-max
+/bencium-innovative-ux-designer
+/web-design-guidelines
+/bpp-brand  # ÚLTIMO - sobreescribe defaults genéricos
+```
+
+**IMPORTANTE**: `bpp-brand` define la dirección estética del proyecto. Cuando `frontend-design` o `bencium-innovative-ux-designer` pregunten por aesthetic direction, la respuesta es siempre: **"refined dark editorial with warm orange accent"**. Nunca derivar hacia defaults genéricos de AI (purple gradients, Inter font, glass morphism).
+
+---
+
+## 3. Architecture
 
 ### File Structure
 ```
@@ -58,7 +113,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 
 ---
 
-## 3. Development Workflow
+## 4. Development Workflow
 
 ### Making Changes
 1. **Edit source files**: `styles.css`, `main.js`, `sw.js` (never edit `.min.*` directly)
@@ -90,7 +145,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 
 ---
 
-## 4. Key Components
+## 5. Key Components
 
 ### Navigation
 - **Desktop**: Horizontal menu in header
@@ -122,7 +177,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 
 ---
 
-## 5. Brand Identity
+## 6. Brand Identity
 
 ### Color Palette
 ```css
@@ -174,7 +229,7 @@ These terms refer to the same section but use different wording intentionally �
 
 ---
 
-## 6. Code Style Guide
+## 7. Code Style Guide
 
 ### CSS Rules
 - **Custom properties**: Use variables for colors, spacing, breakpoints (defined in `:root`)
@@ -215,7 +270,7 @@ Uses sharp-cli for conversion, maintains quality.
 
 ---
 
-## 7. Known Patterns
+## 8. Known Patterns
 
 ### CSS Architecture
 - **Single source of truth**: CSS custom properties in `:root` for colors, spacing, breakpoints
