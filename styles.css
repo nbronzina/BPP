@@ -1012,20 +1012,21 @@ footer {
 }
 
 .equipo-perfil {
-    /* Perfil container */
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 0.25rem 1.5rem;
+    align-items: start;
 }
 
 .perfil-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
+    display: contents;
 }
 
 .perfil-photo {
-    display: inline-block;
-    width: 44px;
-    height: 44px;
+    grid-column: 1;
+    grid-row: 1 / 4;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
@@ -1041,9 +1042,11 @@ footer {
 }
 
 .perfil-name {
+    grid-column: 2;
+    grid-row: 1;
     font-family: 'Work Sans', sans-serif;
     font-size: var(--font-size-md);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-text);
     opacity: 1;
     margin: 0;
@@ -1051,17 +1054,20 @@ footer {
 }
 
 .perfil-tagline {
+    grid-column: 2;
+    grid-row: 2;
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: 0;
     opacity: 0.9;
 }
 
 .perfil-bio {
+    grid-column: 2;
+    grid-row: 3;
     font-family: 'Work Sans', sans-serif;
     font-size: var(--font-size-sm);
     font-weight: 400;
@@ -1352,6 +1358,35 @@ img {
 
     .equipo-content {
         grid-column: auto;
+    }
+
+    .equipo-perfil {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        gap: 0.75rem;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .perfil-photo {
+        grid-column: 1;
+        grid-row: 1;
+        margin: 0 auto;
+    }
+
+    .perfil-name {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .perfil-tagline {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .perfil-bio {
+        grid-column: 1;
+        grid-row: 4;
     }
 
     /* Actividades mobile: imagen arriba, texto abajo */
