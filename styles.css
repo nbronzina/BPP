@@ -2672,7 +2672,7 @@ img {
 }
 
 .logo-item img {
-  height: 64px;
+  max-height: 40px;
   width: auto;
   object-fit: contain;
   opacity: 0.4;
@@ -2685,11 +2685,40 @@ img {
   filter: grayscale(0%);
 }
 
-/* Logos específicos más grandes */
-.logo-item img[alt*="ITBA"],
-.logo-item img[alt*="Dassen"],
-.logo-item img[alt*="Olam"] {
-  height: 80px;
+/* Visual normalization by aspect ratio */
+
+/* Square/nearly square logos (ratio ≤ 1.5:1) */
+.logo-item img[src*="logo-cesba"],
+.logo-item img[src*="olamestudio"],
+.logo-item img[src*="manifiesto-bar"] {
+  max-height: 40px;
+  max-width: 40px;
+}
+
+/* Compact logos (ratio 1.5-2.5:1) */
+.logo-item img[src*="dassen"] {
+  max-height: 40px;
+  max-width: 65px;
+}
+
+/* Moderate logos (ratio 2.5-3.5:1) - baseline */
+.logo-item img[src*="lab-logo-coral"],
+.logo-item img[src*="EscInn"],
+.logo-item img[src*="hermanas-minimas"] {
+  max-height: 40px;
+}
+
+/* Wide logos (ratio 3.5-4.5:1) */
+.logo-item img[src*="otros-futuros"],
+.logo-item img[src*="comunicaciones-syp"],
+.logo-item img[src*="micelio"],
+.logo-item img[src*="Heated"] {
+  max-height: 35px;
+}
+
+/* Very wide logos (ratio > 4.5:1) */
+.logo-item img[src*="trace-logo"] {
+  max-height: 30px;
 }
 
 /* Logo CESBA: invertir para mostrarlo blanco */
