@@ -805,6 +805,15 @@ nav.nav--scrolled {
     background: rgba(206, 115, 82, 0.05);
 }
 
+.institutional-description {
+    font-family: 'Work Sans', sans-serif;
+    font-size: var(--font-size-sm);
+    opacity: 0.65;
+    line-height: 1.7;
+    margin-top: 1.25rem;
+    max-width: 60ch;
+}
+
 /* Studio identity badge */
 .studio-identity {
     margin-top: 2rem;
@@ -2049,6 +2058,12 @@ img {
     .trust-badge {
         font-size: 0.7rem;
         padding: 0.4rem 0.75rem;
+    }
+
+    .institutional-description {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-top: 1rem;
     }
 
     .identity-badge {
