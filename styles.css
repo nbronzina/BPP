@@ -76,11 +76,11 @@
     --line-height-heading: 1.2;
     --line-height-body: 1.8;  /* Increased for better readability */
 
-    /* Typography - Font families */
-    --font-display: 'Syne', sans-serif;  /* Distinctive display font for H1, H2 */
-    --font-heading: 'Work Sans', sans-serif;
-    --font-body: 'Work Sans', sans-serif;
-    --font-mono: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    /* Typography - Font families - Optimized for vision accessibility */
+    --font-display: 'Lexend Deca', sans-serif;  /* Display font for H1 only - improves reading speed */
+    --font-heading: 'Atkinson Hyperlegible', sans-serif;  /* Braille Institute - designed for low vision */
+    --font-body: 'Atkinson Hyperlegible', sans-serif;  /* Maximum readability for vision impairment */
+    --font-mono: 'IBM Plex Mono', Consolas, 'Courier New', monospace;  /* Code/metadata only */
 
     /* Borders & Shadows */
     --border-radius: 8px;
@@ -118,7 +118,7 @@ html {
 }
 
 body {
-    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text-light);
     line-height: var(--line-height-body);  /* 1.8 - improved readability */
@@ -230,7 +230,7 @@ nav.nav--scrolled {
 
 /* Wordmark textual (izquierda) */
 .nav-wordmark {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-weight: 600;
     font-size: var(--font-size-sm);
     color: rgba(255, 255, 255, 0.9);
@@ -426,7 +426,7 @@ nav.nav--scrolled {
 
 .data-label {
     fill: rgba(255, 255, 255, 0.7);
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     font-weight: 500;
     letter-spacing: 0.05em;
@@ -462,7 +462,7 @@ nav.nav--scrolled {
 }
 
 .network-map text {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 1rem;  /* 16px - improved readability */
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -522,7 +522,7 @@ nav.nav--scrolled {
 .pwa-dismiss-btn {
     display: inline-block;
     min-height: 44px;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-weight: 600;
     text-decoration: none;
     border-radius: 4px;
@@ -692,7 +692,7 @@ nav.nav--scrolled {
 }
 
 .about-headline {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-h2);
     font-weight: 700;
     color: var(--color-text);
@@ -708,7 +708,7 @@ nav.nav--scrolled {
 }
 
 .about-pain-list li {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     opacity: 0.75;  /* Increased from 0.55 for better contrast */
@@ -734,7 +734,7 @@ nav.nav--scrolled {
 }
 
 .about-purpose {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-h2);  /* Same size as "Sabemos lo que se siente" */
     font-weight: 600;
     opacity: 0.95;
@@ -743,7 +743,7 @@ nav.nav--scrolled {
 }
 
 .about-mission {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     opacity: 0.75;
@@ -808,7 +808,7 @@ nav.nav--scrolled {
 }
 
 .transformation-card p {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 500;
     opacity: 0.85;
@@ -844,7 +844,7 @@ nav.nav--scrolled {
 }
 
 .institutional-description {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-sm);
     opacity: 0.65;
     line-height: 1.7;
@@ -885,7 +885,7 @@ nav.nav--scrolled {
 }
 
 .identity-note {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-sm);
     opacity: 0.6;
     line-height: 1.6;
@@ -1018,7 +1018,7 @@ nav.nav--scrolled {
 
 .service-number {
     display: block;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 4rem;
     font-weight: 700;
     line-height: 1;
@@ -1037,7 +1037,7 @@ nav.nav--scrolled {
 }
 
 .service-title {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-h1);
     font-weight: 700;
     color: var(--color-text);
@@ -1047,7 +1047,7 @@ nav.nav--scrolled {
 }
 
 .service-lead {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-md);
     font-weight: 400;
     color: var(--color-text);
@@ -1105,7 +1105,7 @@ footer {
 }
 
 .footer-brand {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 1rem;  /* 16px - WCAG minimum */
     font-weight: 600;
     color: var(--color-text);
@@ -1113,7 +1113,7 @@ footer {
 }
 
 .footer-separator {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     color: var(--color-text);
     opacity: 0.4;
 }
@@ -1282,7 +1282,7 @@ footer {
 
 /* Contexto narrativo */
 .contact-context h2 {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-h2);
     font-weight: 700;
     color: var(--color-text);
@@ -1292,7 +1292,7 @@ footer {
 }
 
 .contact-context p {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text);
@@ -1360,7 +1360,7 @@ footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 0;
     color: rgba(255, 255, 255, 0.9);
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-base);
     padding: 0.6rem 0;
     width: 100%;
@@ -1511,7 +1511,7 @@ footer {
 }
 
 .proyectos-intro-headline {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-weight: 600;
     font-size: var(--font-size-h2);
     color: rgba(255, 255, 255, 0.95);
@@ -1534,7 +1534,7 @@ footer {
 }
 
 .proyectos-cta-headline {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-weight: 600;
     font-size: var(--font-size-h2);
     color: rgba(255, 255, 255, 0.95);
@@ -1630,7 +1630,7 @@ footer {
 }
 
 .actividad-entrada h3 {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-h3);
     font-weight: 700;
     color: var(--color-text);
@@ -1640,7 +1640,7 @@ footer {
 }
 
 .actividad-descripcion {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-sm);
     font-weight: 400;
     color: var(--color-text);
@@ -1732,7 +1732,7 @@ footer {
 .perfil-name {
     grid-column: 2;
     grid-row: 1;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-md);
     font-weight: 600;
     color: var(--color-text);
@@ -1756,7 +1756,7 @@ footer {
 .perfil-bio {
     grid-column: 2;
     grid-row: 3;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-sm);
     font-weight: 400;
     color: var(--color-text-secondary);
@@ -2592,7 +2592,7 @@ img {
   border-radius: 12px;
   padding: 2rem;
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  font-family: var(--font-family-base, 'Work Sans', system-ui, sans-serif);
+  font-family: var(--font-family-base, 'Atkinson Hyperlegible', system-ui, sans-serif);
   max-width: 900px;
   margin: 2rem auto;
 }
@@ -2750,7 +2750,7 @@ img {
 }
 
 .reporte-section h2 {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-h3);
     font-weight: 700;
     color: var(--color-text);
@@ -2760,7 +2760,7 @@ img {
 }
 
 .reporte-section h3 {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-h4);
     font-weight: 700;
     color: var(--color-text);
@@ -2771,7 +2771,7 @@ img {
 
 .reporte-section p,
 .reporte-section li {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text-secondary);
@@ -2893,7 +2893,7 @@ img {
 }
 
 .reporte-page .hero-section h1 {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: var(--font-size-h2);
     font-weight: 700;
     color: var(--color-text);
@@ -2931,7 +2931,7 @@ img {
 }
 
 .reporte-page .impact-number-hero {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
     color: var(--color-accent);
@@ -2976,7 +2976,7 @@ img {
 }
 
 .report-toc-list a {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
   font-size: var(--font-size-base);
   font-weight: 400;
   color: var(--color-text-secondary);
