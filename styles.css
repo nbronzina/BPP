@@ -863,22 +863,28 @@ footer {
 .install-pwa-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.3rem;
     background: none;
     border: none;
-    color: var(--color-accent);
-    font-size: var(--font-size-sm);
-    font-family: inherit;
     cursor: pointer;
-    padding: 0.25rem 0.5rem;
-    margin-left: 0.5rem;
-    border-radius: 4px;
-    transition: background-color var(--transition-normal), color var(--transition-normal);
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
 }
 
-.install-pwa-link:hover {
-    color: var(--color-accent-bright);
-    background: rgba(206, 115, 82, 0.1);
+/* Cuando está en el footer, hereda estilos de .footer-link */
+.footer-left .install-pwa-link {
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: var(--color-text);
+    opacity: 0.5;
+    transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-left .install-pwa-link:hover {
+    opacity: 0.9;
+    color: #ce7352;
+    transform: translateY(-1px);
 }
 
 .install-pwa-link:focus-visible {
@@ -887,8 +893,9 @@ footer {
 }
 
 .install-pwa-link svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
 /* =========================
