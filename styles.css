@@ -177,7 +177,7 @@ nav.nav--scrolled {
 .nav-container,
 .nav {
     width: 100%;
-    padding: 0 4rem;
+    padding: 0 6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -306,7 +306,7 @@ nav.nav--scrolled {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 120px 4rem 80px;
+    padding: 120px 6rem 80px;
     position: relative;
     background: transparent;
 }
@@ -614,7 +614,7 @@ nav.nav--scrolled {
    ========================= */
 
 .section {
-    padding: var(--spacing-section) 8rem var(--spacing-section) 12rem;
+    padding: var(--spacing-section) 6rem;
 }
 
 .section-wide {
@@ -634,7 +634,7 @@ nav.nav--scrolled {
     grid-template-columns: 1fr 180px;
     gap: 0 3rem;
     align-items: start;
-    padding: 0 8rem 0 12rem;
+    padding: 0 6rem;
 }
 
 /* Section labels - Opción E (Combo): mayor visibilidad + border accent */
@@ -920,7 +920,7 @@ nav.nav--scrolled {
    ========================= */
 
 .services-container {
-    padding: 0 8rem 0 12rem;
+    padding: 0 6rem;
 }
 
 .services-label {
@@ -1022,7 +1022,7 @@ nav.nav--scrolled {
 
 footer {
     background: transparent;
-    padding: 0 8rem 2rem 12rem;
+    padding: 0 6rem 2rem;
     border-top: 1px solid rgba(206, 115, 82, 0.2);
     margin-top: var(--spacing-section);
 }
@@ -1193,7 +1193,7 @@ footer {
    ========================= */
 
 .contact-form-section {
-    padding: var(--spacing-section) 8rem var(--spacing-section) 12rem;
+    padding: var(--spacing-section) 6rem;
 }
 
 .contact-grid {
@@ -1364,7 +1364,7 @@ footer {
    ========================= */
 
 .breadcrumbs {
-    padding: 100px 4rem 0;
+    padding: 100px 6rem 0;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -1622,7 +1622,7 @@ footer {
     grid-template-columns: 1fr 180px;
     gap: 0 3rem;
     align-items: start;
-    padding: 0 8rem 0 12rem;
+    padding: 0 6rem;
 }
 
 .equipo-label {
@@ -1826,18 +1826,39 @@ img {
    ========================= */
 
 /* Desktop grande */
-@media (min-width: 1440px) {
-    .section {
-        padding: var(--spacing-section) 3rem;
-    }
-
-    .hero {
-        padding: 140px 3rem 100px;
-    }
-}
-
 /* Tablet landscape */
 @media (min-width: 768px) and (max-width: 1024px) {
+    .hero {
+        padding: 120px 4rem 80px;
+    }
+
+    .section {
+        padding: var(--spacing-section) 4rem;
+    }
+
+    .nav-container,
+    .nav {
+        padding: 0 4rem;
+    }
+
+    .about-grid,
+    .services-container,
+    .equipo-grid {
+        padding: 0 4rem;
+    }
+
+    .contact-form-section {
+        padding: var(--spacing-section) 4rem;
+    }
+
+    footer {
+        padding: 0 4rem 2rem;
+    }
+
+    .breadcrumbs {
+        padding: 100px 4rem 0;
+    }
+
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
@@ -2001,7 +2022,7 @@ img {
     }
 
     .hero {
-        padding: 100px 2rem 60px;
+        padding: 100px 1.5rem 60px;
         justify-content: center;
     }
 
