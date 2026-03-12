@@ -45,6 +45,12 @@
     --line-height-heading: 1.2;
     --line-height-body: 1.7;
 
+    /* Typography - Font families */
+    --font-brand: 'Lora', serif;
+    --font-heading: 'Work Sans', sans-serif;
+    --font-body: 'Work Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+
     /* Borders & Shadows */
     --border-radius: 8px;
     --border-card: 1px solid rgba(206, 115, 82, 0.2);
@@ -282,6 +288,7 @@ nav.nav--scrolled {
 }
 
 .tagline {
+    font-family: var(--font-brand);
     font-size: var(--font-size-display);
     font-weight: 700;
     line-height: 1.05;
@@ -714,9 +721,38 @@ nav.nav--scrolled {
     margin-bottom: 3rem;
 }
 
+/* Numbered Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 3rem;
+    margin-bottom: 4rem;
+}
+
 .service-block {
-    padding: 5rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 2.5rem;
+    border: 1px solid rgba(206, 115, 82, 0.2);
+    border-radius: var(--border-radius);
+    background: rgba(206, 115, 82, 0.03);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.service-block:hover {
+    border-color: rgba(206, 115, 82, 0.4);
+    background: rgba(206, 115, 82, 0.06);
+    transform: translateY(-4px);
+}
+
+.service-number {
+    display: block;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-accent);
+    opacity: 0.3;
+    margin-bottom: 1.5rem;
 }
 
 .service-category {
@@ -1438,8 +1474,18 @@ img {
         padding: 0 1.5rem;
     }
 
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
     .service-block {
-        padding: 3rem 0;
+        padding: 2rem;
+    }
+
+    .service-number {
+        font-size: 3rem;
+        margin-bottom: 1rem;
     }
 
     .service-title {
