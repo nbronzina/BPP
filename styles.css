@@ -469,19 +469,31 @@ nav.nav--scrolled {
     will-change: transform;
 }
 
+/* Animación derecha para flechas → */
 .cta-button:hover .cta-arrow--right,
-.btn-download:hover .cta-arrow--right {
+.form-submit:hover .cta-arrow--right,
+.btn-download:hover .cta-arrow--right,
+.services-cta-link:hover .cta-arrow--right,
+.actividades-cta-link:hover .cta-arrow--right,
+.actividad-link:hover .cta-arrow--right {
     transform: translateX(4px);
 }
 
+/* Animación izquierda para flechas ← */
 .cta-button:hover .cta-arrow--left,
-.btn-download:hover .cta-arrow--left {
+.btn-download:hover .cta-arrow--left,
+.back-to-top:hover .cta-arrow--left {
     transform: translateX(-4px);
 }
 
 /* Slight bounce effect on active */
 .cta-button:active .cta-arrow,
-.btn-download:active .cta-arrow {
+.form-submit:active .cta-arrow,
+.btn-download:active .cta-arrow,
+.services-cta-link:active .cta-arrow,
+.actividades-cta-link:active .cta-arrow,
+.actividad-link:active .cta-arrow,
+.back-to-top:active .cta-arrow {
     transform: scale(0.9);
 }
 
