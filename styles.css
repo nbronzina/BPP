@@ -6,6 +6,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    cursor: default;
 }
 
 :root {
@@ -123,7 +127,6 @@ body {
     animation: fadeIn 0.6s ease-in;
     position: relative;
     z-index: 1;
-    cursor: default;
 }
 
 /* Screen reader only utility */
@@ -136,38 +139,25 @@ body {
     white-space: nowrap;
 }
 
-/* Prevent text cursor on UI elements */
+/* Interactive elements - cursor pointer only */
 button,
 a,
-nav,
-header,
-.nav-links,
-.mobile-menu-btn,
 .cta-button,
 .form-submit,
 .btn-download,
-.badge,
-.badge-label,
-.actividades-label,
-.locations,
-.hero-label,
-h1, h2, h3, h4, h5, h6 {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
+.mobile-menu-btn,
+.nav-links a,
+.actividades-cta-link,
+.about-cta a {
+    cursor: pointer;
 }
 
-/* Allow text selection in content areas */
-p,
-article,
-.hero-sub,
-.subtitle,
-.identity-note,
-.studio-note,
-.actividad-content,
-.service-description,
-blockquote,
-li {
+/* Form inputs - allow text selection and cursor */
+input[type="text"],
+input[type="email"],
+textarea,
+.contact-form input,
+.contact-form textarea {
     user-select: text;
     -webkit-user-select: text;
     -moz-user-select: text;
@@ -918,6 +908,9 @@ nav.nav--scrolled {
     border-radius: 4px;
     transition: all 0.3s ease;
     background: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 .about-cta a:hover,
