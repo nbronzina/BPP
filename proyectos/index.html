@@ -112,14 +112,56 @@
     <!-- Main Content -->
     <main role="main" id="main-content">
 
-    <!-- Hechos Section -->
-    <section id="actividades" class="section" aria-labelledby="proyectos-heading" style="padding-top: 140px;">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Ruta de navegación">
+        <ol class="breadcrumbs-list">
+            <li class="breadcrumbs-item">
+                <a href="../#hero" class="breadcrumbs-link">Inicio</a>
+            </li>
+            <li class="breadcrumbs-separator" aria-hidden="true">→</li>
+            <li class="breadcrumbs-item breadcrumbs-current" aria-current="page">Hechos</li>
+        </ol>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section section-wide" style="padding-top: 140px; padding-bottom: 60px;">
         <div class="actividades-label">HECHOS</div>
-        <h1 id="proyectos-heading" class="sr-only">Hechos</h1>
+        <h1 id="proyectos-heading" class="tagline" style="margin-bottom: 1.5rem;">De la incertidumbre a la acción</h1>
+        <p class="hero-sub" style="max-width: 800px; margin: 0 auto 3rem;">
+            Trabajamos con líderes que enfrentan decisiones críticas. Cada proyecto es una pregunta difícil
+            que necesitaba respuesta antes de que fuera tarde. Investigación, diseño de futuros, análisis estratégico
+            y comunicación aplicados donde más importa.
+        </p>
+    </section>
+
+    <!-- Hechos Section -->
+    <section id="actividades" class="section" aria-labelledby="actividades-content-heading">
+
+        <!-- Filtros por categoría -->
+        <div class="filter-bar" role="group" aria-label="Filtrar proyectos por categoría">
+            <button class="filter-btn filter-btn--active" data-filter="todos" aria-pressed="true">
+                Todos
+            </button>
+            <button class="filter-btn" data-filter="design-fiction" aria-pressed="false">
+                Design fiction
+            </button>
+            <button class="filter-btn" data-filter="educacion" aria-pressed="false">
+                Educación
+            </button>
+            <button class="filter-btn" data-filter="datos" aria-pressed="false">
+                Datos
+            </button>
+            <button class="filter-btn" data-filter="estrategia" aria-pressed="false">
+                Estrategia
+            </button>
+            <button class="filter-btn" data-filter="branding" aria-pressed="false">
+                Branding
+            </button>
+        </div>
 
         <div class="actividades-container">
             <!-- Entrada 1: Otros Futuros - IED Madrid -->
-            <article class="actividad-entrada" data-animate aria-label="Otros Futuros - Tutor invitado en defensa de proyecto IED Madrid">
+            <article class="actividad-entrada" data-animate data-tags="design-fiction,educacion" aria-label="Otros Futuros - Tutor invitado en defensa de proyecto IED Madrid">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="../img/otros-futuros-ied-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -151,7 +193,7 @@
             </article>
 
             <!-- Entrada 2: Alquileres -->
-            <article class="actividad-entrada" data-animate aria-label="Tesis sobre negociación de alquileres en Buenos Aires y asimetrías estructurales del mercado">
+            <article class="actividad-entrada" data-animate data-tags="datos" aria-label="Tesis sobre negociación de alquileres en Buenos Aires y asimetrías estructurales del mercado">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="../img/alquileres-negociacion.webp 1200w" type="image/webp">
@@ -181,7 +223,7 @@
             </article>
 
             <!-- Entrada 3: Inhabiting the Future -->
-            <article class="actividad-entrada" data-animate aria-label="Charla outdoor Inhabiting the Future sobre adaptación climática en Matadero Madrid">
+            <article class="actividad-entrada" data-animate data-tags="design-fiction,educacion" aria-label="Charla outdoor Inhabiting the Future sobre adaptación climática en Matadero Madrid">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="../img/inhabiting-future.webp 1200w" type="image/webp">
@@ -211,7 +253,7 @@
             </article>
 
             <!-- Entrada 4: LATAM 2036 -->
-            <article class="actividad-entrada" data-animate aria-label="Workshop LATAM·2036 sobre diseño de futuros desde la fuga">
+            <article class="actividad-entrada" data-animate data-tags="design-fiction,educacion" aria-label="Workshop LATAM·2036 sobre diseño de futuros desde la fuga">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="../img/workshop-latam2036-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -243,7 +285,7 @@
             </article>
 
             <!-- Entrada 5: Branding -->
-            <article class="actividad-entrada" data-animate aria-label="Artículo sobre branding como fenómeno social y arquitectura simbólica">
+            <article class="actividad-entrada" data-animate data-tags="branding,estrategia" aria-label="Artículo sobre branding como fenómeno social y arquitectura simbólica">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="../img/Ajedrez.webp 1200w" type="image/webp">
@@ -273,7 +315,7 @@
             </article>
 
             <!-- Entrada 6: CESBA -->
-            <article class="actividad-entrada" data-animate aria-label="Jornada de diseño de futuros para la gestión pública en CESBA">
+            <article class="actividad-entrada" data-animate data-tags="estrategia" aria-label="Jornada de diseño de futuros para la gestión pública en CESBA">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="../img/JornadaCESBA-480.webp 480w, ../img/JornadaCESBA-800.webp 800w, ../img/JornadaCESBA-1200.webp 1200w" type="image/webp">
@@ -303,7 +345,7 @@
             </article>
 
             <!-- Entrada 7: Trace Group -->
-            <article class="actividad-entrada" data-animate aria-label="Investigación especulativa sobre el futuro de la inspección técnica en el sector hidrocarburífero argentino para Trace Group">
+            <article class="actividad-entrada" data-animate data-tags="design-fiction,estrategia" aria-label="Investigación especulativa sobre el futuro de la inspección técnica en el sector hidrocarburífero argentino para Trace Group">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="../img/VacaMuertaOptima.webp 1200w" type="image/webp">
@@ -331,7 +373,7 @@
             </article>
 
             <!-- Entrada 8: UDIT -->
-            <article class="actividad-entrada" data-animate aria-label="Jornada sobre inteligencia artificial para diseñadores UX en UDIT Madrid">
+            <article class="actividad-entrada" data-animate data-tags="educacion" aria-label="Jornada sobre inteligencia artificial para diseñadores UX en UDIT Madrid">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="../img/0_9sTiHf-LbgRlEnRZ.webp 1200w" type="image/webp">
@@ -361,7 +403,7 @@
             </article>
 
             <!-- Entrada 9: Reporte Natalidad -->
-            <article class="actividad-entrada" data-animate aria-label="Reporte sobre impacto de la caída de la natalidad en matrículas escolares">
+            <article class="actividad-entrada" data-animate data-tags="educacion,datos" aria-label="Reporte sobre impacto de la caída de la natalidad en matrículas escolares">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="../img/NatalidadOptima-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -389,6 +431,15 @@
                     </a>
                 </div>
             </article>
+        </div>
+
+        <!-- CTA final -->
+        <div class="proyectos-cta" data-animate>
+            <h3 class="proyectos-cta-headline">¿Tu organización enfrenta una decisión crítica?</h3>
+            <p class="proyectos-cta-text">No esperés a que la urgencia decida por vos. Conversemos antes.</p>
+            <a href="../#contact" class="cta-button" aria-label="Ir al formulario de contacto">
+                <span class="cta-arrow cta-arrow--right">→</span> Conversemos de tu situación
+            </a>
         </div>
     </section>
 
