@@ -694,7 +694,7 @@ nav.nav--scrolled {
 
 .about-purpose {
     font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-lg);
     font-weight: 600;
     opacity: 0.95;
     margin-bottom: 1rem;
@@ -710,27 +710,34 @@ nav.nav--scrolled {
     max-width: 60ch;
 }
 
-.about-transformation {
-    font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    opacity: 0.75;  /* Increased from 0.65 for better contrast */
-    line-height: 1.7;
-    margin-bottom: 2rem;
+.about-transformation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
     max-width: 60ch;
 }
 
-.about-audience {
+.about-transformation-list li {
     font-family: 'Work Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     opacity: 0.75;
-    margin-bottom: 1.5rem;
-    max-width: 60ch;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.about-transformation-list li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    opacity: 1;
 }
 
 /* Links CTA - Variante terciaria (solo texto) */
-.about-cta,
+.about-cta a,
 .services-cta-link,
 .actividades-cta-link {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
@@ -741,7 +748,7 @@ nav.nav--scrolled {
     display: inline-block;
 }
 
-.about-cta:hover,
+.about-cta a:hover,
 .services-cta-link:hover,
 .actividades-cta-link:hover {
     opacity: 0.8;
@@ -1938,6 +1945,17 @@ img {
     .about-pain-list li {
         font-size: var(--font-size-base);
         line-height: 1.65; /* Slightly tighter for mobile */
+    }
+
+    .about-purpose {
+        font-size: var(--font-size-base);
+        padding-top: 2rem;
+    }
+
+    .about-transformation-list li {
+        font-size: var(--font-size-base);
+        line-height: 1.65;
+        padding-left: 1.25rem;
     }
 
     .service-card {
