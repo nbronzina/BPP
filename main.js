@@ -22,6 +22,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
 
   // =====================================================
+  // ARROW MICRO-INTERACTIONS
+  // -----------------------------------------------------
+  // Wrap arrows in CTA buttons with spans for animation
+  // =====================================================
+  const ctaButtons = document.querySelectorAll('.cta-button, .btn-download');
+  ctaButtons.forEach(btn => {
+    const text = btn.textContent;
+    // Match arrow characters (→, ←, ↓, ↑) at start or end of text
+    const arrowPattern = /(^[→←↓↑]\s+)|(\s+[→←↓↑]$)/;
+    const match = text.match(arrowPattern);
+
+    if (match) {
+      const arrow = match[0].trim();
+      const isAtStart = match[1] !== undefined;
+      const restText = text.replace(arrowPattern, '').trim();
+
+      if (isAtStart) {
+        btn.innerHTML = `<span class="cta-arrow cta-arrow--left">${arrow}</span> ${restText}`;
+      } else {
+        btn.innerHTML = `${restText} <span class="cta-arrow cta-arrow--right">${arrow}</span>`;
+      }
+    }
+  });
+
+
+  // =====================================================
   // SCROLL RESTORATION - Asegurar inicio en top
   // =====================================================
   // Prevenir que el navegador restaure la posición de scroll
