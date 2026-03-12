@@ -150,8 +150,16 @@ h1, h2, h3, h4, h5, h6,
 .perfil-tagline,
 .service-category,
 .actividad-meta,
+.about-label,
+.services-label,
+.equipo-label,
+.actividades-label,
+.contact-label,
 button,
-.cta-button {
+.cta-button,
+.about-cta a,
+.services-cta-link,
+.form-submit {
     hyphens: none;
 }
 
