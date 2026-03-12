@@ -151,7 +151,10 @@ h1, h2, h3, h4, h5, h6,
 .service-category,
 .actividad-meta,
 button,
-.cta-button {
+.cta-button,
+.about-cta a,
+.services-cta-link,
+.form-submit {
     hyphens: none;
 }
 
