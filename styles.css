@@ -1650,6 +1650,16 @@ img {
         --spacing-section: 40px;
     }
 
+    /* Typography mobile refinements */
+    h1, h2 {
+        font-family: var(--font-display); /* Syne - explicitly ensure it applies */
+        letter-spacing: -0.01em; /* Slightly looser for mobile readability */
+    }
+
+    h3, h4, h5, h6 {
+        font-family: var(--font-heading); /* Work Sans */
+    }
+
     /* Breadcrumbs responsive */
     .breadcrumbs {
         padding: 90px 1.5rem 0;
@@ -1752,6 +1762,17 @@ img {
 
     /* Hero logo removed */
 
+    /* Visual effects mobile: reduce intensity */
+    .cta-button:hover,
+    .pwa-install-btn:hover {
+        box-shadow: 0 4px 20px rgba(206, 115, 82, 0.3); /* Reduced from shadow-glow-intense */
+        filter: brightness(1.05); /* Subtle */
+    }
+
+    .service-card:hover {
+        box-shadow: 0 8px 24px rgba(206, 115, 82, 0.25); /* Gentler than desktop */
+    }
+
     .hero {
         padding: 100px 2rem 60px;
         justify-content: center;
@@ -1766,6 +1787,17 @@ img {
         max-width: 100%;
         padding-left: 0;
         text-align: center;
+    }
+
+    .tagline {
+        font-family: var(--font-brand); /* Lora - ensure it applies on mobile */
+        letter-spacing: -0.03em; /* Slightly tighter for mobile */
+        line-height: 1.1; /* Tighter leading for impact */
+    }
+
+    .subtitle {
+        font-size: var(--font-size-h5); /* Smaller but readable */
+        margin-bottom: 2rem;
     }
 
     .hero-viz {
@@ -1809,10 +1841,35 @@ img {
         grid-column: auto;
     }
 
+    .about-headline {
+        font-family: var(--font-display); /* Syne */
+        font-size: var(--font-size-h3); /* Smaller for mobile */
+        letter-spacing: -0.015em;
+        line-height: 1.2;
+    }
+
+    .about-pain-list li {
+        font-size: var(--font-size-base);
+        line-height: 1.65; /* Slightly tighter for mobile */
+    }
+
     .service-card {
         padding: 2rem;
     }
 
+    /* Service titles use display font on mobile too */
+    .service-title {
+        font-family: var(--font-display); /* Syne */
+        letter-spacing: -0.015em;
+    }
+
+    /* Optimized button typography for mobile */
+    .cta-button,
+    .form-submit,
+    .btn-download {
+        font-weight: 600;
+        letter-spacing: 0.01em; /* Slightly loose for clarity */
+    }
 
     footer {
         padding: 2rem 1.5rem 1.5rem;
@@ -1880,6 +1937,19 @@ img {
         grid-row: 4;
     }
 
+    /* Team member names use display font */
+    .perfil-name {
+        font-family: var(--font-display); /* Syne */
+        letter-spacing: -0.01em;
+    }
+
+    /* Activity titles refined */
+    .actividad-titulo {
+        font-family: var(--font-display); /* Syne */
+        letter-spacing: -0.015em;
+        line-height: 1.2;
+    }
+
     /* Actividades mobile: imagen arriba, texto abajo */
     .actividad-entrada {
         grid-template-columns: 1fr;
@@ -1939,12 +2009,20 @@ img {
 @media (max-width: 390px) {
     .tagline {
         font-size: var(--font-size-h1);
+        font-family: var(--font-brand); /* Lora */
+        letter-spacing: -0.025em;
     }
 
     .service-card,
     .cta-button {
         padding: 0.875rem 2rem;
         font-size: var(--font-size-sm);
+    }
+
+    /* Ensure headings stay readable */
+    h1, h2 {
+        font-family: var(--font-display); /* Syne */
+        letter-spacing: -0.01em;
     }
 }
 
