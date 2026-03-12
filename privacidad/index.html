@@ -65,7 +65,7 @@
     }
 
     .legal-hero {
-      padding: 120px 1.5rem 80px;
+      padding: 120px 6rem 80px;
       max-width: 720px;
       margin: 0 auto;
     }
@@ -105,7 +105,7 @@
     }
 
     .legal-content {
-      padding: 0 1.5rem 80px;
+      padding: 0 6rem 80px;
       max-width: 960px;
       margin: 0 auto;
     }
@@ -181,6 +181,34 @@
 
     .back-to-top:hover {
       opacity: 1;
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .legal-hero {
+        padding: 120px 4rem 80px;
+      }
+
+      .legal-content {
+        padding: 0 4rem 80px;
+      }
+
+      .back-to-top {
+        padding: 0 4rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .legal-hero {
+        padding: 120px 1.5rem 80px;
+      }
+
+      .legal-content {
+        padding: 0 1.5rem 80px;
+      }
+
+      .back-to-top {
+        padding: 0 1.5rem;
+      }
     }
   </style>
 

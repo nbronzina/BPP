@@ -1836,6 +1836,10 @@ img {
         padding: var(--spacing-section) 4rem;
     }
 
+    .content-section {
+        padding: 0 4rem var(--spacing-section);
+    }
+
     .nav-container,
     .nav {
         padding: 0 4rem;
@@ -2070,6 +2074,11 @@ img {
 
     .section {
         padding: 40px 1.5rem;
+    }
+
+    .nav-container,
+    .nav {
+        padding: 0 1.5rem;
     }
 
     .about-grid {
@@ -2678,7 +2687,7 @@ img {
 .content-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem var(--spacing-section);
+    padding: 0 6rem var(--spacing-section);
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -2855,7 +2864,7 @@ img {
 .reporte-page .content-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem var(--spacing-section);
+    padding: 0 6rem var(--spacing-section);
     display: flex;
     flex-direction: column;
     gap: 2rem;
