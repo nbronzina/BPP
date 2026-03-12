@@ -611,12 +611,26 @@ nav.nav--scrolled {
     padding: 0.75rem 1.5rem;
 }
 
-.form-submit:hover,
 .btn-download:hover,
 .pwa-dismiss-btn:hover {
     background: var(--color-accent);
     color: #0a0a0a;
     transform: scale(1.02);
+}
+
+/* Form submit estandarizado con about-cta y services-cta-link */
+.form-submit {
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    border: 1.5px solid var(--color-accent);
+}
+
+.form-submit:hover {
+    background: rgba(206, 115, 82, 0.12);
+    box-shadow: 0 0 20px rgba(206, 115, 82, 0.3);
+    transform: translateY(-2px);
+    border-color: var(--color-accent-bright);
 }
 
 /* Tamaño small para downloads */
@@ -941,18 +955,29 @@ nav.nav--scrolled {
     margin-top: 1.5rem;
 }
 
-/* Links CTA - Variante terciaria (solo texto) */
+/* Links CTA - Estandarizado con about-cta */
 .services-cta-link {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
+    font-weight: 500;
     color: var(--color-accent);
     text-decoration: none;
-    transition: opacity 0.2s ease;
     display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1.5px solid var(--color-accent);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 .services-cta-link:hover {
-    opacity: 0.8;
+    background: rgba(206, 115, 82, 0.12);
+    box-shadow: 0 0 20px rgba(206, 115, 82, 0.3);
+    transform: translateY(-2px);
+    border-color: var(--color-accent-bright);
 }
 
 .studio-note {
