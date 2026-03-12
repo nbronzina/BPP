@@ -918,6 +918,9 @@ nav.nav--scrolled {
     border-radius: 4px;
     transition: all 0.3s ease;
     background: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 .about-cta a:hover,
