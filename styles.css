@@ -1770,6 +1770,12 @@ img {
         padding: 2rem;
     }
 
+    .service-deliverable {
+        font-size: 0.7rem;
+        margin-top: 0.5rem;
+        line-height: 1.5;
+    }
+
     .service-number {
         font-size: 3rem;
         margin-bottom: 1rem;
@@ -1900,6 +1906,28 @@ img {
         grid-column: auto;
     }
 
+    .studio-note {
+        font-size: 0.75rem;
+        padding-left: 0.75rem;
+        margin-top: 1.5rem;
+        line-height: 1.5;
+    }
+
+    .institutional-context {
+        padding-top: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .context-label {
+        font-size: 0.65rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .institutional-context p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
     .about-headline {
         font-family: var(--font-display); /* Syne */
         font-size: var(--font-size-h3); /* Smaller for mobile */
@@ -1966,6 +1994,15 @@ img {
         font-size: 0.75rem;
         opacity: 0.6;
         order: 4; /* Move to bottom */
+    }
+
+    .footer-practice {
+        font-size: 0.65rem;
+        margin-top: 0.25rem;
+        opacity: 0.5;
+        order: 5; /* After copyright */
+        text-align: center;
+        line-height: 1.4;
     }
 
     /* Email and privacy links - more readable */
