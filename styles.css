@@ -9,13 +9,35 @@
 }
 
 :root {
-    --color-bg: #0a0a0a;
-    --color-bg-light: #0a0a0a;
+    /* Orange tonal scale - BPP brand */
+    --orange-950: #1a0f0c;
+    --orange-900: #331e18;
+    --orange-800: #663d30;
+    --orange-700: #995b48;
+    --orange-600: #cc7960;
+    --orange-500: #ce7352;  /* Principal (brand) */
+    --orange-400: #d4845e;
+    --orange-300: #e0a794;
+    --orange-200: #ecc9bc;
+    --orange-100: #f6e5df;
+    --orange-50: #fbf2ef;
+
+    /* Base colors with warm undertones */
+    --color-bg: #0d0a09;
+    --color-bg-light: #0d0a09;
+    --color-surface: #1a1614;
+    --color-border: #2d2722;
+
+    /* Text colors with improved contrast */
     --color-text: #ffffff;
     --color-text-light: #f0f0f0;
-    --color-accent: #ce7352;
-    --color-accent-bright: #d4845e;
-    --color-text-secondary: #c5c5c5;
+    --color-text-secondary: rgba(255, 255, 255, 0.75);  /* Increased from 0.5-0.6 */
+    --color-text-muted: rgba(201, 184, 173, 0.65);      /* Warm muted text */
+
+    /* Accent colors (legacy compatibility) */
+    --color-accent: var(--orange-500);
+    --color-accent-bright: var(--orange-400);
+
     --spacing-section: 80px;
 
     /* Typography - Base scale (fixed sizes) */
@@ -46,6 +68,7 @@
     --line-height-body: 1.7;
 
     /* Typography - Font families */
+    --font-display: 'Syne', sans-serif;  /* Distinctive display font for H1, H2 */
     --font-brand: 'Lora', serif;
     --font-heading: 'Work Sans', sans-serif;
     --font-body: 'Work Sans', sans-serif;
@@ -55,7 +78,13 @@
     --border-radius: 8px;
     --border-card: 1px solid rgba(206, 115, 82, 0.2);
     --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
-    --shadow-card-hover: 0 8px 30px rgba(206, 115, 82, 0.3);
+    --shadow-card-hover:
+        0 8px 30px rgba(206, 115, 82, 0.4),
+        0 0 80px rgba(206, 115, 82, 0.15),
+        inset 0 0 40px rgba(206, 115, 82, 0.05);
+    --shadow-glow-intense:
+        0 4px 20px rgba(206, 115, 82, 0.5),
+        0 0 60px rgba(206, 115, 82, 0.3);
 
     /* Spacing */
     --spacing-card: 3rem;
@@ -115,6 +144,16 @@ body::before {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+/* =========================
+   Display Typography - Syne Font
+   ========================= */
+
+h1, h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 /* =========================
@@ -337,7 +376,7 @@ nav.nav--scrolled {
 
 .data-point.medium {
     fill: var(--color-accent);
-    opacity: 0.6;
+    opacity: 0.75;  /* Increased from 0.6 for better contrast */
 }
 
 .data-point:hover {
@@ -465,6 +504,8 @@ nav.nav--scrolled {
 .pwa-install-btn:hover {
     background: var(--color-accent-bright);
     border-color: var(--color-accent-bright);
+    box-shadow: var(--shadow-glow-intense);
+    filter: brightness(1.1);
     transform: scale(1.02);
     color: #0a0a0a;
 }
@@ -538,7 +579,7 @@ nav.nav--scrolled {
 }
 
 .form-submit:disabled {
-    opacity: 0.5;
+    opacity: 0.7;  /* Increased from 0.5 for better contrast */
     cursor: not-allowed;
     transform: none;
 }
@@ -623,7 +664,7 @@ nav.nav--scrolled {
     font-family: 'Work Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
-    opacity: 0.55;
+    opacity: 0.75;  /* Increased from 0.55 for better contrast */
     line-height: 1.7;
     margin-bottom: 0.5rem;
     position: relative;
@@ -666,7 +707,7 @@ nav.nav--scrolled {
     font-family: 'Work Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
-    opacity: 0.65;
+    opacity: 0.75;  /* Increased from 0.65 for better contrast */
     line-height: 1.7;
     margin-bottom: 2rem;
     max-width: 60ch;
@@ -735,7 +776,7 @@ nav.nav--scrolled {
     border-radius: var(--border-radius);
     background: rgba(206, 115, 82, 0.03);
     position: relative;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
 }
 
 .service-block:hover {
@@ -759,7 +800,7 @@ nav.nav--scrolled {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.7;  /* Increased from 0.5 for better contrast */
     margin-bottom: 1.5rem;
     letter-spacing: 0.05em;
 }
@@ -779,7 +820,7 @@ nav.nav--scrolled {
     font-size: var(--font-size-md);
     font-weight: 400;
     color: var(--color-text);
-    opacity: 0.6;
+    opacity: 0.75;  /* Increased from 0.6 for better contrast */
     line-height: 1.7;
     max-width: 750px;
 }
@@ -833,7 +874,7 @@ footer {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: 0.8rem;
     color: var(--color-text);
-    opacity: 0.5;
+    opacity: 0.7;  /* Increased from 0.5 for better contrast */
 }
 
 .footer-link {
@@ -841,7 +882,7 @@ footer {
     font-size: 0.8rem;
     color: var(--color-text);
     text-decoration: none;
-    opacity: 0.5;
+    opacity: 0.7;  /* Increased from 0.5 for better contrast */
     transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
     position: relative;
     display: inline-block;
@@ -913,7 +954,7 @@ footer {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: 0.8rem;
     color: var(--color-text);
-    opacity: 0.5;
+    opacity: 0.7;  /* Increased from 0.5 for better contrast */
     transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
@@ -986,7 +1027,7 @@ footer {
     font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text);
-    opacity: 0.6;
+    opacity: 0.75;  /* Increased from 0.6 for better contrast */
     line-height: 1.6;
 }
 
@@ -1061,6 +1102,13 @@ footer {
 .form-group input:focus,
 .form-group textarea:focus {
     border-bottom: 1px solid var(--color-accent);
+}
+
+/* Keyboard navigation focus indicator */
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+    outline: 2px solid var(--orange-400);
+    outline-offset: 2px;
 }
 
 .form-group textarea {
@@ -1191,7 +1239,7 @@ footer {
     font-size: var(--font-size-sm);
     font-weight: 400;
     color: var(--color-text);
-    opacity: 0.6;
+    opacity: 0.75;  /* Increased from 0.6 for better contrast */
     line-height: 1.6;
     margin-top: 0.75rem;
 }
@@ -1303,7 +1351,7 @@ footer {
     font-size: var(--font-size-sm);
     font-weight: 400;
     color: var(--color-text-secondary);
-    opacity: 0.6;
+    opacity: 0.75;  /* Increased from 0.6 for better contrast */
     line-height: 1.6;
     margin: 0;
 }
@@ -2168,7 +2216,7 @@ img {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
-    opacity: 0.5;
+    opacity: 0.7;  /* Increased from 0.5 for better contrast */
     margin-top: 1rem;
 }
 
@@ -2276,11 +2324,16 @@ img {
   transition: opacity 0.2s ease;
 }
 
-.legal-link:hover,
-.legal-link:focus {
+.legal-link:hover {
   opacity: 0.9;
   text-decoration: underline;
-  outline: none;
+}
+
+.legal-link:focus-visible {
+  opacity: 0.9;
+  text-decoration: underline;
+  outline: 2px solid var(--orange-400);
+  outline-offset: 2px;
 }
 
 /* =======================================
@@ -2360,6 +2413,8 @@ img {
 .reporte-page .cta-button:focus-visible,
 .legal-page .cta-button:focus-visible {
   background: var(--color-accent-bright);
+  box-shadow: var(--shadow-glow-intense);
+  filter: brightness(1.1);
   border-color: var(--color-accent-bright);
   color: #0a0a0a;
   transform: scale(1.02);
@@ -3084,7 +3139,7 @@ img {
   padding: 3rem;
   border-radius: var(--border-radius);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all var(--transition-normal);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
   position: relative;
 }
 
