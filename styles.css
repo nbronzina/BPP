@@ -386,6 +386,7 @@ nav.nav--scrolled {
     letter-spacing: -0.04em;
     color: #ffffff;
     text-transform: lowercase;
+    hyphens: none; /* No hyphenation - keep words complete */
 }
 
 .subtitle {
@@ -2130,8 +2131,8 @@ img {
         letter-spacing: -0.01em; /* Looser for Lexend Deca - prevents overflow */
         line-height: 1.15; /* Slightly more breathing room */
         font-size: clamp(2rem, 7vw, 3.5rem); /* Mobile: 32px min, 56px max */
-        word-break: normal; /* Prevent aggressive breaking */
-        hyphens: auto; /* Allow hyphenation if needed */
+        word-break: keep-all; /* Keep words intact */
+        hyphens: none; /* No hyphenation - keep "incertidumbre" complete */
     }
 
     .subtitle {
