@@ -865,10 +865,36 @@ nav.nav--scrolled {
     max-width: 50ch;
 }
 
-/* Links CTA - Variante terciaria (solo texto) */
+/* Links CTA - Variante secundaria (mayor jerarquía) */
 .about-cta a,
-.services-cta-link,
 .actividades-cta-link {
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1.5px solid var(--color-accent);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.about-cta a:hover,
+.actividades-cta-link:hover {
+    background: rgba(206, 115, 82, 0.12);
+    box-shadow: 0 0 20px rgba(206, 115, 82, 0.3);
+    transform: translateY(-2px);
+    border-color: var(--color-accent-bright);
+}
+
+.about-cta {
+    margin-top: 1.5rem;
+}
+
+/* Links CTA - Variante terciaria (solo texto) */
+.services-cta-link {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: var(--font-size-sm);
     color: var(--color-accent);
@@ -877,14 +903,8 @@ nav.nav--scrolled {
     display: inline-block;
 }
 
-.about-cta a:hover,
-.services-cta-link:hover,
-.actividades-cta-link:hover {
+.services-cta-link:hover {
     opacity: 0.8;
-}
-
-.about-cta {
-    margin-top: 1.5rem;
 }
 
 .studio-note {
