@@ -1304,8 +1304,8 @@ footer {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 0 2rem;
+    grid-template-columns: 120px 1fr;
+    gap: 0 1.5rem;
     align-items: start;
 }
 
