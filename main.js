@@ -401,8 +401,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Mostrar botón manual en footer
       const manualInstallBtn = document.getElementById("manual-install-pwa");
+      const pwaSeparator = document.getElementById("pwa-separator");
       if (manualInstallBtn) {
         manualInstallBtn.style.display = "inline-flex";
+      }
+      if (pwaSeparator) {
+        pwaSeparator.style.display = "inline";
       }
 
       // Mostrar prompt automático al hacer scroll (50% de la página)
@@ -463,8 +467,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Ocultar botón manual
       const manualInstallBtn = document.getElementById("manual-install-pwa");
+      const pwaSeparator = document.getElementById("pwa-separator");
       if (manualInstallBtn) {
         manualInstallBtn.style.display = "none";
+      }
+      if (pwaSeparator) {
+        pwaSeparator.style.display = "none";
       }
 
       trackEvent("PWA_instalada");
