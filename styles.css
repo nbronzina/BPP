@@ -45,7 +45,7 @@
     --spacing-section: 80px;
 
     /* Horizontal padding scale (mobile-first) */
-    --spacing-horizontal-mobile: 1.5rem;
+    --spacing-horizontal-mobile: 2rem;
     --spacing-horizontal-tablet: 4rem;
     --spacing-horizontal-desktop: 6rem;
 
@@ -115,6 +115,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;  /* Altura del navbar sticky (~96px + margen) */
     background: #0a0a0a;
+    overflow-x: hidden;
 }
 
 body {
@@ -130,6 +131,8 @@ body {
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+    font-variant-numeric: lining-nums;
+    font-feature-settings: 'zero' 0;  /* Disable slashed zero */
 }
 
 /* Prevent text overflow globally */
@@ -185,17 +188,6 @@ textarea,
     -webkit-user-select: text;
     -moz-user-select: text;
     cursor: text;
-}
-
-/* Grain texture global */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.035;
-    pointer-events: none;
-    z-index: 0;
 }
 
 @keyframes fadeIn {
