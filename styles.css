@@ -126,6 +126,17 @@ body {
     animation: fadeIn 0.6s ease-in;
     position: relative;
     z-index: 1;
+    /* Prevent horizontal overflow on mobile */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Prevent text overflow globally */
+h1, h2, h3, h4, h5, h6, p, li, span, a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 /* Screen reader only utility */
@@ -1952,14 +1963,31 @@ img {
         --spacing-section: 40px;
     }
 
+    /* Prevent all horizontal overflow in mobile */
+    * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Ensure containers don't overflow */
+    .hero, .section, .nav-container, main {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
     /* Typography mobile refinements */
     h1, h2 {
-        font-family: var(--font-display); /* Syne - explicitly ensure it applies */
-        letter-spacing: -0.01em; /* Slightly looser for mobile readability */
+        font-family: var(--font-display); /* Lexend Deca - display font */
+        letter-spacing: 0; /* Lexend Deca doesn't need negative spacing */
+        word-break: normal;
+        hyphens: auto;
     }
 
     h3, h4, h5, h6 {
-        font-family: var(--font-heading); /* Work Sans */
+        font-family: var(--font-heading); /* Atkinson Hyperlegible */
+        word-break: normal;
+        hyphens: auto;
     }
 
     /* Breadcrumbs responsive */
@@ -2098,9 +2126,12 @@ img {
     }
 
     .tagline {
-        font-family: var(--font-display); /* Syne - ensure it applies on mobile */
-        letter-spacing: -0.03em; /* Slightly tighter for mobile */
-        line-height: 1.1; /* Tighter leading for impact */
+        font-family: var(--font-display); /* Lexend Deca on mobile */
+        letter-spacing: -0.01em; /* Looser for Lexend Deca - prevents overflow */
+        line-height: 1.15; /* Slightly more breathing room */
+        font-size: clamp(2rem, 7vw, 3.5rem); /* Mobile: 32px min, 56px max */
+        word-break: normal; /* Prevent aggressive breaking */
+        hyphens: auto; /* Allow hyphenation if needed */
     }
 
     .subtitle {
@@ -2232,10 +2263,12 @@ img {
     }
 
     .about-headline {
-        font-family: var(--font-display); /* Syne */
+        font-family: var(--font-display); /* Lexend Deca */
         font-size: var(--font-size-h3); /* Smaller for mobile */
-        letter-spacing: -0.015em;
-        line-height: 1.2;
+        letter-spacing: 0; /* Lexend Deca doesn't need negative spacing */
+        line-height: 1.25;
+        word-break: normal;
+        hyphens: auto;
     }
 
     .about-pain-list li {
@@ -2258,10 +2291,12 @@ img {
         padding: 2rem;
     }
 
-    /* Service titles use display font on mobile too */
+    /* Service titles use Atkinson Hyperlegible on mobile for readability */
     .service-title {
-        font-family: var(--font-display); /* Syne */
-        letter-spacing: -0.015em;
+        font-family: var(--font-heading); /* Atkinson Hyperlegible for better mobile readability */
+        letter-spacing: 0;
+        word-break: normal;
+        hyphens: auto;
     }
 
     /* Optimized button typography for mobile */
