@@ -1304,17 +1304,17 @@ footer {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 0 3rem;
+    grid-template-columns: 150px 1fr;
+    gap: 0 2rem;
     align-items: start;
 }
 
 .contact-label {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
     color: var(--color-accent);
     opacity: 1;
     border-left: 3px solid var(--color-accent);
