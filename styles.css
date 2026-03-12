@@ -1311,10 +1311,10 @@ footer {
 
 .contact-label {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
     color: var(--color-accent);
     opacity: 1;
     border-left: 3px solid var(--color-accent);
