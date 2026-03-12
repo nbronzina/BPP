@@ -237,18 +237,33 @@ nav.nav--scrolled {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding: 120px 8rem 80px;
+    justify-content: center;
+    padding: 120px 4rem 80px;
     position: relative;
     background: transparent;
 }
 
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+}
+
 .hero-content {
-    max-width: 60vw;
-    padding-left: 4rem;
     text-align: left;
     position: relative;
     z-index: 1;
+}
+
+.hero-viz {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .tagline {
@@ -277,6 +292,81 @@ nav.nav--scrolled {
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
+}
+
+/* Hero Data Viz */
+.argentina-map {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(206, 115, 82, 0.3));
+}
+
+.data-point {
+    fill: var(--color-accent);
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+
+.data-point.high {
+    fill: var(--color-accent);
+    opacity: 0.9;
+}
+
+.data-point.medium {
+    fill: var(--color-accent);
+    opacity: 0.6;
+}
+
+.data-point:hover {
+    fill: var(--color-accent-bright);
+    opacity: 1;
+}
+
+.data-label {
+    fill: rgba(255, 255, 255, 0.7);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.flow-dot {
+    fill: var(--color-accent);
+}
+
+.corner-bracket {
+    fill: rgba(255, 255, 255, 0.2);
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.viz-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    background: rgba(206, 115, 82, 0.1);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(206, 115, 82, 0.3);
+    width: 100%;
+    max-width: 400px;
+}
+
+.viz-label {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.viz-metric {
+    font-size: var(--font-size-lg);
+    color: var(--color-accent);
+    font-weight: 700;
 }
 
 /* =========================
@@ -1291,9 +1381,31 @@ img {
         justify-content: center;
     }
 
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
     .hero-content {
         max-width: 100%;
         padding-left: 0;
+        text-align: center;
+    }
+
+    .hero-viz {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+
+    .argentina-map {
+        max-width: 280px;
+    }
+
+    .viz-caption {
+        max-width: 280px;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
     }
 
     .hero-label-vertical {
@@ -2772,6 +2884,92 @@ img {
   filter: brightness(0) invert(1) grayscale(0%);
 }
 
+/* =========================
+   Testimonials Section
+   ========================= */
+
+.testimonials-section {
+  padding: 8rem 0;
+  background: var(--color-accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.testimonials-brackets {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: -0.05em;
+  text-align: center;
+  margin-bottom: 3rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+.testimonial-item {
+  background: rgba(10, 10, 10, 0.4);
+  padding: 3rem;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.testimonial-item::before {
+  content: '"';
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  font-size: 5rem;
+  color: rgba(255, 255, 255, 0.1);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testimonial-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px rgba(10, 10, 10, 0.4);
+}
+
+.testimonial-quote {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-body);
+  color: #ffffff;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-attribution {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.8);
+  font-style: normal;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1.5rem;
+}
+
+.testimonial-attribution cite {
+  font-style: normal;
+  font-weight: 500;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .clientes-section {
@@ -2795,6 +2993,38 @@ img {
   .logo-item img[src*="dassen"],
   .logo-item img[src*="olamestudio"] {
     height: 52px;
+  }
+
+  /* Testimonials responsive */
+  .testimonials-section {
+    padding: 5rem 0;
+  }
+
+  .testimonials-container {
+    padding: 0 1.5rem;
+  }
+
+  .testimonials-brackets {
+    margin-bottom: 2rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .testimonial-item {
+    padding: 2rem;
+  }
+
+  .testimonial-item::before {
+    font-size: 3.5rem;
+    top: 1rem;
+    left: 1.5rem;
+  }
+
+  .testimonial-quote {
+    font-size: var(--font-size-base);
   }
 }
 
