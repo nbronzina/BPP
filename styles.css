@@ -1304,7 +1304,7 @@ footer {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 90px 1fr;
+    grid-template-columns: 135px 1fr;
     gap: 0 1rem;
     align-items: start;
 }
@@ -1320,25 +1320,25 @@ footer {
     border-left: 3px solid var(--color-accent);
     padding-left: 1.5rem;
     margin-top: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .contact-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 2.5rem;
     align-items: start;
 }
 
 /* Contexto narrativo */
 .contact-context h2 {
     font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-size: var(--font-size-h2);
+    font-size: var(--font-size-h3);
     font-weight: 700;
     color: var(--color-text);
     opacity: 1;
     line-height: 1.2;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .contact-context p {
@@ -1347,7 +1347,7 @@ footer {
     font-weight: 400;
     color: var(--color-text);
     opacity: 0.75;  /* Increased from 0.6 for better contrast */
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 .contact-response {
@@ -1356,13 +1356,13 @@ footer {
 
 .contact-separator {
     border-top: 1px solid rgba(255, 255, 255, 0.07);
-    margin: 2rem 0;
+    margin: 1.5rem 0;
 }
 
 .contact-addresses {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .contact-city {
@@ -1389,7 +1389,7 @@ footer {
 }
 
 .form-group {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-group label {
