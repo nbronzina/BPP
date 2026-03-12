@@ -738,4 +738,45 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
+
+  // =====================================================
+  // FILTROS DE PROYECTOS
+  // -----------------------------------------------------
+  // Sistema de filtrado por categorías en página de Hechos
+  // =====================================================
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const proyectos = document.querySelectorAll('.actividad-entrada');
+
+  if (filterButtons.length > 0 && proyectos.length > 0) {
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update active state
+        filterButtons.forEach(b => {
+          b.classList.remove('filter-btn--active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('filter-btn--active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        // Filter projects
+        proyectos.forEach(proyecto => {
+          if (filter === 'todos') {
+            proyecto.classList.remove('hidden');
+          } else {
+            const tags = proyecto.getAttribute('data-tags') || '';
+            if (tags.includes(filter)) {
+              proyecto.classList.remove('hidden');
+            } else {
+              proyecto.classList.add('hidden');
+            }
+          }
+        });
+
+        // Track filter usage
+        trackEvent('Filtro_proyectos', { categoria: filter });
+      });
+    });
+  }
 });
