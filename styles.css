@@ -649,6 +649,8 @@ nav.nav--scrolled {
 
 .about-content {
     grid-column: 1;
+    position: relative;
+    padding: 3rem;
 }
 
 .about-headline {
@@ -679,11 +681,12 @@ nav.nav--scrolled {
 }
 
 .about-pain-list li::before {
-    content: '>';
+    content: attr(data-icon);
     position: absolute;
     left: 0;
-    color: var(--color-accent);
-    opacity: 1;
+    font-size: 1.1em;
+    opacity: 0.8;
+    filter: grayscale(0.3);
 }
 
 .about-separator {
@@ -710,30 +713,137 @@ nav.nav--scrolled {
     max-width: 60ch;
 }
 
-.about-transformation-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 2rem 0;
-    max-width: 60ch;
-}
-
-.about-transformation-list li {
-    font-family: 'Work Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    opacity: 0.75;
-    line-height: 1.7;
-    margin-bottom: 0.5rem;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.about-transformation-list li::before {
-    content: '>';
+/* Corner brackets (BPP brand) */
+.corner-bracket {
     position: absolute;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+}
+
+.corner-bracket--tl {
+    top: 0;
     left: 0;
+    border-top: 2px solid var(--color-accent);
+    border-left: 2px solid var(--color-accent);
+    opacity: 0.3;
+}
+
+.corner-bracket--br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid var(--color-accent);
+    border-right: 2px solid var(--color-accent);
+    opacity: 0.3;
+}
+
+/* Transformation cards */
+.transformation-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.transformation-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--color-accent);
+    background: rgba(206, 115, 82, 0.03);
+    transition: all 0.2s ease;
+}
+
+.transformation-card:hover {
+    background: rgba(206, 115, 82, 0.06);
+    border-left-color: var(--color-accent-bright);
+}
+
+.transformation-card .card-icon {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
     color: var(--color-accent);
     opacity: 1;
+    flex-shrink: 0;
+    line-height: 1.5;
+}
+
+.transformation-card p {
+    font-family: 'Work Sans', sans-serif;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    opacity: 0.85;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Trust badges grid */
+.trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.trust-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(206, 115, 82, 0.2);
+    border-radius: 4px;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.trust-badge:hover {
+    opacity: 1;
+    border-color: var(--color-accent);
+    background: rgba(206, 115, 82, 0.05);
+}
+
+/* Studio identity badge */
+.studio-identity {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.identity-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(206, 115, 82, 0.08);
+    border: 1px solid var(--color-accent);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.identity-badge .badge-label {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.identity-badge .badge-separator {
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    opacity: 0.5;
+}
+
+.identity-note {
+    font-family: 'Work Sans', sans-serif;
+    font-size: var(--font-size-sm);
+    opacity: 0.6;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 50ch;
 }
 
 /* Links CTA - Variante terciaria (solo texto) */
@@ -1911,6 +2021,47 @@ img {
 
     .about-content {
         grid-column: auto;
+        padding: 1.5rem;
+    }
+
+    .corner-bracket {
+        width: 30px;
+        height: 30px;
+    }
+
+    .transformation-card {
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+
+    .transformation-card .card-icon {
+        font-size: 1rem;
+    }
+
+    .transformation-card p {
+        font-size: 0.9rem;
+    }
+
+    .trust-badges {
+        gap: 0.5rem;
+    }
+
+    .trust-badge {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.75rem;
+    }
+
+    .identity-badge {
+        padding: 0.6rem 1.25rem;
+        gap: 0.4rem;
+    }
+
+    .identity-badge .badge-label {
+        font-size: 0.75rem;
+    }
+
+    .identity-note {
+        font-size: 0.8rem;
     }
 
     .studio-note {
