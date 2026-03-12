@@ -1036,8 +1036,15 @@ footer {
 
 .footer-left {
     display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-main-line,
+.footer-links-line {
+    display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
@@ -1059,16 +1066,24 @@ footer {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     font-size: 0.8rem;
     color: var(--color-text);
-    opacity: 0.7;  /* Increased from 0.5 for better contrast */
+    opacity: 0.7;
 }
 
 .footer-practice {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    opacity: 0.4;
-    display: block;
-    margin-top: 0.5rem;
     letter-spacing: 0.05em;
+}
+
+.footer-tagline {
+    opacity: 0.5;
+}
+
+.footer-location {
+    opacity: 0.4;
 }
 
 .footer-link {
@@ -2184,38 +2199,46 @@ img {
 
     .footer-left {
         flex-direction: column;
-        align-items: center; /* Center items */
-        gap: 1rem; /* More generous spacing */
+        align-items: center;
+        gap: 1rem;
         width: 100%;
     }
 
-    /* Hide separators on mobile (dots don't make sense in vertical layout) */
+    .footer-main-line,
+    .footer-links-line {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
     .footer-separator {
         display: none;
     }
 
-    /* Footer brand - more prominent on mobile */
     .footer-brand {
-        font-size: 1rem; /* Larger */
-        font-weight: 700; /* Bolder */
-        opacity: 1; /* Full opacity */
-        margin-bottom: 0.25rem;
+        font-size: 1rem;
+        font-weight: 700;
+        opacity: 1;
     }
 
-    /* Copyright - smaller and more discrete */
     .footer-copy {
         font-size: 0.75rem;
         opacity: 0.6;
-        order: 4; /* Move to bottom */
     }
 
     .footer-practice {
         font-size: 0.65rem;
-        margin-top: 0.25rem;
-        opacity: 0.5;
-        order: 5; /* After copyright */
         text-align: center;
         line-height: 1.4;
+        gap: 0.15rem;
+    }
+
+    .footer-tagline {
+        opacity: 0.5;
+    }
+
+    .footer-location {
+        opacity: 0.4;
     }
 
     /* Email and privacy links - more readable */
