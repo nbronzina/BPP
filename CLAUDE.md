@@ -14,7 +14,7 @@
 Corporate website for BPP Analytics & Design, a consulting firm specializing in data analysis and process optimization for the public sector in Argentina and LATAM.
 
 ### Key Features
-- **Responsive design**: Mobile-first, accessible (WCAG 2.1 AA)
+- **Responsive design**: Desktop-first, accessible (WCAG 2.1 AA)
 - **PWA**: Installable, offline-capable, works on iOS and Android
 - **Analytics**: Plausible.io for privacy-friendly tracking
 - **Contact form**: FormSubmit integration (no backend required)
@@ -234,7 +234,7 @@ These terms refer to the same section but use different wording intentionally �
 ### CSS Rules
 - **Custom properties**: Use variables for colors, spacing, breakpoints (defined in `:root`)
 - **Naming**: BEM-like with modifiers (`.button--primary`, `.card--highlight`)
-- **Media queries**: Mobile-first, ascending order (480px → 768px → 1024px)
+- **Media queries**: Desktop-first with mobile/tablet overrides (max-width: 1024px, 768px, 480px)
 - **Specificity**: Single classes preferred, avoid `!important`
 
 ### JavaScript Rules
@@ -275,7 +275,7 @@ Uses sharp-cli for conversion, maintains quality.
 ### CSS Architecture
 - **Single source of truth**: CSS custom properties in `:root` for colors, spacing, breakpoints
 - **Naming**: BEM-like with modifiers (`--variant` syntax, not `--modifier`)
-- **Media queries**: Mobile-first, ascending order (480px → 768px → 1024px)
+- **Media queries**: Desktop-first with mobile/tablet overrides (max-width: 1024px, 768px, 480px)
 - **Specificity**: Avoid `!important`, use single classes where possible
 
 ### JavaScript Patterns
