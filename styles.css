@@ -266,6 +266,13 @@ nav.nav--scrolled {
     width: 100%;
 }
 
+.nav-coming-soon {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+    font-size: inherit;
+}
+
 .mobile-menu-btn {
     display: none;
     flex-direction: column;
@@ -744,6 +751,39 @@ nav.nav--scrolled {
     margin-top: 1.5rem;
 }
 
+.studio-note {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    opacity: 0.6;
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1rem;
+    margin-top: 2rem;
+    line-height: 1.6;
+}
+
+.institutional-context {
+    border-top: 1px solid rgba(206, 115, 82, 0.3);
+    padding-top: 2rem;
+    margin-top: 3rem;
+}
+
+.context-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.institutional-context p {
+    font-size: var(--font-size-base);
+    opacity: 0.75;
+    line-height: 1.7;
+    max-width: 60ch;
+}
+
 /* =========================
    Services - Editorial Blocks
    ========================= */
@@ -825,6 +865,16 @@ nav.nav--scrolled {
     max-width: 750px;
 }
 
+.service-deliverable {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-top: 0.75rem;
+    letter-spacing: 0.03em;
+    line-height: 1.6;
+}
+
 /* services-cta-link ahora usa estilos unificados (ver línea 438) */
 .services-cta {
     padding: 3rem 0;
@@ -875,6 +925,15 @@ footer {
     font-size: 0.8rem;
     color: var(--color-text);
     opacity: 0.7;  /* Increased from 0.5 for better contrast */
+}
+
+.footer-practice {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    opacity: 0.4;
+    display: block;
+    margin-top: 0.5rem;
+    letter-spacing: 0.05em;
 }
 
 .footer-link {
