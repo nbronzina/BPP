@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.bppanalyticsanddesign.com/</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
     <image:image>
@@ -13,19 +13,19 @@
   </url>
   <url>
     <loc>https://www.bppanalyticsanddesign.com/proyectos/</loc>
-    <lastmod>2026-03-11</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://www.bppanalyticsanddesign.com/reporte-impacto/</loc>
-    <lastmod>2026-03-11</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://www.bppanalyticsanddesign.com/privacidad/</loc>
-    <lastmod>2026-03-11</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>

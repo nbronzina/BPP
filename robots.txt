@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.bppanalyticsanddesign.com/sitemap.xml
+
+# LLM guidance
+Allow: /llms.txt
