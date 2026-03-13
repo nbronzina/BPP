@@ -991,9 +991,9 @@ nav.nav--scrolled {
     display: inline-block;
     padding: 0.75rem 1.5rem;
     border: 1.5px solid var(--color-accent);
-    border-radius: 4px;
+    border-radius: 8px;
     transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    background: transparent;
+    background: #0a0a0a;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1718,23 +1718,19 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Alternating layout: even entries swap image/text positions */
-.actividad-entrada:nth-child(even) {
-    direction: rtl;
-}
-
-.actividad-entrada:nth-child(even) > * {
-    direction: ltr;
-}
-
+/* Alternating layout: Order in HTML determines position (no RTL needed) */
 .actividad-imagen {
     overflow: hidden;
+}
+
+/* Border on image when it's on the left (first child) */
+.actividad-entrada > .actividad-imagen:first-child {
     border-left: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.actividad-entrada:nth-child(even) .actividad-imagen {
-    border-left: none;
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
+/* Border on image when it's on the right (last child) */
+.actividad-entrada > .actividad-imagen:last-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .actividad-imagen img {
