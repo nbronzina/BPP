@@ -135,14 +135,33 @@
     <!-- Pensamiento Section -->
     <section id="pensamiento" class="section" aria-labelledby="pensamiento-content-heading">
 
+        <!-- Filter Bar -->
+        <div class="filter-bar" role="group" aria-label="Filtrar artículos por categoría">
+            <button class="filter-btn filter-btn--active" data-filter="todos" aria-pressed="true">
+                Todos
+            </button>
+            <button class="filter-btn" data-filter="sociologia" aria-pressed="false">
+                Sociología
+            </button>
+            <button class="filter-btn" data-filter="branding" aria-pressed="false">
+                Branding
+            </button>
+            <button class="filter-btn" data-filter="datos" aria-pressed="false">
+                Datos
+            </button>
+            <button class="filter-btn" data-filter="estrategia" aria-pressed="false">
+                Estrategia
+            </button>
+        </div>
+
         <div class="actividades-container">
             <!-- Entrada 1: Año analógico -->
-            <article class="actividad-entrada" data-animate aria-label="Artículo sobre el fin del futuro y el retorno a artefactos analógicos como prototipos de nuevos futuros posibles">
+            <article class="actividad-entrada" data-animate data-tags="sociologia,futuro,diseño,prospectiva" aria-label="Artículo sobre el fin del futuro y el retorno a artefactos analógicos como prototipos de nuevos futuros posibles">
                 <div class="actividad-texto">
                     <div class="actividad-meta">
                         <time class="actividad-fecha">Marzo 2026</time>
                         <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Futuro · Diseño · Prospectiva</span>
+                        <span class="actividad-tags">Sociología · Futuro · Diseño · Prospectiva</span>
                     </div>
                     <h3>2026, año analógico. O: por qué el futuro ya no llega</h3>
                     <p class="actividad-descripcion">
@@ -169,7 +188,7 @@
             </article>
 
             <!-- Entrada 2: Algoritmos y sociología -->
-            <article class="actividad-entrada" data-animate aria-label="Artículo sobre las limitaciones del Big Data y la necesidad de la sociología en estrategia de marca">
+            <article class="actividad-entrada" data-animate data-tags="sociologia,branding,estrategia,datos" aria-label="Artículo sobre las limitaciones del Big Data y la necesidad de la sociología en estrategia de marca">
                 <div class="actividad-texto">
                     <div class="actividad-meta">
                         <time class="actividad-fecha">Marzo 2026</time>
@@ -201,7 +220,7 @@
             </article>
 
             <!-- Entrada 3: Alquileres -->
-            <article class="actividad-entrada" data-animate aria-label="Tesis sobre negociación de alquileres en Buenos Aires y asimetrías estructurales del mercado">
+            <article class="actividad-entrada" data-animate data-tags="sociologia,datos,vivienda" aria-label="Tesis sobre negociación de alquileres en Buenos Aires y asimetrías estructurales del mercado">
                 <div class="actividad-texto">
                     <div class="actividad-meta">
                         <time class="actividad-fecha">Febrero 2026</time>
@@ -233,7 +252,7 @@
             </article>
 
             <!-- Entrada 4: Branding -->
-            <article class="actividad-entrada" data-animate aria-label="Artículo sobre branding como fenómeno social y arquitectura simbólica">
+            <article class="actividad-entrada" data-animate data-tags="branding,sociologia,estrategia" aria-label="Artículo sobre branding como fenómeno social y arquitectura simbólica">
                 <div class="actividad-texto">
                     <div class="actividad-meta">
                         <time class="actividad-fecha">Enero 2026</time>
