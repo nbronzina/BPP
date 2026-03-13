@@ -360,7 +360,7 @@ nav.nav--scrolled {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 12rem 6rem 8rem;
+    padding: 8rem 6rem 4rem;
     position: relative;
     background: transparent;
 }
