@@ -387,7 +387,7 @@ nav.nav--scrolled {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: clamp(4rem, 10vh, 8rem) clamp(2rem, 8vw, 6rem) clamp(2rem, 5vh, 4rem);
+    padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 8vw, 6rem) clamp(2rem, 5vh, 4rem);
     position: relative;
     background: transparent;
 }
