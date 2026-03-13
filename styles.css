@@ -1823,7 +1823,6 @@ footer {
 
 /* actividades-cta-link ahora usa estilos unificados (ver línea 438) */
 .actividades-cta {
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
     padding: 2.5rem 0;
 }
 
