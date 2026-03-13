@@ -227,7 +227,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = "Enviando...";
+        submitButton.classList.add("is-loading");
+        submitButton.textContent = "Enviando…";
       }
 
       formMessage.classList.remove("show", "success", "error");
@@ -258,6 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
+          submitButton.classList.remove("is-loading");
           submitButton.textContent = "Enviar mensaje";
         }
       }
