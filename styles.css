@@ -1978,7 +1978,7 @@ img {
 /* Tablet landscape */
 @media (min-width: 768px) and (max-width: 1024px) {
     .hero {
-        padding: 120px var(--spacing-horizontal-tablet) 80px;
+        padding: 140px var(--spacing-horizontal-tablet) 80px;
     }
 
     .section {
@@ -2187,7 +2187,7 @@ img {
     }
 
     .hero {
-        padding: 100px 1.5rem 60px;
+        padding: 120px 1.5rem 60px;
         justify-content: center;
     }
 
@@ -2586,7 +2586,7 @@ img {
 /* MOBILE-004: Mobile extra pequeño (320-360px) */
 @media (max-width: 360px) {
     .hero {
-        padding: 100px 1rem 60px;
+        padding: 120px 1rem 60px;
     }
 
     .tagline {
