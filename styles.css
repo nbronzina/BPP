@@ -360,8 +360,9 @@ nav.nav--scrolled {
 
 .hero {
     min-height: 100vh;
+    max-height: min(700px, 85vh);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: 120px 6rem 80px;
     position: relative;
