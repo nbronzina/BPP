@@ -2089,11 +2089,6 @@ img {
         font-size: var(--font-size-h2);
     }
 
-    /* Ocultar ícono centrado en mobile */
-    .nav-logo-icon {
-        display: none;
-    }
-
     .nav-links {
         position: fixed;
         top: 0;
