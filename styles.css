@@ -1509,8 +1509,6 @@ footer {
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .filter-btn {
