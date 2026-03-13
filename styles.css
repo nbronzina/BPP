@@ -997,6 +997,42 @@ nav.nav--scrolled {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    position: relative;
+}
+
+/* CTA container for dual buttons */
+.actividades-cta-dual {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+}
+
+/* Corner brackets for CTAs (BPP branding) */
+.actividades-cta-link::before,
+.actividades-cta-link::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid var(--color-accent);
+    opacity: 0.5;
+    transition: opacity 0.3s ease, border-color 0.3s ease;
+}
+
+.actividades-cta-link::before {
+    top: -4px;
+    left: -4px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.actividades-cta-link::after {
+    bottom: -4px;
+    right: -4px;
+    border-left: none;
+    border-top: none;
 }
 
 .about-cta a:hover,
@@ -1004,6 +1040,12 @@ nav.nav--scrolled {
     background: rgba(206, 115, 82, 0.12);
     box-shadow: 0 0 20px rgba(206, 115, 82, 0.3);
     transform: translateY(-2px);
+    border-color: var(--color-accent-bright);
+}
+
+.actividades-cta-link:hover::before,
+.actividades-cta-link:hover::after {
+    opacity: 1;
     border-color: var(--color-accent-bright);
 }
 
@@ -1687,12 +1729,19 @@ footer {
 
 .actividad-imagen {
     overflow: hidden;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.actividad-entrada:nth-child(even) .actividad-imagen {
+    border-left: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .actividad-imagen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .actividad-texto {
@@ -1720,6 +1769,22 @@ footer {
 
 .actividad-tags {
     opacity: 0.4;
+}
+
+/* Category badge for Hechos entries */
+.actividad-category-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+    background: rgba(206, 115, 82, 0.1);
+    color: var(--color-accent);
+    border: 1px solid rgba(206, 115, 82, 0.3);
 }
 
 .actividad-entrada h3 {
