@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0a">
 
   <title>Política de Privacidad | BPP Analytics &amp; Design</title>
 
@@ -37,6 +38,7 @@
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://plausible.io">
 
   <!-- DNS Prefetch para servicios externos -->
   <link rel="dns-prefetch" href="https://plausible.io">
@@ -247,18 +249,16 @@
   <!-- Navigation -->
   <nav role="navigation" aria-label="Navegación principal de BPP Analytics &amp; Design">
     <div class="nav-container">
-      <!-- Wordmark (izquierda) -->
+      <!-- Logo + Wordmark (izquierda) -->
       <div class="logo">
+        <a href="../#hero" class="nav-logo-icon" aria-label="Inicio - BPP Analytics &amp; Design">
+          <picture>
+            <source srcset="../img/logo-160.webp" type="image/webp">
+            <img src="../img/logo.png" alt="Ícono BPP" width="39" height="52" loading="eager" decoding="async">
+          </picture>
+        </a>
         <a href="../#hero" class="nav-wordmark">BPP Analytics &amp; Design</a>
       </div>
-
-      <!-- Ícono BPP centrado (position absolute) -->
-      <a href="../#hero" class="nav-logo-icon" aria-label="Inicio - BPP Analytics &amp; Design">
-        <picture>
-          <source srcset="../img/logo-160.webp" type="image/webp">
-          <img src="../img/logo.png" alt="Ícono BPP" width="36" height="48" loading="eager" decoding="async">
-        </picture>
-      </a>
 
       <!-- Mobile menu button -->
       <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
