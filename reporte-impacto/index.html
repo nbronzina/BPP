@@ -10,6 +10,7 @@
   <!-- Metadatos descriptivos -->
   <meta name="description" content="Análisis del impacto de la caída de natalidad en Argentina sobre matrículas escolares. Escenarios estratégicos y oportunidades para el sector educativo. BPP Analytics 2025.">
   <meta name="author" content="BPP Analytics &amp; Design">
+  <meta name="keywords" content="natalidad Argentina, matrícula escolar, demografía educativa, Francesco Faà di Bruno, prospectiva educativa, escenarios estratégicos, San Antonio de Areco, San Andrés de Giles">
 
   <!-- Seguridad y privacidad (alineado al index, sin formularios aquí) -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://plausible.io; base-uri 'self'; form-action 'self';">
@@ -338,7 +339,6 @@
       <!-- DATOS DEMOGRÁFICOS Y MATRÍCULA -->
       <article class="actividad-card actividad-card--light">
         <div class="impact-top">
-          <span class="impact-icon" aria-hidden="true">📉</span>
           <h3>1.1. Datos demográficos y efectos en la matrícula</h3>
         </div>
         <p>
@@ -377,7 +377,6 @@
       <!-- DISTRIBUCIÓN REGIONAL -->
       <article class="actividad-card actividad-card--light">
         <div class="impact-top">
-          <span class="impact-icon" aria-hidden="true">🗺️</span>
           <h3>1.2. Diferencias regionales</h3>
         </div>
         <p class="impact-number-hero">−8&nbsp;% a −19&nbsp;%</p>
@@ -418,7 +417,6 @@
       <!-- ESCUELAS CONFESIONALES -->
       <article class="actividad-card actividad-card--light">
         <div class="impact-top">
-          <span class="impact-icon" aria-hidden="true">⛪</span>
           <h3>2.1. Fortalezas de las escuelas religiosas (que podés convertir en ventaja)</h3>
         </div>
         <p>
@@ -454,7 +452,6 @@
         <!-- Escenario 1 - Accordion -->
         <div class="scenario-accordion">
           <button class="scenario-accordion-header" aria-expanded="false" aria-controls="scenario1Content">
-            <span class="icon">⚪</span>
             <h3>3.1. Escenario tendencial — sostener con lo mínimo</h3>
             <span class="toggle-icon">▼</span>
           </button>
@@ -477,7 +474,6 @@
         <!-- Escenario 2 - Accordion -->
         <div class="scenario-accordion">
           <button class="scenario-accordion-header" aria-expanded="false" aria-controls="scenario2Content">
-            <span class="icon">🟠</span>
             <h3>3.2. Escenario transformador — reconvertir para sostener</h3>
             <span class="toggle-icon">▼</span>
           </button>
@@ -500,7 +496,6 @@
         <!-- Escenario 3 - Accordion -->
         <div class="scenario-accordion">
           <button class="scenario-accordion-header" aria-expanded="false" aria-controls="scenario3Content">
-            <span class="icon">🟢</span>
             <h3>3.3. Escenario disruptivo — expandir la misión educativa</h3>
             <span class="toggle-icon">▼</span>
           </button>
@@ -622,19 +617,18 @@
 
         <a
           href="docs/estudio-demografico-regional.pdf"
-          class="cta-button"
+          class="cta-button cta-button--secondary"
           id="downloadEstudioRegional"
           download
           aria-label="Descargar estudio demográfico regional en PDF"
           aria-describedby="desc-estudio-regional"
-          style="margin-left: 0.75rem;"
         >
           Descargar estudio regional
         </a>
 
-        <p style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1);">
+        <p class="section-divider-top">
           <strong>¿Tu institución enfrenta esta realidad?</strong><br>
-          → <a href="../#contact" style="text-decoration: underline;">Conversemos de tu próxima decisión estratégica</a>
+          → <a href="../#contact" class="text-link-underline">Conversemos de tu próxima decisión estratégica</a>
         </p>
       </article>
     </section>
@@ -678,8 +672,8 @@
           <a href="mailto:bppanalyticsanddesign@gmail.com" class="footer-link">bppanalyticsanddesign@gmail.com</a>
           <span class="footer-separator">·</span>
           <a href="../privacidad/" class="footer-link">Política de Privacidad</a>
-          <span class="footer-separator" id="pwa-separator" style="display:none;">·</span>
-          <button type="button" id="manual-install-pwa" class="footer-link install-pwa-link" style="display:none;" aria-label="Instalar BPP Analytics & Design como aplicación web" title="Instalar como aplicación web progresiva (PWA)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="vertical-align: middle; margin-right: 4px;"><path d="M12 2L12 14M12 14L8 10M12 14L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Instalar app</button>
+          <span class="footer-separator pwa-hidden" id="pwa-separator">·</span>
+          <button type="button" id="manual-install-pwa" class="footer-link install-pwa-link pwa-hidden" aria-label="Instalar BPP Analytics & Design como aplicación web" title="Instalar como aplicación web progresiva (PWA)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="pwa-icon"><path d="M12 2L12 14M12 14L8 10M12 14L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Instalar app</button>
         </div>
       </div>
       <div class="social-icons">

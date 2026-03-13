@@ -2693,6 +2693,67 @@ img {
   margin: 1rem 0;
 }
 
+.impact-number--spacing {
+  margin-top: 2.5rem;
+}
+
+/* Spacing utilities for impact-top */
+.impact-top--spacing-md {
+  margin-top: 2rem;
+}
+
+.impact-top--spacing-lg {
+  margin-top: 2.5rem;
+}
+
+/* Text spacing utilities */
+.text-spacing-sm {
+  margin-top: 1rem;
+}
+
+.text-spacing-md {
+  margin-top: 1.5rem;
+}
+
+/* Quote box */
+.quote-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 165, 0, 0.05);
+  border-left: 4px solid var(--orange-600);
+}
+
+.quote-box--compact {
+  margin-top: 1rem;
+}
+
+/* Section divider */
+.section-divider-top {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Text link with underline */
+.text-link-underline {
+  text-decoration: underline;
+}
+
+/* CTA button variant */
+.cta-button--secondary {
+  margin-left: 0.75rem;
+}
+
+/* PWA utilities */
+.pwa-hidden {
+  display: none;
+}
+
+.pwa-icon {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
 /* Lista dentro de tarjeta */
 .impact-list {
   margin-top: 1rem;
