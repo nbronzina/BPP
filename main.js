@@ -73,9 +73,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const navLinks = document.getElementById("navLinks");
 
   if (mobileMenuBtn && navLinks) {
-    mobileMenuBtn.addEventListener("click", () => {
+    const toggleMenu = () => {
       const isActive = navLinks.classList.toggle("active");
       mobileMenuBtn.setAttribute("aria-expanded", isActive ? "true" : "false");
+    };
+
+    mobileMenuBtn.addEventListener("click", toggleMenu);
+
+    // Keyboard support for Enter and Space keys
+    mobileMenuBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleMenu();
+      }
     });
 
     // Cerrar menú al hacer click en un link
@@ -113,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // -------------------------
   // Smooth scroll para anclas internas
   // (solo para IDs en la misma página)
+  // Respects prefers-reduced-motion
 // -------------------------
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const href = anchor.getAttribute("href");
@@ -122,8 +133,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         target.scrollIntoView({
-          behavior: "smooth",
+          behavior: prefersReducedMotion ? "auto" : "smooth",
           block: "start"
         });
       }
@@ -156,10 +168,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const animatedEls = document.querySelectorAll("[data-animate]");
   const trackedSections = new Set();
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (animatedEls.length && "IntersectionObserver" in window) {
-    // Mark elements as ready for animation
-    animatedEls.forEach(el => el.classList.add('animate-ready'));
+    // Mark elements as ready for animation only if motion is allowed
+    if (!prefersReducedMotion) {
+      animatedEls.forEach(el => el.classList.add('animate-ready'));
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
