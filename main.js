@@ -842,53 +842,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (totalScore <= 40) {
         scoreLabel = 'Nivel Inicial';
-        scoreDescription = 'Tu organización todavía reacciona ante el cambio en lugar de anticiparlo. Las decisiones se toman con información limitada y sin marcos conceptuales claros. Hay oportunidades concretas para estructurar cómo interpretás el contexto, probás ideas antes de comprometer recursos completos, y comunicás con coherencia durante transiciones estratégicas.';
+        scoreDescription = 'Tu organización todavía reacciona ante el cambio en lugar de anticiparlo. Las decisiones se toman con información limitada y sin marcos conceptuales claros. Empezá por construir claridad narrativa antes de agregar complejidad estratégica.';
         recommendations = [
           {
-            title: 'Investigación exploratoria',
-            description: 'Empezá a identificar señales tempranas de cambio antes de que se conviertan en crisis. Un mapeo inicial de escenarios futuros te permite anticipar en lugar de reaccionar.'
-          },
-          {
             title: 'Branding y comunicación estratégica',
-            description: 'Construí un relato coherente sobre quién sos y hacia dónde vas. Cuando algo cambia, la marca que no se explica pierde. Empezá por definir tu voz antes de que otros definan tu narrativa.'
+            description: 'Construí un relato coherente sobre quién sos y hacia dónde vas. Cuando algo cambia, la marca que no se explica pierde. Empezá por definir tu voz antes de que otros definan tu narrativa.',
+            link: '#services',
+            cta: 'Ver servicio de Branding'
           },
           {
-            title: 'Análisis y visualización de datos',
-            description: 'Los datos que tenés no sirven si no los interpretás. Convertí métricas en argumentos que sostengan decisiones reales. Empezá con un dashboard básico pero con contexto estratégico.'
+            title: 'Investigación exploratoria',
+            description: 'Empezá a identificar señales tempranas de cambio antes de que se conviertan en crisis. Un mapeo inicial de escenarios futuros te permite anticipar en lugar de reaccionar.',
+            link: '#services',
+            cta: 'Ver servicio de Investigación'
           }
         ];
       } else if (totalScore <= 70) {
         scoreLabel = 'Nivel Intermedio';
-        scoreDescription = 'Tu organización tiene algunas capacidades instaladas pero todavía hay brechas críticas. Hacés algunas cosas bien (probás ideas, interpretás datos, comunicás con cierta coherencia) pero de forma inconsistente. El siguiente paso es sistematizar: convertir lo que funciona en proceso repetible y llenar los huecos donde todavía improvisás.';
+        scoreDescription = 'Tu organización tiene algunas capacidades instaladas pero todavía hay brechas críticas. Hacés algunas cosas bien pero de forma inconsistente. El siguiente paso es destrabar la ejecución y sistematizar el monitoreo de cambios.';
         recommendations = [
           {
-            title: 'Diseño de prototipos',
-            description: 'Pasá de prototipar ocasionalmente a hacerlo de forma sistemática. Cada hipótesis debería testearse con un artefacto concreto antes de comprometer recursos completos. Esto reduce riesgo y acelera aprendizaje.'
-          },
-          {
             title: 'Gestión estratégica de proyectos',
-            description: 'El plan existe, el equipo está, pero nada avanza. Coordiná las partes para que el proyecto llegue donde tiene que llegar. Un sistema de seguimiento claro convierte intención en ejecución.'
+            description: 'El plan existe, el equipo está, pero nada avanza. No se trata de metodologías — se trata de entender las dinámicas sociales que frenan la ejecución. Diagnosticamos bloqueos y alineamos stakeholders.',
+            link: '#services',
+            cta: 'Ver servicio de Gestión estratégica'
           },
           {
             title: 'Investigación exploratoria',
-            description: 'Convertí la identificación de señales en un proceso continuo, no un ejercicio ocasional. Un sistema de monitoreo estructurado te permite ver qué viene antes de que te obligue a reaccionar.'
+            description: 'Convertí la identificación de señales en un proceso continuo, no un ejercicio ocasional. Un sistema de monitoreo estructurado te permite ver qué viene antes de que te obligue a reaccionar.',
+            link: '#services',
+            cta: 'Ver servicio de Investigación'
+          },
+          {
+            title: 'Diseño de prototipos',
+            description: 'Pasá de prototipar ocasionalmente a hacerlo de forma sistemática. Cada hipótesis debería testearse con un artefacto concreto antes de comprometer recursos completos.',
+            link: '#services',
+            cta: 'Ver servicio de Prototipos'
           }
         ];
       } else {
         scoreLabel = 'Nivel Avanzado';
-        scoreDescription = 'Tu organización tiene capacidades maduras para decidir bajo incertidumbre. Identificás señales tempranas, probás ideas antes de implementar, interpretás datos en contexto, comunicás con coherencia, y diseñás escenarios futuros. El siguiente paso no es construir capacidades nuevas, sino profundizar las que tenés: hacerlas más sofisticadas, más rápidas, y más integradas entre sí.';
+        scoreDescription = 'Tu organización tiene capacidades maduras para decidir bajo incertidumbre. El siguiente paso no es construir capacidades nuevas, sino profundizar las que tenés: hacerlas más sofisticadas, integradas, y convertir prospectiva en operación continua.';
         recommendations = [
           {
-            title: 'Design fiction y futuros especulativos',
-            description: 'Pasá de escenarios a prototipos de futuros alternativos. El design fiction te permite testear cómo sería vivir en un futuro específico antes de que llegue. Es investigación especulativa aplicada a decisiones estratégicas.'
+            title: 'Investigación exploratoria avanzada',
+            description: 'Convertí el monitoreo de señales en investigación estructurada. No solo qué está cambiando, sino por qué, hacia dónde, y qué estructuras sociales, económicas y culturales lo están impulsando.',
+            link: '#services',
+            cta: 'Ver servicio de Investigación'
           },
           {
-            title: 'Investigación profunda y análisis de tendencias',
-            description: 'Convertí el monitoreo de señales en investigación estructurada. No solo qué está cambiando, sino por qué, hacia dónde, y qué estructuras sociales, económicas y culturales lo están impulsando.'
-          },
-          {
-            title: 'Sistema integrado de futuros estratégicos',
-            description: 'Integrá todas tus capacidades en un sistema único: señales → escenarios → prototipos → decisiones → comunicación. Cada parte alimenta a la siguiente. Esto convierte la prospectiva en operación, no en ejercicio aislado.'
+            title: 'Diseño de prototipos y design fiction',
+            description: 'Pasá de escenarios a prototipos de futuros alternativos. El design fiction te permite testear cómo sería vivir en un futuro específico antes de que llegue. Es investigación especulativa aplicada a decisiones estratégicas.',
+            link: '#services',
+            cta: 'Ver servicio de Prototipos'
           }
         ];
       }
@@ -907,6 +913,7 @@ document.addEventListener("DOMContentLoaded", function () {
         recItem.innerHTML = `
           <h5 class="recommendation-title">${rec.title}</h5>
           <p class="recommendation-description">${rec.description}</p>
+          ${rec.link ? `<a href="${rec.link}" class="recommendation-cta">${rec.cta || 'Ver más'} <span aria-hidden="true">→</span></a>` : ''}
         `;
         recommendationsList.appendChild(recItem);
       });
