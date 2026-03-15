@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="color-scheme: dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,7 +76,7 @@
     .legal-label {
       font-family: 'IBM Plex Mono', monospace;
       font-size: var(--font-size-sm);
-      color: #ce7352;
+      color: #d47545;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 1rem;
@@ -140,10 +140,9 @@
     }
 
     .legal-content a {
-      color: #ce7352;
+      color: #d47545;
       text-decoration: none;
       opacity: 0.7;
-      transition: opacity 0.3s ease;
     }
 
     .legal-content a:hover {
@@ -171,7 +170,7 @@
       display: inline-block;
       font-family: 'IBM Plex Mono', monospace;
       font-size: var(--font-size-sm);
-      color: #ce7352;
+      color: #d47545;
       text-decoration: none;
       margin: 4rem auto 3rem;
       text-align: center;
@@ -179,7 +178,6 @@
       max-width: 720px;
       padding: 0 1.5rem;
       opacity: 0.7;
-      transition: opacity 0.3s ease;
     }
 
     .back-to-top:hover {
@@ -211,6 +209,15 @@
 
       .back-to-top {
         padding: 0 var(--spacing-horizontal-mobile);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .legal-content a {
+        transition: opacity 0.3s ease;
+      }
+      .back-to-top {
+        transition: opacity 0.3s ease;
       }
     }
   </style>
