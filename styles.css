@@ -3198,6 +3198,130 @@ img {
   opacity: 1;
 }
 
+/* =========================
+   Señales de la Semana Widget
+   ========================= */
+
+.senales-widget {
+    background: var(--color-bg);
+    padding: var(--spacing-section) var(--spacing-horizontal-desktop);
+}
+
+.senales-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.senales-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.senales-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-label);
+    color: var(--orange-500);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--orange-500);
+    border-radius: 4px;
+}
+
+.senales-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h2);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: var(--line-height-heading);
+}
+
+.senales-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.senal-card {
+    background: var(--color-surface);
+    border: var(--border-card);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: all var(--transition-normal);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .senal-card:hover {
+        box-shadow: var(--shadow-card-hover);
+        transform: translateY(-4px);
+    }
+}
+
+.senal-label {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--orange-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.senal-headline {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h5);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: var(--line-height-heading);
+    margin-bottom: 1rem;
+}
+
+.senal-analysis {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+    margin-bottom: 1.5rem;
+}
+
+.senal-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--orange-500);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.senal-link:hover {
+    color: var(--orange-400);
+}
+
+@media (max-width: 1024px) {
+    .senales-widget {
+        padding: var(--spacing-section) var(--spacing-horizontal-tablet);
+    }
+}
+
+@media (max-width: 768px) {
+    .senales-widget {
+        padding: var(--spacing-section) var(--spacing-horizontal-mobile);
+    }
+
+    .senales-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .senal-card {
+        padding: 1.5rem;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .reporte-page .hero-section {
