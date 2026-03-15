@@ -6,10 +6,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    cursor: default;
 }
 
 :root {
@@ -112,10 +108,16 @@
 }
 
 html {
-    scroll-behavior: smooth;
     scroll-padding-top: 100px;  /* Altura del navbar sticky (~96px + margen) */
     background: #0a0a0a;
     overflow-x: hidden;
+}
+
+/* Smooth scroll only if motion is allowed */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 /* Anchor targets - prevent content from being hidden behind fixed navbar */
@@ -131,7 +133,6 @@ body {
     color: var(--color-text-light);
     line-height: var(--line-height-body);  /* 1.8 - improved readability */
     overflow-x: hidden;
-    animation: fadeIn 0.6s ease-in;
     position: relative;
     z-index: 1;
     /* Prevent horizontal overflow on mobile */
@@ -140,6 +141,13 @@ body {
     hyphens: auto;
     font-variant-numeric: lining-nums;
     font-feature-settings: 'zero' 0;  /* Disable slashed zero */
+}
+
+/* Fade-in animation only if motion is allowed */
+@media (prefers-reduced-motion: no-preference) {
+    body {
+        animation: fadeIn 0.6s ease-in;
+    }
 }
 
 /* Prevent text overflow globally */
