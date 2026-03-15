@@ -254,7 +254,7 @@
                 <li><a href="#socios">Equipo</a></li>
                 <li><a href="/proyectos/">Lo hecho</a></li>
                 <li><a href="pensamiento/">Pensamiento</a></li>
-                <li><a href="#contact">Conversemos</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
         </div>
     </nav>
@@ -271,11 +271,12 @@
                 <div class="locations">BUENOS AIRES / MADRID</div>
                 <a
                   href="#contact"
-                  class="cta-button"
+                  class="cta-button cta-button--hero"
                   id="ctaHero"
                   aria-label="Ir al formulario de contacto para conversar con BPP Analytics &amp; Design"
+                  data-preview="Te respondemos en 24 horas"
                 >
-                  <span class="cta-arrow cta-arrow--right" aria-hidden="true">→</span> Mostrame cómo
+                  <span class="cta-arrow cta-arrow--right" aria-hidden="true">→</span> Contanos tu desafío
                 </a>
             </div>
         </div>
@@ -352,7 +353,7 @@
                     <p class="identity-note">Consultora de diseño estratégico, comunicación y futuros. Trabajamos con organizaciones que no pueden permitirse equivocarse en la próxima decisión.</p>
                 </div>
 
-                <p class="about-cta"><a href="#contact">→ Conversemos</a></p>
+                <p class="about-cta"><a href="#contact" class="cta-link--hero" data-preview="Te respondemos en 24 horas">→ Contanos tu desafío</a></p>
             </div>
         </div>
     </section>
@@ -525,7 +526,8 @@
             </div>
 
             <div class="services-cta">
-                <a href="#contact" class="services-cta-link"><span class="cta-arrow cta-arrow--right" aria-hidden="true">→</span> Conversemos</a>
+                <a href="#contact" class="services-cta-link cta-link--services" data-preview="Recibís propuesta en 2 días hábiles"><span class="cta-arrow cta-arrow--right" aria-hidden="true">→</span> Solicitar diagnóstico de 48 horas</a>
+                <p class="services-cta-subtext">Sin costo. Te decimos si podemos ayudarte.</p>
             </div>
         </div>
     </section>
@@ -1093,6 +1095,7 @@
 
                     <!-- FormSubmit Configuration -->
                     <input type="hidden" name="_subject" value="Nuevo contacto desde BPP Analytics &amp; Design">
+                    <input type="hidden" name="_next" value="https://bpp-analytics.com/gracias">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="box">
                     <input type="text" name="_honey" class="honeypot" autocomplete="off" aria-hidden="true" tabindex="-1">
@@ -1121,16 +1124,51 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">TU DESAFÍO</label>
+                        <label for="organization">ORGANIZACIÓN</label>
+                        <input
+                            type="text"
+                            id="organization"
+                            name="organization"
+                            autocomplete="organization"
+                            spellcheck="false"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="challenge">¿CUÁL ES EL DESAFÍO QUE ENFRENTÁS?</label>
+                        <textarea
+                            id="challenge"
+                            name="challenge"
+                            rows="3"
+                            maxlength="500"
+                            placeholder="Describilo brevemente"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeline">¿EN QUÉ PLAZO NECESITÁS RESOLVERLO?</label>
+                        <select
+                            id="timeline"
+                            name="timeline"
+                        >
+                            <option value="" disabled selected>Seleccioná un plazo</option>
+                            <option value="urgente">Esta semana</option>
+                            <option value="mes">Este mes</option>
+                            <option value="trimestre">Este trimestre</option>
+                            <option value="explorando">Todavía estoy explorando</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">MENSAJE ADICIONAL</label>
                         <textarea
                             id="message"
                             name="message"
                             rows="5"
-                            required
                         ></textarea>
                     </div>
 
-                    <button type="submit" class="form-submit">Iniciar conversación <span class="cta-arrow cta-arrow--right" aria-hidden="true">→</span></button>
+                    <button type="submit" class="form-submit cta-button--contact" data-preview="Llamada de 30 min en la semana">Agendá una llamada <span class="cta-arrow cta-arrow--right" aria-hidden="true">→</span></button>
                 </form>
             </div>
         </div>

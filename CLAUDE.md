@@ -351,4 +351,17 @@ git push origin main
 
 ---
 
+## Pending Content
+
+### Lead Magnet Framework
+**PENDING**: Create downloadable "Framework de señales débiles" PDF to enable low-intent CTA:
+- CTA text: "Descargar framework de señales débiles"
+- Format: PDF, 4-6 pages
+- Content: Methodology for identifying and interpreting weak signals in strategic contexts
+- Purpose: Lead generation for low-intent visitors not ready for direct contact
+- Location: /docs/framework-senales-debiles.pdf
+- Referenced in: Not yet implemented (waiting for content creation)
+
+---
+
 **For questions or issues**: Contact BPP Analytics & Design at bppanalyticsanddesign@gmail.com
