@@ -67,6 +67,20 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
    - Voice: directo, first-person, practitioner-level (no académico, no corporativo)
    - Pairing con frontend-design: dirección estética ya definida (refined dark editorial with warm orange accent)
 
+### Skills de Desarrollo y Testing
+
+6. **gstack** - Garry Tan's development workflow tools
+   - **IMPORTANTE**: Use `/browse` skill from gstack for ALL web browsing
+   - **NEVER** use `mcp__claude-in-chrome__*` tools
+   - Available skills:
+     - `/browse` - Fast headless browser for testing and dogfooding (~100ms per command)
+     - `/review` - Code review workflow
+     - `/ship` - Deployment and shipping workflow
+     - `/plan-ceo-review` - CEO-level planning review
+     - `/plan-eng-review` - Engineering planning review
+     - `/retro` - Retrospective workflow
+   - Use for: QA testing, site dogfooding, user flow verification, bug filing with evidence
+
 ### Workflow Recomendado
 
 ```bash
