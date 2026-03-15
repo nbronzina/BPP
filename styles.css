@@ -3342,6 +3342,16 @@ img {
     margin-bottom: 1rem;
 }
 
+.senal-sector {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.75rem;
+}
+
 .senal-analysis {
     font-family: var(--font-body);
     font-size: var(--font-size-base);
