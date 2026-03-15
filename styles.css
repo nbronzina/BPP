@@ -3347,7 +3347,27 @@ img {
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     line-height: var(--line-height-body);
+    margin-bottom: 1rem;
+}
+
+.senal-location {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-body);
+    margin-bottom: 1rem;
+}
+
+.senal-impact {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--color-text);
+    line-height: var(--line-height-body);
     margin-bottom: 1.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(206, 115, 82, 0.15);
 }
 
 .senal-link {
