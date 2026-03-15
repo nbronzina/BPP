@@ -942,4 +942,38 @@ document.addEventListener("DOMContentLoaded", function () {
       trackEvent('Quiz_reiniciado');
     });
   }
+
+  // =====================================================
+  // SERVICE TIMELINES
+  // -----------------------------------------------------
+  // Expandable timeline accordions in service cards
+  // =====================================================
+  const timelineToggles = document.querySelectorAll('.service-timeline-toggle');
+
+  if (timelineToggles.length) {
+    timelineToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const timeline = toggle.nextElementSibling;
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
+          // Collapse
+          toggle.setAttribute('aria-expanded', 'false');
+          timeline.setAttribute('hidden', '');
+          timeline.setAttribute('aria-hidden', 'true');
+          toggle.querySelector('span:first-child').textContent = 'Ver proceso';
+        } else {
+          // Expand
+          toggle.setAttribute('aria-expanded', 'true');
+          timeline.removeAttribute('hidden');
+          timeline.setAttribute('aria-hidden', 'false');
+          toggle.querySelector('span:first-child').textContent = 'Ocultar proceso';
+
+          // Track expansion
+          const serviceCategory = toggle.closest('.service-block').querySelector('.service-category').textContent;
+          trackEvent('Timeline_expandido', { servicio: serviceCategory });
+        }
+      });
+    });
+  }
 });
