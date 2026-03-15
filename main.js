@@ -228,12 +228,149 @@ document.addEventListener("DOMContentLoaded", function () {
   // -----------------------------------------------------
   // Envía el formulario via fetch a FormSubmit, muestra
   // mensajes de éxito/error y trackea envíos válidos.
+  // Incluye autosave con TTL de 24 horas para protección PII.
   // =====================================================
 
   const contactForm = document.getElementById("contactForm");
   const formMessage = document.getElementById("formMessage");
 
+  // =====================================================
+  // FORM AUTOSAVE con TTL de 24 horas
+  // =====================================================
+  const AUTOSAVE_KEY = 'bpp_form_autosave';
+  const AUTOSAVE_TTL = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
+  let autosaveTimeout;
+
+  function saveFormState() {
+    if (!contactForm) return;
+
+    const formData = {
+      name: document.getElementById('name')?.value || '',
+      email: document.getElementById('email')?.value || '',
+      organization: document.getElementById('organization')?.value || '',
+      challenge: document.getElementById('challenge')?.value || '',
+      timeline: document.getElementById('timeline')?.value || '',
+      message: document.getElementById('message')?.value || ''
+    };
+
+    // Solo guardar si al menos un campo tiene contenido
+    const hasContent = Object.values(formData).some(val => val.trim() !== '');
+
+    if (!hasContent) {
+      // Si no hay contenido, eliminar autosave existente
+      localStorage.removeItem(AUTOSAVE_KEY);
+      return;
+    }
+
+    try {
+      const autosaveData = {
+        fields: formData,
+        saved_at: Date.now()
+      };
+      localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(autosaveData));
+
+      // Track autosave event
+      const fieldsFilledCount = Object.values(formData).filter(val => val.trim() !== '').length;
+      trackEvent('Form_autosaved', { fields_filled: fieldsFilledCount });
+    } catch (e) {
+      // QuotaExceededError o otros errores de localStorage
+      console.warn('Form autosave failed:', e.message);
+    }
+  }
+
+  function restoreFormState() {
+    if (!contactForm) return;
+
+    try {
+      const savedData = localStorage.getItem(AUTOSAVE_KEY);
+      if (!savedData) return;
+
+      const autosaveData = JSON.parse(savedData);
+      const age = Date.now() - autosaveData.saved_at;
+
+      // Si el autosave tiene más de 24 horas, eliminarlo
+      if (age > AUTOSAVE_TTL) {
+        localStorage.removeItem(AUTOSAVE_KEY);
+        trackEvent('Form_cleared', { reason: 'ttl_expired' });
+        return;
+      }
+
+      // Restaurar campos
+      const fields = autosaveData.fields;
+      if (fields.name) document.getElementById('name').value = fields.name;
+      if (fields.email) document.getElementById('email').value = fields.email;
+      if (fields.organization) document.getElementById('organization').value = fields.organization;
+      if (fields.challenge) document.getElementById('challenge').value = fields.challenge;
+      if (fields.timeline) document.getElementById('timeline').value = fields.timeline;
+      if (fields.message) document.getElementById('message').value = fields.message;
+
+      // Mostrar toast de confirmación
+      showAutosaveToast();
+
+      // Track restore event
+      const fieldsCount = Object.values(fields).filter(val => val && val.trim() !== '').length;
+      trackEvent('Form_restored', { fields_count: fieldsCount });
+    } catch (e) {
+      // JSON parse error o datos corruptos
+      console.warn('Form restore failed:', e.message);
+      localStorage.removeItem(AUTOSAVE_KEY);
+    }
+  }
+
+  function clearFormAutosave() {
+    localStorage.removeItem(AUTOSAVE_KEY);
+    trackEvent('Form_cleared', { reason: 'user_action' });
+  }
+
+  function showAutosaveToast() {
+    // Crear toast si no existe
+    let toast = document.getElementById('autosave-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'autosave-toast';
+      toast.className = 'autosave-toast';
+      toast.innerHTML = `
+        <span>Restauramos tu borrador</span>
+        <button type="button" class="autosave-toast-close" aria-label="Cerrar notificación">×</button>
+        <button type="button" class="autosave-toast-clear">Borrar borrador</button>
+      `;
+      document.body.appendChild(toast);
+
+      // Botón cerrar toast
+      toast.querySelector('.autosave-toast-close').addEventListener('click', () => {
+        toast.classList.remove('show');
+      });
+
+      // Botón borrar borrador
+      toast.querySelector('.autosave-toast-clear').addEventListener('click', () => {
+        clearFormAutosave();
+        contactForm.reset();
+        toast.classList.remove('show');
+      });
+    }
+
+    // Mostrar toast
+    toast.classList.add('show');
+
+    // Auto-ocultar después de 10 segundos
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 10000);
+  }
+
   if (contactForm && formMessage) {
+    // Restaurar autosave al cargar la página
+    restoreFormState();
+
+    // Event listeners para autosave (debounced 500ms)
+    const formInputs = contactForm.querySelectorAll('input:not([type="hidden"]), textarea, select');
+    formInputs.forEach(input => {
+      input.addEventListener('input', () => {
+        clearTimeout(autosaveTimeout);
+        autosaveTimeout = setTimeout(saveFormState, 500);
+      });
+    });
+
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
@@ -261,9 +398,19 @@ document.addEventListener("DOMContentLoaded", function () {
           formMessage.textContent =
             "¡Gracias por contactarnos! Te responderemos pronto.";
           formMessage.classList.add("show", "success");
+
+          // Clear autosave before resetting form
+          clearFormAutosave();
           contactForm.reset();
 
-          trackEvent("Contacto_enviado", { origen: "formulario_principal" });
+          // Track submission with challenge and timeline data
+          const challengeFilled = formData.get('challenge') ? 'yes' : 'no';
+          const timelineValue = formData.get('timeline') || 'not_selected';
+          trackEvent("Contacto_enviado", {
+            origen: "formulario_principal",
+            challenge: challengeFilled,
+            timeline: timelineValue
+          });
         } else {
           throw new Error("Error en el envío");
         }
@@ -284,19 +431,37 @@ document.addEventListener("DOMContentLoaded", function () {
   // =====================================================
   // BLOQUE TRACKING ESPECÍFICO INDEX
   // -----------------------------------------------------
-  // Eventos de clic en CTA principal y tarjetas de
-  // actividades que llevan a CESBA o al reporte interno.
-// =====================================================
+  // Eventos de clic en CTA con intent-level segmentation
+  // =====================================================
 
-  const ctaHero = document.getElementById("ctaHero");
-  if (ctaHero) {
-    ctaHero.addEventListener("click", () => {
-      trackEvent("CTA_click", {
-        seccion: "hero",
-        texto: ctaHero.textContent.trim(),
-      });
+  // Track all CTA clicks with intent level
+  function trackCTAClick(event) {
+    const target = event.currentTarget;
+    const ctaText = target.textContent.trim();
+    const page = window.location.pathname || '/';
+
+    // Determine intent level from CSS class
+    let intentLevel = 'mid'; // default
+    if (target.classList.contains('cta-button--hero') || target.classList.contains('cta-link--hero')) {
+      intentLevel = 'low';
+    } else if (target.classList.contains('cta-button--services') || target.classList.contains('cta-link--services')) {
+      intentLevel = 'mid';
+    } else if (target.classList.contains('cta-button--contact') || target.classList.contains('form-submit')) {
+      intentLevel = 'high';
+    }
+
+    trackEvent("CTA_clicked", {
+      intent_level: intentLevel,
+      page: page,
+      cta_text: ctaText
     });
   }
+
+  // Attach listeners to all CTA buttons and links
+  const allCTAs = document.querySelectorAll('.cta-button, .cta-link--hero, .cta-link--services, .services-cta-link, .form-submit');
+  allCTAs.forEach(cta => {
+    cta.addEventListener('click', trackCTAClick);
+  });
 
   const linkCesba = document.getElementById("linkCesba");
   if (linkCesba) {
