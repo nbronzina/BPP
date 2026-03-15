@@ -729,6 +729,165 @@ nav.nav--scrolled {
     margin-top: 3rem;
 }
 
+/* =========================
+   CTA Hover Previews (data-preview)
+   ========================= */
+
+/* Base preview tooltip */
+.cta-button[data-preview],
+.services-cta-link[data-preview],
+.cta-link--hero[data-preview],
+.cta-link--services[data-preview],
+.form-submit[data-preview] {
+    position: relative;
+}
+
+.cta-button[data-preview]::after,
+.services-cta-link[data-preview]::after,
+.cta-link--hero[data-preview]::after,
+.cta-link--services[data-preview]::after,
+.form-submit[data-preview]::after {
+    content: attr(data-preview);
+    position: absolute;
+    bottom: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 37, 64, 0.95);
+    color: var(--color-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+}
+
+/* Show on hover/focus */
+.cta-button[data-preview]:hover::after,
+.cta-button[data-preview]:focus-visible::after,
+.services-cta-link[data-preview]:hover::after,
+.services-cta-link[data-preview]:focus-visible::after,
+.cta-link--hero[data-preview]:hover::after,
+.cta-link--hero[data-preview]:focus-visible::after,
+.cta-link--services[data-preview]:hover::after,
+.cta-link--services[data-preview]:focus-visible::after,
+.form-submit[data-preview]:hover::after,
+.form-submit[data-preview]:focus-visible::after {
+    opacity: 1;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .cta-button[data-preview]::after,
+    .services-cta-link[data-preview]::after,
+    .cta-link--hero[data-preview]::after,
+    .cta-link--services[data-preview]::after,
+    .form-submit[data-preview]::after {
+        transition: none;
+    }
+}
+
+/* Touch devices: show preview as static subtext */
+@media (hover: none) {
+    .cta-button[data-preview]::after,
+    .services-cta-link[data-preview]::after,
+    .cta-link--hero[data-preview]::after,
+    .cta-link--services[data-preview]::after,
+    .form-submit[data-preview]::after {
+        opacity: 0.7;
+        position: static;
+        display: block;
+        margin-top: 0.5rem;
+        transform: none;
+    }
+}
+
+/* =========================
+   Services CTA Subtext
+   ========================= */
+
+.services-cta-subtext {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    opacity: 0.7;
+}
+
+/* =========================
+   Autosave Toast Notification
+   ========================= */
+
+.autosave-toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(10, 37, 64, 0.95);
+    color: var(--color-white);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.autosave-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.autosave-toast-close,
+.autosave-toast-clear {
+    background: transparent;
+    border: none;
+    color: var(--color-accent);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.autosave-toast-close {
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-left: auto;
+}
+
+.autosave-toast-clear {
+    font-size: 0.875rem;
+    text-decoration: underline;
+}
+
+.autosave-toast-close:hover,
+.autosave-toast-clear:hover {
+    color: var(--color-accent-bright);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .autosave-toast {
+        transition: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .autosave-toast {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        padding: 0.875rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
 .btn-download {
     margin-top: 1.5rem;
 }
