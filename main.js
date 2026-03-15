@@ -976,4 +976,54 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  // =====================================================
+  // TOOLTIPS FOR KEY TERMS
+  // -----------------------------------------------------
+  // Mobile tap handling for tooltips
+  // =====================================================
+  const tooltipTerms = document.querySelectorAll('.tooltip-term');
+
+  if (tooltipTerms.length) {
+    // Make tooltip terms focusable for keyboard navigation
+    tooltipTerms.forEach(term => {
+      term.setAttribute('tabindex', '0');
+      term.setAttribute('role', 'button');
+      term.setAttribute('aria-label', `Definición: ${term.getAttribute('data-tooltip')}`);
+
+      // Mobile tap handling
+      term.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Close all other tooltips
+        tooltipTerms.forEach(t => {
+          if (t !== term) {
+            t.classList.remove('tooltip-active');
+          }
+        });
+
+        // Toggle current tooltip
+        term.classList.toggle('tooltip-active');
+      });
+    });
+
+    // Close tooltips when clicking elsewhere
+    document.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('tooltip-term')) {
+        tooltipTerms.forEach(term => {
+          term.classList.remove('tooltip-active');
+        });
+      }
+    });
+
+    // Close tooltips on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        tooltipTerms.forEach(term => {
+          term.classList.remove('tooltip-active');
+        });
+      }
+    });
+  }
 });

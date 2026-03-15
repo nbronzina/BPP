@@ -3653,6 +3653,99 @@ img {
     line-height: var(--line-height-body);
 }
 
+/* =========================
+   Tooltips for Key Terms
+   ========================= */
+
+.tooltip-term {
+    position: relative;
+    color: var(--orange-500);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    cursor: help;
+}
+
+.tooltip-term::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 280px;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1px solid var(--orange-500);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast);
+    z-index: 1000;
+}
+
+.tooltip-term::after {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 1px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-top-color: var(--orange-500);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast);
+    z-index: 1000;
+}
+
+/* Show tooltip on hover (desktop) */
+@media (hover: hover) {
+    .tooltip-term:hover::before,
+    .tooltip-term:hover::after {
+        opacity: 1;
+    }
+}
+
+/* Show tooltip on focus (keyboard navigation) */
+.tooltip-term:focus-visible {
+    outline: 2px solid var(--orange-400);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.tooltip-term:focus-visible::before,
+.tooltip-term:focus-visible::after {
+    opacity: 1;
+}
+
+/* Mobile: show on tap (activated via JS) */
+.tooltip-term.tooltip-active::before,
+.tooltip-term.tooltip-active::after {
+    opacity: 1;
+}
+
+/* Responsive: adjust tooltip width on mobile */
+@media (max-width: 768px) {
+    .tooltip-term::before {
+        max-width: 240px;
+        font-size: var(--font-size-xs);
+        left: 0;
+        transform: none;
+    }
+
+    .tooltip-term::after {
+        left: 2rem;
+        transform: none;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .reporte-page .hero-section {
