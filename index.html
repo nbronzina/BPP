@@ -809,6 +809,135 @@
         </div>
     </section>
 
+    <!-- Quiz Diagnóstico -->
+    <section class="quiz-diagnostico section" aria-labelledby="quiz-heading">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2 id="quiz-heading" class="quiz-title">¿Qué tan preparada está tu organización para decidir bajo incertidumbre?</h2>
+                <p class="quiz-subtitle">5 preguntas · 2 minutos · Diagnóstico inmediato</p>
+            </div>
+
+            <div id="quiz-questions" class="quiz-questions">
+                <!-- Pregunta 1 -->
+                <div class="quiz-question" data-question="1">
+                    <h3 class="question-text">¿Tu organización identifica señales tempranas de cambio antes de que se vuelvan tendencias?</h3>
+                    <div class="question-options">
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="0" required>
+                            <span class="option-text">No, reaccionamos cuando el cambio ya llegó</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="10">
+                            <span class="option-text">A veces, pero de forma informal</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="20">
+                            <span class="option-text">Sí, tenemos un proceso sistemático</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="quiz-question" data-question="2">
+                    <h3 class="question-text">¿Prototipan ideas antes de comprometer recursos completos?</h3>
+                    <div class="question-options">
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="0" required>
+                            <span class="option-text">No, implementamos directamente</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="10">
+                            <span class="option-text">Ocasionalmente, en proyectos grandes</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="20">
+                            <span class="option-text">Sí, es parte estándar de nuestro proceso</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="quiz-question" data-question="3">
+                    <h3 class="question-text">¿Tus datos se interpretan en contexto o solo se reportan métricas?</h3>
+                    <div class="question-options">
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="0" required>
+                            <span class="option-text">Reportamos números sin interpretación</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="10">
+                            <span class="option-text">Interpretamos, pero sin marco conceptual claro</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="20">
+                            <span class="option-text">Interpretamos con frameworks y contexto estratégico</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="quiz-question" data-question="4">
+                    <h3 class="question-text">¿Tu equipo entiende claramente qué comunica tu marca durante cambios estratégicos?</h3>
+                    <div class="question-options">
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="0" required>
+                            <span class="option-text">No, cada área comunica distinto</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="10">
+                            <span class="option-text">Tenemos lineamientos pero no se cumplen</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="20">
+                            <span class="option-text">Sí, comunicamos de forma coherente y estratégica</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="quiz-question" data-question="5">
+                    <h3 class="question-text">¿Diseñan escenarios futuros para prepararse ante múltiples posibilidades?</h3>
+                    <div class="question-options">
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="0" required>
+                            <span class="option-text">No, planificamos linealmente</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="10">
+                            <span class="option-text">Consideramos alternativas pero informalmente</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="20">
+                            <span class="option-text">Sí, trabajamos con escenarios múltiples</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button id="quiz-submit" class="quiz-submit-btn" disabled>Ver diagnóstico</button>
+            </div>
+
+            <div id="quiz-results" class="quiz-results" style="display: none;">
+                <div class="results-header">
+                    <span class="results-badge">Diagnóstico completo</span>
+                    <h3 class="results-score">Tu organización: <span id="score-label"></span></h3>
+                    <p class="results-score-number"><span id="score-value"></span>/100</p>
+                </div>
+
+                <div class="results-analysis">
+                    <h4 class="results-analysis-title">¿Qué significa esto?</h4>
+                    <p id="results-description" class="results-description"></p>
+                </div>
+
+                <div class="results-recommendations">
+                    <h4 class="results-recommendations-title">Recursos recomendados</h4>
+                    <div id="recommendations-list" class="recommendations-list"></div>
+                </div>
+
+                <button id="quiz-reset" class="quiz-reset-btn">Reiniciar diagnóstico</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Form Section -->
     <section id="contact" class="contact-form-section" data-animate>
         <div class="contact-grid">

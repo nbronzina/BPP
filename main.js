@@ -796,4 +796,150 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  // =====================================================
+  // QUIZ DIAGNÓSTICO
+  // -----------------------------------------------------
+  // Interactive assessment with instant scoring and
+  // personalized resource recommendations
+  // =====================================================
+  const quizQuestions = document.getElementById('quiz-questions');
+  const quizResults = document.getElementById('quiz-results');
+  const quizSubmitBtn = document.getElementById('quiz-submit');
+  const quizResetBtn = document.getElementById('quiz-reset');
+
+  if (quizQuestions && quizResults && quizSubmitBtn && quizResetBtn) {
+    // Enable submit button when all questions are answered
+    const checkQuizComplete = () => {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      const q3 = document.querySelector('input[name="q3"]:checked');
+      const q4 = document.querySelector('input[name="q4"]:checked');
+      const q5 = document.querySelector('input[name="q5"]:checked');
+
+      if (q1 && q2 && q3 && q4 && q5) {
+        quizSubmitBtn.disabled = false;
+      }
+    };
+
+    // Listen for radio button changes
+    document.querySelectorAll('.quiz-question input[type="radio"]').forEach(input => {
+      input.addEventListener('change', checkQuizComplete);
+    });
+
+    // Calculate score and show results
+    quizSubmitBtn.addEventListener('click', () => {
+      const q1 = parseInt(document.querySelector('input[name="q1"]:checked').value);
+      const q2 = parseInt(document.querySelector('input[name="q2"]:checked').value);
+      const q3 = parseInt(document.querySelector('input[name="q3"]:checked').value);
+      const q4 = parseInt(document.querySelector('input[name="q4"]:checked').value);
+      const q5 = parseInt(document.querySelector('input[name="q5"]:checked').value);
+
+      const totalScore = q1 + q2 + q3 + q4 + q5;
+
+      // Determine score label and description
+      let scoreLabel, scoreDescription, recommendations;
+
+      if (totalScore <= 40) {
+        scoreLabel = 'Nivel Inicial';
+        scoreDescription = 'Tu organización todavía reacciona ante el cambio en lugar de anticiparlo. Las decisiones se toman con información limitada y sin marcos conceptuales claros. Hay oportunidades concretas para estructurar cómo interpretás el contexto, probás ideas antes de comprometer recursos completos, y comunicás con coherencia durante transiciones estratégicas.';
+        recommendations = [
+          {
+            title: 'Investigación exploratoria',
+            description: 'Empezá a identificar señales tempranas de cambio antes de que se conviertan en crisis. Un mapeo inicial de escenarios futuros te permite anticipar en lugar de reaccionar.'
+          },
+          {
+            title: 'Branding y comunicación estratégica',
+            description: 'Construí un relato coherente sobre quién sos y hacia dónde vas. Cuando algo cambia, la marca que no se explica pierde. Empezá por definir tu voz antes de que otros definan tu narrativa.'
+          },
+          {
+            title: 'Análisis y visualización de datos',
+            description: 'Los datos que tenés no sirven si no los interpretás. Convertí métricas en argumentos que sostengan decisiones reales. Empezá con un dashboard básico pero con contexto estratégico.'
+          }
+        ];
+      } else if (totalScore <= 70) {
+        scoreLabel = 'Nivel Intermedio';
+        scoreDescription = 'Tu organización tiene algunas capacidades instaladas pero todavía hay brechas críticas. Hacés algunas cosas bien (probás ideas, interpretás datos, comunicás con cierta coherencia) pero de forma inconsistente. El siguiente paso es sistematizar: convertir lo que funciona en proceso repetible y llenar los huecos donde todavía improvisás.';
+        recommendations = [
+          {
+            title: 'Diseño de prototipos',
+            description: 'Pasá de prototipar ocasionalmente a hacerlo de forma sistemática. Cada hipótesis debería testearse con un artefacto concreto antes de comprometer recursos completos. Esto reduce riesgo y acelera aprendizaje.'
+          },
+          {
+            title: 'Gestión estratégica de proyectos',
+            description: 'El plan existe, el equipo está, pero nada avanza. Coordiná las partes para que el proyecto llegue donde tiene que llegar. Un sistema de seguimiento claro convierte intención en ejecución.'
+          },
+          {
+            title: 'Investigación exploratoria',
+            description: 'Convertí la identificación de señales en un proceso continuo, no un ejercicio ocasional. Un sistema de monitoreo estructurado te permite ver qué viene antes de que te obligue a reaccionar.'
+          }
+        ];
+      } else {
+        scoreLabel = 'Nivel Avanzado';
+        scoreDescription = 'Tu organización tiene capacidades maduras para decidir bajo incertidumbre. Identificás señales tempranas, probás ideas antes de implementar, interpretás datos en contexto, comunicás con coherencia, y diseñás escenarios futuros. El siguiente paso no es construir capacidades nuevas, sino profundizar las que tenés: hacerlas más sofisticadas, más rápidas, y más integradas entre sí.';
+        recommendations = [
+          {
+            title: 'Design fiction y futuros especulativos',
+            description: 'Pasá de escenarios a prototipos de futuros alternativos. El design fiction te permite testear cómo sería vivir en un futuro específico antes de que llegue. Es investigación especulativa aplicada a decisiones estratégicas.'
+          },
+          {
+            title: 'Investigación profunda y análisis de tendencias',
+            description: 'Convertí el monitoreo de señales en investigación estructurada. No solo qué está cambiando, sino por qué, hacia dónde, y qué estructuras sociales, económicas y culturales lo están impulsando.'
+          },
+          {
+            title: 'Sistema integrado de futuros estratégicos',
+            description: 'Integrá todas tus capacidades en un sistema único: señales → escenarios → prototipos → decisiones → comunicación. Cada parte alimenta a la siguiente. Esto convierte la prospectiva en operación, no en ejercicio aislado.'
+          }
+        ];
+      }
+
+      // Display results
+      document.getElementById('score-label').textContent = scoreLabel;
+      document.getElementById('score-value').textContent = totalScore;
+      document.getElementById('results-description').textContent = scoreDescription;
+
+      // Render recommendations
+      const recommendationsList = document.getElementById('recommendations-list');
+      recommendationsList.innerHTML = '';
+      recommendations.forEach(rec => {
+        const recItem = document.createElement('div');
+        recItem.className = 'recommendation-item';
+        recItem.innerHTML = `
+          <h5 class="recommendation-title">${rec.title}</h5>
+          <p class="recommendation-description">${rec.description}</p>
+        `;
+        recommendationsList.appendChild(recItem);
+      });
+
+      // Hide questions, show results
+      quizQuestions.style.display = 'none';
+      quizResults.style.display = 'block';
+
+      // Scroll to results
+      quizResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Track quiz completion
+      trackEvent('Quiz_completado', { score: totalScore, nivel: scoreLabel });
+    });
+
+    // Reset quiz
+    quizResetBtn.addEventListener('click', () => {
+      // Reset all radio buttons
+      document.querySelectorAll('.quiz-question input[type="radio"]').forEach(input => {
+        input.checked = false;
+      });
+
+      // Hide results, show questions
+      quizResults.style.display = 'none';
+      quizQuestions.style.display = 'flex';
+
+      // Disable submit button
+      quizSubmitBtn.disabled = true;
+
+      // Scroll to quiz start
+      quizQuestions.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      trackEvent('Quiz_reiniciado');
+    });
+  }
 });
