@@ -2558,12 +2558,15 @@ img {
         direction: ltr;
     }
 
+    /* Force images to always appear first on mobile */
     .actividad-imagen {
         height: 260px;
+        order: -1;
     }
 
     .actividad-texto {
         padding: 2rem 0;
+        order: 0;
     }
 
     /* MOBILE-002: Optimización de formulario de contacto */
