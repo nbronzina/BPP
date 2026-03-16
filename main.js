@@ -1198,15 +1198,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
-  // Equipo: Foto preview on hover
+  // Equipo: Foto thumbnail y preview on hover
   // =====================================================
   const equipoRows = document.querySelectorAll('.equipo-row');
   if (equipoRows.length > 0) {
     equipoRows.forEach(row => {
       const foto = row.dataset.foto;
+      const thumbnail = row.querySelector('.equipo-foto-thumbnail');
       const preview = row.querySelector('.equipo-foto-preview');
-      if (foto && preview) {
-        preview.style.backgroundImage = `url(${foto})`;
+      if (foto) {
+        if (thumbnail) {
+          thumbnail.style.backgroundImage = `url(${foto})`;
+        }
+        if (preview) {
+          preview.style.backgroundImage = `url(${foto})`;
+        }
       }
     });
   }

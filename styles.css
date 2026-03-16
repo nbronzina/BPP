@@ -2177,9 +2177,12 @@ footer {
     background: rgba(255, 255, 255, 0.03);
 }
 
+.equipo-row:hover .equipo-foto-thumbnail {
+    opacity: 1;
+}
+
 .equipo-row:hover .equipo-foto-preview {
     opacity: 1;
-    transform: translateY(-6px);
 }
 
 .equipo-nombre {
@@ -2217,15 +2220,31 @@ footer {
     text-align: right;
 }
 
-.equipo-foto-preview {
+.equipo-foto-thumbnail {
     width: 48px;
     height: 48px;
     background-size: cover;
     background-position: center top;
-    opacity: 0.7;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
     border-radius: 2px;
     transform: translateY(-4px);
+}
+
+.equipo-foto-preview {
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
+    border-radius: 2px;
 }
 
 /* =========================
@@ -2854,13 +2873,18 @@ img {
         grid-row: 1;
     }
 
-    .equipo-foto-preview {
+    .equipo-foto-thumbnail {
         width: 40px;
         height: 40px;
         grid-column: 1;
         grid-row: 1 / span 2;
         align-self: start;
         opacity: 0.85;
+        transform: translateY(0);
+    }
+
+    .equipo-foto-preview {
+        display: none;
     }
 
     .equipo-rol {
