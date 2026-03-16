@@ -414,6 +414,10 @@ nav.nav--scrolled {
     z-index: 1;
 }
 
+.hero-break {
+    display: inline;
+}
+
 .hero-viz {
     position: relative;
     display: flex;
@@ -2565,6 +2569,10 @@ img {
         max-width: 100%;
         padding-left: 0;
         text-align: center;
+    }
+
+    .hero-break {
+        display: none;
     }
 
     .tagline {
