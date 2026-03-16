@@ -1920,6 +1920,78 @@ footer {
 }
 
 /* =========================
+   Proyectos - Linked by Air Layout
+   ========================= */
+
+.proyectos-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.proyecto-item {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    align-items: start;
+}
+
+.proyecto-imagen {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.proyecto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.2s ease;
+    display: block;
+}
+
+.proyecto-imagen-link:hover img {
+    opacity: 0.88;
+}
+
+.proyecto-nombre {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.proyecto-nombre:hover {
+    opacity: 0.75;
+}
+
+.proyecto-descripcion {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.proyecto-disciplinas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.proyecto-disciplinas li {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Space Mono', monospace;
+}
+
+/* =========================
    Últimas Actividades
    ========================= */
 
@@ -2803,6 +2875,25 @@ img {
         font-family: var(--font-display); /* Syne */
         letter-spacing: -0.015em;
         line-height: 1.2;
+    }
+
+    /* Proyectos mobile: imagen arriba, texto abajo */
+    .proyecto-item {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem 0;
+    }
+
+    .proyecto-imagen {
+        order: -1;
+    }
+
+    .proyecto-nombre {
+        font-size: 1.25rem;
+    }
+
+    .proyecto-descripcion {
+        font-size: 1rem;
     }
 
     /* Actividades mobile: imagen arriba, texto abajo */
