@@ -62,7 +62,7 @@
 
     <!-- Critical CSS Inline -->
     <style>
-@font-face{font-family:'Atkinson Hyperlegible Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}:root{--color-bg:#0f0f0f;--color-text:#e0e0e0;--color-text-light:#c5c5c5;--color-accent:#ce7352;--color-accent-hover:#d4845e;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}body{font-family:'Atkinson Hyperlegible','Atkinson Hyperlegible Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}nav{position:sticky;top:0;z-index:1000;background:rgba(15,15,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.05);padding:2.5rem 0}.nav-container{width:100%;padding:0 6rem;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:1rem}.nav-wordmark{font-family:'Atkinson Hyperlegible',sans-serif;font-weight:600;font-size:1.125rem;color:rgba(255,255,255,0.9);text-decoration:none;transition:color 0.3s}.nav-logo-icon{display:block;line-height:0}.nav-logo-icon img{height:52px;width:auto;display:block;transition:opacity 0.3s}.nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{color:var(--color-text-light);text-decoration:none;font-size:1.125rem;font-weight:400;transition:color 0.3s}.nav-links a:hover{color:var(--color-accent)}.hero{height:auto;display:flex;align-items:flex-start;justify-content:center;padding:8rem 2rem 2rem;position:relative;background:transparent}.hero-content{max-width:900px}.hero-logo{margin-bottom:3rem;height:160px;display:flex;align-items:center;justify-content:center}.hero-logo img{max-width:100%;max-height:160px;width:auto;height:auto;opacity:0.9;object-fit:contain}.tagline{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1.5rem;color:var(--color-text)}.subtitle{font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:2rem;color:var(--color-text-light)}.locations{font-size:1rem;color:var(--color-accent);margin-bottom:2.5rem}.cta-button{display:inline-block;padding:1rem 2.5rem;background:var(--color-accent);color:#0f0f0f;text-decoration:none;border-radius:var(--border-radius);font-weight:600;transition:background 0.3s,transform 0.3s;font-size:1.1rem}.cta-button:hover{background:var(--color-accent-hover);transform:translateY(-2px)}[data-animate]{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease}[data-animate].animate-ready:not(.visible){opacity:0;transform:translateY(30px)}
+@font-face{font-family:'Atkinson Hyperlegible Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}:root{--color-bg:#0f0f0f;--color-text:#e0e0e0;--color-text-light:#c5c5c5;--color-accent:#ce7352;--color-accent-hover:#ce7352;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}body{font-family:'Atkinson Hyperlegible','Atkinson Hyperlegible Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}nav{position:sticky;top:0;z-index:1000;background:rgba(15,15,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.05);padding:2.5rem 0}.nav-container{width:100%;padding:0 6rem;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:1rem}.nav-wordmark{font-family:'Atkinson Hyperlegible',sans-serif;font-weight:600;font-size:1.125rem;color:rgba(255,255,255,0.9);text-decoration:none;transition:color 0.3s}.nav-logo-icon{display:block;line-height:0}.nav-logo-icon img{height:52px;width:auto;display:block;transition:opacity 0.3s}.nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{color:var(--color-text-light);text-decoration:none;font-size:1.125rem;font-weight:400;transition:color 0.3s}.nav-links a:hover{color:var(--color-accent)}.hero{height:auto;display:flex;align-items:flex-start;justify-content:center;padding:8rem 2rem 2rem;position:relative;background:transparent}.hero-content{max-width:900px}.hero-logo{margin-bottom:3rem;height:160px;display:flex;align-items:center;justify-content:center}.hero-logo img{max-width:100%;max-height:160px;width:auto;height:auto;opacity:0.9;object-fit:contain}.tagline{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1.5rem;color:var(--color-text)}.subtitle{font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:2rem;color:var(--color-text-light)}.locations{font-size:1rem;color:var(--color-accent);margin-bottom:2.5rem}.cta-primary{display:inline-block;padding:0.875rem 1.75rem;background:var(--color-accent);color:#0a0a0a;text-decoration:none;font-family:'Space Mono',monospace;font-size:0.875rem;font-weight:700;transition:opacity 0.2s ease}.cta-primary:hover{opacity:0.88}.cta-link{display:inline-flex;align-items:center;gap:0.4rem;color:var(--color-accent);text-decoration:none;font-family:'Space Mono',monospace;font-size:0.875rem;font-weight:500;transition:opacity 0.2s ease}.cta-link::after{content:'→'}.cta-link:hover{opacity:0.75}[data-animate]{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease}[data-animate].animate-ready:not(.visible){opacity:0;transform:translateY(30px)}
     </style>
 
     <!-- Full Styles (Async) -->
@@ -271,7 +271,7 @@
                 <div class="locations">BUENOS AIRES / MADRID</div>
                 <a
                   href="#contact"
-                  class="cta-button cta-button--hero"
+                  class="cta-primary"
                   id="ctaHero"
                   aria-label="Ir al formulario de contacto para conversar con BPP Analytics &amp; Design"
                   data-preview="Te respondemos en 24 horas"
@@ -503,84 +503,66 @@
                     <text x="170" y="357" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.75">Problema</text>
                     <text x="170" y="381" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.45">Asume que el camino</text>
                     <text x="170" y="396" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.45">es predecible</text>
-                    <text x="510" y="30" text-anchor="middle" font-size="12" fill="#d47545" letter-spacing="1.5">Método BPP</text>
+                    <text x="510" y="30" text-anchor="middle" font-size="12" fill="#ce7352" letter-spacing="1.5">Método BPP</text>
                     <path d="M 510 334 C 415 292, 382 222, 412 168 C 430 132, 467 106, 510 84"
-                          fill="none" stroke="#d47545" stroke-width="1" opacity="0.22" stroke-linecap="round"/>
+                          fill="none" stroke="#ce7352" stroke-width="1" opacity="0.22" stroke-linecap="round"/>
                     <path d="M 510 334 C 458 293, 440 244, 462 196 C 476 161, 494 129, 510 84"
-                          fill="none" stroke="#d47545" stroke-width="1.5" opacity="0.48" stroke-linecap="round"/>
+                          fill="none" stroke="#ce7352" stroke-width="1.5" opacity="0.48" stroke-linecap="round"/>
                     <path d="M 510 334 C 493 295, 487 248, 496 200 C 502 163, 506 130, 510 84"
-                          fill="none" stroke="#d47545" stroke-width="2" opacity="0.82" stroke-linecap="round"/>
+                          fill="none" stroke="#ce7352" stroke-width="2" opacity="0.82" stroke-linecap="round"/>
                     <path d="M 510 334 C 527 295, 533 248, 524 200 C 518 163, 514 130, 510 84"
-                          fill="none" stroke="#d47545" stroke-width="2" opacity="0.82" stroke-linecap="round"/>
+                          fill="none" stroke="#ce7352" stroke-width="2" opacity="0.82" stroke-linecap="round"/>
                     <path d="M 510 334 C 562 293, 580 244, 558 196 C 544 161, 526 129, 510 84"
-                          fill="none" stroke="#d47545" stroke-width="1.5" opacity="0.48" stroke-linecap="round"/>
+                          fill="none" stroke="#ce7352" stroke-width="1.5" opacity="0.48" stroke-linecap="round"/>
                     <path d="M 510 334 C 605 292, 638 222, 608 168 C 590 132, 553 106, 510 84"
-                          fill="none" stroke="#d47545" stroke-width="1" opacity="0.22" stroke-linecap="round"/>
-                    <circle cx="510" cy="84" r="6" fill="#d47545"/>
-                    <text x="510" y="66" text-anchor="middle" font-size="12" fill="#d47545">Decisión</text>
-                    <circle cx="510" cy="334" r="6" fill="#d47545"/>
-                    <text x="510" y="357" text-anchor="middle" font-size="12" fill="#d47545">Problema</text>
-                    <text x="510" y="381" text-anchor="middle" font-size="12" fill="#d47545" opacity="0.7">Explora múltiples futuros</text>
-                    <text x="510" y="396" text-anchor="middle" font-size="12" fill="#d47545" opacity="0.7">antes de decidir</text>
+                          fill="none" stroke="#ce7352" stroke-width="1" opacity="0.22" stroke-linecap="round"/>
+                    <circle cx="510" cy="84" r="6" fill="#ce7352"/>
+                    <text x="510" y="66" text-anchor="middle" font-size="12" fill="#ce7352">Decisión</text>
+                    <circle cx="510" cy="334" r="6" fill="#ce7352"/>
+                    <text x="510" y="357" text-anchor="middle" font-size="12" fill="#ce7352">Problema</text>
+                    <text x="510" y="381" text-anchor="middle" font-size="12" fill="#ce7352" opacity="0.7">Explora múltiples futuros</text>
+                    <text x="510" y="396" text-anchor="middle" font-size="12" fill="#ce7352" opacity="0.7">antes de decidir</text>
                 </svg>
             </div>
 
             <div class="services-cta">
-                <a href="#contact" class="services-cta-link cta-link--services" data-preview="Recibís propuesta en 2 días hábiles"><span class="cta-arrow cta-arrow--right" aria-hidden="true">→</span> Solicitar diagnóstico de 48 horas</a>
+                <a href="#contact" class="cta-primary" data-preview="Recibís propuesta en 2 días hábiles">Solicitar diagnóstico de 48 horas</a>
                 <p class="services-cta-subtext">Sin costo. Te decimos si podemos ayudarte.</p>
             </div>
         </div>
     </section>
 
     <!-- Socios Section -->
-    <section id="socios" class="section" aria-labelledby="socios-heading">
-        <div class="equipo-grid">
-            <div class="equipo-label" aria-hidden="true">
-                Equipo
+    <section id="socios" class="section equipo-section" aria-labelledby="socios-heading">
+        <div class="equipo-label" aria-hidden="true">
+            Equipo
+        </div>
+
+        <div class="equipo-table">
+            <div class="equipo-row" data-foto="img/Nicolas-480.webp">
+                <span class="equipo-nombre">Nicolás Bronzina</span>
+                <span class="equipo-rol">Investigación & Diseño Estratégico</span>
+                <span class="equipo-ciudad">Buenos Aires / Madrid</span>
+                <span class="equipo-link-placeholder">—</span>
+                <div class="equipo-foto-preview"></div>
             </div>
-
-            <div class="equipo-content">
-                <article class="equipo-perfil" data-animate aria-label="Perfil de Nicolás Bronzina, Design Researcher en BPP">
-                    <div class="perfil-header">
-                        <picture class="perfil-photo">
-                            <source srcset="img/Nicolas-240.webp 240w" type="image/webp">
-                            <img src="img/NicolasOptima.png" alt="Nicolás Bronzina" loading="lazy" decoding="async" width="44" height="44">
-                        </picture>
-                        <h3 id="socios-heading" class="perfil-name">Nicolás Bronzina</h3>
-                    </div>
-                    <p class="perfil-tagline">DISEÑA TU FUTURO ANTES QUE LLEGUE</p>
-                    <p class="perfil-bio">Trabajo en el límite entre lo que ya pasó y lo que todavía no tiene forma. Investigación especulativa, <span class="tooltip-term" data-tooltip="Narrativas alternativas de lo que podría pasar, construidas desde fuerzas de cambio detectables hoy">escenarios futuros</span>, <span class="tooltip-term" data-tooltip="Artefactos concretos que materializan futuros posibles para hacerlos testeables en el presente">design fiction</span>.</p>
-                </article>
-
-                <hr class="perfil-separator" aria-hidden="true">
-
-                <article class="equipo-perfil" data-animate aria-label="Perfil de Sergio Petrocelli, Strategic Planning &amp; Communication en BPP">
-                    <div class="perfil-header">
-                        <picture class="perfil-photo">
-                            <source srcset="img/Sergio-240.webp 240w" type="image/webp">
-                            <img src="img/SergioOptima.png" alt="Sergio Petrocelli" loading="lazy" decoding="async" width="44" height="44">
-                        </picture>
-                        <h3 class="perfil-name">Sergio Petrocelli</h3>
-                    </div>
-                    <p class="perfil-tagline">CONVIERTE TU MARCA EN TU ACTIVO MÁS VALIOSO</p>
-                    <p class="perfil-bio">Los momentos de cambio son los más difíciles para comunicar y los más importantes para hacerlo bien. Coordino equipos, alineo stakeholders, y construyo narrativas estratégicas que sostienen la ejecución.</p>
-                </article>
-
-                <hr class="perfil-separator" aria-hidden="true">
-
-                <article class="equipo-perfil" data-animate aria-label="Perfil de Ezequiel Politi, Data &amp; Strategy Analyst en BPP">
-                    <div class="perfil-header">
-                        <picture class="perfil-photo">
-                            <source srcset="img/Ezequiel-240.webp 240w" type="image/webp">
-                            <img src="img/EzequielOptima.jpeg" alt="Ezequiel Politi" loading="lazy" decoding="async" width="44" height="44">
-                        </picture>
-                        <h3 class="perfil-name">Ezequiel Politi</h3>
-                    </div>
-                    <p class="perfil-tagline">TRANSFORMA TUS DATOS EN UNA VENTAJA ESTRATÉGICA</p>
-                    <p class="perfil-bio">Los datos dicen algo solo si sabés qué pregunta hacerles. Convierto análisis en argumentos que sostienen decisiones reales.</p>
-                </article>
+            <div class="equipo-row" data-foto="img/Sergio-480.webp">
+                <span class="equipo-nombre">Sergio Petrocelli</span>
+                <span class="equipo-rol">Strategic Planning & Communication</span>
+                <span class="equipo-ciudad">Buenos Aires</span>
+                <span class="equipo-link-placeholder">—</span>
+                <div class="equipo-foto-preview"></div>
+            </div>
+            <div class="equipo-row" data-foto="img/Ezequiel-480.webp">
+                <span class="equipo-nombre">Ezequiel Politi</span>
+                <span class="equipo-rol">Data & Strategy Analyst</span>
+                <span class="equipo-ciudad">Buenos Aires</span>
+                <span class="equipo-link-placeholder">—</span>
+                <div class="equipo-foto-preview"></div>
             </div>
         </div>
+
+        <h2 id="socios-heading" class="sr-only">Equipo de BPP Analytics & Design</h2>
     </section>
 
     <!-- Clientes Section -->
@@ -761,7 +743,7 @@
                       href="https://www.linkedin.com/pulse/2026-a%C3%B1o-anal%C3%B3gico-o-por-qu%C3%A9-el-futuro-ya-llega-nrf0e/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="actividad-link"
+                      class="cta-link"
                       aria-label="Abrir artículo sobre el año analógico y el futuro en LinkedIn (nueva pestaña)"
                     >
                         ↗ Leer artículo completo
@@ -802,7 +784,7 @@
                       href="https://www.linkedin.com/pulse/por-qu%C3%A9-los-algoritmos-bastan-el-regreso-de-la-ixf1e/?trackingId=Im4ejaRFTSKB6Y5rORyonQ%3D%3D"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="actividad-link"
+                      class="cta-link"
                       aria-label="Abrir artículo sobre sociología y estrategia de marca en LinkedIn (nueva pestaña)"
                     >
                         ↗ Leer artículo completo
@@ -827,7 +809,7 @@
                       href="https://www.linkedin.com/feed/update/urn:li:activity:7427811274014535680/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="actividad-link"
+                      class="cta-link"
                       aria-label="Abrir post sobre Otros Futuros en LinkedIn (nueva pestaña)"
                     >
                         ↗ Ver post en LinkedIn
@@ -866,7 +848,7 @@
                       href="https://www.linkedin.com/pulse/la-ilusi%C3%B3n-de-negociaci%C3%B3n-libre-lo-que-el-aumento-oferta-politi-sxcwe/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="actividad-link"
+                      class="cta-link"
                       aria-label="Abrir artículo sobre negociación de alquileres en LinkedIn (nueva pestaña)"
                     >
                         ↗ Leer artículo completo
@@ -877,12 +859,8 @@
 
         <!-- Dual CTAs -->
         <div class="actividades-cta actividades-cta-dual">
-            <a href="pensamiento/" class="actividades-cta-link" aria-label="Ver todos los artículos de pensamiento">
-                Ver pensamiento <span class="cta-arrow cta-arrow--right" aria-hidden="true">→</span>
-            </a>
-            <a href="proyectos/" class="actividades-cta-link" aria-label="Ver todo lo hecho: proyectos y publicaciones">
-                Ver lo hecho <span class="cta-arrow cta-arrow--right" aria-hidden="true">→</span>
-            </a>
+            <a href="pensamiento/" class="cta-link" aria-label="Ver todos los artículos de pensamiento">Ver pensamiento</a>
+            <a href="proyectos/" class="cta-link" aria-label="Ver todo lo hecho: proyectos y publicaciones">Ver lo hecho</a>
         </div>
     </section>
 
@@ -1168,7 +1146,7 @@
                         ></textarea>
                     </div>
 
-                    <button type="submit" class="form-submit cta-button--contact" data-preview="Llamada de 30 min en la semana">Agendá una llamada <span class="cta-arrow cta-arrow--right" aria-hidden="true">→</span></button>
+                    <button type="submit" class="cta-primary" data-preview="Llamada de 30 min en la semana">Agendá una llamada →</button>
                 </form>
             </div>
         </div>
