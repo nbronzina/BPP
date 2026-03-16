@@ -567,7 +567,61 @@ nav.nav--scrolled {
 }
 
 /* =========================
-   CTA Buttons - Sistema Unificado
+   CTA Buttons - Sistema Unificado Canónico
+   ========================= */
+
+/* PRIMARY — Solo para acciones de conversión directa: contacto, descarga de reporte */
+.cta-primary {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #0a0a0a;
+    border: none;
+    padding: 0.875rem 1.75rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    min-height: 44px;
+    text-align: center;
+}
+
+.cta-primary:hover {
+    opacity: 0.88;
+}
+
+.cta-primary:active {
+    transform: scale(0.98);
+}
+
+/* LINK — Para navegación editorial, "ver más", links de sección */
+.cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.cta-link::after {
+    content: '→';
+}
+
+.cta-link:hover {
+    opacity: 0.75;
+}
+
+/* =========================
+   CTA Buttons - Sistema Unificado (LEGACY - A DEPRECAR)
    ========================= */
 
 /* Base común para todos los botones CTA */

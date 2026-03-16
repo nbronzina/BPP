@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // -----------------------------------------------------
   // Wrap arrows in CTA buttons with spans for animation
   // =====================================================
-  const ctaButtons = document.querySelectorAll('.cta-button, .btn-download');
+  const ctaButtons = document.querySelectorAll('.cta-primary');
   ctaButtons.forEach(btn => {
     const text = btn.textContent;
     // Match arrow characters (→, ←, ↓, ↑) at start or end of text
@@ -442,12 +442,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Determine intent level from CSS class
     let intentLevel = 'mid'; // default
-    if (target.classList.contains('cta-button--hero') || target.classList.contains('cta-link--hero')) {
-      intentLevel = 'low';
-    } else if (target.classList.contains('cta-button--services') || target.classList.contains('cta-link--services')) {
-      intentLevel = 'mid';
-    } else if (target.classList.contains('cta-button--contact') || target.classList.contains('form-submit')) {
+    if (target.classList.contains('cta-primary')) {
       intentLevel = 'high';
+    } else if (target.classList.contains('cta-link')) {
+      intentLevel = 'mid';
     }
 
     trackEvent("CTA_clicked", {
@@ -458,7 +456,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Attach listeners to all CTA buttons and links
-  const allCTAs = document.querySelectorAll('.cta-button, .cta-link--hero, .cta-link--services, .services-cta-link, .form-submit');
+  const allCTAs = document.querySelectorAll('.cta-primary, .cta-link');
   allCTAs.forEach(cta => {
     cta.addEventListener('click', trackCTAClick);
   });
