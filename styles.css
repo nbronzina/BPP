@@ -4094,7 +4094,7 @@ img {
 .tooltip-term::before {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: calc(100% + 8px);
+    bottom: calc(100% + 12px);
     left: 50%;
     transform: translateX(-50%);
     width: max-content;
@@ -4105,20 +4105,21 @@ img {
     font-weight: 400;
     line-height: 1.5;
     color: var(--color-text);
-    background: var(--color-surface);
+    background: #0a0a0a;
     border: 1px solid var(--orange-500);
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--transition-fast);
-    z-index: 1000;
+    z-index: 9999;
+    white-space: normal;
 }
 
 .tooltip-term::after {
     content: '';
     position: absolute;
-    bottom: calc(100% + 1px);
+    bottom: calc(100% + 5px);
     left: 50%;
     transform: translateX(-50%);
     border: 7px solid transparent;
@@ -4126,7 +4127,7 @@ img {
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--transition-fast);
-    z-index: 1000;
+    z-index: 9999;
 }
 
 /* Show tooltip on hover (desktop) */
