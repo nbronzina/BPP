@@ -404,7 +404,7 @@ nav.nav--scrolled {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    max-width: 1400px;
+    max-width: 1600px;
     width: 100%;
 }
 
@@ -437,6 +437,7 @@ nav.nav--scrolled {
     hyphens: none; /* No hyphenation - keep words complete */
     word-break: keep-all; /* Prevent breaking within words */
     overflow-wrap: normal; /* Don't force wrap long words */
+    max-width: 1200px; /* Ensure enough space for full title */
 }
 
 .subtitle {
