@@ -435,6 +435,8 @@ nav.nav--scrolled {
     letter-spacing: -0.04em;
     color: #ffffff;
     hyphens: none; /* No hyphenation - keep words complete */
+    word-break: keep-all; /* Prevent breaking within words */
+    overflow-wrap: normal; /* Don't force wrap long words */
 }
 
 .subtitle {
