@@ -666,10 +666,7 @@ nav.nav--scrolled {
 }
 
 .form-submit:hover {
-    background: rgba(206, 115, 82, 0.12);
-    box-shadow: 0 0 20px rgba(206, 115, 82, 0.3);
-    transform: translateY(-2px);
-    border-color: var(--color-accent-bright);
+    border-color: var(--color-accent);
 }
 
 /* Tamaño small para downloads */
@@ -1178,10 +1175,7 @@ nav.nav--scrolled {
 
 .about-cta a:hover,
 .actividades-cta-link:hover {
-    background: rgba(206, 115, 82, 0.12);
-    box-shadow: 0 0 20px rgba(206, 115, 82, 0.3);
-    transform: translateY(-2px);
-    border-color: var(--color-accent-bright);
+    border-color: var(--color-accent);
 }
 
 .about-cta {
@@ -1207,10 +1201,7 @@ nav.nav--scrolled {
 }
 
 .services-cta-link:hover {
-    background: rgba(206, 115, 82, 0.12);
-    box-shadow: 0 0 20px rgba(206, 115, 82, 0.3);
-    transform: translateY(-2px);
-    border-color: var(--color-accent-bright);
+    border-color: var(--color-accent);
 }
 
 .studio-note {
@@ -1286,9 +1277,7 @@ nav.nav--scrolled {
 }
 
 .service-block:hover {
-    border-color: rgba(206, 115, 82, 0.4);
-    background: rgba(206, 115, 82, 0.06);
-    transform: translateY(-4px);
+    border-color: var(--color-accent);
 }
 
 .service-number {
@@ -1493,9 +1482,7 @@ footer {
 }
 
 .footer-link:hover {
-    opacity: 0.9;
-    color: #ce7352;
-    transform: translateY(-1px);
+    opacity: 0.85;
 }
 
 .footer-link:focus-visible {
@@ -1528,7 +1515,6 @@ footer {
 
 .social-icons a:hover svg {
     opacity: 1;
-    transform: translateY(-2px) scale(1.05);
     fill: var(--color-accent);
 }
 
@@ -1563,9 +1549,7 @@ footer {
 }
 
 .footer-left .install-pwa-link:hover {
-    opacity: 0.9;
-    color: #ce7352;
-    transform: translateY(-1px);
+    opacity: 0.85;
 }
 
 .install-pwa-link:focus-visible {
@@ -2437,12 +2421,11 @@ img {
     /* Visual effects mobile: reduce intensity */
     .cta-button:hover,
     .pwa-install-btn:hover {
-        box-shadow: 0 4px 20px rgba(206, 115, 82, 0.3); /* Reduced from shadow-glow-intense */
-        filter: brightness(1.05); /* Subtle */
+        opacity: 0.88;
     }
 
     .service-card:hover {
-        box-shadow: 0 8px 24px rgba(206, 115, 82, 0.25); /* Gentler than desktop */
+        border-color: var(--color-accent);
     }
 
     .hero {
@@ -2969,9 +2952,7 @@ img {
 
 .impact-card:hover,
 .impact-card:focus {
-  border-color: var(--color-accent, #CB7043);
-  box-shadow: 0 0 12px rgba(203,112,67,0.2);
-  transform: translateY(-3px);
+  border-color: var(--color-accent);
 }
 
 /* Header de la tarjeta (icono + título) */
@@ -3477,8 +3458,7 @@ img {
 
 @media (prefers-reduced-motion: no-preference) {
     .senal-card:hover {
-        box-shadow: var(--shadow-card-hover);
-        transform: translateY(-4px);
+        border-color: var(--color-accent);
     }
 }
 
@@ -3819,9 +3799,7 @@ img {
 }
 
 .recommendation-cta:hover {
-    background: var(--orange-400);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(206, 115, 82, 0.3);
+    opacity: 0.88;
 }
 
 @media (max-width: 1024px) {
@@ -5029,9 +5007,7 @@ img {
 }
 
 .testimonial-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 12px 40px rgba(10, 10, 10, 0.4);
+  border-color: var(--color-accent);
 }
 
 .testimonial-quote {
