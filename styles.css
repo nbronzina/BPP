@@ -2218,8 +2218,8 @@ footer {
 
 .equipo-foto-hover {
     position: absolute;
-    left: 260px;
-    top: -40px;
+    left: 180px;      /* cerca del nombre */
+    top: -90px;       /* arriba, pisa el espacio del socio anterior */
     width: 140px;
     height: 140px;
     background-size: cover;
