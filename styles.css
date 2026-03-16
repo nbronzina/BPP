@@ -444,6 +444,7 @@ nav.nav--scrolled {
     font-weight: 400;
     opacity: 0.95;
     max-width: 600px;
+    text-wrap: balance;
 }
 
 .locations {
@@ -3286,6 +3287,7 @@ img {
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     max-width: 900px;
+    text-wrap: balance;
 }
 
 .hero-sub-secondary {
