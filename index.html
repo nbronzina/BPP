@@ -920,10 +920,44 @@
                 <p class="quiz-subtitle">5 preguntas · 2 minutos · Diagnóstico inmediato</p>
             </div>
 
+            <!-- Metodología -->
+            <div class="quiz-methodology">
+                <button class="methodology-toggle" aria-expanded="false">
+                    <span>¿En qué se basa este diagnóstico?</span>
+                    <span class="methodology-toggle-icon" aria-hidden="true">↓</span>
+                </button>
+                <div class="methodology-content" style="display: none;">
+                    <p class="methodology-intro">
+                        Este quiz evalúa cinco dimensiones críticas para decisión bajo incertidumbre,
+                        fundamentadas en frameworks académicos consolidados:
+                    </p>
+                    <ul class="methodology-list">
+                        <li><strong>Strategic Foresight</strong> — Joseph Voros (2003), Futures Platform (2025)</li>
+                        <li><strong>Organizational Capability Maturity</strong> — CMMI, Data Governance Maturity Models</li>
+                        <li><strong>Lean-Agile Innovation</strong> — Design Thinking (IDEO), Lean Startup (Ries 2011)</li>
+                    </ul>
+                    <p class="methodology-evidence">
+                        Organizaciones con foresight sistemático crecen <strong>200% más rápido</strong>
+                        y tienen <strong>40% más probabilidad</strong> de convertirse en líderes de su sector
+                        (ITONICS 2025, OODAloop 2025).
+                    </p>
+                    <div class="methodology-links">
+                        <a href="docs/metodologia-quiz-diagnostico.md" class="methodology-link" target="_blank">
+                            📄 Metodología completa
+                        </a>
+                        <a href="docs/framework-senales-debiles.md" class="methodology-link" target="_blank">
+                            📘 Framework de señales débiles
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <div id="quiz-questions" class="quiz-questions">
                 <!-- Pregunta 1 -->
                 <div class="quiz-question" data-question="1">
-                    <h3 class="question-text">¿Tu organización identifica señales tempranas de cambio antes de que se vuelvan tendencias?</h3>
+                    <h3 class="question-text">
+                        ¿Tu organización identifica <span class="tooltip-term" data-tooltip="Weak signals (Ansoff 1975, Voros 2003): indicios tempranos de cambio que tienen baja visibilidad, alta ambigüedad, pero pueden tener alto impacto futuro. Detectarlos a tiempo permite anticipar en lugar de reaccionar.">señales tempranas de cambio</span> antes de que se vuelvan tendencias?
+                    </h3>
                     <div class="question-options">
                         <label class="option-label">
                             <input type="radio" name="q1" value="0" required>
@@ -942,7 +976,9 @@
 
                 <!-- Pregunta 2 -->
                 <div class="quiz-question" data-question="2">
-                    <h3 class="question-text">¿Prototipan ideas antes de comprometer recursos completos?</h3>
+                    <h3 class="question-text">
+                        ¿<span class="tooltip-term" data-tooltip="Lean experimentation (Ries 2011, Design Thinking IDEO): testear supuestos con prototipos rápidos antes de inversión completa. Permite 'fallar rápido y barato' en lugar de descubrir problemas tarde y caro.">Prototipan ideas</span> antes de comprometer recursos completos?
+                    </h3>
                     <div class="question-options">
                         <label class="option-label">
                             <input type="radio" name="q2" value="0" required>
@@ -961,7 +997,9 @@
 
                 <!-- Pregunta 3 -->
                 <div class="quiz-question" data-question="3">
-                    <h3 class="question-text">¿Tus datos se interpretan en contexto o solo se reportan métricas?</h3>
+                    <h3 class="question-text">
+                        ¿Tus datos se <span class="tooltip-term" data-tooltip="Data literacy (CMMI 2026, Dataversity 2025): capacidad de leer datos en contexto estratégico, detectar anomalías que algoritmos pierden, y triangular cuantitativo + cualitativo. Solo 30% de organizaciones son data-literate.">interpretan en contexto</span> o solo se reportan métricas?
+                    </h3>
                     <div class="question-options">
                         <label class="option-label">
                             <input type="radio" name="q3" value="0" required>
@@ -980,7 +1018,9 @@
 
                 <!-- Pregunta 4 -->
                 <div class="quiz-question" data-question="4">
-                    <h3 class="question-text">¿Tu equipo entiende claramente qué comunica tu marca durante cambios estratégicos?</h3>
+                    <h3 class="question-text">
+                        ¿Tu equipo entiende claramente qué comunica tu marca durante <span class="tooltip-term" data-tooltip="Brand coherence (Aaker 1996, Keller 2012): capacidad de mantener narrativas coherentes durante pivots estratégicos. Cambios sin claridad comunicacional crean pérdida de confianza en stakeholders internos y externos.">cambios estratégicos</span>?
+                    </h3>
                     <div class="question-options">
                         <label class="option-label">
                             <input type="radio" name="q4" value="0" required>
@@ -999,7 +1039,9 @@
 
                 <!-- Pregunta 5 -->
                 <div class="quiz-question" data-question="5">
-                    <h3 class="question-text">¿Diseñan <span class="tooltip-term" data-tooltip="Narrativas alternativas de lo que podría pasar, construidas desde fuerzas de cambio detectables hoy">escenarios futuros</span> para prepararse ante múltiples posibilidades?</h3>
+                    <h3 class="question-text">
+                        ¿Diseñan <span class="tooltip-term" data-tooltip="Scenario planning (Voros 2017, Schwartz 1996): construir múltiples futuros plausibles en lugar de asumir un único futuro probable. Reduce sorpresa estratégica y permite preparación anticipada ante disrupciones.">escenarios futuros</span> para prepararse ante múltiples posibilidades?
+                    </h3>
                     <div class="question-options">
                         <label class="option-label">
                             <input type="radio" name="q5" value="0" required>
@@ -1034,6 +1076,21 @@
                 <div class="results-recommendations">
                     <h4 class="results-recommendations-title">Recursos recomendados</h4>
                     <div id="recommendations-list" class="recommendations-list"></div>
+                </div>
+
+                <div class="results-methodology">
+                    <p class="results-methodology-text">
+                        Este diagnóstico se basa en el <strong>Foresight Maturity Model</strong> (Futures Platform 2025)
+                        y frameworks consolidados de strategic foresight.
+                    </p>
+                    <div class="results-methodology-links">
+                        <a href="docs/metodologia-quiz-diagnostico.md" class="results-methodology-link" target="_blank">
+                            Ver metodología completa
+                        </a>
+                        <a href="docs/framework-senales-debiles.md" class="results-methodology-link" target="_blank">
+                            Descargar Framework de señales débiles
+                        </a>
+                    </div>
                 </div>
 
                 <button id="quiz-reset" class="quiz-reset-btn">Reiniciar diagnóstico</button>
