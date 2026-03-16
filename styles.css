@@ -3724,6 +3724,119 @@ img {
     color: var(--color-text-muted);
 }
 
+/* Quiz Methodology Section */
+.quiz-methodology {
+    margin: 2rem auto 3rem;
+    max-width: 800px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.methodology-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--orange-500);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-align: left;
+}
+
+.methodology-toggle:hover {
+    background: rgba(206, 115, 82, 0.05);
+}
+
+.methodology-toggle-icon {
+    font-size: 1.2rem;
+    transition: transform var(--transition-fast);
+}
+
+.methodology-toggle[aria-expanded="true"] .methodology-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.methodology-content {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.methodology-intro {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+    margin-bottom: 1rem;
+}
+
+.methodology-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.methodology-list li {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.methodology-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--orange-500);
+}
+
+.methodology-evidence {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: var(--line-height-body);
+    padding: 1rem;
+    background: rgba(206, 115, 82, 0.05);
+    border-left: 3px solid var(--orange-500);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.methodology-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.methodology-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--orange-500);
+    text-decoration: none;
+    border: 1px solid var(--orange-500);
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+}
+
+.methodology-link:hover {
+    background: rgba(206, 115, 82, 0.1);
+    border-color: var(--orange-400);
+}
+
 .quiz-questions {
     display: flex;
     flex-direction: column;
@@ -3937,6 +4050,46 @@ img {
     opacity: 0.88;
 }
 
+/* Results Methodology */
+.results-methodology {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.results-methodology-text {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+    margin-bottom: 1rem;
+}
+
+.results-methodology-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.results-methodology-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--orange-500);
+    text-decoration: none;
+    border: 1px solid var(--orange-500);
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+}
+
+.results-methodology-link:hover {
+    background: rgba(206, 115, 82, 0.1);
+    border-color: var(--orange-400);
+}
+
 @media (max-width: 1024px) {
     .quiz-diagnostico {
         padding: var(--spacing-section) var(--spacing-horizontal-tablet);
@@ -3958,6 +4111,17 @@ img {
 
     .option-label {
         padding: 0.75rem;
+    }
+
+    .methodology-links,
+    .results-methodology-links {
+        flex-direction: column;
+    }
+
+    .methodology-link,
+    .results-methodology-link {
+        text-align: center;
+        justify-content: center;
     }
 }
 

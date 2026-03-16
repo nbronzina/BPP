@@ -961,6 +961,29 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
+  // QUIZ METHODOLOGY TOGGLE
+  // -----------------------------------------------------
+  // Collapsible methodology section explaining framework
+  // =====================================================
+  const methodologyToggle = document.querySelector('.methodology-toggle');
+  const methodologyContent = document.querySelector('.methodology-content');
+
+  if (methodologyToggle && methodologyContent) {
+    methodologyToggle.addEventListener('click', () => {
+      const isExpanded = methodologyToggle.getAttribute('aria-expanded') === 'true';
+
+      methodologyToggle.setAttribute('aria-expanded', !isExpanded);
+
+      if (isExpanded) {
+        methodologyContent.style.display = 'none';
+      } else {
+        methodologyContent.style.display = 'block';
+        trackEvent('Quiz_metodologia_expandida');
+      }
+    });
+  }
+
+  // =====================================================
   // QUIZ DIAGNÓSTICO
   // -----------------------------------------------------
   // Interactive assessment with instant scoring and
