@@ -4324,6 +4324,12 @@ img {
     /* Líneas eliminadas para limpieza visual */
 }
 
+.thinking-method-visual svg {
+    max-width: 82.5%;
+    margin: 0 auto;
+    display: block;
+}
+
 .thinking-method-title {
     font-family: var(--font-heading);
     font-size: var(--font-size-h3);
@@ -5185,12 +5191,22 @@ img {
   width: max-content;
 }
 
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
   }
 }
 
