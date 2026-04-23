@@ -76,19 +76,11 @@
     --font-display: 'Lexend Deca', sans-serif;  /* Display font for H1 only - improves reading speed */
     --font-heading: 'Atkinson Hyperlegible', sans-serif;  /* Braille Institute - designed for low vision */
     --font-body: 'Atkinson Hyperlegible', sans-serif;  /* Maximum readability for vision impairment */
-    --font-mono: 'IBM Plex Mono', Consolas, 'Courier New', monospace;  /* Code/metadata only */
+    --font-mono: 'Space Mono', ui-monospace, monospace;  /* Code/metadata only */
 
     /* Borders & Shadows */
     --border-radius: 8px;
     --border-card: 1px solid rgba(206, 115, 82, 0.2);
-    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
-    --shadow-card-hover:
-        0 8px 30px rgba(206, 115, 82, 0.4),
-        0 0 80px rgba(206, 115, 82, 0.15),
-        inset 0 0 40px rgba(206, 115, 82, 0.05);
-    --shadow-glow-intense:
-        0 4px 20px rgba(206, 115, 82, 0.5),
-        0 0 60px rgba(206, 115, 82, 0.3);
 
     /* Spacing */
     --spacing-card: 3rem;
@@ -451,7 +443,7 @@ nav.nav--scrolled {
 }
 
 .locations {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     color: rgba(255, 255, 255, 0.87);  /* WCAG AA compliant (antes 0.5) */
     font-weight: 400;
@@ -464,7 +456,6 @@ nav.nav--scrolled {
     width: 100%;
     max-width: 400px;
     height: auto;
-    filter: drop-shadow(0 0 20px rgba(206, 115, 82, 0.3));
 }
 
 .data-point {
@@ -599,9 +590,6 @@ nav.nav--scrolled {
     opacity: 0.88;
 }
 
-.cta-primary:active {
-    transform: scale(0.98);
-}
 
 /* LINK — Para navegación editorial, "ver más", links de sección */
 .cta-link {
@@ -667,9 +655,6 @@ nav.nav--scrolled {
 .pwa-install-btn:hover {
     background: var(--color-accent-bright);
     border-color: var(--color-accent-bright);
-    box-shadow: var(--shadow-glow-intense);
-    filter: brightness(1.1);
-    transform: scale(1.02);
     color: #0a0a0a;
 }
 
@@ -701,12 +686,6 @@ nav.nav--scrolled {
 .cta-button:active .cta-arrow,
 .form-submit:active .cta-arrow,
 .btn-download:active .cta-arrow,
-.services-cta-link:active .cta-arrow,
-.actividades-cta-link:active .cta-arrow,
-.actividad-link:active .cta-arrow,
-.back-to-top:active .cta-arrow {
-    transform: scale(0.9);
-}
 
 /* Variante Secondary (outlined) - Acciones secundarias */
 .form-submit,
@@ -721,12 +700,11 @@ nav.nav--scrolled {
 .pwa-dismiss-btn:hover {
     background: var(--color-accent);
     color: #0a0a0a;
-    transform: scale(1.02);
 }
 
 /* Form submit estandarizado con about-cta y services-cta-link */
 .form-submit {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-md);
     font-weight: 500;
     border: 1.5px solid var(--color-accent);
@@ -748,7 +726,6 @@ nav.nav--scrolled {
 .btn-download:active,
 .pwa-install-btn:active,
 .pwa-dismiss-btn:active {
-    transform: scale(0.98);
     transition-duration: 0.1s;
 }
 
@@ -990,7 +967,7 @@ nav.nav--scrolled {
 
 /* Section labels - Opción E (Combo): mayor visibilidad + border accent */
 .about-label {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-lg);
     font-weight: 700;
     text-transform: uppercase;
@@ -1183,7 +1160,7 @@ nav.nav--scrolled {
     padding: 0.75rem 1.5rem;
     background: rgba(206, 115, 82, 0.08);
     border: 1px solid var(--color-accent);
-    border-radius: 6px;
+    border-radius: 4px;
     margin-bottom: 1rem;
 }
 
@@ -1213,7 +1190,7 @@ nav.nav--scrolled {
 /* Links CTA - Variante secundaria (mayor jerarquía) */
 .about-cta a,
 .actividades-cta-link {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-md);
     font-weight: 500;
     color: var(--color-accent);
@@ -1250,7 +1227,7 @@ nav.nav--scrolled {
 
 /* Links CTA - Estandarizado con about-cta */
 .services-cta-link {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-md);
     font-weight: 500;
     color: var(--color-accent);
@@ -1312,7 +1289,7 @@ nav.nav--scrolled {
 }
 
 .services-label {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-lg);
     font-weight: 700;
     text-transform: uppercase;
@@ -1358,7 +1335,7 @@ nav.nav--scrolled {
 }
 
 .service-category {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     opacity: 0.7;  /* Increased from 0.5 for better contrast */
@@ -1513,7 +1490,7 @@ footer {
 }
 
 .footer-copy {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     color: var(--color-text);
     opacity: 0.7;
@@ -1537,7 +1514,7 @@ footer {
 }
 
 .footer-link {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     color: var(--color-text);
     text-decoration: none;
@@ -1607,7 +1584,7 @@ footer {
 
 /* Cuando está en el footer, hereda estilos de .footer-link */
 .footer-left .install-pwa-link {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     color: var(--color-text);
     opacity: 0.7;  /* Increased from 0.5 for better contrast */
@@ -1647,7 +1624,7 @@ footer {
 }
 
 .contact-label {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-lg);
     font-weight: 700;
     text-transform: uppercase;
@@ -1702,7 +1679,7 @@ footer {
 }
 
 .contact-city {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     color: var(--color-accent);
@@ -1711,7 +1688,7 @@ footer {
 }
 
 .contact-street {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     color: var(--color-text);
     opacity: 0.4;
@@ -1729,7 +1706,7 @@ footer {
 }
 
 .form-group label {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1855,13 +1832,13 @@ footer {
 }
 
 .filter-btn {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     padding: 0.5rem 1.25rem;
     background: transparent;
     color: rgba(255, 255, 255, 0.87);  /* WCAG AA compliant (antes 0.5) */
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 24px;
+    border-radius: 8px;
     cursor: pointer;
     transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
     text-transform: uppercase;
@@ -2012,7 +1989,7 @@ footer {
    ========================= */
 
 .actividades-label {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-lg);
     font-weight: 700;
     text-transform: uppercase;
@@ -2069,7 +2046,7 @@ footer {
 }
 
 .actividad-meta {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     text-transform: uppercase;
     margin-bottom: 0.75rem;
@@ -2090,13 +2067,13 @@ footer {
 /* Category badge for Hechos entries */
 .actividad-category-badge {
     display: inline-block;
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding: 0.25rem 0.6rem;
-    border-radius: 3px;
+    border-radius: 4px;
     margin-bottom: 0.5rem;
     background: rgba(206, 115, 82, 0.1);
     color: var(--color-accent);
@@ -2124,7 +2101,7 @@ footer {
 }
 
 .actividad-link {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     color: var(--color-accent);
     opacity: 0.7;
@@ -2151,7 +2128,7 @@ footer {
 }
 
 .equipo-label {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-lg);
     font-weight: 700;
     text-transform: uppercase;
@@ -2283,8 +2260,8 @@ img {
 }
 
 *:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(206, 115, 82, 0.2);
 }
 
 /* Focus en nav links */
@@ -2296,19 +2273,8 @@ img {
 
 /* Focus en botones */
 .cta-button:focus-visible {
-    outline: 2px solid var(--color-accent-bright);
-    outline-offset: 4px;
+    outline: none;
     box-shadow: 0 0 0 4px rgba(206, 115, 82, 0.2);
-    animation: pulse-glow 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-    0%, 100% {
-        box-shadow: 0 0 0 4px rgba(206, 115, 82, 0.2);
-    }
-    50% {
-        box-shadow: 0 0 0 6px rgba(206, 115, 82, 0.3);
-    }
 }
 
 .mobile-menu-btn:focus-visible {
@@ -3030,7 +2996,7 @@ img {
     border: 2px solid var(--color-accent);
     border-radius: var(--border-radius);
     padding: 1.5rem;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     max-width: 400px;
     width: 90%;
     z-index: var(--z-modal);
@@ -3089,7 +3055,7 @@ img {
 .impact-card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--color-border-card, #2A2A2A);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 2rem;
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   font-family: var(--font-family-base, 'Atkinson Hyperlegible', system-ui, sans-serif);
@@ -3200,7 +3166,7 @@ img {
   width: 100%;
   max-height: 350px;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 4px;
   margin-top: 1rem;
   display: block;
 }
@@ -3208,7 +3174,7 @@ img {
 /* Variante sin animación hover (intro + descarga) */
 .card-static {
   background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 2rem;
   max-width: 900px;
   margin: 2rem auto;
@@ -3237,7 +3203,7 @@ img {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(203, 112, 67, 0.45);
   padding: 2rem;
-  border-radius: 14px;
+  border-radius: 8px;
 }
 
 .actividad-card--light h3 {
@@ -3262,7 +3228,7 @@ img {
 }
 
 .reporte-section .impact-chart img {
-  border-radius: 10px;
+  border-radius: 8px;
   width: 100%;
   height: auto;
 }
@@ -3443,7 +3409,7 @@ img {
 }
 
 .reporte-page .report-label {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     color: var(--color-accent);
     text-transform: uppercase;
@@ -3470,7 +3436,7 @@ img {
 }
 
 .reporte-page .report-tags {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: 'Space Mono', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     opacity: 0.7;  /* Increased from 0.5 for better contrast */
@@ -3481,7 +3447,7 @@ img {
 .reporte-page .actividad-card--light {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(203, 112, 67, 0.4);
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
 .reporte-page .impact-number {
@@ -3939,7 +3905,6 @@ img {
 .quiz-submit-btn:hover:not(:disabled),
 .quiz-reset-btn:hover {
     background: var(--orange-400);
-    box-shadow: var(--shadow-glow-intense);
 }
 
 .quiz-submit-btn:disabled {
@@ -4250,8 +4215,8 @@ img {
     color: var(--color-text);
     background: #0a0a0a;
     border: 1px solid var(--orange-500);
-    border-radius: 6px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--transition-fast);
@@ -4285,7 +4250,7 @@ img {
 .tooltip-term:focus-visible {
     outline: 2px solid var(--orange-400);
     outline-offset: 2px;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .tooltip-term:focus-visible::before,
@@ -4582,11 +4547,8 @@ img {
 .reporte-page .cta-button:focus-visible,
 .legal-page .cta-button:focus-visible {
   background: var(--color-accent-bright);
-  box-shadow: var(--shadow-glow-intense);
-  filter: brightness(1.1);
   border-color: var(--color-accent-bright);
   color: #0a0a0a;
-  transform: scale(1.02);
 }
 
 .reporte-page .cta-button:visited,
@@ -4608,7 +4570,6 @@ img {
   background: linear-gradient(90deg, var(--color-accent), var(--color-accent-bright));
   z-index: 9999;
   transition: width 0.1s ease-out;
-  box-shadow: 0 0 10px rgba(206, 115, 82, 0.5);
 }
 
 /* Sticky Table of Contents */
@@ -4620,7 +4581,7 @@ img {
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(206, 115, 82, 0.3);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1.5rem;
   z-index: 100;
   opacity: 0;
@@ -4688,7 +4649,6 @@ img {
 
 .mobile-toc-btn:hover {
   background: var(--color-accent-bright);
-  transform: scale(1.1);
 }
 
 .mobile-toc-btn svg {
@@ -4775,7 +4735,7 @@ img {
 .highlight-box {
   background: linear-gradient(135deg, rgba(206, 115, 82, 0.12), rgba(212, 132, 94, 0.08));
   border: 2px solid var(--color-accent);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1.5rem 2rem;
   margin: 2rem 0;
   position: relative;
@@ -4806,7 +4766,7 @@ img {
   width: 100%;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(206, 115, 82, 0.4);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1.5rem 2rem;
   text-align: left;
   cursor: pointer;
@@ -4973,7 +4933,6 @@ img {
 .share-buttons a:hover {
   background: var(--color-accent);
   border-color: var(--color-accent);
-  transform: scale(1.1);
 }
 
 .share-buttons svg {
@@ -5127,7 +5086,7 @@ img {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.8rem 1.4rem;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid var(--color-accent);
   background: transparent;
   color: var(--color-accent);
@@ -5156,7 +5115,7 @@ img {
 }
 
 .clientes-label {
-  font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+  font-family: 'Space Mono', ui-monospace, monospace;
   font-size: var(--font-size-sm);
   text-transform: uppercase;
   letter-spacing: 0.08em;

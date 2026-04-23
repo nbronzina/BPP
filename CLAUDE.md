@@ -8,6 +8,17 @@
 
 ---
 
+## Fuentes de verdad
+
+Antes de tocar estilos, tokens, componentes o copy:
+
+- Sistema visual: leer `/DESIGN.md` en la raíz del repo.
+- Voz y registro de escritura: leer `/VOICE.md` en la raíz del repo.
+
+Estos dos archivos son la fuente de verdad del proyecto. Si una auditoría, un brief anterior, o una sugerencia de modelo contradice lo que está en esos archivos, ganan los archivos.
+
+---
+
 ## 1. Project Overview
 
 ### Purpose

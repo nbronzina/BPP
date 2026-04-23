@@ -3,47 +3,17 @@ name: bpp-brand
 description: Apply BPP Analytics & Design brand guidelines when creating any visual material, document, overlay, presentation, or external-facing content for BPP.
 ---
 
-# BPP Brand Guidelines
+# BPP Brand — Pointer
 
-## Identity
-- Studio: BPP Analytics & Design
-- Tagline: "Convertimos incertidumbre en decisiones que funcionan"
-- Team: Nicolás Bronzina (Design Researcher), Sergio Petrocelli (Strategic Planning & Communication), Ezequiel Politi (Data & Strategy Analyst)
+The source of truth for the BPP visual system lives in **`/DESIGN.md`** at the repo root.
+The source of truth for BPP voice and copy lives in **`/VOICE.md`** at the repo root.
 
-## Colors
-- Orange accent: #ce7352 — primary brand color, never approximate or substitute
-- White text at varying opacities: intentional hierarchy, do not flatten
-- Dark backgrounds preferred for branded materials
+Before editing any token, style, component, or piece of copy:
 
-## Visual language
-- Corner brackets as framing device
-- Glow effects on key elements
-- Consistent with OBS streaming overlays visual language
+1. Read `/DESIGN.md` in full.
+2. Read `/VOICE.md` in full.
+3. Validate any proposed change against the `Do's and Don'ts` section of `/DESIGN.md` and the `Lo que no existe en este registro` section of `/VOICE.md`.
 
-## Typography
-- White text, varying opacity for hierarchy
-- Clean, no decorative fonts
+Do not duplicate content from those files into this skill. If this skill and DESIGN.md/VOICE.md ever disagree, DESIGN.md/VOICE.md win.
 
-## Voice & tone
-- Direct, first-person, practitioner level
-- No academic register
-- No corporate-sounding constructions
-- Spanish as primary language for content
-
-## When to apply
-- Any document, presentation, or report for BPP
-- OBS overlays and streaming assets
-- LinkedIn content and social posts
-- Any external-facing material
-
-## Pairing with frontend-design
-When working on any BPP frontend task, activate alongside /frontend-design skill.
-The aesthetic direction is already defined — do not invent a new one:
-- Dark backgrounds (#0a2540 or similar dark navy)
-- Orange accent #ce7352 — never substitute
-- Corner brackets as framing device
-- Glow effects on key elements
-- Editorial feel, not corporate
-- Work Sans typography — already loaded via Google Fonts
-- White text at varying opacities for hierarchy
-When frontend-design asks for aesthetic direction, the answer is always: "refined dark editorial with warm orange accent". Never drift toward generic AI defaults.
+No agregar colores, tipografías ni guidelines en este archivo. La intención es que sea delgado y que toda la información viva en un solo lugar.
