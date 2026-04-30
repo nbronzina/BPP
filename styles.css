@@ -2509,8 +2509,9 @@ img {
         z-index: var(--z-nav-btn);
     }
 
-    .logo img {
-        height: 38px;
+    .logo img,
+    .nav-logo-icon img {
+        height: 36px;
     }
 
     /* Hero logo removed */
@@ -2526,7 +2527,7 @@ img {
     }
 
     .hero {
-        padding: 120px 1.5rem 60px;
+        padding: 90px 1.5rem 60px;
         justify-content: center;
     }
 
@@ -2917,6 +2918,11 @@ img {
     .social-icons svg {
         width: 48px;
         height: 48px;
+    }
+
+    /* Footer mobile padding */
+    footer {
+        padding: 0 var(--spacing-horizontal-mobile) 2rem;
     }
 }
 
