@@ -5414,6 +5414,131 @@ img {
 }
 
 /* =========================
+   Fase 1 Components
+   ========================= */
+
+/* Eyebrows numerados */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(206, 115, 82, 0.8);
+  margin-bottom: 0.5rem;
+}
+
+/* Hero tape de metadatos */
+.hero-tape {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.tape-chip {
+  padding: 0.25rem 0.5rem;
+  background: rgba(206, 115, 82, 0.08);
+  border: 1px solid rgba(206, 115, 82, 0.2);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tape-separator {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Method comparison section */
+.method-comparison-section {
+  padding: clamp(3.5rem, 7vw, 7rem) clamp(1.25rem, 4vw, 3.5rem);
+  background: rgba(206, 115, 82, 0.02);
+}
+
+.comparison-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.comparison-heading {
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.comparison-card {
+  padding: 2rem;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.comparison-card--bpp {
+  border-color: rgba(206, 115, 82, 0.2);
+}
+
+.comparison-card:hover {
+  border-color: rgba(206, 115, 82, 0.3);
+}
+
+.comparison-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.comparison-card-subtitle {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+}
+
+.comparison-diagram {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.comparison-card-note {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-tape {
+    font-size: 0.5625rem;
+  }
+}
+
+/* =========================
    Accessibility: Reduce Motion
    ========================= */
 
