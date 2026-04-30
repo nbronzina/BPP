@@ -226,38 +226,27 @@
     <!-- Skip link para accesibilidad -->
     <a href="#main-content" class="skip-link" aria-label="Saltar navegación e ir directamente al contenido principal">Saltar al contenido principal</a>
 
-    <!-- Navigation -->
-    <nav role="navigation" aria-label="Navegación principal de BPP Analytics &amp; Design">
-        <div class="nav-container">
-            <!-- Logo + Wordmark (izquierda) -->
-            <div class="logo">
-                <a href="#hero" class="nav-logo-icon" aria-label="Inicio - BPP Analytics &amp; Design">
-                    <picture>
-                        <source srcset="img/logo-160.webp" type="image/webp">
-                        <img src="img/logo.png" alt="Ícono BPP" width="39" height="52" loading="eager" decoding="async" fetchpriority="high">
-                    </picture>
-                </a>
-                <a href="#hero" class="nav-wordmark">BPP Analytics &amp; Design</a>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">
+                <span class="mark">BPP</span>
+                <span>Analytics <em>&amp; Design</em></span>
             </div>
-
-            <!-- Mobile menu button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Links (derecha) -->
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">Quiénes somos</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="#socios">Equipo</a></li>
-                <li><a href="/proyectos/">Lo hecho</a></li>
-                <li><a href="pensamiento/">Pensamiento</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
+            <nav class="main" role="navigation" aria-label="Navegación principal">
+                <a href="#quienes">Quiénes somos</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#metodo">Método</a>
+                <a href="#senales">Señales</a>
+                <a href="/proyectos/">Proyectos</a>
+                <a href="/pensamiento/">Pensamiento</a>
+            </nav>
+            <a href="#contacto" class="cta-pill">
+                <span class="dot"></span>
+                Diagnóstico 48h
+            </a>
         </div>
-    </nav>
+    </div>
 
     <!-- Main Content -->
     <main role="main" id="main-content">
@@ -386,10 +375,15 @@
         </div>
     </section>
 
-    <!-- Method Comparison Section -->
-    <section id="method-comparison" class="method-comparison-section" aria-labelledby="method-comparison-heading">
+    <!-- Method Section -->
+    <section class="sect" id="metodo" style="background: var(--bg-deep);">
+        <div class="sect-head">
+            <div class="sect-eyebrow">03 · Método</div>
+            <h2 class="sect-title">Cómo <em>pensamos</em></h2>
+            <div class="sect-note">Dos formas de ir del problema a la decisión. Una asume que el camino es recto. La otra, que hay varios caminos.</div>
+        </div>
+
         <div class="comparison-container" data-animate>
-            <h2 id="method-comparison-heading" class="comparison-heading">Dos maneras de abordar la incertidumbre</h2>
 
             <div class="comparison-grid">
                 <!-- Tradicional -->
@@ -444,12 +438,14 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section" aria-labelledby="services-heading">
-        <div class="services-container">
-            <div class="services-label"><span class="eyebrow">02 · Servicios</span></div>
-            <h2 class="sr-only">Qué lográs con nosotros</h2>
+    <section class="sect" id="servicios">
+        <div class="sect-head">
+            <div class="sect-eyebrow">02 · Servicios</div>
+            <h2 class="sect-title">Qué <em>lográs</em> con nosotros</h2>
+            <div class="sect-note">Cuatro prácticas. Un mismo sprint de 4&nbsp;semanas.</div>
+        </div>
 
-            <div class="services-grid">
+        <div class="services-grid">
                 <!-- Servicio 01 -->
                 <article class="service-block" data-animate>
                     <span class="service-number" aria-hidden="true">1</span>
