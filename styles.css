@@ -2460,7 +2460,9 @@ img {
     }
 
     .service-block {
-        padding: 2rem;
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 100%;
     }
 
     .service-deliverable {
@@ -2475,7 +2477,9 @@ img {
     }
 
     .service-title {
-        font-size: var(--font-size-h2);
+        font-size: var(--font-size-h3);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .nav-links {
@@ -2550,9 +2554,10 @@ img {
         font-family: var(--font-display); /* Lexend Deca on mobile */
         letter-spacing: -0.01em; /* Looser for Lexend Deca - prevents overflow */
         line-height: 1.15; /* Slightly more breathing room */
-        font-size: clamp(2rem, 7vw, 3.5rem); /* Mobile: 32px min, 56px max */
-        word-break: keep-all; /* Keep words intact */
-        hyphens: none; /* No hyphenation - keep "incertidumbre" complete */
+        font-size: clamp(1.75rem, 6.5vw, 3rem); /* Mobile: 28px min, 48px max - más pequeño */
+        word-break: normal; /* Allow natural wrapping */
+        hyphens: auto; /* Allow hyphenation if needed */
+        max-width: 100%; /* Prevent overflow */
     }
 
     .subtitle {
