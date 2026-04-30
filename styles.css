@@ -1382,7 +1382,9 @@ nav.nav--scrolled {
     text-decoration: none;
     font-weight: 600;
     transition: color var(--transition-fast);
-    white-space: nowrap;
+    white-space: normal;  /* Permite wrap en mobile */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .method-link:hover {
@@ -2470,11 +2472,17 @@ img {
     .service-title,
     .service-lead,
     .service-deliverable,
+    .service-method,
+    .method-link,
     .proof-link,
     .timeline-milestone {
         word-wrap: break-word;
         overflow-wrap: break-word;
         max-width: 100%;
+    }
+
+    .method-link {
+        white-space: normal !important;  /* Forzar wrap en mobile */
     }
 
     /* Asegurar que el número no cause overflow */
