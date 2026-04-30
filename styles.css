@@ -41,7 +41,7 @@
     --spacing-section: 80px;
 
     /* Horizontal padding scale (mobile-first) */
-    --spacing-horizontal-mobile: 2rem;
+    --spacing-horizontal-mobile: 1.25rem;  /* 20px - más espacio para contenido */
     --spacing-horizontal-tablet: 4rem;
     --spacing-horizontal-desktop: 6rem;
 
@@ -2460,19 +2460,26 @@ img {
     }
 
     .service-block {
-        padding: 1.5rem;
+        padding: 1.25rem;  /* Reducido de 1.5rem para más espacio */
         width: 100%;
         max-width: 100%;
         overflow: hidden; /* Prevent any overflow */
+        box-sizing: border-box;
     }
 
     .service-title,
     .service-lead,
     .service-deliverable,
-    .proof-link {
+    .proof-link,
+    .timeline-milestone {
         word-wrap: break-word;
         overflow-wrap: break-word;
         max-width: 100%;
+    }
+
+    /* Asegurar que el número no cause overflow */
+    .service-number {
+        font-size: 2.5rem;  /* Reducido de 3rem */
     }
 
     .service-deliverable {
