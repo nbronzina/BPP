@@ -2463,6 +2463,16 @@ img {
         padding: 1.5rem;
         width: 100%;
         max-width: 100%;
+        overflow: hidden; /* Prevent any overflow */
+    }
+
+    .service-title,
+    .service-lead,
+    .service-deliverable,
+    .proof-link {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
     }
 
     .service-deliverable {
