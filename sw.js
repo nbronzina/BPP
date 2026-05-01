@@ -29,6 +29,7 @@ const urlsToCache = [
   '/img/inhabiting-future.jpg',
   '/img/alquileres-negociacion.webp',
   '/img/alquileres-negociacion.png',
+  '/img/personal-software.webp',
   '/img/personal-software.png',
   '/img/otros-futuros-ied.webp',
   '/img/otros-futuros-ied.png',
