@@ -1330,19 +1330,6 @@ nav.nav--scrolled {
     transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
 }
 
-/* Conector visual entre servicios (flecha de proceso) */
-.service-block:not(:last-child)::after {
-    content: '↓';
-    position: absolute;
-    left: 50%;
-    bottom: -2.5rem;
-    transform: translateX(-50%);
-    font-size: 2rem;
-    color: var(--color-accent);
-    opacity: 0.4;
-    font-weight: 300;
-}
-
 .service-block:hover {
     border-color: var(--color-accent);
 }
@@ -2489,12 +2476,6 @@ img {
         max-width: 100%;
         overflow: hidden; /* Prevent any overflow */
         box-sizing: border-box;
-    }
-
-    /* Ajustar tamaño de flecha en mobile */
-    .service-block:not(:last-child)::after {
-        font-size: 1.5rem;
-        bottom: -2rem;
     }
 
     .service-title,
