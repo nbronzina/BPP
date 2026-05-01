@@ -901,9 +901,17 @@
                 </div>
             </div>
 
+            <!-- Quiz progress indicator -->
+            <div class="quiz-progress">
+                <span class="quiz-progress-text">Pregunta <span id="quiz-current-question">1</span> de 5</span>
+                <div class="quiz-progress-bar">
+                    <div id="quiz-progress-fill" class="quiz-progress-fill" style="width: 20%;"></div>
+                </div>
+            </div>
+
             <div id="quiz-questions" class="quiz-questions">
                 <!-- Pregunta 1 -->
-                <div class="quiz-question" data-question="1">
+                <div class="quiz-question active" data-question="1">
                     <h3 class="question-text">
                         ¿Tu organización identifica <span class="tooltip-term" data-tooltip="Weak signals (Ansoff 1975, Voros 2003): indicios tempranos de cambio que tienen baja visibilidad, alta ambigüedad, pero pueden tener alto impacto futuro. Detectarlos a tiempo permite anticipar en lugar de reaccionar.">señales tempranas de cambio</span> antes de que se vuelvan tendencias?
                     </h3>
@@ -1007,7 +1015,13 @@
                     </div>
                 </div>
 
-                <button id="quiz-submit" class="quiz-submit-btn" disabled>Ver diagnóstico</button>
+                <!-- Quiz navigation -->
+                <div class="quiz-navigation">
+                    <button id="quiz-prev" class="quiz-nav-btn quiz-prev-btn" disabled>← Anterior</button>
+                    <button id="quiz-next" class="quiz-nav-btn quiz-next-btn">Siguiente →</button>
+                </div>
+
+                <button id="quiz-submit" class="quiz-submit-btn" disabled style="display: none;">Ver diagnóstico</button>
             </div>
 
             <div id="quiz-results" class="quiz-results" style="display: none;">

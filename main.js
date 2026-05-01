@@ -984,34 +984,109 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
-  // QUIZ DIAGNÓSTICO
+  // QUIZ DIAGNÓSTICO - CAROUSEL VERSION
   // -----------------------------------------------------
-  // Interactive assessment with instant scoring and
-  // personalized resource recommendations
+  // Interactive assessment with carousel navigation,
+  // instant scoring and personalized recommendations
   // =====================================================
   const quizQuestions = document.getElementById('quiz-questions');
   const quizResults = document.getElementById('quiz-results');
   const quizSubmitBtn = document.getElementById('quiz-submit');
   const quizResetBtn = document.getElementById('quiz-reset');
+  const quizPrevBtn = document.getElementById('quiz-prev');
+  const quizNextBtn = document.getElementById('quiz-next');
+  const quizProgressText = document.getElementById('quiz-current-question');
+  const quizProgressFill = document.getElementById('quiz-progress-fill');
 
-  if (quizQuestions && quizResults && quizSubmitBtn && quizResetBtn) {
-    // Enable submit button when all questions are answered
-    const checkQuizComplete = () => {
-      const q1 = document.querySelector('input[name="q1"]:checked');
-      const q2 = document.querySelector('input[name="q2"]:checked');
-      const q3 = document.querySelector('input[name="q3"]:checked');
-      const q4 = document.querySelector('input[name="q4"]:checked');
-      const q5 = document.querySelector('input[name="q5"]:checked');
+  if (quizQuestions && quizResults && quizSubmitBtn && quizResetBtn && quizPrevBtn && quizNextBtn) {
+    const allQuestions = document.querySelectorAll('.quiz-question');
+    const totalQuestions = allQuestions.length;
+    let currentQuestion = 0;
 
-      if (q1 && q2 && q3 && q4 && q5) {
+    // Update progress indicator
+    const updateProgress = () => {
+      quizProgressText.textContent = currentQuestion + 1;
+      const progressPercent = ((currentQuestion + 1) / totalQuestions) * 100;
+      quizProgressFill.style.width = `${progressPercent}%`;
+    };
+
+    // Show specific question
+    const showQuestion = (index) => {
+      allQuestions.forEach((q, i) => {
+        q.classList.toggle('active', i === index);
+      });
+
+      // Update navigation buttons
+      quizPrevBtn.disabled = index === 0;
+
+      // Check if current question is answered
+      const currentQuestionElement = allQuestions[index];
+      const questionNumber = currentQuestionElement.getAttribute('data-question');
+      const isAnswered = document.querySelector(`input[name="q${questionNumber}"]:checked`);
+
+      // If on last question and all answered, show submit button
+      if (index === totalQuestions - 1 && checkAllAnswered()) {
+        quizNextBtn.style.display = 'none';
+        quizSubmitBtn.style.display = 'block';
         quizSubmitBtn.disabled = false;
+      } else {
+        quizNextBtn.style.display = 'block';
+        quizSubmitBtn.style.display = 'none';
+        quizNextBtn.disabled = !isAnswered; // Disable next if current not answered
+      }
+
+      updateProgress();
+    };
+
+    // Check if all questions are answered
+    const checkAllAnswered = () => {
+      for (let i = 1; i <= totalQuestions; i++) {
+        if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+          return false;
+        }
+      }
+      return true;
+    };
+
+    // Update button state when radio changes
+    const updateNavigationState = () => {
+      const questionNumber = allQuestions[currentQuestion].getAttribute('data-question');
+      const isAnswered = document.querySelector(`input[name="q${questionNumber}"]:checked`);
+
+      if (currentQuestion === totalQuestions - 1) {
+        if (checkAllAnswered()) {
+          quizNextBtn.style.display = 'none';
+          quizSubmitBtn.style.display = 'block';
+          quizSubmitBtn.disabled = false;
+        }
+      } else {
+        quizNextBtn.disabled = !isAnswered;
       }
     };
 
     // Listen for radio button changes
     document.querySelectorAll('.quiz-question input[type="radio"]').forEach(input => {
-      input.addEventListener('change', checkQuizComplete);
+      input.addEventListener('change', updateNavigationState);
     });
+
+    // Previous button
+    quizPrevBtn.addEventListener('click', () => {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+      }
+    });
+
+    // Next button
+    quizNextBtn.addEventListener('click', () => {
+      if (currentQuestion < totalQuestions - 1) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+      }
+    });
+
+    // Initialize first question
+    showQuestion(0);
 
     // Calculate score and show results
     quizSubmitBtn.addEventListener('click', () => {
@@ -1126,8 +1201,9 @@ document.addEventListener("DOMContentLoaded", function () {
       quizResults.style.display = 'none';
       quizQuestions.style.display = 'flex';
 
-      // Disable submit button
-      quizSubmitBtn.disabled = true;
+      // Reset carousel to first question
+      currentQuestion = 0;
+      showQuestion(0);
 
       // Scroll to quiz start
       quizQuestions.scrollIntoView({ behavior: 'smooth', block: 'start' });
