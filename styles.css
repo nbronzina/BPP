@@ -1299,7 +1299,17 @@ nav.nav--scrolled {
     border-left: 3px solid var(--color-accent);
     padding-left: 1.5rem;
     margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.services-intro {
+    font-family: 'Space Mono', ui-monospace, monospace;
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+    color: var(--color-text-light);
+    max-width: 70ch;
     margin-bottom: 3rem;
+    padding-left: 1.5rem;
 }
 
 /* Numbered Services Grid */
