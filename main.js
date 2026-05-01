@@ -1016,8 +1016,12 @@ document.addEventListener("DOMContentLoaded", function () {
         q.classList.toggle('active', i === index);
       });
 
-      // Update navigation buttons
-      quizPrevBtn.disabled = index === 0;
+      // Update navigation buttons - hide Anterior on first question
+      if (index === 0) {
+        quizPrevBtn.style.display = 'none';
+      } else {
+        quizPrevBtn.style.display = 'block';
+      }
 
       // Check if current question is answered
       const currentQuestionElement = allQuestions[index];
