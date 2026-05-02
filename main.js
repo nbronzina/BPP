@@ -173,29 +173,29 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
-  // IMAGE REVEALS - Clip-path en imágenes de Hechos
+  // CARD REVEAL - Actividades (Hechos section)
   // -----------------------------------------------------
-  // Revela imágenes con efecto wipe cuando entran en viewport
+  // Revela cards completas (imagen + texto) con fade-up
   // =====================================================
-  const actividadImagenes = document.querySelectorAll('.actividad-imagen');
+  const actividadCards = document.querySelectorAll('.actividad-entrada');
 
-  if (actividadImagenes.length && 'IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver(
+  if (actividadCards.length && 'IntersectionObserver' in window) {
+    const cardObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            imageObserver.unobserve(entry.target); // Reveal solo una vez
+            entry.target.classList.add('visible');
+            cardObserver.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.2, // Trigger cuando 20% de la imagen es visible
-        rootMargin: '0px 0px -50px 0px' // Offset ligero desde el bottom
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
       }
     );
 
-    actividadImagenes.forEach(img => imageObserver.observe(img));
+    actividadCards.forEach(card => cardObserver.observe(card));
   }
 
   // =====================================================

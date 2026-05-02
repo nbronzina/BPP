@@ -2276,20 +2276,28 @@ footer {
     overflow: hidden;
 }
 
-/* Image reveal effect with clip-path */
-.actividad-imagen img {
-    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-    transition: clip-path 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+/* Fade-up reveal for entire card (image + text together) */
+.actividad-entrada {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.actividad-imagen.revealed img {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+.actividad-entrada:not(.visible) {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.actividad-entrada.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .actividad-imagen img {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        transition: none;
+    .actividad-entrada {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 }
 
