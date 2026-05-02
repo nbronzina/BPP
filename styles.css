@@ -2427,9 +2427,9 @@ footer {
 
 .equipo-row {
     display: grid;
-    grid-template-columns: 2fr 2.5fr 1.5fr 0.5fr;
+    grid-template-columns: 1.8fr 2.2fr 1.8fr 0.2fr;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     padding: 1.25rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
@@ -5518,19 +5518,20 @@ img {
 }
 .marquee-wrapper {
   overflow: hidden;
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 10%,
-    black 90%,
+    black 5%,
+    black 95%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 10%,
-    black 90%,
+    black 5%,
+    black 95%,
     transparent 100%
   );
 }
