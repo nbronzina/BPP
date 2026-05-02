@@ -145,26 +145,28 @@ document.addEventListener("DOMContentLoaded", function () {
   // -------------------------
   // Hero → Navbar logo crossfade (Superflux pattern with IntersectionObserver)
   // -------------------------
-  const hero = document.querySelector('.hero');
+  const heroLogo = document.querySelector('.hero-logo-large');
+  const NAV_HEIGHT = 72; // Navbar height in pixels
 
-  if (hero && 'IntersectionObserver' in window) {
+  if (heroLogo && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Toggle .scrolled class when hero exits viewport (leaving navbar height)
-        document.body.classList.toggle('scrolled', !entry.isIntersecting);
+        // Toggle .logo-pinned class when hero logo crosses navbar bottom edge
+        document.body.classList.toggle('logo-pinned', !entry.isIntersecting);
       },
       {
-        // Trigger when hero top crosses navbar height (64px)
-        rootMargin: '-64px 0px 0px 0px',
+        // Trigger when hero logo crosses navbar height
+        rootMargin: `-${NAV_HEIGHT}px 0px 0px 0px`,
         threshold: 0
       }
     );
 
-    observer.observe(hero);
-  } else if (hero) {
+    observer.observe(heroLogo);
+  } else if (heroLogo) {
     // Fallback for browsers without IntersectionObserver
     const handleScrollFallback = () => {
-      document.body.classList.toggle('scrolled', window.scrollY > 64);
+      const logoRect = heroLogo.getBoundingClientRect();
+      document.body.classList.toggle('logo-pinned', logoRect.bottom < NAV_HEIGHT);
     };
     window.addEventListener('scroll', handleScrollFallback, { passive: true });
     handleScrollFallback();
