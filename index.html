@@ -511,40 +511,49 @@
     </section>
 
     <!-- Socios Section -->
-    <section id="socios" class="section equipo-section" aria-labelledby="socios-heading">
-        <div class="equipo-label" aria-hidden="true">
-            Equipo
+    <!-- Trust Section (Equipo + Clientes fusionado) -->
+    <section id="trust" class="section trust-section" aria-labelledby="trust-heading">
+        <!-- Anchor redirects for old links -->
+        <span id="socios" style="position: absolute; top: -100px;"></span>
+        <span id="clientes" style="position: absolute; top: -100px;"></span>
+
+        <div class="section-header">
+            <p class="section-eyebrow">Nuestra red</p>
+            <h2 id="trust-heading">Equipo y clientes</h2>
         </div>
 
-        <div class="equipo-table">
-            <div class="equipo-row" data-foto="img/Nicolas-480.webp">
-                <span class="equipo-nombre">Nicolás Bronzina</span>
-                <span class="equipo-rol">Investigación exploratoria + Prototipos + Futuros</span>
-                <span class="equipo-ciudad">Madrid · Buenos Aires</span>
-                <span class="equipo-link-placeholder">—</span>
-                <div class="equipo-foto-hover"></div>
+        <div class="trust-grid">
+            <!-- Equipo (left, compact) -->
+            <div class="trust-block trust-socios">
+                <h3>Equipo</h3>
+                <div class="equipo-table">
+                    <div class="equipo-row" data-foto="img/Nicolas-480.webp">
+                        <span class="equipo-nombre">Nicolás Bronzina</span>
+                        <span class="equipo-rol">Investigación exploratoria + Prototipos + Futuros</span>
+                        <span class="equipo-ciudad">Madrid · Buenos Aires</span>
+                        <span class="equipo-link-placeholder">—</span>
+                        <div class="equipo-foto-hover"></div>
+                    </div>
+                    <div class="equipo-row" data-foto="img/Sergio-480.webp">
+                        <span class="equipo-nombre">Sergio Petrocelli</span>
+                        <span class="equipo-rol">Comunicación estratégica + Branding</span>
+                        <span class="equipo-ciudad">Buenos Aires</span>
+                        <span class="equipo-link-placeholder">—</span>
+                        <div class="equipo-foto-hover"></div>
+                    </div>
+                    <div class="equipo-row" data-foto="img/Ezequiel-480.webp">
+                        <span class="equipo-nombre">Ezequiel Politi</span>
+                        <span class="equipo-rol">Estrategia organizacional + Data</span>
+                        <span class="equipo-ciudad">Buenos Aires</span>
+                        <span class="equipo-link-placeholder">—</span>
+                        <div class="equipo-foto-hover"></div>
+                    </div>
+                </div>
             </div>
-            <div class="equipo-row" data-foto="img/Sergio-480.webp">
-                <span class="equipo-nombre">Sergio Petrocelli</span>
-                <span class="equipo-rol">Comunicación estratégica + Branding</span>
-                <span class="equipo-ciudad">Buenos Aires</span>
-                <span class="equipo-link-placeholder">—</span>
-                <div class="equipo-foto-hover"></div>
-            </div>
-            <div class="equipo-row" data-foto="img/Ezequiel-480.webp">
-                <span class="equipo-nombre">Ezequiel Politi</span>
-                <span class="equipo-rol">Estrategia organizacional + Data</span>
-                <span class="equipo-ciudad">Buenos Aires</span>
-                <span class="equipo-link-placeholder">—</span>
-                <div class="equipo-foto-hover"></div>
-            </div>
-        </div>
 
-        <h2 id="socios-heading" class="sr-only">Equipo de BPP Analytics & Design</h2>
-    </section>
-
-    <!-- Clientes Section -->
-    <section id="clientes" class="clientes-section">
+            <!-- Clientes (right, prominent) -->
+            <div class="trust-block trust-clientes">
+                <h3>Han confiado en nuestro trabajo</h3>
         <div class="marquee-wrapper">
             <div class="marquee-track">
                 <!-- First set of logos -->
