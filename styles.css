@@ -5660,6 +5660,12 @@ img {
 }
 
 @media (max-width: 768px) {
+  /* Separate stacked buttons on mobile */
+  .cta-primary {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
   .breadcrumbs {
     padding: 1rem 1.5rem;
   }
