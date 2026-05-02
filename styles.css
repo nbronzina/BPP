@@ -3397,6 +3397,7 @@ img {
     }
 
     .actividad-entrada:nth-child(even) {
+        grid-template-columns: 1fr;
         direction: ltr;
     }
 
