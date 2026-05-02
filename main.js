@@ -173,11 +173,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
-  // IMAGE REVEALS - Clip-path en imágenes de Hechos
+  // CARD REVEAL - Actividades (Hechos section)
   // -----------------------------------------------------
-  // Revela imágenes con efecto wipe cuando entran en viewport
+  // Revela cards completas (imagen + texto) con fade-up
   // =====================================================
-  // Image reveal removed - images now appear immediately with text
+  const actividadCards = document.querySelectorAll('.actividad-entrada');
+
+  if (actividadCards.length && 'IntersectionObserver' in window) {
+    const cardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
+      }
+    );
+
+    actividadCards.forEach(card => cardObserver.observe(card));
+  }
 
   // =====================================================
   // MAGNETIC BUTTONS - Efecto de atracción en CTAs

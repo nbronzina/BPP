@@ -2276,7 +2276,30 @@ footer {
     overflow: hidden;
 }
 
-/* Images appear immediately with text (no staggered reveal) */
+/* Fade-up reveal for entire card (image + text together) */
+.actividad-entrada {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.actividad-entrada:not(.visible) {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.actividad-entrada.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .actividad-entrada {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
 
 /* Border on image when it's on the left (first child) */
 .actividad-entrada > .actividad-imagen:first-child {
