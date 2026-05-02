@@ -407,29 +407,26 @@ body.logo-pinned .nav-logo {
     background: transparent;
 }
 
-/* Hero brand header */
+/* Hero brand header - centered splash layout */
 .hero-brand-header {
-    position: relative;
     width: 100%;
+    max-width: 1200px;
+    padding: 0 2rem;
     z-index: 1;
 }
 
 .hero-brand-content {
-    width: 100%;
-    padding: 0 6rem;
-    /* Text content with margin to compensate for absolute logo */
-    margin-left: clamp(120px, 12vw, 180px); /* logo width + gap */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    text-align: center;
 }
 
-/* Hero large logo - position absolute, pixel-perfect alignment with navbar */
+/* Hero large logo - centered, prominent */
 .hero-logo-large {
-    position: absolute;
-    left: 6rem; /* Matches navbar padding */
-    top: 50%;
-    transform: translateY(-50%);
-    width: clamp(80px, 7vw, 110px);
+    width: clamp(120px, 15vw, 200px);
     transition: opacity var(--nav-transition, 0.3s) ease;
-    z-index: 2;
 }
 
 /* Optional fade on scroll (not in Superflux original, but looks nice) */
@@ -508,31 +505,14 @@ body.logo-pinned .nav-logo {
     .hero-scroll-cue svg { animation: none; }
 }
 
-/* Tablet: adjust logo absolute position */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .hero-logo-large {
-        left: var(--spacing-horizontal-tablet); /* 4rem = 64px */
-    }
-
-    .hero-brand-content {
-        padding: 0 var(--spacing-horizontal-tablet);
-        margin-left: clamp(100px, 10vw, 140px);
-    }
-}
-
-/* Mobile: stack logo above text */
+/* Mobile: smaller logo, tighter spacing */
 @media (max-width: 768px) {
-    .hero-logo-large {
-        position: static;
-        transform: none;
-        width: var(--hero-logo-height-mobile, 120px);
-        margin: 0 auto 2rem;
+    .hero-brand-content {
+        gap: 2rem;
     }
 
-    .hero-brand-content {
-        padding: 0 var(--spacing-horizontal-mobile);
-        margin-left: 0;
-        text-align: center;
+    .hero-logo-large {
+        width: clamp(100px, 25vw, 140px);
     }
 }
 
