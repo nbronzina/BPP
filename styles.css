@@ -248,16 +248,19 @@ h1, h2, h3 {
    ========================= */
 
 nav {
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: var(--z-nav);
     padding: 2.5rem 0;
     background-color: transparent;
     border-bottom: none;
-    transition: background-color 0.3s ease;
+    transition: padding 0.3s ease, background-color 0.3s ease;
 }
 
 nav.nav--scrolled {
+    padding: 1rem 0;
     background-color: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(12px);
 }
 
 /* Layout compartido: index (.nav-container) y reporte (.nav) */
@@ -290,11 +293,15 @@ nav.nav--scrolled {
     font-size: var(--font-size-base);
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s, font-size 0.3s ease;
 }
 
 .nav-wordmark:hover {
     color: var(--color-accent);
+}
+
+nav.nav--scrolled .nav-wordmark {
+    font-size: var(--font-size-sm);
 }
 
 /* Ícono BPP (left side with wordmark) */
@@ -307,7 +314,11 @@ nav.nav--scrolled {
     height: 52px;
     width: auto;
     display: block;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, height 0.3s ease;
+}
+
+nav.nav--scrolled .nav-logo-icon img {
+    height: 36px;
 }
 
 .nav-logo-icon:hover img {
@@ -327,8 +338,12 @@ nav.nav--scrolled {
     text-decoration: none;
     font-size: var(--font-size-base);
     font-weight: 400;
-    transition: color 0.3s;
+    transition: color 0.3s, font-size 0.3s ease;
     position: relative;
+}
+
+nav.nav--scrolled .nav-links a {
+    font-size: var(--font-size-sm);
 }
 
 .nav-links a::after {
