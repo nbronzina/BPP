@@ -262,11 +262,13 @@ nav {
     z-index: 1000;
     padding: 1rem 0;
     background-color: transparent;
+    backdrop-filter: none;
     border-bottom: none;
-    transition: background-color var(--nav-transition, 0.3s) ease;
+    transition: background-color var(--nav-transition, 0.3s) ease,
+                backdrop-filter var(--nav-transition, 0.3s) ease;
 }
 
-body.scrolled nav {
+body.logo-pinned nav {
     background-color: rgba(10, 10, 10, 0.65);
     backdrop-filter: blur(16px) saturate(140%);
     -webkit-backdrop-filter: blur(16px) saturate(140%);
@@ -275,21 +277,21 @@ body.scrolled nav {
 
 /* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(1px)) {
-    body.scrolled nav {
+    body.logo-pinned nav {
         background-color: rgba(10, 10, 10, 0.95);
     }
 }
 
 /* Mobile: disable blur to save battery */
 @media (max-width: 768px) {
-    body.scrolled nav {
+    body.logo-pinned nav {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         background-color: rgba(10, 10, 10, 0.95);
     }
 }
 
-/* Nav logo - hidden initially, fades in on scroll (Superflux pattern) */
+/* Nav logo - hidden initially, fades in when hero logo crosses navbar (Superflux pattern) */
 .nav-logo {
     display: block;
     line-height: 0;
@@ -298,7 +300,7 @@ body.scrolled nav {
     will-change: opacity; /* Hint for smoother mobile rendering */
 }
 
-body.scrolled .nav-logo {
+body.logo-pinned .nav-logo {
     opacity: 1;
 }
 
@@ -411,9 +413,8 @@ body.scrolled .nav-logo {
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 40px;
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 32px;
+    width: 100%;
+    padding: 0 6rem;
 }
 
 /* Hero large logo - stays in normal flow, aligned with navbar logo */
@@ -425,7 +426,7 @@ body.scrolled .nav-logo {
 
 /* Optional fade on scroll (not in Superflux original, but looks nice) */
 @media (prefers-reduced-motion: no-preference) {
-    body.scrolled .hero-logo-large {
+    body.logo-pinned .hero-logo-large {
         opacity: 0.3;
     }
 }
@@ -504,6 +505,7 @@ body.scrolled .nav-logo {
     .hero-brand-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 0 var(--spacing-horizontal-mobile);
     }
 
     .hero-logo-large {
