@@ -769,7 +769,7 @@ body.logo-pinned .nav-logo {
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.3s ease, transform 0.15s ease-out;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease-out;
     min-height: 44px;
     text-align: center;
     will-change: transform;
@@ -802,7 +802,7 @@ body.logo-pinned .nav-logo {
     border: none;
     padding: 0;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, text-shadow 0.3s ease;
 }
 
 .cta-link::after {
@@ -4087,7 +4087,7 @@ img {
     border: var(--border-card);
     border-radius: var(--border-radius);
     padding: 2rem;
-    transition: all var(--transition-normal);
+    transition: border-color var(--transition-normal);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -4246,7 +4246,7 @@ img {
     background: transparent;
     border: none;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background var(--transition-fast);
     text-align: left;
 }
 
@@ -4328,7 +4328,7 @@ img {
     text-decoration: none;
     border: 1px solid var(--orange-500);
     border-radius: 4px;
-    transition: all var(--transition-fast);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .methodology-link:hover {
@@ -4409,7 +4409,7 @@ img {
     border: 1px solid var(--color-border);
     border-radius: 4px;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
 }
 
 .option-label:hover {
@@ -4456,7 +4456,7 @@ img {
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background var(--transition-fast);
 }
 
 .quiz-submit-btn:hover:not(:disabled),
@@ -4488,7 +4488,7 @@ img {
     border: 1.5px solid var(--color-border);
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
 }
 
 .quiz-nav-btn:hover:not(:disabled) {
@@ -4620,7 +4620,7 @@ img {
     border: none;
     border-radius: 4px;
     text-decoration: none;
-    transition: all var(--transition-fast);
+    transition: opacity var(--transition-fast);
     cursor: pointer;
 }
 
@@ -4660,7 +4660,7 @@ img {
     text-decoration: none;
     border: 1px solid var(--orange-500);
     border-radius: 4px;
-    transition: all var(--transition-fast);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .results-methodology-link:hover {
@@ -4721,7 +4721,7 @@ img {
     border: 1px solid var(--orange-500);
     border-radius: 4px;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .service-timeline-toggle:hover {

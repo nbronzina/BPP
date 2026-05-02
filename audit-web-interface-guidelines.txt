@@ -1,0 +1,60 @@
+## Web Interface Guidelines Audit - BPP Analytics & Design
+File: /home/user/BPP/index.html
+Date: 2026-05-02
+
+### Critical Issues
+
+styles.css:772: `transition: all` anti-pattern — list properties explicitly (opacity, transform, etc.)
+styles.css:805: `transition: all` anti-pattern — list properties explicitly
+styles.css:4090: `transition: all var(--transition-normal)` — list properties explicitly
+styles.css:4249: `transition: all var(--transition-fast)` — list properties explicitly
+styles.css:4331: `transition: all var(--transition-fast)` — list properties explicitly
+styles.css:4412: `transition: all var(--transition-fast)` — list properties explicitly
+styles.css:4459: `transition: all var(--transition-fast)` — list properties explicitly
+styles.css:4491: `transition: all var(--transition-fast)` — list properties explicitly
+styles.css:4623: `transition: all var(--transition-fast)` — list properties explicitly
+styles.css:4663: `transition: all var(--transition-fast)` — list properties explicitly
+styles.css:4724: `transition: all var(--transition-fast)` — list properties explicitly
+
+### Minor Issues
+
+index.html:1159: Placeholder should end with `…` — add ellipsis to show it's an example pattern
+
+### Passed (Notable Good Practices)
+
+✓ All images have explicit width and height attributes
+✓ Icon-only buttons have aria-label
+✓ Form inputs have proper autocomplete, inputmode, and spellcheck attributes
+✓ All outline:none instances have focus-visible box-shadow replacement
+✓ prefers-reduced-motion honored throughout
+✓ Semantic HTML used (buttons for actions, links for navigation)
+✓ Skip link present for keyboard navigation
+✓ Heading hierarchy correct (h1 → h2 → h3)
+✓ Alt text present on all images (decorative ones have alt="")
+✓ Loading="lazy" on below-fold images
+✓ ARIA live regions on form feedback
+✓ No `user-scalable=no` or `maximum-scale=1`
+✓ No inline onClick navigation
+✓ Labels properly associated with form controls
+✓ Focus-visible states implemented (not just :focus)
+
+### Recommendations
+
+1. Replace all `transition: all` with explicit property lists
+   Example: `transition: opacity 0.3s ease, transform 0.3s ease`
+
+2. Update placeholder text:
+   Current: "Describí brevemente la situación que enfrentás y en qué plazo necesitás resolverla"
+   Suggested: "Describí brevemente la situación que enfrentás y en qué plazo necesitás resolverla…"
+
+### Summary
+
+**Score**: 95/100
+- Accessibility: 100/100 (excellent ARIA, semantic HTML, keyboard support)
+- Forms: 98/100 (missing ellipsis in placeholder)
+- Performance: 100/100 (lazy loading, preconnect, proper dimensions)
+- Animation: 85/100 (transition: all anti-pattern, but prefers-reduced-motion honored)
+- Typography: 100/100 (proper ellipsis used, no straight quotes in copy)
+- Content: 100/100 (active voice, specific labels, clear errors)
+
+The site demonstrates strong adherence to Web Interface Guidelines. The main issue is the `transition: all` anti-pattern, which can cause performance problems and unintended animations. This is easily fixable by explicitly listing transitioned properties.
