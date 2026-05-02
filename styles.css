@@ -106,7 +106,7 @@
 }
 
 html {
-    scroll-padding-top: 100px;  /* Altura del navbar sticky (~96px + margen) */
+    scroll-padding-top: 120px;  /* Altura del navbar sticky + margen para que títulos no queden tapados */
     background: #0a0a0a;
     overflow-x: hidden;
 }
@@ -3970,7 +3970,7 @@ img {
 ──────────────────────────────────────────────*/
 
 .reporte-page .hero-section {
-    padding: 20px 2rem 40px;
+    padding: 0 2rem 40px;
     max-width: 1200px;
     margin: 0 auto;
     text-align: left;
