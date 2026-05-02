@@ -5130,6 +5130,12 @@ img {
   transition: color var(--transition-normal);
 }
 
+/* Exception: cta-primary buttons keep their dark text on orange background */
+.reporte-page .cta-primary,
+.legal-page .cta-primary {
+  color: #0a0a0a !important;
+}
+
 .legal-page a:hover,
 .reporte-page a:hover {
   color: var(--color-accent-bright);
