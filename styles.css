@@ -2242,6 +2242,19 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+/* Entradas pares: invertir orden (zigzag pattern) */
+.actividad-entrada:nth-child(even) {
+    grid-template-columns: 1fr 1.2fr; /* Texto izq, imagen der */
+}
+
+.actividad-entrada:nth-child(even) .actividad-imagen {
+    order: 2; /* Imagen a la derecha */
+}
+
+.actividad-entrada:nth-child(even) .actividad-texto {
+    order: 1; /* Texto a la izquierda */
+}
+
 /* Alternating layout: Order in HTML determines position (no RTL needed) */
 .actividad-imagen {
     overflow: hidden;
