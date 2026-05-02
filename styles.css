@@ -393,10 +393,11 @@ body.logo-pinned .nav-logo {
 
 /* Hero fullscreen - clamped height to avoid empty black space */
 .hero-fullscreen {
-    min-height: clamp(520px, 70vh, 720px);
-    display: grid;
-    place-items: center;
-    padding: 96px 0 80px;
+    min-height: clamp(600px, 85vh, 900px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
     position: relative;
     background: transparent;
 }
