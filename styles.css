@@ -97,6 +97,12 @@
     --z-nav-mobile: 999;
     --z-nav-btn: 1001;
     --z-modal: 10000;
+
+    /* Logo crossfade (Superflux pattern) - tunable */
+    --nav-logo-height: 40px;
+    --hero-logo-height: 180px;
+    --hero-logo-height-mobile: 120px;
+    --nav-transition: 0.3s;
 }
 
 html {
@@ -247,23 +253,41 @@ h1, h2, h3 {
    Navigation
    ========================= */
 
-/* Sticky nav - initially completely hidden */
+/* Sticky nav - fixed from start */
 nav {
     position: fixed;
-    top: -100px;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
     padding: 1rem 0;
     background-color: transparent;
     border-bottom: none;
-    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+    transition: background-color var(--nav-transition, 0.3s) ease;
 }
 
-nav.nav--visible {
-    top: 0;
+body.scrolled nav {
     background-color: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(12px);
+}
+
+/* Nav logo - hidden initially, fades in on scroll (Superflux pattern) */
+.nav-logo {
+    display: block;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity var(--nav-transition, 0.3s) ease;
+    will-change: opacity; /* Hint for smoother mobile rendering */
+}
+
+body.scrolled .nav-logo {
+    opacity: 1;
+}
+
+.nav-logo img {
+    height: var(--nav-logo-height, 40px);
+    width: auto;
+    display: block;
 }
 
 /* Layout compartido: index (.nav-container) y reporte (.nav) */
@@ -278,12 +302,6 @@ nav.nav--visible {
 }
 
 /* Nav logo placeholder - space for transformed logo */
-.nav-logo-placeholder {
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
-}
-
 .nav-links {
     display: flex;
     gap: 2.5rem;
@@ -358,18 +376,17 @@ nav.nav--visible {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0;
+    justify-content: flex-start;
+    padding: max(6rem, calc(var(--nav-logo-height, 40px) + 5rem)) 6rem 4rem;
     position: relative;
     background: transparent;
 }
 
-/* Hero brand header - logo + wordmark + tagline que se transforma */
+/* Hero brand header */
 .hero-brand-header {
     position: relative;
     width: 100%;
-    padding: 4rem 6rem;
-    z-index: 100;
+    z-index: 1;
 }
 
 .hero-brand-content {
@@ -379,42 +396,32 @@ nav.nav--visible {
     max-width: 100%;
 }
 
-.hero-logo-icon {
+/* Hero large logo - stays in normal flow, aligned with navbar logo */
+.hero-logo-large {
     display: block;
     line-height: 0;
     flex-shrink: 0;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity var(--nav-transition, 0.3s) ease;
 }
 
-.hero-logo-icon.logo-transforming {
-    position: fixed;
-    top: 1rem;
-    left: 6rem;
-    z-index: 1001;
+/* Optional fade on scroll (not in Superflux original, but looks nice) */
+@media (prefers-reduced-motion: no-preference) {
+    body.scrolled .hero-logo-large {
+        opacity: 0.3;
+    }
 }
 
-.hero-logo-icon img {
-    height: 180px;
+.hero-logo-large img {
+    height: var(--hero-logo-height, 180px);
     width: auto;
     display: block;
-    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hero-logo-icon.logo-transforming img {
-    height: 40px;
 }
 
 .hero-brand-text {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transition: opacity 0.5s ease;
     flex: 1;
-}
-
-.hero-logo-icon.logo-transforming ~ .hero-brand-text {
-    opacity: 0;
-    pointer-events: none;
 }
 
 .hero-wordmark {
@@ -433,6 +440,19 @@ nav.nav--visible {
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.3;
     margin: 0;
+}
+
+/* Mobile: stack logo above text */
+@media (max-width: 768px) {
+    .hero-brand-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .hero-logo-large img {
+        height: var(--hero-logo-height-mobile, 120px);
+    }
 }
 
 .hero {

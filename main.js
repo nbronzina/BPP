@@ -143,28 +143,31 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // -------------------------
-  // Logo transform on scroll (Superflux-style)
+  // Hero → Navbar logo crossfade (Superflux pattern with IntersectionObserver)
   // -------------------------
-  const heroLogo = document.getElementById("heroLogo");
-  const nav = document.getElementById("stickyNav");
+  const hero = document.querySelector('.hero');
 
-  if (heroLogo && nav) {
-    const handleLogoTransform = () => {
-      const scrollThreshold = 200; // Scroll distance to trigger transform
-
-      if (window.scrollY > scrollThreshold) {
-        // Transform logo to navbar position
-        heroLogo.classList.add("logo-transforming");
-        nav.classList.add("nav--visible");
-      } else {
-        // Reset logo to hero position
-        heroLogo.classList.remove("logo-transforming");
-        nav.classList.remove("nav--visible");
+  if (hero && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Toggle .scrolled class when hero exits viewport (leaving navbar height)
+        document.body.classList.toggle('scrolled', !entry.isIntersecting);
+      },
+      {
+        // Trigger when hero top crosses navbar height (64px)
+        rootMargin: '-64px 0px 0px 0px',
+        threshold: 0
       }
-    };
+    );
 
-    window.addEventListener("scroll", handleLogoTransform, { passive: true });
-    handleLogoTransform(); // Check initial state
+    observer.observe(hero);
+  } else if (hero) {
+    // Fallback for browsers without IntersectionObserver
+    const handleScrollFallback = () => {
+      document.body.classList.toggle('scrolled', window.scrollY > 64);
+    };
+    window.addEventListener('scroll', handleScrollFallback, { passive: true });
+    handleScrollFallback();
   }
 
   // =====================================================
