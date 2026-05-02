@@ -415,19 +415,21 @@ body.logo-pinned .nav-logo {
 }
 
 .hero-brand-content {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 40px;
     width: 100%;
     padding: 0 6rem;
+    /* Text content with margin to compensate for absolute logo */
+    margin-left: clamp(120px, 12vw, 180px); /* logo width + gap */
 }
 
-/* Hero large logo - stays in normal flow, aligned with navbar logo */
+/* Hero large logo - position absolute, pixel-perfect alignment with navbar */
 .hero-logo-large {
+    position: absolute;
+    left: 6rem; /* Matches navbar padding */
+    top: 50%;
+    transform: translateY(-50%);
     width: clamp(80px, 7vw, 110px);
-    flex-shrink: 0;
     transition: opacity var(--nav-transition, 0.3s) ease;
+    z-index: 2;
 }
 
 /* Optional fade on scroll (not in Superflux original, but looks nice) */
@@ -506,16 +508,31 @@ body.logo-pinned .nav-logo {
     .hero-scroll-cue svg { animation: none; }
 }
 
-/* Mobile: stack logo above text */
-@media (max-width: 768px) {
-    .hero-brand-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 0 var(--spacing-horizontal-mobile);
+/* Tablet: adjust logo absolute position */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hero-logo-large {
+        left: var(--spacing-horizontal-tablet); /* 4rem = 64px */
     }
 
+    .hero-brand-content {
+        padding: 0 var(--spacing-horizontal-tablet);
+        margin-left: clamp(100px, 10vw, 140px);
+    }
+}
+
+/* Mobile: stack logo above text */
+@media (max-width: 768px) {
     .hero-logo-large {
+        position: static;
+        transform: none;
         width: var(--hero-logo-height-mobile, 120px);
+        margin: 0 auto 2rem;
+    }
+
+    .hero-brand-content {
+        padding: 0 var(--spacing-horizontal-mobile);
+        margin-left: 0;
+        text-align: center;
     }
 }
 
