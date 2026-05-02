@@ -177,26 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // -----------------------------------------------------
   // Revela imágenes con efecto wipe cuando entran en viewport
   // =====================================================
-  const actividadImagenes = document.querySelectorAll('.actividad-imagen');
-
-  if (actividadImagenes.length && 'IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            imageObserver.unobserve(entry.target); // Reveal solo una vez
-          }
-        });
-      },
-      {
-        threshold: 0.2, // Trigger cuando 20% de la imagen es visible
-        rootMargin: '0px 0px -50px 0px' // Offset ligero desde el bottom
-      }
-    );
-
-    actividadImagenes.forEach(img => imageObserver.observe(img));
-  }
+  // Image reveal removed - images now appear immediately with text
 
   // =====================================================
   // MAGNETIC BUTTONS - Efecto de atracción en CTAs

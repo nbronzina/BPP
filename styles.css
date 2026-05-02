@@ -2276,22 +2276,7 @@ footer {
     overflow: hidden;
 }
 
-/* Image reveal effect with clip-path */
-.actividad-imagen img {
-    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-    transition: clip-path 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.actividad-imagen.revealed img {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .actividad-imagen img {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        transition: none;
-    }
-}
+/* Images appear immediately with text (no staggered reveal) */
 
 /* Border on image when it's on the left (first child) */
 .actividad-entrada > .actividad-imagen:first-child {
