@@ -622,13 +622,22 @@ nav.nav--scrolled {
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: all 0.3s ease;
     min-height: 44px;
     text-align: center;
 }
 
 .cta-primary:hover {
-    opacity: 0.88;
+    opacity: 0.92;
+    box-shadow: 0 0 20px rgba(206, 115, 82, 0.4),
+                0 0 40px rgba(206, 115, 82, 0.2);
+    transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cta-primary:hover {
+        transform: none;
+    }
 }
 
 
@@ -646,7 +655,7 @@ nav.nav--scrolled {
     border: none;
     padding: 0;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .cta-link::after {
@@ -659,7 +668,8 @@ nav.nav--scrolled {
 }
 
 .cta-link:hover {
-    opacity: 0.75;
+    opacity: 0.85;
+    text-shadow: 0 0 12px rgba(206, 115, 82, 0.5);
 }
 
 /* =========================
@@ -1915,6 +1925,7 @@ footer {
     background: var(--color-accent);
     color: #0a0a0a;
     border-color: var(--color-accent);
+    box-shadow: 0 0 16px rgba(206, 115, 82, 0.3);
 }
 
 .actividad-entrada.hidden {
