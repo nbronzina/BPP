@@ -38,7 +38,7 @@
     --color-accent: var(--orange-500);
     --color-accent-bright: var(--orange-400);
 
-    --spacing-section: 80px;
+    --spacing-section: 48px;
 
     /* Horizontal padding scale (mobile-first) */
     --spacing-horizontal-mobile: 1.25rem;  /* 20px - más espacio para contenido */
@@ -396,9 +396,9 @@ body.logo-pinned .nav-logo {
    Hero Section
    ========================= */
 
-/* Hero fullscreen - immersive splash, ocupa toda la pantalla inicial */
+/* Hero fullscreen - immersive splash, ajustado al contenido */
 .hero-fullscreen {
-    min-height: 100vh;
+    min-height: clamp(500px, 55vh, 600px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -411,7 +411,7 @@ body.logo-pinned .nav-logo {
 .hero-brand-header {
     width: 100%;
     max-width: 1200px;
-    padding: 0 2rem;
+    padding: 4rem 2rem 2rem; /* Espacio arriba para respirar */
     z-index: 1;
 }
 
