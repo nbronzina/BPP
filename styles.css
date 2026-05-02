@@ -247,18 +247,24 @@ h1, h2, h3 {
    Navigation
    ========================= */
 
+/* Sticky nav - initially hidden/minimal */
 nav {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: var(--z-nav);
-    padding: 4rem 0 3rem;
+    padding: 1rem 0;
     background-color: transparent;
     border-bottom: none;
-    transition: padding 0.4s ease, background-color 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
 }
 
-nav.nav--scrolled {
-    padding: 1rem 0;
+nav.nav--visible {
+    opacity: 1;
+    pointer-events: auto;
     background-color: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(12px);
 }
@@ -274,97 +280,17 @@ nav.nav--scrolled {
     gap: 2rem;
 }
 
-nav:not(.nav--scrolled) .nav-container {
-    align-items: flex-start;
-}
-
-/* Brand container (logo + text) */
-.nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    transition: gap 0.4s ease;
-}
-
-nav.nav--scrolled .nav-brand {
-    gap: 0;
-}
-
-/* Logo icon */
-.nav-logo-icon {
-    display: block;
-    line-height: 0;
+/* Nav logo placeholder - space for transformed logo */
+.nav-logo-placeholder {
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
 }
-
-.nav-logo-icon img {
-    height: 120px;
-    width: auto;
-    display: block;
-    transition: height 0.4s ease, opacity 0.3s;
-}
-
-nav.nav--scrolled .nav-logo-icon img {
-    height: 36px;
-}
-
-.nav-logo-icon:hover img {
-    opacity: 0.85;
-}
-
-/* Brand text container (wordmark + tagline) */
-.nav-brand-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    transition: opacity 0.4s ease, max-width 0.4s ease;
-    max-width: 600px;
-    overflow: hidden;
-}
-
-nav.nav--scrolled .nav-brand-text {
-    opacity: 0;
-    max-width: 0;
-}
-
-/* Wordmark */
-.nav-wordmark {
-    font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-weight: 700;
-    font-size: var(--font-size-h3);
-    color: rgba(255, 255, 255, 0.95);
-    text-decoration: none;
-    line-height: 1.2;
-    white-space: nowrap;
-}
-
-.nav-wordmark:hover {
-    color: var(--color-accent);
-}
-
-/* Tagline en nav */
-.nav-tagline {
-    font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.4;
-    margin: 0;
-    white-space: nowrap;
-}
-
-/* Hero logo removed - logo lives only in navbar */
 
 .nav-links {
     display: flex;
     gap: 2.5rem;
     list-style: none;
-    opacity: 0.7;
-    transition: opacity 0.4s ease;
-}
-
-nav.nav--scrolled .nav-links {
-    opacity: 1;
 }
 
 .nav-links a {
@@ -430,12 +356,81 @@ nav.nav--scrolled .nav-links {
    Hero Section
    ========================= */
 
+/* Hero brand header - logo + wordmark + tagline que se transforma */
+.hero-brand-header {
+    position: relative;
+    padding: 4rem 6rem 2rem;
+    z-index: 100;
+}
+
+.hero-brand-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: 1600px;
+}
+
+.hero-logo-icon {
+    display: block;
+    line-height: 0;
+    flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-logo-icon.logo-transforming {
+    position: fixed;
+    top: 1rem;
+    left: 6rem;
+    z-index: 1001;
+}
+
+.hero-logo-icon img {
+    height: 120px;
+    width: auto;
+    display: block;
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-logo-icon.logo-transforming img {
+    height: 36px;
+}
+
+.hero-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: opacity 0.4s ease;
+}
+
+.hero-logo-icon.logo-transforming ~ .hero-brand-text {
+    opacity: 0;
+}
+
+.hero-wordmark {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-weight: 700;
+    font-size: var(--font-size-h2);
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.hero-tagline {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-size: var(--font-size-h4);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+    margin: 0;
+    max-width: 600px;
+}
+
 .hero {
     height: auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: clamp(6rem, 10vh, 8rem) clamp(2rem, 8vw, 6rem) clamp(2rem, 5vh, 4rem);
+    padding: clamp(2rem, 5vh, 4rem) clamp(2rem, 8vw, 6rem) clamp(2rem, 5vh, 4rem);
     position: relative;
     background: transparent;
 }

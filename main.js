@@ -143,20 +143,28 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // -------------------------
-  // Navbar scroll behavior
+  // Logo transform on scroll (Superflux-style)
   // -------------------------
-  const nav = document.querySelector("nav");
-  if (nav) {
-    const handleNavScroll = () => {
-      if (window.scrollY > 80) {
-        nav.classList.add("nav--scrolled");
+  const heroLogo = document.getElementById("heroLogo");
+  const nav = document.getElementById("stickyNav");
+
+  if (heroLogo && nav) {
+    const handleLogoTransform = () => {
+      const scrollThreshold = 200; // Scroll distance to trigger transform
+
+      if (window.scrollY > scrollThreshold) {
+        // Transform logo to navbar position
+        heroLogo.classList.add("logo-transforming");
+        nav.classList.add("nav--visible");
       } else {
-        nav.classList.remove("nav--scrolled");
+        // Reset logo to hero position
+        heroLogo.classList.remove("logo-transforming");
+        nav.classList.remove("nav--visible");
       }
     };
 
-    window.addEventListener("scroll", handleNavScroll, { passive: true });
-    handleNavScroll(); // Check initial state
+    window.addEventListener("scroll", handleLogoTransform, { passive: true });
+    handleLogoTransform(); // Check initial state
   }
 
   // =====================================================
