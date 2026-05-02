@@ -2390,8 +2390,8 @@ footer {
 
 .trust-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
+    grid-template-columns: 1fr;
+    gap: 6rem;
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 2rem;
@@ -2405,21 +2405,6 @@ footer {
     margin-bottom: 2rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-}
-
-.trust-socios {
-    /* Equipo compact on left */
-}
-
-.trust-clientes {
-    /* Clients prominent on right */
-}
-
-@media (max-width: 900px) {
-    .trust-grid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-    }
 }
 
 .equipo-table {
