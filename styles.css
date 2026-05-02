@@ -823,12 +823,12 @@ body.secondary-page .nav-logo {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    color: var(--color-accent);
+    color: var(--color-accent) !important;
     text-decoration: none;
     font-family: 'Space Mono', monospace;
     font-size: 0.875rem;
     font-weight: 500;
-    background: none;
+    background: none !important;
     border: none;
     padding: 0;
     cursor: pointer;
@@ -5128,6 +5128,12 @@ img {
   color: var(--color-accent);
   text-decoration: none;
   transition: color var(--transition-normal);
+}
+
+/* Exception: cta-primary buttons keep their dark text on orange background */
+.reporte-page .cta-primary,
+.legal-page .cta-primary {
+  color: #0a0a0a !important;
 }
 
 .legal-page a:hover,
