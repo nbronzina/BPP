@@ -3970,7 +3970,7 @@ img {
 ──────────────────────────────────────────────*/
 
 .reporte-page .hero-section {
-    padding: 80px 2rem 40px;
+    padding: 60px 2rem 40px;
     max-width: 1200px;
     margin: 0 auto;
     text-align: left;
@@ -5660,6 +5660,12 @@ img {
 }
 
 @media (max-width: 768px) {
+  /* Separate stacked buttons on mobile */
+  .cta-primary {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
   .breadcrumbs {
     padding: 1rem 1.5rem;
   }
