@@ -267,8 +267,9 @@ nav {
 }
 
 body.scrolled nav {
-    background-color: rgba(10, 10, 10, 0.98);
+    background-color: rgba(10, 10, 10, 0.75);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
 }
 
 /* Nav logo - hidden initially, fades in on scroll (Superflux pattern) */
@@ -371,9 +372,9 @@ body.scrolled .nav-logo {
    Hero Section
    ========================= */
 
-/* Hero fullscreen - ocupa toda la pantalla inicial */
+/* Hero fullscreen - 70vh to avoid empty black space */
 .hero-fullscreen {
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -1070,10 +1071,13 @@ body.scrolled .nav-logo {
 
 .section {
     padding: var(--spacing-section) 6rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section-wide {
-    max-width: 1400px;
+    max-width: 1600px;
 }
 
 /* =========================
