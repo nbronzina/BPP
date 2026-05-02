@@ -143,20 +143,32 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // -------------------------
-  // Scroll behavior - Superflux two-logo cross-fade technique
+  // Hero → Navbar logo crossfade (Superflux pattern with IntersectionObserver)
   // -------------------------
-  const handleScrollState = () => {
-    const scrollThreshold = 100; // Pixels scrolled to trigger state change
+  const hero = document.querySelector('.hero');
 
-    if (window.scrollY > scrollThreshold) {
-      document.body.classList.add("scrolled");
-    } else {
-      document.body.classList.remove("scrolled");
-    }
-  };
+  if (hero && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Toggle .scrolled class when hero exits viewport (leaving navbar height)
+        document.body.classList.toggle('scrolled', !entry.isIntersecting);
+      },
+      {
+        // Trigger when hero top crosses navbar height (64px)
+        rootMargin: '-64px 0px 0px 0px',
+        threshold: 0
+      }
+    );
 
-  window.addEventListener("scroll", handleScrollState, { passive: true });
-  handleScrollState(); // Check initial state
+    observer.observe(hero);
+  } else if (hero) {
+    // Fallback for browsers without IntersectionObserver
+    const handleScrollFallback = () => {
+      document.body.classList.toggle('scrolled', window.scrollY > 64);
+    };
+    window.addEventListener('scroll', handleScrollFallback, { passive: true });
+    handleScrollFallback();
+  }
 
   // =====================================================
   // BLOQUE TRACKING / ANIMACIONES
