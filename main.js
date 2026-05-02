@@ -173,36 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
-  // PARALLAX SUTIL EN HERO
-  // -----------------------------------------------------
-  // Logo y texto se mueven a diferentes velocidades
-  // al scrollear para crear profundidad (muy sutil).
-  // =====================================================
-  const heroVisual = document.querySelector('.hero-visual');
-  const heroBrandText = document.querySelector('.hero-brand-text');
-
-  if (heroLogo && heroBrandText && heroVisual) {
-    const handleParallax = () => {
-      const scrolled = window.pageYOffset;
-      const heroBottom = document.querySelector('.hero-fullscreen')?.offsetHeight || 0;
-
-      // Solo aplicar parallax mientras estamos en el hero
-      if (scrolled < heroBottom) {
-        // Logo se mueve más lento (0.3x)
-        heroLogo.style.transform = `translateY(${scrolled * 0.3}px)`;
-
-        // Texto se mueve un poco más rápido (0.15x)
-        heroBrandText.style.transform = `translateY(${scrolled * 0.15}px)`;
-
-        // Fondo visual se mueve más lento aún (0.5x) - efecto depth
-        heroVisual.style.transform = `translateY(${scrolled * 0.5}px)`;
-      }
-    };
-
-    window.addEventListener('scroll', handleParallax, { passive: true });
-  }
-
-  // =====================================================
   // IMAGE REVEALS - Clip-path en imágenes de Hechos
   // -----------------------------------------------------
   // Revela imágenes con efecto wipe cuando entran en viewport
