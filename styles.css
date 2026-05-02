@@ -501,6 +501,44 @@ nav.nav--scrolled {
     font-weight: 700;
 }
 
+/* Hero Immersive Variant - Editorial Background Imagery */
+.hero-immersive {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.12; /* Subtle - doesn't overpower text, WCAG compliant */
+}
+
+.hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Gradient overlay fallback - speculative/futures aesthetic */
+.hero-visual-gradient {
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 30% 40%, rgba(206, 115, 82, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(10, 37, 64, 0.12) 0%, transparent 50%),
+        linear-gradient(135deg, rgba(206, 115, 82, 0.04) 0%, transparent 60%);
+}
+
+.hero-immersive .hero-grid {
+    position: relative;
+    z-index: 1;
+}
+
 /* Network Map (Minimalist Editorial) */
 .network-map {
     width: 100%;
@@ -2031,10 +2069,10 @@ footer {
 
 .actividad-entrada {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 1fr; /* Image-primary layout - image dominant */
     gap: 0;
     align-items: stretch;
-    min-height: 420px;
+    min-height: 450px; /* Increased for larger imagery */
     border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
