@@ -3807,6 +3807,7 @@ img {
 
 /* HERO del reporte */
 .hero-section {
+    position: relative;
     padding: calc(var(--spacing-section) + 60px) 2rem 40px;
     max-width: 1200px;
     margin: 0 auto;
@@ -5487,21 +5488,6 @@ img {
   overflow: hidden;
 }
 
-.hero-background-pattern {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  opacity: 0.03;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.reporte-page .hero-section > * {
-  position: relative;
-  z-index: 1;
-}
 
 /* SVG Icons for sections */
 .section-icon {
