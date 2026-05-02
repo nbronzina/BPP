@@ -251,14 +251,14 @@ nav {
     position: sticky;
     top: 0;
     z-index: var(--z-nav);
-    padding: 2.5rem 0;
+    padding: 3rem 0;
     background-color: transparent;
     border-bottom: none;
     transition: padding 0.3s ease, background-color 0.3s ease;
 }
 
 nav.nav--scrolled {
-    padding: 1rem 0;
+    padding: 0.875rem 0;
     background-color: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(12px);
 }
@@ -279,6 +279,11 @@ nav.nav--scrolled {
     display: flex;
     align-items: center;
     gap: 1rem;
+    transition: gap 0.3s ease;
+}
+
+nav.nav--scrolled .logo {
+    gap: 0;
 }
 
 .logo a {
@@ -293,7 +298,9 @@ nav.nav--scrolled {
     font-size: var(--font-size-base);
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    transition: color 0.3s, font-size 0.3s ease;
+    transition: color 0.3s, opacity 0.3s ease, width 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .nav-wordmark:hover {
@@ -301,7 +308,8 @@ nav.nav--scrolled {
 }
 
 nav.nav--scrolled .nav-wordmark {
-    font-size: var(--font-size-sm);
+    opacity: 0;
+    width: 0;
 }
 
 /* Ícono BPP (left side with wordmark) */
@@ -311,14 +319,14 @@ nav.nav--scrolled .nav-wordmark {
 }
 
 .nav-logo-icon img {
-    height: 52px;
+    height: 60px;
     width: auto;
     display: block;
     transition: opacity 0.3s, height 0.3s ease;
 }
 
 nav.nav--scrolled .nav-logo-icon img {
-    height: 36px;
+    height: 32px;
 }
 
 .nav-logo-icon:hover img {
