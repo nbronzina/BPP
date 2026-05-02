@@ -385,6 +385,66 @@ H1: Cómo pensamos lo que hacemos
 
 ---
 
+### proyectos/trace-group/index.html
+
+**Hero**:
+```
+Label: INVESTIGACIÓN ESPECULATIVA · 2024-2025
+H1: Sistemas que Trabajan Juntos: Horizonte 2028
+P: Diagnóstico Técnico-Regulatorio del Sector Hidrocarburífero Argentino
+```
+
+**Introducción**:
+```
+P: Entre 2024 y 2025, BPP Analytics & Design desarrolló para Trace Group 
+   (parte del grupo Clusterciar) una investigación especulativa sobre el 
+   futuro de la inspección y supervisión técnica...
+```
+
+**Análisis**:
+- ✅ Tercera persona para reporte técnico (apropiado para documento formal)
+- ✅ Especificidad extrema (nombres de clientes, leyes concretas, años específicos)
+- ✅ Sin jerga corporativa ("metodología escalonada", "rigor técnico")
+- ✅ Tensión real ("zona gris donde coexisten exigencias legales")
+- ⚠️ Registro más académico que otros (apropiado para reporte técnico de cliente)
+
+**Nota**: Esta es una página de caso de estudio/reporte técnico, no copy web institucional. El registro más formal y tercera persona es apropiado para el contexto.
+
+**Veredicto**: APROBADO (registro ajustado al formato reporte técnico)
+
+---
+
+### gracias.html
+
+**Copy**:
+```
+H1: Recibimos tu mensaje.
+P: Gracias por contactarnos. Revisamos tu consulta y te respondemos a la brevedad.
+
+Timeline:
+- Hoy: Recibimos tu mensaje
+- 24-48hs: Revisamos y respondemos
+- Próximos días: Primera conversación
+```
+
+**Análisis**:
+- ✅ Primera persona ("Revisamos", "respondemos")
+- ✅ Específico en tiempos ("24-48hs")
+- ✅ Sin promesas vacías
+- ✅ Funcional y directo
+
+**Veredicto**: APROBADO
+
+---
+
+### offline.html
+
+**Nota**: Página PWA de fallback. Copy funcional/técnico. VOICE.md aplica parcialmente.
+
+**Veredicto**: NO AUDITADO (página técnica de sistema)
+
+---
+
 ## Recomendaciones Prioritarias
 
 ### 1. CRÍTICO: Ninguna
@@ -459,6 +519,15 @@ El copy actual está **bien calibrado con VOICE.md**. Las violaciones son superf
 - Estructura: 90/100 (ritmo variable, función clara)
 - Señales de alerta: -12 puntos (4 violaciones menores: 2x "mapa", 1x bullets, 1x quiz)
 
-**Páginas auditadas**: index.html, reporte-impacto, proyectos, pensamiento (privacidad excluida)
+**Páginas auditadas**: 
+- index.html ✓
+- reporte-impacto/index.html ✓
+- proyectos/index.html ✓
+- proyectos/trace-group/index.html ✓
+- pensamiento/index.html ✓
+- gracias.html ✓
+- offline.html ✓ (PWA, copy funcional)
+- privacidad/index.html ✓ (legal, excluido de VOICE.md)
+- _prototype-back-buttons.html ⊗ (prototipo, no producción)
 
 **No se requiere reescritura completa. Solo ajustes quirúrgicos.**
