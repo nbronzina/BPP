@@ -229,15 +229,18 @@
     <!-- Navigation -->
     <nav role="navigation" aria-label="Navegación principal de BPP Analytics &amp; Design">
         <div class="nav-container">
-            <!-- Logo + Wordmark (izquierda) -->
-            <div class="logo">
+            <!-- Logo + Brand (izquierda) - se transforma al scrollear -->
+            <div class="nav-brand">
                 <a href="#hero" class="nav-logo-icon" aria-label="Inicio - BPP Analytics &amp; Design">
                     <picture>
                         <source srcset="img/logo-160.webp" type="image/webp">
                         <img src="img/logo.png" alt="Ícono BPP" width="39" height="52" loading="eager" decoding="async" fetchpriority="high">
                     </picture>
                 </a>
-                <a href="#hero" class="nav-wordmark">BPP Analytics &amp; Design</a>
+                <div class="nav-brand-text">
+                    <a href="#hero" class="nav-wordmark">BPP Analytics &amp; Design</a>
+                    <p class="nav-tagline">Convertimos la incertidumbre en decisiones que funcionan</p>
+                </div>
             </div>
 
             <!-- Mobile menu button -->
@@ -270,7 +273,7 @@
         </div>
         <div class="hero-grid">
             <div class="hero-content">
-                <h1 id="hero-heading" class="tagline">Convertimos la <span class="hero-break"><br></span> incertidumbre <span class="hero-break"><br></span> en decisiones <span class="hero-break"><br></span> que funcionan</h1>
+                <h1 id="hero-heading" class="sr-only">Convertimos la incertidumbre en decisiones que funcionan</h1>
                 <p class="subtitle">Cuando abundan los datos y no aparece el camino. Sociología aplicada + diseño de futuros.</p>
                 <div class="locations">BUENOS AIRES / MADRID</div>
                 <a

@@ -251,14 +251,14 @@ nav {
     position: sticky;
     top: 0;
     z-index: var(--z-nav);
-    padding: 3rem 0;
+    padding: 4rem 0 3rem;
     background-color: transparent;
     border-bottom: none;
-    transition: padding 0.3s ease, background-color 0.3s ease;
+    transition: padding 0.4s ease, background-color 0.4s ease;
 }
 
 nav.nav--scrolled {
-    padding: 0.875rem 0;
+    padding: 1rem 0;
     background-color: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(12px);
 }
@@ -274,63 +274,83 @@ nav.nav--scrolled {
     gap: 2rem;
 }
 
-/* Logo en navbar */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: gap 0.3s ease;
+nav:not(.nav--scrolled) .nav-container {
+    align-items: flex-start;
 }
 
-nav.nav--scrolled .logo {
+/* Brand container (logo + text) */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    transition: gap 0.4s ease;
+}
+
+nav.nav--scrolled .nav-brand {
     gap: 0;
 }
 
-.logo a {
+/* Logo icon */
+.nav-logo-icon {
     display: block;
-    line-height: 1;
+    line-height: 0;
+    flex-shrink: 0;
 }
 
-/* Wordmark textual */
+.nav-logo-icon img {
+    height: 120px;
+    width: auto;
+    display: block;
+    transition: height 0.4s ease, opacity 0.3s;
+}
+
+nav.nav--scrolled .nav-logo-icon img {
+    height: 36px;
+}
+
+.nav-logo-icon:hover img {
+    opacity: 0.85;
+}
+
+/* Brand text container (wordmark + tagline) */
+.nav-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: opacity 0.4s ease, max-width 0.4s ease;
+    max-width: 600px;
+    overflow: hidden;
+}
+
+nav.nav--scrolled .nav-brand-text {
+    opacity: 0;
+    max-width: 0;
+}
+
+/* Wordmark */
 .nav-wordmark {
     font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-weight: 600;
-    font-size: var(--font-size-base);
-    color: rgba(255, 255, 255, 0.9);
+    font-weight: 700;
+    font-size: var(--font-size-h3);
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
-    transition: color 0.3s, opacity 0.3s ease, width 0.3s ease;
+    line-height: 1.2;
     white-space: nowrap;
-    overflow: hidden;
 }
 
 .nav-wordmark:hover {
     color: var(--color-accent);
 }
 
-nav.nav--scrolled .nav-wordmark {
-    opacity: 0;
-    width: 0;
-}
-
-/* Ícono BPP (left side with wordmark) */
-.nav-logo-icon {
-    display: block;
-    line-height: 0;
-}
-
-.nav-logo-icon img {
-    height: 60px;
-    width: auto;
-    display: block;
-    transition: opacity 0.3s, height 0.3s ease;
-}
-
-nav.nav--scrolled .nav-logo-icon img {
-    height: 32px;
-}
-
-.nav-logo-icon:hover img {
-    opacity: 0.85;
+/* Tagline en nav */
+.nav-tagline {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.4;
+    margin: 0;
+    white-space: nowrap;
 }
 
 /* Hero logo removed - logo lives only in navbar */
@@ -339,19 +359,21 @@ nav.nav--scrolled .nav-logo-icon img {
     display: flex;
     gap: 2.5rem;
     list-style: none;
+    opacity: 0.7;
+    transition: opacity 0.4s ease;
+}
+
+nav.nav--scrolled .nav-links {
+    opacity: 1;
 }
 
 .nav-links a {
     color: var(--color-text-light);
     text-decoration: none;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    transition: color 0.3s, font-size 0.3s ease;
-    position: relative;
-}
-
-nav.nav--scrolled .nav-links a {
     font-size: var(--font-size-sm);
+    font-weight: 400;
+    transition: color 0.3s;
+    position: relative;
 }
 
 .nav-links a::after {
