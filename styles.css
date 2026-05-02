@@ -402,7 +402,7 @@ body.logo-pinned .nav-logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0 10vh 0; /* Padding bottom para empujar contenido más arriba */
+    padding: 0 0 5vh 0; /* Padding bottom reducido para mejor centrado visual */
     position: relative;
     background: transparent;
 }
@@ -411,7 +411,7 @@ body.logo-pinned .nav-logo {
 .hero-brand-header {
     width: 100%;
     max-width: 1200px;
-    padding: 4rem 2rem 2rem; /* Espacio arriba para respirar */
+    padding: 6rem 2rem 2rem; /* Más espacio arriba para mejor balance visual */
     z-index: 1;
 }
 
