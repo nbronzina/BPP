@@ -1104,6 +1104,7 @@
                             name="name"
                             required
                             autocomplete="name"
+                            inputmode="text"
                         >
                     </div>
 
@@ -1115,6 +1116,7 @@
                             name="email"
                             required
                             autocomplete="email"
+                            inputmode="email"
                             spellcheck="false"
                         >
                     </div>
@@ -1126,6 +1128,7 @@
                             id="organization"
                             name="organization"
                             autocomplete="organization"
+                            inputmode="text"
                             spellcheck="false"
                         >
                     </div>
@@ -1139,6 +1142,7 @@
                             maxlength="500"
                             placeholder="Describilo brevemente"
                             autocomplete="off"
+                            spellcheck="true"
                         ></textarea>
                     </div>
 
@@ -1147,6 +1151,7 @@
                         <select
                             id="timeline"
                             name="timeline"
+                            autocomplete="off"
                         >
                             <option value="" disabled selected>Seleccioná un plazo</option>
                             <option value="urgente">Esta semana</option>
@@ -1162,6 +1167,8 @@
                             id="message"
                             name="message"
                             rows="5"
+                            autocomplete="off"
+                            spellcheck="true"
                         ></textarea>
                     </div>
 
