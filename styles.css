@@ -38,7 +38,7 @@
     --color-accent: var(--orange-500);
     --color-accent-bright: var(--orange-400);
 
-    --spacing-section: 80px;
+    --spacing-section: 48px;
 
     /* Horizontal padding scale (mobile-first) */
     --spacing-horizontal-mobile: 1.25rem;  /* 20px - más espacio para contenido */
@@ -398,7 +398,7 @@ body.logo-pinned .nav-logo {
 
 /* Hero fullscreen - immersive splash, ajustado al contenido */
 .hero-fullscreen {
-    min-height: clamp(600px, 75vh, 800px);
+    min-height: clamp(500px, 55vh, 600px);
     display: flex;
     justify-content: center;
     align-items: center;
