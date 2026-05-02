@@ -267,9 +267,26 @@ nav {
 }
 
 body.scrolled nav {
-    background-color: rgba(10, 10, 10, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    background-color: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+    body.scrolled nav {
+        background-color: rgba(10, 10, 10, 0.95);
+    }
+}
+
+/* Mobile: disable blur to save battery */
+@media (max-width: 768px) {
+    body.scrolled nav {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background-color: rgba(10, 10, 10, 0.95);
+    }
 }
 
 /* Nav logo - hidden initially, fades in on scroll (Superflux pattern) */
@@ -372,13 +389,12 @@ body.scrolled .nav-logo {
    Hero Section
    ========================= */
 
-/* Hero fullscreen - 70vh to avoid empty black space */
+/* Hero fullscreen - clamped height to avoid empty black space */
 .hero-fullscreen {
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: max(6rem, calc(var(--nav-logo-height, 40px) + 5rem)) 6rem 4rem;
+    min-height: clamp(520px, 70vh, 720px);
+    display: grid;
+    place-items: center;
+    padding: 96px 0 80px;
     position: relative;
     background: transparent;
 }
@@ -391,16 +407,18 @@ body.scrolled .nav-logo {
 }
 
 .hero-brand-content {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 3rem;
-    max-width: 100%;
+    gap: 40px;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
 }
 
 /* Hero large logo - stays in normal flow, aligned with navbar logo */
 .hero-logo-large {
-    display: block;
-    line-height: 0;
+    width: clamp(80px, 7vw, 110px);
     flex-shrink: 0;
     transition: opacity var(--nav-transition, 0.3s) ease;
 }
@@ -413,46 +431,83 @@ body.scrolled .nav-logo {
 }
 
 .hero-logo-large img {
-    height: var(--hero-logo-height, 180px);
-    width: auto;
+    width: 100%;
+    height: auto;
     display: block;
 }
 
 .hero-brand-text {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    flex: 1;
+    gap: 12px;
 }
 
 .hero-wordmark {
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-weight: 700;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.4rem, 4.4vw, 3.8rem);
     color: rgba(255, 255, 255, 0.95);
-    line-height: 1.2;
+    line-height: 1.05;
     margin: 0;
 }
 
 .hero-tagline {
     font-family: 'Atkinson Hyperlegible', sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.85);
-    line-height: 1.3;
+    line-height: 1.4;
     margin: 0;
+    opacity: 0.85;
+}
+
+/* Hero scroll cue */
+.hero-scroll-cue {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.hero-scroll-cue:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateX(-50%) translateY(2px);
+}
+
+.hero-scroll-cue svg {
+    animation: heroScrollHint 2.4s ease-in-out infinite;
+}
+
+@keyframes heroScrollHint {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(3px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-scroll-cue svg { animation: none; }
 }
 
 /* Mobile: stack logo above text */
 @media (max-width: 768px) {
     .hero-brand-content {
-        flex-direction: column;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
         gap: 2rem;
     }
 
-    .hero-logo-large img {
-        height: var(--hero-logo-height-mobile, 120px);
+    .hero-logo-large {
+        width: var(--hero-logo-height-mobile, 120px);
     }
 }
 
@@ -1078,6 +1133,27 @@ body.scrolled .nav-logo {
 
 .section-wide {
     max-width: 1600px;
+}
+
+/* Content centering for specific containers (Fix 5) */
+.services-grid,
+.actividades-container,
+.about-content,
+.section-content {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+/* Desktop wide: slightly larger max-width */
+@media (min-width: 1280px) {
+    .services-grid,
+    .actividades-container,
+    .section-content {
+        max-width: 1180px;
+    }
 }
 
 /* =========================
