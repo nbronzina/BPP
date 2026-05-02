@@ -69,24 +69,30 @@
 }
     </script>
 </head>
-<body>
+<body class="secondary-page">
 
     <!-- Skip link -->
     <a href="#main-content" class="skip-link" aria-label="Saltar navegación e ir directamente al contenido principal">Saltar al contenido principal</a>
 
     <!-- Navigation -->
-    <nav role="navigation" aria-label="Navegación principal de BPP Analytics &amp; Design">
+    <nav role="navigation" aria-label="Navegación principal de BPP Analytics &amp; Design" id="stickyNav">
         <div class="nav-container">
-            <!-- Logo + Wordmark (izquierda) -->
-            <div class="logo">
-                <a href="../#hero" class="nav-logo-icon" aria-label="Inicio - BPP Analytics &amp; Design">
-                    <picture>
-                        <source srcset="../img/logo-160.webp" type="image/webp">
-                        <img src="../img/logo.png" alt="Ícono BPP" width="39" height="52" loading="eager" decoding="async">
-                    </picture>
-                </a>
-                <a href="../#hero" class="nav-wordmark">BPP Analytics &amp; Design</a>
-            </div>
+            <!-- Logo -->
+            <a href="../#hero" class="nav-logo" id="navLogo" aria-label="BPP Analytics &amp; Design - Inicio">
+                <picture>
+                    <source
+                        srcset="../img/logo-160.webp 1x, ../img/logo-320.webp 2x"
+                        type="image/webp">
+                    <img
+                        src="../img/logo.png"
+                        srcset="../img/logo-160.webp 1x, ../img/logo-320.webp 2x"
+                        alt="BPP Analytics &amp; Design"
+                        width="39"
+                        height="52"
+                        loading="eager"
+                        decoding="async">
+                </picture>
+            </a>
 
             <!-- Mobile menu button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
@@ -98,9 +104,9 @@
             <!-- Links (derecha) -->
             <ul class="nav-links" id="navLinks">
                 <li><a href="../#about">Quiénes somos</a></li>
-                <li><a href="../#socios">Equipo</a></li>
                 <li><a href="../#services">Servicios</a></li>
-                <li><a href="../#actividades">Lo hecho</a></li>
+                <li><a href="../#socios">Equipo</a></li>
+                <li><a href="../">Lo hecho</a></li>
                 <li><a href="../pensamiento/">Pensamiento</a></li>
                 <li><a href="../#contact">Contacto</a></li>
             </ul>
