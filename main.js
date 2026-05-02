@@ -173,6 +173,206 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
+  // PARALLAX SUTIL EN HERO
+  // -----------------------------------------------------
+  // Logo y texto se mueven a diferentes velocidades
+  // al scrollear para crear profundidad (muy sutil).
+  // =====================================================
+  const heroVisual = document.querySelector('.hero-visual');
+  const heroBrandText = document.querySelector('.hero-brand-text');
+
+  if (heroLogo && heroBrandText && heroVisual) {
+    const handleParallax = () => {
+      const scrolled = window.pageYOffset;
+      const heroBottom = document.querySelector('.hero-fullscreen')?.offsetHeight || 0;
+
+      // Solo aplicar parallax mientras estamos en el hero
+      if (scrolled < heroBottom) {
+        // Logo se mueve más lento (0.3x)
+        heroLogo.style.transform = `translateY(${scrolled * 0.3}px)`;
+
+        // Texto se mueve un poco más rápido (0.15x)
+        heroBrandText.style.transform = `translateY(${scrolled * 0.15}px)`;
+
+        // Fondo visual se mueve más lento aún (0.5x) - efecto depth
+        heroVisual.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleParallax, { passive: true });
+  }
+
+  // =====================================================
+  // IMAGE REVEALS - Clip-path en imágenes de Hechos
+  // -----------------------------------------------------
+  // Revela imágenes con efecto wipe cuando entran en viewport
+  // =====================================================
+  const actividadImagenes = document.querySelectorAll('.actividad-imagen');
+
+  if (actividadImagenes.length && 'IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            imageObserver.unobserve(entry.target); // Reveal solo una vez
+          }
+        });
+      },
+      {
+        threshold: 0.2, // Trigger cuando 20% de la imagen es visible
+        rootMargin: '0px 0px -50px 0px' // Offset ligero desde el bottom
+      }
+    );
+
+    actividadImagenes.forEach(img => imageObserver.observe(img));
+  }
+
+  // =====================================================
+  // MAGNETIC BUTTONS - Efecto de atracción en CTAs
+  // -----------------------------------------------------
+  // Botones CTA se mueven sutilmente hacia el cursor
+  // cuando está cerca, creando efecto magnético
+  // =====================================================
+  const magneticButtons = document.querySelectorAll('.cta-primary, .cta-secondary');
+  const MAGNETIC_RADIUS = 100; // Radio de atracción en px
+  const MAGNETIC_STRENGTH = 0.3; // Multiplicador de movimiento (0-1)
+
+  if (magneticButtons.length && !prefersReducedMotion) {
+    magneticButtons.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const deltaX = e.clientX - centerX;
+        const deltaY = e.clientY - centerY;
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        if (distance < MAGNETIC_RADIUS) {
+          const moveX = deltaX * MAGNETIC_STRENGTH;
+          const moveY = deltaY * MAGNETIC_STRENGTH;
+          btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        }
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+      });
+    });
+  }
+
+  // =====================================================
+  // CUSTOM CURSOR GLOW - Orange halo siguiendo el mouse
+  // -----------------------------------------------------
+  // Crea un cursor personalizado con glow naranja que se
+  // intensifica sobre elementos interactivos
+  // =====================================================
+  const hasHover = window.matchMedia('(hover: hover)').matches;
+
+  if (hasHover && !prefersReducedMotion) {
+    // Crear elemento de cursor
+    const cursor = document.createElement('div');
+    cursor.id = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    // Track mouse position
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      // Activar cursor custom después del primer movimiento
+      if (!body.classList.contains('custom-cursor-active')) {
+        body.classList.add('custom-cursor-active');
+      }
+    });
+
+    // Smooth cursor follow con lerp (linear interpolation)
+    function updateCursor() {
+      const ease = 0.15;
+      cursorX += (mouseX - cursorX) * ease;
+      cursorY += (mouseY - cursorY) * ease;
+
+      cursor.style.transform = `translate(${cursorX - 16}px, ${cursorY - 16}px)`;
+
+      requestAnimationFrame(updateCursor);
+    }
+    updateCursor();
+
+    // Detectar hover sobre elementos interactivos
+    const interactiveSelectors = 'a, button, .cta-primary, .cta-secondary, .cta-link, input, textarea, [role="button"]';
+
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(interactiveSelectors)) {
+        body.classList.add('cursor-over-interactive');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(interactiveSelectors)) {
+        body.classList.remove('cursor-over-interactive');
+      }
+    });
+
+    // Ocultar cursor custom cuando sale de la ventana
+    document.addEventListener('mouseleave', () => {
+      body.classList.remove('custom-cursor-active');
+    });
+
+    document.addEventListener('mouseenter', () => {
+      body.classList.add('custom-cursor-active');
+    });
+  }
+
+  // =====================================================
+  // PAGE TRANSITIONS - Curtain effect en navegación
+  // -----------------------------------------------------
+  // Overlay naranja que baja/sube al navegar entre páginas
+  // =====================================================
+  if (!prefersReducedMotion) {
+    // Crear overlay element
+    const overlay = document.createElement('div');
+    overlay.id = 'page-transition-overlay';
+    document.body.appendChild(overlay);
+
+    // Transition-in al cargar la página
+    body.classList.add('page-transitioning-in');
+    setTimeout(() => {
+      body.classList.remove('page-transitioning-in');
+    }, 100);
+
+    // Interceptar clicks en links internos
+    const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+
+    internalLinks.forEach(link => {
+      // Skip anchor links (same page navigation)
+      if (link.getAttribute('href').startsWith('#')) return;
+
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+
+        // Solo aplicar transición a navegación interna real (no anchors, no external)
+        if (href && !href.startsWith('#') && !link.hasAttribute('target')) {
+          e.preventDefault();
+
+          // Animar overlay bajando
+          body.classList.add('page-transitioning-out');
+
+          // Navegar después de la animación
+          setTimeout(() => {
+            window.location.href = href;
+          }, 600); // Match CSS transition duration
+        }
+      });
+    });
+  }
+
+  // =====================================================
   // BLOQUE TRACKING / ANIMACIONES
   // -----------------------------------------------------
   // IntersectionObserver para animar elementos con
