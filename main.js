@@ -143,29 +143,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // -------------------------
-  // Logo transform on scroll (Superflux-style)
+  // Scroll behavior - Superflux two-logo cross-fade technique
   // -------------------------
-  const heroLogo = document.getElementById("heroLogo");
-  const nav = document.getElementById("stickyNav");
+  const handleScrollState = () => {
+    const scrollThreshold = 100; // Pixels scrolled to trigger state change
 
-  if (heroLogo && nav) {
-    const handleLogoTransform = () => {
-      const scrollThreshold = 200; // Scroll distance to trigger transform
+    if (window.scrollY > scrollThreshold) {
+      document.body.classList.add("scrolled");
+    } else {
+      document.body.classList.remove("scrolled");
+    }
+  };
 
-      if (window.scrollY > scrollThreshold) {
-        // Transform logo to navbar position
-        heroLogo.classList.add("logo-transforming");
-        nav.classList.add("nav--visible");
-      } else {
-        // Reset logo to hero position
-        heroLogo.classList.remove("logo-transforming");
-        nav.classList.remove("nav--visible");
-      }
-    };
-
-    window.addEventListener("scroll", handleLogoTransform, { passive: true });
-    handleLogoTransform(); // Check initial state
-  }
+  window.addEventListener("scroll", handleScrollState, { passive: true });
+  handleScrollState(); // Check initial state
 
   // =====================================================
   // BLOQUE TRACKING / ANIMACIONES
