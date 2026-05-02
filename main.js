@@ -199,10 +199,10 @@ document.addEventListener("DOMContentLoaded", function () {
     animatedEls.forEach((el) => observer.observe(el));
   }
 
-  // Año dinámico en el footer
+  // Año dinámico en el footer (i18n-aware)
   const yearSpan = document.getElementById("currentYear");
   if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
+    yearSpan.textContent = new Intl.DateTimeFormat('es-AR', { year: 'numeric' }).format(new Date());
   }
 
   // =====================================================
@@ -845,31 +845,41 @@ document.addEventListener("DOMContentLoaded", function () {
     // 4. Scenario Accordions
     const accordionHeaders = document.querySelectorAll(".scenario-accordion-header");
     if (accordionHeaders.length) {
+      const toggleAccordion = (header) => {
+        const isActive = header.classList.contains("active");
+        const content = header.nextElementSibling;
+        const scenarioId = content.getAttribute("id");
+
+        // Close all other accordions (optional - remove if you want multiple open)
+        // accordionHeaders.forEach(h => {
+        //   if (h !== header) {
+        //     h.classList.remove("active");
+        //     h.setAttribute("aria-expanded", "false");
+        //     h.nextElementSibling.classList.remove("active");
+        //   }
+        // });
+
+        // Toggle current accordion
+        if (isActive) {
+          header.classList.remove("active");
+          header.setAttribute("aria-expanded", "false");
+          content.classList.remove("active");
+        } else {
+          header.classList.add("active");
+          header.setAttribute("aria-expanded", "true");
+          content.classList.add("active");
+          trackEvent("Escenario_expandido", { id: scenarioId });
+        }
+      };
+
       accordionHeaders.forEach((header) => {
-        header.addEventListener("click", () => {
-          const isActive = header.classList.contains("active");
-          const content = header.nextElementSibling;
-          const scenarioId = content.getAttribute("id");
+        header.addEventListener("click", () => toggleAccordion(header));
 
-          // Close all other accordions (optional - remove if you want multiple open)
-          // accordionHeaders.forEach(h => {
-          //   if (h !== header) {
-          //     h.classList.remove("active");
-          //     h.setAttribute("aria-expanded", "false");
-          //     h.nextElementSibling.classList.remove("active");
-          //   }
-          // });
-
-          // Toggle current accordion
-          if (isActive) {
-            header.classList.remove("active");
-            header.setAttribute("aria-expanded", "false");
-            content.classList.remove("active");
-          } else {
-            header.classList.add("active");
-            header.setAttribute("aria-expanded", "true");
-            content.classList.add("active");
-            trackEvent("Escenario_expandido", { id: scenarioId });
+        // Keyboard support for Enter and Space
+        header.addEventListener("keydown", (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleAccordion(header);
           }
         });
       });
@@ -928,34 +938,44 @@ document.addEventListener("DOMContentLoaded", function () {
   const proyectos = document.querySelectorAll('.actividad-entrada');
 
   if (filterButtons.length > 0 && proyectos.length > 0) {
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
+    const applyFilter = (btn) => {
+      const filter = btn.getAttribute('data-filter');
 
-        // Update active state
-        filterButtons.forEach(b => {
-          b.classList.remove('filter-btn--active');
-          b.setAttribute('aria-pressed', 'false');
-        });
-        btn.classList.add('filter-btn--active');
-        btn.setAttribute('aria-pressed', 'true');
+      // Update active state
+      filterButtons.forEach(b => {
+        b.classList.remove('filter-btn--active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('filter-btn--active');
+      btn.setAttribute('aria-pressed', 'true');
 
-        // Filter projects
-        proyectos.forEach(proyecto => {
-          if (filter === 'todos') {
+      // Filter projects
+      proyectos.forEach(proyecto => {
+        if (filter === 'todos') {
+          proyecto.classList.remove('hidden');
+        } else {
+          const tags = proyecto.getAttribute('data-tags') || '';
+          if (tags.includes(filter)) {
             proyecto.classList.remove('hidden');
           } else {
-            const tags = proyecto.getAttribute('data-tags') || '';
-            if (tags.includes(filter)) {
-              proyecto.classList.remove('hidden');
-            } else {
-              proyecto.classList.add('hidden');
-            }
+            proyecto.classList.add('hidden');
           }
-        });
+        }
+      });
 
-        // Track filter usage
-        trackEvent('Filtro_proyectos', { categoria: filter });
+      // Track filter usage
+      trackEvent('Filtro_proyectos', { categoria: filter });
+    };
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => applyFilter(btn));
+
+      // Keyboard support for Enter and Space
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          applyFilter(btn);
+        }
       });
     });
   }
@@ -969,7 +989,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const methodologyContent = document.querySelector('.methodology-content');
 
   if (methodologyToggle && methodologyContent) {
-    methodologyToggle.addEventListener('click', () => {
+    const toggleMethodology = () => {
       const isExpanded = methodologyToggle.getAttribute('aria-expanded') === 'true';
 
       methodologyToggle.setAttribute('aria-expanded', !isExpanded);
@@ -979,6 +999,16 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         methodologyContent.style.display = 'block';
         trackEvent('Quiz_metodologia_expandida');
+      }
+    };
+
+    methodologyToggle.addEventListener('click', toggleMethodology);
+
+    // Keyboard support for Enter and Space
+    methodologyToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMethodology();
       }
     });
   }

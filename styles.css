@@ -183,6 +183,9 @@ button,
 /* Touch optimization - eliminate 300ms tap delay */
 button,
 a,
+input,
+select,
+textarea,
 .cta-button,
 .form-submit,
 .btn-download,
@@ -828,6 +831,12 @@ nav.nav--scrolled {
     .cta-link--services[data-preview]::after,
     .form-submit[data-preview]::after {
         transition: none;
+    }
+
+    /* Disable SVG animations */
+    svg animate,
+    svg animateTransform {
+        display: none;
     }
 }
 
