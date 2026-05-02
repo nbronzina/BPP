@@ -396,13 +396,13 @@ body.logo-pinned .nav-logo {
    Hero Section
    ========================= */
 
-/* Hero fullscreen - immersive splash, ajustado al contenido */
+/* Hero fullscreen - immersive splash, ocupa viewport inicial completo */
 .hero-fullscreen {
-    min-height: clamp(500px, 55vh, 600px);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding: 0 0 10vh 0; /* Padding bottom para empujar contenido más arriba */
     position: relative;
     background: transparent;
 }
