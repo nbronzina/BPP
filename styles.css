@@ -3400,24 +3400,33 @@ img {
 
     /* Actividades mobile: imagen arriba, texto abajo */
     .actividad-entrada {
-        grid-template-columns: 1fr;
-        min-height: auto;
+        grid-template-columns: 1fr !important;
+        min-height: auto !important;
     }
 
     .actividad-entrada:nth-child(even) {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         direction: ltr;
     }
 
     /* Force images to always appear first on mobile */
     .actividad-imagen {
         height: 260px;
-        order: -1;
+        order: -1 !important;
     }
 
     .actividad-texto {
         padding: 2rem 0;
-        order: 0;
+        order: 0 !important;
+    }
+
+    /* Reset desktop zigzag order for even cards */
+    .actividad-entrada:nth-child(even) .actividad-imagen {
+        order: -1 !important;
+    }
+
+    .actividad-entrada:nth-child(even) .actividad-texto {
+        order: 0 !important;
     }
 
     /* MOBILE-002: Optimización de formulario de contacto */
