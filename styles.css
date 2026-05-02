@@ -253,7 +253,7 @@ h1, h2, h3 {
    Navigation
    ========================= */
 
-/* Sticky nav - fixed from start */
+/* Sticky nav - hidden at start, appears on scroll */
 nav {
     position: fixed;
     top: 0;
@@ -264,11 +264,16 @@ nav {
     background-color: transparent;
     backdrop-filter: none;
     border-bottom: none;
+    opacity: 0;
+    pointer-events: none;
     transition: background-color var(--nav-transition, 0.3s) ease,
-                backdrop-filter var(--nav-transition, 0.3s) ease;
+                backdrop-filter var(--nav-transition, 0.3s) ease,
+                opacity var(--nav-transition, 0.3s) ease;
 }
 
 body.logo-pinned nav {
+    opacity: 1;
+    pointer-events: auto;
     background-color: rgba(10, 10, 10, 0.65);
     backdrop-filter: blur(16px) saturate(140%);
     -webkit-backdrop-filter: blur(16px) saturate(140%);
@@ -391,9 +396,9 @@ body.logo-pinned .nav-logo {
    Hero Section
    ========================= */
 
-/* Hero fullscreen - clamped height to avoid empty black space */
+/* Hero fullscreen - immersive splash, ocupa toda la pantalla inicial */
 .hero-fullscreen {
-    min-height: clamp(600px, 85vh, 900px);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
