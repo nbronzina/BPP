@@ -2596,7 +2596,8 @@ img {
     }
 
     .nav-container,
-    .nav {
+    .nav,
+    .hero-brand-content {
         padding: 0 var(--spacing-horizontal-tablet);
     }
 
