@@ -2410,6 +2410,16 @@ footer {
     letter-spacing: 0.05em;
 }
 
+/* Equipo h3 centrado */
+.trust-socios h3 {
+    text-align: center;
+}
+
+/* Clientes h3 alineado izquierda con marquee */
+.trust-clientes h3 {
+    text-align: left;
+}
+
 .equipo-table {
     width: 100%;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -2417,9 +2427,9 @@ footer {
 
 .equipo-row {
     display: grid;
-    grid-template-columns: 2fr 2fr 1.5fr 1fr;
+    grid-template-columns: 2fr 2.5fr 1.5fr 0.5fr;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     padding: 1.25rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
