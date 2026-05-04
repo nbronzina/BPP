@@ -391,7 +391,7 @@ nav {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: var(--space-4) 0;
+    padding: var(--space-10) 0;  /* 40px - altura cómoda para navbar */
     background-color: transparent;
     backdrop-filter: none;
     border-bottom: none;
