@@ -502,7 +502,7 @@ body.secondary-page .nav-logo {
 .nav-links a {
     color: var(--color-text-light);
     text-decoration: none;
-    font-size: var(--font-size-base);
+    font-size: 1rem;  /* 16px - más compacto que base (18px) */
     font-weight: 400;
     transition: color 0.3s;
     position: relative;
@@ -3182,7 +3182,7 @@ img {
     }
 
     .nav-links a {
-        font-size: var(--font-size-base);
+        font-size: 1rem;  /* 16px - más compacto */
         padding: var(--space-3) var(--space-5);
         display: block;
     }
