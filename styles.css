@@ -425,6 +425,15 @@ body.secondary-page .nav-logo {
     align-items: center;  /* Alinea verticalmente con centro del logo */
     gap: var(--space-6);  /* 24px - espaciado más compacto */
     list-style: none;
+    margin: 0;  /* Reset margin */
+    padding: 0;  /* Reset padding */
+}
+
+.nav-links li {
+    margin: 0;  /* Reset li margin */
+    padding: 0;  /* Reset li padding */
+    display: flex;  /* Flex para alinear el link */
+    align-items: center;  /* Centra el link dentro del li */
 }
 
 .nav-links a {
@@ -433,6 +442,8 @@ body.secondary-page .nav-logo {
     font-size: 1rem;  /* 16px - más compacto que base (18px) */
     font-weight: 400;
     line-height: 1;  /* Alinea verticalmente con centro del logo */
+    display: inline-flex;  /* Inline-flex para mejor control */
+    align-items: center;  /* Centra el texto */
     transition: color 0.3s;
     position: relative;
 }
