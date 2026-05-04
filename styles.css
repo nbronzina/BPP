@@ -1840,6 +1840,11 @@ footer {
     opacity: 0.4;
 }
 
+/* Ocultar separador entre brand y copyright (debe estar pegado) */
+.footer-brand + .footer-separator {
+    display: none;
+}
+
 .footer-copy {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
@@ -2366,6 +2371,8 @@ footer {
     align-items: stretch;
     min-height: 450px; /* Increased for larger imagery */
     border-top: 1px solid rgba(250, 248, 246, 0.12);
+    background: var(--color-surface);  /* Fondo sólido para legibilidad al scrollear */
+    padding: 2rem 0;  /* Breathing room vertical */
 }
 
 /* Entradas pares: invertir orden (zigzag pattern) */
@@ -3378,7 +3385,14 @@ img {
         width: 100%;
     }
 
-    .footer-main-line,
+    .footer-main-line {
+        flex-direction: row;  /* Mantener brand + copyright en misma línea */
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: nowrap;  /* No permitir wrap */
+    }
+
     .footer-links-line {
         flex-direction: column;
         align-items: center;
@@ -3386,7 +3400,7 @@ img {
     }
 
     .footer-separator {
-        display: none;
+        display: none;  /* Todos los separadores ocultos en mobile */
     }
 
     .footer-brand {
