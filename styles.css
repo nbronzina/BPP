@@ -425,6 +425,15 @@ body.secondary-page .nav-logo {
     align-items: center;  /* Alinea verticalmente con centro del logo */
     gap: var(--space-6);  /* 24px - espaciado más compacto */
     list-style: none;
+    margin: 0;  /* Reset margin */
+    padding: 0;  /* Reset padding */
+}
+
+.nav-links li {
+    margin: 0;  /* Reset li margin */
+    padding: 0;  /* Reset li padding */
+    display: flex;  /* Flex para alinear el link */
+    align-items: center;  /* Centra el link dentro del li */
 }
 
 .nav-links a {
@@ -433,6 +442,8 @@ body.secondary-page .nav-logo {
     font-size: 1rem;  /* 16px - más compacto que base (18px) */
     font-weight: 400;
     line-height: 1;  /* Alinea verticalmente con centro del logo */
+    display: inline-flex;  /* Inline-flex para mejor control */
+    align-items: center;  /* Centra el texto */
     transition: color 0.3s;
     position: relative;
 }
@@ -1251,16 +1262,16 @@ body.secondary-page .nav-logo {
     max-width: 1600px;
 }
 
-/* Content centering for specific containers (Fix 5) */
+/* Content centering for specific containers - Estandarizado */
 .services-grid,
 .actividades-container,
 .about-content,
 .section-content {
-    max-width: 1080px;
+    max-width: 1400px;  /* Estandarizado (era 1080px) */
     margin-left: auto;
     margin-right: auto;
-    padding-left: var(--space-8);
-    padding-right: var(--space-8);
+    padding-left: 0;  /* El padding viene del contenedor padre ahora */
+    padding-right: 0;
 }
 
 /* Desktop wide: slightly larger max-width */
@@ -1285,7 +1296,7 @@ body.secondary-page .nav-logo {
     grid-template-columns: 1fr 180px;
     gap: 0 var(--space-12);
     align-items: start;
-    padding: 0 var(--space-24);
+    padding: var(--spacing-section) var(--space-24);  /* Estandarizado: vertical + horizontal */
 }
 
 /* Section labels - Opción E (Combo): mayor visibilidad + border accent */
@@ -1297,7 +1308,7 @@ body.secondary-page .nav-logo {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -1381,7 +1392,7 @@ body.secondary-page .nav-logo {
     top: 0;
     left: 0;
     border-top: 2px solid var(--color-accent);
-    border-left: 2px solid var(--color-accent);
+    box-shadow: -2px 0 6px rgba(193, 111, 82, 0.35);
     opacity: 0.3;
 }
 
@@ -1406,14 +1417,14 @@ body.secondary-page .nav-logo {
     align-items: flex-start;
     gap: var(--space-4);
     padding: var(--space-5) var(--space-6);
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     background: rgba(206, 115, 82, 0.03);
-    transition: background 0.2s ease, border-left-color 0.2s ease;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .transformation-card:hover {
     background: rgba(206, 115, 82, 0.06);
-    border-left-color: var(--color-accent-bright);
+    box-shadow: -3px 0 12px rgba(193, 111, 82, 0.5);  /* Glow más intenso en hover */
 }
 
 .transformation-card .card-icon {
@@ -1574,7 +1585,7 @@ body.secondary-page .nav-logo {
     font-family: var(--font-mono);
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     opacity: 0.6;
-    border-left: 2px solid var(--color-accent);
+    box-shadow: -2px 0 6px rgba(193, 111, 82, 0.35);
     padding-left: var(--space-4);
     margin-top: var(--space-8);
     line-height: 1.6;
@@ -1608,7 +1619,7 @@ body.secondary-page .nav-logo {
    ========================= */
 
 .services-container {
-    padding: 0 var(--space-24);
+    padding: var(--spacing-section) var(--space-24);  /* Estandarizado: vertical + horizontal */
 }
 
 .services-label {
@@ -1619,7 +1630,7 @@ body.secondary-page .nav-logo {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-6);
@@ -1972,7 +1983,7 @@ footer {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-bottom: var(--space-12);
 }
@@ -2338,7 +2349,7 @@ footer {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -2667,7 +2678,7 @@ body.page-transitioning-in #page-transition-overlay {
    ========================= */
 
 .equipo-section {
-    padding: 0 var(--space-24);
+    padding: var(--spacing-section) var(--space-24);  /* Estandarizado: vertical + horizontal */
 }
 
 .equipo-label {
@@ -2678,7 +2689,7 @@ body.page-transitioning-in #page-transition-overlay {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -2689,7 +2700,7 @@ body.page-transitioning-in #page-transition-overlay {
    ========================= */
 
 .trust-section {
-    padding: var(--space-24) 0;
+    padding: var(--spacing-section) var(--space-24);  /* Estandarizado: vertical + horizontal (era al revés!) */
     background: transparent;
 }
 
@@ -5428,7 +5439,7 @@ img {
   margin: var(--space-12) 0;
   padding: var(--space-8) var(--space-10);
   background: linear-gradient(135deg, rgba(206, 115, 82, 0.08), rgba(212, 132, 94, 0.05));
-  border-left: var(--space-1) solid var(--color-accent);
+  box-shadow: -1px 0 4px rgba(193, 111, 82, 0.3);
   border-radius: 8px;
   position: relative;
 }
