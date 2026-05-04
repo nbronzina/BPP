@@ -1297,7 +1297,7 @@ body.secondary-page .nav-logo {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -1381,7 +1381,7 @@ body.secondary-page .nav-logo {
     top: 0;
     left: 0;
     border-top: 2px solid var(--color-accent);
-    border-left: 2px solid var(--color-accent);
+    box-shadow: -2px 0 6px rgba(193, 111, 82, 0.35);
     opacity: 0.3;
 }
 
@@ -1406,14 +1406,14 @@ body.secondary-page .nav-logo {
     align-items: flex-start;
     gap: var(--space-4);
     padding: var(--space-5) var(--space-6);
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     background: rgba(206, 115, 82, 0.03);
-    transition: background 0.2s ease, border-left-color 0.2s ease;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .transformation-card:hover {
     background: rgba(206, 115, 82, 0.06);
-    border-left-color: var(--color-accent-bright);
+    box-shadow: -3px 0 12px rgba(193, 111, 82, 0.5);  /* Glow más intenso en hover */
 }
 
 .transformation-card .card-icon {
@@ -1574,7 +1574,7 @@ body.secondary-page .nav-logo {
     font-family: var(--font-mono);
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     opacity: 0.6;
-    border-left: 2px solid var(--color-accent);
+    box-shadow: -2px 0 6px rgba(193, 111, 82, 0.35);
     padding-left: var(--space-4);
     margin-top: var(--space-8);
     line-height: 1.6;
@@ -1619,7 +1619,7 @@ body.secondary-page .nav-logo {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-6);
@@ -1972,7 +1972,7 @@ footer {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-bottom: var(--space-12);
 }
@@ -2338,7 +2338,7 @@ footer {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -2678,7 +2678,7 @@ body.page-transitioning-in #page-transition-overlay {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    border-left: 3px solid var(--color-accent);
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -5428,7 +5428,7 @@ img {
   margin: var(--space-12) 0;
   padding: var(--space-8) var(--space-10);
   background: linear-gradient(135deg, rgba(206, 115, 82, 0.08), rgba(212, 132, 94, 0.05));
-  border-left: var(--space-1) solid var(--color-accent);
+  box-shadow: -1px 0 4px rgba(193, 111, 82, 0.3);
   border-radius: 8px;
   position: relative;
 }
