@@ -89,18 +89,18 @@
 }
 
 :root {
-    /* Orange tonal scale - BPP brand */
+    /* Orange tonal scale - BPP brand (inclusive: desaturado, terroso) */
     --orange-950: #1a0f0c;
     --orange-900: #331e18;
-    --orange-800: #663d30;
-    --orange-700: #995b48;
-    --orange-600: #cc7960;
-    --orange-500: #ce7352;  /* Principal (brand) */
-    --orange-400: #d4845e;
-    --orange-300: #e0a794;
-    --orange-200: #ecc9bc;
-    --orange-100: #f6e5df;
-    --orange-50: #fbf2ef;
+    --orange-800: #664030;
+    --orange-700: #99594a;
+    --orange-600: #b8705a;
+    --orange-500: #c16f52;  /* Principal (brand) - terracotta desaturado */
+    --orange-400: #cd8763;
+    --orange-300: #d9a493;
+    --orange-200: #e6c5ba;
+    --orange-100: #f2e3dd;
+    --orange-50: #f9f1ee;
 
     /* Base colors with warm undertones */
     --color-bg: #0d0a09;
