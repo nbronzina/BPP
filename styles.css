@@ -118,12 +118,30 @@
     --color-accent: var(--orange-500);
     --color-accent-bright: var(--orange-400);
 
-    --spacing-section: 48px;
+    /* Spacing Scale - 8px grid system (como Gmail, Figma, Tailwind) */
+    --space-0: 0;
+    --space-1: 0.25rem;   /* 4px - micro spacing */
+    --space-2: 0.5rem;    /* 8px - tight spacing */
+    --space-3: 0.75rem;   /* 12px - compact */
+    --space-4: 1rem;      /* 16px - base unit */
+    --space-5: 1.25rem;   /* 20px - comfortable */
+    --space-6: 1.5rem;    /* 24px - relaxed */
+    --space-8: 2rem;      /* 32px - spacious */
+    --space-10: 2.5rem;   /* 40px - generous */
+    --space-12: 3rem;     /* 48px - section gap */
+    --space-16: 4rem;     /* 64px - large section */
+    --space-20: 5rem;     /* 80px - extra large */
+    --space-24: 6rem;     /* 96px - massive */
+
+    /* Legacy spacing (map to new scale) */
+    --spacing-section: var(--space-12);  /* 48px */
+    --spacing-card: var(--space-12);     /* 48px */
+    --spacing-gap: var(--space-8);       /* 32px */
 
     /* Horizontal padding scale (mobile-first) */
-    --spacing-horizontal-mobile: 1.25rem;  /* 20px - más espacio para contenido */
-    --spacing-horizontal-tablet: 4rem;
-    --spacing-horizontal-desktop: 6rem;
+    --spacing-horizontal-mobile: var(--space-5);   /* 20px */
+    --spacing-horizontal-tablet: var(--space-16);  /* 64px */
+    --spacing-horizontal-desktop: var(--space-24); /* 96px */
 
     /* Typography - Base scale (fixed sizes) - WCAG 2.1 AA compliant */
     --font-size-xs: 1rem;           /* 16px - mínimo WCAG (antes 14px) */
@@ -254,6 +272,39 @@ button,
 .services-cta-link,
 .form-submit {
     hyphens: none;
+}
+
+/* Vertical Rhythm - spacing consistente como Gmail */
+h1 {
+    margin-bottom: var(--space-6);  /* 24px */
+}
+
+h2 {
+    margin-bottom: var(--space-5);  /* 20px */
+}
+
+h3 {
+    margin-bottom: var(--space-4);  /* 16px */
+}
+
+h4, h5, h6 {
+    margin-bottom: var(--space-3);  /* 12px */
+}
+
+p {
+    margin-bottom: var(--space-4);  /* 16px */
+}
+
+ul, ol {
+    margin-bottom: var(--space-4);  /* 16px */
+}
+
+li {
+    margin-bottom: var(--space-2);  /* 8px - como Gmail */
+}
+
+li:last-child {
+    margin-bottom: 0;
 }
 
 /* Screen reader only utility */
