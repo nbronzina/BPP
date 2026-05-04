@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v141';
+const CACHE_NAME = 'bpp-v142';
 const urlsToCache = [
   '/',
   '/proyectos/',
@@ -14,6 +14,9 @@ const urlsToCache = [
   '/fonts/zt-bros-oskon/ZTBrosOskon90s-LightItalic.otf',
   '/fonts/zt-bros-oskon/ZTBrosOskon90s-ExtraLight.otf',
   '/fonts/zt-bros-oskon/ZTBrosOskon90s-ExtLtIta.otf',
+  '/fonts/chivo/Chivo-Regular.ttf',
+  '/fonts/chivo/Chivo-Italic.ttf',
+  '/fonts/chivo/Chivo-Bold.ttf',
   '/img/logo.png',
   '/img/logo-160.webp',
   '/img/logo-320.webp',

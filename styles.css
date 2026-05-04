@@ -60,6 +60,34 @@
     font-display: swap;
 }
 
+/* =========================
+   Font Faces - Chivo
+   ========================= */
+
+@font-face {
+    font-family: 'Chivo';
+    src: url('/fonts/chivo/Chivo-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Chivo';
+    src: url('/fonts/chivo/Chivo-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Chivo';
+    src: url('/fonts/chivo/Chivo-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     /* Orange tonal scale - BPP brand */
     --orange-950: #1a0f0c;
@@ -124,11 +152,11 @@
     --line-height-heading: 1.2;
     --line-height-body: 1.8;  /* Increased for better readability */
 
-    /* Typography - Font families - ZT Bros Oskon 90s by ZelowType */
-    --font-display: 'ZT Bros Oskon', sans-serif;
-    --font-heading: 'ZT Bros Oskon', sans-serif;
-    --font-body: 'ZT Bros Oskon', sans-serif;
-    --font-mono: 'ZT Bros Oskon', monospace;  /* Oskon también para mono */
+    /* Typography - Font families - Hybrid: Bros Oskon (display/headings) + Chivo (body) */
+    --font-display: 'ZT Bros Oskon', sans-serif;     /* Display: Bros Oskon */
+    --font-heading: 'ZT Bros Oskon', sans-serif;     /* Headings: Bros Oskon */
+    --font-body: 'Chivo', sans-serif;                /* Body: Chivo */
+    --font-mono: 'ZT Bros Oskon', monospace;         /* Mono: Bros Oskon */
 
     /* Borders & Shadows */
     --border-radius: 8px;
