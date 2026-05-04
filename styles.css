@@ -391,7 +391,7 @@ nav {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: var(--space-4) 0;
+    padding: var(--space-10) 0;  /* 40px - altura cómoda para navbar */
     background-color: transparent;
     backdrop-filter: none;
     border-bottom: none;
@@ -2422,8 +2422,6 @@ footer {
     align-items: stretch;
     min-height: 450px; /* Increased for larger imagery */
     border-top: 1px solid rgba(250, 248, 246, 0.12);
-    background: var(--color-surface);  /* Fondo sólido para legibilidad al scrollear */
-    padding: var(--space-8) 0;  /* Breathing room vertical */
 }
 
 /* Entradas pares: invertir orden (zigzag pattern) */
@@ -2491,6 +2489,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: var(--color-surface);  /* Fondo solo en texto, imagen sin borde gris */
 }
 
 .actividad-meta {
