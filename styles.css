@@ -548,7 +548,7 @@ body.secondary-page .nav-logo {
     font-weight: 700;
     font-size: clamp(2.4rem, 4.4vw, 3.8rem);
     color: rgba(250, 248, 246, 0.95);
-    line-height: 1.05;
+    line-height: 1.15;  /* Aumentado para evitar corte de descenders (y, g) */
     margin: 0;
     animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
 }
