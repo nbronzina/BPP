@@ -490,7 +490,7 @@ body.secondary-page .nav-logo {
 /* Nav logo placeholder - space for transformed logo */
 .nav-links {
     display: flex;
-    gap: var(--space-10);
+    gap: var(--space-6);  /* 24px - espaciado más compacto */
     list-style: none;
 }
 
