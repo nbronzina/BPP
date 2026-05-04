@@ -9,84 +9,11 @@
 }
 
 /* =========================
-   Font Faces - ZT Bros Oskon 90s
+   Font Face - Plus Jakarta Sans
    ========================= */
 
-@font-face {
-    font-family: 'ZT Bros Oskon';
-    src: url('/fonts/zt-bros-oskon/ZTBrosOskon90s-ExtraLight.otf') format('opentype');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'ZT Bros Oskon';
-    src: url('/fonts/zt-bros-oskon/ZTBrosOskon90s-ExtLtIta.otf') format('opentype');
-    font-weight: 200;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'ZT Bros Oskon';
-    src: url('/fonts/zt-bros-oskon/ZTBrosOskon90s-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'ZT Bros Oskon';
-    src: url('/fonts/zt-bros-oskon/ZTBrosOskon90s-LightItalic.otf') format('opentype');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'ZT Bros Oskon';
-    src: url('/fonts/zt-bros-oskon/ZTBrosOskon90s-Regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'ZT Bros Oskon';
-    src: url('/fonts/zt-bros-oskon/ZTBrosOskon90s-Italic.otf') format('opentype');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-}
-
-/* =========================
-   Font Faces - Chivo
-   ========================= */
-
-@font-face {
-    font-family: 'Chivo';
-    src: url('/fonts/chivo/Chivo-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Chivo';
-    src: url('/fonts/chivo/Chivo-Italic.ttf') format('truetype');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Chivo';
-    src: url('/fonts/chivo/Chivo-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
+/* Plus Jakarta Sans - Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 :root {
     /* Orange tonal scale - BPP brand (inclusive: desaturado, terroso) */
@@ -162,11 +89,11 @@
     --line-height-heading: 1.2;
     --line-height-body: 1.8;  /* Increased for better readability */
 
-    /* Typography - Font families - Hybrid: Bros Oskon (display/headings) + Chivo (body) */
-    --font-display: 'ZT Bros Oskon', sans-serif;     /* Display: Bros Oskon */
-    --font-heading: 'ZT Bros Oskon', sans-serif;     /* Headings: Bros Oskon */
-    --font-body: 'Chivo', sans-serif;                /* Body: Chivo */
-    --font-mono: 'ZT Bros Oskon', monospace;         /* Mono: Bros Oskon */
+    /* Typography - Font family - Plus Jakarta Sans (única, versátil) */
+    --font-display: 'Plus Jakarta Sans', sans-serif;     /* Display */
+    --font-heading: 'Plus Jakarta Sans', sans-serif;     /* Headings */
+    --font-body: 'Plus Jakarta Sans', sans-serif;        /* Body */
+    --font-mono: 'Plus Jakarta Sans', monospace;         /* Mono fallback */
 
     /* Borders & Shadows */
     --border-radius: 8px;
@@ -216,7 +143,7 @@ article[id] {
 }
 
 body {
-    font-family: var(--font-body);  /* Chivo para body text (legibilidad) */
+    font-family: var(--font-body);  /* Plus Jakarta Sans - tipografía única */
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: var(--line-height-body);  /* 1.8 - improved readability */
@@ -268,7 +195,7 @@ button,
 
 /* Typography - Gmail approach: tamaño estandarizado */
 /* Solo h1, h2, h3 se diferencian por tamaño. El resto usa --font-size-base (16px) */
-/* Jerarquía visual viene de: weight (Bros Oskon vs Chivo), color, spacing */
+/* Jerarquía visual viene de: weight (weight y color), color, spacing */
 
 h1 {
     font-size: var(--font-size-h1);
@@ -616,7 +543,7 @@ body.secondary-page .nav-logo {
 }
 
 .hero-wordmark {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 700;
     font-size: clamp(2.4rem, 4.4vw, 3.8rem);
     color: rgba(250, 248, 246, 0.95);
@@ -626,7 +553,7 @@ body.secondary-page .nav-logo {
 }
 
 .hero-tagline {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: clamp(1.1rem, 1.6vw, 1.4rem);
     font-weight: 400;
     color: rgba(250, 248, 246, 0.85);
@@ -760,7 +687,7 @@ body.secondary-page .nav-logo {
 }
 
 .locations {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.5) */
     font-weight: 400;
@@ -798,7 +725,7 @@ body.secondary-page .nav-logo {
 
 .data-label {
     fill: rgba(250, 248, 246, 0.7);
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     font-weight: 500;
     letter-spacing: 0.05em;
@@ -872,7 +799,7 @@ body.secondary-page .nav-logo {
 }
 
 .network-map text {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;  /* 16px - improved readability */
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -931,7 +858,7 @@ body.secondary-page .nav-logo {
     color: #1a1512;
     border: none;
     padding: var(--space-4) var(--space-8);
-    font-family: 'ZT Bros Oskon', monospace;
+    font-family: 'Plus Jakarta Sans', monospace;
     font-size: 1rem;
     font-weight: 700;
     text-decoration: none;
@@ -962,7 +889,7 @@ body.secondary-page .nav-logo {
     gap: var(--space-2);
     color: var(--color-accent) !important;
     text-decoration: none;
-    font-family: 'ZT Bros Oskon', monospace;
+    font-family: 'Plus Jakarta Sans', monospace;
     font-size: 1rem;
     font-weight: 500;
     background: none !important;
@@ -998,7 +925,7 @@ body.secondary-page .nav-logo {
 .pwa-dismiss-btn {
     display: inline-block;
     min-height: 44px;
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
     text-decoration: none;
     border-radius: 4px;
@@ -1069,7 +996,7 @@ body.secondary-page .nav-logo {
 
 /* Form submit estandarizado con about-cta y services-cta-link */
 .form-submit {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     font-weight: 500;
     border: 1.5px solid var(--color-accent);
@@ -1362,7 +1289,7 @@ body.secondary-page .nav-logo {
 
 /* Section labels - Opción E (Combo): mayor visibilidad + border accent */
 .about-label {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
@@ -1382,7 +1309,7 @@ body.secondary-page .nav-logo {
 }
 
 .about-headline {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-h2);
     font-weight: 700;
     color: var(--color-text);
@@ -1398,7 +1325,7 @@ body.secondary-page .nav-logo {
 }
 
 .about-pain-list li {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     opacity: 0.75;  /* Increased from 0.55 for better contrast */
@@ -1424,7 +1351,7 @@ body.secondary-page .nav-logo {
 }
 
 .about-purpose {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-h2);  /* Same size as "Sabemos lo que se siente" */
     font-weight: 600;
     opacity: 0.95;
@@ -1433,7 +1360,7 @@ body.secondary-page .nav-logo {
 }
 
 .about-mission {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     opacity: 0.75;
@@ -1498,7 +1425,7 @@ body.secondary-page .nav-logo {
 }
 
 .transformation-card p {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 500;
     opacity: 0.85;
@@ -1534,7 +1461,7 @@ body.secondary-page .nav-logo {
 }
 
 .institutional-description {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     opacity: 0.65;
     line-height: 1.7;
@@ -1574,7 +1501,7 @@ body.secondary-page .nav-logo {
 }
 
 .identity-note {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     opacity: 0.6;
     line-height: 1.6;
@@ -1585,7 +1512,7 @@ body.secondary-page .nav-logo {
 /* Links CTA - Variante secundaria (mayor jerarquía) */
 .about-cta a,
 .actividades-cta-link {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     font-weight: 500;
     color: var(--color-accent);
@@ -1622,7 +1549,7 @@ body.secondary-page .nav-logo {
 
 /* Links CTA - Estandarizado con about-cta */
 .services-cta-link {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     font-weight: 500;
     color: var(--color-accent);
@@ -1684,7 +1611,7 @@ body.secondary-page .nav-logo {
 }
 
 .services-label {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
@@ -1698,7 +1625,7 @@ body.secondary-page .nav-logo {
 }
 
 .services-intro {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     line-height: 1.6;
     color: var(--color-text-light);
@@ -1731,7 +1658,7 @@ body.secondary-page .nav-logo {
 
 .service-number {
     display: block;
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 4rem;
     font-weight: 700;
     line-height: 1;
@@ -1741,7 +1668,7 @@ body.secondary-page .nav-logo {
 }
 
 .service-category {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     text-transform: uppercase;
     opacity: 0.7;  /* Increased from 0.5 for better contrast */
@@ -1750,7 +1677,7 @@ body.secondary-page .nav-logo {
 }
 
 .service-title {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-h1);
     font-weight: 700;
     color: var(--color-text);
@@ -1760,7 +1687,7 @@ body.secondary-page .nav-logo {
 }
 
 .service-lead {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text);
@@ -1770,7 +1697,7 @@ body.secondary-page .nav-logo {
 }
 
 .service-method {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     color: var(--color-text);
     opacity: 0.85;
@@ -1884,7 +1811,7 @@ footer {
 }
 
 .footer-brand {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;  /* 16px - WCAG minimum */
     font-weight: 600;
     color: var(--color-text);
@@ -1892,7 +1819,7 @@ footer {
 }
 
 .footer-separator {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     color: var(--color-text);
     opacity: 0.4;
 }
@@ -1903,7 +1830,7 @@ footer {
 }
 
 .footer-copy {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     color: var(--color-text);
     opacity: 0.7;
@@ -1927,7 +1854,7 @@ footer {
 }
 
 .footer-link {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     color: var(--color-text);
     text-decoration: none;
@@ -1997,7 +1924,7 @@ footer {
 
 /* Cuando está en el footer, hereda estilos de .footer-link */
 .footer-left .install-pwa-link {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     color: var(--color-text);
     opacity: 0.7;  /* Increased from 0.5 for better contrast */
@@ -2037,7 +1964,7 @@ footer {
 }
 
 .contact-label {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
@@ -2058,7 +1985,7 @@ footer {
 
 /* Contexto narrativo */
 .contact-context h2 {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-h3);
     font-weight: 700;
     color: var(--color-text);
@@ -2068,7 +1995,7 @@ footer {
 }
 
 .contact-context p {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text);
@@ -2092,7 +2019,7 @@ footer {
 }
 
 .contact-city {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     text-transform: uppercase;
     color: var(--color-accent);
@@ -2101,7 +2028,7 @@ footer {
 }
 
 .contact-street {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     color: var(--color-text);
     opacity: 0.4;
@@ -2119,7 +2046,7 @@ footer {
 }
 
 .form-group label {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -2136,7 +2063,7 @@ footer {
     border-bottom: 1px solid rgba(250, 248, 246, 0.15);
     border-radius: 0;
     color: rgba(250, 248, 246, 0.9);
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     padding: var(--space-2) 0;
     width: 100%;
@@ -2245,7 +2172,7 @@ footer {
 }
 
 .filter-btn {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     padding: var(--space-2) var(--space-5);
     background: transparent;
@@ -2286,7 +2213,7 @@ footer {
 }
 
 .proyectos-intro-headline {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
     font-size: var(--font-size-h2);
     color: rgba(250, 248, 246, 0.95);
@@ -2309,7 +2236,7 @@ footer {
 }
 
 .proyectos-cta-headline {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
     font-size: var(--font-size-h2);
     color: rgba(250, 248, 246, 0.95);
@@ -2359,7 +2286,7 @@ footer {
 
 .proyecto-nombre {
     display: block;
-    font-family: 'ZT Bros Oskon', monospace;
+    font-family: 'Plus Jakarta Sans', monospace;
     font-size: 1.125rem;
     font-weight: 700;
     color: var(--color-accent);
@@ -2391,7 +2318,7 @@ footer {
 .proyecto-disciplinas li {
     font-size: 1rem;
     color: rgba(250, 248, 246, 0.4);
-    font-family: 'ZT Bros Oskon', monospace;
+    font-family: 'Plus Jakarta Sans', monospace;
 }
 
 /* =========================
@@ -2403,7 +2330,7 @@ footer {
    ========================= */
 
 .actividades-label {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
@@ -2499,7 +2426,7 @@ footer {
 }
 
 .actividad-meta {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     text-transform: uppercase;
     margin-bottom: var(--space-3);
@@ -2520,7 +2447,7 @@ footer {
 /* Category badge for Hechos entries */
 .actividad-category-badge {
     display: inline-block;
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -2534,7 +2461,7 @@ footer {
 }
 
 .actividad-entrada h3 {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-h3);
     font-weight: 700;
     color: var(--color-text);
@@ -2544,7 +2471,7 @@ footer {
 }
 
 .actividad-descripcion {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text);
@@ -2554,7 +2481,7 @@ footer {
 }
 
 .actividad-link {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     color: var(--color-accent);
     opacity: 0.7;
@@ -2743,7 +2670,7 @@ body.page-transitioning-in #page-transition-overlay {
 }
 
 .equipo-label {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
@@ -2771,7 +2698,7 @@ body.page-transitioning-in #page-transition-overlay {
 }
 
 .trust-section .section-eyebrow {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -2790,7 +2717,7 @@ body.page-transitioning-in #page-transition-overlay {
 }
 
 .trust-block h3 {
-    font-family: 'ZT Bros Oskon', monospace;
+    font-family: 'Plus Jakarta Sans', monospace;
     font-size: 1.125rem;
     font-weight: 700;
     color: var(--color-text);
@@ -2835,7 +2762,7 @@ body.page-transitioning-in #page-transition-overlay {
 }
 
 .equipo-nombre {
-    font-family: 'ZT Bros Oskon', monospace;
+    font-family: 'Plus Jakarta Sans', monospace;
     font-size: 1rem;
     font-weight: 700;
     color: var(--color-text);
@@ -2849,7 +2776,7 @@ body.page-transitioning-in #page-transition-overlay {
 .equipo-ciudad {
     font-size: 1rem;
     color: rgba(250, 248, 246, 0.4);
-    font-family: 'ZT Bros Oskon', monospace;
+    font-family: 'Plus Jakarta Sans', monospace;
 }
 
 .equipo-link {
@@ -3766,7 +3693,7 @@ img {
   border-radius: 8px;
   padding: var(--space-8);
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  font-family: var(--font-family-base, 'ZT Bros Oskon', system-ui, sans-serif);
+  font-family: var(--font-family-base, 'Plus Jakarta Sans', system-ui, sans-serif);
   max-width: 900px;
   margin: var(--space-8) auto;
 }
@@ -3985,7 +3912,7 @@ img {
 }
 
 .reporte-section h2 {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-h3);
     font-weight: 700;
     color: var(--color-text);
@@ -3995,7 +3922,7 @@ img {
 }
 
 .reporte-section h3 {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 700;
     color: var(--color-text);
@@ -4006,7 +3933,7 @@ img {
 
 .reporte-section p,
 .reporte-section li {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text-secondary);
@@ -4118,7 +4045,7 @@ img {
 }
 
 .reporte-page .report-label {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     color: var(--color-accent);
     text-transform: uppercase;
@@ -4128,7 +4055,7 @@ img {
 }
 
 .reporte-page .hero-section h1 {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-h2);
     font-weight: 700;
     color: var(--color-text);
@@ -4145,7 +4072,7 @@ img {
 }
 
 .reporte-page .report-tags {
-    font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     opacity: 0.7;  /* Increased from 0.5 for better contrast */
@@ -4166,7 +4093,7 @@ img {
 }
 
 .reporte-page .impact-number-hero {
-    font-family: 'ZT Bros Oskon', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
     color: var(--color-accent);
@@ -4211,7 +4138,7 @@ img {
 }
 
 .report-toc-list a {
-  font-family: 'ZT Bros Oskon', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: var(--font-size-base);
   font-weight: 400;
   color: var(--color-text-secondary);
@@ -5901,7 +5828,7 @@ img {
 }
 
 .clientes-label {
-  font-family: 'ZT Bros Oskon', ui-monospace, monospace;
+  font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
   font-size: var(--font-size-base);
   text-transform: uppercase;
   letter-spacing: 0.08em;
