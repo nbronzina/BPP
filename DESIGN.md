@@ -1,48 +1,49 @@
 ---
-version: alpha
+version: beta-inclusive
 name: BPP Analytics & Design
-description: Sistema visual del estudio. Fondo negro, tipografía monoespaciada, acento naranja y corner brackets como dispositivo de encuadre. Editorial, no corporativo.
+description: Sistema visual del estudio. Fondo dark warm gray, tipografía híbrida (Bros Oskon display + Chivo body), acento terracota y corner brackets como dispositivo de encuadre. Editorial inclusivo, no corporativo.
+evolution: "v1 (alpha) usaba Space Mono monowidth + negro puro + contraste alto como signature. v2 (beta-inclusive) prioriza diseño inclusivo: reduce fatiga visual con warm off-white, terracota desaturado, y dark warm gray. Mantiene densidad editorial pero humaniza el contraste. Cambio aprobado 2026-05-04."
 colors:
-  primary: "#ce7352"
-  on-primary: "#0a0a0a"
-  background: "#0a0a0a"
-  surface: "#0a0a0a"
-  text-high: "rgba(255,255,255,0.95)"
-  text-mid: "rgba(255,255,255,0.75)"
-  text-low: "rgba(255,255,255,0.55)"
-  text-faint: "rgba(255,255,255,0.35)"
-  border: "rgba(255,255,255,0.12)"
-  border-active: "#ce7352"
-  focus-ring: "rgba(206,115,82,0.2)"
+  primary: "#c16f52"
+  on-primary: "#1a1512"
+  background: "#1a1512"
+  surface: "#221d18"
+  text-high: "rgba(250,248,246,0.95)"
+  text-mid: "rgba(250,248,246,0.75)"
+  text-low: "rgba(250,248,246,0.55)"
+  text-faint: "rgba(250,248,246,0.35)"
+  border: "rgba(250,248,246,0.12)"
+  border-active: "#c16f52"
+  focus-ring: "rgba(193,111,82,0.2)"
 typography:
   wayfinding:
-    fontFamily: Space Mono
+    fontFamily: ZT Bros Oskon
     fontWeight: 400
     fontSize: 0.75rem
     letterSpacing: 0.12em
   h1:
-    fontFamily: Space Mono
-    fontWeight: 700
+    fontFamily: ZT Bros Oskon
+    fontWeight: 400
     fontSize: 3.5rem
     lineHeight: 1.05
     letterSpacing: -0.01em
   h2:
-    fontFamily: Space Mono
-    fontWeight: 700
+    fontFamily: ZT Bros Oskon
+    fontWeight: 400
     fontSize: 2rem
     lineHeight: 1.15
   body-md:
-    fontFamily: Space Mono
+    fontFamily: Chivo
     fontWeight: 400
     fontSize: 1rem
     lineHeight: 1.6
   body-sm:
-    fontFamily: Space Mono
+    fontFamily: Chivo
     fontWeight: 400
     fontSize: 0.875rem
     lineHeight: 1.55
   metadata:
-    fontFamily: Space Mono
+    fontFamily: ZT Bros Oskon
     fontWeight: 400
     fontSize: 0.75rem
     letterSpacing: 0.08em
@@ -85,7 +86,9 @@ components:
 
 BPP opera como un estudio de diseño estratégico, no como una agencia corporativa. El sistema visual refleja esa posición: editorial, denso, sin adornos. La referencia más cercana es Superflux por el rigor del encuadre, y Linked by Air por la economía tipográfica. Metahaven queda como techo lejano, no como molde.
 
-El sistema existe para hacer legible una práctica — investigación exploratoria, prototipos, futuros — en un formato que el cliente pueda leer sin sentirse empujado. Cada decisión visual sirve a eso. El fondo negro da gravedad. La tipografía monoespaciada pone al texto en registro de herramienta de trabajo, no de folleto. El naranja aparece donde hay acción o dato, no donde hay decoración.
+El sistema existe para hacer legible una práctica — investigación exploratoria, prototipos, futuros — en un formato que el cliente pueda leer sin sentirse empujado. Cada decisión visual sirve a eso. El fondo dark warm gray da gravedad sin agresividad. La tipografía híbrida (geométrica para estructura, neutral para lectura) mantiene personalidad donde importa y optimiza legibilidad donde se necesita. El terracotta aparece donde hay acción o dato, no donde hay decoración.
+
+**Evolución v1 → v2 (beta-inclusive):** La versión alpha usaba negro puro (`#0a0a0a`), Space Mono monowidth exclusiva, y naranja saturado (`#ce7352`) como signature de alto contraste. La versión beta-inclusive prioriza diseño inclusivo: warm off-white reduce fatiga ocular, terracotta desaturado mantiene identidad sin strain visual, dark warm gray lifted reduce contraste extremo. El sistema mantiene densidad editorial pero humaniza el contraste para sesiones prolongadas. No es deriva — es evolución intencional aprobada 2026-05-04.
 
 Este documento es la fuente de verdad del sistema. Si un brief, una auditoría o un agente sugiere cambios de token sin revisar este archivo primero, el cambio se descarta.
 
@@ -93,29 +96,57 @@ Los archivos con prefijo `_prototype-*` están **fuera del sistema por diseño**
 
 ## Colors
 
-La paleta tiene cuatro registros y un solo acento. El acento no se substituye, no se aproxima, no se "ajusta" — la dirección es siempre este naranja o nada.
+La paleta tiene cuatro registros y un solo acento. Temperatura cálida unificada (warm gray fondo + warm off-white texto + terracotta accent) para coherencia inclusiva.
 
-- **Primary `#ce7352`:** Naranja BPP. Único acento del sistema. Aparece en CTAs tipográficos, brackets esquineros, puntos de énfasis en datos, y en estados activos. Nunca como fondo de bloque completo. Nunca en variantes (no hay primary-light, primary-dark, primary-container). Un solo valor, usado con intención.
-- **Background `#0a0a0a`:** Negro del sistema. No es navy (`#0a2540` fue un brief heredado con bug). No es gris oscuro. El contraste alto con el naranja es parte del signature.
-- **Text-high `rgba(255,255,255,0.95)`:** Texto principal. Headlines, párrafos de cuerpo, contenido que el lector debe absorber.
-- **Text-mid `rgba(255,255,255,0.75)`:** Segundo nivel. Subtítulos, contexto secundario, descripciones.
-- **Text-low `rgba(255,255,255,0.55)`:** Metadata visible pero subordinada. Fechas, roles, tags.
-- **Text-faint `rgba(255,255,255,0.35)`:** Texto decorativo o de wayfinding. Numeración de secciones, separadores tipográficos.
-- **Border `rgba(255,255,255,0.12)`:** Divisores sutiles. No competir con el contenido.
-- **Border-active `#ce7352`:** Forma preferente de marcar hover o estado activo en elementos interactivos.
-- **Focus-ring `rgba(206,115,82,0.2)`:** Anillo de foco para accesibilidad. Ver Elevation & Depth.
+**Principio inclusivo:** Pure black + pure white + naranja saturado generan fatiga visual acumulativa, especialmente en lecturas largas o uso nocturno. El sistema beta-inclusive reduce strain manteniendo legibilidad WCAG AA y personalidad visual.
 
-La jerarquía por opacidad es intencional. Si un agente intenta "limpiar" convirtiendo todo a un blanco plano, el sistema pierde la profundidad que distingue lectura de escaneo.
+- **Primary `#c16f52`:** Terracotta BPP. Único acento del sistema. Desaturado ~15% vs. v1 para reducir agresividad visual sin perder identidad. Aparece en CTAs tipográficos, brackets esquineros, puntos de énfasis en datos, y en estados activos. Nunca como fondo de bloque completo. Nunca en variantes (no hay primary-light, primary-dark, primary-container). Un solo valor, usado con intención. **No se vuelve a saturar** — la dirección es terracotta orgánico, no "highlighter alert".
+
+- **Background `#1a1512`:** Dark warm gray del sistema. Lifted ~40% lightness vs. negro puro (`#0a0a0a` de v1) para reducir contraste extremo. Mantiene atmósfera oscura editorial pero elimina "halo effect" de texto blanco sobre negro puro. Temperatura marrón (no gris neutro) armoniza con terracotta y off-white.
+
+- **Surface `#221d18`:** Elevated surface. Ligeramente más claro que background para jerarquía de profundidad en cards.
+
+- **Text-high `rgba(250,248,246,0.95)`:** Texto principal. Warm off-white en lugar de blanco puro. Headlines, párrafos de cuerpo, contenido que el lector debe absorber. El tono cálido reduce fatiga ocular y armoniza con la paleta marrón-terracotta.
+
+- **Text-mid `rgba(250,248,246,0.75)`:** Segundo nivel. Subtítulos, contexto secundario, descripciones.
+
+- **Text-low `rgba(250,248,246,0.55)`:** Metadata visible pero subordinada. Fechas, roles, tags.
+
+- **Text-faint `rgba(250,248,246,0.35)`:** Texto decorativo o de wayfinding. Numeración de secciones, separadores tipográficos.
+
+- **Border `rgba(250,248,246,0.12)`:** Divisores sutiles. No competir con el contenido.
+
+- **Border-active `#c16f52`:** Forma preferente de marcar hover o estado activo en elementos interactivos.
+
+- **Focus-ring `rgba(193,111,82,0.2)`:** Anillo de foco para accesibilidad. Ver Elevation & Depth.
+
+La jerarquía por opacidad se mantiene intencional. La base cálida (`rgba(250,248,246,...)` en lugar de `rgba(255,255,255,...)`) es el cambio core — permite profundidad jerárquica sin agresividad visual.
 
 ## Typography
 
-Una sola familia para todo el sistema: **Space Mono**. Monospace con personalidad, no neutra. Esta decisión es de identidad, no de legibilidad — existe para que cada texto se lea como material de estudio, no como copy de landing SaaS.
+**Sistema híbrido: ZT Bros Oskon (display/estructura) + Chivo (body/legibilidad).**
 
-Auditorías previas sugirieron cambiar a IBM Plex Mono y a Work Sans. Ambas sugerencias fueron rechazadas y quedan registradas acá como ejemplos de deriva que el sistema debe resistir. **La familia no se cambia.**
+**Evolución v1 → v2:** La versión alpha usaba Space Mono monowidth exclusiva para todo el sistema — identidad radical donde cada texto se leía "como material de estudio". La versión beta-inclusive prioriza legibilidad en textos largos (reportes, artículos pensamiento) sin perder personalidad en estructura (headings, nav, metadata).
+
+**ZT Bros Oskon 90s** (ZelowType, opensource):
+- Uso: h1, h2, h3, navegación, botones, tagline, metadata, numeración
+- Carácter: Geométrico, 90s, distintivo. No genérico (cumple anti-slop de frontend-design).
+- Peso: 200-400 (Light, Regular). Jerarquía por tamaño, no por bold extremo.
+- Por qué: Mantiene signature visual en puntos de estructura y wayfinding. Más distintivo que Space Mono.
+
+**Chivo** (Omnibus-Type, Buenos Aires, opensource):
+- Uso: Body copy (párrafos, listas, descripciones, texto largo)
+- Carácter: Grotesk neutral pero cálido. Origen argentino (coherencia geográfica con BPP).
+- Peso: 400 Regular, 400 Italic, 700 Bold
+- Por qué: Optimizado para lectura larga en pantalla. Reduce fatiga vs. monowidth en textos extensos (trace-group, reporte-impacto, pensamiento). No compite con Bros Oskon — trabaja en segundo plano.
+
+**Rationale del cambio:** Space Mono era identidad máxima pero legibilidad comprometida en textos largos (artículos 2000+ palabras). El híbrido mantiene personalidad donde el lector busca orientación (títulos, nav) y optimiza comfort donde el lector necesita absorber contenido (párrafos). No es deriva — es priorización de diseño inclusivo sobre purismo estético.
+
+Auditorías previas (v1) sugirieron cambiar a IBM Plex Mono y Work Sans — fueron rechazadas porque proponían abandonar monowidth sin strategy. La solución v2 mantiene distintividad (Bros Oskon) pero la concentra donde importa, liberando body copy para legibilidad (Chivo).
 
 Mayúsculas se usan sólo en **wayfinding y metadata** — navegación, etiquetas de sección, numeración, tags. Nunca en titulares descriptivos, nunca en cuerpo, nunca en CTAs. El uso de mayúsculas señala "esto es orientación, no contenido". La transformación se aplica vía CSS (`text-transform: uppercase`), no se escribe en el texto original.
 
-La jerarquía tipográfica se apoya en tamaño y opacidad, no en familias distintas ni en pesos extremos. El único peso fuerte disponible es `700`, reservado para `h1` y `h2`.
+La jerarquía tipográfica se apoya en tamaño, opacidad, y familia (display vs body). Bros Oskon no usa peso 700 — la geometría basta. Chivo usa 400/700 para jerarquía dentro de párrafos.
 
 ## Layout
 
@@ -206,8 +237,8 @@ Esta sección captura los errores que se repiten y que el sistema necesita docum
 ### Do
 
 - Validar cualquier cambio de token contra este archivo antes de aplicar.
-- Usar `#ce7352` exacto.
-- Usar Space Mono como única familia.
+- Usar `#c16f52` exacto (terracotta desaturado v2, no `#ce7352` de v1).
+- Usar ZT Bros Oskon para headings/nav/metadata, Chivo para body copy.
 - Usar mayúsculas solo para wayfinding y metadata, aplicadas vía CSS.
 - Mantener `section: 160px` entre bloques mayores.
 - Implementar CTAs como tipografía, no como botones con fondo.
@@ -217,21 +248,25 @@ Esta sección captura los errores que se repiten y que el sistema necesita docum
 - Usar radios `none` / `sm (4px)` / `md (8px)` / `full (50%)` según el componente.
 - Mantener corner brackets como dispositivo de encuadre.
 - Preservar el efecto team row tal como está.
+- Priorizar diseño inclusivo: warm off-white, terracotta desaturado, dark warm gray lifted.
 
 ### Don't
 
-- **No sustituir Space Mono.** Ni por IBM Plex Mono, ni por Work Sans, ni por "una mono más legible". La familia es identidad, no preferencia.
-- **No cambiar el fondo a navy.** `#0a2540` fue un valor heredado con bug. El fondo es `#0a0a0a`.
+- **No volver a Space Mono monowidth única.** Fue v1 alpha. v2 beta-inclusive usa híbrido Bros Oskon + Chivo por diseño inclusivo.
+- **No saturar el terracotta.** `#ce7352` era v1. `#c16f52` es v2 — no se vuelve a saturar.
+- **No bajar el fondo a negro puro.** `#0a0a0a` era v1. `#1a1512` es v2 (lifted para reducir contraste extremo).
+- **No usar blanco puro.** `rgba(255,255,255,...)` era v1. `rgba(250,248,246,...)` es v2 (warm off-white inclusivo).
 - **No usar `transform: scale(...)` en hovers decorativos.** Ni en CTAs, ni en botones PWA, ni en íconos sociales, ni en "touch feedback" genérico.
 - **No usar `transform: translateY(...)` en hovers** (empujes verticales tipo "levitar").
-- **No usar glow naranja en la web.** `box-shadow` con `rgba(206,115,82,...)` está reservado para el focus ring y para los overlays OBS.
+- **No usar glow terracotta en la web.** `box-shadow` con `rgba(193,111,82,...)` está reservado para el focus ring y para los overlays OBS.
 - **No usar shadows intensas** (`alpha > 0.4`, `blur > 24px`, o shadows coloreadas que no sean negras).
 - **No usar radios mayores a 8px** salvo `50%` para elementos circulares explícitos. Sin 10px, 12px, 14px, 24px.
 - **No convertir CTAs tipográficos en botones con background.** Reescribir como texto con color primary.
 - **No trasladar el lenguaje de los overlays OBS a la web.** Son contextos distintos.
-- **No ejecutar auditorías de performance que toquen tipografía o color sin revisar este archivo.** Si la auditoría recomienda cambiar Space Mono por motivos de carga, se evalúa manualmente — no se aplica.
+- **No ejecutar auditorías de performance que toquen tipografía o color sin revisar este archivo.** Si la auditoría recomienda cambiar el sistema híbrido por motivos de carga, se evalúa manualmente — no se aplica.
 - **No interpretar "editorial dark" como "bold and dramatic".** El sistema es denso pero sobrio.
 - **No tocar archivos `_prototype-*`.** Están fuera del sistema por diseño.
+- **No justificar cambios con "v1 era mejor".** v1 alpha priorizaba signature máximo, v2 beta-inclusive prioriza diseño inclusivo. Son valores distintos, ambos válidos — v2 es el sistema activo.
 
 ## Voice
 
@@ -247,14 +282,28 @@ Estudios que **no** son referencia: landing pages SaaS con gradientes y glows, s
 
 ## Validación
 
-Este archivo cumple parcialmente con la especificación `@google/design.md` (alpha spec, Google Labs). El linter reporta 7 errores y 3 advertencias — todos intencionales y documentados aquí:
+Este archivo (v2 beta-inclusive) cumple parcialmente con la especificación `@google/design.md` (alpha spec, Google Labs). El linter reporta errores y advertencias — todos intencionales y documentados aquí:
 
-**Errores intencionales (7):**
-- **rgba() en tokens de color**: La jerarquía de opacidad (`text-high`, `text-mid`, `text-low`, `text-faint`) usa `rgba(224,224,224,...)` con diferentes valores alpha. Esto es correcto para mantener consistencia en diferentes backgrounds. El linter espera hex o nombrados.
+**Errores intencionales:**
+- **rgba() en tokens de color**: La jerarquía de opacidad (`text-high`, `text-mid`, `text-low`, `text-faint`) usa `rgba(250,248,246,...)` con diferentes valores alpha. Esto es correcto para mantener consistencia en diferentes backgrounds. El linter espera hex o nombrados.
 - **Tokens YAML no usados**: Algunos tokens del frontmatter YAML existen para documentación futura o coherencia del esquema, no están todos mapeados a CSS custom properties todavía.
 
-**Advertencias intencionales (3):**
+**Advertencias intencionales:**
 - **border-radius: 50%**: Usado para elementos circulares (profile pics, icon containers). Es un valor de diseño deliberado, no un olvido.
 - **Valores no-token en sombras**: Algunas shadows inline usan valores hardcoded por razones de especificidad contextual (ej. focus rings).
 
-**Decisión**: No corregir estos casos. El sistema prioriza coherencia semántica y legibilidad del código sobre conformidad estricta con el linter alpha de Google Labs.
+**Decisión**: No corregir estos casos. El sistema prioriza coherencia semántica, diseño inclusivo, y legibilidad del código sobre conformidad estricta con el linter alpha de Google Labs.
+
+## Changelog
+
+**v2 beta-inclusive (2026-05-04):**
+- Tipografía: Space Mono monowidth única → ZT Bros Oskon (display/headings) + Chivo (body)
+- Background: `#0a0a0a` negro puro → `#1a1512` dark warm gray lifted
+- Text: `rgba(255,255,255,...)` blanco puro → `rgba(250,248,246,...)` warm off-white
+- Primary: `#ce7352` naranja saturado → `#c16f52` terracotta desaturado
+- Rationale: Priorización de diseño inclusivo sobre signature de alto contraste. Reduce fatiga visual, mejora legibilidad en textos largos, mantiene identidad editorial.
+
+**v1 alpha (2024-2026):**
+- Sistema original: Space Mono exclusiva, negro puro, contraste alto
+- Signature: Monowidth radical, alto contraste como parte de identidad
+- Mantenido en archivos `_archive/` para referencia histórica

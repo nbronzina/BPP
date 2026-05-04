@@ -147,6 +147,10 @@ Material de marketing de agencias de "design thinking" con ilustraciones de pers
 
 Relación con DESIGN.md
 
-Este archivo y DESIGN.md son hermanos. La densidad tipográfica de Space Mono sobre negro que exige el sistema visual empuja al texto a ser más breve y más cuidado — no hay "relleno ligero" que se disimule con un tipo sans-serif amigable. Y al revés: el registro editorial y directo de este archivo exige que el sistema visual no compense con decoración. Si uno de los dos archivos deriva, el otro empieza a sentirse mal calibrado.
+Este archivo y DESIGN.md son hermanos. La densidad tipográfica del sistema híbrido (ZT Bros Oskon en headings, Chivo en body, sobre dark warm gray) exige que el texto sea cuidado — los títulos geométricos anuncian peso, y el body legible no tolera relleno. El sistema v2 beta-inclusive permite textos largos sin fatiga (Chivo optimizada para lectura) pero mantiene que cada título sea intencional (Bros Oskon no perdona titulares genéricos).
+
+Y al revés: el registro editorial y directo de este archivo exige que el sistema visual no compense con decoración. Si uno de los dos archivos deriva, el otro empieza a sentirse mal calibrado.
 
 Cualquier cambio en registro o en sistema visual que implique modificar alguno de los dos archivos se revisa como una decisión sobre la identidad del estudio, no como una tarea de producción.
+
+**Nota sobre evolución v1 → v2:** El sistema v1 alpha usaba Space Mono monowidth exclusiva — empujaba al texto a ser más breve por limitación de legibilidad en textos largos. El sistema v2 beta-inclusive (Bros Oskon + Chivo) permite textos más extensos (reportes, artículos pensamiento) sin comprometer rigor. La voz se mantiene — solo se expande el rango donde puede aplicarse sin cansar al lector.
