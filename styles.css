@@ -102,11 +102,11 @@
     --orange-100: #f2e3dd;
     --orange-50: #f9f1ee;
 
-    /* Base colors with warm undertones */
-    --color-bg: #0d0a09;
-    --color-bg-light: #0d0a09;
-    --color-surface: #1a1614;
-    --color-border: #2d2722;
+    /* Base colors - Inclusive dark (lifted warm gray, no pure black) */
+    --color-bg: #1a1512;           /* Dark warm brown - lifted para reducir contraste extremo */
+    --color-bg-light: #1a1512;     /* Unificado */
+    --color-surface: #221d18;      /* Surface elevated - warm gray */
+    --color-border: #38312a;       /* Border - warm taupe, más visible */
 
     /* Text colors - Inclusive design (warm off-white unificado) */
     --color-text: #faf8f6;              /* Blanco cálido principal - reduce fatiga visual */
