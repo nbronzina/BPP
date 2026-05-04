@@ -143,22 +143,14 @@
     --spacing-horizontal-tablet: var(--space-16);  /* 64px */
     --spacing-horizontal-desktop: var(--space-24); /* var(--space-24) */
 
-    /* Typography - Base scale (fixed sizes) - WCAG 2.1 AA compliant */
-    --font-size-xs: 1rem;           /* 16px - mínimo WCAG (antes 14px) */
-    --font-size-label: 1rem;        /* 16px - labels, badges (antes 14px) */
-    --font-size-sm: 1.0625rem;      /* 17px - labels, metadata (antes 16px) */
-    --font-size-base: 1.125rem;     /* 18px - cuerpo principal */
-    --font-size-md: 1.25rem;        /* 20px - texto destacado */
-    --font-size-lg: 1.375rem;       /* 22px - lead text */
+    /* Typography - Gmail approach: tamaño único excepto h1/h2/h3 */
+    --font-size-base: 1rem;  /* 16px - universal: body, h4-h6, metadata, labels, todo */
 
-    /* Typography - Headings scale (responsive) - Optimizado para baja visión */
-    --font-size-h6: clamp(1.125rem, 2vw, 1.25rem);     /* 18px → 20px (aumentado de 16px) */
-    --font-size-h5: clamp(1.25rem, 2.5vw, 1.5rem);     /* 20px → 24px (aumentado de 18px) */
-    --font-size-h4: clamp(1.5rem, 3vw, 2rem);          /* 24px → 32px (aumentado de 20px) */
-    --font-size-h3: clamp(1.75rem, 3.5vw, 2.25rem);    /* 28px → 36px (aumentado de 24px) */
-    --font-size-h2: clamp(2rem, 4vw, 2.5rem);          /* 32px → 40px (aumentado de 28px) */
-    --font-size-h1: clamp(2.75rem, 6vw, 3.5rem);       /* 44px → 56px (aumentado de 40px) */
-    --font-size-display: clamp(3.5rem, 8vw, 4.5rem);   /* 56px → 72px (aumentado de 48px) */
+    /* Solo h1, h2, h3 diferenciados por tamaño (títulos importantes) */
+    --font-size-h3: clamp(1.5rem, 3vw, 1.75rem);      /* 24px → 28px */
+    --font-size-h2: clamp(1.75rem, 4vw, 2.25rem);     /* 28px → 36px */
+    --font-size-h1: clamp(2.5rem, 6vw, 3.5rem);       /* 40px → 56px */
+    --font-size-display: clamp(3rem, 8vw, 4.5rem);    /* 48px → 72px - hero only */
 
     /* Typography - Special (numbers, icons) */
     --font-size-number-sm: 2rem;
@@ -274,33 +266,46 @@ button,
     hyphens: none;
 }
 
-/* Vertical Rhythm - spacing consistente como Gmail */
+/* Typography - Gmail approach: tamaño estandarizado */
+/* Solo h1, h2, h3 se diferencian por tamaño. El resto usa --font-size-base (16px) */
+/* Jerarquía visual viene de: weight (Bros Oskon vs Chivo), color, spacing */
+
 h1 {
-    margin-bottom: var(--space-6);  /* var(--space-6) */
+    font-size: var(--font-size-h1);
+    margin-bottom: var(--space-6);
 }
 
 h2 {
-    margin-bottom: var(--space-5);  /* var(--space-5) */
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--space-5);
 }
 
 h3 {
-    margin-bottom: var(--space-4);  /* var(--space-4) */
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-4);
 }
 
+/* h4, h5, h6: mismo tamaño que body (Gmail approach) - jerarquía por weight */
 h4, h5, h6 {
-    margin-bottom: var(--space-3);  /* var(--space-3) */
+    font-size: var(--font-size-base);  /* 16px - igual que body */
+    font-weight: 600;  /* Diferenciación por peso, no por tamaño */
+    margin-bottom: var(--space-3);
+}
+
+p, li {
+    font-size: var(--font-size-base);  /* 16px - estandarizado */
 }
 
 p {
-    margin-bottom: var(--space-4);  /* var(--space-4) */
+    margin-bottom: var(--space-4);
 }
 
 ul, ol {
-    margin-bottom: var(--space-4);  /* var(--space-4) */
+    margin-bottom: var(--space-4);
 }
 
 li {
-    margin-bottom: var(--space-2);  /* var(--space-2) - como Gmail */
+    margin-bottom: var(--space-2);  /* Spacing como Gmail */
 }
 
 li:last-child {
@@ -497,7 +502,7 @@ body.secondary-page .nav-logo {
 .nav-links a {
     color: var(--color-text-light);
     text-decoration: none;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     font-weight: 400;
     transition: color 0.3s;
     position: relative;
@@ -744,7 +749,7 @@ body.secondary-page .nav-logo {
 }
 
 .subtitle {
-    font-size: var(--font-size-h4);
+    font-size: var(--font-size-base);
     color: var(--color-text);  /* Blanco puro para audacia extrema */
     margin-bottom: var(--space-10);
     font-weight: 400;
@@ -755,7 +760,7 @@ body.secondary-page .nav-logo {
 
 .locations {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.5) */
     font-weight: 400;
     letter-spacing: 0.15em;
@@ -901,7 +906,7 @@ body.secondary-page .nav-logo {
 }
 
 .viz-label {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.6) */
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -909,7 +914,7 @@ body.secondary-page .nav-logo {
 }
 
 .viz-metric {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     color: var(--color-accent);
     font-weight: 700;
 }
@@ -1064,7 +1069,7 @@ body.secondary-page .nav-logo {
 /* Form submit estandarizado con about-cta y services-cta-link */
 .form-submit {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-base);
     font-weight: 500;
     border: 1.5px solid var(--color-accent);
 }
@@ -1076,7 +1081,7 @@ body.secondary-page .nav-logo {
 /* Tamaño small para downloads */
 .btn-download {
     padding: var(--space-2) var(--space-5);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
 }
 
 /* Estados comunes */
@@ -1357,7 +1362,7 @@ body.secondary-page .nav-logo {
 /* Section labels - Opción E (Combo): mayor visibilidad + border accent */
 .about-label {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1529,7 +1534,7 @@ body.secondary-page .nav-logo {
 
 .institutional-description {
     font-family: 'ZT Bros Oskon', sans-serif;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     opacity: 0.65;
     line-height: 1.7;
     margin-top: var(--space-5);
@@ -1569,7 +1574,7 @@ body.secondary-page .nav-logo {
 
 .identity-note {
     font-family: 'ZT Bros Oskon', sans-serif;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     opacity: 0.6;
     line-height: 1.6;
     margin: 0;
@@ -1580,7 +1585,7 @@ body.secondary-page .nav-logo {
 .about-cta a,
 .actividades-cta-link {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-base);
     font-weight: 500;
     color: var(--color-accent);
     text-decoration: none;
@@ -1617,7 +1622,7 @@ body.secondary-page .nav-logo {
 /* Links CTA - Estandarizado con about-cta */
 .services-cta-link {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-base);
     font-weight: 500;
     color: var(--color-accent);
     text-decoration: none;
@@ -1679,7 +1684,7 @@ body.secondary-page .nav-logo {
 
 .services-label {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1693,7 +1698,7 @@ body.secondary-page .nav-logo {
 
 .services-intro {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-base);
     line-height: 1.6;
     color: var(--color-text-light);
     max-width: 70ch;
@@ -1736,7 +1741,7 @@ body.secondary-page .nav-logo {
 
 .service-category {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     text-transform: uppercase;
     opacity: 0.7;  /* Increased from 0.5 for better contrast */
     margin-bottom: var(--space-6);
@@ -1755,7 +1760,7 @@ body.secondary-page .nav-logo {
 
 .service-lead {
     font-family: 'ZT Bros Oskon', sans-serif;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text);
     opacity: 0.75;  /* Increased from 0.6 for better contrast */
@@ -1806,7 +1811,7 @@ body.secondary-page .nav-logo {
     margin-top: var(--space-6);
     padding-top: var(--space-6);
     border-top: 1px solid rgba(206, 115, 82, 0.15);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     line-height: 1.6;
 }
 
@@ -2032,7 +2037,7 @@ footer {
 
 .contact-label {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -2087,7 +2092,7 @@ footer {
 
 .contact-city {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     text-transform: uppercase;
     color: var(--color-accent);
     opacity: 0.7;
@@ -2096,7 +2101,7 @@ footer {
 
 .contact-street {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text);
     opacity: 0.4;
     line-height: 1.6;
@@ -2114,7 +2119,7 @@ footer {
 
 .form-group label {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
@@ -2202,7 +2207,7 @@ footer {
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
 }
 
 .breadcrumbs-item {
@@ -2240,7 +2245,7 @@ footer {
 
 .filter-btn {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     padding: var(--space-2) var(--space-5);
     background: transparent;
     color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.5) */
@@ -2398,7 +2403,7 @@ footer {
 
 .actividades-label {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -2494,7 +2499,7 @@ footer {
 
 .actividad-meta {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     text-transform: uppercase;
     margin-bottom: var(--space-3);
 }
@@ -2539,7 +2544,7 @@ footer {
 
 .actividad-descripcion {
     font-family: 'ZT Bros Oskon', sans-serif;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text);
     opacity: 0.75;  /* Increased from 0.6 for better contrast */
@@ -2549,7 +2554,7 @@ footer {
 
 .actividad-link {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-accent);
     opacity: 0.7;
     text-decoration: none;
@@ -2738,7 +2743,7 @@ body.page-transitioning-in #page-transition-overlay {
 
 .equipo-label {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -2766,7 +2771,7 @@ body.page-transitioning-in #page-transition-overlay {
 
 .trust-section .section-eyebrow {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-accent);
@@ -3183,7 +3188,7 @@ img {
     }
 
     .nav-links a {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-base);
         padding: var(--space-3) var(--space-5);
         display: block;
     }
@@ -3245,7 +3250,7 @@ img {
     }
 
     .subtitle {
-        font-size: var(--font-size-h5); /* Smaller but readable */
+        font-size: var(--font-size-base); /* Smaller but readable */
         margin-bottom: var(--space-8);
     }
 
@@ -3613,7 +3618,7 @@ img {
     }
 
     .contact-form label {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-base);
     }
 
     .contact-form textarea {
@@ -3643,7 +3648,7 @@ img {
     .service-card,
     .cta-button {
         padding: var(--space-4) var(--space-8);
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-base);
     }
 
     /* Ensure headings stay readable */
@@ -3726,7 +3731,7 @@ img {
 
 .pwa-install-content p:last-of-type {
     color: var(--color-text-secondary);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     margin-bottom: var(--space-4);
 }
 
@@ -3740,7 +3745,7 @@ img {
 .pwa-dismiss-btn {
     flex: 1;
     padding: var(--space-3) var(--space-4);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
 }
 
 .pwa-install-btn:focus-visible,
@@ -3905,7 +3910,7 @@ img {
   }
 
   .impact-icon {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-base);
   }
 }
 
@@ -3974,7 +3979,7 @@ img {
 
 .hero-sub-secondary {
   margin-top: var(--space-3);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   opacity: 0.9;
 }
 
@@ -4000,7 +4005,7 @@ img {
 
 .reporte-section h3 {
     font-family: 'ZT Bros Oskon', sans-serif;
-    font-size: var(--font-size-h4);
+    font-size: var(--font-size-base);
     font-weight: 700;
     color: var(--color-text);
     text-align: left;
@@ -4101,7 +4106,7 @@ img {
 /* Estilo de la fecha */
 .legal-page .date {
   color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   margin-bottom: var(--space-12);
 }
 
@@ -4123,7 +4128,7 @@ img {
 
 .reporte-page .report-label {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -4150,7 +4155,7 @@ img {
 
 .reporte-page .report-tags {
     font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     opacity: 0.7;  /* Increased from 0.5 for better contrast */
     margin-top: var(--space-4);
@@ -4251,7 +4256,7 @@ img {
 .senales-badge {
     display: inline-block;
     font-family: var(--font-mono);
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-base);
     color: var(--orange-500);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -4292,7 +4297,7 @@ img {
 .senal-label {
     display: inline-block;
     font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-base);
     color: var(--orange-500);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -4301,7 +4306,7 @@ img {
 
 .senal-headline {
     font-family: var(--font-heading);
-    font-size: var(--font-size-h5);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--color-text);
     line-height: var(--line-height-heading);
@@ -4310,7 +4315,7 @@ img {
 
 .senal-sector {
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text-muted);
     font-weight: 500;
     text-transform: uppercase;
@@ -4328,7 +4333,7 @@ img {
 
 .senal-location {
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text-muted);
     line-height: var(--line-height-body);
     margin-bottom: var(--space-4);
@@ -4336,7 +4341,7 @@ img {
 
 .senal-impact {
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     font-style: italic;
     font-weight: 300;
     color: var(--color-text);
@@ -4351,7 +4356,7 @@ img {
     align-items: center;
     gap: var(--space-2);
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--orange-500);
     text-decoration: none;
     transition: color var(--transition-fast);
@@ -4412,7 +4417,7 @@ img {
 
 .quiz-subtitle {
     font-family: var(--font-mono);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text-muted);
 }
 
@@ -4433,7 +4438,7 @@ img {
     width: 100%;
     padding: var(--space-4) var(--space-6);
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--orange-500);
     background: transparent;
@@ -4463,7 +4468,7 @@ img {
 
 .methodology-intro {
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     line-height: var(--line-height-body);
     margin-bottom: var(--space-4);
@@ -4477,7 +4482,7 @@ img {
 
 .methodology-list li {
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     line-height: 1.8;
     padding-left: var(--space-6);
@@ -4493,7 +4498,7 @@ img {
 
 .methodology-evidence {
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text);
     line-height: var(--line-height-body);
     padding: var(--space-4);
@@ -4515,7 +4520,7 @@ img {
     gap: var(--space-2);
     padding: var(--space-2) var(--space-4);
     font-family: var(--font-body);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--orange-500);
     text-decoration: none;
@@ -4536,7 +4541,7 @@ img {
 
 .quiz-progress-text {
     font-family: var(--font-heading);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     display: block;
     margin-bottom: var(--space-3);
@@ -4581,7 +4586,7 @@ img {
 
 .question-text {
     font-family: var(--font-heading);
-    font-size: var(--font-size-h5);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--color-text);
     line-height: var(--line-height-heading);
@@ -4722,7 +4727,7 @@ img {
 .results-badge {
     display: inline-block;
     font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-base);
     color: var(--orange-500);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -4750,7 +4755,7 @@ img {
 
 .results-analysis-title {
     font-family: var(--font-heading);
-    font-size: var(--font-size-h4);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--color-text);
     margin-bottom: var(--space-4);
@@ -4765,7 +4770,7 @@ img {
 
 .results-recommendations-title {
     font-family: var(--font-heading);
-    font-size: var(--font-size-h4);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--color-text);
     margin-bottom: var(--space-6);
@@ -4786,7 +4791,7 @@ img {
 
 .recommendation-title {
     font-family: var(--font-heading);
-    font-size: var(--font-size-h5);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--orange-500);
     margin-bottom: var(--space-2);
@@ -4806,7 +4811,7 @@ img {
     gap: var(--space-2);
     padding: var(--space-3) var(--space-6);
     font-family: var(--font-heading);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--color-text);
     background: var(--orange-500);
@@ -4830,7 +4835,7 @@ img {
 
 .results-methodology-text {
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     line-height: var(--line-height-body);
     margin-bottom: var(--space-4);
@@ -4847,7 +4852,7 @@ img {
     align-items: center;
     padding: var(--space-2) var(--space-4);
     font-family: var(--font-body);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--orange-500);
     text-decoration: none;
@@ -4907,7 +4912,7 @@ img {
     margin-top: var(--space-6);
     padding: var(--space-3) var(--space-5);
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--orange-500);
     background: transparent;
@@ -4964,7 +4969,7 @@ img {
 
 .timeline-week {
     font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--orange-500);
     text-transform: uppercase;
@@ -5002,7 +5007,7 @@ img {
     max-width: 280px;
     padding: var(--space-3) var(--space-4);
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     font-weight: 400;
     line-height: 1.5;
     color: var(--color-text);
@@ -5061,7 +5066,7 @@ img {
 @media (max-width: 768px) {
     .tooltip-term::before {
         max-width: 240px;
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-base);
         left: 0;
         transform: none;
     }
@@ -5114,7 +5119,7 @@ img {
 
 .approach-label {
     font-family: var(--font-mono);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--color-text-muted);
     text-transform: uppercase;
@@ -5134,7 +5139,7 @@ img {
 
 .approach-description {
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     line-height: var(--line-height-body);
     max-width: 200px;
@@ -5394,7 +5399,7 @@ img {
 }
 
 .sticky-toc h3 {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-accent);
   margin-bottom: var(--space-4);
@@ -5413,7 +5418,7 @@ img {
 }
 
 .sticky-toc a {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   color: var(--color-text-light);
   text-decoration: none;
   transition: color 0.3s;
@@ -5522,7 +5527,7 @@ img {
 }
 
 .pull-quote p {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-text);
   margin: 0;
@@ -5595,7 +5600,7 @@ img {
 .scenario-accordion-header h3 {
   flex: 1;
   margin: 0;
-  font-size: var(--font-size-h4);
+  font-size: var(--font-size-base);
   color: var(--color-text);
 }
 
@@ -5653,7 +5658,7 @@ img {
   padding: var(--space-4) var(--space-8);
   max-width: 1200px;
   margin: 0 auto;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
 }
 
 .breadcrumbs nav {
@@ -5766,7 +5771,7 @@ img {
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   transition: background 0.3s;
 }
 
@@ -5906,7 +5911,7 @@ img {
 
 .clientes-label {
   font-family: 'ZT Bros Oskon', ui-monospace, monospace;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-accent);
@@ -6089,7 +6094,7 @@ img {
 }
 
 .testimonial-quote {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-body);
   color: var(--color-text);
   margin-bottom: var(--space-8);
@@ -6098,7 +6103,7 @@ img {
 }
 
 .testimonial-attribution {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   color: rgba(250, 248, 246, 0.8);
   font-style: normal;
   border-top: 1px solid rgba(250, 248, 246, 0.2);
@@ -6171,7 +6176,7 @@ img {
   /* MOBILE-007: Botón CTA más compacto */
   .cta-button {
     padding: 0.9rem var(--space-8);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-base);
   }
 
   /* MOBILE-008: Service cards padding reducido */
@@ -6216,7 +6221,7 @@ img {
 
   .quiz-nav-btn {
     width: 100%;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
   }
 
   .quiz-question {
