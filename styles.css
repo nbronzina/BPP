@@ -187,7 +187,7 @@
 
 html {
     scroll-padding-top: 120px;  /* Altura del navbar sticky + margen para que títulos no queden tapados */
-    background: #0a0a0a;
+    background: #1a1512;
     overflow-x: hidden;
 }
 
@@ -871,7 +871,7 @@ body.secondary-page .nav-logo {
 .cta-primary {
     display: inline-block;
     background: var(--color-accent);
-    color: #0a0a0a;
+    color: #1a1512;
     border: none;
     padding: 0.875rem 1.75rem;
     font-family: 'ZT Bros Oskon', monospace;
@@ -955,7 +955,7 @@ body.secondary-page .nav-logo {
 .cta-button,
 .pwa-install-btn {
     background: var(--color-accent);
-    color: #0a0a0a;
+    color: #1a1512;
     padding: 0.75rem 2rem;
 }
 
@@ -963,7 +963,7 @@ body.secondary-page .nav-logo {
 .pwa-install-btn:hover {
     background: var(--color-accent-bright);
     border-color: var(--color-accent-bright);
-    color: #0a0a0a;
+    color: #1a1512;
 }
 
 /* Arrow micro-interactions */
@@ -1007,7 +1007,7 @@ body.secondary-page .nav-logo {
 .btn-download:hover,
 .pwa-dismiss-btn:hover {
     background: var(--color-accent);
-    color: #0a0a0a;
+    color: #1a1512;
 }
 
 /* Form submit estandarizado con about-cta y services-cta-link */
@@ -2204,7 +2204,7 @@ footer {
 
 .filter-btn--active {
     background: var(--color-accent);
-    color: #0a0a0a;
+    color: #1a1512;
     border-color: var(--color-accent);
     box-shadow: 0 0 16px rgba(206, 115, 82, 0.3);
 }
@@ -2903,7 +2903,7 @@ img {
     top: -100px;
     left: 0;
     background: var(--color-accent);
-    color: #0a0a0a;
+    color: #1a1512;
     padding: 1rem 2rem;
     z-index: var(--z-modal);
     font-weight: 600;
@@ -4031,7 +4031,7 @@ img {
 .legal-page .back-link:hover,
 .legal-page .back-link:focus-visible {
   background: var(--color-accent);
-  color: #0a0a0a;
+  color: #1a1512;
 }
 
 /* Estilo de la fecha */
@@ -4942,7 +4942,7 @@ img {
     font-weight: 400;
     line-height: 1.5;
     color: var(--color-text);
-    background: #0a0a0a;
+    background: #1a1512;
     border: 1px solid var(--orange-500);
     border-radius: 4px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -5214,7 +5214,7 @@ img {
 /* Exception: cta-primary buttons keep their dark text on orange background */
 .reporte-page .cta-primary,
 .legal-page .cta-primary {
-  color: #0a0a0a !important;
+  color: #1a1512 !important;
 }
 
 .legal-page a:hover,
@@ -5238,7 +5238,7 @@ img {
 
 .legal-page .footer-link:hover,
 .reporte-page .footer-link:hover {
-  color: #ce7352 !important;
+  color: #c16f52 !important;
   opacity: 0.9;
 }
 
@@ -5272,7 +5272,7 @@ img {
 .reporte-page .cta-button,
 .legal-page .cta-button {
   background: var(--color-accent);
-  color: #0a0a0a;
+  color: #1a1512;
   padding: 1rem 2.5rem;
   border: 2px solid var(--color-accent);
 }
@@ -5283,12 +5283,12 @@ img {
 .legal-page .cta-button:focus-visible {
   background: var(--color-accent-bright);
   border-color: var(--color-accent-bright);
-  color: #0a0a0a;
+  color: #1a1512;
 }
 
 .reporte-page .cta-button:visited,
 .legal-page .cta-button:visited {
-  color: #0a0a0a;
+  color: #1a1512;
 }
 
 /* ──────────────────────────────────────────────
@@ -5389,7 +5389,7 @@ img {
 .mobile-toc-btn svg {
   width: 24px;
   height: 24px;
-  fill: #0a0a0a;
+  fill: #1a1512;
 }
 
 /* Mobile TOC Overlay */
@@ -5663,7 +5663,7 @@ img {
 }
 
 .share-buttons a:hover svg {
-  fill: #0a0a0a;
+  fill: #1a1512;
 }
 
 /* Sticky Download Button (Mobile) */
@@ -5698,7 +5698,7 @@ img {
   text-align: center;
   padding: 0.75rem 1rem;
   background: var(--color-accent);
-  color: #0a0a0a;
+  color: #1a1512;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
