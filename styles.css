@@ -396,7 +396,7 @@ nav {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: var(--space-6) 0;  /* 24px - navbar más compacto verticalmente */
+    padding: var(--space-4) 0;  /* 16px - navbar compacto */
     background-color: transparent;
     backdrop-filter: none;
     border-bottom: none;
@@ -495,6 +495,7 @@ body.secondary-page .nav-logo {
 /* Nav logo placeholder - space for transformed logo */
 .nav-links {
     display: flex;
+    align-items: center;  /* Centra verticalmente con logo */
     gap: var(--space-6);  /* 24px - espaciado más compacto */
     list-style: none;
 }
@@ -2815,7 +2816,7 @@ body.page-transitioning-in #page-transition-overlay {
 
 .equipo-row {
     display: grid;
-    grid-template-columns: 1.8fr 2.2fr 1.8fr 0.2fr;
+    grid-template-columns: 1.8fr 2.2fr 1.8fr;  /* 3 columnas: nombre, rol, ciudad */
     align-items: center;
     gap: var(--space-6);
     padding: var(--space-5) 0;
@@ -2860,12 +2861,6 @@ body.page-transitioning-in #page-transition-overlay {
 
 .equipo-link:hover {
     opacity: 0.75;
-}
-
-.equipo-link-placeholder {
-    font-size: 1rem;
-    color: rgba(250, 248, 246, 0.2);
-    text-align: right;
 }
 
 .equipo-foto-hover {
@@ -3545,10 +3540,6 @@ img {
     .equipo-ciudad {
         font-size: 1rem;
         opacity: 0.6;
-    }
-
-    .equipo-link-placeholder {
-        display: none;
     }
 
     /* Activity titles refined */
