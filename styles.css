@@ -749,7 +749,9 @@ body.secondary-page .nav-logo {
 }
 
 .corner-bracket {
-    display: none;  /* Removidos - demasiado duros/robóticos */
+    fill: rgba(250, 248, 246, 0.2);
+    font-size: 48px;
+    font-weight: 700;
 }
 
 /* Hero Immersive Variant - Editorial Background Imagery */
@@ -1306,7 +1308,7 @@ body.secondary-page .nav-logo {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    /* Sin decoración border */
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -1354,6 +1356,11 @@ body.secondary-page .nav-logo {
     color: var(--orange-500);
 }
 
+.about-separator {
+    border: none;
+    border-top: 1px solid rgba(250, 248, 246, 0.07);
+    margin: var(--space-8) 0;
+}
 
 .about-purpose {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -1375,10 +1382,28 @@ body.secondary-page .nav-logo {
 
 /* Corner brackets (BPP brand) */
 .corner-bracket {
-    display: none;  /* Removidos - demasiado duros/robóticos */
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
 }
 
+.corner-bracket--tl {
+    top: 0;
+    left: 0;
+    border-top: 2px solid var(--color-accent);
+    border-left: 2px solid var(--color-accent);
+    box-shadow: -2px 0 6px rgba(193, 111, 82, 0.35);
+    opacity: 0.3;
+}
 
+.corner-bracket--br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid var(--color-accent);
+    border-right: 2px solid var(--color-accent);
+    opacity: 0.3;
+}
 
 /* Transformation cards */
 .transformation-cards {
@@ -1393,14 +1418,14 @@ body.secondary-page .nav-logo {
     align-items: flex-start;
     gap: var(--space-4);
     padding: var(--space-5) var(--space-6);
-    /* Sin decoración border */
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     background: rgba(206, 115, 82, 0.03);
     transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .transformation-card:hover {
     background: rgba(206, 115, 82, 0.06);
-    /* Sin decoración hover */
+    box-shadow: -3px 0 12px rgba(193, 111, 82, 0.5);
 }
 
 .transformation-card .card-icon {
@@ -1561,7 +1586,7 @@ body.secondary-page .nav-logo {
     font-family: var(--font-mono);
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     opacity: 0.6;
-    /* Sin decoración border */
+    box-shadow: -2px 0 6px rgba(193, 111, 82, 0.35);
     padding-left: var(--space-4);
     margin-top: var(--space-8);
     line-height: 1.6;
@@ -1606,7 +1631,7 @@ body.secondary-page .nav-logo {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    /* Sin decoración border */
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-6);
@@ -1959,7 +1984,7 @@ footer {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    /* Sin decoración border */
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-bottom: var(--space-12);
 }
@@ -2325,7 +2350,7 @@ footer {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    /* Sin decoración border */
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -2665,7 +2690,7 @@ body.page-transitioning-in #page-transition-overlay {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    /* Sin decoración border */
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -5415,7 +5440,7 @@ img {
   margin: var(--space-12) 0;
   padding: var(--space-8) var(--space-10);
   background: linear-gradient(135deg, rgba(206, 115, 82, 0.08), rgba(212, 132, 94, 0.05));
-  /* Sin decoración border */
+  box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
   border-radius: 8px;
   position: relative;
 }
