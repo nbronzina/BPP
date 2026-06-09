@@ -876,6 +876,65 @@ body.secondary-page .nav-logo {
     color: var(--color-accent-bright);
 }
 
+/* ========================= */
+/*   Utility Classes        */
+/*   (Consolidated duplicates) */
+/* ========================= */
+
+/* Layout utilities */
+.bpp-flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.bpp-flex-col-gap-3 {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.bpp-flex-col-gap-6 {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+/* Text utilities */
+.bpp-text-muted {
+    color: var(--color-text-muted);
+}
+
+.bpp-section-label {
+    color: var(--color-text);
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* Spacing utilities */
+.bpp-mb-6 {
+    margin-bottom: var(--space-6);
+}
+
+.bpp-mb-12 {
+    margin-bottom: var(--space-12);
+}
+
+.bpp-mt-4 {
+    margin-top: var(--space-4);
+}
+
+.bpp-mt-10 {
+    margin-top: var(--space-10);
+}
+
+.bpp-text-center {
+    text-align: center;
+}
+
 .section {
     padding: var(--spacing-section) var(--space-24);
     max-width: 1400px;
@@ -915,21 +974,6 @@ body.secondary-page .nav-logo {
     align-items: start;
     padding: var(--space-12) var(--space-24) var(--space-24);  
 }
-
-.about-label {
-    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text);  
-    opacity: 1;
-    
-    padding-left: var(--space-6);
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-12);
-}
-
 .about-content {
     grid-column: 1;
     position: relative;
@@ -1069,21 +1113,6 @@ body.secondary-page .nav-logo {
 .services-container {
     padding: var(--space-24) var(--space-24) var(--space-16);  
 }
-
-.services-label {
-    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text);  
-    opacity: 1;
-    
-    padding-left: var(--space-6);
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-6);
-}
-
 .services-intro {
     font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
@@ -1395,11 +1424,6 @@ footer {
     background-color: var(--orange-900);  
 }
 
-.contact-grid {
-    display: flex;
-    flex-direction: column;
-}
-
 .contact-label {
     font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
     font-size: var(--font-size-base);
@@ -1469,11 +1493,6 @@ footer {
     color: var(--color-text);
     opacity: 0.4;
     line-height: 1.6;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
 }
 
 .form-group {
@@ -1631,21 +1650,6 @@ footer {
     color: rgba(250, 248, 246, 0.4);
     font-family: 'Plus Jakarta Sans', monospace;
 }
-
-.actividades-label {
-    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text);  
-    opacity: 1;
-    
-    padding-left: var(--space-6);
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-12);
-}
-
 #actividades {
     padding: var(--space-24) var(--space-24) var(--space-12);  
 }
@@ -1727,14 +1731,6 @@ footer {
 }
 
 .actividad-fecha {
-    color: var(--color-text-muted);  
-}
-
-.actividad-separador {
-    color: var(--color-text-muted);  
-}
-
-.actividad-tags {
     color: var(--color-text-muted);  
 }
 
@@ -2163,14 +2159,6 @@ img {
   margin-top: var(--space-8);
 }
 
-.impact-top--spacing-lg {
-  margin-top: var(--space-10);
-}
-
-.text-spacing-sm {
-  margin-top: var(--space-4);
-}
-
 .text-spacing-md {
   margin-top: var(--space-6);
 }
@@ -2390,74 +2378,6 @@ img {
 
 .legal-page .legal-spacing {
   margin-top: var(--space-12);
-}
-
-.reporte-page .hero-section {
-    padding: var(--space-20) var(--space-8) var(--space-10);
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.reporte-page .report-label {
-    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
-    font-size: var(--font-size-base);
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-6);
-    opacity: 0.9;
-}
-
-.reporte-page .hero-section h1 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h2);
-    font-weight: 700;
-    color: var(--color-text);
-    text-align: left;
-    line-height: var(--line-height-heading);
-    margin-bottom: var(--space-3);
-}
-
-.reporte-page .hero-sub {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    opacity: 0.75;
-    max-width: 900px;
-}
-
-.reporte-page .report-tags {
-    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    opacity: 0.7;  
-    margin-top: var(--space-4);
-}
-
-.reporte-page .actividad-card--light {
-    background: rgba(250, 248, 246, 0.02);
-    border: 1px solid rgba(203, 112, 67, 0.4);
-    border-radius: 8px;
-}
-
-.reporte-page .impact-number {
-    font-size: var(--font-size-number-md);
-    font-weight: 600;
-    color: var(--color-accent);
-}
-
-.reporte-page .impact-number-hero {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    color: var(--color-accent);
-    line-height: 1.1;
-    margin: var(--space-6) 0;
-}
-
-.reporte-page .section-separator {
-    padding-top: var(--spacing-section);
-    border-top: 1px solid rgba(250, 248, 246, 0.08);
 }
 
 .report-scenarios-grid {
@@ -3237,87 +3157,14 @@ img {
 }
 
 .legal-page a,
-.reporte-page a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: color var(--transition-normal);
-}
-
-.reporte-page .cta-primary,
-.legal-page .cta-primary {
-  color: #1a1512 !important;
-}
 
 .legal-page a:hover,
-.reporte-page a:hover {
-  color: var(--color-accent-bright);
-}
 
 .legal-page a:visited,
-.reporte-page a:visited {
-  color: var(--color-accent);
-}
 
 .legal-page .footer-link,
-.reporte-page .footer-link,
-.legal-page .footer-link:visited,
-.reporte-page .footer-link:visited {
-  color: var(--color-text) !important;
-  opacity: 0.5;
-}
 
 .legal-page .footer-link:hover,
-.reporte-page .footer-link:hover {
-  color: #c16f52 !important;
-  opacity: 0.9;
-}
-
-.reporte-page .nav-wordmark,
-.legal-page .nav-wordmark {
-  color: rgba(250, 248, 246, 0.9) !important;
-}
-
-.reporte-page .nav-wordmark:hover,
-.legal-page .nav-wordmark:hover {
-  color: var(--color-accent);
-}
-
-.reporte-page .nav-links a,
-.legal-page .nav-links a {
-  color: var(--color-text-light);
-}
-
-.reporte-page .nav-links a:hover,
-.legal-page .nav-links a:hover {
-  color: var(--color-accent);
-}
-
-.reporte-page .nav-links a:visited,
-.legal-page .nav-links a:visited {
-  color: var(--color-text-light);
-}
-
-.reporte-page .cta-button,
-.legal-page .cta-button {
-  background: var(--color-accent);
-  color: #1a1512;
-  padding: var(--space-4) var(--space-10);
-  border: 2px solid var(--color-accent);
-}
-
-.reporte-page .cta-button:hover,
-.legal-page .cta-button:hover,
-.reporte-page .cta-button:focus-visible,
-.legal-page .cta-button:focus-visible {
-  background: var(--color-accent-bright);
-  border-color: var(--color-accent-bright);
-  color: #1a1512;
-}
-
-.reporte-page .cta-button:visited,
-.legal-page .cta-button:visited {
-  color: #1a1512;
-}
 
 .reading-progress-bar {
   position: fixed;
@@ -3577,11 +3424,6 @@ img {
 .scenario-accordion-content.active {
   max-height: 2000px;
   padding: var(--space-6) var(--space-8);
-}
-
-.reporte-page .hero-section {
-  position: relative;
-  overflow: hidden;
 }
 
 .section-icon svg {
@@ -4428,13 +4270,9 @@ img {
         transform: none;
     }
 
-    .reporte-page .hero-section {
-        padding: 32px var(--space-6) var(--space-8);
-    }
+    
 
-    .reporte-page .content-section {
-        padding: 0 var(--space-6) var(--space-10);
-    }
+    
     
   .cta-primary {
     margin-bottom: var(--space-4);
