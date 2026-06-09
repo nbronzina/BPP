@@ -1256,6 +1256,15 @@ body.secondary-page .nav-logo {
     margin-right: auto;
 }
 
+/* Section color variants - Anti-template color blocking */
+.section--orange-950 {
+    background-color: var(--orange-950);  /* #1a0f0c - darkest */
+}
+
+.section--orange-900 {
+    background-color: var(--orange-900);  /* #331e18 - dark warm */
+}
+
 .section-wide {
     max-width: 1600px;
 }
@@ -1944,6 +1953,7 @@ footer {
 
 .contact-form-section {
     padding: var(--spacing-section) var(--space-24);
+    background-color: var(--orange-900);  /* #331e18 - dark warm - Anti-template color blocking */
 }
 
 .contact-grid {
