@@ -748,10 +748,6 @@ body.secondary-page .nav-logo {
     fill: var(--color-accent);
 }
 
-.corner-bracket {
-    display: none;  /* Removidos - demasiado duros/robóticos */
-}
-
 /* Hero Immersive Variant - Editorial Background Imagery */
 .hero-immersive {
     position: relative;
@@ -1010,6 +1006,7 @@ body.secondary-page .nav-logo {
     font-size: var(--font-size-base);
     font-weight: 500;
     border: 1.5px solid var(--color-accent);
+    align-self: flex-start;  /* Consolidated from line 2074 */
 }
 
 .form-submit:hover {
@@ -1347,12 +1344,6 @@ body.secondary-page .nav-logo {
     margin-bottom: var(--space-8);
 }
 
-.about-pain-list {
-    list-style: none;
-    padding: 0 0 var(--space-10) 0;
-    margin: 0;
-}
-
 .about-pain-list li {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
@@ -1373,16 +1364,6 @@ body.secondary-page .nav-logo {
     color: var(--orange-500);
 }
 
-
-.about-purpose {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h2);  /* Same size as "Sabemos lo que se siente" */
-    font-weight: 600;
-    opacity: 0.95;
-    margin-bottom: var(--space-4);
-    padding-top: var(--space-10);
-}
-
 .about-mission {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
@@ -1393,11 +1374,6 @@ body.secondary-page .nav-logo {
 }
 
 /* Corner brackets (BPP brand) */
-.corner-bracket {
-    display: none;  /* Removidos - demasiado duros/robóticos */
-}
-
-
 
 /* Transformation cards */
 .transformation-cards {
@@ -2096,10 +2072,6 @@ footer {
 }
 
 /* form-submit ahora usa estilos unificados (ver línea 281) */
-.form-submit {
-    align-self: flex-start;
-}
-
 /* Form messages */
 .form-message {
     padding: var(--space-4);
@@ -3243,11 +3215,6 @@ img {
         padding: var(--space-6);
     }
 
-    .corner-bracket {
-        width: 30px;
-        height: 30px;
-    }
-
     .transformation-card {
         padding: var(--space-4);
         gap: var(--space-3);
@@ -3323,11 +3290,6 @@ img {
     .about-pain-list li {
         font-size: var(--font-size-base);
         line-height: 1.65; /* Slightly tighter for mobile */
-    }
-
-    .about-purpose {
-        font-size: var(--font-size-h3);  /* Same size as about-headline on mobile */
-        padding-top: var(--space-8);
     }
 
     .about-transformation-list li {
