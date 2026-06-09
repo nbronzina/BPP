@@ -190,9 +190,77 @@ body.secondary-page .nav-logo {
     font-weight: 700;
 }
 
+.subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-text);  /* Blanco puro para audacia extrema */
+    margin-bottom: var(--space-10);
+    font-weight: 400;
+    opacity: 0.95;
+    max-width: 600px;
+    text-wrap: balance;
+}
+
+.locations {
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+    font-size: var(--font-size-base);
+    color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.5) */
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* Hero Data Viz */
+.argentina-map {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.data-point {
+    fill: var(--color-accent);
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+
+.data-point.high {
+    fill: var(--color-accent);
+    opacity: 0.9;
+}
+
+.data-point.medium {
+    fill: var(--color-accent);
+    opacity: 0.75;  /* Increased from 0.6 for better contrast */
+}
+
+.data-point:hover {
+    fill: var(--color-accent-bright);
+    opacity: 1;
+}
+
+.data-label {
+    fill: rgba(250, 248, 246, 0.7);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.flow-dot {
+    fill: var(--color-accent);
+}
+
+.corner-bracket {
+    fill: rgba(250, 248, 246, 0.2);
+    font-size: 48px;
+    font-weight: 700;
+}
+
+/* Hero Immersive Variant - Editorial Background Imagery */
 .hero-immersive {
-    
-    overflow: hidden; }
+    position: relative;
+    overflow: hidden;
+}
 
 .hero-visual {
     position: absolute; top: 0; left: 0; height: 100%; z-index: 0; opacity: 0.12; }
@@ -390,6 +458,11 @@ body.secondary-page .nav-logo {
     color: var(--orange-500);
 }
 
+.about-separator {
+    border: none;
+    border-top: 1px solid rgba(250, 248, 246, 0.07);
+    margin: var(--space-8) 0;
+}
 
 .about-separator {
     border: none;
@@ -1042,8 +1115,19 @@ img {
 .logo-item img[src*="manifiesto-bar"] {
   max-height: 40px; max-width: 40px; }
 
-.logo-item img[src*="dassen"] {
-  max-height: 40px; max-width: 65px; }
+.equipo-label {
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text);  /* Blanco puro, border naranja como marca */
+    opacity: 1;
+    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
+    padding-left: var(--space-6);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-12);
+}
 
 .logo-item img[src*="lab-logo-coral"],
 .logo-item img[src*="EscInn"],
@@ -2087,11 +2171,26 @@ img {
     margin-bottom: var(--space-4);
 }
 
-.results-description {
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-body);
+/* Pull Quotes */
+.pull-quote {
+  margin: var(--space-12) 0;
+  padding: var(--space-8) var(--space-10);
+  background: linear-gradient(135deg, rgba(206, 115, 82, 0.08), rgba(212, 132, 94, 0.05));
+  box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
+  border-radius: 8px;
+  position: relative;
+}
+
+.pull-quote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: var(--space-5);
+  font-size: 5rem;
+  color: var(--color-accent);
+  opacity: 0.3;
+  font-family: Georgia, serif;
+  line-height: 1;
 }
 
 .results-recommendations-title {
