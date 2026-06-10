@@ -2134,8 +2134,9 @@ footer {
    Contact Form - Editorial Layout
    ========================= */
 
+/* Mobile-first base */
 .contact-form-section {
-    padding: var(--spacing-section) var(--space-24);
+    padding: var(--space-8) var(--space-6);
 }
 
 .contact-grid {
@@ -2158,7 +2159,7 @@ footer {
 
 .contact-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--space-10);
     align-items: start;
 }
@@ -2194,7 +2195,7 @@ footer {
 
 .contact-addresses {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--space-6);
 }
 
@@ -2265,6 +2266,7 @@ footer {
 
 .form-group textarea {
     resize: vertical;
+    min-height: 150px;
 }
 
 /* form-submit ahora usa estilos unificados (ver línea 281) */
@@ -2296,6 +2298,21 @@ footer {
 
 .form-message.show {
     display: block;
+}
+
+/* Contact Form - Desktop Enhancement */
+@media (min-width: 769px) {
+    .contact-form-section {
+        padding: var(--spacing-section) var(--space-24);
+    }
+
+    .contact-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-addresses {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 /* =========================
@@ -3527,23 +3544,6 @@ img {
 
     .actividad-entrada:nth-child(even) .actividad-texto {
         order: 0 !important;
-    }
-
-    /* MOBILE-002: Optimización de formulario de contacto */
-    .contact-form-section {
-        padding: var(--space-8) var(--space-6);
-    }
-
-    .contact-inner {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-form label {
-        font-size: var(--font-size-base);
-    }
-
-    .contact-form textarea {
-        min-height: 150px;
     }
 
     /* MOBILE-009: Social icons táctiles (mínimo 48x48px) */
