@@ -19,7 +19,9 @@ function trackEvent(name, props) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  console.log('🚀 BPP main.js loaded - DOMContentLoaded fired');
   const body = document.body;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // =====================================================
   // ARROW MICRO-INTERACTIONS
@@ -234,150 +236,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
-  // MAGNETIC BUTTONS - Efecto de atracción en CTAs
-  // -----------------------------------------------------
-  // Botones CTA se mueven sutilmente hacia el cursor
-  // cuando está cerca, creando efecto magnético
-  // =====================================================
-  const magneticButtons = document.querySelectorAll('.cta-primary, .cta-secondary');
-  const MAGNETIC_RADIUS = 100; // Radio de atracción en px
-  const MAGNETIC_STRENGTH = 0.3; // Multiplicador de movimiento (0-1)
-
-  if (magneticButtons.length && !prefersReducedMotion) {
-    magneticButtons.forEach(btn => {
-      btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        const deltaX = e.clientX - centerX;
-        const deltaY = e.clientY - centerY;
-        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-        if (distance < MAGNETIC_RADIUS) {
-          const moveX = deltaX * MAGNETIC_STRENGTH;
-          const moveY = deltaY * MAGNETIC_STRENGTH;
-          btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        }
-      });
-
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translate(0, 0)';
-      });
-    });
-  }
-
-  // =====================================================
-  // CUSTOM CURSOR GLOW - Orange halo siguiendo el mouse
-  // -----------------------------------------------------
-  // Crea un cursor personalizado con glow naranja que se
-  // intensifica sobre elementos interactivos
-  // =====================================================
-  const hasHover = window.matchMedia('(hover: hover)').matches;
-
-  if (hasHover && !prefersReducedMotion) {
-    // Crear elemento de cursor
-    const cursor = document.createElement('div');
-    cursor.id = 'custom-cursor';
-    document.body.appendChild(cursor);
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    // Track mouse position
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      // Activar cursor custom después del primer movimiento
-      if (!body.classList.contains('custom-cursor-active')) {
-        body.classList.add('custom-cursor-active');
-      }
-    });
-
-    // Smooth cursor follow con lerp (linear interpolation)
-    function updateCursor() {
-      const ease = 0.15;
-      cursorX += (mouseX - cursorX) * ease;
-      cursorY += (mouseY - cursorY) * ease;
-
-      cursor.style.transform = `translate(${cursorX - 16}px, ${cursorY - 16}px)`;
-
-      requestAnimationFrame(updateCursor);
-    }
-    updateCursor();
-
-    // Detectar hover sobre elementos interactivos
-    const interactiveSelectors = 'a, button, .cta-primary, .cta-secondary, .cta-link, input, textarea, [role="button"]';
-
-    document.addEventListener('mouseover', (e) => {
-      if (e.target.closest(interactiveSelectors)) {
-        body.classList.add('cursor-over-interactive');
-      }
-    });
-
-    document.addEventListener('mouseout', (e) => {
-      if (e.target.closest(interactiveSelectors)) {
-        body.classList.remove('cursor-over-interactive');
-      }
-    });
-
-    // Ocultar cursor custom cuando sale de la ventana
-    document.addEventListener('mouseleave', () => {
-      body.classList.remove('custom-cursor-active');
-    });
-
-    document.addEventListener('mouseenter', () => {
-      body.classList.add('custom-cursor-active');
-    });
-  }
-
-  // =====================================================
-  // PAGE TRANSITIONS - Curtain effect en navegación
-  // -----------------------------------------------------
-  // Overlay naranja que baja/sube al navegar entre páginas
-  // =====================================================
-  if (!prefersReducedMotion) {
-    // Crear overlay element
-    const overlay = document.createElement('div');
-    overlay.id = 'page-transition-overlay';
-    document.body.appendChild(overlay);
-
-    // Transition-in al cargar la página
-    body.classList.add('page-transitioning-in');
-    setTimeout(() => {
-      body.classList.remove('page-transitioning-in');
-    }, 100);
-
-    // Interceptar clicks en links internos
-    const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
-
-    internalLinks.forEach(link => {
-      // Skip anchor links (same page navigation)
-      if (link.getAttribute('href').startsWith('#')) return;
-
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-
-        // Solo aplicar transición a navegación interna real (no anchors, no external)
-        if (href && !href.startsWith('#') && !link.hasAttribute('target')) {
-          e.preventDefault();
-
-          // Animar overlay bajando
-          body.classList.add('page-transitioning-out');
-
-          // Navegar después de la animación
-          setTimeout(() => {
-            window.location.href = href;
-          }, 600); // Match CSS transition duration
-        }
-      });
-    });
-  }
-
-  // =====================================================
   // BLOQUE TRACKING / ANIMACIONES
   // -----------------------------------------------------
   // IntersectionObserver para animar elementos con
@@ -386,7 +244,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const animatedEls = document.querySelectorAll("[data-animate]");
   const trackedSections = new Set();
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (animatedEls.length && "IntersectionObserver" in window) {
     // Mark elements as ready for animation only if motion is allowed
@@ -430,16 +287,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // instalación en páginas que no son legales ni reporte.
   // =====================================================
 
-  // Service Worker (PWA)
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker
-        .register("/sw.js")
-        .catch(() => {
-          // Error silently ignored in production
-        });
-    });
-  }
+  // Service Worker (PWA) - TEMPORARILY DISABLED to avoid cache issues
+  // if ("serviceWorker" in navigator) {
+  //   window.addEventListener("load", () => {
+  //     navigator.serviceWorker
+  //       .register("/sw.js")
+  //       .catch(() => {
+  //         // Error silently ignored in production
+  //       });
+  //   });
+  // }
 
   // =====================================================
   // BLOQUE FORMULARIO DE CONTACTO
@@ -1205,8 +1062,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // =====================================================
   const methodologyToggle = document.querySelector('.methodology-toggle');
   const methodologyContent = document.querySelector('.methodology-content');
+  console.log('✅ Methodology toggle:', { toggle: !!methodologyToggle, content: !!methodologyContent });
 
   if (methodologyToggle && methodologyContent) {
+    console.log('✅ Methodology toggle initialized');
     const toggleMethodology = () => {
       const isExpanded = methodologyToggle.getAttribute('aria-expanded') === 'true';
 
@@ -1246,7 +1105,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const quizProgressText = document.getElementById('quiz-current-question');
   const quizProgressFill = document.getElementById('quiz-progress-fill');
 
+  console.log('✅ Quiz elements:', { quizQuestions: !!quizQuestions, quizPrevBtn: !!quizPrevBtn, quizNextBtn: !!quizNextBtn });
+
   if (quizQuestions && quizResults && quizSubmitBtn && quizResetBtn && quizPrevBtn && quizNextBtn) {
+    console.log('✅ Quiz initialized - all elements found');
     const allQuestions = document.querySelectorAll('.quiz-question');
     const totalQuestions = allQuestions.length;
     let currentQuestion = 0;
@@ -1470,6 +1332,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Expandable timeline accordions in service cards
   // =====================================================
   const timelineToggles = document.querySelectorAll('.service-timeline-toggle');
+  console.log(`✅ Timeline toggles found: ${timelineToggles.length}`);
 
   if (timelineToggles.length) {
     timelineToggles.forEach(toggle => {

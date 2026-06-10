@@ -34,7 +34,6 @@
     <link rel="manifest" href="site.webmanifest?v=120">
     <meta name="theme-color" content="#0a0a0a">
     <meta name="msapplication-TileColor" content="#0a0a0a">
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Security Policies -->
@@ -55,7 +54,7 @@
 
     <!-- Preload Critical Assets -->
     <link rel="preload" as="image" href="img/logo-160.webp" imagesrcset="img/logo-160.webp 160w, img/logo-320.webp 320w" imagesizes="(max-width: 768px) 87px, 180px" type="image/webp" fetchpriority="high">
-    <link rel="preload" href="main.min.js" as="script">
+    <link rel="preload" href="main.js" as="script">
 
     <!-- Critical CSS Inline -->
     <style>
@@ -245,21 +244,8 @@
                 </picture>
             </a>
 
-            <!-- Mobile menu button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Links (derecha) -->
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">Quiénes somos</a></li>
-                <li><a href="#services">La secuencia</a></li>
-                <li><a href="/proyectos/">Lo hecho</a></li>
-                <li><a href="/pensamiento/">Pensamiento</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
+            <!-- CTA (derecha) -->
+            <a href="#contact" class="nav-cta">Hablemos</a>
         </div>
     </nav>
 
@@ -301,8 +287,8 @@
 
     <!-- Hechos Section -->
     <section id="actividades" class="section" aria-labelledby="actividades-heading">
-        <div class="bpp-section-label">Hechos</div>
-        <h2 class="sr-only">Hechos</h2>
+        <div class="bpp-section-label">Lo hecho</div>
+        <h2 id="actividades-heading" class="section-heading">Pensamiento y trabajo aplicado</h2>
 
         <div class="bpp-flex-col">
             <!-- Entrada 1: Personal Software -->
@@ -478,7 +464,7 @@
     <section id="about" class="section" aria-labelledby="about-heading">
         <div class="about-grid" data-animate>
             <div class="bpp-section-label">
-                Quiénes somos
+                Nosotros
             </div>
             <div class="about-content">
                 <h2 id="about-heading" class="about-headline">Decisiones sin vuelta atrás.<br>Datos contradictorios.<br>Equipos estancados.</h2>
@@ -510,9 +496,9 @@
     <!-- Services Section -->
     <section id="services" class="section section--orange-950" aria-labelledby="services-heading">
         <div class="services-container">
-            <div class="bpp-section-label">La secuencia</div>
-            <h2 class="sr-only">La secuencia: cuatro movimientos</h2>
-            <p class="services-intro">Cuatro movimientos, siempre en orden. Entender el contexto, diseñar futuros, validar con datos, comunicar decisiones. No vendemos pasos sueltos — el método funciona completo.</p>
+            <div class="bpp-section-label">Método</div>
+            <h2 id="services-heading" class="section-heading">Cuatro movimientos, siempre en orden</h2>
+            <p class="services-intro">Entender el contexto, diseñar futuros, validar con datos, comunicar decisiones. No vendemos pasos sueltos — el método funciona completo.</p>
 
             <div class="services-grid">
                 <!-- Servicio 01 -->
@@ -649,9 +635,8 @@
         <span id="socios" style="position: absolute; top: -100px;"></span>
         <span id="clientes" style="position: absolute; top: -100px;"></span>
 
-        <div class="section-header">
-            <p class="section-eyebrow">Nuestra red</p>
-        </div>
+        <div class="bpp-section-label">Red</div>
+        <h2 id="trust-heading" class="section-heading">Equipo y organizaciones que trabajan con nosotros</h2>
 
         <div class="trust-grid">
             <!-- Equipo (left, compact) -->
@@ -1157,7 +1142,7 @@
           </div>
           <div class="footer-practice">
             <span class="footer-tagline">Diseño estratégico · Comunicación · Futuros</span>
-            <span class="footer-location">Madrid — Buenos Aires</span>
+            <span class="footer-location">Buenos Aires — Madrid</span>
           </div>
           <div class="footer-links-line">
             <a href="mailto:bppanalyticsanddesign@gmail.com" class="footer-link">bppanalyticsanddesign@gmail.com</a>
@@ -1193,7 +1178,7 @@
     </footer>
 
     <!-- JS global unificado -->
-    <script src="main.min.js" defer></script>
+    <script src="main.js" defer></script>
 
     <!-- Plausible Analytics (Privacy-friendly, no cookies) - Cargado al final para evitar forced reflows -->
     <script defer data-domain="bppanalyticsanddesign.com" src="https://plausible.io/js/script.js"></script>
