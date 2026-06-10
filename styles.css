@@ -2034,7 +2034,7 @@ footer {
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: var(--color-text);
     opacity: 0.4;
-    display: none;  /* Hidden on mobile */
+    display: none !important;  /* Force hidden on mobile, even if JS tries to show */
 }
 
 /* Ocultar separador entre brand y copyright (debe estar pegado) */
@@ -2664,6 +2664,7 @@ footer {
 .actividad-entrada {
     display: grid;
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
     gap: 0;
     align-items: stretch;
     min-height: auto;
@@ -5856,7 +5857,7 @@ img {
 .marquee-track {
   display: flex;
   gap: var(--space-16);
-  animation: marquee 30s linear infinite;
+  animation: marquee 15s linear infinite;
   width: max-content;
 }
 
