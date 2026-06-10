@@ -429,14 +429,25 @@ body.secondary-page .nav-logo {
     gap: var(--space-8);
 }
 
-/* Nav logo placeholder - space for transformed logo */
+/* Nav logo placeholder - Mobile-first base */
 .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 80%;
+    min-width: 260px;
+    background-color: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
     display: flex;
-    align-items: center;  /* Alinea verticalmente con centro del logo */
-    gap: var(--space-6);  /* 24px - espaciado más compacto */
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
     list-style: none;
-    margin: 0;  /* Reset margin */
-    padding: 0;  /* Reset padding */
+    margin: 0;
+    padding: var(--space-20) var(--space-8);
+    transition: right 0.3s;
+    z-index: var(--z-nav-mobile);
 }
 
 .nav-links li {
@@ -449,11 +460,12 @@ body.secondary-page .nav-logo {
 .nav-links a {
     color: var(--color-text-light);
     text-decoration: none;
-    font-size: 1rem;  /* 16px - más compacto que base (18px) */
+    font-size: 1rem;
     font-weight: 400;
-    line-height: 1;  /* Alinea verticalmente con centro del logo */
-    display: inline-flex;  /* Inline-flex para mejor control */
-    align-items: center;  /* Centra el texto */
+    line-height: 1;
+    display: block;
+    align-items: center;
+    padding: var(--space-3) var(--space-5);
     transition: color 0.3s;
     position: relative;
 }
@@ -477,6 +489,10 @@ body.secondary-page .nav-logo {
     width: 100%;
 }
 
+.nav-links.active {
+    right: 0;
+}
+
 .nav-coming-soon {
     opacity: 0.3;
     cursor: default;
@@ -485,7 +501,7 @@ body.secondary-page .nav-logo {
 }
 
 .mobile-menu-btn {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: var(--space-1);
     background: none;
@@ -496,6 +512,7 @@ body.secondary-page .nav-logo {
     padding: var(--space-3);
     justify-content: center;
     align-items: center;
+    z-index: var(--z-nav-btn);
 }
 
 .mobile-menu-btn span {
@@ -526,20 +543,38 @@ body.secondary-page .nav-logo {
     transform: translateY(0);
 }
 
-/* Mobile: larger touch target, adjusted spacing */
-@media (max-width: 768px) {
-    .nav-cta {
-        font-size: 0.9375rem;
-        padding: var(--space-3) var(--space-4);
-        min-width: 44px;
-        min-height: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+/* Navigation - Desktop Enhancement */
+@media (min-width: 769px) {
+    .nav-container {
+        padding: 0 var(--space-24);
     }
 
-    .nav-container {
-        padding: 0 var(--space-4);
+    .nav-links {
+        position: static;
+        height: auto;
+        width: auto;
+        min-width: 0;
+        background-color: transparent;
+        backdrop-filter: none;
+        flex-direction: row;
+        gap: var(--space-6);
+        padding: 0;
+        transition: none;
+        z-index: auto;
+    }
+
+    .nav-links a {
+        display: inline-flex;
+        padding: 0;
+    }
+
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    .nav-cta {
+        font-size: 1rem;
+        padding: var(--space-2) var(--space-5);
     }
 }
 
@@ -3262,37 +3297,6 @@ img {
 
     .proyectos-cta-headline {
         font-size: var(--font-size-h3);
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 80%; /* MOBILE-012: Aumentado de 70% para mejor legibilidad */
-        min-width: 260px; /* MOBILE-012: Ancho mínimo para textos largos */
-        background-color: rgba(10, 10, 10, 0.98);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        padding: var(--space-20) var(--space-8);
-        gap: var(--space-8);
-        transition: right 0.3s;
-        z-index: var(--z-nav-mobile);
-    }
-
-    .nav-links a {
-        font-size: 1rem;  /* 16px - más compacto */
-        padding: var(--space-3) var(--space-5);
-        display: block;
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-
-    .mobile-menu-btn {
-        display: flex;
-        z-index: var(--z-nav-btn);
     }
 
     .logo img,
