@@ -369,7 +369,7 @@ body.logo-pinned nav {
 .nav-logo {
     display: block;
     line-height: 0;
-    opacity: 0;
+    opacity: 1;  /* Siempre visible en lugar de patrón Superflux */
     transition: opacity var(--nav-transition, 0.3s) ease;
     will-change: opacity; /* Hint for smoother mobile rendering */
 }
