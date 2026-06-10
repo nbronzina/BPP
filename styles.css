@@ -2632,41 +2632,6 @@ footer {
     height: 48px;
 }
 
-/* =========================
-   Page Transition Overlay
-   ========================= */
-
-#page-transition-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
-    z-index: 10000;
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(-100%);
-    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1),
-                opacity 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-body.page-transitioning-out #page-transition-overlay {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-body.page-transitioning-in #page-transition-overlay {
-    transform: translateY(100%);
-    opacity: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    #page-transition-overlay {
-        display: none;
-    }
-}
-
 /* actividades-cta-link ahora usa estilos unificados (ver línea 438) */
 .actividades-cta {
     padding: var(--space-10) 0;
@@ -4940,10 +4905,12 @@ img {
     font-weight: 400;
     line-height: 1.5;
     color: var(--color-text);
-    background: #1a1512;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--orange-500);
     border-radius: 4px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(10, 10, 10, 0.95);
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--transition-fast);
