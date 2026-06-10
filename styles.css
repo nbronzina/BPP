@@ -687,12 +687,13 @@ body.secondary-page .nav-logo {
     }
 }
 
+/* Mobile-first base */
 .hero {
     height: auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: clamp(2rem, 5vh, 4rem) clamp(2rem, 8vw, var(--space-24)) clamp(2rem, 5vh, var(--space-16));
+    padding: 90px var(--space-6) 60px;
     position: relative;
     background: transparent;
 }
@@ -703,16 +704,20 @@ body.secondary-page .nav-logo {
     align-items: center;
     max-width: 1600px;
     width: 100%;
+    flex-direction: column;
+    gap: var(--space-12);
 }
 
 .hero-content {
-    text-align: left;
+    text-align: center;
     position: relative;
     z-index: 1;
+    max-width: 100%;
+    padding-left: 0;
 }
 
 .hero-break {
-    display: inline;
+    display: none;
 }
 
 .hero-viz {
@@ -906,6 +911,28 @@ body.secondary-page .nav-logo {
     font-size: var(--font-size-base);
     color: var(--color-accent);
     font-weight: 700;
+}
+
+/* Hero Section - Desktop Enhancement */
+@media (min-width: 769px) {
+    .hero {
+        padding: clamp(2rem, 5vh, 4rem) clamp(2rem, 8vw, var(--space-24)) clamp(2rem, 5vh, var(--space-16));
+    }
+
+    .hero-grid {
+        flex-direction: row;
+        gap: 0;
+    }
+
+    .hero-content {
+        text-align: left;
+        max-width: none;
+        padding-left: 0;
+    }
+
+    .hero-break {
+        display: inline;
+    }
 }
 
 /* =========================
@@ -3310,26 +3337,6 @@ img {
 
     .service-card:hover {
         border-color: var(--color-accent);
-    }
-
-    .hero {
-        padding: 90px var(--space-6) 60px;
-        justify-content: center;
-    }
-
-    .hero-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-12);
-    }
-
-    .hero-content {
-        max-width: 100%;
-        padding-left: 0;
-        text-align: center;
-    }
-
-    .hero-break {
-        display: none;
     }
 
     .tagline {
