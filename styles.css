@@ -330,11 +330,12 @@ nav {
     right: 0;
     z-index: 1000;
     padding: var(--space-4) 0;
-    background-color: transparent;
-    backdrop-filter: none;
-    border-bottom: none;
-    opacity: 0;
-    pointer-events: none;
+    background-color: rgba(10, 10, 10, 0.65);  /* Visible por defecto */
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
+    opacity: 1;  /* Siempre visible */
+    pointer-events: auto;  /* Siempre interactivo */
     transition: background-color var(--nav-transition, 0.3s) ease,
                 backdrop-filter var(--nav-transition, 0.3s) ease,
                 opacity var(--nav-transition, 0.3s) ease;
