@@ -25,7 +25,7 @@ echo ""
 # Minificar CSS
 echo "🎨 Minificando CSS..."
 if [ -f "styles.css" ]; then
-    csso styles.css --output styles.min.css
+    csso styles.css --output styles.min.css --no-restructure
     size_before=$(stat -f%z "styles.css" 2>/dev/null || stat -c%s "styles.css")
     size_after=$(stat -f%z "styles.min.css" 2>/dev/null || stat -c%s "styles.min.css")
     reduction=$(( (size_before - size_after) * 100 / size_before ))
