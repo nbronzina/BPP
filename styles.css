@@ -516,6 +516,23 @@ body.secondary-page .nav-logo {
     transform: translateY(0);
 }
 
+/* Mobile: larger touch target, adjusted spacing */
+@media (max-width: 768px) {
+    .nav-cta {
+        font-size: 0.9375rem;
+        padding: var(--space-3) var(--space-4);
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-container {
+        padding: 0 var(--space-4);
+    }
+}
+
 /* =========================
    Hero
    ========================= */
@@ -6117,6 +6134,7 @@ img {
 
   .quiz-nav-btn {
     width: 100%;
+    min-height: 44px;
     font-size: var(--font-size-base);
   }
 
@@ -6126,6 +6144,13 @@ img {
 
   .quiz-questions {
     min-height: 350px;
+  }
+
+  /* Interactive toggles: proper touch targets */
+  .methodology-toggle,
+  .service-timeline-toggle {
+    min-height: 44px;
+    padding: var(--space-3) var(--space-4);
   }
 }
 
