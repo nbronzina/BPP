@@ -1284,6 +1284,28 @@ body.secondary-page .nav-logo {
     max-width: 1600px;
 }
 
+/* Section labels and headings */
+.bpp-section-label {
+    font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    opacity: 0.8;
+    margin-bottom: var(--space-4);
+}
+
+.section-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-text);
+    margin-bottom: var(--space-8);
+    max-width: 800px;
+}
+
 /* Content centering for specific containers - Estandarizado */
 .services-grid,
 .actividades-container,
