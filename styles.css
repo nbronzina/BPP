@@ -2023,7 +2023,7 @@ body.secondary-page .nav-logo {
     padding: var(--space-5);
     border: 1px solid rgba(206, 115, 82, 0.2);
     border-radius: var(--border-radius);
-    background: rgba(206, 115, 82, 0.03);
+    background: var(--color-surface);  /* Fondo sólido #221d18 en lugar de transparente */
     position: relative;
     transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
     width: 100%;
