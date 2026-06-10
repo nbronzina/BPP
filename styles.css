@@ -2658,31 +2658,35 @@ footer {
     flex-direction: column;
 }
 
+/* Mobile-first base */
 .actividad-entrada {
     display: grid;
-    grid-template-columns: 1.2fr 1fr; /* Image-primary layout - image dominant */
+    grid-template-columns: 1fr;
     gap: 0;
     align-items: stretch;
-    min-height: 450px; /* Increased for larger imagery */
+    min-height: auto;
     border-top: 1px solid rgba(250, 248, 246, 0.12);
 }
 
-/* Entradas pares: invertir orden (zigzag pattern) */
+/* Mobile: entradas pares usan misma estructura */
 .actividad-entrada:nth-child(even) {
-    grid-template-columns: 1fr 1.2fr; /* Texto izq, imagen der */
+    grid-template-columns: 1fr;
+    direction: ltr;
 }
 
 .actividad-entrada:nth-child(even) .actividad-imagen {
-    order: 2; /* Imagen a la derecha */
+    order: -1;  /* Always first on mobile */
 }
 
 .actividad-entrada:nth-child(even) .actividad-texto {
-    order: 1; /* Texto a la izquierda */
+    order: 0;  /* Always second on mobile */
 }
 
 /* Alternating layout: Order in HTML determines position (no RTL needed) */
 .actividad-imagen {
     overflow: hidden;
+    height: 260px;
+    order: -1;  /* Always first on mobile */
 }
 
 /* Fade-up reveal for entire card (image + text together) */
@@ -2728,11 +2732,12 @@ footer {
 }
 
 .actividad-texto {
-    padding: var(--space-12) 3.5rem;
+    padding: var(--space-8) 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: var(--color-surface);  /* Fondo solo en texto, imagen sin borde gris */
+    background: var(--color-surface);
+    order: 0;  /* Always second on mobile */
 }
 
 .actividad-meta {
@@ -2888,6 +2893,37 @@ footer {
 /* actividades-cta-link ahora usa estilos unificados (ver línea 438) */
 .actividades-cta {
     padding: var(--space-10) 0;
+}
+
+/* Activities Section - Desktop Enhancement */
+@media (min-width: 769px) {
+    .actividad-entrada {
+        grid-template-columns: 1.2fr 1fr;
+        min-height: 450px;
+    }
+
+    .actividad-entrada:nth-child(even) {
+        grid-template-columns: 1fr 1.2fr;
+        direction: ltr;
+    }
+
+    .actividad-entrada:nth-child(even) .actividad-imagen {
+        order: 2;  /* Right side on even cards */
+    }
+
+    .actividad-entrada:nth-child(even) .actividad-texto {
+        order: 1;  /* Left side on even cards */
+    }
+
+    .actividad-imagen {
+        height: auto;
+        order: 0;  /* Default order on desktop */
+    }
+
+    .actividad-texto {
+        padding: var(--space-12) 3.5rem;
+        order: 0;  /* Default order on desktop */
+    }
 }
 
 /* =========================
@@ -3512,37 +3548,6 @@ img {
 
     .proyecto-descripcion {
         font-size: 1rem;
-    }
-
-    /* Actividades mobile: imagen arriba, texto abajo */
-    .actividad-entrada {
-        grid-template-columns: 1fr !important;
-        min-height: auto !important;
-    }
-
-    .actividad-entrada:nth-child(even) {
-        grid-template-columns: 1fr !important;
-        direction: ltr;
-    }
-
-    /* Force images to always appear first on mobile */
-    .actividad-imagen {
-        height: 260px;
-        order: -1 !important;
-    }
-
-    .actividad-texto {
-        padding: var(--space-8) 0;
-        order: 0 !important;
-    }
-
-    /* Reset desktop zigzag order for even cards */
-    .actividad-entrada:nth-child(even) .actividad-imagen {
-        order: -1 !important;
-    }
-
-    .actividad-entrada:nth-child(even) .actividad-texto {
-        order: 0 !important;
     }
 
     /* MOBILE-009: Social icons táctiles (mínimo 48x48px) */
