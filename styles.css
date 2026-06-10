@@ -1741,8 +1741,9 @@ body.secondary-page .nav-logo {
    Services - Editorial Blocks
    ========================= */
 
+/* Mobile-first base */
 .services-container {
-    padding: var(--spacing-section) var(--space-24);  /* Estandarizado: vertical + horizontal */
+    padding: 0 var(--spacing-horizontal-mobile);
 }
 
 .services-label {
@@ -1769,22 +1770,26 @@ body.secondary-page .nav-logo {
     padding-left: var(--space-6);
 }
 
-/* Numbered Services Grid */
+/* Numbered Services Grid - Mobile-first */
 .services-grid {
     display: flex;
     flex-direction: column;
-    gap: var(--space-12);
+    gap: var(--space-8);
     margin-bottom: var(--space-16);
     max-width: 900px;
 }
 
 .service-block {
-    padding: var(--space-10);
+    padding: var(--space-5);
     border: 1px solid rgba(206, 115, 82, 0.2);
     border-radius: var(--border-radius);
     background: rgba(206, 115, 82, 0.03);
     position: relative;
     transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .service-block:hover {
@@ -1794,7 +1799,7 @@ body.secondary-page .nav-logo {
 .service-number {
     display: block;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 4rem;
+    font-size: 2.5rem;
     font-weight: 700;
     line-height: 1;
     color: var(--color-accent);
@@ -1911,6 +1916,28 @@ body.secondary-page .nav-logo {
 .services-cta {
     padding: var(--space-12) 0;
     border-top: 1px solid rgba(250, 248, 246, 0.15);
+}
+
+/* Services Section - Desktop Enhancement */
+@media (min-width: 769px) {
+    .services-container {
+        padding: var(--spacing-section) var(--space-24);
+    }
+
+    .services-grid {
+        gap: var(--space-12);
+    }
+
+    .service-block {
+        padding: var(--space-10);
+        width: auto;
+        max-width: none;
+        overflow: visible;
+    }
+
+    .service-number {
+        font-size: 4rem;
+    }
 }
 
 /* =========================
@@ -3235,60 +3262,6 @@ img {
 
     .proyectos-cta-headline {
         font-size: var(--font-size-h3);
-    }
-
-    .services-container {
-        padding: 0 var(--spacing-horizontal-mobile);
-    }
-
-    .services-grid {
-        gap: var(--space-8);
-    }
-
-    .service-block {
-        padding: var(--space-5);  /* Reducido de var(--space-6) para más espacio */
-        width: 100%;
-        max-width: 100%;
-        overflow: hidden; /* Prevent any overflow */
-        box-sizing: border-box;
-    }
-
-    .service-title,
-    .service-lead,
-    .service-deliverable,
-    .service-method,
-    .method-link,
-    .proof-link,
-    .timeline-milestone {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        max-width: 100%;
-    }
-
-    .method-link {
-        white-space: normal !important;  /* Forzar wrap en mobile */
-    }
-
-    /* Asegurar que el número no cause overflow */
-    .service-number {
-        font-size: 2.5rem;  /* Reducido de 3rem */
-    }
-
-    .service-deliverable {
-        font-size: 1rem;  /* 16px - WCAG minimum (antes 12px) */
-        margin-top: var(--space-2);
-        line-height: 1.5;
-    }
-
-    .service-number {
-        font-size: 3rem;
-        margin-bottom: var(--space-4);
-    }
-
-    .service-title {
-        font-size: var(--font-size-h3);
-        word-wrap: break-word;
-        overflow-wrap: break-word;
     }
 
     .nav-links {
