@@ -1362,33 +1362,37 @@ body.secondary-page .nav-logo {
    About Section - Two Column Layout
    ========================= */
 
+/* Mobile-first base */
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 180px;
-    gap: 0 var(--space-12);
+    grid-template-columns: 1fr;
+    gap: 0;
     align-items: start;
-    padding: var(--spacing-section) var(--space-24);  /* Estandarizado: vertical + horizontal */
+    padding: 0 var(--spacing-horizontal-mobile);
 }
 
-/* Section labels - Opción E (Combo): mayor visibilidad + border accent */
+/* Section labels - Mobile-first */
 .about-label {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--color-text);  /* Blanco puro, border naranja como marca */
+    color: var(--color-text);
     opacity: 1;
     box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
-    padding-left: var(--space-6);
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-12);
+    padding-left: var(--space-4);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-6);
+    position: static;
+    display: block;
+    text-align: left;
 }
 
 .about-content {
-    grid-column: 1;
+    grid-column: auto;
     position: relative;
-    padding: var(--space-12);
+    padding: var(--space-6);
 }
 
 .about-headline {
@@ -1686,6 +1690,26 @@ body.secondary-page .nav-logo {
     max-width: 60ch;
 }
 
+/* About Section - Desktop Enhancement */
+@media (min-width: 769px) {
+    .about-grid {
+        grid-template-columns: 1fr 180px;
+        gap: 0 var(--space-12);
+        padding: var(--spacing-section) var(--space-24);
+    }
+
+    .about-label {
+        padding-left: var(--space-6);
+        margin-top: var(--space-8);
+        margin-bottom: var(--space-12);
+    }
+
+    .about-content {
+        grid-column: 1;
+        padding: var(--space-12);
+    }
+}
+
 /* =========================
    Services - Editorial Blocks
    ========================= */
@@ -1866,46 +1890,60 @@ body.secondary-page .nav-logo {
    Footer (global)
    ========================= */
 
+/* Mobile-first base */
 footer {
     background: transparent;
-    padding: 0 var(--space-24) var(--space-8);
+    padding: var(--space-10) var(--space-6) var(--space-8);
     border-top: 1px solid rgba(206, 115, 82, 0.2);
     margin-top: var(--spacing-section);
 }
 
 .footer-grid {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: var(--space-8);
+    text-align: center;
     padding: var(--space-6) 0;
 }
 
 .footer-left {
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
-}
-
-.footer-main-line,
-.footer-links-line {
-    display: flex;
     align-items: center;
     gap: var(--space-4);
-    flex-wrap: wrap;
+    width: 100%;
+}
+
+.footer-main-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    flex-wrap: nowrap;
+}
+
+.footer-links-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
 }
 
 .footer-brand {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;  /* 16px - WCAG minimum */
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--color-text);
-    opacity: 0.85;
+    opacity: 1;
 }
 
 .footer-separator {
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: var(--color-text);
     opacity: 0.4;
+    display: none;  /* Hidden on mobile */
 }
 
 /* Ocultar separador entre brand y copyright (debe estar pegado) */
@@ -1915,9 +1953,9 @@ footer {
 
 .footer-copy {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
+    font-size: 1rem;
     color: var(--color-text);
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 .footer-practice {
@@ -1925,8 +1963,10 @@ footer {
     flex-direction: column;
     gap: var(--space-1);
     font-family: var(--font-mono);
-    font-size: 1rem;  /* 16px - WCAG minimum (antes 12px) */
+    font-size: 1rem;
     letter-spacing: 0.05em;
+    text-align: center;
+    line-height: 1.4;
 }
 
 .footer-tagline {
@@ -1939,17 +1979,20 @@ footer {
 
 .footer-link {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
+    font-size: 1rem;
     color: var(--color-text);
     text-decoration: none;
-    opacity: 0.7;  /* Increased from 0.5 for better contrast */
+    opacity: 0.8;
     transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    position: relative;
-    display: inline-block;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2) 0;
 }
 
 .footer-link:hover {
-    opacity: 0.85;
+    opacity: 1;
 }
 
 .footer-link:focus-visible {
@@ -1961,6 +2004,7 @@ footer {
     display: flex;
     gap: var(--space-5);
     align-items: center;
+    justify-content: center;
 }
 
 .social-icons a {
@@ -2009,10 +2053,15 @@ footer {
 /* Cuando está en el footer, hereda estilos de .footer-link */
 .footer-left .install-pwa-link {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
+    font-size: 1rem;
     color: var(--color-text);
-    opacity: 0.7;  /* Increased from 0.5 for better contrast */
+    opacity: 0.8;
     transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
 }
 
 .footer-left .install-pwa-link:hover {
@@ -2030,6 +2079,77 @@ footer {
     flex-shrink: 0;
 }
 
+/* Footer - Desktop Enhancement */
+@media (min-width: 769px) {
+    footer {
+        padding: 0 var(--space-24) var(--space-8);
+    }
+
+    .footer-grid {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .footer-left {
+        align-items: flex-start;
+        gap: var(--space-3);
+        width: auto;
+    }
+
+    .footer-main-line {
+        justify-content: flex-start;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+    }
+
+    .footer-links-line {
+        flex-direction: row;
+        gap: var(--space-4);
+    }
+
+    .footer-separator {
+        display: inline;  /* Show on desktop */
+    }
+
+    .footer-brand {
+        font-weight: 600;
+        opacity: 0.85;
+    }
+
+    .footer-copy {
+        opacity: 0.7;
+    }
+
+    .footer-practice {
+        text-align: left;
+        line-height: 1.2;
+    }
+
+    .footer-link {
+        opacity: 0.7;
+        min-height: auto;
+        display: inline-block;
+        padding: 0;
+    }
+
+    .footer-link:hover {
+        opacity: 0.85;
+    }
+
+    .footer-left .install-pwa-link {
+        opacity: 0.7;
+        min-height: auto;
+        display: inline-flex;
+        gap: var(--space-1);
+    }
+
+    .social-icons {
+        justify-content: flex-start;
+    }
+}
+
 /* =========================
    Contact Form
    ========================= */
@@ -2038,8 +2158,9 @@ footer {
    Contact Form - Editorial Layout
    ========================= */
 
+/* Mobile-first base */
 .contact-form-section {
-    padding: var(--spacing-section) var(--space-24);
+    padding: var(--space-8) var(--space-6);
 }
 
 .contact-grid {
@@ -2062,7 +2183,7 @@ footer {
 
 .contact-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--space-10);
     align-items: start;
 }
@@ -2098,7 +2219,7 @@ footer {
 
 .contact-addresses {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--space-6);
 }
 
@@ -2169,6 +2290,7 @@ footer {
 
 .form-group textarea {
     resize: vertical;
+    min-height: 150px;
 }
 
 /* form-submit ahora usa estilos unificados (ver línea 281) */
@@ -2200,6 +2322,21 @@ footer {
 
 .form-message.show {
     display: block;
+}
+
+/* Contact Form - Desktop Enhancement */
+@media (min-width: 769px) {
+    .contact-form-section {
+        padding: var(--spacing-section) var(--space-24);
+    }
+
+    .contact-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-addresses {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 /* =========================
@@ -2668,8 +2805,9 @@ footer {
    Equipo - Tabla Tipográfica (SPACE10 style)
    ========================= */
 
+/* Mobile-first base */
 .equipo-section {
-    padding: var(--spacing-section) var(--space-24);  /* Estandarizado: vertical + horizontal */
+    padding: 0 var(--spacing-horizontal-mobile);
 }
 
 .equipo-label {
@@ -2746,14 +2884,15 @@ footer {
 
 .equipo-row {
     display: grid;
-    grid-template-columns: 2fr 3fr 1.5fr;  /* 3 columnas: nombre, rol, ciudad (más separada) */
+    grid-template-columns: 1fr;
     align-items: center;
-    gap: var(--space-8);  /* Mayor gap para separar geografía */
-    padding: var(--space-5) 0;
+    gap: var(--space-2);
+    padding: var(--space-6) 0;
     border-bottom: 1px solid rgba(250, 248, 246, 0.08);
     position: relative;
     cursor: default;
     transition: background 0.15s ease;
+    text-align: left;
 }
 
 .equipo-row:hover {
@@ -2766,7 +2905,7 @@ footer {
 
 .equipo-nombre {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: 700;
     color: var(--color-text);
 }
@@ -2774,12 +2913,14 @@ footer {
 .equipo-rol {
     font-size: 1rem;
     color: rgba(250, 248, 246, 0.65);
+    opacity: 0.85;
 }
 
 .equipo-ciudad {
     font-size: 1rem;
     color: rgba(250, 248, 246, 0.4);
     font-family: 'Plus Jakarta Sans', sans-serif;
+    opacity: 0.6;
 }
 
 .equipo-link {
@@ -2794,9 +2935,10 @@ footer {
 }
 
 .equipo-foto-hover {
+    display: none;  /* Hidden on mobile */
     position: absolute;
-    left: 180px;      /* cerca del nombre */
-    top: -90px;       /* arriba, pisa el espacio del socio anterior */
+    left: 180px;
+    top: -90px;
     width: 140px;
     height: 140px;
     background-size: cover;
@@ -2836,6 +2978,36 @@ a,
 button,
 img {
     transition: opacity var(--transition-normal);
+}
+
+/* Equipo Section - Desktop Enhancement */
+@media (min-width: 769px) {
+    .equipo-section {
+        padding: var(--spacing-section) var(--space-24);
+    }
+
+    .equipo-row {
+        grid-template-columns: 2fr 3fr 1.5fr;
+        gap: var(--space-8);
+        padding: var(--space-5) 0;
+        text-align: left;
+    }
+
+    .equipo-nombre {
+        font-size: 1rem;
+    }
+
+    .equipo-rol {
+        opacity: 1;
+    }
+
+    .equipo-ciudad {
+        opacity: 1;
+    }
+
+    .equipo-foto-hover {
+        display: block;
+    }
 }
 
 /* =========================
@@ -3204,12 +3376,6 @@ img {
         padding: 0 var(--spacing-horizontal-mobile);
     }
 
-    .about-grid {
-        grid-template-columns: 1fr;
-        padding: 0 var(--spacing-horizontal-mobile);
-    }
-
-    .about-label,
     .services-label,
     .equipo-label,
     .actividades-label,
@@ -3223,11 +3389,6 @@ img {
         margin-bottom: var(--space-6);
         grid-column: auto;
         text-align: left;
-    }
-
-    .about-content {
-        grid-column: auto;
-        padding: var(--space-6);
     }
 
     .corner-bracket {
@@ -3343,131 +3504,6 @@ img {
         letter-spacing: 0.01em; /* Slightly loose for clarity */
     }
 
-    footer {
-        padding: var(--space-10) var(--space-6) var(--space-8);
-    }
-
-    .footer-grid {
-        flex-direction: column;
-        align-items: center; /* Center footer on mobile */
-        gap: var(--space-8);
-        text-align: center;
-    }
-
-    .footer-left {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space-4);
-        width: 100%;
-    }
-
-    .footer-main-line {
-        flex-direction: row;  /* Mantener brand + copyright en misma línea */
-        align-items: center;
-        justify-content: center;
-        gap: var(--space-2);
-        flex-wrap: nowrap;  /* No permitir wrap */
-    }
-
-    .footer-links-line {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space-2);
-    }
-
-    .footer-separator {
-        display: none;  /* Todos los separadores ocultos en mobile */
-    }
-
-    .footer-brand {
-        font-size: 1rem;
-        font-weight: 700;
-        opacity: 1;
-    }
-
-    .footer-copy {
-        font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
-        opacity: 0.6;
-    }
-
-    .footer-practice {
-        font-size: 1rem;  /* 16px - WCAG minimum (antes 10.4px) */
-        text-align: center;
-        line-height: 1.4;
-        gap: var(--space-1);
-    }
-
-    .footer-tagline {
-        opacity: 0.5;
-    }
-
-    .footer-location {
-        opacity: 0.4;
-    }
-
-    /* Email and privacy links - more readable */
-    .footer-link {
-        font-size: 1rem;  /* 16px - WCAG minimum */ /* Larger */
-        opacity: 0.8;
-        min-height: 44px; /* Touch target */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: var(--space-2) 0;
-    }
-
-    .footer-link:hover {
-        opacity: 1;
-    }
-
-    /* PWA install link optimization */
-    .footer-left .install-pwa-link {
-        font-size: 1rem;  /* 16px - WCAG minimum */
-        opacity: 0.8;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--space-2);
-    }
-
-    .social-icons {
-        justify-content: center; /* Center social icons */
-    }
-
-    .equipo-section {
-        padding: 0 var(--spacing-horizontal-mobile);
-    }
-
-    .equipo-table {
-        width: 100%;
-    }
-
-    .equipo-row {
-        grid-template-columns: 1fr;
-        gap: var(--space-2);
-        padding: var(--space-6) 0;
-        text-align: left;
-    }
-
-    .equipo-nombre {
-        font-size: 1.125rem;
-    }
-
-    .equipo-foto-hover {
-        display: none;
-    }
-
-    .equipo-rol {
-        font-size: 1rem;
-        opacity: 0.85;
-    }
-
-    .equipo-ciudad {
-        font-size: 1rem;
-        opacity: 0.6;
-    }
-
     /* Activity titles refined */
     .actividad-titulo {
         font-family: var(--font-display); /* Syne */
@@ -3523,23 +3559,6 @@ img {
 
     .actividad-entrada:nth-child(even) .actividad-texto {
         order: 0 !important;
-    }
-
-    /* MOBILE-002: Optimización de formulario de contacto */
-    .contact-form-section {
-        padding: var(--space-8) var(--space-6);
-    }
-
-    .contact-inner {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-form label {
-        font-size: var(--font-size-base);
-    }
-
-    .contact-form textarea {
-        min-height: 150px;
     }
 
     /* MOBILE-009: Social icons táctiles (mínimo 48x48px) */
