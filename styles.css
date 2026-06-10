@@ -494,6 +494,28 @@ body.secondary-page .nav-logo {
     background-color: var(--color-text);
 }
 
+.nav-cta {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: var(--space-2) var(--space-5);
+    border: 1.5px solid var(--color-accent);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.nav-cta:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    transform: translateY(-1px);
+}
+
+.nav-cta:active {
+    transform: translateY(0);
+}
+
 /* =========================
    Hero
    ========================= */
