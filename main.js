@@ -21,6 +21,7 @@ function trackEvent(name, props) {
 document.addEventListener("DOMContentLoaded", function () {
   console.log('🚀 BPP main.js loaded - DOMContentLoaded fired');
   const body = document.body;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // =====================================================
   // ARROW MICRO-INTERACTIONS
@@ -352,7 +353,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const animatedEls = document.querySelectorAll("[data-animate]");
   const trackedSections = new Set();
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (animatedEls.length && "IntersectionObserver" in window) {
     // Mark elements as ready for animation only if motion is allowed
