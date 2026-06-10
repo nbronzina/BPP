@@ -330,19 +330,35 @@ nav {
     right: 0;
     z-index: 1000;
     padding: var(--space-4) 0;
-    background-color: rgba(10, 10, 10, 0.65);  /* Visible por defecto */
-    backdrop-filter: blur(16px) saturate(140%);
-    -webkit-backdrop-filter: blur(16px) saturate(140%);
-    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
-    opacity: 1;  /* Siempre visible */
-    pointer-events: auto;  /* Siempre interactivo */
+    background-color: transparent;  /* Oculto en homepage */
+    backdrop-filter: none;
+    border-bottom: none;
+    opacity: 0;  /* Oculto en homepage por defecto */
+    pointer-events: none;
     transition: background-color var(--nav-transition, 0.3s) ease,
                 backdrop-filter var(--nav-transition, 0.3s) ease,
                 opacity var(--nav-transition, 0.3s) ease;
 }
 
+/* Homepage: aparece al scrollear */
 body.logo-pinned nav {
     opacity: 1;
+    pointer-events: auto;
+    background-color: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
+}
+
+/* Páginas internas: siempre visible */
+body.secondary-page nav {
+    opacity: 1;
+    pointer-events: auto;
+    background-color: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
+}
     pointer-events: auto;
     background-color: rgba(10, 10, 10, 0.65);
     backdrop-filter: blur(16px) saturate(140%);
@@ -370,7 +386,7 @@ body.logo-pinned nav {
 .nav-logo {
     display: block;
     line-height: 0;
-    opacity: 1;  /* Siempre visible en lugar de patrón Superflux */
+    opacity: 0;  /* Oculto en homepage por defecto */
     transition: opacity var(--nav-transition, 0.3s) ease;
     will-change: opacity; /* Hint for smoother mobile rendering */
 }
@@ -5137,9 +5153,9 @@ img {
     font-weight: 400;
     line-height: 1.5;
     color: var(--color-text);
-    background: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: #0a0a0a;  /* Fondo completamente sólido */
+    backdrop-filter: none;  /* No necesario con fondo sólido */
+    -webkit-backdrop-filter: none;
     border: 1px solid var(--orange-500);
     border-radius: 4px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(10, 10, 10, 0.95);
