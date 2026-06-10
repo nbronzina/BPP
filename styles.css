@@ -3640,6 +3640,7 @@ img {
    PWA Install Prompt
    ========================= */
 
+/* Mobile-first base */
 .pwa-install-prompt {
     position: fixed;
     bottom: -200px;
@@ -3648,10 +3649,10 @@ img {
     background: rgba(250, 248, 246, 0.02);
     border: 2px solid var(--color-accent);
     border-radius: var(--border-radius);
-    padding: var(--space-6);
+    padding: var(--space-4);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     max-width: 400px;
-    width: 90%;
+    width: calc(100% - 2rem);
     z-index: var(--z-modal);
     transition: bottom var(--transition-slow);
 }
@@ -3674,6 +3675,7 @@ img {
 /* PWA buttons ahora usan estilos unificados (ver línea 281) */
 .pwa-install-buttons {
     display: flex;
+    flex-direction: column;
     gap: var(--space-3);
 }
 
@@ -3690,14 +3692,15 @@ img {
     outline-offset: 2px;
 }
 
-@media (max-width: 768px) {
+/* PWA Components - Desktop Enhancement */
+@media (min-width: 769px) {
     .pwa-install-prompt {
-        width: calc(100% - 2rem);
-        padding: var(--space-4);
+        width: 90%;
+        padding: var(--space-6);
     }
 
     .pwa-install-buttons {
-        flex-direction: column;
+        flex-direction: row;
     }
 }
 
