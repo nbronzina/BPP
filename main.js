@@ -395,16 +395,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // instalación en páginas que no son legales ni reporte.
   // =====================================================
 
-  // Service Worker (PWA)
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker
-        .register("/sw.js")
-        .catch(() => {
-          // Error silently ignored in production
-        });
-    });
-  }
+  // Service Worker (PWA) - TEMPORARILY DISABLED to avoid cache issues
+  // if ("serviceWorker" in navigator) {
+  //   window.addEventListener("load", () => {
+  //     navigator.serviceWorker
+  //       .register("/sw.js")
+  //       .catch(() => {
+  //         // Error silently ignored in production
+  //       });
+  //   });
+  // }
 
   // =====================================================
   // BLOQUE FORMULARIO DE CONTACTO
