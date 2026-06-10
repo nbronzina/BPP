@@ -4940,10 +4940,12 @@ img {
     font-weight: 400;
     line-height: 1.5;
     color: var(--color-text);
-    background: #1a1512;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--orange-500);
     border-radius: 4px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(10, 10, 10, 0.95);
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--transition-fast);
