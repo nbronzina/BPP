@@ -446,7 +446,8 @@ body.secondary-page .nav-logo {
     list-style: none;
     margin: 0;
     padding: var(--space-20) var(--space-8);
-    transition: right 0.3s;
+    transition: right 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
     z-index: var(--z-nav-mobile);
 }
 
@@ -491,6 +492,21 @@ body.secondary-page .nav-logo {
 
 .nav-links.active {
     right: 0;
+    opacity: 1;
+}
+
+/* Current page indicator in mobile nav */
+.nav-links a.current-page {
+    color: var(--color-accent);
+    pointer-events: none;
+    position: relative;
+}
+
+.nav-links a.current-page::before {
+    content: '→';
+    position: absolute;
+    left: -20px;
+    font-weight: 700;
 }
 
 .nav-coming-soon {
@@ -519,6 +535,40 @@ body.secondary-page .nav-logo {
     width: 25px;
     height: 2px;
     background-color: var(--color-text);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+/* Hamburger animation to X */
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: calc(var(--z-nav-mobile) - 1);
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .nav-cta {
