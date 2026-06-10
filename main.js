@@ -201,49 +201,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
-  // PAGE TRANSITIONS - Curtain effect en navegación
-  // -----------------------------------------------------
-  // Overlay naranja que baja/sube al navegar entre páginas
-  // =====================================================
-  if (!prefersReducedMotion) {
-    // Crear overlay element
-    const overlay = document.createElement('div');
-    overlay.id = 'page-transition-overlay';
-    document.body.appendChild(overlay);
-
-    // Transition-in al cargar la página
-    body.classList.add('page-transitioning-in');
-    setTimeout(() => {
-      body.classList.remove('page-transitioning-in');
-    }, 100);
-
-    // Interceptar clicks en links internos
-    const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
-
-    internalLinks.forEach(link => {
-      // Skip anchor links (same page navigation)
-      if (link.getAttribute('href').startsWith('#')) return;
-
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-
-        // Solo aplicar transición a navegación interna real (no anchors, no external)
-        if (href && !href.startsWith('#') && !link.hasAttribute('target')) {
-          e.preventDefault();
-
-          // Animar overlay bajando
-          body.classList.add('page-transitioning-out');
-
-          // Navegar después de la animación
-          setTimeout(() => {
-            window.location.href = href;
-          }, 600); // Match CSS transition duration
-        }
-      });
-    });
-  }
-
-  // =====================================================
   // BLOQUE TRACKING / ANIMACIONES
   // -----------------------------------------------------
   // IntersectionObserver para animar elementos con
