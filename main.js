@@ -19,6 +19,7 @@ function trackEvent(name, props) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  console.log('🚀 BPP main.js loaded - DOMContentLoaded fired');
   const body = document.body;
 
   // =====================================================
@@ -1170,8 +1171,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // =====================================================
   const methodologyToggle = document.querySelector('.methodology-toggle');
   const methodologyContent = document.querySelector('.methodology-content');
+  console.log('✅ Methodology toggle:', { toggle: !!methodologyToggle, content: !!methodologyContent });
 
   if (methodologyToggle && methodologyContent) {
+    console.log('✅ Methodology toggle initialized');
     const toggleMethodology = () => {
       const isExpanded = methodologyToggle.getAttribute('aria-expanded') === 'true';
 
@@ -1211,7 +1214,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const quizProgressText = document.getElementById('quiz-current-question');
   const quizProgressFill = document.getElementById('quiz-progress-fill');
 
+  console.log('✅ Quiz elements:', { quizQuestions: !!quizQuestions, quizPrevBtn: !!quizPrevBtn, quizNextBtn: !!quizNextBtn });
+
   if (quizQuestions && quizResults && quizSubmitBtn && quizResetBtn && quizPrevBtn && quizNextBtn) {
+    console.log('✅ Quiz initialized - all elements found');
     const allQuestions = document.querySelectorAll('.quiz-question');
     const totalQuestions = allQuestions.length;
     let currentQuestion = 0;
@@ -1435,6 +1441,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Expandable timeline accordions in service cards
   // =====================================================
   const timelineToggles = document.querySelectorAll('.service-timeline-toggle');
+  console.log(`✅ Timeline toggles found: ${timelineToggles.length}`);
 
   if (timelineToggles.length) {
     timelineToggles.forEach(toggle => {
