@@ -743,11 +743,13 @@ body.secondary-page .nav-logo {
 
 /* Hero fullscreen - immersive splash, ocupa viewport inicial completo */
 .hero-fullscreen {
-    min-height: 100vh;
+    /* Mobile: 60vh permite ver que hay contenido abajo sin scroll completo.
+       Principio: "En mobile, el alto es oro" - no desperdiciar 100vh en splash. */
+    min-height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0 5vh 0; /* Padding bottom reducido para mejor centrado visual */
+    padding: 0 0 3vh 0;
     position: relative;
     background: transparent;
 }
@@ -756,7 +758,7 @@ body.secondary-page .nav-logo {
 .hero-brand-header {
     width: 100%;
     max-width: 1200px;
-    padding: var(--space-24) 2rem var(--space-8); /* Más espacio arriba para mejor balance visual */
+    padding: var(--space-12) var(--space-6) var(--space-6); /* Padding reducido en mobile */
     z-index: 1;
 }
 
@@ -764,18 +766,27 @@ body.secondary-page .nav-logo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-8);
+    gap: var(--space-4); /* Gap reducido en mobile */
     text-align: center;
 }
 
-/* Hero large logo - centered, prominent */
+/* Hero large logo - más pequeño en mobile para no desperdiciar altura */
 .hero-logo-large {
-    width: clamp(100px, 25vw, 140px);
+    width: clamp(80px, 20vw, 120px); /* Reducido de 100-140 a 80-120 */
     transition: opacity var(--nav-transition, 0.3s) ease;
 }
 
-/* Desktop: logo más grande, más aire */
+/* Desktop: logo más grande, splash completo si queremos */
 @media (min-width: 769px) {
+    .hero-fullscreen {
+        min-height: 100vh; /* Desktop puede permitirse fullscreen */
+        padding: 0 0 5vh 0;
+    }
+
+    .hero-brand-header {
+        padding: var(--space-24) 2rem var(--space-8);
+    }
+
     .hero-brand-content {
         gap: var(--space-12);
     }
@@ -2091,16 +2102,14 @@ body.secondary-page .nav-logo {
 }
 
 .service-block {
-    padding: var(--space-5);
+    padding: var(--space-4);  /* Reducido de --space-5: menos altura en mobile */
     border: 1px solid rgba(193, 111, 82, 0.2);
     border-radius: var(--border-radius);
-    background: var(--color-surface);  /* Fondo sólido #221d18 en lugar de transparente */
+    background: var(--color-surface);
     position: relative;
     transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
     width: 100%;
     max-width: 100%;
-    /* overflow visible: hidden recortaba los tooltips que se extienden
-       fuera de la card (el scroll horizontal lo previene body overflow-x) */
     overflow: visible;
     box-sizing: border-box;
 }
@@ -2112,12 +2121,12 @@ body.secondary-page .nav-logo {
 .service-number {
     display: block;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;  /* Reducido de 2.5rem: menos altura en mobile */
     font-weight: 700;
     line-height: 1;
     color: var(--color-accent);
     opacity: 0.3;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);  /* Reducido de --space-6 */
 }
 
 .service-category {
@@ -2131,13 +2140,13 @@ body.secondary-page .nav-logo {
 
 .service-title {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h1);
+    font-size: var(--font-size-h2);  /* Reducido de h1: menos altura en mobile */
     font-weight: 700;
     color: var(--color-text);
     opacity: 1;
     line-height: 1.1;
-    margin-bottom: var(--space-4);
-    hyphens: auto; /* Mobile: mejor legibilidad */
+    margin-bottom: var(--space-3);  /* Reducido de --space-4 */
+    hyphens: auto;
 }
 
 .service-lead {
@@ -2145,8 +2154,8 @@ body.secondary-page .nav-logo {
     font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text);
-    opacity: 0.75;  /* Increased from 0.6 for better contrast */
-    line-height: 1.7;
+    opacity: 0.75;
+    line-height: 1.5;  /* Reducido de 1.7: texto más compacto en mobile */
     max-width: 750px;
 }
 
@@ -2246,7 +2255,13 @@ body.secondary-page .nav-logo {
     }
 
     .service-title {
+        font-size: var(--font-size-h1);  /* Desktop: título más grande que mobile */
+        margin-bottom: var(--space-4);
         hyphens: none;
+    }
+
+    .service-lead {
+        line-height: 1.7;  /* Desktop: más aire entre líneas */
     }
 
     .services-grid {
@@ -2262,6 +2277,7 @@ body.secondary-page .nav-logo {
 
     .service-number {
         font-size: 4rem;
+        margin-bottom: var(--space-6);  /* Desktop: más espacio */
     }
 }
 
@@ -2980,7 +2996,7 @@ footer {
 /* Alternating layout: Order in HTML determines position (no RTL needed) */
 .actividad-imagen {
     overflow: hidden;
-    height: 260px;
+    height: 180px;  /* Reducido de 260px: "en mobile, el alto es oro" */
     order: -1;  /* Always first on mobile */
 }
 
@@ -3027,7 +3043,7 @@ footer {
 }
 
 .actividad-texto {
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-5) var(--space-5);  /* Reducido de --space-8: menos altura en mobile */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3085,9 +3101,15 @@ footer {
     font-size: var(--font-size-base);
     font-weight: 400;
     color: var(--color-text);
-    opacity: 0.75;  /* Increased from 0.6 for better contrast */
+    opacity: 0.75;
     line-height: 1.6;
     margin-top: var(--space-3);
+    /* Mobile: limitar altura mostrando solo esencial (line-clamp).
+       Principio: "Una buena card no 'mete todo': elige qué mostrar primero" */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .actividad-link {
@@ -3218,6 +3240,14 @@ footer {
     .actividad-texto {
         padding: var(--space-12) 3.5rem;
         order: 0;  /* Default order on desktop */
+    }
+
+    .actividad-descripcion {
+        /* Desktop: mostrar descripción completa sin line-clamp */
+        display: block;
+        -webkit-line-clamp: unset;
+        -webkit-box-orient: initial;
+        overflow: visible;
     }
 }
 
@@ -4983,88 +5013,95 @@ img {
 }
 
 /* =========================
-   Tooltips - Sistema unificado
+   Términos clave - Mini tarjeta desplegable
+   -------------------------
+   Patrón disclosure: tap/click en el término despliega una
+   tarjeta real en el flujo del documento (la inserta el JS
+   después del bloque contenedor). Alineado a DESIGN.md:
+   surface #221d18, acento --orange-500, radio 8px, shadow ≤ 0.4.
    ========================= */
 
 .tooltip-term {
-    position: relative;
     display: inline;
     color: var(--orange-500);
     text-decoration: underline dotted 1px;
     text-underline-offset: 3px;
-    cursor: help;
+    cursor: pointer;
 }
 
-/* Caja del tooltip — alineado a DESIGN.md:
-   surface (#221d18, no negro puro), shadow alpha ≤ 0.4 / blur ≤ 24px, radio 8px.
-   Mobile-first: base = mobile (ancho limitado por viewport), desktop en min-width. */
-.tooltip-term::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-8px);
-    margin-bottom: 8px;
-    padding: 12px 16px;
-    width: max-content;
-    max-width: calc(100vw - 48px);
+.tooltip-term:hover,
+.tooltip-term[aria-expanded="true"] {
+    text-decoration-style: solid;
+}
+
+.tooltip-term:focus-visible {
+    outline: 2px solid var(--orange-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.term-card {
+    display: block;
+    margin: var(--space-3) 0;
+    padding: var(--space-4);
     background: var(--color-surface);
-    color: rgba(250, 248, 246, 0.95);
+    border: 1px solid rgba(193, 111, 82, 0.4);
+    border-left: 2px solid var(--orange-500);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    animation: termCardIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.term-card[hidden] {
+    display: none;
+}
+
+.term-card-label {
+    display: block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--orange-500);
+    margin-bottom: var(--space-2);
+}
+
+.term-card-text {
+    display: block;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.5;
+    color: rgba(250, 248, 246, 0.95);
     text-align: left;
-    white-space: normal;
-    border: 2px solid var(--orange-500);
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 10000;
 }
 
-/* Flecha */
-.tooltip-term::after {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 10px solid transparent;
-    border-top-color: var(--orange-500);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 10000;
+@keyframes termCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Mostrar en hover, focus de teclado, y tap en mobile (JS togglea .tooltip-active) */
-.tooltip-term:hover::before,
-.tooltip-term:hover::after,
-.tooltip-term:focus-visible::before,
-.tooltip-term:focus-visible::after,
-.tooltip-term.tooltip-active::before,
-.tooltip-term.tooltip-active::after {
-    opacity: 1;
-    visibility: visible;
-}
-
-.tooltip-term:hover::before,
-.tooltip-term:focus-visible::before,
-.tooltip-term.tooltip-active::before {
-    transform: translateX(-50%) translateY(0);
+@media (prefers-reduced-motion: reduce) {
+    .term-card {
+        animation: none;
+    }
 }
 
 /* Desktop enhancement */
 @media (min-width: 769px) {
-    .tooltip-term::before {
-        max-width: 340px;
+    .term-card {
+        padding: var(--space-4) var(--space-5);
+    }
+
+    .term-card-text {
         font-size: 0.9375rem;
-        padding: 14px 18px;
     }
 }
 
