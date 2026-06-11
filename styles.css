@@ -759,6 +759,10 @@ body.secondary-page .nav-logo {
         padding: 0;
         transition: none;
         z-index: auto;
+        /* La base mobile esconde el menú off-canvas con opacity 0 + right -100%;
+           en desktop hay que resetear AMBOS o los links quedan invisibles */
+        opacity: 1;
+        right: auto;
     }
 
     .nav-links a {
@@ -6136,6 +6140,7 @@ img {
 }
 
 .logo-item img {
+  height: 38px;
   max-height: 40px;
   width: auto;
   object-fit: contain;
@@ -6185,6 +6190,23 @@ img {
   max-height: 30px;
 }
 
+/* Logos más grandes en mobile (compensan trazos finos) */
+.logo-item img[src*="EscInn"],
+.logo-item img[src*="dassen"],
+.logo-item img[src*="olamestudio"] {
+  height: 52px;
+}
+
+/* Desktop: la altura la gobiernan los max-height por categoría */
+@media (min-width: 769px) {
+  .logo-item img,
+  .logo-item img[src*="EscInn"],
+  .logo-item img[src*="dassen"],
+  .logo-item img[src*="olamestudio"] {
+    height: auto;
+  }
+}
+
 /* Logo CESBA: invertir para mostrarlo blanco */
 .logo-item img[src*="logo-cesba"] {
   filter: brightness(0) invert(1) grayscale(100%);
@@ -6195,21 +6217,6 @@ img {
 }
 
 /* Testimonials: sección eliminada — el CSS era huérfano (ningún HTML la usa) */
-
-/* Logos del marquee en mobile.
-   TODO(mobile-first tranche 2): invertir a min-width junto con los
-   max-height por logo de la sección desktop de arriba. */
-@media (max-width: 768px) {
-  .logo-item img {
-    height: 38px;
-  }
-
-  .logo-item img[src*="EscInn"],
-  .logo-item img[src*="dassen"],
-  .logo-item img[src*="olamestudio"] {
-    height: 52px;
-  }
-}
 
 /* Nota: estas reglas aplicaban globalmente por una llave mal cerrada
    (los comentarios MOBILE-XXX eran aspiracionales). Se mantienen
