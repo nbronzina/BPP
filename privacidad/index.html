@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="theme-color" content="#1a1512">
 
   <title>Política de Privacidad | BPP Analytics &amp; Design</title>
 
@@ -14,6 +14,7 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
   <!-- Seguridad y privacidad (alineado al index) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://plausible.io; base-uri 'self';">
   <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -35,12 +36,15 @@
   <meta name="twitter:image" content="https://www.bppanalyticsanddesign.com/img/og-image.jpg">
 
   <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://plausible.io">
 
   <!-- DNS Prefetch para servicios externos -->
   <link rel="dns-prefetch" href="https://plausible.io">
 
   <!-- Google Fonts (Async) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
 
   <!-- Estilos globales (Async) -->
   <link rel="preload" href="../styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -49,7 +53,7 @@
   <!-- Estilos específicos para la página legal -->
   <style>
     html, body {
-      background: #0a0a0a;
+      background: #1a1512;
     }
 
     body::before {
@@ -69,7 +73,7 @@
     }
 
     .legal-label {
-      font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: var(--font-size-sm);
       color: #c16f52;
       text-transform: uppercase;
@@ -79,23 +83,23 @@
     }
 
     .legal-hero h1 {
-      font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 700;
       font-size: var(--font-size-h1);
       text-align: left;
       margin-bottom: 1rem;
-      color: #ffffff;
+      color: rgba(250,248,246,0.95);
     }
 
     .legal-date {
-      font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: var(--font-size-sm);
       opacity: 0.4;
       margin-bottom: 2rem;
     }
 
     .legal-intro {
-      font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: var(--font-size-base);
       opacity: 0.6;
       line-height: 1.7;
@@ -109,15 +113,15 @@
     }
 
     .legal-content h2 {
-      font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 600;
       font-size: var(--font-size-h2);
       text-align: left;
       margin-top: 3rem;
       margin-bottom: 1.5rem;
       padding-top: 3rem;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      color: #ffffff;
+      border-top: 1px solid rgba(250,248,246,0.12);
+      color: rgba(250,248,246,0.95);
     }
 
     .legal-content h2:first-of-type {
@@ -128,7 +132,7 @@
     .legal-content p,
     .legal-content ul,
     .legal-content li {
-      font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: var(--font-size-base);
       opacity: 0.7;
       line-height: 1.7;
@@ -163,7 +167,7 @@
 
     .back-to-top {
       display: inline-block;
-      font-family: 'Plus Jakarta Sans', ui-monospace, monospace;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: var(--font-size-sm);
       color: #c16f52;
       text-decoration: none;

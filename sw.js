@@ -1,171 +1,90 @@
-const CACHE_NAME = 'bpp-v151';
-const urlsToCache = [
+const CACHE_NAME = 'bpp-v152';
+
+// Precache mínimo: app shell. El resto se cachea en runtime.
+// IMPORTANTE: cache.addAll() es atómico — un solo 404 rompe la instalación.
+// Solo listar archivos cuya existencia esté verificada.
+const PRECACHE_URLS = [
   '/',
   '/proyectos/',
-  '/proyectos/index.html',
   '/pensamiento/',
-  '/pensamiento/index.html',
   '/reporte-impacto/',
-  '/reporte-impacto/index.html',
   '/privacidad/',
-  '/privacidad/index.html',
   '/offline.html',
   '/styles.min.css',
   '/main.min.js',
-  '/fonts/zt-bros-oskon/ZTBrosOskon90s-Regular.otf',
-  '/fonts/zt-bros-oskon/ZTBrosOskon90s-Italic.otf',
-  '/fonts/zt-bros-oskon/ZTBrosOskon90s-Light.otf',
-  '/fonts/zt-bros-oskon/ZTBrosOskon90s-LightItalic.otf',
-  '/fonts/zt-bros-oskon/ZTBrosOskon90s-ExtraLight.otf',
-  '/fonts/zt-bros-oskon/ZTBrosOskon90s-ExtLtIta.otf',
-  '/fonts/chivo/Chivo-Regular.ttf',
-  '/fonts/chivo/Chivo-Italic.ttf',
-  '/fonts/chivo/Chivo-Bold.ttf',
-  '/img/logo.png',
   '/img/logo-160.webp',
   '/img/logo-320.webp',
-  '/img/Nicolas-240.webp',
-  '/img/Nicolas-320.webp',
-  '/img/Nicolas-480.webp',
-  '/img/Sergio-240.webp',
-  '/img/Sergio-480.webp',
-  '/img/Ezequiel-240.webp',
-  '/img/Ezequiel-480.webp',
-  '/img/NicolasOptima.png',
-  '/img/SergioOptima.png',
-  '/img/EzequielOptima.jpeg',
-  '/img/workshop-latam2036.webp',
-  '/img/workshop-latam2036.png',
-  '/img/workshop-latam2036-mobile.webp',
-  '/img/workshop-latam2036-mobile.png',
-  '/img/inhabiting-future.webp',
-  '/img/inhabiting-future.jpg',
-  '/img/alquileres-negociacion.webp',
-  '/img/alquileres-negociacion.png',
-  '/img/personal-software.webp',
-  '/img/personal-software.png',
-  '/img/otros-futuros-ied.webp',
-  '/img/otros-futuros-ied.png',
-  '/img/otros-futuros-ied-mobile.webp',
-  '/img/otros-futuros-ied-mobile.png',
-  '/img/NatalidadOptima-mobile.webp',
-  '/img/NatalidadOptima-mobile.png',
-  '/img/micelio.webp',
-  '/img/micelio.png',
-  '/img/Heated.webp',
-  '/img/Heated.png',
-  '/img/logo-cesba.webp',
-  '/img/logo-cesba.png',
-  '/img/trace-logo.webp',
-  '/img/trace-logo.png',
-  '/img/hermanas-minimas-logo.webp',
-  '/img/hermanas-minimas-logo.png',
-  '/img/EscInn.webp',
-  '/img/EscInn.png',
-  '/img/olamestudio.webp',
-  '/img/olamestudio.png',
-  '/img/og-image.jpg',
-  '/img/dassen1.webp',
-  '/img/lab-logo-coral.webp',
-  '/img/lab-logo-coral.png',
-  '/img/otros-futuros.webp',
-  '/img/otros-futuros.png',
-  '/img/manifiesto-bar.webp',
-  '/img/manifiesto-bar.png',
-  '/img/comunicaciones-syp.webp',
-  '/img/comunicaciones-syp.png',
-  '/img/Ajedrez.webp',
-  '/img/Ajedrez.png',
-  '/img/JornadaCESBA-480.webp',
-  '/img/JornadaCESBA-800.webp',
-  '/img/JornadaCESBA-1200.webp',
-  '/img/JornadaCESBA.webp',
-  '/img/JornadaCESBA.jpg',
-  '/img/JornadaCESBA-opt.jpg',
-  '/img/VacaMuertaOptima.webp',
-  '/img/VacaMuertaOptima.png',
-  '/img/CuadroMatriculaOptima.webp',
-  '/img/CuadroMatriculaOptima.png',
-  '/img/MapaMatriculaOptima.webp',
-  '/img/MapaMatriculaOptima.png',
   '/favicon-32x32.png',
   '/apple-touch-icon.png'
 ];
 
-// Install event
+// Install: precache del shell + activación inmediata
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
+      .then(cache => cache.addAll(PRECACHE_URLS))
       .then(() => self.skipWaiting())
   );
 });
 
-// Fetch event with offline fallback
+// Activate: limpiar caches viejos y tomar control de los clientes
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames =>
+      Promise.all(
+        cacheNames
+          .filter(name => name !== CACHE_NAME)
+          .map(name => caches.delete(name))
+      )
+    ).then(() => self.clients.claim())
+  );
+});
+
+// Fetch:
+// - Navegaciones (HTML): network-first → el contenido nunca queda congelado.
+//   Fallback a cache, y si tampoco hay, offline.html.
+// - Assets estáticos: cache-first con runtime caching (solo GET same-origin 200).
 self.addEventListener('fetch', event => {
+  const request = event.request;
+
+  if (request.method !== 'GET') {
+    return;
+  }
+
+  // HTML / navegación: network-first
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+          return response;
+        })
+        .catch(() =>
+          caches.match(request).then(cached => cached || caches.match('/offline.html'))
+        )
+    );
+    return;
+  }
+
+  // Assets: cache-first
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Return cached version or fetch from network
-        if (response) {
+    caches.match(request).then(cached => {
+      if (cached) {
+        return cached;
+      }
+
+      return fetch(request).then(response => {
+        if (!response || response.status !== 200 || response.type !== 'basic') {
           return response;
         }
 
-        return fetch(event.request).then(fetchResponse => {
-          // Cache successful responses
-          if (!fetchResponse || fetchResponse.status !== 200 || fetchResponse.type !== 'basic') {
-            return fetchResponse;
-          }
-
-          const responseToCache = fetchResponse.clone();
-
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-
-          return fetchResponse;
-        });
-      })
-      .catch(() => {
-        // Network request failed, show offline page for navigation requests
-        if (event.request.mode === 'navigate') {
-          return caches.match('/offline.html');
-        }
-
-        // For other requests (images, etc), fail silently
-        return new Response('', {
-          status: 408,
-          statusText: 'Network request timeout'
-        });
-      })
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+        return response;
+      });
+    }).catch(() =>
+      new Response('', { status: 408, statusText: 'Network request timeout' })
+    )
   );
 });
-
-// Activate event - Clean up old caches
-self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
-
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
-  );
-});
-
-// Background sync (optional, for future use)
-self.addEventListener('sync', event => {
-  if (event.tag === 'sync-forms') {
-    event.waitUntil(syncForms());
-  }
-});
-
-async function syncForms() {
-  // Implement form sync logic here if needed
-}

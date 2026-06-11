@@ -32,8 +32,8 @@
 
     <!-- Theme -->
     <link rel="manifest" href="site.webmanifest?v=120">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="msapplication-TileColor" content="#0a0a0a">
+    <meta name="theme-color" content="#1a1512">
+    <meta name="msapplication-TileColor" content="#1a1512">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Security Policies -->
@@ -54,11 +54,14 @@
 
     <!-- Preload Critical Assets -->
     <link rel="preload" as="image" href="img/logo-160.webp" imagesrcset="img/logo-160.webp 160w, img/logo-320.webp 320w" imagesizes="(max-width: 768px) 87px, 180px" type="image/webp" fetchpriority="high">
-    <link rel="preload" href="main.js" as="script">
+    <link rel="preload" href="main.min.js" as="script">
+
+    <!-- Plus Jakarta Sans (solo los pesos en uso: 300-700 + itálica 400) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
 
     <!-- Critical CSS Inline -->
     <style>
-@font-face{font-family:'Plus Jakarta Sans Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}:root{--color-bg:#1a1512;--color-text:#faf8f6;--color-text-light:rgba(250,248,246,0.87);--color-accent:#c16f52;--color-accent-hover:#c16f52;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}body{font-family:'Plus Jakarta Sans','Plus Jakarta Sans Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}nav{position:sticky;top:0;z-index:1000;background:rgba(26,21,18,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.05);padding:2.5rem 0}.nav-container{width:100%;padding:0 6rem;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:1rem}.nav-wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.125rem;color:rgba(255,255,255,0.9);text-decoration:none;transition:color 0.3s}.nav-logo-icon{display:block;line-height:0}.nav-logo-icon img{height:52px;width:auto;display:block;transition:opacity 0.3s}.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}.nav-links a{color:var(--color-text-light);text-decoration:none;font-size:1rem;font-weight:400;line-height:1;transition:color 0.3s}.nav-links a:hover{color:var(--color-accent)}.hero{height:auto;display:flex;align-items:flex-start;justify-content:center;padding:8rem 2rem 2rem;position:relative;background:transparent}.hero-content{max-width:900px}.hero-logo{margin-bottom:3rem;height:160px;display:flex;align-items:center;justify-content:center}.hero-logo img{max-width:100%;max-height:160px;width:auto;height:auto;opacity:0.9;object-fit:contain}.tagline{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1.5rem;color:var(--color-text)}.subtitle{font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:2rem;color:var(--color-text-light)}.locations{font-size:1rem;color:var(--color-accent);margin-bottom:2.5rem}.cta-primary{display:inline-block;padding:0.875rem 1.75rem;background:var(--color-accent);color:#1a1512;text-decoration:none;font-family:'Plus Jakarta Sans',monospace;font-size:0.875rem;font-weight:700;transition:opacity 0.2s ease}.cta-primary:hover{opacity:0.88}.cta-link{display:inline-flex;align-items:center;gap:0.4rem;color:var(--color-accent);text-decoration:none;font-family:'Plus Jakarta Sans',monospace;font-size:0.875rem;font-weight:500;transition:opacity 0.2s ease}.cta-link::after{content:'→'}.cta-link:hover{opacity:0.75}[data-animate]{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease}[data-animate].animate-ready:not(.visible){opacity:0;transform:translateY(30px)}
+@font-face{font-family:'Plus Jakarta Sans Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}:root{--color-bg:#1a1512;--color-text:#faf8f6;--color-text-light:rgba(250,248,246,0.87);--color-accent:#c16f52;--color-accent-hover:#c16f52;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}body{font-family:'Plus Jakarta Sans','Plus Jakarta Sans Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,21,18,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(250,248,246,0.05);padding:2.5rem 0}.nav-container{width:100%;padding:0 6rem;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:1rem}.nav-wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.125rem;color:rgba(250,248,246,0.9);text-decoration:none;transition:color 0.3s}.nav-logo-icon{display:block;line-height:0}.nav-logo-icon img{height:52px;width:auto;display:block;transition:opacity 0.3s}.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}.nav-links a{color:var(--color-text-light);text-decoration:none;font-size:1rem;font-weight:400;line-height:1;transition:color 0.3s}.nav-links a:hover{color:var(--color-accent)}.hero{height:auto;display:flex;align-items:flex-start;justify-content:center;padding:8rem 2rem 2rem;position:relative;background:transparent}.hero-content{max-width:900px}.hero-logo{margin-bottom:3rem;height:160px;display:flex;align-items:center;justify-content:center}.hero-logo img{max-width:100%;max-height:160px;width:auto;height:auto;opacity:0.9;object-fit:contain}.tagline{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1.5rem;color:var(--color-text)}.subtitle{font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:2rem;color:var(--color-text-light)}.locations{font-size:1rem;color:var(--color-accent);margin-bottom:2.5rem}.cta-primary{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--color-accent);border:none;padding:0.5rem 0;text-decoration:underline;text-decoration-color:rgba(193,111,82,0.4);text-underline-offset:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.0625rem;font-weight:600;cursor:pointer;transition:color 0.2s ease}.cta-primary:hover{color:#cd8763}.cta-link{display:inline-flex;align-items:center;gap:0.4rem;color:var(--color-accent);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.875rem;font-weight:500;transition:opacity 0.2s ease}.cta-link::after{content:'→'}.cta-link:hover{opacity:0.75}[data-animate]{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease}[data-animate].animate-ready:not(.visible){opacity:0;transform:translateY(30px)}
     </style>
 
     <!-- Full Styles (Async) -->
@@ -397,7 +400,7 @@
                         <span class="bpp-text-muted"> · </span>
                         <span class="bpp-text-muted">Design fiction · Educación · Latinoamérica</span>
                     </div>
-                    <h3 id="actividades-heading">Otros Futuros: tutor invitado en defensa de proyecto IED Madrid</h3>
+                    <h3>Otros Futuros: tutor invitado en defensa de proyecto IED Madrid</h3>
                     <p class="actividad-descripcion">
                         Nicolás Bronzina participó como tutor invitado en la defensa del proyecto LATAM·2036 del Máster en Diseño de Producto Digital del IED Madrid. Ejercicio de diseño especulativo sobre fuga de cerebros en Ecuador: ¿cómo diseñar una ciudad a la que valga la pena pertenecer?
                     </p>
@@ -505,7 +508,7 @@
                 <article class="service-block" data-animate>
                     <span class="service-number" aria-hidden="true">1</span>
                     <p class="service-category">Investigación exploratoria</p>
-                    <h3 id="services-heading" class="service-title">Dejás de adivinar qué viene</h3>
+                    <h3 class="service-title">Dejás de adivinar qué viene</h3>
                     <p class="service-lead">Explorás qué fuerzas están cambiando tu contexto antes de que lo cambien sin vos.</p>
                     <span class="service-deliverable">Entregables: informe de señales, catálogo de escenarios futuros, briefing estratégico</span>
                     <button class="service-timeline-toggle" aria-expanded="false">
@@ -865,10 +868,10 @@
                         (ITONICS 2025, OODAloop 2025).
                     </p>
                     <div class="methodology-links">
-                        <a href="docs/metodologia-quiz-diagnostico.md" class="methodology-link" target="_blank">
+                        <a href="docs/metodologia-quiz-diagnostico.md" class="methodology-link" target="_blank" rel="noopener">
                             📄 Metodología completa
                         </a>
-                        <a href="docs/framework-senales-debiles.md" class="methodology-link" target="_blank">
+                        <a href="docs/framework-senales-debiles.md" class="methodology-link" target="_blank" rel="noopener">
                             📘 Framework de señales débiles
                         </a>
                     </div>
@@ -1021,10 +1024,10 @@
                         y frameworks consolidados de strategic foresight.
                     </p>
                     <div class="results-methodology-links">
-                        <a href="docs/metodologia-quiz-diagnostico.md" class="results-methodology-link" target="_blank">
+                        <a href="docs/metodologia-quiz-diagnostico.md" class="results-methodology-link" target="_blank" rel="noopener">
                             Ver metodología completa
                         </a>
-                        <a href="docs/framework-senales-debiles.md" class="results-methodology-link" target="_blank">
+                        <a href="docs/framework-senales-debiles.md" class="results-methodology-link" target="_blank" rel="noopener">
                             Descargar Framework de señales débiles
                         </a>
                     </div>
@@ -1178,7 +1181,7 @@
     </footer>
 
     <!-- JS global unificado -->
-    <script src="main.js" defer></script>
+    <script src="main.min.js" defer></script>
 
     <!-- Plausible Analytics (Privacy-friendly, no cookies) - Cargado al final para evitar forced reflows -->
     <script defer data-domain="bppanalyticsanddesign.com" src="https://plausible.io/js/script.js"></script>

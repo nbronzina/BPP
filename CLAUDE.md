@@ -73,7 +73,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ### Skills de Identidad
 
 5. **bpp-brand** *(SIEMPRE CARGAR ÚLTIMO - TIENE PRIORIDAD)*
-   - Identidad específica BPP: #ce7352 orange, dark backgrounds (#0a2540)
+   - Identidad específica BPP: #c16f52 terracotta, dark warm gray backgrounds (#1a1512)
    - Corner brackets, glow effects, editorial feel
    - Voice: directo, first-person, practitioner-level (no académico, no corporativo)
    - Pairing con frontend-design: dirección estética ya definida (refined dark editorial with warm orange accent)
@@ -205,31 +205,26 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ## 6. Brand Identity
 
 ### Color Palette
+La fuente de verdad es `/DESIGN.md` (v2.1 beta-inclusive). Resumen:
 ```css
-/* Primary palette */
---color-primary: #0a2540;      /* Dark navy (headers, text) */
---color-accent: #ce7352;       /* Terracotta (CTAs, links) */
---color-accent-bright: #d4845e; /* Lighter terracotta (hover) */
-
-/* Neutral palette */
---color-white: #ffffff;
---color-light: #f7f9fc;        /* Backgrounds */
---color-text: #333333;         /* Body text */
---color-text-light: #666666;   /* Secondary text */
+/* Tokens v2 (definidos en styles.css :root) */
+--color-bg: #1a1512;        /* Dark warm gray (NO negro puro) */
+--color-surface: #221d18;   /* Cards / superficies elevadas */
+--orange-500: #c16f52;      /* Primary terracotta (NO #ce7352, eso era v1) */
+/* Texto: rgba(250, 248, 246, ...) warm off-white (NO blanco puro) */
 ```
 
 **Usage**:
-- **CTAs and links**: `--color-accent` (#ce7352)
-- **Headings**: `--color-primary` (#0a2540)
-- **Body text**: `--color-text` (#333333)
-- **Backgrounds**: `--color-light` (#f7f9fc)
+- **CTAs**: tipográficos, color `--orange-500` — nunca botones con fondo sólido
+- **rgba del primary**: `rgba(193, 111, 82, …)`, nunca `rgba(206, 115, 82, …)`
 
-**Updating colors**: Edit CSS custom properties in `styles.css:10-27`, then run `./build.sh`
+**Updating colors**: validar contra `/DESIGN.md` primero, editar `styles.css` `:root`, correr `./build.sh`
 
 ### Typography
-- **Headings**: Work Sans, 700 weight
-- **Body**: Work Sans, 400/500 weight
-- **Fallback**: system-ui, -apple-system, sans-serif
+- **Familia única**: Plus Jakarta Sans (Google Fonts), todos los contextos
+- **Carga**: `<link>` en el `<head>` de cada página (nunca `@import` en CSS)
+- **Pesos**: 300, 400, 500, 600, 700 + itálica 400 — no agregar otros
+- **Fallback**: sans-serif
 
 ### Tone and Voice
 - **Professional**: Formal but approachable
