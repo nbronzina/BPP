@@ -353,12 +353,6 @@ body.secondary-page nav {
     -webkit-backdrop-filter: blur(16px) saturate(140%);
     border-bottom: 1px solid rgba(250, 248, 246, 0.06);
 }
-    pointer-events: auto;
-    background-color: rgba(10, 10, 10, 0.65);
-    backdrop-filter: blur(16px) saturate(140%);
-    -webkit-backdrop-filter: blur(16px) saturate(140%);
-    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
-}
 
 /* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(1px)) {
@@ -632,9 +626,6 @@ body.secondary-page .nav-logo {
 .hero-scroll-cue svg {
     animation: heroScrollHint 2.4s ease-in-out infinite; }
 
-    50% { transform: translateY(3px); opacity: 1; }
-}
-
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -768,6 +759,10 @@ body.secondary-page .nav-logo {
         padding: 0;
         transition: none;
         z-index: auto;
+        /* La base mobile esconde el menú off-canvas con opacity 0 + right -100%;
+           en desktop hay que resetear AMBOS o los links quedan invisibles */
+        opacity: 1;
+        right: auto;
     }
 
     .nav-links a {
@@ -2038,7 +2033,9 @@ body.secondary-page .nav-logo {
     transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
+    /* overflow visible: hidden recortaba los tooltips que se extienden
+       fuera de la card (el scroll horizontal lo previene body overflow-x) */
+    overflow: visible;
     box-sizing: border-box;
 }
 
@@ -2119,7 +2116,9 @@ body.secondary-page .nav-logo {
     display: block;
     font-family: var(--font-mono);
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
-    opacity: 0.5;
+    /* Atenuación por color, NO por opacity: la opacity de un ancestro
+       se multiplica sobre los tooltips ::before descendientes */
+    color: rgba(250, 248, 246, 0.65);
     margin-top: var(--space-3);
     letter-spacing: 0.03em;
     line-height: 1.6;
@@ -4567,7 +4566,8 @@ img {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: var(--space-4) var(--space-6);
+    min-height: 44px;
+    padding: var(--space-3) var(--space-4);
     font-family: var(--font-body);
     font-size: var(--font-size-base);
     font-weight: 600;
@@ -4581,6 +4581,12 @@ img {
 
 .methodology-toggle:hover {
     background: rgba(193, 111, 82, 0.05);
+}
+
+@media (min-width: 769px) {
+    .methodology-toggle {
+        padding: var(--space-4) var(--space-6);
+    }
 }
 
 .methodology-toggle-icon {
@@ -4697,17 +4703,27 @@ img {
     flex-direction: column;
     gap: var(--space-10);
     position: relative;
-    min-height: 400px;
+    min-height: 350px;
 }
 
 .quiz-question {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
-    padding: var(--space-8);
+    padding: var(--space-6);
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease;
+}
+
+@media (min-width: 769px) {
+    .quiz-questions {
+        min-height: 400px;
+    }
+
+    .quiz-question {
+        padding: var(--space-8);
+    }
 }
 
 .quiz-question.active {
@@ -4801,13 +4817,15 @@ img {
 /* Quiz navigation buttons */
 .quiz-navigation {
     display: flex;
-    gap: var(--space-4);
+    flex-direction: column;
+    gap: var(--space-3);
     justify-content: flex-end;
     margin-top: var(--space-8);
 }
 
 .quiz-nav-btn {
-    min-width: 150px;
+    width: 100%;
+    min-height: 44px;
     padding: var(--space-4) var(--space-6);
     font-family: var(--font-heading);
     font-size: var(--font-size-base);
@@ -4828,6 +4846,18 @@ img {
 .quiz-nav-btn:disabled {
     opacity: 0.3;
     cursor: not-allowed;
+}
+
+@media (min-width: 769px) {
+    .quiz-navigation {
+        flex-direction: row;
+        gap: var(--space-4);
+    }
+
+    .quiz-nav-btn {
+        width: auto;
+        min-width: 150px;
+    }
 }
 
 .quiz-next-btn:not(:disabled) {
@@ -5041,7 +5071,8 @@ img {
     align-items: center;
     gap: var(--space-2);
     margin-top: var(--space-6);
-    padding: var(--space-3) var(--space-5);
+    min-height: 44px;
+    padding: var(--space-3) var(--space-4);
     font-family: var(--font-body);
     font-size: var(--font-size-base);
     font-weight: 600;
@@ -5062,6 +5093,12 @@ img {
 .service-timeline-toggle:focus-visible {
     outline: 2px solid var(--orange-400);
     outline-offset: 2px;
+}
+
+@media (min-width: 769px) {
+    .service-timeline-toggle {
+        padding: var(--space-3) var(--space-5);
+    }
 }
 
 .timeline-toggle-icon {
@@ -5128,7 +5165,8 @@ img {
 }
 
 /* Caja del tooltip — alineado a DESIGN.md:
-   surface (#221d18, no negro puro), shadow alpha ≤ 0.4 / blur ≤ 24px, radio 8px */
+   surface (#221d18, no negro puro), shadow alpha ≤ 0.4 / blur ≤ 24px, radio 8px.
+   Mobile-first: base = mobile (ancho limitado por viewport), desktop en min-width. */
 .tooltip-term::before {
     content: attr(data-tooltip);
     position: absolute;
@@ -5136,13 +5174,13 @@ img {
     left: 50%;
     transform: translateX(-50%) translateY(-8px);
     margin-bottom: 8px;
-    padding: 14px 18px;
+    padding: 12px 16px;
     width: max-content;
-    max-width: 340px;
+    max-width: calc(100vw - 48px);
     background: var(--color-surface);
     color: rgba(250, 248, 246, 0.95);
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.5;
     text-align: left;
@@ -5190,18 +5228,12 @@ img {
     transform: translateX(-50%) translateY(0);
 }
 
-/* Mobile */
-@media (max-width: 768px) {
+/* Desktop enhancement */
+@media (min-width: 769px) {
     .tooltip-term::before {
-        left: 50%;
-        right: auto;
-        max-width: calc(100vw - 48px);
-        font-size: 0.875rem;
-        padding: 12px 16px;
-    }
-
-    .tooltip-term::after {
-        left: 50%;
+        max-width: 340px;
+        font-size: 0.9375rem;
+        padding: 14px 18px;
     }
 }
 
@@ -6021,7 +6053,7 @@ img {
    ======================================== */
 
 .clientes-section {
-  padding: var(--space-24) 0;
+  padding: var(--space-16) 0;
   background: transparent;
   position: relative;
   overflow: hidden;
@@ -6034,8 +6066,19 @@ img {
   letter-spacing: 0.08em;
   color: var(--color-accent);
   opacity: 0.7;
-  padding-left: 12rem;
-  margin-bottom: var(--space-12);
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 769px) {
+  .clientes-section {
+    padding: var(--space-24) 0;
+  }
+
+  .clientes-label {
+    padding-left: 12rem;
+    margin-bottom: var(--space-12);
+  }
 }
 .marquee-wrapper {
   overflow: hidden;
@@ -6059,9 +6102,15 @@ img {
 
 .marquee-track {
   display: flex;
-  gap: var(--space-16);
+  gap: var(--space-12);
   animation: marquee 15s linear infinite;
   width: max-content;
+}
+
+@media (min-width: 769px) {
+  .marquee-track {
+    gap: var(--space-16);
+  }
 }
 
 .marquee-track:hover {
@@ -6091,6 +6140,7 @@ img {
 }
 
 .logo-item img {
+  height: 38px;
   max-height: 40px;
   width: auto;
   object-fit: contain;
@@ -6140,6 +6190,23 @@ img {
   max-height: 30px;
 }
 
+/* Logos más grandes en mobile (compensan trazos finos) */
+.logo-item img[src*="EscInn"],
+.logo-item img[src*="dassen"],
+.logo-item img[src*="olamestudio"] {
+  height: 52px;
+}
+
+/* Desktop: la altura la gobiernan los max-height por categoría */
+@media (min-width: 769px) {
+  .logo-item img,
+  .logo-item img[src*="EscInn"],
+  .logo-item img[src*="dassen"],
+  .logo-item img[src*="olamestudio"] {
+    height: auto;
+  }
+}
+
 /* Logo CESBA: invertir para mostrarlo blanco */
 .logo-item img[src*="logo-cesba"] {
   filter: brightness(0) invert(1) grayscale(100%);
@@ -6149,168 +6216,22 @@ img {
   filter: brightness(0) invert(1) grayscale(0%);
 }
 
-/* =========================
-   Testimonials Section
-   ========================= */
+/* Testimonials: sección eliminada — el CSS era huérfano (ningún HTML la usa) */
 
-.testimonials-section {
-  padding: 8rem 0;
-  background: var(--color-accent);
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonials-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-8);
-  position: relative;
-}
-
-.testimonials-brackets {
-  font-size: clamp(4rem, 10vw, 8rem);
-  font-weight: 700;
-  color: rgba(250, 248, 246, 0.15);
-  letter-spacing: -0.05em;
-  text-align: center;
-  margin-bottom: var(--space-12);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-}
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-16);
-  margin-top: var(--space-12);
-}
-
-.testimonial-item {
-  background: rgba(10, 10, 10, 0.4);
-  padding: var(--space-12);
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(250, 248, 246, 0.1);
-  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
-  position: relative;
-}
-
-.testimonial-item::before {
-  content: '"';
-  position: absolute;
-  top: var(--space-6);
-  left: var(--space-8);
-  font-size: 5rem;
-  color: rgba(250, 248, 246, 0.1);
-  font-family: Georgia, serif;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.testimonial-item:hover {
-  border-color: var(--color-accent);
-}
-
-.testimonial-quote {
+/* Nota: estas reglas aplicaban globalmente por una llave mal cerrada
+   (los comentarios MOBILE-XXX eran aspiracionales). Se mantienen
+   globales para no cambiar el render actual. */
+.cta-button {
+  padding: 0.9rem var(--space-8);
   font-size: var(--font-size-base);
-  line-height: var(--line-height-body);
-  color: var(--color-text);
-  margin-bottom: var(--space-8);
-  position: relative;
-  z-index: 1;
 }
 
-.testimonial-attribution {
-  font-size: var(--font-size-base);
-  color: rgba(250, 248, 246, 0.8);
-  font-style: normal;
-  border-top: 1px solid rgba(250, 248, 246, 0.2);
-  padding-top: var(--space-6);
+.actividad-content {
+  padding: var(--space-6);
 }
 
-.testimonial-attribution cite {
-  font-style: normal;
-  font-weight: 500;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .clientes-section {
-    padding: var(--space-16) 0;
-  }
-
-  .clientes-label {
-    padding-left: var(--space-6);
-    margin-bottom: var(--space-8);
-  }
-
-  .marquee-track {
-    gap: var(--space-12);
-  }
-
-  .logo-item img {
-    height: 38px;
-  }
-
-  .logo-item img[src*="EscInn"],
-  .logo-item img[src*="dassen"],
-  .logo-item img[src*="olamestudio"] {
-    height: 52px;
-  }
-
-  /* Testimonials responsive */
-  .testimonials-section {
-    padding: var(--space-20) 0;
-  }
-
-  .testimonials-container {
-    padding: 0 var(--spacing-horizontal-mobile);
-  }
-
-  .testimonials-brackets {
-    margin-bottom: var(--space-8);
-  }
-
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
-
-  .testimonial-item {
-    padding: var(--space-8);
-  }
-
-  .testimonial-item::before {
-    font-size: 3.5rem;
-    top: var(--space-4);
-    left: var(--space-6);
-  }
-
-  .testimonial-quote {
-    font-size: var(--font-size-base);
-  }
-}
-
-  /* MOBILE-007: Botón CTA más compacto */
-  .cta-button {
-    padding: 0.9rem var(--space-8);
-    font-size: var(--font-size-base);
-  }
-
-  /* MOBILE-008: Service cards padding reducido */
-  .service-card {
-    padding: var(--space-8);
-  }
-
-  /* MOBILE-006: Actividad content padding intermedio */
-  .actividad-content {
-    padding: var(--space-6);
-  }
-
-  /* MOBILE-011: Footer gap reducido */
-  .footer-left {
-    gap: var(--space-2);
-  }
+.footer-left {
+  gap: var(--space-2);
 }
 
 
@@ -6327,37 +6248,8 @@ img {
   display: none;
 }
 
-/* =========================
-   Quiz Carousel - Mobile Responsive
-   ========================= */
-
-@media (max-width: 768px) {
-  .quiz-navigation {
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .quiz-nav-btn {
-    width: 100%;
-    min-height: 44px;
-    font-size: var(--font-size-base);
-  }
-
-  .quiz-question {
-    padding: var(--space-6);
-  }
-
-  .quiz-questions {
-    min-height: 350px;
-  }
-
-  /* Interactive toggles: proper touch targets */
-  .methodology-toggle,
-  .service-timeline-toggle {
-    min-height: 44px;
-    padding: var(--space-3) var(--space-4);
-  }
-}
+/* Quiz carousel: reglas mobile migradas a mobile-first
+   (base mobile + min-width: 769px junto a cada componente) */
 
 /* =========================
    Accessibility: Reduce Motion
