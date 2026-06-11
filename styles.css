@@ -4983,88 +4983,95 @@ img {
 }
 
 /* =========================
-   Tooltips - Sistema unificado
+   Términos clave - Mini tarjeta desplegable
+   -------------------------
+   Patrón disclosure: tap/click en el término despliega una
+   tarjeta real en el flujo del documento (la inserta el JS
+   después del bloque contenedor). Alineado a DESIGN.md:
+   surface #221d18, acento --orange-500, radio 8px, shadow ≤ 0.4.
    ========================= */
 
 .tooltip-term {
-    position: relative;
     display: inline;
     color: var(--orange-500);
     text-decoration: underline dotted 1px;
     text-underline-offset: 3px;
-    cursor: help;
+    cursor: pointer;
 }
 
-/* Caja del tooltip — alineado a DESIGN.md:
-   surface (#221d18, no negro puro), shadow alpha ≤ 0.4 / blur ≤ 24px, radio 8px.
-   Mobile-first: base = mobile (ancho limitado por viewport), desktop en min-width. */
-.tooltip-term::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-8px);
-    margin-bottom: 8px;
-    padding: 12px 16px;
-    width: max-content;
-    max-width: calc(100vw - 48px);
+.tooltip-term:hover,
+.tooltip-term[aria-expanded="true"] {
+    text-decoration-style: solid;
+}
+
+.tooltip-term:focus-visible {
+    outline: 2px solid var(--orange-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.term-card {
+    display: block;
+    margin: var(--space-3) 0;
+    padding: var(--space-4);
     background: var(--color-surface);
-    color: rgba(250, 248, 246, 0.95);
+    border: 1px solid rgba(193, 111, 82, 0.4);
+    border-left: 2px solid var(--orange-500);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    animation: termCardIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.term-card[hidden] {
+    display: none;
+}
+
+.term-card-label {
+    display: block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--orange-500);
+    margin-bottom: var(--space-2);
+}
+
+.term-card-text {
+    display: block;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.5;
+    color: rgba(250, 248, 246, 0.95);
     text-align: left;
-    white-space: normal;
-    border: 2px solid var(--orange-500);
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 10000;
 }
 
-/* Flecha */
-.tooltip-term::after {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 10px solid transparent;
-    border-top-color: var(--orange-500);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 10000;
+@keyframes termCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Mostrar en hover, focus de teclado, y tap en mobile (JS togglea .tooltip-active) */
-.tooltip-term:hover::before,
-.tooltip-term:hover::after,
-.tooltip-term:focus-visible::before,
-.tooltip-term:focus-visible::after,
-.tooltip-term.tooltip-active::before,
-.tooltip-term.tooltip-active::after {
-    opacity: 1;
-    visibility: visible;
-}
-
-.tooltip-term:hover::before,
-.tooltip-term:focus-visible::before,
-.tooltip-term.tooltip-active::before {
-    transform: translateX(-50%) translateY(0);
+@media (prefers-reduced-motion: reduce) {
+    .term-card {
+        animation: none;
+    }
 }
 
 /* Desktop enhancement */
 @media (min-width: 769px) {
-    .tooltip-term::before {
-        max-width: 340px;
+    .term-card {
+        padding: var(--space-4) var(--space-5);
+    }
+
+    .term-card-text {
         font-size: 0.9375rem;
-        padding: 14px 18px;
     }
 }
 

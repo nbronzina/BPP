@@ -1369,66 +1369,88 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
-  // TOOLTIPS FOR KEY TERMS
+  // MINI TARJETAS DESPLEGABLES PARA TÉRMINOS CLAVE
   // -----------------------------------------------------
-  // Mobile tap handling for tooltips
+  // Patrón disclosure (WAI-ARIA): al tocar el término se
+  // despliega una tarjeta real en el flujo del documento,
+  // debajo del bloque que lo contiene. Reemplaza a los
+  // tooltips flotantes (pseudo-elementos posicionados).
   // =====================================================
   const tooltipTerms = document.querySelectorAll('.tooltip-term');
 
   if (tooltipTerms.length) {
-    tooltipTerms.forEach((term, index) => {
-      // Focusable por teclado; el nombre accesible sigue siendo el término,
-      // la definición se asocia vía aria-describedby (patrón tooltip WAI-ARIA)
-      term.setAttribute('tabindex', '0');
-      const defId = `tooltip-def-${index}`;
-      const def = document.createElement('span');
-      def.id = defId;
-      def.className = 'sr-only';
-      def.setAttribute('role', 'tooltip');
-      def.textContent = term.getAttribute('data-tooltip');
-      term.insertAdjacentElement('afterend', def);
-      term.setAttribute('aria-describedby', defId);
-
-      const toggleTooltip = () => {
-        tooltipTerms.forEach(t => {
-          if (t !== term) {
-            t.classList.remove('tooltip-active');
+    const closeAllCards = (except) => {
+      tooltipTerms.forEach(t => {
+        if (t !== except && t.getAttribute('aria-expanded') === 'true') {
+          t.setAttribute('aria-expanded', 'false');
+          const card = document.getElementById(t.getAttribute('aria-controls'));
+          if (card) {
+            card.hidden = true;
           }
-        });
-        term.classList.toggle('tooltip-active');
+        }
+      });
+    };
+
+    tooltipTerms.forEach((term, index) => {
+      const cardId = `term-card-${index}`;
+      const card = document.createElement('span');
+      card.id = cardId;
+      card.className = 'term-card';
+      card.hidden = true;
+
+      const label = document.createElement('span');
+      label.className = 'term-card-label';
+      label.textContent = term.textContent;
+
+      const text = document.createElement('span');
+      text.className = 'term-card-text';
+      text.textContent = term.getAttribute('data-tooltip');
+
+      card.appendChild(label);
+      card.appendChild(text);
+
+      // La tarjeta se inserta después del bloque contenedor para no
+      // romper la línea a mitad de oración
+      const block = term.closest('p, li, legend, h2, h3, .service-deliverable') || term.parentElement;
+      block.insertAdjacentElement('afterend', card);
+
+      term.setAttribute('tabindex', '0');
+      term.setAttribute('role', 'button');
+      term.setAttribute('aria-expanded', 'false');
+      term.setAttribute('aria-controls', cardId);
+
+      const toggleCard = () => {
+        const isOpen = term.getAttribute('aria-expanded') === 'true';
+        closeAllCards(term);
+        term.setAttribute('aria-expanded', String(!isOpen));
+        card.hidden = isOpen;
       };
 
-      // Tap en mobile
       term.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        toggleTooltip();
+        toggleCard();
       });
 
-      // Enter/Espacio por teclado
       term.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          toggleTooltip();
+          toggleCard();
         }
       });
     });
 
-    // Close tooltips when clicking elsewhere
+    // Cerrar al hacer clic fuera (clic dentro de la tarjeta no la cierra)
     document.addEventListener('click', (e) => {
-      if (!e.target.classList.contains('tooltip-term')) {
-        tooltipTerms.forEach(term => {
-          term.classList.remove('tooltip-active');
-        });
+      if (!e.target.closest('.tooltip-term') && !e.target.closest('.term-card')) {
+        closeAllCards();
       }
     });
 
-    // Close tooltips on Escape key
+    // Cerrar con Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        tooltipTerms.forEach(term => {
-          term.classList.remove('tooltip-active');
-        });
+        closeAllCards();
       }
     });
   }
