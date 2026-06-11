@@ -1,5 +1,5 @@
-/* Plus Jakarta Sans - Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+/* Plus Jakarta Sans se carga vía <link> en el <head> de cada página
+   (evita la cadena render-blocking de @import dentro del CSS) */
 
 /* =========================
    Reset & Variables
@@ -13,17 +13,11 @@
 
 :root {
     /* Orange tonal scale - BPP brand (inclusive: desaturado, terroso) */
-    --orange-950: #1a0f0c;
-    --orange-900: #331e18;
-    --orange-800: #664030;
-    --orange-700: #99594a;
+    /* DESIGN.md: un solo acento, sin variantes de escala.
+       --orange-500 es el primary; -400/-600 solo como hover/soporte ya en uso. */
     --orange-600: #b8705a;
     --orange-500: #c16f52;  /* Principal (brand) - terracotta desaturado */
     --orange-400: #cd8763;
-    --orange-300: #d9a493;
-    --orange-200: #e6c5ba;
-    --orange-100: #f2e3dd;
-    --orange-50: #f9f1ee;
 
     /* Base colors - Inclusive dark (lifted warm gray, no pure black) */
     --color-bg: #1a1512;           /* Dark warm brown - lifted para reducir contraste extremo */
@@ -93,7 +87,7 @@
 
     /* Borders & Shadows */
     --border-radius: 8px;
-    --border-card: 1px solid rgba(206, 115, 82, 0.2);
+    --border-card: 1px solid rgba(193, 111, 82, 0.2);
 
     /* Spacing */
     --spacing-card: 3rem;
@@ -633,7 +627,7 @@ body.secondary-page .nav-logo {
     font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 400; color: rgba(250, 248, 246, 0.85); line-height: 1.4; opacity: 0.85; animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both; }
 
 .hero-scroll-cue:hover {
-    color: var(--color-text); border-color: rgba(250, 248, 246, 0.4); transform: translateX(-50%) translateY(2px); }
+    color: var(--color-text); border-color: rgba(250, 248, 246, 0.4); }
 
 .hero-scroll-cue svg {
     animation: heroScrollHint 2.4s ease-in-out infinite; }
@@ -741,26 +735,19 @@ body.secondary-page .nav-logo {
     visibility: visible;
 }
 
+/* Nav CTA tipográfico (DESIGN.md: hover = cambio de color, nada más) */
 .nav-cta {
-    color: var(--color-text);
+    color: var(--color-accent);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
-    padding: var(--space-2) var(--space-5);
-    border: 1.5px solid var(--color-accent);
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    padding: var(--space-2) 0;
+    transition: color 0.2s ease;
     display: inline-block;
 }
 
 .nav-cta:hover {
-    background: var(--color-accent);
-    color: var(--color-bg);
-    transform: translateY(-1px);
-}
-
-.nav-cta:active {
-    transform: translateY(0);
+    color: var(--color-accent-bright);
 }
 
 /* Navigation - Desktop Enhancement */
@@ -892,18 +879,17 @@ body.secondary-page .nav-logo {
     gap: var(--space-2);
     padding: var(--space-2) var(--space-5);
     border: 1px solid rgba(250, 248, 246, 0.18);
-    border-radius: 999px;
+    border-radius: 4px;
     color: rgba(250, 248, 246, 0.7);
     text-decoration: none;
     font-size: 1rem;
     letter-spacing: 0.04em;
-    transition: color 0.2s, border-color 0.2s, transform 0.2s;
+    transition: color 0.2s, border-color 0.2s;
 }
 
 .hero-scroll-cue:hover {
     color: var(--color-text);
     border-color: rgba(250, 248, 246, 0.4);
-    transform: translateX(-50%) translateY(2px);
 }
 
 .hero-scroll-cue svg {
@@ -1093,9 +1079,9 @@ body.secondary-page .nav-logo {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(ellipse at 30% 40%, rgba(206, 115, 82, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 40%, rgba(193, 111, 82, 0.08) 0%, transparent 50%),
         radial-gradient(ellipse at 70% 60%, rgba(10, 37, 64, 0.12) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(206, 115, 82, 0.04) 0%, transparent 60%);
+        linear-gradient(135deg, rgba(193, 111, 82, 0.04) 0%, transparent 60%);
 }
 
 .hero-immersive .hero-grid {
@@ -1149,9 +1135,9 @@ body.secondary-page .nav-logo {
     align-items: center;
     margin-top: var(--space-8);
     padding: var(--space-4) var(--space-6);
-    background: rgba(206, 115, 82, 0.1);
+    background: rgba(193, 111, 82, 0.1);
     border-radius: var(--border-radius);
-    border: 1px solid rgba(206, 115, 82, 0.3);
+    border: 1px solid rgba(193, 111, 82, 0.3);
     width: 100%;
     max-width: 400px;
 }
@@ -1196,32 +1182,52 @@ body.secondary-page .nav-logo {
    CTA Buttons - Sistema Unificado Canónico
    ========================= */
 
-/* PRIMARY — Solo para acciones de conversión directa: contacto, descarga de reporte */
+/* PRIMARY — CTA tipográfico (DESIGN.md: BPP no usa botones con fondo sólido).
+   Color primary + flecha adyacente; hover = cambio de color + translateX en la flecha. */
 .cta-primary {
-    display: inline-block;
-    background: var(--color-accent);
-    color: #1a1512;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: transparent;
+    color: var(--color-accent);
     border: none;
-    padding: var(--space-4) var(--space-8);
+    padding: var(--space-2) 0;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    text-decoration: none;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(193, 111, 82, 0.4);
+    text-underline-offset: 4px;
     cursor: pointer;
-    transition: opacity 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease-out;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
     min-height: 44px;
-    text-align: center;
-    will-change: transform;
+    text-align: left;
 }
 
 .cta-primary:hover {
-    opacity: 0.92;
-    box-shadow: 0 0 20px rgba(206, 115, 82, 0.4),
-                0 0 40px rgba(206, 115, 82, 0.2);
+    color: var(--color-accent-bright);
+    text-decoration-color: var(--color-accent);
+}
+
+.cta-primary .cta-arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.cta-primary:hover .cta-arrow--right {
+    transform: translateX(4px);
+}
+
+.cta-primary:hover .cta-arrow--left {
+    transform: translateX(-4px);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .cta-primary:hover {
+    .cta-primary .cta-arrow {
+        transition: none;
+    }
+    .cta-primary:hover .cta-arrow--right,
+    .cta-primary:hover .cta-arrow--left {
         transform: none;
     }
 }
@@ -1255,7 +1261,6 @@ body.secondary-page .nav-logo {
 
 .cta-link:hover {
     opacity: 0.85;
-    text-shadow: 0 0 12px rgba(206, 115, 82, 0.5);
 }
 
 /* =========================
@@ -1280,19 +1285,18 @@ body.secondary-page .nav-logo {
     text-align: center;
 }
 
-/* Variante Primary (filled) - Acciones principales */
+/* Variante Primary — tipográfica con borde (DESIGN.md: sin fondos sólidos) */
 .cta-button,
 .pwa-install-btn {
-    background: var(--color-accent);
-    color: #1a1512;
+    background: transparent;
+    color: var(--color-accent);
     padding: var(--space-3) var(--space-8);
 }
 
 .cta-button:hover,
 .pwa-install-btn:hover {
-    background: var(--color-accent-bright);
+    color: var(--color-accent-bright);
     border-color: var(--color-accent-bright);
-    color: #1a1512;
 }
 
 /* Arrow micro-interactions */
@@ -1319,11 +1323,6 @@ body.secondary-page .nav-logo {
     transform: translateX(-4px);
 }
 
-/* Slight bounce effect on active */
-.cta-button:active .cta-arrow,
-.form-submit:active .cta-arrow,
-.btn-download:active .cta-arrow,
-
 /* Variante Secondary (outlined) - Acciones secundarias */
 .form-submit,
 .btn-download,
@@ -1335,8 +1334,8 @@ body.secondary-page .nav-logo {
 
 .btn-download:hover,
 .pwa-dismiss-btn:hover {
-    background: var(--color-accent);
-    color: #1a1512;
+    color: var(--color-accent-bright);
+    border-color: var(--color-accent-bright);
 }
 
 /* Form submit estandarizado con about-cta y services-cta-link */
@@ -1509,7 +1508,7 @@ body.secondary-page .nav-logo {
     bottom: var(--space-8);
     right: var(--space-8);
     background: rgba(10, 37, 64, 0.95);
-    color: var(--color-white);
+    color: rgba(250, 248, 246, 0.95);
     padding: var(--space-4) var(--space-6);
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -1664,7 +1663,6 @@ body.secondary-page .nav-logo {
     letter-spacing: 0.08em;
     color: var(--color-text);
     opacity: 1;
-    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-4);
     margin-top: var(--space-4);
     margin-bottom: var(--space-6);
@@ -1752,7 +1750,6 @@ body.secondary-page .nav-logo {
     left: 0;
     border-top: 2px solid var(--color-accent);
     border-left: 2px solid var(--color-accent);
-    box-shadow: -2px 0 6px rgba(193, 111, 82, 0.35);
     opacity: 0.3;
 }
 
@@ -1777,14 +1774,12 @@ body.secondary-page .nav-logo {
     align-items: flex-start;
     gap: var(--space-4);
     padding: var(--space-5) var(--space-6);
-    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
-    background: rgba(206, 115, 82, 0.03);
+    background: rgba(193, 111, 82, 0.03);
     transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .transformation-card:hover {
-    background: rgba(206, 115, 82, 0.06);
-    box-shadow: -3px 0 12px rgba(193, 111, 82, 0.5);
+    background: rgba(193, 111, 82, 0.06);
 }
 
 .transformation-card .card-icon {
@@ -1818,7 +1813,7 @@ body.secondary-page .nav-logo {
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     padding: var(--space-2) var(--space-4);
     background: rgba(250, 248, 246, 0.03);
-    border: 1px solid rgba(206, 115, 82, 0.2);
+    border: 1px solid rgba(193, 111, 82, 0.2);
     border-radius: 4px;
     opacity: 0.7;
     transition: opacity 0.2s ease, border-color 0.2s ease, background 0.2s ease;
@@ -1829,7 +1824,7 @@ body.secondary-page .nav-logo {
 .trust-badge:hover {
     opacity: 1;
     border-color: var(--color-accent);
-    background: rgba(206, 115, 82, 0.05);
+    background: rgba(193, 111, 82, 0.05);
 }
 
 .institutional-description {
@@ -1852,7 +1847,7 @@ body.secondary-page .nav-logo {
     align-items: center;
     gap: var(--space-2);
     padding: var(--space-3) var(--space-6);
-    background: rgba(206, 115, 82, 0.08);
+    background: rgba(193, 111, 82, 0.08);
     border: 1px solid var(--color-accent);
     border-radius: 4px;
     margin-bottom: var(--space-4);
@@ -1945,14 +1940,13 @@ body.secondary-page .nav-logo {
     font-family: var(--font-mono);
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     opacity: 0.6;
-    box-shadow: -2px 0 6px rgba(193, 111, 82, 0.35);
     padding-left: var(--space-4);
     margin-top: var(--space-8);
     line-height: 1.6;
 }
 
 .institutional-context {
-    border-top: 1px solid rgba(206, 115, 82, 0.3);
+    border-top: 1px solid rgba(193, 111, 82, 0.3);
     padding-top: var(--space-8);
     margin-top: var(--space-12);
 }
@@ -2011,7 +2005,6 @@ body.secondary-page .nav-logo {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-6);
@@ -2038,7 +2031,7 @@ body.secondary-page .nav-logo {
 
 .service-block {
     padding: var(--space-5);
-    border: 1px solid rgba(206, 115, 82, 0.2);
+    border: 1px solid rgba(193, 111, 82, 0.2);
     border-radius: var(--border-radius);
     background: var(--color-surface);  /* Fondo sólido #221d18 en lugar de transparente */
     position: relative;
@@ -2101,7 +2094,7 @@ body.secondary-page .nav-logo {
     line-height: 1.7;
     margin: var(--space-6) 0;
     padding: var(--space-5);
-    background: rgba(206, 115, 82, 0.08);
+    background: rgba(193, 111, 82, 0.08);
     border-left: 3px solid var(--orange-500);
     border-radius: 4px;
     max-width: 750px;
@@ -2135,7 +2128,7 @@ body.secondary-page .nav-logo {
 .service-proof {
     margin-top: var(--space-6);
     padding-top: var(--space-6);
-    border-top: 1px solid rgba(206, 115, 82, 0.15);
+    border-top: 1px solid rgba(193, 111, 82, 0.15);
     font-size: var(--font-size-base);
     line-height: 1.6;
 }
@@ -2205,7 +2198,7 @@ body.secondary-page .nav-logo {
 footer {
     background: transparent;
     padding: var(--space-10) var(--space-6) var(--space-8);
-    border-top: 1px solid rgba(206, 115, 82, 0.2);
+    border-top: 1px solid rgba(193, 111, 82, 0.2);
     margin-top: var(--spacing-section);
 }
 
@@ -2487,7 +2480,6 @@ footer {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-bottom: var(--space-12);
 }
@@ -2720,14 +2712,13 @@ footer {
 .filter-btn:hover {
     color: var(--color-accent);
     border-color: var(--color-accent);
-    background: rgba(206, 115, 82, 0.05);
+    background: rgba(193, 111, 82, 0.05);
 }
 
 .filter-btn--active {
     background: var(--color-accent);
     color: #1a1512;
     border-color: var(--color-accent);
-    box-shadow: 0 0 16px rgba(206, 115, 82, 0.3);
 }
 
 .actividad-entrada.hidden {
@@ -2849,7 +2840,7 @@ footer {
 
 .proyecto-disciplinas li {
     font-size: 1rem;
-    color: rgba(250, 248, 246, 0.4);
+    color: rgba(250, 248, 246, 0.65);
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -2869,7 +2860,6 @@ footer {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -2993,9 +2983,9 @@ footer {
     padding: var(--space-1) var(--space-2);
     border-radius: 4px;
     margin-bottom: var(--space-2);
-    background: rgba(206, 115, 82, 0.1);
+    background: rgba(193, 111, 82, 0.1);
     color: var(--color-accent);
-    border: 1px solid rgba(206, 115, 82, 0.3);
+    border: 1px solid rgba(193, 111, 82, 0.3);
 }
 
 .actividad-entrada h3 {
@@ -3166,7 +3156,6 @@ footer {
     letter-spacing: 0.08em;
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
-    box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
     padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
@@ -3266,9 +3255,8 @@ footer {
 
 .equipo-ciudad {
     font-size: 1rem;
-    color: rgba(250, 248, 246, 0.4);
+    color: rgba(250, 248, 246, 0.65);
     font-family: 'Plus Jakarta Sans', sans-serif;
-    opacity: 0.6;
 }
 
 .equipo-link {
@@ -3371,9 +3359,10 @@ img {
     outline: none;
 }
 
+/* Focus ring global — alpha 0.55 para cumplir contraste no-textual 3:1 (WCAG 2.4.7) */
 *:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(206, 115, 82, 0.2);
+    box-shadow: 0 0 0 3px rgba(193, 111, 82, 0.55);
 }
 
 /* Focus en nav links */
@@ -3386,7 +3375,7 @@ img {
 /* Focus en botones */
 .cta-button:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(206, 115, 82, 0.2);
+    box-shadow: 0 0 0 3px rgba(193, 111, 82, 0.55);
 }
 
 .mobile-menu-btn:focus-visible {
@@ -3916,11 +3905,11 @@ img {
 
 .impact-card {
   background: rgba(250, 248, 246, 0.02);
-  border: 1px solid var(--color-border-card, #2A2A2A);
+  border: 1px solid rgba(250, 248, 246, 0.12);
   border-radius: 8px;
   padding: var(--space-8);
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  font-family: var(--font-family-base, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   max-width: 900px;
   margin: var(--space-8) auto;
 }
@@ -4490,7 +4479,7 @@ img {
     line-height: var(--line-height-body);
     margin-bottom: var(--space-6);
     padding-top: var(--space-2);
-    border-top: 1px solid rgba(206, 115, 82, 0.15);
+    border-top: 1px solid rgba(193, 111, 82, 0.15);
 }
 
 .senal-link {
@@ -4591,7 +4580,7 @@ img {
 }
 
 .methodology-toggle:hover {
-    background: rgba(206, 115, 82, 0.05);
+    background: rgba(193, 111, 82, 0.05);
 }
 
 .methodology-toggle-icon {
@@ -4644,7 +4633,7 @@ img {
     color: var(--color-text);
     line-height: var(--line-height-body);
     padding: var(--space-4);
-    background: rgba(206, 115, 82, 0.05);
+    background: rgba(193, 111, 82, 0.05);
     border-left: 3px solid var(--orange-500);
     border-radius: 4px;
     margin-bottom: var(--space-4);
@@ -4672,7 +4661,7 @@ img {
 }
 
 .methodology-link:hover {
-    background: rgba(206, 115, 82, 0.1);
+    background: rgba(193, 111, 82, 0.1);
     border-color: var(--orange-400);
 }
 
@@ -4693,7 +4682,7 @@ img {
     width: 100%;
     height: 6px;
     background: var(--color-border);
-    border-radius: 3px;
+    border-radius: 4px;
     overflow: hidden;
 }
 
@@ -4754,7 +4743,7 @@ img {
 
 .option-label:hover {
     border-color: var(--orange-500);
-    background: rgba(206, 115, 82, 0.05);
+    background: rgba(193, 111, 82, 0.05);
 }
 
 .option-label input[type="radio"] {
@@ -4774,7 +4763,7 @@ img {
 
 .option-label:has(input:checked) {
     border-color: var(--orange-500);
-    background: rgba(206, 115, 82, 0.1);
+    background: rgba(193, 111, 82, 0.1);
 }
 
 .option-label:has(input:checked) .option-text {
@@ -4833,7 +4822,7 @@ img {
 
 .quiz-nav-btn:hover:not(:disabled) {
     border-color: var(--orange-500);
-    background: rgba(206, 115, 82, 0.05);
+    background: rgba(193, 111, 82, 0.05);
 }
 
 .quiz-nav-btn:disabled {
@@ -5004,7 +4993,7 @@ img {
 }
 
 .results-methodology-link:hover {
-    background: rgba(206, 115, 82, 0.1);
+    background: rgba(193, 111, 82, 0.1);
     border-color: var(--orange-400);
 }
 
@@ -5065,7 +5054,7 @@ img {
 }
 
 .service-timeline-toggle:hover {
-    background: rgba(206, 115, 82, 0.1);
+    background: rgba(193, 111, 82, 0.1);
     border-color: var(--orange-400);
     color: var(--orange-400);
 }
@@ -5087,7 +5076,7 @@ img {
 .service-timeline {
     margin-top: var(--space-6);
     padding: var(--space-6);
-    background: rgba(206, 115, 82, 0.05);
+    background: rgba(193, 111, 82, 0.05);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
     display: none;
@@ -5138,7 +5127,8 @@ img {
     cursor: help;
 }
 
-/* Caja del tooltip */
+/* Caja del tooltip — alineado a DESIGN.md:
+   surface (#221d18, no negro puro), shadow alpha ≤ 0.4 / blur ≤ 24px, radio 8px */
 .tooltip-term::before {
     content: attr(data-tooltip);
     position: absolute;
@@ -5149,8 +5139,8 @@ img {
     padding: 14px 18px;
     width: max-content;
     max-width: 340px;
-    background: #000000;
-    color: #faf8f6;
+    background: var(--color-surface);
+    color: rgba(250, 248, 246, 0.95);
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.9375rem;
     font-weight: 400;
@@ -5159,12 +5149,12 @@ img {
     white-space: normal;
     border: 2px solid var(--orange-500);
     border-radius: 8px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 99999;
+    z-index: 10000;
 }
 
 /* Flecha */
@@ -5180,17 +5170,23 @@ img {
     visibility: hidden;
     pointer-events: none;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 99999;
+    z-index: 10000;
 }
 
-/* Mostrar en hover */
+/* Mostrar en hover, focus de teclado, y tap en mobile (JS togglea .tooltip-active) */
 .tooltip-term:hover::before,
-.tooltip-term:hover::after {
+.tooltip-term:hover::after,
+.tooltip-term:focus-visible::before,
+.tooltip-term:focus-visible::after,
+.tooltip-term.tooltip-active::before,
+.tooltip-term.tooltip-active::after {
     opacity: 1;
     visibility: visible;
 }
 
-.tooltip-term:hover::before {
+.tooltip-term:hover::before,
+.tooltip-term:focus-visible::before,
+.tooltip-term.tooltip-active::before {
     transform: translateX(-50%) translateY(0);
 }
 
@@ -5507,7 +5503,7 @@ img {
   max-width: 280px;
   background: rgba(250, 248, 246, 0.02);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(206, 115, 82, 0.3);
+  border: 1px solid rgba(193, 111, 82, 0.3);
   border-radius: 8px;
   padding: var(--space-6);
   z-index: 100;
@@ -5631,8 +5627,7 @@ img {
 .pull-quote {
   margin: var(--space-12) 0;
   padding: var(--space-8) var(--space-10);
-  background: linear-gradient(135deg, rgba(206, 115, 82, 0.08), rgba(212, 132, 94, 0.05));
-  box-shadow: -3px 0 8px rgba(193, 111, 82, 0.4);
+  background: linear-gradient(135deg, rgba(193, 111, 82, 0.08), rgba(212, 132, 94, 0.05));
   border-radius: 8px;
   position: relative;
 }
@@ -5660,7 +5655,7 @@ img {
 
 /* Highlight Boxes - "Qué significa para vos" */
 .highlight-box {
-  background: linear-gradient(135deg, rgba(206, 115, 82, 0.12), rgba(212, 132, 94, 0.08));
+  background: linear-gradient(135deg, rgba(193, 111, 82, 0.12), rgba(212, 132, 94, 0.08));
   border: 2px solid var(--color-accent);
   border-radius: 8px;
   padding: var(--space-6) var(--space-8);
@@ -5692,7 +5687,7 @@ img {
 .scenario-accordion-header {
   width: 100%;
   background: rgba(250, 248, 246, 0.02);
-  border: 1px solid rgba(206, 115, 82, 0.4);
+  border: 1px solid rgba(193, 111, 82, 0.4);
   border-radius: 8px;
   padding: var(--space-6) var(--space-8);
   text-align: left;
@@ -5705,7 +5700,7 @@ img {
 }
 
 .scenario-accordion-header:hover {
-  background: rgba(206, 115, 82, 0.05);
+  background: rgba(193, 111, 82, 0.05);
   border-color: var(--color-accent);
 }
 
@@ -5742,7 +5737,7 @@ img {
   overflow: hidden;
   transition: max-height 0.4s ease-out, padding 0.4s ease-out;
   background: rgba(250, 248, 246, 0.02);
-  border: 1px solid rgba(206, 115, 82, 0.4);
+  border: 1px solid rgba(193, 111, 82, 0.4);
   border-top: none;
   border-bottom-left-radius: var(--space-3);
   border-bottom-right-radius: var(--space-3);
@@ -5833,7 +5828,7 @@ img {
   width: 44px;
   height: 44px;
   background: rgba(250, 248, 246, 0.05);
-  border: 1px solid rgba(206, 115, 82, 0.3);
+  border: 1px solid rgba(193, 111, 82, 0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -5866,7 +5861,7 @@ img {
   width: 100%;
   background: rgba(15, 15, 15, 0.98);
   backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(206, 115, 82, 0.3);
+  border-top: 1px solid rgba(193, 111, 82, 0.3);
   padding: var(--space-4);
   z-index: 1000;
   display: none;

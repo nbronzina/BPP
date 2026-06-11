@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const restText = text.replace(arrowPattern, '').trim();
 
       if (isAtStart) {
-        btn.innerHTML = `<span class="cta-arrow cta-arrow--left">${arrow}</span> ${restText}`;
+        btn.innerHTML = `<span class="cta-arrow cta-arrow--left" aria-hidden="true">${arrow}</span> ${restText}`;
       } else {
-        btn.innerHTML = `${restText} <span class="cta-arrow cta-arrow--right">${arrow}</span>`;
+        btn.innerHTML = `${restText} <span class="cta-arrow cta-arrow--right" aria-hidden="true">${arrow}</span>`;
       }
     }
   });
@@ -58,8 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
     history.scrollRestoration = 'manual';
   }
 
-  // Forzar scroll al top cuando la página carga
-  window.scrollTo(0, 0);
+  // Forzar scroll al top cuando la página carga,
+  // salvo que haya un ancla en la URL (deep links como ../#contact)
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
 
   // =====================================================
   // BLOQUE NAV / NAVEGACIÓN
@@ -287,16 +290,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // instalación en páginas que no son legales ni reporte.
   // =====================================================
 
-  // Service Worker (PWA) - TEMPORARILY DISABLED to avoid cache issues
-  // if ("serviceWorker" in navigator) {
-  //   window.addEventListener("load", () => {
-  //     navigator.serviceWorker
-  //       .register("/sw.js")
-  //       .catch(() => {
-  //         // Error silently ignored in production
-  //       });
-  //   });
-  // }
+  // Service Worker (PWA)
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .catch(() => {
+          // Error silently ignored in production
+        });
+    });
+  }
 
   // =====================================================
   // BLOQUE FORMULARIO DE CONTACTO
@@ -449,7 +452,8 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const submitButton = contactForm.querySelector(".form-submit");
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const submitButtonHTML = submitButton ? submitButton.innerHTML : "";
       const formData = new FormData(contactForm);
 
       if (submitButton) {
@@ -497,7 +501,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (submitButton) {
           submitButton.disabled = false;
           submitButton.classList.remove("is-loading");
-          submitButton.textContent = "Enviar mensaje";
+          submitButton.innerHTML = submitButtonHTML;
         }
       }
     });
@@ -993,9 +997,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (shareButtons) {
       shareButtons.querySelectorAll("a").forEach((btn) => {
         btn.addEventListener("click", () => {
-          const platform = btn.getAttribute("aria-label").includes("LinkedIn")
+          const label = btn.getAttribute("aria-label") || "";
+          const platform = label.includes("LinkedIn")
             ? "linkedin"
-            : btn.getAttribute("aria-label").includes("Twitter")
+            : label.includes("Twitter")
             ? "twitter"
             : "email";
           trackEvent("Compartir_reporte", { plataforma: platform });
@@ -1204,13 +1209,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Calculate score and show results
     quizSubmitBtn.addEventListener('click', () => {
-      const q1 = parseInt(document.querySelector('input[name="q1"]:checked').value);
-      const q2 = parseInt(document.querySelector('input[name="q2"]:checked').value);
-      const q3 = parseInt(document.querySelector('input[name="q3"]:checked').value);
-      const q4 = parseInt(document.querySelector('input[name="q4"]:checked').value);
-      const q5 = parseInt(document.querySelector('input[name="q5"]:checked').value);
+      const answers = ['q1', 'q2', 'q3', 'q4', 'q5'].map(name => {
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        return checked ? parseInt(checked.value) : null;
+      });
 
-      const totalScore = q1 + q2 + q3 + q4 + q5;
+      // Guard: si falta alguna respuesta, no calcular
+      if (answers.some(a => a === null)) return;
+
+      const totalScore = answers.reduce((sum, val) => sum + val, 0);
 
       // Determine score label and description
       let scoreLabel, scoreDescription, recommendations;
@@ -1354,8 +1361,8 @@ document.addEventListener("DOMContentLoaded", function () {
           toggle.querySelector('span:first-child').textContent = 'Ocultar proceso';
 
           // Track expansion
-          const serviceCategory = toggle.closest('.service-block').querySelector('.service-category').textContent;
-          trackEvent('Timeline_expandido', { servicio: serviceCategory });
+          const categoryEl = toggle.closest('.service-block')?.querySelector('.service-category');
+          trackEvent('Timeline_expandido', { servicio: categoryEl ? categoryEl.textContent : 'desconocido' });
         }
       });
     });
@@ -1369,26 +1376,41 @@ document.addEventListener("DOMContentLoaded", function () {
   const tooltipTerms = document.querySelectorAll('.tooltip-term');
 
   if (tooltipTerms.length) {
-    // Make tooltip terms focusable for keyboard navigation
-    tooltipTerms.forEach(term => {
+    tooltipTerms.forEach((term, index) => {
+      // Focusable por teclado; el nombre accesible sigue siendo el término,
+      // la definición se asocia vía aria-describedby (patrón tooltip WAI-ARIA)
       term.setAttribute('tabindex', '0');
-      term.setAttribute('role', 'button');
-      term.setAttribute('aria-label', `Definición: ${term.getAttribute('data-tooltip')}`);
+      const defId = `tooltip-def-${index}`;
+      const def = document.createElement('span');
+      def.id = defId;
+      def.className = 'sr-only';
+      def.setAttribute('role', 'tooltip');
+      def.textContent = term.getAttribute('data-tooltip');
+      term.insertAdjacentElement('afterend', def);
+      term.setAttribute('aria-describedby', defId);
 
-      // Mobile tap handling
-      term.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        // Close all other tooltips
+      const toggleTooltip = () => {
         tooltipTerms.forEach(t => {
           if (t !== term) {
             t.classList.remove('tooltip-active');
           }
         });
-
-        // Toggle current tooltip
         term.classList.toggle('tooltip-active');
+      };
+
+      // Tap en mobile
+      term.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleTooltip();
+      });
+
+      // Enter/Espacio por teclado
+      term.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleTooltip();
+        }
       });
     });
 

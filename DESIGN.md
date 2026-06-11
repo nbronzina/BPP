@@ -1,8 +1,8 @@
 ---
-version: beta-inclusive
+version: beta-inclusive-2.1
 name: BPP Analytics & Design
-description: Sistema visual del estudio. Fondo dark warm gray, tipografía híbrida (Bros Oskon display + Chivo body), acento terracota y corner brackets como dispositivo de encuadre. Editorial inclusivo, no corporativo.
-evolution: "v1 (alpha) usaba Space Mono monowidth + negro puro + contraste alto como signature. v2 (beta-inclusive) prioriza diseño inclusivo: reduce fatiga visual con warm off-white, terracota desaturado, y dark warm gray. Mantiene densidad editorial pero humaniza el contraste. Cambio aprobado 2026-05-04."
+description: Sistema visual del estudio. Fondo dark warm gray, tipografía Plus Jakarta Sans (familia única, jerarquía por peso y tamaño), acento terracota y corner brackets como dispositivo de encuadre. Editorial inclusivo, no corporativo.
+evolution: "v1 (alpha) usaba Space Mono monowidth + negro puro + contraste alto como signature. v2 (beta-inclusive) prioriza diseño inclusivo: reduce fatiga visual con warm off-white, terracota desaturado, y dark warm gray. v2.1 consolida la tipografía en Plus Jakarta Sans como familia única (decisión 2026-06-11): el híbrido Bros Oskon + Chivo nunca llegó a producción y se descartó a favor de lo que el sitio ya usaba de forma consistente."
 colors:
   primary: "#c16f52"
   on-primary: "#1a1512"
@@ -17,34 +17,34 @@ colors:
   focus-ring: "rgba(193,111,82,0.2)"
 typography:
   wayfinding:
-    fontFamily: ZT Bros Oskon
-    fontWeight: 400
+    fontFamily: Plus Jakarta Sans
+    fontWeight: 500
     fontSize: 0.75rem
     letterSpacing: 0.12em
   h1:
-    fontFamily: ZT Bros Oskon
-    fontWeight: 400
+    fontFamily: Plus Jakarta Sans
+    fontWeight: 700
     fontSize: 3.5rem
     lineHeight: 1.05
     letterSpacing: -0.01em
   h2:
-    fontFamily: ZT Bros Oskon
-    fontWeight: 400
+    fontFamily: Plus Jakarta Sans
+    fontWeight: 700
     fontSize: 2rem
     lineHeight: 1.15
   body-md:
-    fontFamily: Chivo
+    fontFamily: Plus Jakarta Sans
     fontWeight: 400
     fontSize: 1rem
     lineHeight: 1.6
   body-sm:
-    fontFamily: Chivo
+    fontFamily: Plus Jakarta Sans
     fontWeight: 400
     fontSize: 0.875rem
     lineHeight: 1.55
   metadata:
-    fontFamily: ZT Bros Oskon
-    fontWeight: 400
+    fontFamily: Plus Jakarta Sans
+    fontWeight: 500
     fontSize: 0.75rem
     letterSpacing: 0.08em
 spacing:
@@ -124,29 +124,22 @@ La jerarquía por opacidad se mantiene intencional. La base cálida (`rgba(250,2
 
 ## Typography
 
-**Sistema híbrido: ZT Bros Oskon (display/estructura) + Chivo (body/legibilidad).**
+**Familia única: Plus Jakarta Sans (Google Fonts).**
 
-**Evolución v1 → v2:** La versión alpha usaba Space Mono monowidth exclusiva para todo el sistema — identidad radical donde cada texto se leía "como material de estudio". La versión beta-inclusive prioriza legibilidad en textos largos (reportes, artículos pensamiento) sin perder personalidad en estructura (headings, nav, metadata).
+**Evolución v1 → v2 → v2.1:** La versión alpha usaba Space Mono monowidth exclusiva — identidad radical donde cada texto se leía "como material de estudio". La v2 beta-inclusive especificó un híbrido ZT Bros Oskon (display) + Chivo (body) que **nunca llegó a producción**: el sitio se construyó entero sobre Plus Jakarta Sans. La v2.1 (2026-06-11) reconoce esa realidad y la consolida como decisión: una sola familia, jerarquía por peso y tamaño.
 
-**ZT Bros Oskon 90s** (ZelowType, opensource):
-- Uso: h1, h2, h3, navegación, botones, tagline, metadata, numeración
-- Carácter: Geométrico, 90s, distintivo. No genérico (cumple anti-slop de frontend-design).
-- Peso: 200-400 (Light, Regular). Jerarquía por tamaño, no por bold extremo.
-- Por qué: Mantiene signature visual en puntos de estructura y wayfinding. Más distintivo que Space Mono.
+**Plus Jakarta Sans** (Tokotype, opensource, vía Google Fonts):
+- Uso: todo el sistema — headings, navegación, body copy, metadata, CTAs
+- Carácter: Geométrica humanista, moderna sin ser genérica. Buena legibilidad en textos largos y personalidad suficiente en titulares con peso 600-700.
+- Pesos cargados: 300, 400, 500, 600, 700 + itálica 400. No cargar pesos que no se usan.
+- Carga: `<link>` en el `<head>` de cada página (nunca `@import` dentro del CSS — bloquea el render en cadena).
+- Jerarquía: peso 600-700 para headings y CTAs, 400-500 para body y metadata. La jerarquía se apoya en tamaño, peso y opacidad.
 
-**Chivo** (Omnibus-Type, Buenos Aires, opensource):
-- Uso: Body copy (párrafos, listas, descripciones, texto largo)
-- Carácter: Grotesk neutral pero cálido. Origen argentino (coherencia geográfica con BPP).
-- Peso: 400 Regular, 400 Italic, 700 Bold
-- Por qué: Optimizado para lectura larga en pantalla. Reduce fatiga vs. monowidth en textos extensos (trace-group, reporte-impacto, pensamiento). No compite con Bros Oskon — trabaja en segundo plano.
-
-**Rationale del cambio:** Space Mono era identidad máxima pero legibilidad comprometida en textos largos (artículos 2000+ palabras). El híbrido mantiene personalidad donde el lector busca orientación (títulos, nav) y optimiza comfort donde el lector necesita absorber contenido (párrafos). No es deriva — es priorización de diseño inclusivo sobre purismo estético.
-
-Auditorías previas (v1) sugirieron cambiar a IBM Plex Mono y Work Sans — fueron rechazadas porque proponían abandonar monowidth sin strategy. La solución v2 mantiene distintividad (Bros Oskon) pero la concentra donde importa, liberando body copy para legibilidad (Chivo).
+**Rationale de v2.1:** El híbrido Bros Oskon + Chivo era una especificación sin implementación (0% en producción). Mantener una fuente de verdad que contradice el 100% del sitio generaba drift permanente. Plus Jakarta Sans ya demostró funcionar en todos los contextos del sitio (hero, artículos largos, formularios, metadata). Las fuentes Bros Oskon y Chivo se retiraron del repo.
 
 Mayúsculas se usan sólo en **wayfinding y metadata** — navegación, etiquetas de sección, numeración, tags. Nunca en titulares descriptivos, nunca en cuerpo, nunca en CTAs. El uso de mayúsculas señala "esto es orientación, no contenido". La transformación se aplica vía CSS (`text-transform: uppercase`), no se escribe en el texto original.
 
-La jerarquía tipográfica se apoya en tamaño, opacidad, y familia (display vs body). Bros Oskon no usa peso 700 — la geometría basta. Chivo usa 400/700 para jerarquía dentro de párrafos.
+La jerarquía tipográfica se apoya en tamaño, peso y opacidad dentro de la misma familia.
 
 ## Layout
 
@@ -163,7 +156,7 @@ El sistema usa elevación con mucha mesura. No hay dramatismo de sombra, pero ta
 **Permitido:**
 
 - **Shadow sutil para separación de cards:** `0 2px 8px rgba(0,0,0,0.3)` o hasta `0 4px 20px rgba(0,0,0,0.4)`. Regla operativa: `alpha ≤ 0.4`, `blur ≤ 24px`, color siempre negro. Existe para separar tarjetas del fondo cuando la jerarquía por opacidad no alcanza. No para "dar peso" ni para crear efecto cinemático.
-- **Focus ring (accesibilidad):** `box-shadow: 0 0 0 4px rgba(206,115,82,0.2)` aplicado en `:focus-visible`. Es requisito WCAG, no decoración. No se remueve ni se oculta.
+- **Focus ring (accesibilidad):** `box-shadow: 0 0 0 3px rgba(193,111,82,0.55)` aplicado en `:focus-visible`. El alpha 0.55 es el mínimo para cumplir contraste no-textual 3:1 (WCAG 2.4.7) sobre el fondo `#1a1512` — el valor histórico 0.2 era prácticamente invisible. Es requisito WCAG, no decoración. No se remueve ni se oculta.
 
 **Prohibido en la web:**
 
@@ -212,7 +205,7 @@ BPP no usa botones con fondo sólido. Los CTAs son tipografía con color `primar
 
 ### Nav link
 
-Metadata tipográfica (Space Mono, uppercase vía CSS, 0.75rem, tracking abierto). Hover: cambio de color a `primary`. Nada más.
+Metadata tipográfica (Plus Jakarta Sans, uppercase vía CSS, 0.75rem, tracking abierto). Hover: cambio de color a `primary`. Nada más.
 
 ### Card de proyecto / artículo
 
@@ -224,7 +217,7 @@ Efecto específico del sistema: al hacer hover en un nombre de team member, su f
 
 ### Focus ring (accesibilidad)
 
-Implementación: `:focus-visible { box-shadow: 0 0 0 4px rgba(206,115,82,0.2); outline: none; }` o equivalente. Aplica a todo elemento interactivo (links, botones, inputs). Es requisito, no decoración.
+Implementación: `:focus-visible { box-shadow: 0 0 0 3px rgba(193,111,82,0.55); outline: none; }` o un `outline: 2px solid` con el color primary. Aplica a todo elemento interactivo (links, botones, inputs). Es requisito, no decoración.
 
 ### Logo BPP
 
@@ -237,8 +230,8 @@ Esta sección captura los errores que se repiten y que el sistema necesita docum
 ### Do
 
 - Validar cualquier cambio de token contra este archivo antes de aplicar.
-- Usar `#c16f52` exacto (terracotta desaturado v2, no `#ce7352` de v1).
-- Usar ZT Bros Oskon para headings/nav/metadata, Chivo para body copy.
+- Usar `#c16f52` exacto (terracotta desaturado v2, no `#ce7352` de v1) — también en formato rgba: `rgba(193,111,82,…)`, nunca `rgba(206,115,82,…)`.
+- Usar Plus Jakarta Sans en todo el sistema, cargada vía `<link>` (nunca `@import` en CSS), solo los pesos 300-700 + itálica 400.
 - Usar mayúsculas solo para wayfinding y metadata, aplicadas vía CSS.
 - Mantener `section: 160px` entre bloques mayores.
 - Implementar CTAs como tipografía, no como botones con fondo.
@@ -252,7 +245,9 @@ Esta sección captura los errores que se repiten y que el sistema necesita docum
 
 ### Don't
 
-- **No volver a Space Mono monowidth única.** Fue v1 alpha. v2 beta-inclusive usa híbrido Bros Oskon + Chivo por diseño inclusivo.
+- **No volver a Space Mono monowidth única.** Fue v1 alpha.
+- **No reintroducir el híbrido Bros Oskon + Chivo.** Fue una especificación v2 que nunca llegó a producción; v2.1 consolidó Plus Jakarta Sans como familia única (decisión 2026-06-11).
+- **No agregar familias tipográficas adicionales** (Atkinson, IBM Plex, Lexend, Work Sans, Inter ya fueron retiradas o rechazadas). Una sola familia.
 - **No saturar el terracotta.** `#ce7352` era v1. `#c16f52` es v2 — no se vuelve a saturar.
 - **No bajar el fondo a negro puro.** `#0a0a0a` era v1. `#1a1512` es v2 (lifted para reducir contraste extremo).
 - **No usar blanco puro.** `rgba(255,255,255,...)` era v1. `rgba(250,248,246,...)` es v2 (warm off-white inclusivo).
@@ -295,6 +290,12 @@ Este archivo (v2 beta-inclusive) cumple parcialmente con la especificación `@go
 **Decisión**: No corregir estos casos. El sistema prioriza coherencia semántica, diseño inclusivo, y legibilidad del código sobre conformidad estricta con el linter alpha de Google Labs.
 
 ## Changelog
+
+**v2.1 beta-inclusive (2026-06-11):**
+- Tipografía: híbrido ZT Bros Oskon + Chivo (especificado, nunca implementado) → Plus Jakarta Sans como familia única en todo el sistema. Decisión de Nicolás tras auditoría completa que mostró 0% de implementación del híbrido.
+- Focus ring: alpha 0.2 → 0.55 para cumplir contraste no-textual 3:1 (WCAG 2.4.7).
+- Tokens rgba del primary normalizados a `rgba(193,111,82,…)` (el equivalente exacto de `#c16f52`); se purgó `rgba(206,115,82,…)` (v1).
+- Fuentes Bros Oskon y Chivo retiradas del repo (`/fonts/`).
 
 **v2 beta-inclusive (2026-05-04):**
 - Tipografía: Space Mono monowidth única → ZT Bros Oskon (display/headings) + Chivo (body)

@@ -19,21 +19,23 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
     <!-- Theme -->
-    <link rel="manifest" href="site.webmanifest?v=73">
-    <meta name="theme-color" content="#0a0a0a">
+    <link rel="manifest" href="site.webmanifest?v=120">
+    <meta name="theme-color" content="#1a1512">
+
+    <!-- Security Policies -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://plausible.io; base-uri 'self';">
 
     <!-- Preconnect to External Services -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://plausible.io">
 
-    <!-- Google Fonts (Async) -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=Lexend+Deca:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=Lexend+Deca:wght@400;600;700&display=swap"></noscript>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
 
     <!-- Critical CSS Inline -->
     <style>
-@font-face{font-family:'Plus Jakarta Sans Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}:root{--color-bg:#1a1512;--color-text:#faf8f6;--color-text-light:rgba(250,248,246,0.87);--color-accent:#c16f52;--color-accent-hover:#d98f6e;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Plus Jakarta Sans','Plus Jakarta Sans Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}.thank-you-container{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem;text-align:center}.thank-you-logo{margin-bottom:2rem;opacity:0.9}.thank-you-logo img{height:120px;width:auto}.thank-you-heading{font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:1rem;color:var(--color-text)}.thank-you-timeline{max-width:600px;margin:3rem auto;text-align:left}.timeline-heading{font-size:1.5rem;font-weight:700;margin-bottom:2rem;color:var(--color-text);text-align:center}.timeline-item{display:flex;gap:1.5rem;margin-bottom:2rem;align-items:flex-start}.timeline-marker{width:32px;height:32px;border-radius:50%;border:2px solid var(--color-accent);background:var(--color-bg);flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative}.timeline-marker::after{content:'';position:absolute;top:32px;left:50%;transform:translateX(-50%);width:2px;height:2rem;background:rgba(212,117,69,0.3)}.timeline-item:last-child .timeline-marker::after{display:none}.timeline-marker--active{background:var(--color-accent)}.timeline-marker--active::before{content:'●';color:#0f0f0f;font-size:1rem}.timeline-content h3{font-size:1.125rem;font-weight:600;color:var(--color-text);margin-bottom:0.25rem}.timeline-content p{font-size:0.95rem;color:var(--color-text-light);opacity:0.8}.cta-primary{display:inline-block;padding:0.875rem 1.75rem;background:var(--color-accent);color:#1a1512;text-decoration:none;font-family:'Plus Jakarta Sans',ui-monospace,monospace;font-size:0.875rem;font-weight:700;transition:opacity 0.2s ease;margin-top:2rem}.cta-primary:hover{opacity:0.88}
+@font-face{font-family:'Plus Jakarta Sans Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}:root{--color-bg:#1a1512;--color-text:#faf8f6;--color-text-light:rgba(250,248,246,0.87);--color-accent:#c16f52;--color-accent-hover:#d98f6e;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Plus Jakarta Sans','Plus Jakarta Sans Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}.thank-you-container{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem;text-align:center}.thank-you-logo{margin-bottom:2rem;opacity:0.9}.thank-you-logo img{height:120px;width:auto}.thank-you-heading{font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:1rem;color:var(--color-text)}.thank-you-timeline{max-width:600px;margin:3rem auto;text-align:left}.timeline-heading{font-size:1.5rem;font-weight:700;margin-bottom:2rem;color:var(--color-text);text-align:center}.timeline-item{display:flex;gap:1.5rem;margin-bottom:2rem;align-items:flex-start}.timeline-marker{width:32px;height:32px;border-radius:50%;border:2px solid var(--color-accent);background:var(--color-bg);flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative}.timeline-marker::after{content:'';position:absolute;top:32px;left:50%;transform:translateX(-50%);width:2px;height:2rem;background:rgba(193,111,82,0.3)}.timeline-item:last-child .timeline-marker::after{display:none}.timeline-marker--active{background:var(--color-accent)}.timeline-marker--active::before{content:'●';color:#1a1512;font-size:1rem}.timeline-content h3{font-size:1.125rem;font-weight:600;color:var(--color-text);margin-bottom:0.25rem}.timeline-content p{font-size:0.95rem;color:var(--color-text-light);opacity:0.8}.cta-primary{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--color-accent);border:none;padding:0.5rem 0;text-decoration:underline;text-decoration-color:rgba(193,111,82,0.4);text-underline-offset:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.0625rem;font-weight:600;cursor:pointer;transition:color 0.2s ease;margin-top:2rem}.cta-primary:hover{color:#cd8763}
     </style>
 
     <!-- Full Styles (Async) -->
@@ -41,7 +43,7 @@
     <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
 
     <!-- Analytics - Plausible -->
-    <script defer data-domain="bppanalyticsanddesign.com" src="https://plausible.io/js/plausible.js"></script>
+    <script defer data-domain="bppanalyticsanddesign.com" src="https://plausible.io/js/script.js"></script>
 </head>
 
 <body class="gracias-page">
@@ -50,10 +52,7 @@
         <!-- Logo -->
         <div class="thank-you-logo">
             <a href="/" aria-label="Volver al inicio">
-                <picture>
-                    <source srcset="img/logo-160.webp 160w, img/logo-320.webp 320w" type="image/webp" sizes="120px">
-                    <img src="img/logo-160.png" alt="BPP Analytics & Design logo" width="160" height="160" loading="eager" decoding="async">
-                </picture>
+                <img src="img/logo-160.webp" srcset="img/logo-160.webp 1x, img/logo-320.webp 2x" alt="BPP Analytics & Design logo" width="87" height="160" loading="eager" decoding="async">
             </a>
         </div>
 
