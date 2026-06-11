@@ -143,7 +143,7 @@ La jerarquía tipográfica se apoya en tamaño, peso y opacidad dentro de la mis
 
 ## Layout
 
-Desktop-first. El grid y el ritmo vertical están pensados para pantalla grande; la adaptación a móvil es compresión, no rediseño.
+**Mobile-first, desktop adapted.** Los estilos base describen la experiencia en móvil; el desktop se construye encima con `@media (min-width: 769px)`. La pantalla grande expande el grid y el ritmo vertical — no es la referencia desde la que se recorta. Al escribir CSS nuevo: primero el caso móvil sin media query, después el enhancement desktop.
 
 El espaciado respira. El token `section: 160px` entre bloques mayores es signature del sistema — genera silencio visual entre ideas. Recortar ese espaciado para "mostrar más" rompe el tono.
 

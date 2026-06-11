@@ -5128,7 +5128,8 @@ img {
 }
 
 /* Caja del tooltip — alineado a DESIGN.md:
-   surface (#221d18, no negro puro), shadow alpha ≤ 0.4 / blur ≤ 24px, radio 8px */
+   surface (#221d18, no negro puro), shadow alpha ≤ 0.4 / blur ≤ 24px, radio 8px.
+   Mobile-first: base = mobile (ancho limitado por viewport), desktop en min-width. */
 .tooltip-term::before {
     content: attr(data-tooltip);
     position: absolute;
@@ -5136,13 +5137,13 @@ img {
     left: 50%;
     transform: translateX(-50%) translateY(-8px);
     margin-bottom: 8px;
-    padding: 14px 18px;
+    padding: 12px 16px;
     width: max-content;
-    max-width: 340px;
+    max-width: calc(100vw - 48px);
     background: var(--color-surface);
     color: rgba(250, 248, 246, 0.95);
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.5;
     text-align: left;
@@ -5190,18 +5191,12 @@ img {
     transform: translateX(-50%) translateY(0);
 }
 
-/* Mobile */
-@media (max-width: 768px) {
+/* Desktop enhancement */
+@media (min-width: 769px) {
     .tooltip-term::before {
-        left: 50%;
-        right: auto;
-        max-width: calc(100vw - 48px);
-        font-size: 0.875rem;
-        padding: 12px 16px;
-    }
-
-    .tooltip-term::after {
-        left: 50%;
+        max-width: 340px;
+        font-size: 0.9375rem;
+        padding: 14px 18px;
     }
 }
 
