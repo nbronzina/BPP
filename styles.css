@@ -1403,61 +1403,49 @@ body.secondary-page .nav-logo {
 
 /* =========================
    CTA Hover Previews (data-preview)
+   Mismo lenguaje visual que los tooltips (.tooltip-term):
+   surface + borde terracota. Cubre cualquier elemento con el atributo
+   (el selector viejo ni incluía .cta-primary, que es el CTA actual).
    ========================= */
 
-/* Base preview tooltip */
-.cta-button[data-preview],
-.services-cta-link[data-preview],
-.cta-link--hero[data-preview],
-.cta-link--services[data-preview],
-.form-submit[data-preview] {
+[data-preview] {
     position: relative;
 }
 
-.cta-button[data-preview]::after,
-.services-cta-link[data-preview]::after,
-.cta-link--hero[data-preview]::after,
-.cta-link--services[data-preview]::after,
-.form-submit[data-preview]::after {
+[data-preview]::after {
     content: attr(data-preview);
     position: absolute;
-    bottom: -2.5rem;
+    top: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(10, 37, 64, 0.95);
-    color: var(--color-accent);
-    padding: var(--space-2) var(--space-4);
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 500;
+    width: max-content;
+    max-width: calc(100vw - 48px);
+    background: var(--color-surface);
+    color: rgba(250, 248, 246, 0.95);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 8px 14px;
+    border: 1px solid var(--orange-500);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
-    z-index: 100;
+    z-index: 10000;
 }
 
 /* Show on hover/focus */
-.cta-button[data-preview]:hover::after,
-.cta-button[data-preview]:focus-visible::after,
-.services-cta-link[data-preview]:hover::after,
-.services-cta-link[data-preview]:focus-visible::after,
-.cta-link--hero[data-preview]:hover::after,
-.cta-link--hero[data-preview]:focus-visible::after,
-.cta-link--services[data-preview]:hover::after,
-.cta-link--services[data-preview]:focus-visible::after,
-.form-submit[data-preview]:hover::after,
-.form-submit[data-preview]:focus-visible::after {
+[data-preview]:hover::after,
+[data-preview]:focus-visible::after {
     opacity: 1;
 }
 
 /* Respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
-    .cta-button[data-preview]::after,
-    .services-cta-link[data-preview]::after,
-    .cta-link--hero[data-preview]::after,
-    .cta-link--services[data-preview]::after,
-    .form-submit[data-preview]::after {
+    [data-preview]::after {
         transition: none;
     }
 
@@ -1470,16 +1458,13 @@ body.secondary-page .nav-logo {
 
 /* Touch devices: show preview as static subtext */
 @media (hover: none) {
-    .cta-button[data-preview]::after,
-    .services-cta-link[data-preview]::after,
-    .cta-link--hero[data-preview]::after,
-    .cta-link--services[data-preview]::after,
-    .form-submit[data-preview]::after {
+    [data-preview]::after {
         opacity: 0.7;
         position: static;
         display: block;
         margin-top: var(--space-2);
         transform: none;
+        white-space: normal;
     }
 }
 
@@ -3191,6 +3176,12 @@ footer {
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 var(--space-8);
+}
+
+/* Los grid items se dimensionan al contenido por defecto (min-width: auto);
+   sin esto el track del marquee (~3000px) infla la columna entera */
+.trust-block {
+    min-width: 0;
 }
 
 .trust-block h3 {
@@ -6080,31 +6071,60 @@ img {
     margin-bottom: var(--space-12);
   }
 }
+/* Marquee de logos — mobile-first.
+   Mobile: ancho del contenedor (sin hack de 100vw, que el patch
+   * { max-width: 100% } de mobile capaba dejándolo descentrado).
+   Desktop: full-bleed 100vw. */
 .marquee-wrapper {
   overflow: hidden;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 5%,
-    black 95%,
+    black 8%,
+    black 92%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 5%,
-    black 95%,
+    black 8%,
+    black 92%,
     transparent 100%
   );
 }
 
+@media (min-width: 769px) {
+  .marquee-wrapper {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+  }
+}
+
 .marquee-track {
   display: flex;
+  align-items: center;
   gap: var(--space-12);
   animation: marquee 15s linear infinite;
   width: max-content;
+  /* Inmune al patch mobile * { max-width: 100% }: el track DEBE poder
+     desbordar para que la animación de -50% recorra los logos */
+  max-width: none;
+  will-change: transform;
 }
 
 @media (min-width: 769px) {
