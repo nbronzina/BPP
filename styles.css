@@ -5409,7 +5409,8 @@ img {
   visibility: visible;
 }
 
-.sticky-toc h3 {
+.sticky-toc h3,
+.sticky-toc .toc-label {
   font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-accent);
