@@ -24,3 +24,16 @@ build/
 *.log
 *.backup
 .gstack/
+
+# Image backups and archives
+img/backup/
+img/archive/
+img/*-backup.*
+img/*-old.*
+
+# Large files (>5MB) - use Git LFS if needed
+*.psd
+*.ai
+*.sketch
+*.fig
+
