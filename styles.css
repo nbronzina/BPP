@@ -1239,11 +1239,6 @@ body.secondary-page .nav-logo {
     content: '→';
 }
 
-/* Links externos usan flecha diagonal */
-.cta-link[target="_blank"]::after {
-    content: '↗';
-}
-
 .cta-link:hover {
     opacity: 0.85;
 }
