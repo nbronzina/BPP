@@ -6336,3 +6336,15 @@ img {
     display: none;
   }
 }
+
+/* Link inline dentro de descripciones de actividad (ej: La Usina) */
+.actividad-inline-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(193, 111, 82, 0.4);
+  text-underline-offset: 3px;
+}
+
+.actividad-inline-link:hover {
+  opacity: 0.75;
+}
