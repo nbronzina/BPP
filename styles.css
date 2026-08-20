@@ -6145,3 +6145,194 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =============================================
+   LA USINA — unidad de investigación
+   Mobile-first: base = mobile, desktop en min-width: 769px
+   ============================================= */
+
+.usina-intro {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.usina-intro p + p {
+  margin-top: var(--space-4);
+}
+
+/* Card de tesis en /usina */
+.tesis-card {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid rgba(250, 248, 246, 0.12);
+  border-radius: 8px;
+}
+
+.tesis-card__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+.tesis-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.tesis-card__subtitle {
+  color: rgba(250, 248, 246, 0.75);
+  margin-bottom: var(--space-3);
+}
+
+.tesis-card__authors {
+  font-size: 0.875rem;
+  color: rgba(250, 248, 246, 0.55);
+  margin-bottom: var(--space-4);
+}
+
+.tesis-card__desc {
+  margin-bottom: var(--space-5);
+}
+
+.tesis-card__desc em {
+  color: var(--color-accent);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Página de tesis: subtítulo y metadata */
+.thesis-subtitle {
+  max-width: 800px;
+  margin: 0 auto var(--space-5);
+}
+
+.thesis-metadata-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-4) 0;
+  border-top: 1px solid rgba(250, 248, 246, 0.12);
+  border-bottom: 1px solid rgba(250, 248, 246, 0.12);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: rgba(250, 248, 246, 0.55);
+}
+
+.thesis-download {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.thesis-download:hover {
+  opacity: 0.75;
+}
+
+/* Resumen */
+.thesis-abstract {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.thesis-section-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.thesis-abstract p + p {
+  margin-top: var(--space-4);
+}
+
+.thesis-abstract em {
+  color: var(--color-accent);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Visor PDF: oculto en mobile (iOS Safari no soporta embed de PDF),
+   visible en desktop. El fallback hace el camino inverso. */
+.thesis-viewer {
+  display: none;
+}
+
+.thesis-viewer-fallback {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid rgba(250, 248, 246, 0.12);
+  border-radius: 8px;
+}
+
+.thesis-viewer-fallback p {
+  margin-bottom: var(--space-4);
+}
+
+/* Cita sugerida */
+.thesis-cite {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-left: 2px solid var(--color-accent);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.875rem;
+}
+
+.thesis-cite p + p {
+  margin-top: var(--space-3);
+}
+
+.thesis-cite__note {
+  color: rgba(250, 248, 246, 0.55);
+}
+
+@media (min-width: 769px) {
+  .tesis-card {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .tesis-card__title {
+    font-size: 1.75rem;
+  }
+
+  .thesis-metadata-bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+  }
+
+  .thesis-viewer {
+    display: block;
+    max-width: 1000px;
+    height: 85vh;
+    margin: 0 auto;
+    border: 1px solid rgba(250, 248, 246, 0.12);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .thesis-viewer embed {
+    width: 100%;
+    height: 100%;
+  }
+
+  .thesis-viewer-fallback {
+    display: none;
+  }
+}
