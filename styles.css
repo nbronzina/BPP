@@ -6348,3 +6348,13 @@ img {
 .actividad-inline-link:hover {
   opacity: 0.75;
 }
+
+/* Variante contain: para portadas con texto (ej: Tesis 01 La Usina).
+   El fondo replica el de la portada para que el letterbox sea invisible. */
+.actividad-imagen--contain {
+  background: #1a1512;
+}
+
+.actividad-imagen--contain img {
+  object-fit: contain;
+}
