@@ -33,6 +33,7 @@ jobs:
           rm -f docs/optimizacion-repositorio-jun-2026.md docs/usina-fase1-especificacion.md
           rm -f docs/web-dev-foundation-skill.md docs/web-dev-sustainability-integration.md
           rm -f docs/ai-sustainability-quickref.md docs/audit-full-agosto-2026.md
+          rm -f docs/trends-web-2026.md
           rm -rf img/archive img/backup
 
       - name: Setup Pages
