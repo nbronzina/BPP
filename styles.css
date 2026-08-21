@@ -6281,3 +6281,27 @@ html {
 .logo-item--md img {
   height: 64px;
 }
+
+/* ============ Nav mobile: orden correcto con CTA + hamburguesa ============ */
+/* En index conviven logo + CTA Hablemos + hamburguesa: con space-between
+   el botón quedaba flotando en el centro. Logo a la izquierda (auto-margin),
+   CTA y hamburguesa agrupados a la derecha. En páginas sin CTA no cambia
+   nada (el hamburguesa ya quedaba a la derecha). */
+@media (max-width: 768px) {
+    .nav-container {
+        justify-content: flex-start;
+        gap: var(--space-2);
+    }
+
+    .nav-logo {
+        margin-right: auto;
+    }
+
+    .nav-cta {
+        order: 1;
+    }
+
+    .mobile-menu-btn {
+        order: 2;
+    }
+}
