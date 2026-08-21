@@ -12,12 +12,8 @@
 }
 
 :root {
-    /* Orange tonal scale - BPP brand (inclusive: desaturado, terroso) */
-    /* DESIGN.md: un solo acento, sin variantes de escala.
-       --orange-500 es el primary; -400/-600 solo como hover/soporte ya en uso. */
-    --orange-600: #b8705a;
+    /* Terracotta BPP - DESIGN.md: un solo acento, sin variantes de escala. */
     --orange-500: #c16f52;  /* Principal (brand) - terracotta desaturado */
-    --orange-400: #cd8763;
 
     /* Base colors - Inclusive dark (lifted warm gray, no pure black) */
     --color-bg: #1a1512;           /* Dark warm brown - lifted para reducir contraste extremo */
@@ -33,7 +29,7 @@
 
     /* Accent colors (legacy compatibility) */
     --color-accent: var(--orange-500);
-    --color-accent-bright: var(--orange-400);
+    --color-accent-bright: var(--orange-500);
 
     /* Spacing Scale - 8px grid system (como Gmail, Figma, Tailwind) */
     --space-0: 0;
@@ -51,7 +47,7 @@
     --space-24: 6rem;     /* 96px - massive */
 
     /* Legacy spacing (map to new scale) */
-    --spacing-section: 40px;             /* Mobile base - converted to mobile-first */
+    --spacing-section: 80px;             /* Mobile base - DESIGN.md: silencio visual entre bloques */
     --spacing-card: var(--space-12);     /* 48px */
     --spacing-gap: var(--space-8);       /* var(--space-8) */
 
@@ -118,7 +114,7 @@
 
 @media (min-width: 769px) {
     :root {
-        --spacing-section: var(--space-12);  /* 48px - desktop spacing (was 40px mobile) */
+        --spacing-section: 160px;  /* DESIGN.md: section 160px es signature del sistema */
     }
 }
 
@@ -1968,7 +1964,8 @@ body.secondary-page .nav-logo {
     .about-grid {
         grid-template-columns: 1fr 180px;
         gap: 0 var(--space-12);
-        padding: var(--spacing-section) var(--space-24);
+        /* Vertical 0: el padre .section ya aporta var(--spacing-section) */
+        padding: 0 var(--space-24);
     }
 
     .about-label {
@@ -2174,7 +2171,7 @@ body.secondary-page .nav-logo {
 }
 
 .method-link:hover {
-    color: var(--orange-400);
+    color: var(--orange-500);
     text-decoration: underline;
 }
 
@@ -2217,7 +2214,7 @@ body.secondary-page .nav-logo {
 }
 
 .proof-link:hover {
-    color: var(--orange-400);
+    color: var(--orange-500);
     text-decoration: underline;
 }
 
@@ -2236,7 +2233,8 @@ body.secondary-page .nav-logo {
 /* Services Section - Desktop Enhancement */
 @media (min-width: 769px) {
     .services-container {
-        padding: var(--spacing-section) var(--space-24);
+        /* Vertical 0: el padre .section ya aporta var(--spacing-section) */
+        padding: 0 var(--space-24);
     }
 
     .services-label {
@@ -2383,6 +2381,14 @@ footer {
 .footer-link:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
+}
+
+/* Colofón técnico (referencia Linked by Air) */
+.footer-colofon {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(250, 248, 246, 0.35);
+    margin-top: var(--space-3);
 }
 
 .social-icons {
@@ -2669,7 +2675,7 @@ footer {
 /* Keyboard navigation focus indicator */
 .form-group input:focus-visible,
 .form-group textarea:focus-visible {
-    outline: 2px solid var(--orange-400);
+    outline: 2px solid var(--orange-500);
     outline-offset: 2px;
 }
 
@@ -2803,10 +2809,13 @@ footer {
     background: rgba(193, 111, 82, 0.05);
 }
 
+/* Activo: acento tipográfico + borde inferior (DESIGN.md: sin fondos sólidos) */
 .filter-btn--active {
-    background: var(--color-accent);
-    color: #1a1512;
-    border-color: var(--color-accent);
+    background: transparent;
+    color: var(--color-accent);
+    border-color: transparent;
+    border-bottom: 2px solid var(--color-accent);
+    border-radius: 0;
 }
 
 .actividad-entrada.hidden {
@@ -3060,6 +3069,10 @@ footer {
     color: var(--color-text-muted);  /* Warm muted para tags */
 }
 
+.actividad-autor {
+    color: var(--color-text-muted);  /* Byline con nombre (referencia Other Internet) */
+}
+
 /* Category badge for Hechos entries */
 .actividad-category-badge {
     display: inline-block;
@@ -3125,14 +3138,16 @@ footer {
     position: relative;
 }
 
+/* Brackets estáticos, visibles en reposo. Hover: solo intensidad de color
+   (DESIGN.md: "se intensifica en color, sin movimiento") */
 .service-block::before,
 .service-block::after {
     content: '';
     position: absolute;
-    width: 24px;
-    height: 24px;
-    opacity: 0;
-    transition: opacity 0.4s ease, width 0.4s ease, height 0.4s ease;
+    width: 32px;
+    height: 32px;
+    opacity: 0.25;
+    transition: opacity 0.4s ease;
 }
 
 /* Top-left bracket */
@@ -3154,8 +3169,6 @@ footer {
 .service-block:hover::before,
 .service-block:hover::after {
     opacity: 1;
-    width: 32px;
-    height: 32px;
 }
 
 /* Actividad entries - corner brackets on hover */
@@ -3167,10 +3180,10 @@ footer {
 .actividad-entrada::after {
     content: '';
     position: absolute;
-    width: 0;
-    height: 0;
-    opacity: 0;
-    transition: opacity 0.5s ease, width 0.5s ease, height 0.5s ease;
+    width: 48px;
+    height: 48px;
+    opacity: 0.25;
+    transition: opacity 0.5s ease;
     z-index: 10;
 }
 
@@ -3193,8 +3206,6 @@ footer {
 .actividad-entrada:hover::before,
 .actividad-entrada:hover::after {
     opacity: 0.8;
-    width: 48px;
-    height: 48px;
 }
 
 /* actividades-cta-link ahora usa estilos unificados (ver línea 438) */
@@ -3814,7 +3825,7 @@ img {
   margin-top: var(--space-6);
   padding: var(--space-6);
   background: rgba(255, 165, 0, 0.05);
-  border-left: var(--space-1) solid var(--orange-600);
+  border-left: var(--space-1) solid var(--orange-500);
 }
 
 .quote-box--compact {
@@ -3898,7 +3909,7 @@ img {
 
 .actividad-card--light {
   background: rgba(250, 248, 246, 0.02);
-  border: 1px solid rgba(203, 112, 67, 0.45);
+  border: 1px solid rgba(193, 111, 82, 0.45);
   padding: var(--space-8);
   border-radius: 8px;
 }
@@ -4141,7 +4152,7 @@ img {
 
 .reporte-page .actividad-card--light {
     background: rgba(250, 248, 246, 0.02);
-    border: 1px solid rgba(203, 112, 67, 0.4);
+    border: 1px solid rgba(193, 111, 82, 0.4);
     border-radius: 8px;
 }
 
@@ -4340,7 +4351,9 @@ img {
 }
 
 .senal-link:hover {
-    color: var(--orange-400);
+    color: var(--orange-500);
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 /* Desktop enhancements - Señales widget */
@@ -4519,7 +4532,7 @@ img {
 
 .methodology-link:hover {
     background: rgba(193, 111, 82, 0.1);
-    border-color: var(--orange-400);
+    border-color: var(--orange-500);
 }
 
 /* Quiz progress indicator */
@@ -4637,27 +4650,30 @@ img {
     color: var(--color-text);
 }
 
+/* CTA tipográfico (DESIGN.md: sin botones con fondo sólido) */
 .quiz-submit-btn,
 .quiz-reset-btn {
     display: block;
     width: 100%;
     max-width: 400px;
     margin: var(--space-12) auto 0;
-    padding: var(--space-4) var(--space-8);
+    padding: var(--space-4) 0;
     font-family: var(--font-heading);
     font-size: var(--font-size-base);
     font-weight: 600;
-    color: var(--color-text);
-    background: var(--orange-500);
+    color: var(--orange-500);
+    background: transparent;
     border: none;
-    border-radius: var(--border-radius);
+    text-decoration: underline;
+    text-decoration-color: rgba(193, 111, 82, 0.4);
+    text-underline-offset: 4px;
     cursor: pointer;
-    transition: background var(--transition-fast);
+    transition: text-decoration-color var(--transition-fast);
 }
 
 .quiz-submit-btn:hover:not(:disabled),
 .quiz-reset-btn:hover {
-    background: var(--orange-400);
+    text-decoration-color: var(--orange-500);
 }
 
 .quiz-submit-btn:disabled {
@@ -4711,15 +4727,11 @@ img {
     }
 }
 
+/* Habilitado: acento tipográfico + borde, sin fondo sólido (DESIGN.md) */
 .quiz-next-btn:not(:disabled) {
-    color: var(--color-text);
-    background: var(--orange-500);
+    color: var(--orange-500);
+    background: transparent;
     border-color: var(--orange-500);
-}
-
-.quiz-next-btn:hover:not(:disabled) {
-    background: var(--orange-400);
-    border-color: var(--orange-400);
 }
 
 .quiz-results {
@@ -4878,7 +4890,7 @@ img {
 
 .results-methodology-link:hover {
     background: rgba(193, 111, 82, 0.1);
-    border-color: var(--orange-400);
+    border-color: var(--orange-500);
 }
 
 /* Desktop enhancements - Quiz */
@@ -4937,12 +4949,12 @@ img {
 
 .service-timeline-toggle:hover {
     background: rgba(193, 111, 82, 0.1);
-    border-color: var(--orange-400);
-    color: var(--orange-400);
+    border-color: var(--orange-500);
+    color: var(--orange-500);
 }
 
 .service-timeline-toggle:focus-visible {
-    outline: 2px solid var(--orange-400);
+    outline: 2px solid var(--orange-500);
     outline-offset: 2px;
 }
 
@@ -5270,7 +5282,7 @@ img {
 .legal-link:focus-visible {
   opacity: 0.9;
   text-decoration: underline;
-  outline: 2px solid var(--orange-400);
+  outline: 2px solid var(--orange-500);
   outline-offset: 2px;
 }
 

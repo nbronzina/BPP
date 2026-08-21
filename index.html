@@ -61,7 +61,7 @@
 
     <!-- Critical CSS Inline -->
     <style>
-@font-face{font-family:'Plus Jakarta Sans Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}:root{--color-bg:#1a1512;--color-text:#faf8f6;--color-text-light:rgba(250,248,246,0.87);--color-accent:#c16f52;--color-accent-hover:#c16f52;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}body{font-family:'Plus Jakarta Sans','Plus Jakarta Sans Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,21,18,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(250,248,246,0.05);padding:2.5rem 0}.nav-container{width:100%;padding:0 6rem;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:1rem}.nav-wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.125rem;color:rgba(250,248,246,0.9);text-decoration:none;transition:color 0.3s}.nav-logo-icon{display:block;line-height:0}.nav-logo-icon img{height:52px;width:auto;display:block;transition:opacity 0.3s}.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}.nav-links a{color:var(--color-text-light);text-decoration:none;font-size:1rem;font-weight:400;line-height:1;transition:color 0.3s}.nav-links a:hover{color:var(--color-accent)}.hero{height:auto;display:flex;align-items:flex-start;justify-content:center;padding:8rem 2rem 2rem;position:relative;background:transparent}.hero-content{max-width:900px}.hero-logo{margin-bottom:3rem;height:160px;display:flex;align-items:center;justify-content:center}.hero-logo img{max-width:100%;max-height:160px;width:auto;height:auto;opacity:0.9;object-fit:contain}.tagline{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1.5rem;color:var(--color-text)}.subtitle{font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:2rem;color:var(--color-text-light)}.locations{font-size:1rem;color:var(--color-accent);margin-bottom:2.5rem}.cta-primary{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--color-accent);border:none;padding:0.5rem 0;text-decoration:underline;text-decoration-color:rgba(193,111,82,0.4);text-underline-offset:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.0625rem;font-weight:600;cursor:pointer;transition:color 0.2s ease}.cta-primary:hover{color:#cd8763}.cta-link{display:inline-flex;align-items:center;gap:0.4rem;color:var(--color-accent);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.875rem;font-weight:500;transition:opacity 0.2s ease}.cta-link::after{content:'→'}.cta-link:hover{opacity:0.75}[data-animate]{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease}[data-animate].animate-ready:not(.visible){opacity:0;transform:translateY(30px)}
+@font-face{font-family:'Plus Jakarta Sans Fallback';src:local('Arial');size-adjust:106.5%;ascent-override:89.8%;descent-override:22.2%;line-gap-override:0%}:root{--color-bg:#1a1512;--color-text:#faf8f6;--color-text-light:rgba(250,248,246,0.87);--color-accent:#c16f52;--color-accent-hover:#c16f52;--border-radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}body{font-family:'Plus Jakarta Sans','Plus Jakarta Sans Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--color-bg);color:var(--color-text-light);line-height:1.7;overflow-x:hidden;animation:fadeIn 0.6s ease-in}@keyframes fadeIn{from{opacity:0}to{opacity:1}}nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,21,18,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(250,248,246,0.05);padding:2.5rem 0}.nav-container{width:100%;padding:0 6rem;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:1rem}.nav-wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.125rem;color:rgba(250,248,246,0.9);text-decoration:none;transition:color 0.3s}.nav-logo-icon{display:block;line-height:0}.nav-logo-icon img{height:52px;width:auto;display:block;transition:opacity 0.3s}.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}.nav-links a{color:var(--color-text-light);text-decoration:none;font-size:1rem;font-weight:400;line-height:1;transition:color 0.3s}.nav-links a:hover{color:var(--color-accent)}.hero{height:auto;display:flex;align-items:flex-start;justify-content:center;padding:8rem 2rem 2rem;position:relative;background:transparent}.hero-content{max-width:900px}.hero-logo{margin-bottom:3rem;height:160px;display:flex;align-items:center;justify-content:center}.hero-logo img{max-width:100%;max-height:160px;width:auto;height:auto;opacity:0.9;object-fit:contain}.tagline{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1.5rem;color:var(--color-text)}.subtitle{font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:2rem;color:var(--color-text-light)}.locations{font-size:1rem;color:var(--color-accent);margin-bottom:2.5rem}.cta-primary{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--color-accent);border:none;padding:0.5rem 0;text-decoration:underline;text-decoration-color:rgba(193,111,82,0.4);text-underline-offset:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.0625rem;font-weight:600;cursor:pointer;transition:color 0.2s ease}.cta-primary:hover{color:var(--color-accent);text-decoration-color:var(--color-accent)}.cta-link{display:inline-flex;align-items:center;gap:0.4rem;color:var(--color-accent);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.875rem;font-weight:500;transition:opacity 0.2s ease}.cta-link::after{content:'→'}.cta-link:hover{opacity:0.75}[data-animate]{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease}[data-animate].animate-ready:not(.visible){opacity:0;transform:translateY(30px)}
     </style>
 
     <!-- Full Styles (Async) -->
@@ -247,6 +247,20 @@
                 </picture>
             </a>
 
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Links -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="proyectos/">Lo hecho</a></li>
+                <li><a href="pensamiento/">Pensamiento</a></li>
+                <li><a href="usina/">La Usina</a></li>
+            </ul>
+
             <!-- CTA (derecha) -->
             <a href="#contact" class="nav-cta">Hablemos</a>
         </div>
@@ -288,6 +302,174 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+        <div class="about-grid" data-animate>
+            <div class="bpp-section-label">
+                Nosotros
+            </div>
+            <div class="about-content">
+                <h2 id="about-heading" class="about-headline">Decisiones sin vuelta atrás.<br>Datos contradictorios.<br>Equipos estancados.</h2>
+
+                <p class="bpp-pull-quote">Trabajamos cuando las respuestas conocidas dejaron de funcionar y el problema no puede esperar.</p>
+
+                <p class="about-mission">Investigación exploratoria, diseño de futuros, validación con datos, comunicación estratégica. Sin frameworks prefabricados — cada proyecto arranca desde tu contexto.</p>
+
+                <div class="transformation-cards">
+                    <div class="transformation-card">
+                        <span class="card-icon">→</span>
+                        <p>Trabajás con evidencia, no con corazonadas.</p>
+                    </div>
+                    <div class="transformation-card">
+                        <span class="card-icon">→</span>
+                        <p>Las discusiones cierran con criterio compartido.</p>
+                    </div>
+                    <div class="transformation-card">
+                        <span class="card-icon">→</span>
+                        <p>Lo que estaba bloqueado se mueve.</p>
+                    </div>
+                </div>
+
+                <p class="studio-identity">Consultora de diseño estratégico, comunicación y futuros para organizaciones que no pueden permitirse equivocarse.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section section--orange-950" aria-labelledby="services-heading">
+        <div class="services-container">
+            <div class="bpp-section-label">Método</div>
+            <h2 id="services-heading" class="section-heading">Cuatro movimientos, siempre en orden</h2>
+            <p class="services-intro">Entender el contexto, diseñar futuros, validar con datos, comunicar decisiones. No vendemos pasos sueltos — el método funciona completo.</p>
+
+            <div class="services-grid">
+                <!-- Servicio 01 -->
+                <article class="service-block" data-animate>
+                    <span class="service-number" aria-hidden="true">1</span>
+                    <p class="service-category">Investigación exploratoria</p>
+                    <h3 class="service-title">Dejás de adivinar qué viene</h3>
+                    <p class="service-lead">Explorás qué fuerzas están cambiando tu contexto antes de que lo cambien sin vos.</p>
+                    <span class="service-deliverable">Entregables: informe de señales, catálogo de escenarios futuros, briefing estratégico</span>
+                    <button class="service-timeline-toggle" aria-expanded="false">
+                        <span>Ver proceso</span>
+                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
+                    </button>
+                    <div class="service-timeline" hidden>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 1</span>
+                            <p class="timeline-milestone">Inmersión: entrevistas con stakeholders clave, revisión de documentos internos, mapeo inicial de contexto y desafíos estratégicos</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 2-3</span>
+                            <p class="timeline-milestone">Identificación de señales: rastreo de tendencias emergentes, análisis de fuentes (papers, medios, informes sectoriales), síntesis de <span class="tooltip-term" data-tooltip="Indicios tempranos de cambio que todavía no son tendencias masivas pero pueden transformar tu sector">señales débiles</span> relevantes</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 4</span>
+                            <p class="timeline-milestone">Entrega: mapa de <span class="tooltip-term" data-tooltip="Narrativas alternativas de lo que podría pasar, construidas desde fuerzas de cambio detectables hoy">escenarios futuros</span>, informe de señales con implicancias estratégicas, briefing ejecutivo con recomendaciones de acción</p>
+                        </div>
+                    </div>
+                    <div class="service-proof">
+                        <span class="proof-label">Aplicado en:</span>
+                        <a href="/proyectos/trace-group/" class="proof-link">Sistemas que Trabajan Juntos: Horizonte 2028 (TRACE GROUP)</a>
+                    </div>
+                </article>
+
+                <!-- Servicio 02 -->
+                <article class="service-block" data-animate>
+                    <span class="service-number" aria-hidden="true">2</span>
+                    <p class="service-category">Diseño de prototipos</p>
+                    <h3 class="service-title">Probás ideas sin arriesgar todo</h3>
+                    <p class="service-lead">Construís artefactos concretos para testear si algo funciona en el mundo real.</p>
+                    <span class="service-deliverable">Entregables: prototipo testeable, artefacto de <span class="tooltip-term" data-tooltip="Artefactos concretos que materializan futuros posibles para hacerlos testeables en el presente">design fiction</span>, documento de concepto</span>
+                    <button class="service-timeline-toggle" aria-expanded="false">
+                        <span>Ver proceso</span>
+                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
+                    </button>
+                    <div class="service-timeline" hidden>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 1</span>
+                            <p class="timeline-milestone">Definición de hipótesis: qué querés testear, qué asumís que es verdad, qué nivel de fidelidad necesita el prototipo para dar respuestas útiles</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 3</span>
+                            <p class="timeline-milestone">Construcción: diseño y desarrollo del prototipo (digital, físico, o narrativo), iteraciones rápidas, ajustes en base a primeras pruebas internas</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 6</span>
+                            <p class="timeline-milestone">Testing y entrega: validación con usuarios reales o stakeholders, documento de aprendizajes, recomendaciones sobre qué iterar, escalar, o descartar</p>
+                        </div>
+                    </div>
+                    <div class="service-proof">
+                        <span class="proof-label">Aplicado en:</span>
+                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7427811274014535680/" target="_blank" rel="noopener noreferrer" class="proof-link">Otros Futuros: IED Madrid (Design Fiction para LATAM 2036)</a>
+                        <span class="proof-separator">·</span>
+                        <a href="/proyectos/trace-group/" class="proof-link">TRACE GROUP (Ficción especulativa Vaca Muerta)</a>
+                    </div>
+                </article>
+
+                <!-- Servicio 03 -->
+                <article class="service-block" data-animate>
+                    <span class="service-number" aria-hidden="true">3</span>
+                    <p class="service-category">Gestión estratégica de proyectos</p>
+                    <h3 class="service-title">Ejecutás estrategia con precisión</h3>
+                    <p class="service-lead">El plan existe. El equipo está. Y sin embargo nada avanza. No se trata de metodologías — se trata de entender las dinámicas sociales que frenan la ejecución. Diagnosticamos bloqueos, alineamos stakeholders, y convertimos fricción organizacional en momentum.</p>
+                    <span class="service-deliverable">Entregables: diagnóstico de bloqueos organizacionales, plan de alineación de stakeholders, sistema de seguimiento con métricas de avance</span>
+                    <button class="service-timeline-toggle" aria-expanded="false">
+                        <span>Ver proceso</span>
+                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
+                    </button>
+                    <div class="service-timeline" hidden>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 1</span>
+                            <p class="timeline-milestone">Diagnóstico: mapeo de stakeholders, identificación de bloqueos, revisión de cronogramas y dependencias, definición de hitos críticos</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 2</span>
+                            <p class="timeline-milestone">Coordinación: alineación de equipos, resolución de conflictos de prioridades, definición de roles y responsabilidades, setup de sistema de seguimiento</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 3 en adelante</span>
+                            <p class="timeline-milestone">Ejecución monitoreada: visibilidad semanal de bloqueos, reportes de progreso con métricas claras, ajustes tácticos basados en feedback de stakeholders</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Servicio 04 -->
+                <article class="service-block" data-animate>
+                    <span class="service-number" aria-hidden="true">4</span>
+                    <p class="service-category">Branding y comunicación estratégica</p>
+                    <h3 class="service-title">Tu marca se convierte en activo</h3>
+                    <p class="service-lead">Cuando algo cambia — el mercado, la empresa, el contexto — la marca que no se explica pierde. Construimos el relato antes de que otros lo construyan por vos.</p>
+                    <p class="service-method">No diseñamos marcas para targets. Las diseñamos para actores sociales insertos en tramas culturales. <a href="https://www.linkedin.com/pulse/por-qu%C3%A9-los-algoritmos-bastan-el-regreso-de-la-ixf1e/" target="_blank" rel="noopener noreferrer" class="method-link">→ Nuestro enfoque sociológico a la marca</a></p>
+                    <span class="service-deliverable">Entregables: posicionamiento basado en análisis sociológico, arquitectura narrativa para contextos culturales, sistema de identidad con fundamento estratégico</span>
+                    <button class="service-timeline-toggle" aria-expanded="false">
+                        <span>Ver proceso</span>
+                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
+                    </button>
+                    <div class="service-timeline" hidden>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 1-2</span>
+                            <p class="timeline-milestone">Auditoría de marca: cómo te ven ahora (interna y externamente), qué promesa hacés vs. qué cumplís, análisis de competidores y contexto sectorial</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 4</span>
+                            <p class="timeline-milestone">Definición estratégica: posicionamiento, voz, personalidad de marca, territorios narrativos, guía de aplicación en comunicaciones clave</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-week">Semana 7</span>
+                            <p class="timeline-milestone">Implementación: sistema de identidad visual (si aplica), guía de voz y tono, plantillas de comunicación, capacitación interna para equipos</p>
+                        </div>
+                    </div>
+                    <div class="service-proof">
+                        <span class="proof-label">Fundamentado en:</span>
+                        <a href="https://www.linkedin.com/pulse/por-qu%C3%A9-los-algoritmos-bastan-el-regreso-de-la-ixf1e/" target="_blank" rel="noopener noreferrer" class="proof-link">Por qué los algoritmos no bastan: El regreso de la sociología a la estrategia de marca</a>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Hechos Section -->
     <section id="actividades" class="section" aria-labelledby="actividades-heading">
         <div class="bpp-section-label">Lo hecho</div>
@@ -306,7 +488,7 @@
                 <div class="actividad-texto">
                     <span class="actividad-category-badge">La Usina</span>
                     <div class="actividad-meta">
-                        <time class="actividad-fecha">Agosto 2026</time>
+                        <time class="actividad-fecha">USINA #01 · 08.2026</time>
                         <span class="bpp-text-muted"> · </span>
                         <span class="bpp-text-muted">Investigación · IA · Sociología · Identidad</span>
                     </div>
@@ -457,174 +639,6 @@
         <div class="actividades-cta actividades-cta-dual">
             <a href="pensamiento/" class="cta-link" aria-label="Ver todos los artículos de pensamiento">Ver pensamiento</a>
             <a href="proyectos/" class="cta-link" aria-label="Ver todo lo hecho: proyectos y publicaciones">Ver lo hecho</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section" aria-labelledby="about-heading">
-        <div class="about-grid" data-animate>
-            <div class="bpp-section-label">
-                Nosotros
-            </div>
-            <div class="about-content">
-                <h2 id="about-heading" class="about-headline">Decisiones sin vuelta atrás.<br>Datos contradictorios.<br>Equipos estancados.</h2>
-
-                <p class="bpp-pull-quote">Trabajamos cuando las respuestas conocidas dejaron de funcionar y el problema no puede esperar.</p>
-
-                <p class="about-mission">Investigación exploratoria, diseño de futuros, validación con datos, comunicación estratégica. Sin frameworks prefabricados — cada proyecto arranca desde tu contexto.</p>
-
-                <div class="transformation-cards">
-                    <div class="transformation-card">
-                        <span class="card-icon">→</span>
-                        <p>Trabajás con evidencia, no con corazonadas.</p>
-                    </div>
-                    <div class="transformation-card">
-                        <span class="card-icon">→</span>
-                        <p>Las discusiones cierran con criterio compartido.</p>
-                    </div>
-                    <div class="transformation-card">
-                        <span class="card-icon">→</span>
-                        <p>Lo que estaba bloqueado se mueve.</p>
-                    </div>
-                </div>
-
-                <p class="studio-identity">Consultora de diseño estratégico, comunicación y futuros para organizaciones que no pueden permitirse equivocarse.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section section--orange-950" aria-labelledby="services-heading">
-        <div class="services-container">
-            <div class="bpp-section-label">Método</div>
-            <h2 id="services-heading" class="section-heading">Cuatro movimientos, siempre en orden</h2>
-            <p class="services-intro">Entender el contexto, diseñar futuros, validar con datos, comunicar decisiones. No vendemos pasos sueltos — el método funciona completo.</p>
-
-            <div class="services-grid">
-                <!-- Servicio 01 -->
-                <article class="service-block" data-animate>
-                    <span class="service-number" aria-hidden="true">1</span>
-                    <p class="service-category">Investigación exploratoria</p>
-                    <h3 class="service-title">Dejás de adivinar qué viene</h3>
-                    <p class="service-lead">Explorás qué fuerzas están cambiando tu contexto antes de que lo cambien sin vos.</p>
-                    <span class="service-deliverable">Entregables: informe de señales, catálogo de escenarios futuros, briefing estratégico</span>
-                    <button class="service-timeline-toggle" aria-expanded="false">
-                        <span>Ver proceso</span>
-                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
-                    </button>
-                    <div class="service-timeline" hidden>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 1</span>
-                            <p class="timeline-milestone">Inmersión: entrevistas con stakeholders clave, revisión de documentos internos, mapeo inicial de contexto y desafíos estratégicos</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 2</span>
-                            <p class="timeline-milestone">Identificación de señales: rastreo de tendencias emergentes, análisis de fuentes (papers, medios, informes sectoriales), síntesis de <span class="tooltip-term" data-tooltip="Indicios tempranos de cambio que todavía no son tendencias masivas pero pueden transformar tu sector">señales débiles</span> relevantes</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 4</span>
-                            <p class="timeline-milestone">Entrega: mapa de <span class="tooltip-term" data-tooltip="Narrativas alternativas de lo que podría pasar, construidas desde fuerzas de cambio detectables hoy">escenarios futuros</span>, informe de señales con implicancias estratégicas, briefing ejecutivo con recomendaciones de acción</p>
-                        </div>
-                    </div>
-                    <div class="service-proof">
-                        <span class="proof-label">Aplicado en:</span>
-                        <a href="/proyectos/trace-group/" class="proof-link">Sistemas que Trabajan Juntos: Horizonte 2028 (TRACE GROUP)</a>
-                    </div>
-                </article>
-
-                <!-- Servicio 02 -->
-                <article class="service-block" data-animate>
-                    <span class="service-number" aria-hidden="true">2</span>
-                    <p class="service-category">Diseño de prototipos</p>
-                    <h3 class="service-title">Probás ideas sin arriesgar todo</h3>
-                    <p class="service-lead">Construís artefactos concretos para testear si algo funciona en el mundo real.</p>
-                    <span class="service-deliverable">Entregables: prototipo testeable, artefacto de <span class="tooltip-term" data-tooltip="Artefactos concretos que materializan futuros posibles para hacerlos testeables en el presente">design fiction</span>, documento de concepto</span>
-                    <button class="service-timeline-toggle" aria-expanded="false">
-                        <span>Ver proceso</span>
-                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
-                    </button>
-                    <div class="service-timeline" hidden>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 1</span>
-                            <p class="timeline-milestone">Definición de hipótesis: qué querés testear, qué asumís que es verdad, qué nivel de fidelidad necesita el prototipo para dar respuestas útiles</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 2</span>
-                            <p class="timeline-milestone">Construcción: diseño y desarrollo del prototipo (digital, físico, o narrativo), iteraciones rápidas, ajustes en base a primeras pruebas internas</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 4</span>
-                            <p class="timeline-milestone">Testing y entrega: validación con usuarios reales o stakeholders, documento de aprendizajes, recomendaciones sobre qué iterar, escalar, o descartar</p>
-                        </div>
-                    </div>
-                    <div class="service-proof">
-                        <span class="proof-label">Aplicado en:</span>
-                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7427811274014535680/" target="_blank" rel="noopener noreferrer" class="proof-link">Otros Futuros: IED Madrid (Design Fiction para LATAM 2036)</a>
-                        <span class="proof-separator">·</span>
-                        <a href="/proyectos/trace-group/" class="proof-link">TRACE GROUP (Ficción especulativa Vaca Muerta)</a>
-                    </div>
-                </article>
-
-                <!-- Servicio 03 -->
-                <article class="service-block" data-animate>
-                    <span class="service-number" aria-hidden="true">3</span>
-                    <p class="service-category">Gestión estratégica de proyectos</p>
-                    <h3 class="service-title">Ejecutás estrategia con precisión</h3>
-                    <p class="service-lead">El plan existe. El equipo está. Y sin embargo nada avanza. No se trata de metodologías — se trata de entender las dinámicas sociales que frenan la ejecución. Diagnosticamos bloqueos, alineamos stakeholders, y convertimos fricción organizacional en momentum.</p>
-                    <span class="service-deliverable">Entregables: diagnóstico de bloqueos organizacionales, plan de alineación de stakeholders, sistema de seguimiento con métricas de avance</span>
-                    <button class="service-timeline-toggle" aria-expanded="false">
-                        <span>Ver proceso</span>
-                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
-                    </button>
-                    <div class="service-timeline" hidden>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 1</span>
-                            <p class="timeline-milestone">Diagnóstico: mapeo de stakeholders, identificación de bloqueos, revisión de cronogramas y dependencias, definición de hitos críticos</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 2</span>
-                            <p class="timeline-milestone">Coordinación: alineación de equipos, resolución de conflictos de prioridades, definición de roles y responsabilidades, setup de sistema de seguimiento</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 4</span>
-                            <p class="timeline-milestone">Ejecución monitoreada: visibilidad semanal de bloqueos, reportes de progreso con métricas claras, ajustes tácticos basados en feedback de stakeholders</p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Servicio 04 -->
-                <article class="service-block" data-animate>
-                    <span class="service-number" aria-hidden="true">4</span>
-                    <p class="service-category">Branding y comunicación estratégica</p>
-                    <h3 class="service-title">Tu marca se convierte en activo</h3>
-                    <p class="service-lead">Cuando algo cambia — el mercado, la empresa, el contexto — la marca que no se explica pierde. Construimos el relato antes de que otros lo construyan por vos.</p>
-                    <p class="service-method">No diseñamos marcas para targets. Las diseñamos para actores sociales insertos en tramas culturales. <a href="https://www.linkedin.com/pulse/por-qu%C3%A9-los-algoritmos-bastan-el-regreso-de-la-ixf1e/" target="_blank" rel="noopener noreferrer" class="method-link">→ Nuestro enfoque sociológico a la marca</a></p>
-                    <span class="service-deliverable">Entregables: posicionamiento basado en análisis sociológico, arquitectura narrativa para contextos culturales, sistema de identidad con fundamento estratégico</span>
-                    <button class="service-timeline-toggle" aria-expanded="false">
-                        <span>Ver proceso</span>
-                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
-                    </button>
-                    <div class="service-timeline" hidden>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 1</span>
-                            <p class="timeline-milestone">Auditoría de marca: cómo te ven ahora (interna y externamente), qué promesa hacés vs. qué cumplís, análisis de competidores y contexto sectorial</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 2</span>
-                            <p class="timeline-milestone">Definición estratégica: posicionamiento, voz, personalidad de marca, territorios narrativos, guía de aplicación en comunicaciones clave</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Semana 4</span>
-                            <p class="timeline-milestone">Implementación: sistema de identidad visual (si aplica), guía de voz y tono, plantillas de comunicación, capacitación interna para equipos</p>
-                        </div>
-                    </div>
-                    <div class="service-proof">
-                        <span class="proof-label">Fundamentado en:</span>
-                        <a href="https://www.linkedin.com/pulse/por-qu%C3%A9-los-algoritmos-bastan-el-regreso-de-la-ixf1e/" target="_blank" rel="noopener noreferrer" class="proof-link">Por qué los algoritmos no bastan: El regreso de la sociología a la estrategia de marca</a>
-                    </div>
-                </article>
-            </div>
-
         </div>
     </section>
 
@@ -1150,6 +1164,7 @@
             <span class="footer-separator" id="pwa-separator" style="display:none;">·</span>
             <button type="button" id="manual-install-pwa" class="footer-link install-pwa-link" style="display:none;" aria-label="Instalar BPP Analytics & Design como aplicación web" title="Instalar como aplicación web progresiva (PWA)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="vertical-align: middle; margin-right: 4px;"><path d="M12 2L12 14M12 14L8 10M12 14L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Instalar app</button>
           </div>
+          <p class="footer-colofon">Plus Jakarta Sans · Sin cookies · HTML y CSS a mano · Última actualización: agosto 2026</p>
         </div>
         <div class="social-icons">
           <a href="https://instagram.com/bppanalyticsanddesign" target="_blank" rel="noopener noreferrer" aria-label="Seguinos en Instagram">
