@@ -563,7 +563,7 @@ body.secondary-page .nav-logo {
     display: flex; flex-direction: column; gap: var(--space-3); }
 
 .hero-wordmark {
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: clamp(2.4rem, 4.4vw, 3.8rem); color: rgba(250, 248, 246, 0.95); line-height: 1.15; animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both; }
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: clamp(2.6rem, 5.5vw, 4.6rem); color: rgba(250, 248, 246, 0.95); line-height: 1.15; animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both; }
 
 .hero-tagline {
     font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 400; color: rgba(250, 248, 246, 0.85); line-height: 1.4; opacity: 0.85; animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both; }
@@ -815,7 +815,7 @@ body.secondary-page .nav-logo {
 .hero-wordmark {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 700;
-    font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+    font-size: clamp(2.6rem, 5.5vw, 4.6rem);
     color: rgba(250, 248, 246, 0.95);
     line-height: 1.15;  /* Aumentado para evitar corte de descenders (y, g) */
     margin: 0;
@@ -921,9 +921,9 @@ body.secondary-page .nav-logo {
 
 .tagline {
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 6.5vw, 3rem); /* Mobile: 28px min, 48px max */
+    font-size: clamp(2.5rem, 7vw, 5rem); /* v2.2: escala editorial — el titular ES el hero */
     font-weight: 700;
-    line-height: 1.15; /* Breathing room en mobile */
+    line-height: 1.08; /* v2.2: leading apretado a escala grande */
     margin-bottom: var(--space-8);
     letter-spacing: -0.01em; /* Looser en mobile - previene overflow */
     color: var(--color-text);
@@ -5975,4 +5975,52 @@ img {
 
 .actividad-imagen--contain img {
   object-fit: contain;
+}
+
+/* ============ v2.2: tipografía editorial + variable font ============ */
+
+/* Peso liviano dentro de un h1 bold: contraste 300/700 en la misma frase */
+.h1-light {
+  font-weight: 300;
+}
+
+/* La fuente variable habilita transición de peso en CTAs tipográficos */
+@media (prefers-reduced-motion: no-preference) {
+  .cta-link {
+    transition: opacity 0.2s ease, font-weight 0.25s ease;
+  }
+
+  .cta-link:hover {
+    font-weight: 600;
+  }
+
+  .cta-primary {
+    transition: color 0.2s ease, text-decoration-color 0.2s ease, font-weight 0.25s ease;
+  }
+
+  .cta-primary:hover {
+    font-weight: 700;
+  }
+}
+
+/* ============ v2.2: brackets de La Usina que se dibujan ============ */
+/* Única animación de brackets del sitio: al entrar la tesis-card en
+   viewport, los brackets se trazan desde la esquina. Refuerza que son
+   firma de La Usina, no decoración global. */
+@media (prefers-reduced-motion: no-preference) {
+  .tesis-card[data-animate] .corner-bracket {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition:
+      width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.35s,
+      height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.55s,
+      opacity 0.3s ease 0.35s;
+  }
+
+  .tesis-card[data-animate].visible .corner-bracket {
+    width: 30px;
+    height: 30px;
+    opacity: 0.55;
+  }
 }
