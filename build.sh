@@ -64,10 +64,15 @@ echo ""
 # de los assets minificados. Si cambia CSS o JS, cambia el cache y el SW
 # se reinstala solo — sin bump manual.
 if [ -f "sw.js" ] && [ -f "styles.min.css" ] && [ -f "main.min.js" ]; then
-    HASH=$(cat styles.min.css main.min.js | md5sum | cut -c1-8)
-    sed -i.bak "s/bpp-v[0-9a-z]*/bpp-v${HASH}/" sw.js
-    rm -f sw.js.bak
-    echo "🔁 SW cache bump: CACHE_NAME → bpp-v${HASH}"
+    # md5sum (Linux) con fallback a md5 -q (macOS)
+    HASH=$(cat styles.min.css main.min.js | { md5sum 2>/dev/null || md5 -q /dev/stdin; } | cut -c1-8)
+    if [ -n "$HASH" ]; then
+        sed -i.bak "s/bpp-v[0-9a-z]*/bpp-v${HASH}/" sw.js
+        rm -f sw.js.bak
+        echo "🔁 SW cache bump: CACHE_NAME → bpp-v${HASH}"
+    else
+        echo "⚠️  SW cache bump omitido: no se pudo calcular hash (md5sum/md5 no disponibles)"
+    fi
 fi
 
 # Minificar Service Worker (SIEMPRE después del bump, para que
