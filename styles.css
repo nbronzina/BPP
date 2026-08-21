@@ -6256,7 +6256,10 @@ html {
     .equipo-foto {
         grid-row: auto;
         width: 100%;
-        aspect-ratio: 4 / 5;
+        /* 1:1 = el marco coincide con las fotos originales cuadradas:
+           cero recorte, se ve el encuadre completo con su espacio
+           negativo (4:5 recortaba ~20% de los costados) */
+        aspect-ratio: 1 / 1;
         margin-bottom: var(--space-2);
     }
 }
