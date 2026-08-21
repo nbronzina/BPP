@@ -128,6 +128,64 @@
 
         <h2 id="pensamiento-content-heading" class="sr-only">Artículos</h2>
 
+        <!-- Índice archival
+             Numeración correlativa cronológica: 01 = el primero que entró
+             al archivo (Enero 2026), 06 = el más nuevo (Junio 2026).
+             El listado va como la página: el más reciente arriba. -->
+        <nav class="indice-archival" aria-labelledby="indice-heading">
+            <h2 id="indice-heading" class="indice-label">Índice</h2>
+            <ol class="indice-lista">
+                <li class="indice-fila">
+                    <a href="#art-potrero">
+                        <span class="indice-num">06</span>
+                        <span class="indice-fecha">Junio 2026</span>
+                        <span class="indice-autor">Sergio</span>
+                        <span class="indice-titulo">¿Se puede algoritmizar el potrero?</span>
+                    </a>
+                </li>
+                <li class="indice-fila">
+                    <a href="#art-personal-software">
+                        <span class="indice-num">05</span>
+                        <span class="indice-fecha">Abril 2026</span>
+                        <span class="indice-autor">Nicolás</span>
+                        <span class="indice-titulo">La práctica del personal software</span>
+                    </a>
+                </li>
+                <li class="indice-fila">
+                    <a href="#art-ano-analogico">
+                        <span class="indice-num">04</span>
+                        <span class="indice-fecha">Marzo 2026</span>
+                        <span class="indice-autor">Nicolás</span>
+                        <span class="indice-titulo">2026, año analógico. O: por qué el futuro ya no llega</span>
+                    </a>
+                </li>
+                <li class="indice-fila">
+                    <a href="#art-algoritmos">
+                        <span class="indice-num">03</span>
+                        <span class="indice-fecha">Marzo 2026</span>
+                        <span class="indice-autor">Sergio</span>
+                        <span class="indice-titulo">Por qué los algoritmos no bastan: El regreso de la sociología a la estrategia de marca</span>
+                    </a>
+                </li>
+                <li class="indice-fila">
+                    <a href="#art-alquileres">
+                        <span class="indice-num">02</span>
+                        <span class="indice-fecha">Febrero 2026</span>
+                        <span class="indice-autor">Ezequiel</span>
+                        <span class="indice-titulo">La ilusión de la "negociación libre": Lo que el aumento de la oferta no cuenta sobre los alquileres</span>
+                    </a>
+                </li>
+                <li class="indice-fila">
+                    <a href="#art-branding">
+                        <span class="indice-num">01</span>
+                        <span class="indice-fecha">Enero 2026</span>
+                        <span class="indice-autor">Sergio</span>
+                        <span class="indice-titulo">El Branding como fenómeno social: Por qué tu empresa necesita un sociólogo y no solo un diseñador gráfico</span>
+                    </a>
+                </li>
+            </ol>
+        </nav>
+
         <!-- Filter Bar -->
         <div class="filter-bar" role="group" aria-label="Filtrar artículos por categoría">
             <button class="filter-btn filter-btn--active" data-filter="todos" aria-pressed="true">
@@ -161,7 +219,7 @@
 
         <div class="actividades-container">
             <!-- Entrada: Algoritmizar el potrero -->
-            <article class="actividad-entrada" data-animate data-tags="sociologia,datos,ia" aria-label="Artículo sobre algoritmos, datos y el conocimiento del potrero">
+            <article id="art-potrero" class="actividad-entrada" data-animate data-tags="sociologia,datos,ia" aria-label="Artículo sobre algoritmos, datos y el conocimiento del potrero">
                 <div class="actividad-imagen">
                     <picture>
                         <source media="(max-width: 768px)" srcset="../img/algoritmizar-potrero-mobile.webp" type="image/webp">
@@ -193,7 +251,7 @@
             </article>
 
             <!-- Entrada 1: Personal Software -->
-            <article class="actividad-entrada" data-animate data-tags="ia,diseño,estrategia,personal-software" aria-label="Artículo sobre intent coding y personal software como práctica emergente">
+            <article id="art-personal-software" class="actividad-entrada" data-animate data-tags="ia,diseño,estrategia,personal-software" aria-label="Artículo sobre intent coding y personal software como práctica emergente">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="../img/personal-software.webp" type="image/webp">
@@ -224,7 +282,7 @@
             </article>
 
             <!-- Entrada 2: Año analógico -->
-            <article class="actividad-entrada" data-animate data-tags="sociologia,futuro,diseño,prospectiva" aria-label="Artículo sobre el fin del futuro y el retorno a artefactos analógicos como prototipos de nuevos futuros posibles">
+            <article id="art-ano-analogico" class="actividad-entrada" data-animate data-tags="sociologia,futuro,diseño,prospectiva" aria-label="Artículo sobre el fin del futuro y el retorno a artefactos analógicos como prototipos de nuevos futuros posibles">
                 <div class="actividad-imagen">
                     <picture>
                         <source media="(max-width: 768px)" srcset="../img/2026-ano-analogico-mobile.webp" type="image/webp">
@@ -257,7 +315,7 @@
             </article>
 
             <!-- Entrada 3: Algoritmos y sociología -->
-            <article class="actividad-entrada" data-animate data-tags="sociologia,branding,estrategia,datos" aria-label="Artículo sobre las limitaciones del Big Data y la necesidad de la sociología en estrategia de marca">
+            <article id="art-algoritmos" class="actividad-entrada" data-animate data-tags="sociologia,branding,estrategia,datos" aria-label="Artículo sobre las limitaciones del Big Data y la necesidad de la sociología en estrategia de marca">
                 <div class="actividad-imagen">
                     <picture>
                         <source media="(max-width: 768px)" srcset="../img/algoritmos-sociologia-branding-mobile.webp" type="image/webp">
@@ -290,7 +348,7 @@
             </article>
 
             <!-- Entrada 4: Alquileres -->
-            <article class="actividad-entrada" data-animate data-tags="sociologia,datos,vivienda" aria-label="Tesis sobre negociación de alquileres en Buenos Aires y asimetrías estructurales del mercado">
+            <article id="art-alquileres" class="actividad-entrada" data-animate data-tags="sociologia,datos,vivienda" aria-label="Tesis sobre negociación de alquileres en Buenos Aires y asimetrías estructurales del mercado">
                 <div class="actividad-imagen">
                     <picture>
                         <source media="(max-width: 768px)" srcset="../img/alquileres-negociacion-mobile.webp" type="image/webp">
@@ -323,7 +381,7 @@
             </article>
 
             <!-- Entrada 5: Branding -->
-            <article class="actividad-entrada" data-animate data-tags="sociologia,branding,estrategia" aria-label="Artículo sobre branding como fenómeno social y arquitectura simbólica">
+            <article id="art-branding" class="actividad-entrada" data-animate data-tags="sociologia,branding,estrategia" aria-label="Artículo sobre branding como fenómeno social y arquitectura simbólica">
                 <div class="actividad-imagen">
                     <picture>
                         <source media="(max-width: 768px)" srcset="../img/branding-fenomeno-social-mobile.webp" type="image/webp">

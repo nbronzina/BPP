@@ -1018,6 +1018,89 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
     }
+
+    // 7. Rail de cifras (scrollytelling, desktop)
+    // -----------------------------------------------------
+    // Extiende el patrón IntersectionObserver del reporte:
+    // una cifra grande en accent bajo el sticky TOC que se
+    // actualiza según la sección visible. El markup #dataRail
+    // solo existe en /reporte-impacto (null-safe). Las cifras
+    // son las del contenido de la página, no inventadas.
+    const dataRail = document.getElementById("dataRail");
+    if (dataRail && "IntersectionObserver" in window) {
+      const railValue = dataRail.querySelector(".data-rail-value");
+      const railLabel = dataRail.querySelector(".data-rail-label");
+
+      const railFigures = {
+        "sec-contexto": {
+          value: "−40 %",
+          label: "nacimientos en Argentina en las últimas décadas"
+        },
+        "sec-contexto-general": {
+          value: "−12,4 %",
+          label: "matrícula primaria proyectada, 2023–2035"
+        },
+        "sec-escenarios": {
+          value: "3",
+          label: "escenarios: tendencial, transformador, disruptivo"
+        },
+        "sec-oportunidades": {
+          value: "−8 a −19 %",
+          label: "caída de matrícula según región"
+        },
+        "sec-pasos": {
+          value: "4",
+          label: "líneas de trabajo recomendadas"
+        }
+      };
+
+      let railTimeout;
+
+      const setRailFigure = (id) => {
+        const fig = railFigures[id];
+        if (!fig || !railValue || !railLabel) return;
+        if (dataRail.dataset.current === id) return;
+        dataRail.dataset.current = id;
+
+        const apply = () => {
+          railValue.textContent = fig.value;
+          railLabel.textContent = fig.label;
+        };
+
+        if (prefersReducedMotion) {
+          apply();
+        } else {
+          // Fade out → swap → fade in (transición de opacity en CSS)
+          clearTimeout(railTimeout);
+          dataRail.classList.add("is-switching");
+          railTimeout = setTimeout(() => {
+            apply();
+            dataRail.classList.remove("is-switching");
+          }, 180);
+        }
+      };
+
+      const railObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setRailFigure(entry.target.id);
+            }
+          });
+        },
+        {
+          // Banda central del viewport: manda la sección que la cruza
+          rootMargin: "-40% 0px -50% 0px",
+          threshold: 0
+        }
+      );
+
+      reporteSections.forEach((sec) => {
+        if (sec.id && railFigures[sec.id]) {
+          railObserver.observe(sec);
+        }
+      });
+    }
   }
 
   // =====================================================
