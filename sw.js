@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-v051ad5af';
+const CACHE_NAME = 'bpp-v81aa84fa';
 
 // Precache mínimo: app shell. El resto se cachea en runtime.
 // IMPORTANTE: cache.addAll() es atómico — un solo 404 rompe la instalación.
