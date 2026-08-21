@@ -37,7 +37,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Security Policies -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co https://plausible.io; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co https://plausible.io; base-uri 'self'; form-action 'self' https://formsubmit.co;">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -65,8 +65,7 @@
     </style>
 
     <!-- Full Styles (Async) -->
-    <link rel="preload" href="styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
+    <link rel="stylesheet" href="styles.min.css">
 
     <!-- Prefetch Future Navigation -->
     <link rel="prefetch" href="/proyectos/" as="document">
@@ -1011,7 +1010,7 @@
                 <button id="quiz-submit" class="quiz-submit-btn" disabled style="display: none;">Ver diagnóstico</button>
             </div>
 
-            <div id="quiz-results" class="quiz-results" style="display: none;">
+            <div id="quiz-results" class="quiz-results" role="status" aria-live="polite" style="display: none;">
                 <div class="results-header">
                     <span class="results-badge">Diagnóstico completo</span>
                     <h3 class="results-score">Tu organización: <span id="score-label"></span></h3>

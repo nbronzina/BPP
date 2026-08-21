@@ -29,6 +29,10 @@ jobs:
           rm -f BENCHMARKING-REPORT-*.md CAMBIOS_IMPLEMENTADOS.md OPTIMIZATION-REPORT.md
           rm -f AUDITORIA-*.md audit-*.md audit-*.txt
           rm -f _prototype-*.html build.sh
+          rm -f docs/auditoria-web-junio-2026.md docs/benchmarking-agencias-2026.md
+          rm -f docs/optimizacion-repositorio-jun-2026.md docs/usina-fase1-especificacion.md
+          rm -f docs/web-dev-foundation-skill.md docs/web-dev-sustainability-integration.md
+          rm -f docs/ai-sustainability-quickref.md docs/audit-full-agosto-2026.md
           rm -rf img/archive img/backup
 
       - name: Setup Pages
