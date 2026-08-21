@@ -6233,3 +6233,78 @@ img {
     margin: 0;
     color: rgba(250, 248, 246, 0.75);
 }
+
+/* ============ v2.2.1: profundidad de fondo + detalles de paleta ============ */
+/* El fondo deja de ser un plano único: tres registros del mismo marrón
+   cálido crean espacio sin líneas. bg-deep (secciones de peso), bg (base),
+   surface (cards). La separación por tono reemplaza al separador por borde. */
+
+:root {
+    --color-bg-deep: #16110e;      /* Registro hondo: services, contacto */
+    --color-bg-warm: #1e1712;      /* Registro tibio: tinte terracotta 4% */
+}
+
+/* Sección de servicios: registro hondo con lámpara terracotta arriba.
+   (La clase existía en el HTML pero su CSS se perdió — se redefine acá.) */
+.section--orange-950 {
+    background:
+        radial-gradient(1200px 480px at 18% -8%, rgba(193, 111, 82, 0.07), transparent 65%),
+        var(--color-bg-deep);
+}
+
+/* Contacto: mismo registro hondo, lámpara desde el otro lado —
+   la variación de posición es deliberada (craft, no template). */
+.contact-form-section {
+    background:
+        radial-gradient(1000px 420px at 85% 0%, rgba(193, 111, 82, 0.06), transparent 60%),
+        var(--color-bg-deep);
+}
+
+/* Luz desde arriba en superficies: 1px de highlight interior — las cards
+   se sienten iluminadas, no dibujadas. */
+.service-block,
+.senal-card,
+.tesis-card,
+.term-card {
+    box-shadow: inset 0 1px 0 rgba(250, 248, 246, 0.05), var(--shadow-card);
+}
+
+.service-block:hover,
+.senal-card:hover {
+    box-shadow: inset 0 1px 0 rgba(250, 248, 246, 0.07), var(--shadow-card-hover);
+}
+
+/* Selección de texto en paleta (antes: azul default del browser) */
+::selection {
+    background: rgba(193, 111, 82, 0.85);
+    color: #1a1512;
+}
+
+/* Scrollbar en paleta (antes: gris default) */
+html {
+    scrollbar-color: #3a2e24 #1a1512;
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1512;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3a2e24;
+    border-radius: 999px;
+    border: 2px solid #1a1512;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(193, 111, 82, 0.5);
+}
+
+/* Tap highlight mobile en paleta (antes: gris/azul del sistema) */
+* {
+    -webkit-tap-highlight-color: rgba(193, 111, 82, 0.18);
+}
