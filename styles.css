@@ -55,13 +55,13 @@
     --spacing-horizontal-desktop: var(--space-24); /* var(--space-24) */
 
     /* Typography - Escala optimizada para Plus Jakarta Sans */
-    --font-size-base: 1.0625rem;  /* 17px - sweet spot para Plus Jakarta Sans */
+    --font-size-base: 1.1875rem;  /* 19px — subido de 17px (feedback socios: tipografía chica) */
 
     /* Solo h1, h2, h3 diferenciados por tamaño - progresión armónica */
-    --font-size-h3: clamp(1.625rem, 3.5vw, 2rem);      /* 26px → 32px */
-    --font-size-h2: clamp(2rem, 4.5vw, 2.625rem);      /* 32px → 42px */
-    --font-size-h1: clamp(2.625rem, 6vw, 3.5rem);      /* 42px → 56px */
-    --font-size-display: clamp(3.5rem, 8vw, 4.5rem);   /* 56px → 72px - hero */
+    --font-size-h3: clamp(1.875rem, 4vw, 2.375rem);      /* 26px → 32px */
+    --font-size-h2: clamp(2.375rem, 5vw, 3.25rem);      /* 32px → 42px */
+    --font-size-h1: clamp(3rem, 7vw, 4.5rem);      /* 42px → 56px */
+    --font-size-display: clamp(4rem, 9vw, 5.5rem);   /* 56px → 72px - hero */
 
     /* Typography - Special (numbers, icons) */
     --font-size-number-sm: 2rem;
@@ -214,7 +214,7 @@ h3 {
 /* h4, h5, h6: mismo tamaño que body (Gmail approach) - jerarquía por weight */
 h4, h5, h6 {
     font-size: var(--font-size-base);  /* 17px - igual que body */
-    font-weight: 600;  /* Diferenciación por peso, no por tamaño */
+    font-weight: 700;  /* Diferenciación por peso, no por tamaño */
     margin-bottom: var(--space-3);
 }
 
@@ -679,7 +679,7 @@ body.secondary-page .nav-logo {
     color: var(--color-accent);
     text-decoration: none;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     padding: var(--space-2) 0;
     transition: color 0.2s ease;
     display: inline-block;
@@ -993,7 +993,7 @@ body.secondary-page .nav-logo {
     fill: rgba(250, 248, 246, 0.7);
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
@@ -1064,7 +1064,7 @@ body.secondary-page .nav-logo {
     color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.6) */
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .viz-metric {
@@ -1111,7 +1111,7 @@ body.secondary-page .nav-logo {
     padding: var(--space-2) 0;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1.0625rem;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: underline;
     text-decoration-color: rgba(193, 111, 82, 0.4);
     text-underline-offset: 4px;
@@ -1169,7 +1169,7 @@ body.secondary-page .nav-logo {
     text-decoration: none;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     background: none !important;
     border: none;
     padding: 0;
@@ -1197,7 +1197,7 @@ body.secondary-page .nav-logo {
     display: inline-block;
     min-height: 44px;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     border-radius: 4px;
     cursor: pointer;
@@ -1266,7 +1266,7 @@ body.secondary-page .nav-logo {
 .form-submit {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
-    font-weight: 500;
+    font-weight: 400;
     border: 1.5px solid var(--color-accent);
 }
 
@@ -1283,7 +1283,7 @@ body.secondary-page .nav-logo {
 /* Mobile-first: tipografía de botones optimizada para mobile */
 .form-submit,
 .btn-download {
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.01em; /* Slightly loose for clarity */
 }
 
@@ -1294,7 +1294,7 @@ body.secondary-page .nav-logo {
     }
 
     .form-submit {
-        font-weight: 500;
+        font-weight: 400;
     }
 }
 
@@ -1364,7 +1364,7 @@ body.secondary-page .nav-logo {
     background: var(--color-surface);
     color: rgba(250, 248, 246, 0.95);
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     padding: 8px 14px;
@@ -1519,7 +1519,7 @@ body.secondary-page .nav-logo {
 /* Section labels and headings */
 .bpp-section-label {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1531,7 +1531,7 @@ body.secondary-page .nav-logo {
 .section-heading {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: clamp(1.75rem, 3.5vw, 2.25rem);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.25;
     color: var(--color-text);
     margin-bottom: var(--space-8);
@@ -1645,7 +1645,7 @@ body.secondary-page .nav-logo {
 .about-purpose {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-h3);  /* Mobile: same size as about-headline */
-    font-weight: 600;
+    font-weight: 700;
     opacity: 0.95;
     margin-bottom: var(--space-4);
     padding-top: var(--space-8);
@@ -1717,7 +1717,7 @@ body.secondary-page .nav-logo {
 .transformation-card p {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     opacity: 0.85;
     line-height: 1.6;
     margin: 0;
@@ -1752,7 +1752,7 @@ body.secondary-page .nav-logo {
 .identity-badge .badge-label {
     font-family: var(--font-mono);
     font-size: 1rem;  /* 16px - improved readability */
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1777,7 +1777,7 @@ body.secondary-page .nav-logo {
 .actividades-cta-link {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
-    font-weight: 500;
+    font-weight: 400;
     color: var(--color-accent);
     text-decoration: none;
     display: inline-block;
@@ -1814,7 +1814,7 @@ body.secondary-page .nav-logo {
 .services-cta-link {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
-    font-weight: 500;
+    font-weight: 400;
     color: var(--color-accent);
     text-decoration: none;
     display: inline-block;
@@ -2069,7 +2069,7 @@ body.secondary-page .nav-logo {
 .method-link {
     color: var(--orange-500);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     transition: color var(--transition-fast);
     white-space: normal;  /* Permite wrap en mobile */
     word-wrap: break-word;
@@ -2105,7 +2105,7 @@ body.secondary-page .nav-logo {
     font-family: var(--font-mono);
     color: var(--color-text);
     opacity: 0.6;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-size: 1rem;
@@ -2292,7 +2292,7 @@ footer {
 /* Colofón técnico (referencia Linked by Air) */
 .footer-colofon {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.9375rem;
     color: rgba(250, 248, 246, 0.35);
     margin-top: var(--space-3);
 }
@@ -2411,7 +2411,7 @@ footer {
     }
 
     .footer-brand {
-        font-weight: 600;
+        font-weight: 700;
         opacity: 0.85;
     }
 
@@ -2599,7 +2599,7 @@ footer {
 .form-message {
     padding: var(--space-4);
     text-align: center;
-    font-weight: 500;
+    font-weight: 400;
     display: none;
     margin-bottom: var(--space-8);
     border-radius: 4px;
@@ -2698,7 +2698,7 @@ footer {
 
 .proyectos-intro-headline {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     font-size: var(--font-size-h2);
     color: rgba(250, 248, 246, 0.95);
     margin-bottom: var(--space-4);
@@ -2721,7 +2721,7 @@ footer {
 
 .proyectos-cta-headline {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     font-size: var(--font-size-h2);
     color: rgba(250, 248, 246, 0.95);
     margin-bottom: var(--space-4);
@@ -2942,8 +2942,8 @@ footer {
 .actividad-category-badge {
     display: inline-block;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 0.9375rem;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     padding: var(--space-1) var(--space-3);
@@ -3308,7 +3308,7 @@ img {
     color: #1a1512;
     padding: var(--space-4) var(--space-8);
     z-index: var(--z-modal);
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     transition: top var(--transition-fast);
 }
@@ -3558,7 +3558,7 @@ img {
 /* Número destacado */
 .impact-number {
   font-size: var(--font-size-number-sm); /* Mobile base */
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);  /* Blanco puro, destaca por tamaño y peso */
   margin: var(--space-4) 0;
 }
@@ -3836,7 +3836,7 @@ img {
   border: 2px solid var(--color-accent);
   border-radius: 4px;
   color: var(--color-accent);
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
@@ -3914,7 +3914,7 @@ img {
 
 .reporte-page .impact-number {
     font-size: var(--font-size-number-md);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-accent);
 }
 
@@ -4013,7 +4013,7 @@ img {
 .senales-title {
     font-family: var(--font-heading);
     font-size: var(--font-size-h2);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
     line-height: var(--line-height-heading);
 }
@@ -4052,7 +4052,7 @@ img {
 .senal-headline {
     font-family: var(--font-heading);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
     line-height: var(--line-height-heading);
     margin-bottom: var(--space-4);
@@ -4062,7 +4062,7 @@ img {
     font-family: var(--font-body);
     font-size: var(--font-size-base);
     color: var(--color-text-muted);
-    font-weight: 500;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     margin-bottom: var(--space-3);
@@ -4088,7 +4088,7 @@ img {
     font-family: var(--font-body);
     font-size: var(--font-size-base);
     font-style: italic;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--color-text);
     line-height: var(--line-height-body);
     margin-bottom: var(--space-6);
@@ -4157,7 +4157,7 @@ img {
 .quiz-title {
     font-family: var(--font-heading);
     font-size: var(--font-size-h2);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
     line-height: var(--line-height-heading);
     margin-bottom: var(--space-4);
@@ -4188,7 +4188,7 @@ img {
     padding: var(--space-3) var(--space-4);
     font-family: var(--font-body);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--orange-500);
     background: transparent;
     border: none;
@@ -4278,7 +4278,7 @@ img {
     padding: var(--space-2) var(--space-4);
     font-family: var(--font-body);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--orange-500);
     text-align: center; /* Mobile base */
     text-decoration: none;
@@ -4355,7 +4355,7 @@ img {
 .question-text {
     font-family: var(--font-heading);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
     line-height: var(--line-height-heading);
     margin-bottom: var(--space-6);
@@ -4417,7 +4417,7 @@ img {
     padding: var(--space-4) 0;
     font-family: var(--font-heading);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--orange-500);
     background: transparent;
     border: none;
@@ -4453,7 +4453,7 @@ img {
     padding: var(--space-4) var(--space-6);
     font-family: var(--font-heading);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
     background: var(--color-bg);
     border: 1.5px solid var(--color-border);
@@ -4518,7 +4518,7 @@ img {
 .results-score {
     font-family: var(--font-heading);
     font-size: var(--font-size-h3);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
     margin-bottom: var(--space-2);
 }
@@ -4537,7 +4537,7 @@ img {
 .results-analysis-title {
     font-family: var(--font-heading);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
     margin-bottom: var(--space-4);
 }
@@ -4552,7 +4552,7 @@ img {
 .results-recommendations-title {
     font-family: var(--font-heading);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
     margin-bottom: var(--space-6);
 }
@@ -4573,7 +4573,7 @@ img {
 .recommendation-title {
     font-family: var(--font-heading);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--orange-500);
     margin-bottom: var(--space-2);
 }
@@ -4593,7 +4593,7 @@ img {
     padding: var(--space-3) var(--space-6);
     font-family: var(--font-heading);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
     background: var(--orange-500);
     border: none;
@@ -4636,7 +4636,7 @@ img {
     padding: var(--space-2) var(--space-4);
     font-family: var(--font-body);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--orange-500);
     text-align: center; /* Mobile base */
     text-decoration: none;
@@ -4695,7 +4695,7 @@ img {
     padding: var(--space-3) var(--space-4);
     font-family: var(--font-body);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--orange-500);
     background: transparent;
     border: 1px solid var(--orange-500);
@@ -4758,7 +4758,7 @@ img {
 .timeline-week {
     font-family: var(--font-mono);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--orange-500);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -4818,8 +4818,8 @@ img {
 .term-card-label {
     display: block;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.9375rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--orange-500);
@@ -4829,7 +4829,7 @@ img {
 .term-card-text {
     display: block;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     color: rgba(250, 248, 246, 0.95);
@@ -4860,14 +4860,14 @@ img {
     }
 
     .term-card-text {
-        font-size: 0.9375rem;
+        font-size: 1.0625rem;
     }
 }
 
 .approach-label {
     font-family: var(--font-mono);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -4947,7 +4947,7 @@ img {
 .legal-link {
   color: var(--color-accent);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
   transition: opacity 0.2s ease;
 }
 
@@ -5073,7 +5073,7 @@ img {
 .sticky-toc h3,
 .sticky-toc .toc-label {
   font-size: var(--font-size-base);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-accent);
   margin-bottom: var(--space-4);
   text-transform: uppercase;
@@ -5200,7 +5200,7 @@ img {
 
 .pull-quote p {
   font-size: var(--font-size-base);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);
   margin: 0;
   position: relative;
@@ -5228,7 +5228,7 @@ img {
 }
 
 .highlight-box p:first-of-type {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);  /* Blanco puro, enfatiza con peso de fuente */
   margin-bottom: var(--space-3);
 }
@@ -5411,7 +5411,7 @@ img {
   color: #1a1512;
   text-decoration: none;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--font-size-base);
   transition: background 0.3s;
 }
@@ -5472,7 +5472,7 @@ img {
   margin-top: var(--space-8);
   border: 2px solid var(--color-accent);
   border-radius: 4px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1rem;
   color: var(--color-accent);
   text-decoration: none;
@@ -5513,7 +5513,7 @@ img {
   border: 1px solid var(--color-accent);
   background: transparent;
   color: var(--color-accent);
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
@@ -5790,8 +5790,8 @@ img {
 }
 
 .tesis-card__label {
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.9375rem;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -5811,7 +5811,7 @@ img {
 }
 
 .tesis-card__authors {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: rgba(250, 248, 246, 0.55);
   margin-bottom: var(--space-4);
 }
@@ -5823,7 +5823,7 @@ img {
 .tesis-card__desc em {
   color: var(--color-accent);
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Página de tesis: subtítulo y metadata */
@@ -5841,7 +5841,7 @@ img {
   padding: var(--space-4) 0;
   border-top: 1px solid rgba(250, 248, 246, 0.12);
   border-bottom: 1px solid rgba(250, 248, 246, 0.12);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   letter-spacing: 0.04em;
   color: rgba(250, 248, 246, 0.55);
 }
@@ -5849,7 +5849,7 @@ img {
 .thesis-download {
   color: var(--color-accent);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .thesis-download:hover {
@@ -5863,8 +5863,8 @@ img {
 }
 
 .thesis-section-label {
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.9375rem;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -5878,7 +5878,7 @@ img {
 .thesis-abstract em {
   color: var(--color-accent);
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Visor PDF: oculto en mobile (iOS Safari no soporta embed de PDF),
@@ -5909,7 +5909,7 @@ img {
   background: var(--color-surface);
   border-left: 2px solid var(--color-accent);
   border-radius: 0 8px 8px 0;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .thesis-cite p + p {
@@ -5979,9 +5979,11 @@ img {
 
 /* ============ v2.2: tipografía editorial + variable font ============ */
 
-/* Peso liviano dentro de un h1 bold: contraste 300/700 en la misma frase */
+/* Neutralizado por feedback de socios (2026-08-21): el contraste de pesos
+   en el h1 se percibía como una segunda tipografía. Los spans quedan en el
+   HTML como no-op por si se quiere reactivar con un peso más cercano. */
 .h1-light {
-  font-weight: 300;
+  font-weight: inherit;
 }
 
 /* La fuente variable habilita transición de peso en CTAs tipográficos */
@@ -5991,7 +5993,7 @@ img {
   }
 
   .cta-link:hover {
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .cta-primary {
@@ -6072,8 +6074,8 @@ img {
 
 .indice-label {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 0.9375rem;
+    font-weight: 400;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-accent);
@@ -6102,16 +6104,16 @@ img {
 
 .indice-num {
     font-variant-numeric: tabular-nums;
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--color-accent);
 }
 
 .indice-fecha,
 .indice-autor {
     display: none;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 0.9375rem;
+    font-weight: 400;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(250, 248, 246, 0.55);
@@ -6119,7 +6121,7 @@ img {
 }
 
 .indice-titulo {
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
     line-height: 1.5;
     color: rgba(250, 248, 246, 0.85);
     transition: color 0.2s ease;
@@ -6171,8 +6173,8 @@ img {
     .data-rail-label {
         display: block;
         margin-top: var(--space-2);
-        font-size: 0.75rem;
-        font-weight: 500;
+        font-size: 0.9375rem;
+        font-weight: 400;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         line-height: 1.5;
@@ -6208,8 +6210,8 @@ img {
     padding: var(--space-2) 0;
     border-top: 1px solid rgba(250, 248, 246, 0.06);
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 0.9375rem;
+    font-weight: 400;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
