@@ -1545,17 +1545,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // =====================================================
-  // Equipo: Foto hover
-  // =====================================================
-  const equipoRows = document.querySelectorAll('.equipo-row');
-  if (equipoRows.length > 0) {
-    equipoRows.forEach(row => {
-      const foto = row.dataset.foto;
-      const preview = row.querySelector('.equipo-foto-hover');
-      if (foto && preview) {
-        preview.style.backgroundImage = `url(${foto})`;
-      }
-    });
-  }
 });

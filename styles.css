@@ -3130,77 +3130,6 @@ footer {
     text-align: left;
 }
 
-.equipo-table {
-    width: 100%;
-    border-top: 1px solid rgba(250, 248, 246, 0.12);
-}
-
-.equipo-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-6) 0;
-    border-bottom: 1px solid rgba(250, 248, 246, 0.08);
-    position: relative;
-    cursor: default;
-    transition: background 0.15s ease;
-    text-align: left;
-}
-
-.equipo-row:hover {
-    background: rgba(250, 248, 246, 0.03);
-}
-
-.equipo-row:hover .equipo-foto-hover {
-    opacity: 1;
-}
-
-.equipo-nombre {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--color-text);
-}
-
-.equipo-rol {
-    font-size: 1rem;
-    color: rgba(250, 248, 246, 0.65);
-    opacity: 0.85;
-}
-
-.equipo-ciudad {
-    font-size: 1rem;
-    color: rgba(250, 248, 246, 0.65);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.equipo-link {
-    font-size: 1rem;
-    color: var(--color-accent);
-    text-decoration: none;
-    text-align: right;
-}
-
-.equipo-link:hover {
-    opacity: 0.75;
-}
-
-.equipo-foto-hover {
-    display: none;  /* Hidden on mobile */
-    position: absolute;
-    left: 180px;
-    top: -90px;
-    width: 140px;
-    height: 140px;
-    background-size: cover;
-    background-position: center top;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    pointer-events: none;
-    z-index: 10;
-}
-
 /* =========================
    Animations (Intersection Observer)
    ========================= */
@@ -3230,32 +3159,6 @@ a,
 button,
 img {
     transition: opacity var(--transition-normal);
-}
-
-/* Equipo Section - Desktop Enhancement */
-@media (min-width: 769px) {
-    .equipo-row {
-        grid-template-columns: 2fr 3fr 1.5fr;
-        gap: var(--space-8);
-        padding: var(--space-5) 0;
-        text-align: left;
-    }
-
-    .equipo-nombre {
-        font-size: 1rem;
-    }
-
-    .equipo-rol {
-        opacity: 1;
-    }
-
-    .equipo-ciudad {
-        opacity: 1;
-    }
-
-    .equipo-foto-hover {
-        display: block;
-    }
 }
 
 /* =========================
@@ -6279,6 +6182,96 @@ html {
    sepia sutil las une a la paleta. Solo material fotográfico e
    ilustraciones de cards — nunca logos ni gráficos de datos. */
 .actividad-imagen img,
-.equipo-foto-hover {
+.equipo-foto {
   filter: sepia(0.12) saturate(0.95);
+}
+
+/* ============ v2.2.1: equipo con retratos visibles ============ */
+/* Las caras del estudio dejan de esconderse detrás de un hover
+   (en mobile no existía forma de verlas). Mobile: fila compacta con
+   thumbnail. Desktop: tres retratos que se revelan al scroll. */
+.equipo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    border-top: 1px solid rgba(250, 248, 246, 0.06);
+    padding-top: var(--space-6);
+}
+
+/* Mobile: thumbnail + texto en fila */
+.equipo-member {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+    align-items: center;
+}
+
+.equipo-foto {
+    grid-row: 1 / span 3;
+    width: 88px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+}
+
+.equipo-nombre {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.equipo-rol {
+    font-size: 1rem;
+    color: rgba(250, 248, 246, 0.75);
+    line-height: 1.4;
+}
+
+.equipo-ciudad {
+    font-size: 0.9375rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(250, 248, 246, 0.55);
+}
+
+/* Desktop: tres retratos en columnas */
+@media (min-width: 769px) {
+    .equipo-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+    }
+
+    .equipo-member {
+        grid-template-columns: 1fr;
+        row-gap: var(--space-2);
+        align-items: start;
+        align-content: start;
+    }
+
+    .equipo-foto {
+        grid-row: auto;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        margin-bottom: var(--space-2);
+    }
+}
+
+/* Reveal escalonado al entrar en viewport (mismo patrón que logos) */
+@media (prefers-reduced-motion: no-preference) {
+    .equipo-grid .equipo-member {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .equipo-grid.visible .equipo-member {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .equipo-grid.visible .equipo-member:nth-child(2) { transition-delay: 0.12s; }
+    .equipo-grid.visible .equipo-member:nth-child(3) { transition-delay: 0.24s; }
 }
