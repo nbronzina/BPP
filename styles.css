@@ -6287,3 +6287,9 @@ html {
 .logo-item--icon img {
   height: 78px;
 }
+
+/* Wordmarks con tipografía chica en su lockup (ITBA Escuela de
+   Innovación): compensación intermedia entre wordmark e ícono. */
+.logo-item--md img {
+  height: 64px;
+}
