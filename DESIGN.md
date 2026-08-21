@@ -1,8 +1,8 @@
 ---
-version: beta-inclusive-2.1
+version: soft-editorial-2.2
 name: BPP Analytics & Design
-description: Sistema visual del estudio. Fondo dark warm gray, tipografía Plus Jakarta Sans (familia única, jerarquía por peso y tamaño), acento terracota y corner brackets como dispositivo de encuadre. Editorial inclusivo, no corporativo.
-evolution: "v1 (alpha) usaba Space Mono monowidth + negro puro + contraste alto como signature. v2 (beta-inclusive) prioriza diseño inclusivo: reduce fatiga visual con warm off-white, terracota desaturado, y dark warm gray. v2.1 consolida la tipografía en Plus Jakarta Sans como familia única (decisión 2026-06-11): el híbrido Bros Oskon + Chivo nunca llegó a producción y se descartó a favor de lo que el sitio ya usaba de forma consistente."
+description: Sistema visual del estudio. Fondo dark warm gray, tipografía Plus Jakarta Sans (familia única, jerarquía por peso y tamaño), acento terracota y corner brackets como firma exclusiva de La Usina. Geometría blanda, elevación por superficie y sombra cálida, grano análogo sutil. Editorial inclusivo, no corporativo.
+evolution: "v1 (alpha) usaba Space Mono monowidth + negro puro + contraste alto como signature. v2 (beta-inclusive) prioriza diseño inclusivo: reduce fatiga visual con warm off-white, terracota desaturado, y dark warm gray. v2.1 consolida la tipografía en Plus Jakarta Sans como familia única (decisión 2026-06-11). v2.2 (soft-editorial, decisión 2026-08-21) abandona la geometría de wireframe: los corner brackets dejan de ser dispositivo global y quedan reservados como firma de La Usina; los bordes de 1px bajan a susurro (alpha ≤ 0.15) y la elevación pasa a superficie + sombra cálida; radios md 8px → 16px; badges rectangulares → pill; se suma grano análogo sutil (~3.5% opacity) sobre toda la página."
 colors:
   primary: "#c16f52"
   on-primary: "#1a1512"
@@ -57,7 +57,8 @@ spacing:
 rounded:
   none: 0px
   sm: 4px
-  md: 8px
+  md: 16px
+  pill: 999px
   full: 50%
 components:
   cta-typographic:
@@ -236,10 +237,11 @@ Esta sección captura los errores que se repiten y que el sistema necesita docum
 - Mantener `section: 160px` entre bloques mayores.
 - Implementar CTAs como tipografía, no como botones con fondo.
 - Usar `translateX(±4px)` en flechas de CTA para hover direccional.
-- Usar shadows sutiles (`alpha ≤ 0.4`, `blur ≤ 24px`, color negro) para separar cards cuando hace falta.
+- Elevar cards con superficie + sombra cálida (`--shadow-card`), no con bordes: los bordes de 1px se usan a alpha ≤ 0.15 ("susurro"), nunca como marco duro.
 - Mantener focus rings en `:focus-visible` — es accesibilidad.
-- Usar radios `none` / `sm (4px)` / `md (8px)` / `full (50%)` según el componente.
-- Mantener corner brackets como dispositivo de encuadre.
+- Usar radios `none` / `sm (4px)` / `md (16px)` / `pill (999px)` / `full (50%)` según el componente. Badges y chips van en pill.
+- Reservar los corner brackets como firma exclusiva de La Usina (`.tesis-card`, portadas de tesis). En el resto del sitio no se usan (v2.2).
+- Mantener el grano análogo del body (~3.5% opacity): rompe el render perfecto sin ensuciar el texto.
 - Preservar el efecto team row tal como está.
 - Priorizar diseño inclusivo: warm off-white, terracotta desaturado, dark warm gray lifted.
 
