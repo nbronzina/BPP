@@ -355,7 +355,7 @@ nav {
 body.logo-pinned nav {
     opacity: 1;
     pointer-events: auto;
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(26, 21, 18, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(250, 248, 246, 0.06);
@@ -363,7 +363,7 @@ body.logo-pinned nav {
 
 @media (min-width: 769px) {
     body.logo-pinned nav {
-        background-color: rgba(10, 10, 10, 0.65);
+        background-color: rgba(26, 21, 18, 0.65);
         backdrop-filter: blur(16px) saturate(140%);
         -webkit-backdrop-filter: blur(16px) saturate(140%);
     }
@@ -374,7 +374,7 @@ body.logo-pinned nav {
 body.secondary-page nav {
     opacity: 1;
     pointer-events: auto;
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(26, 21, 18, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(250, 248, 246, 0.06);
@@ -383,7 +383,7 @@ body.secondary-page nav {
 /* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(1px)) {
     body.logo-pinned nav {
-        background-color: rgba(10, 10, 10, 0.95);
+        background-color: rgba(26, 21, 18, 0.95);
     }
 }
 
@@ -411,7 +411,7 @@ body.logo-pinned .nav-logo {
 body.secondary-page nav {
     opacity: 1;
     pointer-events: auto;
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: rgba(26, 21, 18, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(250, 248, 246, 0.06);
@@ -419,7 +419,7 @@ body.secondary-page nav {
 
 @media (min-width: 769px) {
     body.secondary-page nav {
-        background-color: rgba(10, 10, 10, 0.65);
+        background-color: rgba(26, 21, 18, 0.65);
         backdrop-filter: blur(16px) saturate(140%);
         -webkit-backdrop-filter: blur(16px) saturate(140%);
     }
@@ -432,7 +432,7 @@ body.secondary-page .nav-logo {
 /* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(1px)) {
     body.secondary-page nav {
-        background-color: rgba(10, 10, 10, 0.95);
+        background-color: rgba(26, 21, 18, 0.95);
     }
 }
 
@@ -455,7 +455,7 @@ body.secondary-page .nav-logo {
     height: 100vh;
     width: 80%;
     min-width: 260px;
-    background-color: rgba(10, 10, 10, 0.98);
+    background-color: rgba(26, 21, 18, 0.98);
     backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
@@ -1055,7 +1055,7 @@ body.secondary-page .nav-logo {
     height: 100%;
     background:
         radial-gradient(ellipse at 30% 40%, rgba(193, 111, 82, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 60%, rgba(10, 37, 64, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(193, 111, 82, 0.06) 0%, transparent 50%),
         linear-gradient(135deg, rgba(193, 111, 82, 0.04) 0%, transparent 60%);
 }
 
@@ -1496,7 +1496,7 @@ body.secondary-page .nav-logo {
     bottom: var(--space-4);
     right: var(--space-4);
     left: var(--space-4);
-    background: rgba(10, 37, 64, 0.95);
+    background: rgba(34, 29, 24, 0.95);
     color: rgba(250, 248, 246, 0.95);
     padding: var(--space-4) var(--space-4);
     border-radius: 8px;

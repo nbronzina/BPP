@@ -1229,14 +1229,14 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             title: 'Branding y comunicación estratégica',
             description: 'Construí un relato coherente sobre quién sos y hacia dónde vas. Cuando algo cambia, la marca que no se explica pierde. Empezá por definir tu voz antes de que otros definan tu narrativa.',
-            link: '#services',
-            cta: 'Ver servicio de Branding'
+            link: '#contact',
+            cta: 'Hablemos de tu narrativa'
           },
           {
             title: 'Investigación exploratoria',
             description: 'Empezá a identificar señales tempranas de cambio antes de que se conviertan en crisis. Un mapeo inicial de escenarios futuros te permite anticipar en lugar de reaccionar.',
-            link: '#services',
-            cta: 'Ver servicio de Investigación'
+            link: '#contact',
+            cta: 'Hablemos de tu diagnóstico'
           }
         ];
       } else if (totalScore <= 70) {
@@ -1246,20 +1246,20 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             title: 'Gestión estratégica de proyectos',
             description: 'El plan existe, el equipo está, pero nada avanza. No se trata de metodologías — se trata de entender las dinámicas sociales que frenan la ejecución. Diagnosticamos bloqueos y alineamos stakeholders.',
-            link: '#services',
-            cta: 'Ver servicio de Gestión estratégica'
+            link: '#contact',
+            cta: 'Hablemos de ese bloqueo'
           },
           {
             title: 'Investigación exploratoria',
             description: 'Convertí la identificación de señales en un proceso continuo, no un ejercicio ocasional. Un sistema de monitoreo estructurado te permite ver qué viene antes de que te obligue a reaccionar.',
-            link: '#services',
-            cta: 'Ver servicio de Investigación'
+            link: '#contact',
+            cta: 'Hablemos de tu monitoreo'
           },
           {
             title: 'Diseño de prototipos',
             description: 'Pasá de prototipar ocasionalmente a hacerlo de forma sistemática. Cada hipótesis debería testearse con un artefacto concreto antes de comprometer recursos completos.',
-            link: '#services',
-            cta: 'Ver servicio de Prototipos'
+            link: '#contact',
+            cta: 'Hablemos de tu próximo prototipo'
           }
         ];
       } else {
@@ -1269,14 +1269,14 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             title: 'Investigación exploratoria avanzada',
             description: 'Convertí el monitoreo de señales en investigación estructurada. No solo qué está cambiando, sino por qué, hacia dónde, y qué estructuras sociales, económicas y culturales lo están impulsando.',
-            link: '#services',
-            cta: 'Ver servicio de Investigación'
+            link: '#contact',
+            cta: 'Hablemos de tu investigación'
           },
           {
             title: 'Diseño de prototipos y design fiction',
             description: 'Pasá de escenarios a prototipos de futuros alternativos. El design fiction te permite testear cómo sería vivir en un futuro específico antes de que llegue. Es investigación especulativa aplicada a decisiones estratégicas.',
-            link: '#services',
-            cta: 'Ver servicio de Prototipos'
+            link: '#contact',
+            cta: 'Hablemos de ese escenario'
           }
         ];
       }
