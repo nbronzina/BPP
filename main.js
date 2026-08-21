@@ -19,7 +19,6 @@ function trackEvent(name, props) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log('🚀 BPP main.js loaded - DOMContentLoaded fired');
   const body = document.body;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -53,15 +52,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // SCROLL RESTORATION - Asegurar inicio en top
   // =====================================================
   // Prevenir que el navegador restaure la posición de scroll
-  // y asegurar que la página siempre inicie en el top
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
+  // y asegurar que la página siempre inicie en el top,
+  // EXCEPTO en navegación back/forward (ahí el navegador debe
+  // restaurar la posición donde estaba el usuario)
+  const navEntry = performance.getEntriesByType('navigation')[0];
+  if (navEntry?.type !== 'back_forward') {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
 
-  // Forzar scroll al top cuando la página carga,
-  // salvo que haya un ancla en la URL (deep links como ../#contact)
-  if (!window.location.hash) {
-    window.scrollTo(0, 0);
+    // Forzar scroll al top cuando la página carga,
+    // salvo que haya un ancla en la URL (deep links como ../#contact)
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
   }
 
   // =====================================================
@@ -465,7 +469,9 @@ document.addEventListener("DOMContentLoaded", function () {
       formMessage.classList.remove("show", "success", "error");
 
       try {
-        const response = await fetch(contactForm.action, {
+        // Endpoint AJAX de FormSubmit (devuelve JSON {success, message}).
+        // El action del form HTML queda como fallback sin JS.
+        const response = await fetch("https://formsubmit.co/ajax/bppanalyticsanddesign@gmail.com", {
           method: "POST",
           body: formData,
           headers: {
@@ -473,7 +479,9 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         });
 
-        if (response.ok) {
+        const result = response.ok ? await response.json() : null;
+
+        if (result && String(result.success) === "true") {
           formMessage.textContent =
             "¡Gracias por contactarnos! Te responderemos pronto.";
           formMessage.classList.add("show", "success");
@@ -926,8 +934,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (accordionHeaders.length) {
       const toggleAccordion = (header) => {
         const isActive = header.classList.contains("active");
-        const content = header.nextElementSibling;
-        const scenarioId = content.getAttribute("id");
+        // El button vive dentro de un <h3>; el contenido se ubica
+        // por su id declarado en aria-controls
+        const scenarioId = header.getAttribute("aria-controls");
+        const content = document.getElementById(scenarioId);
+        if (!content) return;
 
         // Close all other accordions (optional - remove if you want multiple open)
         // accordionHeaders.forEach(h => {
@@ -1067,10 +1078,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // =====================================================
   const methodologyToggle = document.querySelector('.methodology-toggle');
   const methodologyContent = document.querySelector('.methodology-content');
-  console.log('✅ Methodology toggle:', { toggle: !!methodologyToggle, content: !!methodologyContent });
 
   if (methodologyToggle && methodologyContent) {
-    console.log('✅ Methodology toggle initialized');
     const toggleMethodology = () => {
       const isExpanded = methodologyToggle.getAttribute('aria-expanded') === 'true';
 
@@ -1110,10 +1119,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const quizProgressText = document.getElementById('quiz-current-question');
   const quizProgressFill = document.getElementById('quiz-progress-fill');
 
-  console.log('✅ Quiz elements:', { quizQuestions: !!quizQuestions, quizPrevBtn: !!quizPrevBtn, quizNextBtn: !!quizNextBtn });
-
   if (quizQuestions && quizResults && quizSubmitBtn && quizResetBtn && quizPrevBtn && quizNextBtn) {
-    console.log('✅ Quiz initialized - all elements found');
     const allQuestions = document.querySelectorAll('.quiz-question');
     const totalQuestions = allQuestions.length;
     let currentQuestion = 0;
@@ -1209,8 +1215,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Calculate score and show results
     quizSubmitBtn.addEventListener('click', () => {
-      const answers = ['q1', 'q2', 'q3', 'q4', 'q5'].map(name => {
-        const checked = document.querySelector(`input[name="${name}"]:checked`);
+      // Derivar las respuestas de las preguntas reales del DOM
+      // (agregar/quitar preguntas no requiere tocar este bloque)
+      const answers = Array.from(allQuestions).map(question => {
+        const checked = question.querySelector('input[type="radio"]:checked');
         return checked ? parseInt(checked.value) : null;
       });
 
@@ -1229,14 +1237,14 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             title: 'Branding y comunicación estratégica',
             description: 'Construí un relato coherente sobre quién sos y hacia dónde vas. Cuando algo cambia, la marca que no se explica pierde. Empezá por definir tu voz antes de que otros definan tu narrativa.',
-            link: '#services',
-            cta: 'Ver servicio de Branding'
+            link: '#contact',
+            cta: 'Hablemos de tu narrativa'
           },
           {
             title: 'Investigación exploratoria',
             description: 'Empezá a identificar señales tempranas de cambio antes de que se conviertan en crisis. Un mapeo inicial de escenarios futuros te permite anticipar en lugar de reaccionar.',
-            link: '#services',
-            cta: 'Ver servicio de Investigación'
+            link: '#contact',
+            cta: 'Hablemos de tu diagnóstico'
           }
         ];
       } else if (totalScore <= 70) {
@@ -1246,20 +1254,20 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             title: 'Gestión estratégica de proyectos',
             description: 'El plan existe, el equipo está, pero nada avanza. No se trata de metodologías — se trata de entender las dinámicas sociales que frenan la ejecución. Diagnosticamos bloqueos y alineamos stakeholders.',
-            link: '#services',
-            cta: 'Ver servicio de Gestión estratégica'
+            link: '#contact',
+            cta: 'Hablemos de ese bloqueo'
           },
           {
             title: 'Investigación exploratoria',
             description: 'Convertí la identificación de señales en un proceso continuo, no un ejercicio ocasional. Un sistema de monitoreo estructurado te permite ver qué viene antes de que te obligue a reaccionar.',
-            link: '#services',
-            cta: 'Ver servicio de Investigación'
+            link: '#contact',
+            cta: 'Hablemos de tu monitoreo'
           },
           {
             title: 'Diseño de prototipos',
             description: 'Pasá de prototipar ocasionalmente a hacerlo de forma sistemática. Cada hipótesis debería testearse con un artefacto concreto antes de comprometer recursos completos.',
-            link: '#services',
-            cta: 'Ver servicio de Prototipos'
+            link: '#contact',
+            cta: 'Hablemos de tu próximo prototipo'
           }
         ];
       } else {
@@ -1269,14 +1277,14 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             title: 'Investigación exploratoria avanzada',
             description: 'Convertí el monitoreo de señales en investigación estructurada. No solo qué está cambiando, sino por qué, hacia dónde, y qué estructuras sociales, económicas y culturales lo están impulsando.',
-            link: '#services',
-            cta: 'Ver servicio de Investigación'
+            link: '#contact',
+            cta: 'Hablemos de tu investigación'
           },
           {
             title: 'Diseño de prototipos y design fiction',
             description: 'Pasá de escenarios a prototipos de futuros alternativos. El design fiction te permite testear cómo sería vivir en un futuro específico antes de que llegue. Es investigación especulativa aplicada a decisiones estratégicas.',
-            link: '#services',
-            cta: 'Ver servicio de Prototipos'
+            link: '#contact',
+            cta: 'Hablemos de ese escenario'
           }
         ];
       }
@@ -1339,7 +1347,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Expandable timeline accordions in service cards
   // =====================================================
   const timelineToggles = document.querySelectorAll('.service-timeline-toggle');
-  console.log(`✅ Timeline toggles found: ${timelineToggles.length}`);
 
   if (timelineToggles.length) {
     timelineToggles.forEach(toggle => {
