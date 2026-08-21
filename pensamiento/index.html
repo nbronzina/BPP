@@ -132,7 +132,9 @@
              Numeración correlativa cronológica: 01 = el primero que entró
              al archivo (Enero 2026), 06 = el más nuevo (Junio 2026).
              El listado va como la página: el más reciente arriba. -->
-        <nav class="indice-archival" aria-labelledby="indice-heading">
+        <!-- div con role=navigation (NO <nav>): el selector global `nav {}`
+             del sitio fija cualquier <nav> al tope del viewport -->
+        <div class="indice-archival" role="navigation" aria-labelledby="indice-heading">
             <h2 id="indice-heading" class="indice-label">Índice</h2>
             <ol class="indice-lista">
                 <li class="indice-fila">
@@ -184,7 +186,7 @@
                     </a>
                 </li>
             </ol>
-        </nav>
+        </div>
 
         <!-- Filter Bar -->
         <div class="filter-bar" role="group" aria-label="Filtrar artículos por categoría">

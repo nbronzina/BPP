@@ -435,9 +435,9 @@ const CACHE_VERSION = 'v158';  # era v157
 
 ## 👥 Equipo
 
-- **Nicolás Bronzina** — Design Researcher, Magíster en Diseño UX
-- **Sergio Petrocelli** — Strategic Planning & Communication
-- **Ezequiel Politi** — Data & Strategy Analyst
+- **Nicolás Bronzina** — Futurista (IA, sociología y design fiction)
+- **Sergio Petrocelli** — Comunicación estratégica e investigación exploratoria
+- **Ezequiel Politi** — Senior Data & Insights Analyst (IA aplicada a negocios)
 
 ---
 
