@@ -1335,10 +1335,10 @@ document.addEventListener("DOMContentLoaded", function () {
         scoreDescription = 'Tu organización tiene algunas capacidades instaladas pero todavía hay brechas críticas. Hacés algunas cosas bien pero de forma inconsistente. El siguiente paso es destrabar la ejecución y sistematizar el monitoreo de cambios.';
         recommendations = [
           {
-            title: 'Gestión estratégica de proyectos',
-            description: 'El plan existe, el equipo está, pero nada avanza. No se trata de metodologías — se trata de entender las dinámicas sociales que frenan la ejecución. Diagnosticamos bloqueos y alineamos stakeholders.',
+            title: 'Datos e IA aplicada',
+            description: 'Tenés datos pero no respuestas. Traducimos tu problema de negocio en preguntas medibles y decisiones accionables: los números con el contexto que los explica.',
             link: '#contact',
-            cta: 'Hablemos de ese bloqueo'
+            cta: 'Hablemos de tus datos'
           },
           {
             title: 'Investigación exploratoria',
@@ -1347,7 +1347,7 @@ document.addEventListener("DOMContentLoaded", function () {
             cta: 'Hablemos de tu monitoreo'
           },
           {
-            title: 'Diseño de prototipos',
+            title: 'Diseño de futuros y prototipos',
             description: 'Pasá de prototipar ocasionalmente a hacerlo de forma sistemática. Cada hipótesis debería testearse con un artefacto concreto antes de comprometer recursos completos.',
             link: '#contact',
             cta: 'Hablemos de tu próximo prototipo'
