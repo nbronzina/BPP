@@ -7,6 +7,7 @@ colors:
   primary: "#c16f52"
   on-primary: "#1a1512"
   background: "#1a1512"
+  background-deep: "#16110e"   # registro hondo: secciones de peso (services, contacto)
   surface: "#221d18"
   text-high: "rgba(250,248,246,0.95)"
   text-mid: "rgba(250,248,246,0.75)"
