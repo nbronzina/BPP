@@ -6280,3 +6280,10 @@ html {
     .equipo-grid.visible .equipo-member:nth-child(2) { transition-delay: 0.12s; }
     .equipo-grid.visible .equipo-member:nth-child(3) { transition-delay: 0.24s; }
 }
+
+/* Logos tipo ícono (cuadrados: CESBA, Olam, Manifiesto): a igual altura
+   que un wordmark ocupan un cuarto de su superficie visual. Se compensa
+   con ~1.5x de altura para igualar el peso óptico. */
+.logo-item--icon img {
+  height: 78px;
+}
