@@ -6134,8 +6134,12 @@ img {
 }
 
 @media (min-width: 769px) {
+    /* Columnas max-content: se adaptan al texto real (fecha/autor en caps
+       con tracking) — columnas fijas causaban superposición al subir la
+       escala tipográfica. */
     .indice-fila a {
-        grid-template-columns: 2.5rem 7.5rem 6rem 1fr;
+        grid-template-columns: 2.5rem max-content max-content 1fr;
+        column-gap: var(--space-6);
     }
 
     .indice-fecha,
