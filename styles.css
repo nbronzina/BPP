@@ -3105,7 +3105,7 @@ footer {
 }
 
 /* Los grid items se dimensionan al contenido por defecto (min-width: auto);
-   sin esto el track del marquee (~3000px) infla la columna entera */
+   sin esto el antiguo track de logos infla la columna entera */
 .trust-block {
     min-width: 0;
 }
@@ -3125,7 +3125,7 @@ footer {
     text-align: center;
 }
 
-/* Clientes h3 alineado izquierda con marquee */
+/* Clientes h3 alineado izquierda */
 .trust-clientes h3 {
     text-align: left;
 }
@@ -5562,83 +5562,6 @@ img {
    Mobile: ancho del contenedor (sin hack de 100vw, que el patch
    * { max-width: 100% } de mobile capaba dejándolo descentrado).
    Desktop: full-bleed 100vw. */
-.marquee-wrapper {
-  overflow: hidden;
-  width: 100%;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
-}
-
-@media (min-width: 769px) {
-  .marquee-wrapper {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 5%,
-      black 95%,
-      transparent 100%
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 5%,
-      black 95%,
-      transparent 100%
-    );
-  }
-}
-
-.marquee-track {
-  display: flex;
-  align-items: center;
-  gap: var(--space-12);
-  animation: marquee 15s linear infinite;
-  width: max-content;
-  /* Inmune al patch mobile * { max-width: 100% }: el track DEBE poder
-     desbordar para que la animación de -50% recorra los logos */
-  max-width: none;
-  will-change: transform;
-}
-
-@media (min-width: 769px) {
-  .marquee-track {
-    gap: var(--space-16);
-  }
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
-}
-
 .logo-item {
   flex-shrink: 0;
   display: flex;
@@ -5651,8 +5574,8 @@ img {
   max-height: 40px;
   width: auto;
   object-fit: contain;
-  opacity: 0.4;
-  filter: grayscale(100%);
+  opacity: 0.7;
+  filter: grayscale(100%) brightness(1.35);
   transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
@@ -6307,4 +6230,55 @@ html {
 /* Tap highlight mobile en paleta (antes: gris/azul del sistema) */
 * {
     -webkit-tap-highlight-color: rgba(193, 111, 82, 0.18);
+}
+
+/* ============ v2.2.1: logos en grilla con reveal escalonado ============ */
+/* Reemplaza al marquee (ilegible a 200px/s y muerto bajo reduced-motion).
+   Los logos se revelan en secuencia al entrar en viewport y quedan
+   legibles, con hover individual a color. */
+.logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8) var(--space-10);
+  padding: var(--space-4) 0;
+}
+
+@media (min-width: 769px) {
+  .logos-grid {
+    gap: var(--space-10) var(--space-16);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logos-grid .logo-item {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .logos-grid.visible .logo-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .logos-grid.visible .logo-item:nth-child(1) { transition-delay: 0.00s; }
+  .logos-grid.visible .logo-item:nth-child(2) { transition-delay: 0.07s; }
+  .logos-grid.visible .logo-item:nth-child(3) { transition-delay: 0.14s; }
+  .logos-grid.visible .logo-item:nth-child(4) { transition-delay: 0.21s; }
+  .logos-grid.visible .logo-item:nth-child(5) { transition-delay: 0.28s; }
+  .logos-grid.visible .logo-item:nth-child(6) { transition-delay: 0.35s; }
+  .logos-grid.visible .logo-item:nth-child(7) { transition-delay: 0.42s; }
+  .logos-grid.visible .logo-item:nth-child(8) { transition-delay: 0.49s; }
+  .logos-grid.visible .logo-item:nth-child(9) { transition-delay: 0.56s; }
+  .logos-grid.visible .logo-item:nth-child(10) { transition-delay: 0.63s; }
+}
+
+/* ============ v2.2.1: tratamiento cálido de fotografía ============ */
+/* Las fotos con balance frío chocan con la atmósfera marrón: un velo
+   sepia sutil las une a la paleta. Solo material fotográfico e
+   ilustraciones de cards — nunca logos ni gráficos de datos. */
+.actividad-imagen img,
+.equipo-foto-hover {
+  filter: sepia(0.12) saturate(0.95);
 }
