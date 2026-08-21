@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bpp-vcb058ac9';
+const CACHE_NAME = 'bpp-ve98c6da7';
 
 // Precache mínimo: app shell. El resto se cachea en runtime.
 // IMPORTANTE: cache.addAll() es atómico — un solo 404 rompe la instalación.
@@ -58,8 +58,10 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       fetch(request)
         .then(response => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+          }
           return response;
         })
         .catch(() =>

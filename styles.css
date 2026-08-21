@@ -6200,23 +6200,22 @@ html {
     padding-top: var(--space-6);
 }
 
-/* Mobile: thumbnail + texto en fila */
+/* Mobile: foto primero, texto debajo (mismo orden que desktop) */
 .equipo-member {
-    display: grid;
-    grid-template-columns: 88px 1fr;
-    column-gap: var(--space-4);
-    row-gap: var(--space-1);
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
 }
 
 .equipo-foto {
-    grid-row: 1 / span 3;
-    width: 88px;
+    width: 100%;
+    max-width: 280px;
     aspect-ratio: 1;
     object-fit: cover;
     object-position: center top;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-card);
+    margin-bottom: var(--space-2);
 }
 
 .equipo-nombre {
@@ -6246,21 +6245,10 @@ html {
         gap: var(--space-8);
     }
 
-    .equipo-member {
-        grid-template-columns: 1fr;
-        row-gap: var(--space-2);
-        align-items: start;
-        align-content: start;
-    }
-
     .equipo-foto {
-        grid-row: auto;
-        width: 100%;
-        /* 1:1 = el marco coincide con las fotos originales cuadradas:
-           cero recorte, se ve el encuadre completo con su espacio
-           negativo (4:5 recortaba ~20% de los costados) */
-        aspect-ratio: 1 / 1;
-        margin-bottom: var(--space-2);
+        /* 1:1 = marco idéntico a las fotos originales cuadradas:
+           cero recorte, encuadre completo con su espacio negativo */
+        max-width: none;
     }
 }
 
