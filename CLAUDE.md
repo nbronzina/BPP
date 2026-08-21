@@ -223,7 +223,7 @@ La fuente de verdad es `/DESIGN.md` (v2.1 beta-inclusive). Resumen:
 ### Typography
 - **Familia única**: Plus Jakarta Sans (Google Fonts), todos los contextos
 - **Carga**: `<link>` en el `<head>` de cada página (nunca `@import` en CSS)
-- **Pesos**: 300, 400, 500, 600, 700 + itálica 400 — no agregar otros
+- **Pesos**: 400 y 700 + itálica 400 únicamente (decisión 2026-08-21, feedback socios) — no agregar otros
 - **Fallback**: sans-serif
 
 ### Tone and Voice

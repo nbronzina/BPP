@@ -16,36 +16,39 @@ colors:
   border-active: "#c16f52"
   focus-ring: "rgba(193,111,82,0.2)"
 typography:
+  # Decisión 2026-08-21 (feedback socios): DOS pesos únicamente — 400 y 700
+  # (+ itálica 400). Los intermedios (500/600) y el light (300) se percibían
+  # como tipografías distintas. Escala global subida: base 19px, mínimo 15px.
   wayfinding:
     fontFamily: Plus Jakarta Sans
-    fontWeight: 500
-    fontSize: 0.75rem
+    fontWeight: 400
+    fontSize: 0.9375rem
     letterSpacing: 0.12em
   h1:
     fontFamily: Plus Jakarta Sans
     fontWeight: 700
-    fontSize: 3.5rem
-    lineHeight: 1.05
+    fontSize: clamp(3rem, 7vw, 4.5rem)
+    lineHeight: 1.08
     letterSpacing: -0.01em
   h2:
     fontFamily: Plus Jakarta Sans
     fontWeight: 700
-    fontSize: 2rem
+    fontSize: clamp(2.375rem, 5vw, 3.25rem)
     lineHeight: 1.15
   body-md:
     fontFamily: Plus Jakarta Sans
     fontWeight: 400
-    fontSize: 1rem
+    fontSize: 1.1875rem
     lineHeight: 1.6
   body-sm:
     fontFamily: Plus Jakarta Sans
     fontWeight: 400
-    fontSize: 0.875rem
+    fontSize: 1rem
     lineHeight: 1.55
   metadata:
     fontFamily: Plus Jakarta Sans
-    fontWeight: 500
-    fontSize: 0.75rem
+    fontWeight: 400
+    fontSize: 0.9375rem
     letterSpacing: 0.08em
 spacing:
   xs: 8px
