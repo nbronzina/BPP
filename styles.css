@@ -6183,8 +6183,7 @@ html {
 /* Las fotos con balance frío chocan con la atmósfera marrón: un velo
    sepia sutil las une a la paleta. Solo material fotográfico e
    ilustraciones de cards — nunca logos ni gráficos de datos. */
-.actividad-imagen img,
-.equipo-foto {
+.actividad-imagen img {
   filter: sepia(0.12) saturate(0.95);
 }
 
@@ -6207,15 +6206,40 @@ html {
     gap: var(--space-1);
 }
 
-.equipo-foto {
+/* Opción B (v2): integración por viñeta y disolvencia inferior, sin
+   blend destructivo. La figura mantiene su luminosidad; solo los
+   bordes y la base se funden hacia el fondo del sitio. */
+.equipo-foto-wrap {
+    position: relative;
     width: 100%;
     max-width: 280px;
     aspect-ratio: 1;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: var(--space-2);
+    background: var(--color-bg);
+    box-shadow: var(--shadow-card);
+}
+
+.equipo-foto {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center top;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-card);
-    margin-bottom: var(--space-2);
+    display: block;
+    filter: sepia(0.12) saturate(0.95);
+}
+
+/* Viñeta cálida: oscurece bordes y base hacia el color del sitio,
+   dejando la cara intacta en el centro superior. */
+.equipo-foto-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(105% 78% at 50% 30%, transparent 42%, rgba(26, 21, 18, 0.55) 78%, var(--color-bg) 100%),
+        linear-gradient(to bottom, transparent 55%, rgba(26, 21, 18, 0.85) 88%, var(--color-bg) 100%);
 }
 
 .equipo-nombre {
@@ -6245,7 +6269,7 @@ html {
         gap: var(--space-8);
     }
 
-    .equipo-foto {
+    .equipo-foto-wrap {
         /* 1:1 = marco idéntico a las fotos originales cuadradas:
            cero recorte, encuadre completo con su espacio negativo */
         max-width: none;
