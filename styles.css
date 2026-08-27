@@ -6206,9 +6206,6 @@ html {
     gap: var(--space-1);
 }
 
-/* Opción B (v2): integración por viñeta y disolvencia inferior, sin
-   blend destructivo. La figura mantiene su luminosidad; solo los
-   bordes y la base se funden hacia el fondo del sitio. */
 .equipo-foto-wrap {
     position: relative;
     width: 100%;
@@ -6221,6 +6218,14 @@ html {
     box-shadow: var(--shadow-card);
 }
 
+/* Retratos recortados (fondo eliminado y compuesto sobre --color-bg):
+   sin marco ni sombra — la figura flota directamente sobre la página. */
+.equipo-foto-wrap--cutout {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
 .equipo-foto {
     width: 100%;
     height: 100%;
@@ -6230,16 +6235,10 @@ html {
     filter: sepia(0.12) saturate(0.95);
 }
 
-/* Viñeta cálida: oscurece bordes y base hacia el color del sitio,
-   dejando la cara intacta en el centro superior. */
-.equipo-foto-wrap::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(105% 78% at 50% 30%, transparent 42%, rgba(26, 21, 18, 0.55) 78%, var(--color-bg) 100%),
-        linear-gradient(to bottom, transparent 55%, rgba(26, 21, 18, 0.85) 88%, var(--color-bg) 100%);
+/* Los recortados ya vienen integrados a la paleta: el sepia teñiría
+   su fondo y delataría el rectángulo. */
+.equipo-foto-wrap--cutout .equipo-foto {
+    filter: none;
 }
 
 .equipo-nombre {
