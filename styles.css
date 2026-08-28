@@ -6386,3 +6386,19 @@ html {
   padding-top: var(--space-3);
   margin-top: var(--space-4);
 }
+
+/* Aviso de frontera entre investigación y ficción especulativa.
+   Tiene que interrumpir la lectura: un lector que se saltee esto puede
+   citar una cifra inventada como si fuera un hallazgo. */
+.ficcion-aviso {
+  background: var(--color-surface);
+  border-left: 3px solid var(--orange-500);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  padding: var(--space-5) var(--space-6);
+  margin: var(--space-6) 0;
+  color: rgba(250, 248, 246, 0.85);
+}
+
+.ficcion-aviso strong {
+  color: var(--color-accent);
+}
