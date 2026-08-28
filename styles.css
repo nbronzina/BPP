@@ -6344,3 +6344,34 @@ html {
         margin-top: var(--space-4);
     }
 }
+
+/* Señales: lectura propia y fuente verificable. La lectura es lo que
+   distingue una señal de una noticia; la fuente es lo que la sostiene. */
+.senal-lectura {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(250, 248, 246, 0.75);
+  border-left: 2px solid var(--orange-500);
+  padding-left: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.senal-fuente {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(250, 248, 246, 0.45);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(250, 248, 246, 0.06);
+}
+
+.senal-fuente a {
+  color: rgba(250, 248, 246, 0.65);
+  text-decoration: underline;
+  text-decoration-color: rgba(193, 111, 82, 0.4);
+  text-underline-offset: 3px;
+}
+
+.senal-fuente a:hover {
+  color: var(--color-accent);
+}
