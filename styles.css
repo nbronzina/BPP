@@ -6375,3 +6375,14 @@ html {
 .senal-fuente a:hover {
   color: var(--color-accent);
 }
+
+/* Bloque de fuentes del reporte: subordinado al contenido, pero legible.
+   Un reporte que se circula fuera del sitio se lee con lápiz. */
+.reporte-fuente {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(250, 248, 246, 0.55);
+  border-top: 1px solid rgba(250, 248, 246, 0.06);
+  padding-top: var(--space-3);
+  margin-top: var(--space-4);
+}

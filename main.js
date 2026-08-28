@@ -1033,20 +1033,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const railFigures = {
         "sec-contexto": {
-          value: "−40 %",
-          label: "nacimientos en Argentina en las últimas décadas"
+          value: "−55,8 %",
+          label: "nacimientos en San Antonio de Areco, 2014–2024"
         },
         "sec-contexto-general": {
-          value: "−12,4 %",
-          label: "matrícula primaria proyectada, 2023–2035"
+          value: "−27 %",
+          label: "matrícula primaria proyectada, 2025–2030 (DNP)"
         },
         "sec-escenarios": {
           value: "3",
           label: "escenarios: tendencial, transformador, disruptivo"
         },
         "sec-oportunidades": {
-          value: "−8 a −19 %",
-          label: "caída de matrícula según región"
+          value: "−19 a −36 %",
+          label: "caída de matrícula según provincia"
         },
         "sec-pasos": {
           value: "4",
