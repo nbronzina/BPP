@@ -1020,10 +1020,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "sec-oportunidades": {
           value: "−19 a −36 %",
           label: "caída de matrícula según provincia"
-        },
-        "sec-pasos": {
-          value: "4",
-          label: "líneas de trabajo recomendadas"
         }
       };
 
