@@ -976,33 +976,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 5. Sticky Download Bar (Mobile)
-    const stickyDownloadBar = document.getElementById("stickyDownloadBar");
-    if (stickyDownloadBar) {
-      const handleDownloadBar = () => {
-        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercentage = (scrollPosition / documentHeight) * 100;
-
-        // Show after 30% scroll, hide when near bottom (95%)
-        if (scrollPercentage > 30 && scrollPercentage < 95) {
-          stickyDownloadBar.classList.add("visible");
-        } else {
-          stickyDownloadBar.classList.remove("visible");
-        }
-      };
-
-      window.addEventListener("scroll", handleDownloadBar);
-      handleDownloadBar();
-
-      // Track download bar clicks
-      stickyDownloadBar.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          trackEvent("Descarga_sticky_bar", {
-            archivo: link.textContent.trim()
-          });
-        });
-      });
-    }
 
     // 6. Share Button Tracking
     if (shareButtons) {
