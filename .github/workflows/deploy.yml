@@ -6,6 +6,8 @@ on:
     branches:
       - main
       - claude/bpp-analytics-website-01Qg8KmqzsnS33vifronWpqF
+      # Rama de trabajo del rediseño: quitar de acá después del merge.
+      - claude/audit-website-optimization-01TK2wmeyM2Y2aFBHhm1W4Zz
   workflow_dispatch:
 
 permissions:
