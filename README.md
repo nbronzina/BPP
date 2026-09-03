@@ -33,23 +33,22 @@
 
 ### Stack tecnológico
 - **Frontend:** Vanilla HTML5, CSS3, JavaScript (no frameworks)
-- **PWA:** Service Worker, manifest.json, offline-capable
 - **Build:** csso + terser for minification
 - **Analytics:** Plausible.io (privacy-friendly, GDPR-compliant)
-- **Forms:** FormSubmit.co (no backend required)
+- **Contacto:** mail directo, sin formulario
 - **Deploy:** GitHub Pages + Custom Domain
 - **Images:** WebP format, responsive srcset, lazy loading
 
-### Páginas (8 total)
+### Páginas (7 + 1 redirección)
 ```
 /                           → index.html (Homepage)
-/pensamiento/               → Artículos y reflexiones
 /proyectos/                 → Hechos y proyectos realizados
-/proyectos/trace-group/     → Case study Trace Group
-/reporte-impacto/           → Reporte natalidad y matrículas
+/proyectos/trace-group/     → Caso Trace Group
+/reporte-impacto/           → Caso natalidad y matrículas
+/pensamiento/               → Hub de ideas: señales, artículos y tesis (La Usina)
+/usina/tesis-01/            → Tesis 01 de La Usina
 /privacidad/                → Política de privacidad
-/gracias                    → Página de confirmación (formulario)
-/offline                    → PWA offline fallback
+/usina/                     → Redirección a /pensamiento/#tesis
 ```
 
 ### Fuentes de verdad
@@ -81,15 +80,14 @@ BPP/
 ├── proyectos/trace-group/      # Case study
 ├── reporte-impacto/index.html  # Reporte impacto
 ├── privacidad/index.html       # Política de privacidad
-├── gracias.html                # Confirmación formulario
-├── offline.html                # PWA offline
+├── usina/tesis-01/index.html   # Tesis 01
 │
 ├── styles.css                  # CSS source (editar este)
 ├── styles.min.css              # CSS minificado (generado)
 ├── main.js                     # JavaScript source (editar este)
 ├── main.min.js                 # JS minificado (generado)
-├── sw.js                       # Service Worker source
-├── sw.min.js                   # SW minificado (generado)
+├── sw.js / sw.min.js           # Kill-switch del SW retirado (borrar en 2027)
+├── fonts/                      # Plus Jakarta Sans woff2 self-hosted
 │
 ├── img/                        # Imágenes WebP optimizadas
 │   ├── *.webp                  # 40+ archivos WebP
@@ -169,7 +167,7 @@ git push -u origin claude/audit-website-optimization-01TK2wmeyM2Y2aFBHhm1W4Zz
 
 ### Tipografía
 - **Familia única:** Plus Jakarta Sans (Google Fonts)
-- **Pesos:** 300, 400, 500, 600, 700 + italic 400
+- **Pesos:** 400 y 700 + italic 400 (decisión socios, 2026-08)
 - **Fallback:** sans-serif
 - **Carga:** `<link>` en `<head>` (nunca `@import` en CSS)
 

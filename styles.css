@@ -2382,6 +2382,9 @@ footer {
     .ficha-caso-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-12); }
 }
 
+/* Enlace al archivo completo de señales, debajo del widget del index */
+.senales-more { margin-top: var(--space-8); }
+
 /* Contacto directo: mail en lugar de formulario */
 .contact-direct {
     max-width: 34rem;

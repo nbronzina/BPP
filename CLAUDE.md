@@ -31,9 +31,13 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 - **Structured data**: JSON-LD for SEO (FAQ, ProfessionalService schemas)
 
 ### Pages
-- `index.html` - Homepage (hero, services, team, activities, contact form)
-- `reporte-impacto.html` - Impact report on birth registration in Argentina
-- `privacidad.html` - Privacy policy (GDPR-compliant)
+- `index.html` - Homepage (hero, about, servicios, hechos, confianza, señales, contacto)
+- `proyectos/` - Hechos (lista de proyectos)
+- `proyectos/trace-group/` - Caso Trace Group (ficha + diagnóstico, sin ficción ni cifras sin fuente)
+- `reporte-impacto/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales)
+- `pensamiento/` - Hub único de ideas: señales, artículos y tesis (La Usina vive acá como serie)
+- `usina/` - Solo redirección a `/pensamiento/#tesis` (meta refresh, noindex); `usina/tesis-01/` sigue siendo la URL de la tesis
+- `privacidad/` - Política de privacidad
 
 ---
 
@@ -257,7 +261,7 @@ These terms refer to the same section but use different wording intentionally �
 - **Accessibility**: ARIA labels on buttons, semantic headings (h1 → h2 → h3)
 - **Progressive enhancement**: Works without JS (forms still submit, links still work)
 - **Structured data**: JSON-LD scripts for SEO (FAQ, ProfessionalService)
-- **NEVER assume a file is unused based on index.html alone** — the site has multiple HTML files: index.html, proyectos/index.html, reporte-impacto/index.html, privacidad/index.html. Always grep all HTML files before archiving or deleting any asset: `grep -r "filename" *.html **/*.html`
+- **NEVER assume a file is unused based on index.html alone** — the site has multiple HTML files: index.html, proyectos/index.html, proyectos/trace-group/index.html, reporte-impacto/index.html, pensamiento/index.html, usina/tesis-01/index.html, privacidad/index.html. Always grep all HTML files before archiving or deleting any asset: `grep -r "filename" *.html **/*.html`
 
 ### Commit Format
 ```
