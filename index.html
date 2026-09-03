@@ -31,22 +31,19 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
     <!-- Theme -->
-    <link rel="manifest" href="site.webmanifest?v=120">
     <meta name="theme-color" content="#1a1512">
     <meta name="msapplication-TileColor" content="#1a1512">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Security Policies -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://plausible.io; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://formsubmit.co https://plausible.io; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://plausible.io; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://plausible.io; base-uri 'self';">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Preconnect to External Services -->
-    <link rel="preconnect" href="https://formsubmit.co">
     <link rel="preconnect" href="https://plausible.io">
 
     <!-- DNS Prefetch para servicios externos -->
-    <link rel="dns-prefetch" href="https://formsubmit.co">
     <link rel="dns-prefetch" href="https://plausible.io">
 
     <!-- Preload Critical Assets -->
@@ -820,204 +817,7 @@
         </div>
     </section>
 
-    <!-- Quiz Diagnóstico -->
-    <section class="quiz-diagnostico section" aria-labelledby="quiz-heading">
-        <div class="quiz-container">
-            <div class="quiz-header">
-                <h2 id="quiz-heading" class="quiz-title">Cinco preguntas que hacemos siempre en la primera reunión.</h2>
-                <p class="quiz-subtitle">5 preguntas para saber dónde estás parado · 2 minutos · Diagnóstico inmediato</p>
-            </div>
 
-            <!-- Metodología -->
-            <div class="quiz-methodology">
-                <button class="methodology-toggle" aria-expanded="false">
-                    <span>¿En qué se basa este diagnóstico?</span>
-                    <span class="methodology-toggle-icon" aria-hidden="true">↓</span>
-                </button>
-                <div class="methodology-content" style="display: none;">
-                    <p class="methodology-intro">
-                        Este quiz evalúa cinco dimensiones críticas para decisión bajo incertidumbre,
-                        fundamentadas en frameworks académicos consolidados:
-                    </p>
-                    <ul class="methodology-list">
-                        <li><strong>Strategic Foresight</strong> — Joseph Voros (2003), Futures Platform (2025)</li>
-                        <li><strong>Organizational Capability Maturity</strong> — CMMI, Data Governance Maturity Models</li>
-                        <li><strong>Lean-Agile Innovation</strong> — Design Thinking (IDEO), Lean Startup (Ries 2011)</li>
-                    </ul>
-                    <p class="methodology-evidence">
-                        El foresight sistemático no predice: te hace llegar a cada decisión
-                        con los escenarios ya pensados. Eso es lo que estas cinco preguntas intentan mirar.
-                    </p>
-                    <div class="methodology-links">
-                        <a href="docs/metodologia-quiz-diagnostico.md" class="methodology-link" target="_blank" rel="noopener">
-                            Metodología completa →
-                        </a>
-                        <a href="docs/framework-senales-debiles.md" class="methodology-link" target="_blank" rel="noopener">
-                            Framework de señales débiles →
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quiz progress indicator -->
-            <div class="quiz-progress">
-                <span class="quiz-progress-text">Pregunta <span id="quiz-current-question">1</span> de 5</span>
-                <div class="quiz-progress-bar">
-                    <div id="quiz-progress-fill" class="quiz-progress-fill" style="width: 20%;"></div>
-                </div>
-            </div>
-
-            <div id="quiz-questions" class="quiz-questions">
-                <!-- Pregunta 1 -->
-                <div class="quiz-question active" data-question="1">
-                    <h3 class="question-text">
-                        ¿Tu organización identifica <span class="tooltip-term" data-tooltip="Weak signals (Ansoff 1975, Voros 2003): indicios tempranos de cambio que tienen baja visibilidad, alta ambigüedad, pero pueden tener alto impacto futuro. Detectarlos a tiempo permite anticipar en lugar de reaccionar.">señales tempranas de cambio</span> antes de que se vuelvan tendencias?
-                    </h3>
-                    <div class="question-options">
-                        <label class="option-label">
-                            <input type="radio" name="q1" value="0" required>
-                            <span class="option-text">No, reaccionamos cuando el cambio ya llegó</span>
-                        </label>
-                        <label class="option-label">
-                            <input type="radio" name="q1" value="10">
-                            <span class="option-text">A veces, pero de forma informal</span>
-                        </label>
-                        <label class="option-label">
-                            <input type="radio" name="q1" value="20">
-                            <span class="option-text">Sí, tenemos un proceso sistemático</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Pregunta 2 -->
-                <div class="quiz-question" data-question="2">
-                    <h3 class="question-text">
-                        ¿<span class="tooltip-term" data-tooltip="Lean experimentation (Ries 2011, Design Thinking IDEO): testear supuestos con prototipos rápidos antes de inversión completa. Permite 'fallar rápido y barato' en lugar de descubrir problemas tarde y caro.">Prototipan ideas</span> antes de comprometer recursos completos?
-                    </h3>
-                    <div class="question-options">
-                        <label class="option-label">
-                            <input type="radio" name="q2" value="0" required>
-                            <span class="option-text">No, implementamos directamente</span>
-                        </label>
-                        <label class="option-label">
-                            <input type="radio" name="q2" value="10">
-                            <span class="option-text">Ocasionalmente, en proyectos grandes</span>
-                        </label>
-                        <label class="option-label">
-                            <input type="radio" name="q2" value="20">
-                            <span class="option-text">Sí, es parte estándar de nuestro proceso</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Pregunta 3 -->
-                <div class="quiz-question" data-question="3">
-                    <h3 class="question-text">
-                        ¿Tus datos se <span class="tooltip-term" data-tooltip="Data literacy (CMMI 2026, Dataversity 2025): capacidad de leer datos en contexto estratégico, detectar anomalías que algoritmos pierden, y triangular cuantitativo + cualitativo. Solo 30% de organizaciones son data-literate.">interpretan en contexto</span> o solo se reportan métricas?
-                    </h3>
-                    <div class="question-options">
-                        <label class="option-label">
-                            <input type="radio" name="q3" value="0" required>
-                            <span class="option-text">Reportamos números sin interpretación</span>
-                        </label>
-                        <label class="option-label">
-                            <input type="radio" name="q3" value="10">
-                            <span class="option-text">Interpretamos, pero sin marco conceptual claro</span>
-                        </label>
-                        <label class="option-label">
-                            <input type="radio" name="q3" value="20">
-                            <span class="option-text">Interpretamos con frameworks y contexto estratégico</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Pregunta 4 -->
-                <div class="quiz-question" data-question="4">
-                    <h3 class="question-text">
-                        ¿Tu equipo entiende claramente qué comunica tu marca durante <span class="tooltip-term" data-tooltip="Brand coherence (Aaker 1996, Keller 2012): capacidad de mantener narrativas coherentes durante pivots estratégicos. Cambios sin claridad comunicacional crean pérdida de confianza en stakeholders internos y externos.">cambios estratégicos</span>?
-                    </h3>
-                    <div class="question-options">
-                        <label class="option-label">
-                            <input type="radio" name="q4" value="0" required>
-                            <span class="option-text">No, cada área comunica distinto</span>
-                        </label>
-                        <label class="option-label">
-                            <input type="radio" name="q4" value="10">
-                            <span class="option-text">Tenemos lineamientos pero no se cumplen</span>
-                        </label>
-                        <label class="option-label">
-                            <input type="radio" name="q4" value="20">
-                            <span class="option-text">Sí, comunicamos de forma coherente y estratégica</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Pregunta 5 -->
-                <div class="quiz-question" data-question="5">
-                    <h3 class="question-text">
-                        ¿Diseñan <span class="tooltip-term" data-tooltip="Scenario planning (Voros 2017, Schwartz 1996): construir múltiples futuros plausibles en lugar de asumir un único futuro probable. Reduce sorpresa estratégica y permite preparación anticipada ante disrupciones.">escenarios futuros</span> para prepararse ante múltiples posibilidades?
-                    </h3>
-                    <div class="question-options">
-                        <label class="option-label">
-                            <input type="radio" name="q5" value="0" required>
-                            <span class="option-text">No, planificamos linealmente</span>
-                        </label>
-                        <label class="option-label">
-                            <input type="radio" name="q5" value="10">
-                            <span class="option-text">Consideramos alternativas pero informalmente</span>
-                        </label>
-                        <label class="option-label">
-                            <input type="radio" name="q5" value="20">
-                            <span class="option-text">Sí, trabajamos con escenarios múltiples</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Quiz navigation -->
-                <div class="quiz-navigation">
-                    <button id="quiz-prev" class="quiz-nav-btn quiz-prev-btn" disabled>← Anterior</button>
-                    <button id="quiz-next" class="quiz-nav-btn quiz-next-btn">Siguiente →</button>
-                </div>
-
-                <button id="quiz-submit" class="quiz-submit-btn" disabled style="display: none;">Ver diagnóstico</button>
-            </div>
-
-            <div id="quiz-results" class="quiz-results" role="status" aria-live="polite" style="display: none;">
-                <div class="results-header">
-                    <span class="results-badge">Resultado · 5 preguntas</span>
-                    <h3 class="results-score">Tu organización: <span id="score-label"></span></h3>
-                    <p class="results-score-number"><span id="score-value"></span>/100</p>
-                </div>
-
-                <div class="results-analysis">
-                    <h4 class="results-analysis-title">¿Qué significa esto?</h4>
-                    <p id="results-description" class="results-description"></p>
-                </div>
-
-                <div class="results-recommendations">
-                    <h4 class="results-recommendations-title">Recursos recomendados</h4>
-                    <div id="recommendations-list" class="recommendations-list"></div>
-                </div>
-
-                <div class="results-methodology">
-                    <p class="results-methodology-text">
-                        Este diagnóstico se basa en el <strong>Foresight Maturity Model</strong> (Futures Platform 2025)
-                        y frameworks consolidados de strategic foresight.
-                    </p>
-                    <div class="results-methodology-links">
-                        <a href="docs/metodologia-quiz-diagnostico.md" class="results-methodology-link" target="_blank" rel="noopener">
-                            Ver metodología completa
-                        </a>
-                        <a href="docs/framework-senales-debiles.md" class="results-methodology-link" target="_blank" rel="noopener">
-                            Leer el framework de señales débiles
-                        </a>
-                    </div>
-                </div>
-
-                <button id="quiz-reset" class="quiz-reset-btn">Reiniciar diagnóstico</button>
-            </div>
-        </div>
-    </section>
 
     <!-- Contact Form Section -->
     <section id="contact" class="contact-form-section" data-animate>
@@ -1045,69 +845,12 @@
                     </div>
                 </div>
 
-                <!-- Columna derecha: formulario -->
-                <form class="bpp-flex-col" id="contactForm" action="https://formsubmit.co/bppanalyticsanddesign@gmail.com" method="POST">
-                    <div id="formMessage" class="form-message" aria-live="polite"></div>
-
-                    <!-- FormSubmit Configuration -->
-                    <input type="hidden" name="_subject" value="Nuevo contacto desde BPP Analytics &amp; Design">
-                    <input type="hidden" name="_next" value="https://www.bppanalyticsanddesign.com/gracias">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="box">
-                    <input type="text" name="_honey" class="honeypot" autocomplete="off" aria-hidden="true" tabindex="-1">
-
-                    <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            required
-                            autocomplete="name"
-                            inputmode="text"
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            autocomplete="email"
-                            inputmode="email"
-                            spellcheck="false"
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="organization">Organización (opcional)</label>
-                        <input
-                            type="text"
-                            id="organization"
-                            name="organization"
-                            autocomplete="organization"
-                            inputmode="text"
-                            spellcheck="false"
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="challenge">Contanos tu desafío</label>
-                        <textarea
-                            id="challenge"
-                            name="challenge"
-                            rows="5"
-                            maxlength="800"
-                            placeholder="Contanos qué necesitás resolver y en qué plazo…"
-                            autocomplete="off"
-                            spellcheck="true"
-                        ></textarea>
-                    </div>
-
-                    <button type="submit" class="cta-primary" data-preview="Te respondemos en menos de 24 horas">Agendá una llamada →</button>
-                </form>
+                <!-- Columna derecha: contacto directo -->
+                <div class="contact-direct">
+                    <p class="contact-direct-lead">Contanos qué necesitás resolver y en qué plazo.</p>
+                    <a class="contact-direct-mail" href="mailto:bppanalyticsanddesign@gmail.com?subject=Hablemos">bppanalyticsanddesign@gmail.com</a>
+                    <p class="contact-direct-promise">Te responde uno de nosotros tres en 48 horas hábiles.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1132,8 +875,6 @@
             <a href="mailto:bppanalyticsanddesign@gmail.com" class="footer-link">bppanalyticsanddesign@gmail.com</a>
             <span class="footer-separator">·</span>
             <a href="privacidad/" class="footer-link">Política de Privacidad</a>
-            <span class="footer-separator" id="pwa-separator" style="display:none;">·</span>
-            <button type="button" id="manual-install-pwa" class="footer-link install-pwa-link" style="display:none;" aria-label="Instalar BPP Analytics & Design como aplicación web" title="Instalar como aplicación web progresiva (PWA)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="vertical-align: middle; margin-right: 4px;"><path d="M12 2L12 14M12 14L8 10M12 14L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Instalar app</button>
           </div>
           <p class="footer-colofon">Plus Jakarta Sans · Sin cookies · HTML y CSS a mano · Última actualización: agosto 2026</p>
         </div>

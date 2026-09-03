@@ -54,52 +54,11 @@ fi
 # Actualizar referencias en main.min.js
 if [ -f "main.min.js" ]; then
     # Actualizar referencia al service worker
-    sed -i.bak 's|/sw\.js|/sw.min.js|g' main.min.js
     rm -f main.min.js.bak
     echo "✅ Referencias actualizadas en main.min.js"
 fi
 echo ""
 
-# Bump automático del Service Worker: CACHE_NAME derivado del contenido
-# de los assets minificados. Si cambia CSS o JS, cambia el cache y el SW
-# se reinstala solo — sin bump manual.
-if [ -f "sw.js" ] && [ -f "styles.min.css" ] && [ -f "main.min.js" ]; then
-    # md5sum (Linux) con fallback a md5 -q (macOS)
-    HASH=$(cat styles.min.css main.min.js | { md5sum 2>/dev/null || md5 -q /dev/stdin; } | cut -c1-8)
-    if [ -n "$HASH" ]; then
-        sed -i.bak "s/bpp-v[0-9a-z]*/bpp-v${HASH}/" sw.js
-        rm -f sw.js.bak
-        echo "🔁 SW cache bump: CACHE_NAME → bpp-v${HASH}"
-    else
-        echo "⚠️  SW cache bump omitido: no se pudo calcular hash (md5sum/md5 no disponibles)"
-    fi
-fi
-
-# Minificar Service Worker (SIEMPRE después del bump, para que
-# sw.min.js herede el CACHE_NAME nuevo)
-if [ -f "sw.js" ]; then
-    terser sw.js \
-        -o sw.min.js \
-        --compress passes=2 \
-        --mangle \
-        --comments false
-    size_before=$(stat -f%z "sw.js" 2>/dev/null || stat -c%s "sw.js")
-    size_after=$(stat -f%z "sw.min.js" 2>/dev/null || stat -c%s "sw.min.js")
-    reduction=$(( (size_before - size_after) * 100 / size_before ))
-    echo "   sw.js: $(numfmt --to=iec-i --suffix=B $size_before) → $(numfmt --to=iec-i --suffix=B $size_after) (-$reduction%)"
-else
-    echo "   ⚠️  sw.js no encontrado"
-fi
-echo ""
-
-# Generar hash de archivos para cache busting (opcional)
-echo "🔐 Generando hashes (cache busting)..."
-if command -v shasum &> /dev/null; then
-    echo "   styles.min.css: $(shasum -a 256 styles.min.css | cut -d' ' -f1 | cut -c1-8)"
-    echo "   main.min.js: $(shasum -a 256 main.min.js | cut -d' ' -f1 | cut -c1-8)"
-    echo "   sw.min.js: $(shasum -a 256 sw.min.js | cut -d' ' -f1 | cut -c1-8)"
-fi
-echo ""
 
 echo "✅ BUILD COMPLETADO"
 echo "==================="
@@ -107,7 +66,6 @@ echo ""
 echo "📋 Archivos generados:"
 echo "   - styles.min.css"
 echo "   - main.min.js"
-echo "   - sw.js (CACHE_NAME actualizado) + sw.min.js"
 echo ""
 echo "🔄 Próximos pasos:"
 echo "   1. Test local: python3 -m http.server 8000"
