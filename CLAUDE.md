@@ -218,7 +218,7 @@ La fuente de verdad es `/DESIGN.md` (v2.1 beta-inclusive). Resumen:
 **Updating colors**: validar contra `/DESIGN.md` primero, editar `styles.css` `:root`, correr `./build.sh`
 
 ### Typography
-- **Familia única**: Plus Jakarta Sans (Google Fonts), todos los contextos
+- **Dos familias con rol fijo**: Plus Jakarta Sans para interfaz y títulos; Literata solo para la prosa de lectura larga en páginas `.page-lectura`. Ambas self-hosted en `/fonts/`.
 - **Carga**: `<link>` en el `<head>` de cada página (nunca `@import` en CSS)
 - **Pesos**: 400 y 700 + itálica 400 únicamente (decisión 2026-08-21, feedback socios) — no agregar otros
 - **Fallback**: sans-serif
