@@ -154,7 +154,10 @@ Tokens (definidos en `:root` de `styles.css`):
 
 ## Typography
 
-**Familia única: Plus Jakarta Sans (self-hosted).**
+**Dos familias con roles fijos (self-hosted).** Plus Jakarta Sans para todo lo que es interfaz: títulos, labels, navegación, tarjetas, metadata, CTAs. Literata solo para la prosa de lectura larga sobre papel (`.page-lectura`: reporte de natalidad, Trace Group, tesis): párrafos, listas, definiciones, citas. Decisión de los socios, 2026-09: un documento de tres mil palabras se lee mejor en serif, y la serif no entra en ninguna otra superficie.
+
+**Literata** (Google/TypeTogether, OFL, servida desde `/fonts/`): variable en peso 400..700 y tamaño óptico 7..72, con `font-optical-sizing: auto`. Cuerpo fijo en 1.1875rem (19px, la base del sitio) y `line-height 1.7`. Nunca en headings, nunca fuera de `.page-lectura`, nunca a menos de 17px.
+
 
 **Evolución v1 → v2 → v2.1:** La versión alpha usaba Space Mono monowidth exclusiva — identidad radical donde cada texto se leía "como material de estudio". La v2 beta-inclusive especificó un híbrido ZT Bros Oskon (display) + Chivo (body) que **nunca llegó a producción**: el sitio se construyó entero sobre Plus Jakarta Sans. La v2.1 (2026-06-11) reconoce esa realidad y la consolida como decisión: una sola familia, jerarquía por peso y tamaño.
 
