@@ -2334,6 +2334,51 @@ footer {
     line-height: 1.6;
 }
 
+/* Ficha del caso: cuatro respuestas y fuentes antes del informe largo.
+   Un lector del sector público verifica en dos minutos qué pedimos, qué hicimos,
+   qué pasó y de dónde salen los datos. */
+.ficha-caso {
+    padding: var(--space-10) 0;
+    margin: var(--space-10) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+.ficha-caso-title {
+    font-size: 1.1875rem;
+    font-weight: 700;
+    color: var(--color-text-high);
+    margin-bottom: var(--space-8);
+}
+.ficha-caso-grid {
+    display: grid;
+    gap: var(--space-6);
+    margin: 0;
+}
+.ficha-caso-item dt {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-2);
+}
+.ficha-caso-item dd {
+    margin: 0;
+    color: var(--color-text-mid);
+    line-height: 1.65;
+}
+.ficha-caso-fuentes {
+    margin-top: var(--space-8);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-low);
+}
+.ficha-caso-fuentes strong { color: var(--color-text-mid); font-weight: 700; }
+.ficha-caso-fuentes a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (min-width: 769px) {
+    .ficha-caso-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-12); }
+}
+
 /* Contacto directo: mail en lugar de formulario */
 .contact-direct {
     max-width: 34rem;

@@ -373,6 +373,20 @@ document.addEventListener("DOMContentLoaded", function () {
 // =====================================================
 
   if (body.classList.contains("reporte-page")) {
+    // Profundidad de lectura: un caso leído hasta el 75 % es la segunda
+    // métrica que importa (la primera es Contacto_mail). Se dispara una vez.
+    let casoLeido = false;
+    const medirLectura = () => {
+      if (casoLeido) return;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (total > 0 && window.scrollY / total >= 0.75) {
+        casoLeido = true;
+        trackEvent("Caso_leido_75", { pagina: window.location.pathname });
+        window.removeEventListener("scroll", medirLectura);
+      }
+    };
+    window.addEventListener("scroll", medirLectura, { passive: true });
+
     const reporteSections = document.querySelectorAll("section.reporte-section");
     const seenReportSections = new Set();
 

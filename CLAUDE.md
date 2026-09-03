@@ -181,7 +181,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 
 ### Analytics (Plausible)
 - **Helper function**: `trackEvent(name, props)` in `main.js`
-- **Events tracked**: Section views, CTA clicks, `Contacto_mail`
+- **Events tracked**: Section views, CTA clicks, `Contacto_mail` (conversación iniciada), `Caso_leido_75` (75 % de scroll en páginas `.reporte-page`). Son las dos métricas que importan; el resto es contexto.
 - **Privacy**: No cookies, GDPR-compliant, self-hosted script
 
 ### Animations
