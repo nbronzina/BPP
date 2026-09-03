@@ -1,5 +1,5 @@
 ---
-version: soft-editorial-2.2
+version: soft-editorial-2.3
 name: BPP Analytics & Design
 description: Sistema visual del estudio. Fondo dark warm gray, tipografía Plus Jakarta Sans (familia única, jerarquía por peso y tamaño), acento terracota y corner brackets como firma exclusiva de La Usina. Geometría blanda, elevación por superficie y sombra cálida, grano análogo sutil. Editorial inclusivo, no corporativo.
 evolution: "v1 (alpha) usaba Space Mono monowidth + negro puro + contraste alto como signature. v2 (beta-inclusive) prioriza diseño inclusivo: reduce fatiga visual con warm off-white, terracota desaturado, y dark warm gray. v2.1 consolida la tipografía en Plus Jakarta Sans como familia única (decisión 2026-06-11). v2.2 (soft-editorial, decisión 2026-08-21) abandona la geometría de wireframe: los corner brackets dejan de ser dispositivo global y quedan reservados como firma de La Usina; los bordes de 1px bajan a susurro (alpha ≤ 0.15) y la elevación pasa a superficie + sombra cálida; radios md 8px → 16px; badges rectangulares → pill; se suma grano análogo sutil (~3.5% opacity) sobre toda la página."
@@ -126,6 +126,31 @@ La paleta tiene cuatro registros y un solo acento. Temperatura cálida unificada
 - **Focus-ring `rgba(193,111,82,0.2)`:** Anillo de foco para accesibilidad. Ver Elevation & Depth.
 
 Regla operativa: la jerarquía se construye con tamaño y peso primero, y con los cuatro niveles de alpha después. No se aplica `opacity` a elementos con texto legible: el alpha ya está calibrado y la opacidad encima lo rompe (0.75 × 0.6 = 0.45, que no pasa AA). La jerarquía por opacidad se mantiene intencional. La base cálida (`rgba(250,248,246,...)` en lugar de `rgba(255,255,255,...)`) es el cambio core — permite profundidad jerárquica sin agresividad visual.
+
+## Superficie de lectura (v2.3)
+
+**Regla: oscuro = marca, papel = lectura larga.** Nav, footer y el bloque hero/título de cada página siguen en el registro oscuro. El cuerpo de los documentos largos (2.000-3.000 palabras: reporte de natalidad, Trace Group, tesis-01 — `body.page-lectura`) pasa a una superficie de papel cálido. El lector típico tiene 50-60 años y decide en el sector público: lee de corrido, a veces imprime. El corte entre hero oscuro y papel es una línea horizontal limpia, sin degradé. En CSS, el alcance es `.page-lectura main > section:not(.hero-section)`, y ahí se remapean los tokens (`--color-text-*`, `--color-accent`, `--color-surface`, `--color-border`) para que las reglas existentes sigan solas.
+
+Tokens (definidos en `:root` de `styles.css`):
+
+| Token | Valor | Uso | Contraste sobre `--paper` |
+|---|---|---|---|
+| `--paper` | `#f4efe8` | superficie de lectura (nunca blanco puro) | — |
+| `--paper-elevated` | `#faf7f2` | cards sobre paper | — |
+| `--ink-high` | `rgba(26,21,18,0.95)` | headings, cuerpo | 14.1:1 |
+| `--ink-mid` | `rgba(26,21,18,0.78)` | segundo nivel (ficha `dd`, strong en fuentes) | 8.3:1 |
+| `--ink-low` | `rgba(26,21,18,0.66)` | metadata, fuentes — **piso** para cuerpo y metadata | 5.5:1 |
+| `--ink-border` | `rgba(26,21,18,0.14)` | divisores, bordes de card | — |
+| `--accent-on-paper` | `#9a4f36` | links, labels, `dt` de ficha, foco | 5.2:1 |
+| `--accent-on-paper-hover` | `#7f3f2a` | hover de links | 6.9:1 |
+
+- **`#c16f52` no es AA sobre papel para texto de cuerpo:** da 3.2:1, que solo alcanza para texto grande (≥24px, o ≥18.66px bold). Por eso el acento se oscurece a `#9a4f36` en todo el alcance de lectura; el único uso de `#c16f52` sobre papel es la cifra hero del reporte (`.impact-number-hero`, ≥40px bold).
+- No hay registro *faint* sobre papel: `--color-text-faint` se remapea a `--ink-low`.
+- Los links dentro del cuerpo llevan subrayado además del color (acento vs tinta queda en 2.7:1, no alcanza para distinguir solo por color).
+- Foco visible: el anillo terracota al 0.55 da 1.8:1 sobre papel; en el alcance de lectura se usa `--accent-on-paper` sólido (5.2:1).
+- Cards sobre papel: `--paper-elevated` + borde `--ink-border` + sombra de tinta (`rgba(26,21,18,0.28)`, misma geometría que `--shadow-card`), no el borde terracota que separaba sobre oscuro.
+- Los elementos fijos que flotan sobre el papel (índice lateral, botones de compartir) pasan a superficie opaca oscura; siguen fuera del remapeo.
+- El grano del `body::after` se mantiene: es ruido neutro y lee igual sobre papel.
 
 ## Typography
 
@@ -296,6 +321,9 @@ Este archivo (v2 beta-inclusive) cumple parcialmente con la especificación `@go
 **Decisión**: No corregir estos casos. El sistema prioriza coherencia semántica, diseño inclusivo, y legibilidad del código sobre conformidad estricta con el linter alpha de Google Labs.
 
 ## Changelog
+
+**v2.3 superficie de lectura (2026-09-03):**
+- Documentos largos (`body.page-lectura`: reporte de natalidad, Trace Group, tesis-01) pasan el cuerpo a papel cálido `#f4efe8`; nav, footer y hero siguen oscuros. Tokens `--paper`, `--paper-elevated`, `--ink-*`, `--accent-on-paper`. Ver "Superficie de lectura (v2.3)".
 
 **v2.1 beta-inclusive (2026-06-11):**
 - Tipografía: híbrido ZT Bros Oskon + Chivo (especificado, nunca implementado) → Plus Jakarta Sans como familia única en todo el sistema. Decisión de Nicolás tras auditoría completa que mostró 0% de implementación del híbrido.
