@@ -649,12 +649,7 @@ body.secondary-page .nav-logo {
     position: relative;
 }
 
-.nav-links a.current-page::before {
-    content: '→';
-    position: absolute;
-    left: -20px;
-    font-weight: 700;
-}
+/* La página actual se marca solo con color; la flecha sobraba (el hover ya lo explica). */
 
 
 .mobile-menu-btn {
@@ -2066,7 +2061,9 @@ footer {
     background: transparent;
     padding: 0 var(--spacing-horizontal-mobile) var(--space-8);
     border-top: 1px solid rgba(193, 111, 82, 0.2);
-    margin-top: var(--spacing-section);
+    /* Sin margen: la sección anterior ya trae su padding. Con margen quedaba una banda
+       del color del body entre el bloque hondo de contacto y la línea cobriza. */
+    margin-top: 0;
 }
 
 .footer-grid {
