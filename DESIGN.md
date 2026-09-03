@@ -1,5 +1,5 @@
 ---
-version: soft-editorial-2.2
+version: soft-editorial-2.3
 name: BPP Analytics & Design
 description: Sistema visual del estudio. Fondo dark warm gray, tipografía Plus Jakarta Sans (familia única, jerarquía por peso y tamaño), acento terracota y corner brackets como firma exclusiva de La Usina. Geometría blanda, elevación por superficie y sombra cálida, grano análogo sutil. Editorial inclusivo, no corporativo.
 evolution: "v1 (alpha) usaba Space Mono monowidth + negro puro + contraste alto como signature. v2 (beta-inclusive) prioriza diseño inclusivo: reduce fatiga visual con warm off-white, terracota desaturado, y dark warm gray. v2.1 consolida la tipografía en Plus Jakarta Sans como familia única (decisión 2026-06-11). v2.2 (soft-editorial, decisión 2026-08-21) abandona la geometría de wireframe: los corner brackets dejan de ser dispositivo global y quedan reservados como firma de La Usina; los bordes de 1px bajan a susurro (alpha ≤ 0.15) y la elevación pasa a superficie + sombra cálida; radios md 8px → 16px; badges rectangulares → pill; se suma grano análogo sutil (~3.5% opacity) sobre toda la página."
@@ -117,7 +117,7 @@ La paleta tiene cuatro registros y un solo acento. Temperatura cálida unificada
 
 - **Text-low `rgba(250,248,246,0.55)`:** Metadata visible pero subordinada. Fechas, roles, tags.
 
-- **Text-faint `rgba(250,248,246,0.35)`:** Texto decorativo o de wayfinding. Numeración de secciones, separadores tipográficos.
+- **Text-faint `rgba(250,248,246,0.40)`:** Solo texto grande (≥24px, o ≥18.66px en bold) o decorativo: numeración de secciones, separadores. Da 3.6:1 sobre surface, que es el mínimo WCAG para texto grande. Nunca para cuerpo, metadata ni fuentes: ahí el piso es text-low (0.55, 5.5:1).
 
 - **Border `rgba(250,248,246,0.12)`:** Divisores sutiles. No competir con el contenido.
 
@@ -125,19 +125,44 @@ La paleta tiene cuatro registros y un solo acento. Temperatura cálida unificada
 
 - **Focus-ring `rgba(193,111,82,0.2)`:** Anillo de foco para accesibilidad. Ver Elevation & Depth.
 
-La jerarquía por opacidad se mantiene intencional. La base cálida (`rgba(250,248,246,...)` en lugar de `rgba(255,255,255,...)`) es el cambio core — permite profundidad jerárquica sin agresividad visual.
+Regla operativa: la jerarquía se construye con tamaño y peso primero, y con los cuatro niveles de alpha después. No se aplica `opacity` a elementos con texto legible: el alpha ya está calibrado y la opacidad encima lo rompe (0.75 × 0.6 = 0.45, que no pasa AA). La jerarquía por opacidad se mantiene intencional. La base cálida (`rgba(250,248,246,...)` en lugar de `rgba(255,255,255,...)`) es el cambio core — permite profundidad jerárquica sin agresividad visual.
+
+## Superficie de lectura (v2.3)
+
+**Regla: oscuro = marca, papel = lectura larga.** Nav, footer y el bloque hero/título de cada página siguen en el registro oscuro. El cuerpo de los documentos largos (2.000-3.000 palabras: reporte de natalidad, Trace Group, tesis-01 — `body.page-lectura`) pasa a una superficie de papel cálido. El lector típico tiene 50-60 años y decide en el sector público: lee de corrido, a veces imprime. El corte entre hero oscuro y papel es una línea horizontal limpia, sin degradé. En CSS, el alcance es `.page-lectura main > section:not(.hero-section)`, y ahí se remapean los tokens (`--color-text-*`, `--color-accent`, `--color-surface`, `--color-border`) para que las reglas existentes sigan solas.
+
+Tokens (definidos en `:root` de `styles.css`):
+
+| Token | Valor | Uso | Contraste sobre `--paper` |
+|---|---|---|---|
+| `--paper` | `#f4efe8` | superficie de lectura (nunca blanco puro) | — |
+| `--paper-elevated` | `#faf7f2` | cards sobre paper | — |
+| `--ink-high` | `rgba(26,21,18,0.95)` | headings, cuerpo | 14.1:1 |
+| `--ink-mid` | `rgba(26,21,18,0.78)` | segundo nivel (ficha `dd`, strong en fuentes) | 8.3:1 |
+| `--ink-low` | `rgba(26,21,18,0.66)` | metadata, fuentes — **piso** para cuerpo y metadata | 5.5:1 |
+| `--ink-border` | `rgba(26,21,18,0.14)` | divisores, bordes de card | — |
+| `--accent-on-paper` | `#9a4f36` | links, labels, `dt` de ficha, foco | 5.2:1 |
+| `--accent-on-paper-hover` | `#7f3f2a` | hover de links | 6.9:1 |
+
+- **`#c16f52` no es AA sobre papel para texto de cuerpo:** da 3.2:1, que solo alcanza para texto grande (≥24px, o ≥18.66px bold). Por eso el acento se oscurece a `#9a4f36` en todo el alcance de lectura; el único uso de `#c16f52` sobre papel es la cifra hero del reporte (`.impact-number-hero`, ≥40px bold).
+- No hay registro *faint* sobre papel: `--color-text-faint` se remapea a `--ink-low`.
+- Los links dentro del cuerpo llevan subrayado además del color (acento vs tinta queda en 2.7:1, no alcanza para distinguir solo por color).
+- Foco visible: el anillo terracota al 0.55 da 1.8:1 sobre papel; en el alcance de lectura se usa `--accent-on-paper` sólido (5.2:1).
+- Cards sobre papel: `--paper-elevated` + borde `--ink-border` + sombra de tinta (`rgba(26,21,18,0.28)`, misma geometría que `--shadow-card`), no el borde terracota que separaba sobre oscuro.
+- Los elementos fijos que flotan sobre el papel (índice lateral, botones de compartir) pasan a superficie opaca oscura; siguen fuera del remapeo.
+- El grano del `body::after` se mantiene: es ruido neutro y lee igual sobre papel.
 
 ## Typography
 
-**Familia única: Plus Jakarta Sans (Google Fonts).**
+**Familia única: Plus Jakarta Sans (self-hosted).**
 
 **Evolución v1 → v2 → v2.1:** La versión alpha usaba Space Mono monowidth exclusiva — identidad radical donde cada texto se leía "como material de estudio". La v2 beta-inclusive especificó un híbrido ZT Bros Oskon (display) + Chivo (body) que **nunca llegó a producción**: el sitio se construyó entero sobre Plus Jakarta Sans. La v2.1 (2026-06-11) reconoce esa realidad y la consolida como decisión: una sola familia, jerarquía por peso y tamaño.
 
-**Plus Jakarta Sans** (Tokotype, opensource, vía Google Fonts):
+**Plus Jakarta Sans** (Tokotype, opensource, servida desde `/fonts/`):
 - Uso: todo el sistema — headings, navegación, body copy, metadata, CTAs
 - Carácter: Geométrica humanista, moderna sin ser genérica. Buena legibilidad en textos largos y personalidad suficiente en titulares con peso 600-700.
 - Pesos cargados: 300, 400, 500, 600, 700 + itálica 400. No cargar pesos que no se usan.
-- Carga: `<link>` en el `<head>` de cada página (nunca `@import` dentro del CSS — bloquea el render en cadena).
+- Carga: `@font-face` en `styles.css` apuntando a `/fonts/plus-jakarta-sans-latin*.woff2` (variable 400..700, subset latin, `font-display: swap`), más `<link rel="preload" as="font">` de la regular en cada `<head>`. Sin Google Fonts: un origen menos en la CSP, sin dependencia externa, y el mismo archivo se cachea para todo el sitio. Nunca `@import` dentro del CSS.
 - Jerarquía: peso 600-700 para headings y CTAs, 400-500 para body y metadata. La jerarquía se apoya en tamaño, peso y opacidad.
 
 **Rationale de v2.1:** El híbrido Bros Oskon + Chivo era una especificación sin implementación (0% en producción). Mantener una fuente de verdad que contradice el 100% del sitio generaba drift permanente. Plus Jakarta Sans ya demostró funcionar en todos los contextos del sitio (hero, artículos largos, formularios, metadata). Las fuentes Bros Oskon y Chivo se retiraron del repo.
@@ -296,6 +321,9 @@ Este archivo (v2 beta-inclusive) cumple parcialmente con la especificación `@go
 **Decisión**: No corregir estos casos. El sistema prioriza coherencia semántica, diseño inclusivo, y legibilidad del código sobre conformidad estricta con el linter alpha de Google Labs.
 
 ## Changelog
+
+**v2.3 superficie de lectura (2026-09-03):**
+- Documentos largos (`body.page-lectura`: reporte de natalidad, Trace Group, tesis-01) pasan el cuerpo a papel cálido `#f4efe8`; nav, footer y hero siguen oscuros. Tokens `--paper`, `--paper-elevated`, `--ink-*`, `--accent-on-paper`. Ver "Superficie de lectura (v2.3)".
 
 **v2.1 beta-inclusive (2026-06-11):**
 - Tipografía: híbrido ZT Bros Oskon + Chivo (especificado, nunca implementado) → Plus Jakarta Sans como familia única en todo el sistema. Decisión de Nicolás tras auditoría completa que mostró 0% de implementación del híbrido.

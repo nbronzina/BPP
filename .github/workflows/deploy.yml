@@ -2,7 +2,12 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    # El repo no tiene main: la rama por defecto es la que publica.
+    branches:
+      - main
+      - claude/bpp-analytics-website-01Qg8KmqzsnS33vifronWpqF
+      # Rama de trabajo del rediseño: quitar de acá después del merge.
+      - claude/audit-website-optimization-01TK2wmeyM2Y2aFBHhm1W4Zz
   workflow_dispatch:
 
 permissions:
@@ -21,20 +26,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # No publicar documentación interna ni archivos de trabajo
-      - name: Remove internal files from artifact
-        run: |
-          rm -rf .claude .github
-          rm -f CLAUDE.md DESIGN.md VOICE.md README.md
-          rm -f BENCHMARKING-REPORT-*.md CAMBIOS_IMPLEMENTADOS.md OPTIMIZATION-REPORT.md
-          rm -f AUDITORIA-*.md audit-*.md audit-*.txt
-          rm -f _prototype-*.html build.sh
-          rm -f docs/auditoria-web-junio-2026.md docs/benchmarking-agencias-2026.md
-          rm -f docs/optimizacion-repositorio-jun-2026.md docs/usina-fase1-especificacion.md
-          rm -f docs/web-dev-foundation-skill.md docs/web-dev-sustainability-integration.md
-          rm -f docs/ai-sustainability-quickref.md docs/audit-full-agosto-2026.md
-          rm -f docs/trends-web-2026.md
-          rm -rf img/archive img/backup
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      # Eleventy genera _site/ solo a partir de src/ y los assets declarados en .eleventy.js.
+      # Nada de la raíz (CLAUDE.md, DESIGN.md, VOICE.md, docs/, auditorías) entra al artefacto.
+      - name: Build and check
+        run: npm run check
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -42,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: "_site"
 
   deploy:
     environment:

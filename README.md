@@ -32,24 +32,23 @@
 ## 🏗️ Arquitectura del Sitio
 
 ### Stack tecnológico
-- **Frontend:** Vanilla HTML5, CSS3, JavaScript (no frameworks)
-- **PWA:** Service Worker, manifest.json, offline-capable
-- **Build:** csso + terser for minification
+- **Frontend:** HTML generado con Eleventy 3 (Nunjucks), CSS3 y JavaScript a mano, sin frameworks en runtime
+- **Build:** `npm run build` (Eleventy + csso + terser → `_site/`), corre en GitHub Actions
 - **Analytics:** Plausible.io (privacy-friendly, GDPR-compliant)
-- **Forms:** FormSubmit.co (no backend required)
+- **Contacto:** mail directo, sin formulario
 - **Deploy:** GitHub Pages + Custom Domain
 - **Images:** WebP format, responsive srcset, lazy loading
 
-### Páginas (8 total)
+### Páginas (7 + 1 redirección)
 ```
 /                           → index.html (Homepage)
-/pensamiento/               → Artículos y reflexiones
 /proyectos/                 → Hechos y proyectos realizados
-/proyectos/trace-group/     → Case study Trace Group
-/reporte-impacto/           → Reporte natalidad y matrículas
+/proyectos/trace-group/     → Caso Trace Group
+/reporte-impacto/           → Caso natalidad y matrículas
+/pensamiento/               → Hub de ideas: señales, artículos y tesis (La Usina)
+/usina/tesis-01/            → Tesis 01 de La Usina
 /privacidad/                → Política de privacidad
-/gracias                    → Página de confirmación (formulario)
-/offline                    → PWA offline fallback
+/usina/                     → Redirección a /pensamiento/#tesis
 ```
 
 ### Fuentes de verdad
@@ -75,40 +74,13 @@ Si hay conflicto entre auditorías/briefs y estos archivos, **ganan los archivos
 
 ```
 BPP/
-├── index.html                  # Homepage
-├── pensamiento/index.html      # Artículos
-├── proyectos/index.html        # Hechos
-├── proyectos/trace-group/      # Case study
-├── reporte-impacto/index.html  # Reporte impacto
-├── privacidad/index.html       # Política de privacidad
-├── gracias.html                # Confirmación formulario
-├── offline.html                # PWA offline
-│
-├── styles.css                  # CSS source (editar este)
-├── styles.min.css              # CSS minificado (generado)
-├── main.js                     # JavaScript source (editar este)
-├── main.min.js                 # JS minificado (generado)
-├── sw.js                       # Service Worker source
-├── sw.min.js                   # SW minificado (generado)
-│
-├── img/                        # Imágenes WebP optimizadas
-│   ├── *.webp                  # 40+ archivos WebP
-│   └── backup/                 # Originales PNG/JPG (si existen)
-│
-├── docs/                       # Documentación técnica
-│   ├── auditoria-web-junio-2026.md           # Auditoría completa
-│   ├── web-dev-foundation-skill.md           # Web.dev standards
-│   ├── ai-sustainability-quickref.md         # Sostenibilidad AI
-│   └── web-dev-sustainability-integration.md # Integración sostenibilidad
-│
-├── DESIGN.md                   # Sistema visual (fuente de verdad)
-├── VOICE.md                    # Registro de escritura (fuente de verdad)
-├── CLAUDE.md                   # Guía Claude Code
-│
-├── build.sh                    # Script minificación assets
-├── manifest.json               # PWA manifest
-├── sitemap.xml                 # Sitemap SEO
-└── robots.txt                  # Crawling directives
+├── src/                        # Fuentes del sitio (páginas .njk, layout, parciales, styles.css, main.js)
+├── .eleventy.js                # Config Eleventy (input src/, output _site/)
+├── package.json                # npm run build | check | serve
+├── scripts/check-site.mjs      # Chequeo del sitio generado
+├── img/, fonts/, docs/*.pdf    # Assets copiados tal cual
+├── DESIGN.md, VOICE.md, CLAUDE.md   # Fuentes de verdad (no se publican)
+└── _site/                      # Salida generada (no está en git)
 ```
 
 ---
@@ -121,31 +93,24 @@ python3 -m http.server 8000
 # Abrir http://localhost:8000
 ```
 
-### Build (minificación)
-Después de editar `styles.css` o `main.js`:
+### Build
 ```bash
-./build.sh
+npm ci            # una vez
+npm run check     # genera _site/ y corre el chequeo
+python3 -m http.server 8000 --directory _site
 ```
-
-**Resultado:**
-```
-styles.css (139KB) → styles.min.css (91KB) -34%
-main.js (54KB)     → main.min.js (24KB)    -55%
-sw.js (2.5KB)      → sw.min.js (1.1KB)     -55%
-```
-
-**IMPORTANTE:** Siempre commit tanto source como `.min.*` files juntos.
+Los `.min` y `_site/` no se versionan: los genera Actions al publicar.
 
 ### Workflow recomendado
 ```bash
 # 1. Editar source files
-vim styles.css
+vim src/styles.css
 
-# 2. Build
-./build.sh
+# 2. Build y chequeo
+npm run check
 
-# 3. Commit ambos (source + minified)
-git add styles.css styles.min.css
+# 3. Commit (solo fuentes)
+git add src/styles.css
 git commit -m "style: update accent color hover state"
 
 # 4. Push
@@ -169,7 +134,7 @@ git push -u origin claude/audit-website-optimization-01TK2wmeyM2Y2aFBHhm1W4Zz
 
 ### Tipografía
 - **Familia única:** Plus Jakarta Sans (Google Fonts)
-- **Pesos:** 300, 400, 500, 600, 700 + italic 400
+- **Pesos:** 400 y 700 + italic 400 (decisión socios, 2026-08)
 - **Fallback:** sans-serif
 - **Carga:** `<link>` en `<head>` (nunca `@import` en CSS)
 
