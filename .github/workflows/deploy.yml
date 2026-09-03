@@ -2,7 +2,10 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    # El repo no tiene main: la rama por defecto es la que publica.
+    branches:
+      - main
+      - claude/bpp-analytics-website-01Qg8KmqzsnS33vifronWpqF
   workflow_dispatch:
 
 permissions:
