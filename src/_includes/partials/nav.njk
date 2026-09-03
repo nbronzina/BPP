@@ -1,0 +1,25 @@
+<nav role="navigation" aria-label="Navegación principal de BPP Analytics &amp; Design" id="stickyNav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo" id="navLogo" aria-label="BPP Analytics &amp; Design - Inicio">
+            <picture>
+                <source srcset="/img/logo-160.webp 1x, /img/logo-320.webp 2x" type="image/webp">
+                <img src="/img/logo.webp" srcset="/img/logo-160.webp 1x, /img/logo-320.webp 2x" alt="BPP Analytics &amp; Design" width="39" height="52" loading="eager" decoding="async" fetchpriority="high">
+            </picture>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/proyectos/"{% if section == "proyectos" %} aria-current="page"{% endif %}>Lo hecho</a></li>
+            <li><a href="/pensamiento/"{% if section == "pensamiento" %} aria-current="page"{% endif %}>Pensamiento</a></li>
+            {%- if not homepage %}
+            <li><a href="/#contact">Hablemos</a></li>
+            {%- endif %}
+        </ul>
+        {%- if homepage %}
+        <a href="#contact" class="nav-cta">Hablemos</a>
+        {%- endif %}
+    </div>
+</nav>

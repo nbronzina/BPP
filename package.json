@@ -1,0 +1,17 @@
+{
+  "name": "bpp-site",
+  "private": true,
+  "description": "Sitio de BPP Analytics & Design. HTML plano generado con Eleventy; CSS y JS a mano.",
+  "scripts": {
+    "build": "eleventy && npm run build:css && npm run build:js",
+    "build:css": "csso src/styles.css -o _site/styles.min.css --no-restructure",
+    "build:js": "terser src/main.js -o _site/main.min.js --compress passes=2,dead_code=true,drop_console=true --mangle --comments false",
+    "serve": "eleventy --serve",
+    "check": "eleventy && npm run build:css && npm run build:js && node scripts/check-site.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.0",
+    "csso-cli": "^4.0.2",
+    "terser": "^5.31.0"
+  }
+}

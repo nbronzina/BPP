@@ -1,9 +1,9 @@
 # CLAUDE.md - BPP Analytics & Design Website
 
 **Project**: BPP Analytics & Design Corporate Website
-**Tech Stack**: Vanilla HTML/CSS/JS, sin PWA (retirada 2026-09: nadie instala la web de una consultora)
-**Build**: csso + terser for minification
-**Deploy**: GitHub Pages
+**Tech Stack**: HTML plano generado con Eleventy 3 (Nunjucks), CSS y JS a mano, sin frameworks en runtime. Sin PWA (retirada 2026-09).
+**Build**: `npm run build` → Eleventy genera `_site/`, csso y terser minifican. Los `.min` ya no se versionan.
+**Deploy**: GitHub Pages desde `_site/`, construido en Actions (`.github/workflows/deploy.yml`)
 **Last Updated**: 2026-03-11
 
 ---
@@ -115,24 +115,28 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ### File Structure
 ```
 /
-├── index.html              # Homepage
-├── reporte-impacto.html    # Impact report
-├── privacidad.html         # Privacy policy
-├── styles.css              # Source CSS (edit this)
-├── styles.min.css          # Minified CSS (generated)
-├── main.js                 # Source JavaScript (edit this)
-├── main.min.js             # Minified JavaScript (generated)
-├── sw.js / sw.min.js       # Kill-switch: desregistra el SW viejo en clientes que lo tenían. Borrar en 2027.
-├── fonts/                  # Plus Jakarta Sans woff2 self-hosted
-├── sitemap.xml             # SEO sitemap
-├── robots.txt              # Search engine directives
-├── build.sh                # Build script (minification)
-├── img/                    # Images (WebP + fallbacks)
-└── [documentation files]   # Audit reports, guides
+├── src/                        # TODO lo que se publica sale de acá
+│   ├── _includes/layouts/base.njk      # head + nav + footer únicos
+│   ├── _includes/partials/             # nav, footer, critical-home/sub, senales-cards
+│   ├── _includes/jsonld/<pagina>.njk   # JSON-LD por página
+│   ├── _data/site.json                 # nombre, URL, CSP, dominio Plausible
+│   ├── index.njk, proyectos/, reporte-impacto/, pensamiento/, privacidad/, usina/tesis-01/
+│   ├── usina/index.html                # redirección a /pensamiento/#tesis (no se procesa)
+│   ├── styles.css                      # CSS fuente (editar este)
+│   └── main.js                         # JS fuente (editar este)
+├── .eleventy.js                # config: input src/, output _site/, passthrough de img/, fonts/, docs/*.pdf…
+├── package.json                # scripts build / check / serve
+├── scripts/check-site.mjs      # chequeo del sitio generado (corre en CI)
+├── img/, fonts/                # assets (passthrough)
+├── docs/                       # *.pdf se publica; *.md nunca
+├── sitemap.xml, robots.txt, CNAME, favicons, llms.txt   # passthrough
+├── sw.js / sw.min.js           # kill-switch del SW retirado (borrar en 2027)
+├── build.sh                    # envoltorio de `npm run check`
+└── _site/                      # salida generada (ignorada por git)
 ```
 
 ### Design System
-- **Colors**: CSS custom properties in `:root` (styles.css lines 10-27)
+- **Colors**: CSS custom properties in `:root` (`src/styles.css`)
 - **Typography**: Work Sans (Google Fonts), system fonts as fallback
 - **Spacing**: 8px base grid (multiples of 8)
 - **Breakpoints**: 480px (mobile), 768px (tablet), 1024px (desktop)
@@ -143,24 +147,24 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ## 4. Development Workflow
 
 ### Making Changes
-1. **Edit source files**: `styles.css`, `main.js` (never edit `.min.*` directly)
-2. **Run build**: `./build.sh` to regenerate minified files
-3. **Test locally**: Open HTML files in browser, check mobile view
-4. **Commit**: Include both source and minified files in commit
-5. **Push**: Deploy to GitHub Pages (auto-updates in 2-3 minutes)
+1. **Edit sources**: páginas en `src/**/index.njk`, layout y parciales en `src/_includes/`, `src/styles.css`, `src/main.js`
+2. **Build**: `npm run check` (o `./build.sh`) genera `_site/` y corre el chequeo
+3. **Test locally**: `python3 -m http.server 8000 --directory _site`
+4. **Commit**: solo fuentes; `_site/` y los `.min` no se versionan
+5. **Push** y merge a `main`: Actions construye y publica en 2-3 minutos
 
-### Build Script (`build.sh`)
+**Reglas del layout**
+- Front matter por página: `title`, `description`, `ogType`, `section` (`proyectos` | `pensamiento` | `privacidad` | `inicio`, marca el `aria-current` del nav), `bodyClass`, `jsonld` (ruta del include), `homepage: true` solo en index.
+- Rutas siempre absolutas desde la raíz (`/img/…`, `/proyectos/`), nunca `../`.
+- Las señales existen una sola vez: `partials/senales-cards.njk`, incluido en index y Pensamiento.
+- `usina/index.html` es una redirección estática; no lleva layout.
+
+### Build (`package.json`)
 ```bash
-# Minifies CSS with csso
-# Minifies JS with terser
-# Generates cache-busting hashes (optional)
-./build.sh
+npm run build   # eleventy + csso + terser → _site/
+npm run check   # build + scripts/check-site.mjs (páginas, assets, JSON-LD, rutas)
+npm run serve   # eleventy --serve con recarga
 ```
-
-**When to run**:
-- After editing `styles.css` or `main.js`
-- Before committing CSS/JS changes
-- Before deploying to production
 
 ### Testing Checklist
 - [ ] Mobile menu works (open/close/escape/outside click)
@@ -261,7 +265,7 @@ These terms refer to the same section but use different wording intentionally �
 - **Accessibility**: ARIA labels on buttons, semantic headings (h1 → h2 → h3)
 - **Progressive enhancement**: Works without JS (forms still submit, links still work)
 - **Structured data**: JSON-LD scripts for SEO (FAQ, ProfessionalService)
-- **NEVER assume a file is unused based on index.html alone** — the site has multiple HTML files: index.html, proyectos/index.html, proyectos/trace-group/index.html, reporte-impacto/index.html, pensamiento/index.html, usina/tesis-01/index.html, privacidad/index.html. Always grep all HTML files before archiving or deleting any asset: `grep -r "filename" *.html **/*.html`
+- **NEVER assume a file is unused based on index alone** — hay siete páginas en `src/**/index.njk` más parciales en `src/_includes/`. Antes de archivar o borrar un asset: `grep -rn "filename" src/`
 
 ### Commit Format
 ```
@@ -319,16 +323,16 @@ Uses sharp-cli for conversion, maintains quality.
 ### Common Tasks
 ```bash
 # Edit styles
-vim styles.css
-./build.sh
-git add styles.css styles.min.css
-git commit -m "style: update accent color to #ce7352"
+vim src/styles.css
+npm run check
+git add src/styles.css
+git commit -m "style: ajustar contraste de metadata"
 
 # Edit JavaScript
-vim main.js
-./build.sh
-git add main.js main.min.js
-git commit -m "feat: add new tracking event for downloads"
+vim src/main.js
+npm run check
+git add src/main.js
+git commit -m "feat: evento de descarga"
 
 # Deploy
 git push origin main
@@ -336,14 +340,13 @@ git push origin main
 ```
 
 ### Important Files to Edit
-- `styles.css` - All styles (source)
-- `main.js` - All behavior (source)
-- `index.html` - Homepage content
+- `src/styles.css` - All styles (source)
+- `src/main.js` - All behavior (source)
+- `src/index.njk` - Homepage content; `src/_includes/layouts/base.njk` - head/nav/footer
 - `sitemap.xml` - SEO (after adding pages)
 
 ### Files to Never Edit Manually
-- `styles.min.css` - Generated by build.sh
-- `main.min.js` - Generated by build.sh
+- `_site/**` - Generado por Eleventy (no está en git)
 
 ---
 

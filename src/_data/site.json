@@ -1,0 +1,7 @@
+{
+  "name": "BPP Analytics & Design",
+  "url": "https://www.bppanalyticsanddesign.com",
+  "ogImage": "https://www.bppanalyticsanddesign.com/img/og-image.jpg",
+  "plausibleDomain": "bppanalyticsanddesign.com",
+  "csp": "default-src 'self'; script-src 'self' https://plausible.io; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://plausible.io; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; object-src 'self';"
+}

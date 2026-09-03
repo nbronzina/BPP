@@ -1,0 +1,331 @@
+---
+layout: "layouts/base.njk"
+title: "Pensamiento: señales, artículos y tesis | BPP Analytics & Design"
+description: "Todo lo que pensamos en público, en un solo lugar: señales que rastreamos con fuente y año, artículos sobre datos y sociedad, y las tesis de La Usina."
+robots: "index, follow"
+ogType: "website"
+section: "pensamiento"
+ogDescription: "Señales que rastreamos con fuente y año, artículos sobre datos y sociedad, y las tesis de La Usina. Todo lo que pensamos en público, en un solo lugar."
+bodyClass: "secondary-page"
+jsonld: "jsonld/pensamiento.njk"
+---
+    <!-- Main Content -->
+    <main role="main" id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero-section section-wide" style="padding-top: 100px; padding-bottom: 60px;">
+        <div class="actividades-label">PENSAMIENTO</div>
+        <h1 id="pensamiento-heading" class="tagline" style="margin-bottom: 1.5rem;"><span class="h1-light">Cómo pensamos</span> lo que hacemos</h1>
+        <p class="hero-sub" style="max-width: 800px; margin: 0 auto 3rem;">
+            Acá juntamos todo lo que pensamos en público: señales (lo que estamos rastreando ahora, con fuente y año), artículos (ensayos que publicamos antes de tener la conclusión cerrada) y tesis (la investigación larga que firmamos desde La Usina).
+        </p>
+    </section>
+
+    <!-- Índice del hub: tres secciones, en el orden de la página -->
+    <!-- div con role=navigation (NO <nav>): el selector global `nav {}`
+         del sitio fija cualquier <nav> al tope del viewport -->
+    <section id="indice" class="section" aria-label="Índice de la página" style="padding-bottom: 0;">
+        <div class="indice-archival" role="navigation" aria-labelledby="indice-heading">
+            <h2 id="indice-heading" class="indice-label">Índice</h2>
+            <ol class="indice-lista">
+                <li class="indice-fila">
+                    <a href="#senales">
+                        <span class="indice-num">01</span>
+                        <span class="indice-titulo">Señales</span>
+                    </a>
+                </li>
+                <li class="indice-fila">
+                    <a href="#articulos">
+                        <span class="indice-num">02</span>
+                        <span class="indice-titulo">Artículos</span>
+                    </a>
+                </li>
+                <li class="indice-fila">
+                    <a href="#tesis">
+                        <span class="indice-num">03</span>
+                        <span class="indice-titulo">Tesis · La Usina</span>
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Señales: mismas cards que el radar de la home, sin badge -->
+    <section id="senales" class="section" aria-labelledby="senales-heading">
+        <div class="senales-header">
+            <h2 id="senales-heading" class="senales-title">Señales</h2>
+            <p class="hero-sub" style="margin: var(--space-3) auto 0;">Lo que estamos rastreando ahora. Señales débiles, con fuente y año.</p>
+        </div>
+
+        <div class="senales-grid">
+{% include "partials/senales-cards.njk" %}
+        </div>
+    </section>
+
+    <!-- Artículos -->
+    <section id="articulos" class="section" aria-labelledby="pensamiento-content-heading">
+
+        <div class="senales-header">
+            <h2 id="pensamiento-content-heading" class="senales-title">Artículos</h2>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar" role="group" aria-label="Filtrar artículos por categoría">
+            <button class="filter-btn filter-btn--active" data-filter="todos" aria-pressed="true">
+                Todos
+            </button>
+            <button class="filter-btn" data-filter="sociologia" aria-pressed="false">
+                Sociología
+            </button>
+            <button class="filter-btn" data-filter="branding" aria-pressed="false">
+                Branding
+            </button>
+            <button class="filter-btn" data-filter="estrategia" aria-pressed="false">
+                Estrategia
+            </button>
+            <button class="filter-btn" data-filter="datos" aria-pressed="false">
+                Datos
+            </button>
+            <button class="filter-btn" data-filter="futuro" aria-pressed="false">
+                Futuro
+            </button>
+            <button class="filter-btn" data-filter="diseño" aria-pressed="false">
+                Diseño
+            </button>
+            <button class="filter-btn" data-filter="prospectiva" aria-pressed="false">
+                Prospectiva
+            </button>
+            <button class="filter-btn" data-filter="vivienda" aria-pressed="false">
+                Vivienda
+            </button>
+        </div>
+
+        <div class="actividades-container">
+            <!-- Entrada: Algoritmizar el potrero -->
+            <article id="art-potrero" class="actividad-entrada" data-animate data-tags="sociologia,datos,ia" aria-label="Artículo sobre algoritmos, datos y el conocimiento del potrero">
+                <div class="actividad-imagen">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="/img/algoritmizar-potrero-mobile.webp" type="image/webp">
+                        <source srcset="/img/algoritmizar-potrero.webp" type="image/webp">
+                        <img src="/img/algoritmizar-potrero.webp" alt="Ilustración del artículo ¿Se puede algoritmizar el potrero? - diagrama de red neuronal junto a vista aérea de una cancha de fútbol" width="1376" height="768" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+                <div class="actividad-texto">
+                    <div class="actividad-meta">
+                        <time class="actividad-fecha">Junio 2026</time>
+                        <span class="actividad-separador"> · </span>
+                        <span class="actividad-tags">Sociología · Datos · IA · Fútbol</span>
+                        <span class="actividad-autor"> — Por Sergio</span>
+                    </div>
+                    <h3>¿Se puede algoritmizar el potrero?</h3>
+                    <p class="actividad-descripcion">
+                        Artículo de Sergio Petrocelli sobre la paradoja del branding algorítmico en el Mundial 2026: nunca tuvimos tanta capacidad de procesar datos en tiempo real y nunca fue tan difícil capturar la pasión argentina. Las marcas llegan al torneo con IA generativa y predictive analytics, pero la pasión futbolera no se rige por la regularidad sino por la anomalía. Vive en el "contra todo pronóstico". Los algoritmos detectan patrones y marcan el timing, pero cuando las marcas delegan en exceso su creatividad a la automatización caen en el cliché de laboratorio: mate, asado, banderas. El hincha argentino detecta de inmediato la falta de organicidad. La sociología y el diseño estratégico siguen definiendo el tono: la IA es copiloto de alta velocidad, no reemplazo. Al fin y al cabo, el potrero es rebeldía: la gambeta imprevista que ningún modelo puede predecir porque nace del instinto puro.
+                    </p>
+                    <a
+                      href="https://www.linkedin.com/pulse/se-puede-algoritmizar-el-potrero-bpp-analytics-and-design-eodce"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="cta-link"
+                      aria-label="Abrir artículo sobre algoritmos y el conocimiento del potrero en LinkedIn (nueva pestaña)"
+                    >
+                        Leer más
+                    </a>
+                </div>
+            </article>
+
+            <!-- Entrada 1: Personal Software -->
+            <article id="art-personal-software" class="actividad-entrada" data-animate data-tags="ia,diseño,estrategia,personal-software" aria-label="Artículo sobre intent coding y personal software como práctica emergente">
+                <div class="actividad-imagen">
+                    <picture>
+                        <source srcset="/img/personal-software.webp" type="image/webp">
+                        <img src="/img/personal-software.webp" alt="Ilustración sobre intent coding y personal software - pantalla con código y nota de pregunta" width="2752" height="1536" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+                <div class="actividad-texto">
+                    <div class="actividad-meta">
+                        <time class="actividad-fecha">Abril 2026</time>
+                        <span class="actividad-separador"> · </span>
+                        <span class="actividad-tags">IA · Diseño · Estrategia · Personal Software</span>
+                        <span class="actividad-autor"> — Por Nicolás</span>
+                    </div>
+                    <h3>La práctica del personal software</h3>
+                    <p class="actividad-descripcion">
+                        Artículo de Nicolás Bronzina sobre intent coding: la práctica de construir software delegando sintaxis pero conservando dirección. Tres apps personales construidas sin ser programador de base: fitness tracking, radar de señales débiles para Margin Signals, the bare minimum para tareas domésticas, muestran el personal software como categoría emergente: artefactos calibrados para una sola persona, sin pretensión de escalar. La pregunta no es si hay que aprender a programar: es qué puede hacer un equipo cuando prototipar deja de requerir stack técnico y empieza a requerir claridad sobre el problema.
+                    </p>
+                    <a
+                      href="https://www.linkedin.com/pulse/la-pr%C3%A1ctica-del-personal-software-bpp-analytics-and-design-dwyxe/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="cta-link"
+                      aria-label="Abrir artículo sobre personal software e intent coding en LinkedIn (nueva pestaña)"
+                    >
+                        Leer más
+                    </a>
+                </div>
+            </article>
+
+            <!-- Entrada 2: Año analógico -->
+            <article id="art-ano-analogico" class="actividad-entrada" data-animate data-tags="sociologia,futuro,diseño,prospectiva" aria-label="Artículo sobre el fin del futuro y el retorno a artefactos analógicos como prototipos de nuevos futuros posibles">
+                <div class="actividad-imagen">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="/img/2026-ano-analogico-mobile.webp" type="image/webp">
+                        <source media="(max-width: 768px)" srcset="/img/2026-ano-analogico-mobile.png" type="image/png">
+                        <source srcset="/img/2026-ano-analogico.webp" type="image/webp">
+                        <img src="/img/2026-ano-analogico.webp" alt="Ilustración del artículo 2026, año analógico - artefactos retro y la cancelación del futuro" width="2752" height="1536" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+                <div class="actividad-texto">
+                    <div class="actividad-meta">
+                        <time class="actividad-fecha">Marzo 2026</time>
+                        <span class="actividad-separador"> · </span>
+                        <span class="actividad-tags">Sociología · Futuro · Diseño · Prospectiva</span>
+                        <span class="actividad-autor"> — Por Nicolás</span>
+                    </div>
+                    <h3>2026, año analógico. O: por qué el futuro ya no llega</h3>
+                    <p class="actividad-descripcion">
+                        Artículo de Nicolás Bronzina sobre la cancelación lenta del futuro y el retorno a artefactos analógicos (iPods, vinilos, casetes) como síntoma de una generación que busca límites, fricción y presencia. A partir de Fisher, Reynolds y Rushkoff, propone leer estos objetos no como nostalgia, sino como prototipos involuntarios de futuros que nadie diseñó todavía: ¿y si lo que una persona Gen Z busca en un iPod es exactamente lo que una organización debería ofrecerle?
+                    </p>
+                    <a
+                      href="https://www.linkedin.com/pulse/2026-a%C3%B1o-anal%C3%B3gico-o-por-qu%C3%A9-el-futuro-ya-llega-nrf0e/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="cta-link"
+                      aria-label="Abrir artículo sobre el año analógico y el futuro en LinkedIn (nueva pestaña)"
+                    >
+                        Leer más
+                    </a>
+                </div>
+            </article>
+
+            <!-- Entrada 3: Algoritmos y sociología -->
+            <article id="art-algoritmos" class="actividad-entrada" data-animate data-tags="sociologia,branding,estrategia,datos" aria-label="Artículo sobre las limitaciones del Big Data y la necesidad de la sociología en estrategia de marca">
+                <div class="actividad-imagen">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="/img/algoritmos-sociologia-branding-mobile.webp" type="image/webp">
+                        <source media="(max-width: 768px)" srcset="/img/algoritmos-sociologia-branding-mobile.png" type="image/png">
+                        <source srcset="/img/algoritmos-sociologia-branding.webp" type="image/webp">
+                        <img src="/img/algoritmos-sociologia-branding.webp" alt="Ilustración sobre sociología aplicada a estrategia de marca y las limitaciones de los algoritmos" width="2752" height="1536" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+                <div class="actividad-texto">
+                    <div class="actividad-meta">
+                        <time class="actividad-fecha">Marzo 2026</time>
+                        <span class="actividad-separador"> · </span>
+                        <span class="actividad-tags">Sociología · Branding · Estrategia · Datos</span>
+                        <span class="actividad-autor"> — Por Sergio</span>
+                    </div>
+                    <h3>Por qué los algoritmos no bastan: El regreso de la sociología a la estrategia de marca</h3>
+                    <p class="actividad-descripcion">
+                        Artículo de Sergio Petrocelli sobre la paradoja del Big Data: nunca tuvimos tantos datos y, al mismo tiempo, nunca fue tan difícil construir vínculos genuinos. Los algoritmos registran comportamientos, pero no capturan significados. La sociología permite ver más allá del "qué" para entender el "porqué": las personas no son targets demográficos, sino actores sociales insertos en tramas culturales. En un mercado saturado, la ventaja competitiva no está en cuánto sabemos, sino en qué tan capaces somos de interpretar el mundo en el que las personas viven.
+                    </p>
+                    <a
+                      href="https://www.linkedin.com/pulse/por-qu%C3%A9-los-algoritmos-bastan-el-regreso-de-la-ixf1e/?trackingId=Im4ejaRFTSKB6Y5rORyonQ%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="cta-link"
+                      aria-label="Abrir artículo sobre sociología y estrategia de marca en LinkedIn (nueva pestaña)"
+                    >
+                        Leer más
+                    </a>
+                </div>
+            </article>
+
+            <!-- Entrada 4: Alquileres -->
+            <article id="art-alquileres" class="actividad-entrada" data-animate data-tags="sociologia,datos,vivienda" aria-label="Tesis sobre negociación de alquileres en Buenos Aires y asimetrías estructurales del mercado">
+                <div class="actividad-imagen">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="/img/alquileres-negociacion-mobile.webp" type="image/webp">
+                        <source media="(max-width: 768px)" srcset="/img/alquileres-negociacion-mobile.png" type="image/png">
+                        <source srcset="/img/alquileres-negociacion.webp" type="image/webp">
+                        <img src="/img/alquileres-negociacion.webp" alt="Ilustración sobre negociación de alquileres y asimetrías del mercado inmobiliario" width="2752" height="1536" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+                <div class="actividad-texto">
+                    <div class="actividad-meta">
+                        <time class="actividad-fecha">Febrero 2026</time>
+                        <span class="actividad-separador"> · </span>
+                        <span class="actividad-tags">Sociología · Datos · Vivienda</span>
+                        <span class="actividad-autor"> — Por Ezequiel</span>
+                    </div>
+                    <h3>La ilusión de la "negociación libre": Lo que el aumento de la oferta no cuenta sobre los alquileres</h3>
+                    <p class="actividad-descripcion">
+                        Tesis de licenciatura en Sociología de Ezequiel Politi que analiza el mercado de alquileres en Buenos Aires. La investigación demuestra que eliminar regulaciones no garantiza libertad de negociación: las inmobiliarias se consolidan como reguladores de hecho, el inquilino no tiene opción real de decir "no", y el 81% enfrenta barreras severas de acceso. Los datos revelan una asimetría estructural que convierte la vivienda en subordinación financiera.
+                    </p>
+                    <a
+                      href="https://www.linkedin.com/pulse/la-ilusi%C3%B3n-de-negociaci%C3%B3n-libre-lo-que-el-aumento-oferta-politi-sxcwe/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="cta-link"
+                      aria-label="Abrir artículo sobre negociación de alquileres en LinkedIn (nueva pestaña)"
+                    >
+                        Leer más
+                    </a>
+                </div>
+            </article>
+
+            <!-- Entrada 5: Branding -->
+            <article id="art-branding" class="actividad-entrada" data-animate data-tags="sociologia,branding,estrategia" aria-label="Artículo sobre branding como fenómeno social y arquitectura simbólica">
+                <div class="actividad-imagen">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="/img/branding-fenomeno-social-mobile.webp" type="image/webp">
+                        <source media="(max-width: 768px)" srcset="/img/branding-fenomeno-social-mobile.png" type="image/png">
+                        <source srcset="/img/branding-fenomeno-social.webp" type="image/webp">
+                        <img src="/img/branding-fenomeno-social.webp" alt="Branding como fenómeno social - arquitectura simbólica y estrategia" width="2752" height="1536" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+                <div class="actividad-texto">
+                    <div class="actividad-meta">
+                        <time class="actividad-fecha">Enero 2026</time>
+                        <span class="actividad-separador"> · </span>
+                        <span class="actividad-tags">Sociología · Branding · Estrategia</span>
+                        <span class="actividad-autor"> — Por Sergio</span>
+                    </div>
+                    <h3>El Branding como fenómeno social: Por qué tu empresa necesita un sociólogo y no solo un diseñador gráfico</h3>
+                    <p class="actividad-descripcion">
+                        Artículo de Sergio Petrocelli sobre por qué el branding no es una cuestión de estética, sino de arquitectura social. Explora cómo la investigación exploratoria, el capital simbólico y la institucionalización del discurso construyen marcas resilientes que funcionan cuando más importa.
+                    </p>
+                    <a
+                      href="https://www.linkedin.com/pulse/el-branding-como-fen%C3%B3meno-social-por-qu%C3%A9-tu-empresa-uzsdf/?trackingId=iyrgheLEWKIsnlMc8QgE1w%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="cta-link"
+                      aria-label="Abrir artículo sobre branding como fenómeno social en LinkedIn (nueva pestaña)"
+                    >
+                        Leer más
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Tesis · La Usina: única sección del sitio con corner brackets (DESIGN.md v2.2) -->
+    <section id="tesis" class="section" aria-labelledby="tesis-heading">
+        <div class="senales-header">
+            <h2 id="tesis-heading" class="senales-title">Tesis · La Usina</h2>
+            <p class="hero-sub" style="margin: var(--space-3) auto 0;">Investigación que toma posición: sin cliente, con la misma empiria que usamos en los proyectos, firmada como documento de trabajo.</p>
+        </div>
+
+        <article class="tesis-card" data-animate aria-label="Tesis 01: El actante siempre disponible">
+            <span class="corner-bracket corner-bracket--tl" aria-hidden="true"></span>
+            <span class="corner-bracket corner-bracket--br" aria-hidden="true"></span>
+
+            <p class="tesis-card__label">USINA #01 · 08.2026 · Tesis 01 · Documento de trabajo</p>
+            <h3 class="tesis-card__title">El actante siempre disponible</h3>
+            <p class="tesis-card__subtitle">Inteligencia artificial generativa, socialización e identidad en la emergencia de nuevos vínculos humano–IA: una propuesta conceptual desde la teoría del actor-red.</p>
+            <p class="tesis-card__authors">Nicolás Bronzina · Sergio Petrocelli · Ezequiel Politi</p>
+            <p class="tesis-card__desc">Partimos de un dato que todavía no terminamos de procesar como sociedad: el 72% de los adolescentes estadounidenses ya usó un AI companion. La pregunta no es cuál será el impacto de la IA en las personas, sino qué le pasa a la red de un adolescente —familia, amigos, instituciones— cuando se incorpora un interlocutor que siempre está disponible, responde bajo demanda y presenta mucha menos fricción social que uno humano. De esa pregunta salen dos aportes: el concepto de <em>actante siempre disponible</em> y una arquitectura de siete funciones de socialización sociotécnica.</p>
+            <a href="/usina/tesis-01/" class="cta-primary">Leer la tesis →</a>
+        </article>
+
+        <!-- CTA final: cierra el hub completo -->
+        <div class="proyectos-cta" data-animate>
+            <h3 class="proyectos-cta-headline">Estos textos son la parte pública de cómo trabajamos.</h3>
+            <p class="proyectos-cta-text">Si algo de acá se parece a un problema que tenés arriba de la mesa, escribinos y lo miramos con tu contexto.</p>
+            <a href="/#contact" class="cta-primary" data-preview="Te respondemos en menos de 24 horas" aria-label="Ir al formulario de contacto">
+                Hablemos de tu situación →
+            </a>
+        </div>
+    </section>
+
+    </main>
+    <!-- End Main Content -->

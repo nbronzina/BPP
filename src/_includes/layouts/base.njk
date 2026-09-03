@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" style="color-scheme: dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="description" content="{{ description }}">
+    <meta name="author" content="{{ site.name }}">
+    <meta name="robots" content="{{ robots or "index, follow" }}">
+    <title>{{ title }}</title>
+
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+    <meta property="og:type" content="{{ ogType or "website" }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:title" content="{{ ogTitle or title }}">
+    <meta property="og:description" content="{{ ogDescription or description }}">
+    <meta property="og:image" content="{{ ogImage or site.ogImage }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ ogTitle or title }}">
+    <meta name="twitter:description" content="{{ ogDescription or description }}">
+    <meta name="twitter:image" content="{{ ogImage or site.ogImage }}">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#1a1512">
+
+    <meta http-equiv="Content-Security-Policy" content="{{ site.csp }}">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <link rel="preconnect" href="https://plausible.io">
+    {%- if homepage %}
+    <link rel="preload" as="image" href="/img/logo-160.webp" imagesrcset="/img/logo-160.webp 160w, /img/logo-320.webp 320w" imagesizes="(max-width: 768px) 87px, 180px" type="image/webp" fetchpriority="high">
+    {%- endif %}
+    <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/main.min.js" as="script">
+
+    {% if homepage %}{% include "partials/critical-home.njk" %}{% else %}{% include "partials/critical-sub.njk" %}{% endif %}
+    <link rel="stylesheet" href="/styles.min.css">
+    <script defer data-domain="{{ site.plausibleDomain }}" src="https://plausible.io/js/script.js"></script>
+    {%- if homepage %}
+    <link rel="prefetch" href="/proyectos/" as="document">
+    <link rel="prefetch" href="/pensamiento/" as="document">
+    {%- endif %}
+{% if jsonld %}{% include jsonld %}{% endif -%}
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+    <a href="#main-content" class="skip-link" aria-label="Saltar navegación e ir directamente al contenido principal">Saltar al contenido principal</a>
+{% include "partials/nav.njk" %}
+{{ content | safe }}
+{% include "partials/footer.njk" %}
+    <script src="/main.min.js" defer></script>
+</body>
+</html>
