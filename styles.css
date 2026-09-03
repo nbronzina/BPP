@@ -2374,6 +2374,9 @@ footer {
     color: var(--color-text-low);
 }
 .ficha-caso-fuentes strong { color: var(--color-text-mid); font-weight: 700; }
+/* En páginas de reporte la ficha es una sección más: hereda el ritmo (separador + padding)
+   y no suma bordes ni márgenes propios. */
+.reporte-page .ficha-caso { margin: 0; border: 0; padding-bottom: 0; }
 .ficha-caso-fuentes a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 @media (min-width: 769px) {
     .ficha-caso-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-12); }
@@ -4491,7 +4494,9 @@ img {
 }
 
 /* Responsive adjustments */
-@media (max-width: 1280px) {
+/* El índice fijo (280px + margen) solapa la columna de texto (1200px centrados)
+   por debajo de ~1536px. Hasta ahí, índice móvil. */
+@media (max-width: 1535px) {
   .sticky-toc {
     display: none;
   }
