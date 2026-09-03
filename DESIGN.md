@@ -117,7 +117,7 @@ La paleta tiene cuatro registros y un solo acento. Temperatura cálida unificada
 
 - **Text-low `rgba(250,248,246,0.55)`:** Metadata visible pero subordinada. Fechas, roles, tags.
 
-- **Text-faint `rgba(250,248,246,0.35)`:** Texto decorativo o de wayfinding. Numeración de secciones, separadores tipográficos.
+- **Text-faint `rgba(250,248,246,0.40)`:** Solo texto grande (≥24px, o ≥18.66px en bold) o decorativo: numeración de secciones, separadores. Da 3.6:1 sobre surface, que es el mínimo WCAG para texto grande. Nunca para cuerpo, metadata ni fuentes: ahí el piso es text-low (0.55, 5.5:1).
 
 - **Border `rgba(250,248,246,0.12)`:** Divisores sutiles. No competir con el contenido.
 
@@ -125,19 +125,19 @@ La paleta tiene cuatro registros y un solo acento. Temperatura cálida unificada
 
 - **Focus-ring `rgba(193,111,82,0.2)`:** Anillo de foco para accesibilidad. Ver Elevation & Depth.
 
-La jerarquía por opacidad se mantiene intencional. La base cálida (`rgba(250,248,246,...)` en lugar de `rgba(255,255,255,...)`) es el cambio core — permite profundidad jerárquica sin agresividad visual.
+Regla operativa: la jerarquía se construye con tamaño y peso primero, y con los cuatro niveles de alpha después. No se aplica `opacity` a elementos con texto legible: el alpha ya está calibrado y la opacidad encima lo rompe (0.75 × 0.6 = 0.45, que no pasa AA). La jerarquía por opacidad se mantiene intencional. La base cálida (`rgba(250,248,246,...)` en lugar de `rgba(255,255,255,...)`) es el cambio core — permite profundidad jerárquica sin agresividad visual.
 
 ## Typography
 
-**Familia única: Plus Jakarta Sans (Google Fonts).**
+**Familia única: Plus Jakarta Sans (self-hosted).**
 
 **Evolución v1 → v2 → v2.1:** La versión alpha usaba Space Mono monowidth exclusiva — identidad radical donde cada texto se leía "como material de estudio". La v2 beta-inclusive especificó un híbrido ZT Bros Oskon (display) + Chivo (body) que **nunca llegó a producción**: el sitio se construyó entero sobre Plus Jakarta Sans. La v2.1 (2026-06-11) reconoce esa realidad y la consolida como decisión: una sola familia, jerarquía por peso y tamaño.
 
-**Plus Jakarta Sans** (Tokotype, opensource, vía Google Fonts):
+**Plus Jakarta Sans** (Tokotype, opensource, servida desde `/fonts/`):
 - Uso: todo el sistema — headings, navegación, body copy, metadata, CTAs
 - Carácter: Geométrica humanista, moderna sin ser genérica. Buena legibilidad en textos largos y personalidad suficiente en titulares con peso 600-700.
 - Pesos cargados: 300, 400, 500, 600, 700 + itálica 400. No cargar pesos que no se usan.
-- Carga: `<link>` en el `<head>` de cada página (nunca `@import` dentro del CSS — bloquea el render en cadena).
+- Carga: `@font-face` en `styles.css` apuntando a `/fonts/plus-jakarta-sans-latin*.woff2` (variable 400..700, subset latin, `font-display: swap`), más `<link rel="preload" as="font">` de la regular en cada `<head>`. Sin Google Fonts: un origen menos en la CSP, sin dependencia externa, y el mismo archivo se cachea para todo el sitio. Nunca `@import` dentro del CSS.
 - Jerarquía: peso 600-700 para headings y CTAs, 400-500 para body y metadata. La jerarquía se apoya en tamaño, peso y opacidad.
 
 **Rationale de v2.1:** El híbrido Bros Oskon + Chivo era una especificación sin implementación (0% en producción). Mantener una fuente de verdad que contradice el 100% del sitio generaba drift permanente. Plus Jakarta Sans ya demostró funcionar en todos los contextos del sitio (hero, artículos largos, formularios, metadata). Las fuentes Bros Oskon y Chivo se retiraron del repo.

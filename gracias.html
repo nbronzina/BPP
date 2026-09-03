@@ -23,17 +23,13 @@
     <meta name="theme-color" content="#1a1512">
 
     <!-- Security Policies -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://plausible.io; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://plausible.io; base-uri 'self';">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Preconnect to External Services -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://plausible.io">
 
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..700;1,400..700&display=swap">
 
     <!-- Critical CSS Inline -->
     <style>
@@ -41,6 +37,7 @@
     </style>
 
     <!-- Full Styles (Async) -->
+    <link rel="preload" href="fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.min.css">
 
     <!-- Analytics - Plausible -->

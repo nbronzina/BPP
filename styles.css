@@ -1,3 +1,21 @@
+/* Plus Jakarta Sans self-hosted (variable 400..700, subset latin). Sin dependencia de Google. */
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('fonts/plus-jakarta-sans-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: italic;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('fonts/plus-jakarta-sans-latin-italic.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* Plus Jakarta Sans se carga vía <link> en el <head> de cada página
    (evita la cadena render-blocking de @import dentro del CSS) */
 
@@ -25,6 +43,13 @@
     --color-text-light: #faf8f6;        /* Unificado con primary */
     --color-text-secondary: rgba(250, 248, 246, 0.87);  /* Warm off-white con opacidad - WCAG AA */
     --color-text-muted: rgba(250, 248, 246, 0.65);      /* Muted pero mantiene temperatura cálida */
+    /* Jerarquía de texto verificada sobre surface #221d18 (WCAG 2.1):
+       high 0.95 → 15.6:1 · mid 0.75 → 9.4:1 · low 0.55 → 5.5:1 (mínimo para texto de cuerpo, AA)
+       faint 0.40 → 3.6:1: SOLO texto grande (≥24px o ≥18.66px bold) o decorativo. Nunca cuerpo. */
+    --color-text-high: rgba(250, 248, 246, 0.95);
+    --color-text-mid: rgba(250, 248, 246, 0.75);
+    --color-text-low: rgba(250, 248, 246, 0.55);
+    --color-text-faint: rgba(250, 248, 246, 0.40);
 
     /* Accent colors (legacy compatibility) */
     --color-accent: var(--orange-500);
@@ -612,12 +637,6 @@ body.secondary-page .nav-logo {
     font-weight: 700;
 }
 
-.nav-coming-soon {
-    opacity: 0.3;
-    cursor: default;
-    pointer-events: none;
-    font-size: inherit;
-}
 
 .mobile-menu-btn {
     display: flex;
@@ -2016,9 +2035,9 @@ body.secondary-page .nav-logo {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 2rem;  /* Reducido de 2.5rem: menos altura en mobile */
     font-weight: 700;
+    color: var(--color-text-faint);
     line-height: 1;
     color: var(--color-accent);
-    opacity: 0.3;
     margin-bottom: var(--space-4);  /* Reducido de --space-6 */
 }
 
@@ -2125,8 +2144,7 @@ body.secondary-page .nav-logo {
 }
 
 .proof-separator {
-    color: var(--color-text);
-    opacity: 0.4;
+    color: var(--color-text-low);
     margin: 0 var(--space-3);
 }
 
@@ -2230,8 +2248,7 @@ footer {
 
 .footer-separator {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    color: var(--color-text);
-    opacity: 0.4;
+    color: var(--color-text-low);
     display: none !important;  /* Force hidden on mobile, even if JS tries to show */
 }
 
@@ -2263,7 +2280,7 @@ footer {
 }
 
 .footer-location {
-    opacity: 0.4;
+    color: var(--color-text-low);
 }
 
 .footer-link {
@@ -2293,7 +2310,7 @@ footer {
 .footer-colofon {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.9375rem;
-    color: rgba(250, 248, 246, 0.35);
+    color: var(--color-text-low);
     margin-top: var(--space-3);
 }
 
@@ -2317,7 +2334,7 @@ footer {
     width: 24px;
     height: 24px;
     fill: var(--color-text);
-    opacity: 0.4;
+    opacity: 0.55;
     transition: opacity var(--transition-normal), transform var(--transition-normal), fill var(--transition-normal);
 }
 
@@ -2532,8 +2549,7 @@ footer {
 .contact-street {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
-    color: var(--color-text);
-    opacity: 0.4;
+    color: var(--color-text-low);
     line-height: 1.6;
 }
 
@@ -6359,7 +6375,7 @@ html {
 .senal-fuente {
   font-size: 0.9375rem;
   line-height: 1.5;
-  color: rgba(250, 248, 246, 0.45);
+  color: var(--color-text-low);
   margin-top: var(--space-4);
   padding-top: var(--space-3);
   border-top: 1px solid rgba(250, 248, 246, 0.06);
