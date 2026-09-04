@@ -5,10 +5,10 @@ description: Sistema visual del estudio. Fondo dark warm gray, tipografía Plus 
 evolution: "v1 (alpha) usaba Space Mono monowidth + negro puro + contraste alto como signature. v2 (beta-inclusive) prioriza diseño inclusivo: reduce fatiga visual con warm off-white, terracota desaturado, y dark warm gray. v2.1 consolida la tipografía en Plus Jakarta Sans como familia única (decisión 2026-06-11). v2.2 (soft-editorial, decisión 2026-08-21) abandona la geometría de wireframe: los corner brackets dejan de ser dispositivo global y quedan reservados como firma de La Usina; los bordes de 1px bajan a susurro (alpha ≤ 0.15) y la elevación pasa a superficie + sombra cálida; radios md 8px → 16px; badges rectangulares → pill; se suma grano análogo sutil (~3.5% opacity) sobre toda la página."
 colors:
   primary: "#c16f52"
-  on-primary: "#1a1512"
-  background: "#1a1512"
-  background-deep: "#16110e"   # registro hondo: secciones de peso (services, contacto)
-  surface: "#221d18"
+  on-primary: "#12151a"
+  background: "#12151a"
+  background-deep: "#0d1014"   # registro hondo: secciones de peso (services, contacto)
+  surface: "#1a1e25"
   text-high: "rgba(250,248,246,0.95)"
   text-mid: "rgba(250,248,246,0.75)"
   text-low: "rgba(250,248,246,0.55)"
@@ -107,9 +107,9 @@ La paleta tiene cuatro registros y un solo acento. Temperatura cálida unificada
 
 - **Primary `#c16f52`:** Terracotta BPP. Único acento del sistema. Desaturado ~15% vs. v1 para reducir agresividad visual sin perder identidad. Aparece en CTAs tipográficos, brackets esquineros, puntos de énfasis en datos, y en estados activos. Nunca como fondo de bloque completo. Nunca en variantes (no hay primary-light, primary-dark, primary-container). Un solo valor, usado con intención. **No se vuelve a saturar** — la dirección es terracotta orgánico, no "highlighter alert".
 
-- **Background `#1a1512`:** Dark warm gray del sistema. Lifted ~40% lightness vs. negro puro (`#0a0a0a` de v1) para reducir contraste extremo. Mantiene atmósfera oscura editorial pero elimina "halo effect" de texto blanco sobre negro puro. Temperatura marrón (no gris neutro) armoniza con terracotta y off-white.
+- **Background `#12151a`:** Dark warm gray del sistema. Lifted ~40% lightness vs. negro puro (`#0a0a0a` de v1) para reducir contraste extremo. Mantiene atmósfera oscura editorial pero elimina "halo effect" de texto blanco sobre negro puro. Temperatura marrón (no gris neutro) armoniza con terracotta y off-white.
 
-- **Surface `#221d18`:** Elevated surface. Ligeramente más claro que background para jerarquía de profundidad en cards.
+- **Surface `#1a1e25`:** Elevated surface. Ligeramente más claro que background para jerarquía de profundidad en cards.
 
 - **Text-high `rgba(250,248,246,0.95)`:** Texto principal. Warm off-white en lugar de blanco puro. Headlines, párrafos de cuerpo, contenido que el lector debe absorber. El tono cálido reduce fatiga ocular y armoniza con la paleta marrón-terracotta.
 
@@ -137,10 +137,10 @@ Tokens (definidos en `:root` de `styles.css`):
 |---|---|---|---|
 | `--paper` | `#f4efe8` | superficie de lectura (nunca blanco puro) | — |
 | `--paper-elevated` | `#faf7f2` | cards sobre paper | — |
-| `--ink-high` | `rgba(26,21,18,0.95)` | headings, cuerpo | 14.1:1 |
-| `--ink-mid` | `rgba(26,21,18,0.78)` | segundo nivel (ficha `dd`, strong en fuentes) | 8.3:1 |
-| `--ink-low` | `rgba(26,21,18,0.66)` | metadata, fuentes — **piso** para cuerpo y metadata | 5.5:1 |
-| `--ink-border` | `rgba(26,21,18,0.14)` | divisores, bordes de card | — |
+| `--ink-high` | `rgba(18, 21, 26,0.95)` | headings, cuerpo | 14.1:1 |
+| `--ink-mid` | `rgba(18, 21, 26,0.78)` | segundo nivel (ficha `dd`, strong en fuentes) | 8.3:1 |
+| `--ink-low` | `rgba(18, 21, 26,0.66)` | metadata, fuentes — **piso** para cuerpo y metadata | 5.5:1 |
+| `--ink-border` | `rgba(18, 21, 26,0.14)` | divisores, bordes de card | — |
 | `--accent-on-paper` | `#9a4f36` | links, labels, `dt` de ficha, foco | 5.2:1 |
 | `--accent-on-paper-hover` | `#7f3f2a` | hover de links | 6.9:1 |
 
@@ -148,7 +148,7 @@ Tokens (definidos en `:root` de `styles.css`):
 - No hay registro *faint* sobre papel: `--color-text-faint` se remapea a `--ink-low`.
 - Los links dentro del cuerpo llevan subrayado además del color (acento vs tinta queda en 2.7:1, no alcanza para distinguir solo por color).
 - Foco visible: el anillo terracota al 0.55 da 1.8:1 sobre papel; en el alcance de lectura se usa `--accent-on-paper` sólido (5.2:1).
-- Cards sobre papel: `--paper-elevated` + borde `--ink-border` + sombra de tinta (`rgba(26,21,18,0.28)`, misma geometría que `--shadow-card`), no el borde terracota que separaba sobre oscuro.
+- Cards sobre papel: `--paper-elevated` + borde `--ink-border` + sombra de tinta (`rgba(18, 21, 26,0.28)`, misma geometría que `--shadow-card`), no el borde terracota que separaba sobre oscuro.
 - Los elementos fijos que flotan sobre el papel (índice lateral, botones de compartir) pasan a superficie opaca oscura; siguen fuera del remapeo.
 - El grano del `body::after` se mantiene: es ruido neutro y lee igual sobre papel.
 
@@ -189,7 +189,7 @@ El sistema usa elevación con mucha mesura. No hay dramatismo de sombra, pero ta
 **Permitido:**
 
 - **Shadow sutil para separación de cards:** `0 2px 8px rgba(0,0,0,0.3)` o hasta `0 4px 20px rgba(0,0,0,0.4)`. Regla operativa: `alpha ≤ 0.4`, `blur ≤ 24px`, color siempre negro. Existe para separar tarjetas del fondo cuando la jerarquía por opacidad no alcanza. No para "dar peso" ni para crear efecto cinemático.
-- **Focus ring (accesibilidad):** `box-shadow: 0 0 0 3px rgba(193,111,82,0.55)` aplicado en `:focus-visible`. El alpha 0.55 es el mínimo para cumplir contraste no-textual 3:1 (WCAG 2.4.7) sobre el fondo `#1a1512` — el valor histórico 0.2 era prácticamente invisible. Es requisito WCAG, no decoración. No se remueve ni se oculta.
+- **Focus ring (accesibilidad):** `box-shadow: 0 0 0 3px rgba(193,111,82,0.55)` aplicado en `:focus-visible`. El alpha 0.55 es el mínimo para cumplir contraste no-textual 3:1 (WCAG 2.4.7) sobre el fondo `#12151a` — el valor histórico 0.2 era prácticamente invisible. Es requisito WCAG, no decoración. No se remueve ni se oculta.
 
 **Prohibido en la web:**
 
@@ -283,7 +283,7 @@ Esta sección captura los errores que se repiten y que el sistema necesita docum
 - **No reintroducir el híbrido Bros Oskon + Chivo.** Fue una especificación v2 que nunca llegó a producción; v2.1 consolidó Plus Jakarta Sans como familia única (decisión 2026-06-11).
 - **No agregar familias tipográficas adicionales** (Atkinson, IBM Plex, Lexend, Work Sans, Inter ya fueron retiradas o rechazadas). Una sola familia.
 - **No saturar el terracotta.** `#ce7352` era v1. `#c16f52` es v2 — no se vuelve a saturar.
-- **No bajar el fondo a negro puro.** `#0a0a0a` era v1. `#1a1512` es v2 (lifted para reducir contraste extremo).
+- **No bajar el fondo a negro puro.** `#0a0a0a` era v1. `#12151a` es v2 (lifted para reducir contraste extremo).
 - **No usar blanco puro.** `rgba(255,255,255,...)` era v1. `rgba(250,248,246,...)` es v2 (warm off-white inclusivo).
 - **No usar `transform: scale(...)` en hovers decorativos.** Ni en CTAs, ni en botones PWA, ni en íconos sociales, ni en "touch feedback" genérico.
 - **No usar `transform: translateY(...)` en hovers** (empujes verticales tipo "levitar").
@@ -336,7 +336,7 @@ Este archivo (v2 beta-inclusive) cumple parcialmente con la especificación `@go
 
 **v2 beta-inclusive (2026-05-04):**
 - Tipografía: Space Mono monowidth única → ZT Bros Oskon (display/headings) + Chivo (body)
-- Background: `#0a0a0a` negro puro → `#1a1512` dark warm gray lifted
+- Background: `#0a0a0a` negro puro → `#12151a` dark warm gray lifted
 - Text: `rgba(255,255,255,...)` blanco puro → `rgba(250,248,246,...)` warm off-white
 - Primary: `#ce7352` naranja saturado → `#c16f52` terracotta desaturado
 - Rationale: Priorización de diseño inclusivo sobre signature de alto contraste. Reduce fatiga visual, mejora legibilidad en textos largos, mantiene identidad editorial.
@@ -345,3 +345,13 @@ Este archivo (v2 beta-inclusive) cumple parcialmente con la especificación `@go
 - Sistema original: Space Mono exclusiva, negro puro, contraste alto
 - Signature: Monowidth radical, alto contraste como parte de identidad
 - Mantenido en archivos `_archive/` para referencia histórica
+
+## Paleta Tinta (v2.4, 2026-09)
+
+Decisión de los socios: se mantiene el oscuro, cambia la base. El marrón cálido (`#1a1512`) pesaba y se había vuelto genérico. La base pasa a un azul-negro frío, **Tinta**, y el terracota y el texto crema quedan como lo único cálido: por eso el acento salta más que antes.
+
+- `--color-bg: #12151a` · `--color-surface: #1a1e25` · `--color-bg-deep: #0d1014` · `--color-bg-warm: #161a20` · `--color-border: #2b313a`
+- Tinta sobre papel: `rgba(18, 21, 26, …)`, el mismo azul-negro del marco. El papel sigue cálido (`#f4efe8`).
+- Acento sin cambios: `#c16f52` (y `#9a4f36` sobre papel).
+- Retratos del equipo recompuestos sobre `#12151a`.
+- Hero acotado a `clamp(520px, 78svh, 820px)`, bloque centrado; la sección siguiente arranca a 48px.
