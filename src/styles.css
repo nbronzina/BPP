@@ -2673,7 +2673,10 @@ footer {
     gap: 0;
     align-items: stretch;
     min-height: auto;
-    border-top: 1px solid rgba(250, 248, 246, 0.06);  /* v2.2: separador susurro */
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;  /* una sola tarjeta: imagen y texto en el mismo recuadro */
 }
 
 /* Mobile: entradas pares usan misma estructura */
@@ -2696,7 +2699,6 @@ footer {
     height: auto;
     aspect-ratio: 16 / 9;  /* Las ilustraciones son 16:9: se ven enteras, sin recorte */
     order: -1;  /* Always first on mobile */
-    border-radius: var(--border-radius);  /* v2.2: geometría blanda */
 }
 
 /* Fade-up reveal for entire card (image + text together) */
@@ -2725,15 +2727,6 @@ footer {
 }
 
 /* Border on image when it's on the left (first child) */
-.actividad-entrada > .actividad-imagen:first-child {
-    border-left: 1px solid rgba(250, 248, 246, 0.12);
-}
-
-/* Border on image when it's on the right (last child) */
-.actividad-entrada > .actividad-imagen:last-child {
-    border-left: 1px solid rgba(250, 248, 246, 0.12);
-}
-
 .actividad-imagen img {
     width: 100%;
     height: 100%;
@@ -2746,7 +2739,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: var(--color-surface);
+    background: transparent;
     order: 0;  /* Always second on mobile */
 }
 
@@ -2852,13 +2845,13 @@ footer {
 /* Activities Section - Desktop Enhancement */
 @media (min-width: 769px) {
     .actividad-entrada {
-        grid-template-columns: 1.2fr 1fr;
+        grid-template-columns: 1.5fr 1fr;  /* imagen más ancha = más alta: iguala la altura del texto */
         min-height: 0;
-        align-items: start;
+        align-items: stretch;
     }
 
     .actividad-entrada:nth-child(even) {
-        grid-template-columns: 1fr 1.2fr;
+        grid-template-columns: 1fr 1.5fr;
         direction: ltr;
     }
 
@@ -2872,14 +2865,15 @@ footer {
 
     .actividad-imagen {
         height: auto;
-        align-self: start;   /* no se estira a la altura del texto */
-        position: sticky;    /* acompaña la lectura cuando el texto es más largo que la imagen */
-        top: 100px;
+        align-self: stretch;
+        position: relative;
+        aspect-ratio: auto;
+        min-height: 0;
         order: 0;  /* Default order on desktop */
     }
 
     .actividad-texto {
-        padding: var(--space-12) 3.5rem;
+        padding: var(--space-8) var(--space-10);
         order: 0;  /* Default order on desktop */
     }
 
@@ -5018,7 +5012,7 @@ img {
 /* Variante contain: para portadas con texto (ej: Tesis 01 La Usina).
    El fondo replica el de la portada para que el letterbox sea invisible. */
 .actividad-imagen--contain {
-  background: #12151a;
+  background: transparent;
 }
 
 .actividad-imagen--contain img {
@@ -6172,4 +6166,22 @@ body.legal-page.page-papel .nav-logo {
 /* El índice es navegación, no prosa: sin el subrayado de links de cuerpo. */
 .page-papel main .indice-archival .indice-fila a {
     text-decoration: none;
+}
+
+/* Tarjetas de artículos: la fila la manda el texto, acotado a siete líneas; la imagen
+   ocupa esa altura y se ve entera (contain), nunca recortada. Sin sticky. */
+@media (min-width: 769px) {
+    .actividad-imagen img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    .actividad-descripcion {
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 }
