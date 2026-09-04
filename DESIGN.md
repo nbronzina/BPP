@@ -355,3 +355,7 @@ Decisión de los socios: se mantiene el oscuro, cambia la base. El marrón cáli
 - Acento sin cambios: `#c16f52` (y `#9a4f36` sobre papel).
 - Retratos del equipo recompuestos sobre `#12151a`.
 - Hero acotado a `clamp(520px, 78svh, 820px)`, bloque centrado; la sección siguiente arranca a 48px.
+
+### Tinta en todo el sitio (2026-09-04)
+
+Los socios pidieron sacar el papel: los tres documentos largos vuelven a fondo Tinta, con la serif y los 19px de cuerpo intactos. El sistema de superficie de lectura (v2.3) no se borra: sus reglas quedan bajo `body.page-papel`, que ninguna página usa. `body.page-lectura` ahora significa solo "lectura larga": serif en la prosa y nav sólido.

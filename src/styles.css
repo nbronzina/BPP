@@ -4090,7 +4090,7 @@ img {
 /* Exception: cta-primary buttons keep their dark text on orange background */
 .reporte-page .cta-primary,
 .legal-page .cta-primary {
-  color: #12151a !important;
+  color: var(--color-accent);
 }
 
 .legal-page a:hover,
@@ -5611,9 +5611,9 @@ html {
   color: var(--color-accent);
 }
 
-/* ============ v2.3: superficie de lectura (Fase 4) ============ */
+/* ============ v2.3: superficie de lectura, DORMIDA (body.page-papel). Los socios eligieron todo Tinta (2026-09); el sistema de papel queda disponible pero ninguna página lo usa. ============ */
 /* Oscuro = marca (nav, footer, hero). Papel = lectura larga. Las páginas
-   con body.page-lectura (reporte de natalidad, Trace Group, tesis-01) son
+   con body.page-papel (reporte de natalidad, Trace Group, tesis-01) son
    documentos de 2.000-3.000 palabras leídos por gente de 50-60 años del
    sector público: el cuerpo pasa a --paper, el resto no se toca. El corte
    entre hero oscuro y papel es una línea, no un degradé. */
@@ -5621,11 +5621,11 @@ html {
 /* main es papel de borde a borde. El hero (max-width centrado) vuelve al
    registro oscuro con sangrado horizontal: box-shadow pinta a los lados y
    clip-path lo recorta al alto exacto del hero, sin overflow. */
-.page-lectura main {
+.page-papel main {
     background: var(--paper);
 }
 
-.page-lectura .hero-section {
+.page-papel .hero-section {
     background: var(--color-bg);
     box-shadow: 0 0 0 100vmax var(--color-bg);
     clip-path: inset(0 -100vmax);
@@ -5634,7 +5634,7 @@ html {
 /* Alcance: toda sección de main que no sea el hero. Los tokens se remapean
    acá, así las reglas existentes (headings, ficha, fuentes, links, cards)
    siguen solas sin duplicar selectores. */
-.page-lectura main > section:not(.hero-section) {
+.page-papel main > section:not(.hero-section) {
     background: var(--paper);
     color: var(--ink-high);
 
@@ -5662,137 +5662,137 @@ html {
 
 /* Cuerpo: tinta alta, sin la opacidad 0.75 del registro oscuro
    (DESIGN.md: no se apila opacity sobre texto legible). */
-.page-lectura .reporte-section p,
-.page-lectura .reporte-section li {
+.page-papel .reporte-section p,
+.page-papel .reporte-section li {
     color: var(--ink-high);
     opacity: 1;
 }
 
 /* Metadata y fuentes: ink-low, el piso AA sobre papel. */
-.page-lectura .reporte-section .reporte-fuente,
-.page-lectura .reporte-section .ficha-caso-fuentes,
-.page-lectura .thesis-cite__note {
+.page-papel .reporte-section .reporte-fuente,
+.page-papel .reporte-section .ficha-caso-fuentes,
+.page-papel .thesis-cite__note {
     color: var(--ink-low);
 }
 
-.page-lectura .reporte-section .reporte-fuente {
+.page-papel .reporte-section .reporte-fuente {
     border-top-color: var(--ink-border);
 }
 
 /* Cards y acordeones: superficie elevada + borde susurro + sombra de tinta,
    en lugar del borde terracota que separaba sobre fondo oscuro. */
-.page-lectura main .actividad-card--light,
-.page-lectura main .scenario-accordion-header,
-.page-lectura main .scenario-accordion-content {
+.page-papel main .actividad-card--light,
+.page-papel main .scenario-accordion-header,
+.page-papel main .scenario-accordion-content {
     background: var(--paper-elevated);
     border-color: var(--ink-border);
 }
 
-.page-lectura main .actividad-card--light {
+.page-papel main .actividad-card--light {
     box-shadow: var(--shadow-card);
 }
 
-.page-lectura main .scenario-accordion-header:hover {
+.page-papel main .scenario-accordion-header:hover {
     background: rgba(154, 79, 54, 0.06);
     border-color: var(--accent-on-paper);
 }
 
-.page-lectura main .scenario-accordion-header.active {
+.page-papel main .scenario-accordion-header.active {
     border-bottom-color: transparent;
 }
 
 /* Separadores entre secciones. El primero, pegado al hero, se apaga:
    el corte oscuro/papel ya es el separador. */
-.page-lectura main .section-separator {
+.page-papel main .section-separator {
     border-top-color: var(--ink-border);
 }
 
-.page-lectura main .hero-section + .section-separator {
+.page-papel main .hero-section + .section-separator {
     border-top-color: transparent;
 }
 
 /* Callouts: tinte del acento de papel, no del terracota de pantalla. */
-.page-lectura main .pull-quote {
+.page-papel main .pull-quote {
     background: rgba(154, 79, 54, 0.07);
 }
 
-.page-lectura main .highlight-box {
+.page-papel main .highlight-box {
     background: rgba(154, 79, 54, 0.08);
 }
 
-.page-lectura main .highlight-box::before {
+.page-papel main .highlight-box::before {
     background: var(--paper-elevated);  /* la card, no el papel: tapa el borde sin escalón */
 }
 
-.page-lectura main .quote-box {
+.page-papel main .quote-box {
     background: rgba(154, 79, 54, 0.06);
     border-left-color: var(--accent-on-paper);
 }
 
 /* Cifra hero del reporte: ≥40px bold, único lugar donde el terracota de
    marca (#c16f52, 3.2:1) sigue siendo AA sobre papel. */
-.page-lectura main .impact-number-hero {
+.page-papel main .impact-number-hero {
     color: var(--orange-500);
 }
 
 /* Links dentro del cuerpo: subrayado además del color (acento vs tinta
    queda en 2.7:1, no alcanza para distinguir solo por color). */
-.page-lectura main > section:not(.hero-section) p a,
-.page-lectura main > section:not(.hero-section) li a,
-.page-lectura main > section:not(.hero-section) dd a {
+.page-papel main > section:not(.hero-section) p a,
+.page-papel main > section:not(.hero-section) li a,
+.page-papel main > section:not(.hero-section) dd a {
     text-decoration: underline;
     text-decoration-color: rgba(154, 79, 54, 0.45);
     text-underline-offset: 3px;
 }
 
-.page-lectura main .cta-primary {
+.page-papel main .cta-primary {
     text-decoration-color: rgba(154, 79, 54, 0.45);
 }
 
 /* .reporte-page .cta-primary fija #12151a !important (resto de cuando el
    CTA era botón relleno). Sobre papel el CTA vuelve al acento. */
-.page-lectura .reporte-section .cta-primary {
+.page-papel .reporte-section .cta-primary {
     color: var(--accent-on-paper) !important;
 }
 
-.page-lectura .reporte-section .cta-primary:hover {
+.page-papel .reporte-section .cta-primary:hover {
     color: var(--accent-on-paper-hover) !important;
 }
 
 /* Foco visible sobre papel: el anillo terracota al 0.55 da 1.8:1 sobre
    --paper; el acento de papel sólido da 5.2:1 (WCAG 2.4.7 pide 3:1). */
-.page-lectura main > section:not(.hero-section) :focus-visible {
+.page-papel main > section:not(.hero-section) :focus-visible {
     box-shadow: 0 0 0 3px var(--accent-on-paper);
 }
 
 /* Selección: marcador claro, tinta encima (9.6:1). */
-.page-lectura main > section:not(.hero-section) ::selection {
+.page-papel main > section:not(.hero-section) ::selection {
     background: rgba(154, 79, 54, 0.35);
     color: #12151a;
 }
 
 /* Tesis: bordes de visor y fallback en tinta. */
-.page-lectura .thesis-viewer,
-.page-lectura .thesis-viewer-fallback {
+.page-papel .thesis-viewer,
+.page-papel .thesis-viewer-fallback {
     border-color: var(--ink-border);
 }
 
 /* Elementos fijos que flotan sobre el papel: el índice y los botones de
    compartir eran translúcidos sobre oscuro; acá necesitan superficie
    opaca para seguir siendo oscuros (siguen fuera del remapeo de tokens). */
-.page-lectura .sticky-toc {
+.page-papel .sticky-toc {
     background: var(--color-surface);
     backdrop-filter: none;
 }
 
-.page-lectura .share-buttons a {
+.page-papel .share-buttons a {
     background: var(--color-surface);
 }
 
-/* Sobre paper, el nav translúcido se lee como una barra gris: se hace sólido. */
+/* En páginas de lectura el nav va sólido. */
 .page-lectura nav { background: var(--color-bg); }
 
-/* Serif para lectura larga: el cuerpo del texto sobre papel va en Literata.
+/* Serif para lectura larga: el cuerpo del texto de los documentos va en Literata.
    Títulos, labels, dt, botones, nav y metadata se quedan en Plus Jakarta Sans.
    El tamaño sube apenas porque la serif tiene ojo medio más chico a igual cuerpo. */
 .page-lectura main > section:not(.hero-section) :is(p, li, dd, blockquote, figcaption, td) {
