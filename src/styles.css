@@ -1074,9 +1074,9 @@ body.secondary-page .nav-logo {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(ellipse at 30% 40%, rgba(193, 111, 82, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 60%, rgba(193, 111, 82, 0.06) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(193, 111, 82, 0.04) 0%, transparent 60%);
+        radial-gradient(ellipse at 30% 40%, rgba(150, 175, 215, 0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(150, 175, 215, 0.05) 0%, transparent 50%),
+        linear-gradient(135deg, rgba(150, 175, 215, 0.03) 0%, transparent 60%);
 }
 
 .hero-immersive .hero-grid {
@@ -1580,12 +1580,12 @@ body.secondary-page .nav-logo {
     align-items: flex-start;
     gap: var(--space-3);
     padding: var(--space-4);
-    background: rgba(193, 111, 82, 0.03);
+    background: rgba(250, 248, 246, 0.03);
     transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .transformation-card:hover {
-    background: rgba(193, 111, 82, 0.06);
+    background: rgba(250, 248, 246, 0.06);
 }
 
 .transformation-card .card-icon {
@@ -3453,10 +3453,20 @@ img {
   line-height: var(--line-height-body);
 }
 
-.legal-page .container {
+.legal-page .container,
+.legal-page .legal-hero,
+.legal-page .legal-content {
   max-width: 900px;
   margin: 0 auto;
-  padding: var(--space-16) var(--space-8);
+  padding: 0 var(--space-8);
+}
+.legal-page .legal-hero {
+  /* Debajo del nav fijo */
+  padding-top: calc(var(--space-16) + 72px);
+  padding-bottom: var(--space-8);
+}
+.legal-page .legal-content {
+  padding-bottom: var(--space-20);
 }
 
 .legal-page h1 {
@@ -3845,7 +3855,7 @@ img {
 .service-timeline {
     margin-top: var(--space-6);
     padding: var(--space-6);
-    background: rgba(193, 111, 82, 0.05);
+    background: rgba(250, 248, 246, 0.04);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
     display: none;
@@ -4293,7 +4303,7 @@ img {
 .pull-quote {
   margin: var(--space-8) 0; /* Mobile base */
   padding: 1.5rem 1.5rem var(--space-6) var(--space-8); /* Mobile base */
-  background: linear-gradient(135deg, rgba(193, 111, 82, 0.08), rgba(212, 132, 94, 0.05));
+  background: rgba(250, 248, 246, 0.04);
   border-radius: 8px;
   position: relative;
 }
@@ -4690,14 +4700,13 @@ img {
   height: 52px;
   max-height: none;
   object-fit: contain;
-  opacity: 0.7;
-  filter: grayscale(100%) brightness(1.35);
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.3s ease;
 }
 
 .logo-item:hover img {
-  opacity: 0.9;
-  filter: grayscale(0%);
+  opacity: 1;
 }
 
 /* Visual normalization by aspect ratio */
@@ -4754,12 +4763,10 @@ img {
 }
 
 /* Logo CESBA: invertir para mostrarlo blanco */
-.logo-item img[src*="logo-cesba"] {
-  filter: brightness(0) invert(1) grayscale(100%);
-}
-
+.logo-item img[src*="logo-cesba"],
 .logo-item:hover img[src*="logo-cesba"] {
-  filter: brightness(0) invert(1) grayscale(0%);
+  /* El archivo es negro puro sobre transparente: invertido a blanco, forma intacta */
+  filter: brightness(0) invert(1);
 }
 
 /* Testimonials: sección eliminada — el CSS era huérfano (ningún HTML la usa) */
@@ -5284,7 +5291,7 @@ img {
    (La clase existía en el HTML pero su CSS se perdió — se redefine acá.) */
 .section--orange-950 {
     background:
-        radial-gradient(1200px 480px at 18% -8%, rgba(193, 111, 82, 0.07), transparent 65%),
+        radial-gradient(1200px 480px at 18% -8%, rgba(150, 175, 215, 0.06), transparent 65%),
         var(--color-bg-deep);
 }
 
@@ -5292,7 +5299,7 @@ img {
    la variación de posición es deliberada (craft, no template). */
 .contact-form-section {
     background:
-        radial-gradient(1000px 420px at 85% 0%, rgba(193, 111, 82, 0.06), transparent 60%),
+        radial-gradient(1000px 420px at 85% 0%, rgba(150, 175, 215, 0.05), transparent 60%),
         var(--color-bg-deep);
 }
 
@@ -5318,7 +5325,7 @@ img {
 
 /* Scrollbar en paleta (antes: gris default) */
 html {
-    scrollbar-color: #3a2e24 #12151a;
+    scrollbar-color: #2b313a #12151a;
     scrollbar-width: thin;
 }
 
@@ -5331,7 +5338,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3a2e24;
+    background: #2b313a;
     border-radius: 999px;
     border: 2px solid #12151a;
 }
@@ -5813,8 +5820,8 @@ html {
     line-height: inherit;
 }
 
-/* ============ v2.4 (prototipo): marco oscuro, contenido en papel ============ */
-/* Extiende body.page-lectura a index, Hechos, Pensamiento y Privacidad para que
+/* ============ v2.4 (prototipo, DORMIDO): marco oscuro, contenido en papel. Reglas bajo body.page-papel, que ninguna página usa. ============ */
+/* Extiende body.page-papel a index, Hechos, Pensamiento y Privacidad para que
    los socios decidan una dirección de paleta. Regla: nav, hero y footer siguen
    oscuros tal cual; cada sección de contenido va sobre --paper con tinta. Los
    componentes con oscuro hardcodeado (literales rgba(250,248,246,…) y fondos
@@ -5822,11 +5829,11 @@ html {
    oscuras originales no se tocan. */
 
 /* --- Heros: el del inicio (#hero.hero) y el legal (div.legal-hero) --- */
-.page-lectura main > .hero {
+.page-papel main > .hero {
     background: var(--color-bg);
 }
 
-.page-lectura .legal-hero {
+.page-papel .legal-hero {
     max-width: 900px;
     margin: 0 auto;
     padding: 110px var(--space-6) var(--space-10);
@@ -5835,7 +5842,7 @@ html {
     clip-path: inset(0 -100vmax);
 }
 
-.page-lectura .legal-label {
+.page-papel .legal-label {
     font-size: 0.9375rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -5843,11 +5850,11 @@ html {
     margin-bottom: var(--space-4);
 }
 
-.page-lectura .legal-date {
+.page-papel .legal-date {
     color: var(--color-text-low);
 }
 
-.page-lectura main > .legal-content {
+.page-papel main > .legal-content {
     max-width: 900px;
     margin: 0 auto;
     padding: var(--space-12) var(--space-6) var(--space-16);
@@ -5860,134 +5867,134 @@ body.legal-page.page-lectura nav {
     pointer-events: auto;
 }
 
-body.legal-page.page-lectura .nav-logo {
+body.legal-page.page-papel .nav-logo {
     opacity: 1;
 }
 
-.page-lectura .legal-link:focus-visible {
+.page-papel .legal-link:focus-visible {
     outline-color: var(--accent-on-paper);
 }
 
 @media (min-width: 769px) {
-    .page-lectura .legal-hero {
+    .page-papel .legal-hero {
         padding: calc(var(--spacing-section) + 60px) var(--space-8) var(--space-12);
     }
 }
 
 /* --- Bandas de papel más cálido: servicios y contacto (registro hondo en oscuro).
    Mantienen el ritmo de sección con un papel un grado más tostado. --- */
-.page-lectura main > .section--orange-950 {
+.page-papel main > .section--orange-950 {
     background:
         radial-gradient(1200px 480px at 18% -8%, rgba(154, 79, 54, 0.05), transparent 65%),
         #efe7dd;
 }
 
-.page-lectura main > .contact-form-section {
+.page-papel main > .contact-form-section {
     background:
         radial-gradient(1000px 420px at 85% 0%, rgba(154, 79, 54, 0.045), transparent 60%),
         #efe7dd;
 }
 
 /* --- Labels y eyebrows: sin opacity apilada (accent-on-paper ya es 5.2:1) --- */
-.page-lectura main .bpp-section-label,
-.page-lectura main .contact-city {
+.page-papel main .bpp-section-label,
+.page-papel main .contact-city {
     opacity: 1;
 }
 
 /* --- Cards: superficie elevada, borde tinta, sombra de tinta (sin el
    highlight interior que solo se ve sobre oscuro) --- */
-.page-lectura main .service-block,
-.page-lectura main .senal-card,
-.page-lectura main .tesis-card {
+.page-papel main .service-block,
+.page-papel main .senal-card,
+.page-papel main .tesis-card {
     border-color: var(--ink-border);
     box-shadow: var(--shadow-card);
 }
 
-.page-lectura main .service-block:hover,
-.page-lectura main .senal-card:hover {
+.page-papel main .service-block:hover,
+.page-papel main .senal-card:hover {
     box-shadow: var(--shadow-card-hover);
 }
 
 /* --- Servicios --- */
-.page-lectura main .service-number {
+.page-papel main .service-number {
     color: var(--orange-500);   /* 32px bold: terracota de marca sigue siendo AA */
 }
 
-.page-lectura main .service-category,
-.page-lectura main .proof-label {
+.page-papel main .service-category,
+.page-papel main .proof-label {
     color: var(--ink-low);
     opacity: 1;
 }
 
-.page-lectura main .service-deliverable {
+.page-papel main .service-deliverable {
     color: var(--ink-low);
 }
 
-.page-lectura main .method-link,
-.page-lectura main .proof-link {
+.page-papel main .method-link,
+.page-papel main .proof-link {
     color: var(--accent-on-paper);
 }
 
-.page-lectura main .method-link:hover,
-.page-lectura main .proof-link:hover {
+.page-papel main .method-link:hover,
+.page-papel main .proof-link:hover {
     color: var(--accent-on-paper-hover);
 }
 
-.page-lectura main .services-cta {
+.page-papel main .services-cta {
     border-top-color: var(--ink-border);
 }
 
 /* --- Hechos / artículos: la card se cierra con borde de tinta y sombra;
    el borde lateral de la imagen (susurro claro) se apaga para no duplicar. --- */
-.page-lectura main .actividad-entrada {
+.page-papel main .actividad-entrada {
     border: 1px solid var(--ink-border);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-card);
 }
 
-.page-lectura main .actividad-entrada > .actividad-imagen {
+.page-papel main .actividad-entrada > .actividad-imagen {
     border-left: 0;
     border-radius: 0;
 }
 
-.page-lectura main .actividad-category-badge {
+.page-papel main .actividad-category-badge {
     background: rgba(154, 79, 54, 0.1);
 }
 
-.page-lectura main .filter-btn {
+.page-papel main .filter-btn {
     color: var(--ink-mid);
     border-color: var(--ink-border);
 }
 
-.page-lectura main .filter-btn:hover,
-.page-lectura main .filter-btn--active {
+.page-papel main .filter-btn:hover,
+.page-papel main .filter-btn--active {
     color: var(--accent-on-paper);
     border-color: var(--accent-on-paper);
 }
 
-.page-lectura main .filter-btn--active {
+.page-papel main .filter-btn--active {
     border-color: transparent;
     border-bottom-color: var(--accent-on-paper);
 }
 
-.page-lectura main .proyectos-cta {
+.page-papel main .proyectos-cta {
     border-top-color: var(--ink-border);
 }
 
-.page-lectura main .proyectos-cta-headline,
-.page-lectura main .proyectos-intro-headline {
+.page-papel main .proyectos-cta-headline,
+.page-papel main .proyectos-intro-headline {
     color: var(--ink-high);
 }
 
-.page-lectura main .proyectos-cta-text,
-.page-lectura main .proyectos-intro-text {
+.page-papel main .proyectos-cta-text,
+.page-papel main .proyectos-intro-text {
     color: var(--ink-mid);
 }
 
 /* Tooltip del CTA (data-preview): la superficie ya remapea a papel elevado;
    el texto era blanco literal. */
-.page-lectura main [data-preview]::after {
+.page-papel main [data-preview]::after {
     color: var(--ink-high);
     border-color: var(--accent-on-paper);
     box-shadow: var(--shadow-card);
@@ -5997,7 +6004,7 @@ body.legal-page.page-lectura .nav-logo {
    #1a1512 y no se pueden recortar ahora, así que el bloque es una banda
    oscura deliberada de borde a borde (mismo truco que el hero), con sus
    tokens de texto devueltos al registro oscuro. --- */
-.page-lectura main .trust-socios {
+.page-papel main .trust-socios {
     --color-bg: #1a1512;
     --color-surface: #221d18;
     --color-border: rgba(193, 111, 82, 0.15);
@@ -6019,138 +6026,138 @@ body.legal-page.page-lectura .nav-logo {
     padding: var(--space-12) 0;
 }
 
-.page-lectura main .trust-socios ::selection {
+.page-papel main .trust-socios ::selection {
     background: rgba(193, 111, 82, 0.85);
     color: #1a1512;
 }
 
 /* --- Logos de clientes: todos como tinta, un solo set monocromo.
    (En oscuro eran blancos con brightness 1.35; CESBA venía invertido.) --- */
-.page-lectura main .logo-item img {
+.page-papel main .logo-item img {
     filter: grayscale(100%) brightness(0);
     opacity: 0.75;
 }
 
-.page-lectura main .logo-item:hover img {
+.page-papel main .logo-item:hover img {
     filter: grayscale(100%) brightness(0);
     opacity: 1;
 }
 
 /* --- Contacto --- */
-.page-lectura main .contact-separator,
-.page-lectura main .about-separator {
+.page-papel main .contact-separator,
+.page-papel main .about-separator {
     border-top-color: var(--ink-border);
 }
 
-.page-lectura main .contact-direct-mail {
+.page-papel main .contact-direct-mail {
     color: var(--accent-on-paper);
     text-decoration-color: rgba(154, 79, 54, 0.4);
 }
 
-.page-lectura main .contact-direct-mail:hover,
-.page-lectura main .contact-direct-mail:focus-visible {
+.page-papel main .contact-direct-mail:hover,
+.page-papel main .contact-direct-mail:focus-visible {
     color: var(--accent-on-paper-hover);
     text-decoration-color: var(--accent-on-paper);
 }
 
 /* --- Pensamiento: índice archival --- */
-.page-lectura main .indice-fila a,
-.page-lectura main .indice-fila:last-child a {
+.page-papel main .indice-fila a,
+.page-papel main .indice-fila:last-child a {
     border-color: var(--ink-border);
 }
 
-.page-lectura main .indice-titulo {
+.page-papel main .indice-titulo {
     color: var(--ink-high);
 }
 
-.page-lectura main .indice-fecha,
-.page-lectura main .indice-autor {
+.page-papel main .indice-fecha,
+.page-papel main .indice-autor {
     color: var(--ink-low);
 }
 
 /* --- Señales --- */
-.page-lectura main .senal-label {
+.page-papel main .senal-label {
     color: var(--accent-on-paper);
 }
 
-.page-lectura main .senal-lectura {
+.page-papel main .senal-lectura {
     color: var(--ink-mid);
 }
 
-.page-lectura main .senal-fuente {
+.page-papel main .senal-fuente {
     border-top-color: var(--ink-border);
 }
 
-.page-lectura main .senal-fuente a {
+.page-papel main .senal-fuente a {
     color: var(--ink-mid);
     text-decoration-color: rgba(154, 79, 54, 0.45);
 }
 
-.page-lectura main .senal-fuente a:hover {
+.page-papel main .senal-fuente a:hover {
     color: var(--accent-on-paper);
 }
 
-.page-lectura main .senal-link {
+.page-papel main .senal-link {
     color: var(--accent-on-paper);
 }
 
 /* --- Tesis (La Usina): brackets en terracota de marca — son línea, no texto --- */
-.page-lectura main .tesis-card__subtitle {
+.page-papel main .tesis-card__subtitle {
     color: var(--ink-mid);
 }
 
-.page-lectura main .tesis-card__authors {
+.page-papel main .tesis-card__authors {
     color: var(--ink-low);
 }
 
-.page-lectura main .tesis-card .corner-bracket {
+.page-papel main .tesis-card .corner-bracket {
     border-color: var(--orange-500);
 }
 
 /* Prosa de cards con opacity apilada (0.75 / 0.85 sobre --color-text): sobre
    papel se pasa a tinta con alpha calibrado, así los links inline dentro
    (La Usina, método) conservan el acento a 5.5:1 en vez de diluirse. */
-.page-lectura main .actividad-descripcion,
-.page-lectura main .service-method {
+.page-papel main .actividad-descripcion,
+.page-papel main .service-method {
     color: var(--ink-mid);
     opacity: 1;
 }
 
 /* Plan de trabajo (toggle + timeline) y términos clave: terracota literal
    (#c16f52, 3.2:1) pasa al acento de papel; la card del término, a tinta. */
-.page-lectura main .service-timeline-toggle,
-.page-lectura main .tooltip-term,
-.page-lectura main .timeline-week,
-.page-lectura main .term-card-label {
+.page-papel main .service-timeline-toggle,
+.page-papel main .tooltip-term,
+.page-papel main .timeline-week,
+.page-papel main .term-card-label {
     color: var(--accent-on-paper);
 }
 
-.page-lectura main .service-timeline-toggle {
+.page-papel main .service-timeline-toggle {
     border-color: var(--accent-on-paper);
 }
 
-.page-lectura main .service-timeline-toggle:hover {
+.page-papel main .service-timeline-toggle:hover {
     background: rgba(154, 79, 54, 0.08);
     border-color: var(--accent-on-paper-hover);
     color: var(--accent-on-paper-hover);
 }
 
-.page-lectura main .service-timeline-toggle:focus-visible,
-.page-lectura main .tooltip-term:focus-visible {
+.page-papel main .service-timeline-toggle:focus-visible,
+.page-papel main .tooltip-term:focus-visible {
     outline-color: var(--accent-on-paper);
 }
 
-.page-lectura main .term-card {
+.page-papel main .term-card {
     border-color: var(--ink-border);
     border-left-color: var(--accent-on-paper);
     box-shadow: var(--shadow-card);
 }
 
-.page-lectura main .term-card-text {
+.page-papel main .term-card-text {
     color: var(--ink-high);
 }
 
 /* El índice es navegación, no prosa: sin el subrayado de links de cuerpo. */
-.page-lectura main .indice-archival .indice-fila a {
+.page-papel main .indice-archival .indice-fila a {
     text-decoration: none;
 }
