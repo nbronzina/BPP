@@ -103,8 +103,14 @@
     --space-20: 5rem;     /* 80px - extra large */
     --space-24: 6rem;     /* 96px - massive */
 
-    /* Legacy spacing (map to new scale) */
-    --spacing-section: 80px;             /* Mobile base - DESIGN.md: silencio visual entre bloques */
+    /* Ritmo vertical entre bloques de <main> (mobile base; desktop en la media query de abajo).
+       --spacing-section es el silencio total entre dos bloques; cada bloque aporta la mitad
+       (--spacing-block) arriba y abajo. Hero → primer bloque y último bloque → footer usan
+       --spacing-block-edge. Ver "Ritmo vertical" más abajo. */
+    --spacing-section: 80px;             /* DESIGN.md: silencio visual entre bloques */
+    --spacing-block: calc(var(--spacing-section) / 2);          /* 40px: mitad del gap, por lado */
+    --spacing-block-edge: 64px;                                  /* hero → primer bloque, último → footer */
+    --spacing-hero-bottom: calc(var(--spacing-block-edge) - var(--spacing-block)); /* 24px: lo que aporta el hero */
     --spacing-card: var(--space-12);     /* 48px */
     --spacing-gap: var(--space-8);       /* var(--space-8) */
 
@@ -165,7 +171,8 @@
 
 @media (min-width: 769px) {
     :root {
-        --spacing-section: 160px;  /* DESIGN.md: section 160px es signature del sistema */
+        --spacing-section: 160px;  /* DESIGN.md: section 160px es signature del sistema (→ --spacing-block 80px) */
+        --spacing-block-edge: 120px;  /* → --spacing-hero-bottom 40px */
     }
 }
 
@@ -590,7 +597,16 @@ body.secondary-page .nav-logo {
     /* Alto acotado: en 1080p un hero de 100vh dejaba 400px vacíos bajo el bloque, más los
        160px de padding de Nosotros. Se centra el bloque y la sección siguiente arranca antes. */
     min-height: clamp(520px, 78svh, 820px); display: flex; justify-content: center; align-items: center; padding: 0; }
-.hero-fullscreen + .section { padding-top: var(--space-12); }
+/* Hero del inicio → Nosotros: el hero cierra con el padding de .hero-brand-header
+   (24px mobile / 48px desktop, ver abajo); la sección completa hasta --spacing-block-edge.
+   El bloque de marca se ancla abajo: si el min-height del splash sobra (pantallas altas),
+   el aire queda arriba del bloque y no entre el hero y Nosotros. Antes `.hero` (flex-start)
+   pisaba el `center` de .hero-fullscreen y el sobrante caía justo en ese gap. */
+.hero.hero-fullscreen { padding-bottom: 0; align-items: center;  /* el bloque centrado: el aire sobrante del hero se reparte arriba y abajo */ }
+.hero-fullscreen + .section { padding-top: calc(var(--spacing-block-edge) - var(--space-6)); }
+@media (min-width: 769px) {
+    .hero-fullscreen + .section { padding-top: calc(var(--spacing-block-edge) - var(--space-12)); }
+}
 
 .hero-brand-header {
     
@@ -1386,7 +1402,7 @@ body.secondary-page .nav-logo {
    ========================= */
 
 .section {
-    padding: var(--space-10) var(--spacing-horizontal-mobile);
+    padding: var(--spacing-block) var(--spacing-horizontal-mobile);
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
@@ -1398,9 +1414,24 @@ body.secondary-page .nav-logo {
 
 @media (min-width: 769px) {
     .section {
-        padding: var(--spacing-section) var(--space-24);
+        padding: var(--spacing-block) var(--space-24);
     }
 }
+
+/* =========================
+   Ritmo vertical
+   =========================
+   Un solo ritmo en todo el sitio: cada bloque de <main> (.section, .content-section,
+   .contact-form-section, .legal-content…) lleva --spacing-block arriba y abajo, así el
+   silencio entre dos bloques es siempre --spacing-section (160 desktop / 80 mobile).
+   El hero aporta --spacing-hero-bottom y el último bloque cierra contra la línea del footer
+   con --spacing-block-edge (120 / 64). El footer no lleva margen: el bloque de contacto del
+   inicio tiene fondo hondo y su borde tiene que quedar pegado a la línea cobriza. */
+main > :last-child {
+    padding-bottom: var(--spacing-block-edge);
+}
+/* Los cierres de bloque (márgenes colgantes del último hijo) están al final del archivo,
+   en "Ritmo vertical: cierres de bloque", para ganar en cascada a las reglas de cada componente. */
 
 /* Section labels and headings */
 .bpp-section-label {
@@ -2294,7 +2325,7 @@ footer {
 
 /* Mobile-first base */
 .contact-form-section {
-    padding: var(--space-8) var(--space-6);
+    padding: var(--spacing-block) var(--space-6);
 }
 
 .contact-grid {
@@ -2311,7 +2342,7 @@ footer {
     color: var(--color-text);  /* Blanco puro, border naranja como marca */
     opacity: 1;
     padding-left: var(--space-4);
-    margin-top: var(--space-4);
+    margin-top: 0;  /* primer hijo del bloque: el espacio superior lo pone la sección */
     margin-bottom: var(--space-6);
 }
 
@@ -2421,7 +2452,7 @@ footer {
 .ficha-caso-fuentes strong { color: var(--color-text-mid); font-weight: 700; }
 /* En páginas de reporte la ficha es una sección más: hereda el ritmo (separador + padding)
    y no suma bordes ni márgenes propios. */
-.reporte-page .ficha-caso { margin: 0 auto; border: 0; padding-bottom: 0; }
+.reporte-page .ficha-caso { margin: 0 auto; border: 0; }
 .ficha-caso-fuentes a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 @media (min-width: 769px) {
     .ficha-caso-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-12); }
@@ -2467,12 +2498,11 @@ footer {
 /* Contact Form - Desktop Enhancement */
 @media (min-width: 769px) {
     .contact-form-section {
-        padding: var(--spacing-section) var(--space-24);
+        padding: var(--spacing-block) var(--space-24);
     }
 
     .contact-label {
         padding-left: var(--space-6);
-        margin-top: 0;
         margin-bottom: var(--space-12);
     }
 
@@ -2918,7 +2948,7 @@ footer {
    ========================= */
 
 .trust-section {
-    padding: var(--spacing-section) var(--space-6);  /* Mobile: 24px a los lados; 96px dejaba columnas de 51px para los logos */
+    padding: var(--spacing-block) var(--space-6);  /* Mobile: 24px a los lados; 96px dejaba columnas de 51px para los logos */
     background: transparent;
 }
 
@@ -3074,11 +3104,11 @@ img {
     }
 
     .section {
-        padding: var(--spacing-section) var(--spacing-horizontal-tablet);
+        padding: var(--spacing-block) var(--spacing-horizontal-tablet);
     }
 
     .content-section {
-        padding: 0 var(--spacing-horizontal-tablet) var(--spacing-section);
+        padding: var(--spacing-block) var(--spacing-horizontal-tablet);
     }
 
     .nav-container,
@@ -3093,7 +3123,7 @@ img {
     }
 
     .contact-form-section {
-        padding: var(--spacing-section) var(--space-16);
+        padding: var(--spacing-block) var(--space-16);
     }
 
     footer {
@@ -3371,7 +3401,7 @@ img {
 /* HERO del reporte - Mobile-first base */
 .hero-section {
     position: relative;
-    padding: 110px var(--space-6) var(--space-8);
+    padding: 110px var(--space-6) var(--spacing-hero-bottom);
     max-width: 1200px;
     margin: 0 auto;
     text-align: left;
@@ -3401,7 +3431,7 @@ img {
 .content-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-horizontal-mobile) var(--space-10);
+    padding: var(--spacing-block) var(--spacing-horizontal-mobile);
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
@@ -3442,11 +3472,11 @@ img {
 /* Report Pages - Desktop Enhancement */
 @media (min-width: 769px) {
     .hero-section {
-        padding: calc(var(--spacing-section) + 60px) var(--space-8) var(--space-10);
+        padding: calc(var(--spacing-section) + 60px) var(--space-8) var(--spacing-hero-bottom);
     }
 
     .content-section {
-        padding: 0 var(--spacing-horizontal-desktop) var(--spacing-section);
+        padding: var(--spacing-block) var(--spacing-horizontal-desktop);
     }
 }
 
@@ -3471,10 +3501,11 @@ img {
 .legal-page .legal-hero {
   /* Debajo del nav fijo */
   padding-top: calc(var(--space-16) + 72px);
-  padding-bottom: var(--space-8);
+  padding-bottom: var(--spacing-hero-bottom);
 }
 .legal-page .legal-content {
-  padding-bottom: var(--space-20);
+  padding-top: var(--spacing-block);
+  padding-bottom: var(--spacing-block-edge);  /* último bloque de main: cierra contra el footer */
 }
 
 .legal-page h1 {
@@ -3543,7 +3574,7 @@ img {
 .reporte-page .hero-section {
     /* Mismo padding lateral que .content-section: el hero, la ficha y las cards
        comparten un solo borde izquierdo. */
-    padding: var(--space-20) var(--spacing-horizontal-mobile) var(--space-10);
+    padding: var(--space-20) var(--spacing-horizontal-mobile) var(--spacing-hero-bottom);
     max-width: 1200px;
     margin: 0 auto;
     text-align: left;
@@ -3613,13 +3644,16 @@ img {
 }
 
 .reporte-page .section-separator {
-    padding-top: var(--spacing-section);
+    /* La línea queda centrada en el silencio: --spacing-block arriba (padding del bloque
+       anterior) y --spacing-block abajo (padding de .content-section). */
     border-top: 1px solid rgba(250, 248, 246, 0.08);
 }
 
 .report-scenarios-grid {
   display: grid;
-  gap: var(--space-8);
+  /* Antes: gap 32 + margin-bottom 24 de cada acordeón. Mismo espacio visible entre
+     acordeones, pero sin margen colgando bajo el último (sumaba al gap entre bloques). */
+  gap: calc(var(--space-8) + var(--space-6)) var(--space-8);
 }
 
 @media (min-width: 900px) {
@@ -4373,7 +4407,7 @@ img {
 
 /* Scenario Accordions */
 .scenario-accordion {
-  margin-bottom: var(--space-6);
+  margin-bottom: 0;  /* la separación la pone el row-gap de .report-scenarios-grid */
 }
 
 .scenario-accordion-title {
@@ -5093,7 +5127,8 @@ img {
    el más nuevo arriba. */
 .indice-archival {
     max-width: 900px;
-    margin: 0 auto var(--space-12);
+    /* #indice lleva padding-bottom: 0 inline; este margen es el cierre del bloque. */
+    margin: 0 auto var(--spacing-block);
     padding: 0 var(--spacing-horizontal-mobile);
 }
 
@@ -6153,3 +6188,27 @@ body.legal-page.page-papel .nav-logo {
         overflow: hidden;
     }
 }
+
+/* =========================
+   Ritmo vertical: cierres de bloque
+   =========================
+   Márgenes y paddings del último (o primer) hijo de un bloque que no separan nada
+   adentro del bloque y solo sumaban al gap entre bloques. El espacio interno no cambia.
+   Van al final del archivo para ganar en cascada a las reglas de cada componente. */
+.about-content { padding-bottom: 0; }
+.studio-identity { margin-bottom: 0; }
+.services-grid { margin-bottom: 0; }
+.actividades-cta { padding-bottom: 0; }
+.logos-grid { padding-bottom: 0; }
+.contact-address > :last-child,
+.contact-direct > :last-child,
+.content-section > :last-child,
+.thesis-abstract > :last-child,
+.legal-hero > :last-child,
+.legal-content > :last-child { margin-bottom: 0; }
+.content-section > :last-child > .cta-primary { margin-bottom: 0; }
+.legal-content > :first-child { margin-top: 0; }
+/* El título del acordeón declara margin: 0 pero `.reporte-section h3` lo pisaba con 12px:
+   con el panel cerrado colgaban bajo el botón, y abierto separaban el panel del header
+   (que ya junta con border-bottom transparente). */
+.reporte-section .scenario-accordion-title { margin: 0; }
