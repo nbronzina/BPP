@@ -5791,19 +5791,363 @@ html {
 
 /* Serif para lectura larga: el cuerpo del texto de los documentos va en Literata.
    Títulos, labels, dt, botones, nav y metadata se quedan en Plus Jakarta Sans.
-   El tamaño sube apenas porque la serif tiene ojo medio más chico a igual cuerpo. */
-.page-lectura main > section:not(.hero-section) :is(p, li, dd, blockquote, figcaption, td) {
+   El tamaño sube apenas porque la serif tiene ojo medio más chico a igual cuerpo.
+   Alcance: solo los contenedores de prosa (reporte, tesis, legal). Las cards,
+   metadata y CTAs de las páginas de interfaz siguen en la sans (DESIGN.md). */
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-viewer-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote, figcaption, td) {
     font-family: 'Literata', Georgia, 'Times New Roman', serif;
     font-optical-sizing: auto;
     font-size: 1.1875rem; /* 19px: la base del sitio, sin heredar los 16px viejos de .reporte-section */
     line-height: 1.7;
 }
-.page-lectura main > section:not(.hero-section) :is(p, li, dd, blockquote) strong { font-weight: 700; }
-.page-lectura main > section:not(.hero-section) :is(p, li, dd, blockquote) em { font-style: italic; }
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-viewer-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) strong { font-weight: 700; }
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-viewer-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) em { font-style: italic; }
 /* Lo que no es prosa vuelve a la sans aunque esté dentro de un párrafo o lista */
-.page-lectura main > section:not(.hero-section) :is(.ficha-caso-fuentes, .reporte-fuente, .senal-fuente, .cta-primary, .cta-link, .btn, .ficha-caso dt, .toc-data-rail, .sticky-toc, .share-buttons, .thesis-cite__note, .impact-label, .escenario-label, .senal-label) ,
-.page-lectura main > section:not(.hero-section) :is(nav, button, label, .senal-label) * {
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-viewer-section, .thesis-cite-section, .legal-content) :is(.ficha-caso-fuentes, .reporte-fuente, .senal-fuente, .cta-primary, .cta-link, .btn, .ficha-caso dt, .toc-data-rail, .sticky-toc, .share-buttons, .thesis-cite__note, .impact-label, .escenario-label, .senal-label) ,
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-viewer-section, .thesis-cite-section, .legal-content) :is(nav, button, label, .senal-label) * {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: inherit;
     line-height: inherit;
+}
+
+/* ============ v2.4 (prototipo): marco oscuro, contenido en papel ============ */
+/* Extiende body.page-lectura a index, Hechos, Pensamiento y Privacidad para que
+   los socios decidan una dirección de paleta. Regla: nav, hero y footer siguen
+   oscuros tal cual; cada sección de contenido va sobre --paper con tinta. Los
+   componentes con oscuro hardcodeado (literales rgba(250,248,246,…) y fondos
+   #1a1512/#16110e) se sobreescriben acá, dentro del alcance; las reglas
+   oscuras originales no se tocan. */
+
+/* --- Heros: el del inicio (#hero.hero) y el legal (div.legal-hero) --- */
+.page-lectura main > .hero {
+    background: var(--color-bg);
+}
+
+.page-lectura .legal-hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 110px var(--space-6) var(--space-10);
+    background: var(--color-bg);
+    box-shadow: 0 0 0 100vmax var(--color-bg);
+    clip-path: inset(0 -100vmax);
+}
+
+.page-lectura .legal-label {
+    font-size: 0.9375rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+}
+
+.page-lectura .legal-date {
+    color: var(--color-text-low);
+}
+
+.page-lectura main > .legal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+}
+
+/* La nav de la página legal estaba con opacity 0 (solo logo-pinned /
+   secondary-page la mostraban). Sobre papel el marco tiene que verse. */
+body.legal-page.page-lectura nav {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.legal-page.page-lectura .nav-logo {
+    opacity: 1;
+}
+
+.page-lectura .legal-link:focus-visible {
+    outline-color: var(--accent-on-paper);
+}
+
+@media (min-width: 769px) {
+    .page-lectura .legal-hero {
+        padding: calc(var(--spacing-section) + 60px) var(--space-8) var(--space-12);
+    }
+}
+
+/* --- Bandas de papel más cálido: servicios y contacto (registro hondo en oscuro).
+   Mantienen el ritmo de sección con un papel un grado más tostado. --- */
+.page-lectura main > .section--orange-950 {
+    background:
+        radial-gradient(1200px 480px at 18% -8%, rgba(154, 79, 54, 0.05), transparent 65%),
+        #efe7dd;
+}
+
+.page-lectura main > .contact-form-section {
+    background:
+        radial-gradient(1000px 420px at 85% 0%, rgba(154, 79, 54, 0.045), transparent 60%),
+        #efe7dd;
+}
+
+/* --- Labels y eyebrows: sin opacity apilada (accent-on-paper ya es 5.2:1) --- */
+.page-lectura main .bpp-section-label,
+.page-lectura main .contact-city {
+    opacity: 1;
+}
+
+/* --- Cards: superficie elevada, borde tinta, sombra de tinta (sin el
+   highlight interior que solo se ve sobre oscuro) --- */
+.page-lectura main .service-block,
+.page-lectura main .senal-card,
+.page-lectura main .tesis-card {
+    border-color: var(--ink-border);
+    box-shadow: var(--shadow-card);
+}
+
+.page-lectura main .service-block:hover,
+.page-lectura main .senal-card:hover {
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* --- Servicios --- */
+.page-lectura main .service-number {
+    color: var(--orange-500);   /* 32px bold: terracota de marca sigue siendo AA */
+}
+
+.page-lectura main .service-category,
+.page-lectura main .proof-label {
+    color: var(--ink-low);
+    opacity: 1;
+}
+
+.page-lectura main .service-deliverable {
+    color: var(--ink-low);
+}
+
+.page-lectura main .method-link,
+.page-lectura main .proof-link {
+    color: var(--accent-on-paper);
+}
+
+.page-lectura main .method-link:hover,
+.page-lectura main .proof-link:hover {
+    color: var(--accent-on-paper-hover);
+}
+
+.page-lectura main .services-cta {
+    border-top-color: var(--ink-border);
+}
+
+/* --- Hechos / artículos: la card se cierra con borde de tinta y sombra;
+   el borde lateral de la imagen (susurro claro) se apaga para no duplicar. --- */
+.page-lectura main .actividad-entrada {
+    border: 1px solid var(--ink-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.page-lectura main .actividad-entrada > .actividad-imagen {
+    border-left: 0;
+    border-radius: 0;
+}
+
+.page-lectura main .actividad-category-badge {
+    background: rgba(154, 79, 54, 0.1);
+}
+
+.page-lectura main .filter-btn {
+    color: var(--ink-mid);
+    border-color: var(--ink-border);
+}
+
+.page-lectura main .filter-btn:hover,
+.page-lectura main .filter-btn--active {
+    color: var(--accent-on-paper);
+    border-color: var(--accent-on-paper);
+}
+
+.page-lectura main .filter-btn--active {
+    border-color: transparent;
+    border-bottom-color: var(--accent-on-paper);
+}
+
+.page-lectura main .proyectos-cta {
+    border-top-color: var(--ink-border);
+}
+
+.page-lectura main .proyectos-cta-headline,
+.page-lectura main .proyectos-intro-headline {
+    color: var(--ink-high);
+}
+
+.page-lectura main .proyectos-cta-text,
+.page-lectura main .proyectos-intro-text {
+    color: var(--ink-mid);
+}
+
+/* Tooltip del CTA (data-preview): la superficie ya remapea a papel elevado;
+   el texto era blanco literal. */
+.page-lectura main [data-preview]::after {
+    color: var(--ink-high);
+    border-color: var(--accent-on-paper);
+    box-shadow: var(--shadow-card);
+}
+
+/* --- Red: el equipo sigue oscuro. Los tres retratos están compuestos sobre
+   #1a1512 y no se pueden recortar ahora, así que el bloque es una banda
+   oscura deliberada de borde a borde (mismo truco que el hero), con sus
+   tokens de texto devueltos al registro oscuro. --- */
+.page-lectura main .trust-socios {
+    --color-bg: #1a1512;
+    --color-surface: #221d18;
+    --color-border: rgba(193, 111, 82, 0.15);
+    --color-text: #faf8f6;
+    --color-text-light: #faf8f6;
+    --color-text-secondary: rgba(250, 248, 246, 0.87);
+    --color-text-muted: rgba(250, 248, 246, 0.65);
+    --color-text-high: rgba(250, 248, 246, 0.95);
+    --color-text-mid: rgba(250, 248, 246, 0.75);
+    --color-text-low: rgba(250, 248, 246, 0.55);
+    --color-text-faint: rgba(250, 248, 246, 0.40);
+    --color-accent: var(--orange-500);
+    --color-accent-bright: var(--orange-500);
+
+    color: var(--color-text-high);
+    background: var(--color-bg);
+    box-shadow: 0 0 0 100vmax var(--color-bg);
+    clip-path: inset(0 -100vmax);
+    padding: var(--space-12) 0;
+}
+
+.page-lectura main .trust-socios ::selection {
+    background: rgba(193, 111, 82, 0.85);
+    color: #1a1512;
+}
+
+/* --- Logos de clientes: todos como tinta, un solo set monocromo.
+   (En oscuro eran blancos con brightness 1.35; CESBA venía invertido.) --- */
+.page-lectura main .logo-item img {
+    filter: grayscale(100%) brightness(0);
+    opacity: 0.75;
+}
+
+.page-lectura main .logo-item:hover img {
+    filter: grayscale(100%) brightness(0);
+    opacity: 1;
+}
+
+/* --- Contacto --- */
+.page-lectura main .contact-separator,
+.page-lectura main .about-separator {
+    border-top-color: var(--ink-border);
+}
+
+.page-lectura main .contact-direct-mail {
+    color: var(--accent-on-paper);
+    text-decoration-color: rgba(154, 79, 54, 0.4);
+}
+
+.page-lectura main .contact-direct-mail:hover,
+.page-lectura main .contact-direct-mail:focus-visible {
+    color: var(--accent-on-paper-hover);
+    text-decoration-color: var(--accent-on-paper);
+}
+
+/* --- Pensamiento: índice archival --- */
+.page-lectura main .indice-fila a,
+.page-lectura main .indice-fila:last-child a {
+    border-color: var(--ink-border);
+}
+
+.page-lectura main .indice-titulo {
+    color: var(--ink-high);
+}
+
+.page-lectura main .indice-fecha,
+.page-lectura main .indice-autor {
+    color: var(--ink-low);
+}
+
+/* --- Señales --- */
+.page-lectura main .senal-label {
+    color: var(--accent-on-paper);
+}
+
+.page-lectura main .senal-lectura {
+    color: var(--ink-mid);
+}
+
+.page-lectura main .senal-fuente {
+    border-top-color: var(--ink-border);
+}
+
+.page-lectura main .senal-fuente a {
+    color: var(--ink-mid);
+    text-decoration-color: rgba(154, 79, 54, 0.45);
+}
+
+.page-lectura main .senal-fuente a:hover {
+    color: var(--accent-on-paper);
+}
+
+.page-lectura main .senal-link {
+    color: var(--accent-on-paper);
+}
+
+/* --- Tesis (La Usina): brackets en terracota de marca — son línea, no texto --- */
+.page-lectura main .tesis-card__subtitle {
+    color: var(--ink-mid);
+}
+
+.page-lectura main .tesis-card__authors {
+    color: var(--ink-low);
+}
+
+.page-lectura main .tesis-card .corner-bracket {
+    border-color: var(--orange-500);
+}
+
+/* Prosa de cards con opacity apilada (0.75 / 0.85 sobre --color-text): sobre
+   papel se pasa a tinta con alpha calibrado, así los links inline dentro
+   (La Usina, método) conservan el acento a 5.5:1 en vez de diluirse. */
+.page-lectura main .actividad-descripcion,
+.page-lectura main .service-method {
+    color: var(--ink-mid);
+    opacity: 1;
+}
+
+/* Plan de trabajo (toggle + timeline) y términos clave: terracota literal
+   (#c16f52, 3.2:1) pasa al acento de papel; la card del término, a tinta. */
+.page-lectura main .service-timeline-toggle,
+.page-lectura main .tooltip-term,
+.page-lectura main .timeline-week,
+.page-lectura main .term-card-label {
+    color: var(--accent-on-paper);
+}
+
+.page-lectura main .service-timeline-toggle {
+    border-color: var(--accent-on-paper);
+}
+
+.page-lectura main .service-timeline-toggle:hover {
+    background: rgba(154, 79, 54, 0.08);
+    border-color: var(--accent-on-paper-hover);
+    color: var(--accent-on-paper-hover);
+}
+
+.page-lectura main .service-timeline-toggle:focus-visible,
+.page-lectura main .tooltip-term:focus-visible {
+    outline-color: var(--accent-on-paper);
+}
+
+.page-lectura main .term-card {
+    border-color: var(--ink-border);
+    border-left-color: var(--accent-on-paper);
+    box-shadow: var(--shadow-card);
+}
+
+.page-lectura main .term-card-text {
+    color: var(--ink-high);
+}
+
+/* El índice es navegación, no prosa: sin el subrayado de links de cuerpo. */
+.page-lectura main .indice-archival .indice-fila a {
+    text-decoration: none;
 }
