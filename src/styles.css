@@ -4705,12 +4705,12 @@ img {
 /* Marcas cuadradas: más altas que los wordmarks para que no queden chicas al lado */
 .logo-item img[src*="olamestudio"],
 .logo-item img[src*="manifiesto-bar"] {
-  height: 56px;
-  max-width: 56px;
+  height: 64px;
+  max-width: 64px;
 }
 .logo-item img[src*="logo-cesba"] {
-  height: 60px;
-  max-width: 60px;
+  height: 68px;
+  max-width: 68px;
 }
 .logo-item img[src*="trace-logo"],
 .logo-item img[src*="micelio"],
@@ -4721,8 +4721,8 @@ img {
   .trust-section { padding-left: var(--space-24); padding-right: var(--space-24); }
   .logo-item img { height: 46px; }
   .logo-item img[src*="olamestudio"],
-  .logo-item img[src*="manifiesto-bar"] { height: 72px; max-width: 72px; }
-  .logo-item img[src*="logo-cesba"] { height: 76px; max-width: 76px; }
+  .logo-item img[src*="manifiesto-bar"] { height: 84px; max-width: 84px; }
+  .logo-item img[src*="logo-cesba"] { height: 88px; max-width: 88px; }
   .logo-item img[src*="trace-logo"],
   .logo-item img[src*="micelio"],
   .logo-item img[src*="otros-futuros"] { height: 32px; }
