@@ -610,10 +610,10 @@ body.secondary-page .nav-logo {
     display: flex; flex-direction: column; gap: var(--space-3); }
 
 .hero-wordmark {
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: clamp(2.6rem, 5.5vw, 4.6rem); color: rgba(250, 248, 246, 0.95); line-height: 1.15; animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both; }
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: clamp(2.6rem, 5.5vw, 4.6rem); color: rgba(250, 248, 246, 0.95); line-height: 1.15; animation: textReveal 0.7s ease-out 0.15s both; }
 
 .hero-tagline {
-    font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 400; color: rgba(250, 248, 246, 0.85); line-height: 1.4; opacity: 0.85; animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both; }
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 400; color: rgba(250, 248, 246, 0.85); line-height: 1.4; opacity: 0.85; animation: textReveal 0.7s ease-out 0.35s both; }
 
 .hero-scroll-cue:hover {
     color: var(--color-text); border-color: rgba(250, 248, 246, 0.4); }
@@ -857,7 +857,7 @@ body.secondary-page .nav-logo {
     color: rgba(250, 248, 246, 0.95);
     line-height: 1.15;  /* Aumentado para evitar corte de descenders (y, g) */
     margin: 0;
-    animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+    animation: textReveal 0.7s ease-out 0.15s both;
 }
 
 .hero-tagline {
@@ -868,7 +868,7 @@ body.secondary-page .nav-logo {
     line-height: 1.4;
     margin: 0;
     opacity: 0.85;
-    animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
+    animation: textReveal 0.7s ease-out 0.35s both;
     hyphens: none;
     word-break: keep-all;
 }
@@ -907,14 +907,17 @@ body.secondary-page .nav-logo {
 }
 
 /* Text reveal animation - horizontal wipe effect */
+/* Antes: barrido horizontal con clip-path. En móvil, con el nombre en dos líneas,
+   se veía como texto cortado a medias. Ahora: fundido suave con leve subida,
+   el mismo gesto que usan las secciones al entrar. */
 @keyframes textReveal {
     0% {
-        clip-path: inset(0 100% 0 0);
         opacity: 0;
+        transform: translateY(8px);
     }
     100% {
-        clip-path: inset(0 0 0 0);
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
