@@ -172,7 +172,7 @@
 html {
     scroll-padding-top: var(--space-24);  /* Altura del navbar sticky + margen para que títulos no queden tapados */
     background: #12151a;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 /* Smooth scroll only if motion is allowed */
@@ -194,7 +194,7 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: var(--line-height-body);  /* 1.8 - improved readability */
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
     z-index: 1;
     /* Prevent horizontal overflow on mobile */
@@ -2854,7 +2854,7 @@ footer {
     .actividad-entrada {
         grid-template-columns: 1.2fr 1fr;
         min-height: 0;
-        align-items: center;
+        align-items: start;
     }
 
     .actividad-entrada:nth-child(even) {
@@ -2872,7 +2872,9 @@ footer {
 
     .actividad-imagen {
         height: auto;
-        align-self: center;  /* no se estira a la altura del texto */
+        align-self: start;   /* no se estira a la altura del texto */
+        position: sticky;    /* acompaña la lectura cuando el texto es más largo que la imagen */
+        top: 100px;
         order: 0;  /* Default order on desktop */
     }
 
@@ -3143,7 +3145,7 @@ img {
     .hero, .section, main {
         width: 100%;
         max-width: 100%;
-        overflow-x: hidden;
+        overflow-x: clip;
     }
 }
 
