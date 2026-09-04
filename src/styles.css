@@ -172,7 +172,7 @@
 html {
     scroll-padding-top: var(--space-24);  /* Altura del navbar sticky + margen para que títulos no queden tapados */
     background: #12151a;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 /* Smooth scroll only if motion is allowed */
@@ -194,7 +194,7 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: var(--line-height-body);  /* 1.8 - improved readability */
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
     z-index: 1;
     /* Prevent horizontal overflow on mobile */
@@ -2693,7 +2693,8 @@ footer {
 /* Alternating layout: Order in HTML determines position (no RTL needed) */
 .actividad-imagen {
     overflow: hidden;
-    height: 180px;  /* Reducido de 260px: "en mobile, el alto es oro" */
+    height: auto;
+    aspect-ratio: 16 / 9;  /* Las ilustraciones son 16:9: se ven enteras, sin recorte */
     order: -1;  /* Always first on mobile */
     border-radius: var(--border-radius);  /* v2.2: geometría blanda */
 }
@@ -2852,7 +2853,8 @@ footer {
 @media (min-width: 769px) {
     .actividad-entrada {
         grid-template-columns: 1.2fr 1fr;
-        min-height: 450px;
+        min-height: 0;
+        align-items: start;
     }
 
     .actividad-entrada:nth-child(even) {
@@ -2870,6 +2872,9 @@ footer {
 
     .actividad-imagen {
         height: auto;
+        align-self: start;   /* no se estira a la altura del texto */
+        position: sticky;    /* acompaña la lectura cuando el texto es más largo que la imagen */
+        top: 100px;
         order: 0;  /* Default order on desktop */
     }
 
@@ -3140,7 +3145,7 @@ img {
     .hero, .section, main {
         width: 100%;
         max-width: 100%;
-        overflow-x: hidden;
+        overflow-x: clip;
     }
 }
 
@@ -5090,20 +5095,27 @@ img {
    todo queda dentro del contenedor, cero riesgo de overflow-x. La
    alternancia imagen/texto (nth-child even) no se toca. */
 @media (min-width: 1025px) {
-    #actividades .actividad-entrada {
+    /* Aplica a inicio (#actividades), Lo hecho (#actividades) y Pensamiento (#articulos): las tres listas iguales. */
+    .actividad-entrada {
         width: 95%;
         margin-right: auto;   /* impares: hacia la izquierda */
     }
 
-    #actividades .actividad-entrada:nth-child(even) {
+    .actividad-entrada:nth-child(even) {
         margin-right: 0;
         margin-left: auto;    /* pares: hacia la derecha */
     }
 
-    #actividades .actividad-entrada + .actividad-entrada {
+    .actividad-entrada + .actividad-entrada {
         margin-top: var(--space-16);
     }
+}/* Mobile: aire entre tarjetas (el borde susurro solo no alcanza) */
+.actividad-entrada + .actividad-entrada { margin-top: var(--space-10); }
+/* Separación también entre 769 y 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .actividad-entrada + .actividad-entrada { margin-top: var(--space-12); }
 }
+
 
 /* ============ Fase B 2026: índice archival (/pensamiento) ============ */
 /* Ficha de archivo: filas tipográficas con borde susurro, sin cajas.
