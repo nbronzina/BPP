@@ -10,6 +10,7 @@ export default function (eleventyConfig) {
     "llms.txt": "llms.txt",
     CNAME: "CNAME",
     "favicon.ico": "favicon.ico",
+    "favicon.svg": "favicon.svg",
     "favicon-16x16.png": "favicon-16x16.png",
     "favicon-32x32.png": "favicon-32x32.png",
     "apple-touch-icon.png": "apple-touch-icon.png",
