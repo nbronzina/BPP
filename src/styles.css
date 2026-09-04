@@ -2450,7 +2450,7 @@ footer {
 }
 
 .contact-direct-promise {
-    font-size: 1.0625rem;
+    font-size: var(--font-size-base);
     color: var(--color-text-mid);
     margin-top: var(--space-4);
 }
@@ -5504,7 +5504,7 @@ html {
 /* Bio extendida por socio: perspectiva, no CV (VOICE.md). Medida de
    lectura acotada y jerarquía por debajo del rol. */
 .equipo-bio {
-    font-size: 1.125rem;
+    font-size: var(--font-size-base);
     line-height: 1.65;
     color: var(--color-text-mid);
     margin-top: var(--space-3);
@@ -5520,7 +5520,7 @@ html {
 /* Señales: lectura propia y fuente verificable. La lectura es lo que
    distingue una señal de una noticia; la fuente es lo que la sostiene. */
 .senal-lectura {
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   line-height: 1.6;
   color: rgba(250, 248, 246, 0.75);
   border-left: 2px solid var(--orange-500);
@@ -5529,7 +5529,7 @@ html {
 }
 
 .senal-fuente {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.5;
   color: var(--color-text-low);
   margin-top: var(--space-4);
