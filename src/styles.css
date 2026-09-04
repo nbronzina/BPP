@@ -2909,7 +2909,7 @@ footer {
    ========================= */
 
 .trust-section {
-    padding: var(--spacing-section) var(--space-24);  /* Estandarizado: vertical + horizontal (era al revés!) */
+    padding: var(--spacing-section) var(--space-6);  /* Mobile: 24px a los lados; 96px dejaba columnas de 51px para los logos */
     background: transparent;
 }
 
@@ -4693,81 +4693,34 @@ img {
 }
 
 .logo-item img {
-  /* Caja idéntica para los 10 logos: contain escala cada uno al mismo
-     marco sin importar su aspect ratio nativo (55px vs 257px de ancho) */
+  /* Los diez logos vienen recortados a su contenido real, así que una sola caja
+     (contain) los escala parejo. Solo dos ajustes de peso visual: marcas
+     cuadradas más chicas, wordmarks muy anchos más bajos. */
   width: 100%;
-  height: 52px;
-  max-height: none;
+  height: 40px;
   object-fit: contain;
   opacity: 1;
-  filter: none;
   transition: opacity 0.3s ease;
 }
-
-.logo-item:hover img {
-  opacity: 1;
-}
-
-/* Visual normalization by aspect ratio */
-
-/* Square/nearly square logos (ratio ≤ 1.5:1) */
 .logo-item img[src*="logo-cesba"],
 .logo-item img[src*="olamestudio"],
 .logo-item img[src*="manifiesto-bar"] {
-  max-height: 40px;
-  max-width: 40px;
+  height: 36px;
+  max-width: 36px;
 }
-
-/* Compact logos (ratio 1.5-2.5:1) */
-.logo-item img[src*="dassen"] {
-  max-height: 40px;
-  max-width: 65px;
+.logo-item img[src*="trace-logo"],
+.logo-item img[src*="micelio"] {
+  height: 28px;
 }
-
-/* Moderate logos (ratio 2.5-3.5:1) - baseline */
-.logo-item img[src*="lab-logo-coral"],
-.logo-item img[src*="EscInn"],
-.logo-item img[src*="hermanas-minimas"] {
-  max-height: 40px;
-}
-
-/* Wide logos (ratio 3.5-4.5:1) */
-.logo-item img[src*="otros-futuros"],
-.logo-item img[src*="comunicaciones-syp"],
-.logo-item img[src*="micelio"],
-.logo-item img[src*="Heated"] {
-  max-height: 35px;
-}
-
-/* Very wide logos (ratio > 4.5:1) */
-.logo-item img[src*="trace-logo"] {
-  max-height: 30px;
-}
-
-/* Logos más grandes en mobile (compensan trazos finos) */
-.logo-item img[src*="EscInn"],
-.logo-item img[src*="dassen"],
-.logo-item img[src*="olamestudio"] {
-  height: 52px;
-}
-
-/* Desktop: la altura la gobiernan los max-height por categoría */
 @media (min-width: 769px) {
-  .logo-item img,
-  .logo-item img[src*="EscInn"],
-  .logo-item img[src*="dassen"],
-  .logo-item img[src*="olamestudio"] {
-    height: auto;
-  }
+  .trust-section { padding-left: var(--space-24); padding-right: var(--space-24); }
+  .logo-item img { height: 46px; }
+  .logo-item img[src*="logo-cesba"],
+  .logo-item img[src*="olamestudio"],
+  .logo-item img[src*="manifiesto-bar"] { height: 42px; max-width: 42px; }
+  .logo-item img[src*="trace-logo"],
+  .logo-item img[src*="micelio"] { height: 32px; }
 }
-
-/* Logo CESBA: invertir para mostrarlo blanco */
-.logo-item img[src*="logo-cesba"],
-.logo-item:hover img[src*="logo-cesba"] {
-  /* El archivo es negro puro sobre transparente: invertido a blanco, forma intacta */
-  filter: brightness(0) invert(1);
-}
-
 /* Testimonials: sección eliminada — el CSS era huérfano (ningún HTML la usa) */
 
 /* Nota: estas reglas aplicaban globalmente por una llave mal cerrada
@@ -5516,17 +5469,9 @@ html {
 /* Logos tipo ícono (cuadrados: CESBA, Olam, Manifiesto): a igual altura
    que un wordmark ocupan un cuarto de su superficie visual. Se compensa
    con ~1.5x de altura para igualar el peso óptico. */
-.logo-item--icon img {
-  height: 78px;
-}
-
-/* Wordmarks con tipografía chica en su lockup (ITBA Escuela de
+ /* Wordmarks con tipografía chica en su lockup (ITBA Escuela de
    Innovación): compensación intermedia entre wordmark e ícono. */
-.logo-item--md img {
-  height: 64px;
-}
-
-/* ============ Nav mobile: orden correcto con CTA + hamburguesa ============ */
+ /* ============ Nav mobile: orden correcto con CTA + hamburguesa ============ */
 /* En index conviven logo + CTA Hablemos + hamburguesa: con space-between
    el botón quedaba flotando en el centro. Logo a la izquierda (auto-margin),
    CTA y hamburguesa agrupados a la derecha. En páginas sin CTA no cambia
