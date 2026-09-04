@@ -76,10 +76,10 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ### Skills de Identidad
 
 5. **bpp-brand** *(SIEMPRE CARGAR ÚLTIMO - TIENE PRIORIDAD)*
-   - Identidad específica BPP: #c16f52 terracotta, dark warm gray backgrounds (#1a1512)
+   - Identidad específica BPP: #c16f52 terracotta, fondo Tinta azul-negro (#12151a)
    - Corner brackets, glow effects, editorial feel
    - Voice: directo, first-person, practitioner-level (no académico, no corporativo)
-   - Pairing con frontend-design: dirección estética ya definida (refined dark editorial with warm orange accent)
+   - Pairing con frontend-design: dirección estética ya definida (refined dark editorial (base Tinta fría) with warm orange accent)
 
 ### Skills de Desarrollo y Testing
 
@@ -106,7 +106,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 /bpp-brand  # ÚLTIMO - sobreescribe defaults genéricos
 ```
 
-**IMPORTANTE**: `bpp-brand` define la dirección estética del proyecto. Cuando `frontend-design` o `bencium-innovative-ux-designer` pregunten por aesthetic direction, la respuesta es siempre: **"refined dark editorial with warm orange accent"**. Nunca derivar hacia defaults genéricos de AI (purple gradients, Inter font, glass morphism).
+**IMPORTANTE**: `bpp-brand` define la dirección estética del proyecto. Cuando `frontend-design` o `bencium-innovative-ux-designer` pregunten por aesthetic direction, la respuesta es siempre: **"refined dark editorial (base Tinta fría) with warm orange accent"**. Nunca derivar hacia defaults genéricos de AI (purple gradients, Inter font, glass morphism).
 
 ---
 
@@ -205,8 +205,8 @@ npm run serve   # eleventy --serve con recarga
 La fuente de verdad es `/DESIGN.md` (v2.1 beta-inclusive). Resumen:
 ```css
 /* Tokens v2 (definidos en styles.css :root) */
---color-bg: #1a1512;        /* Dark warm gray (NO negro puro) */
---color-surface: #221d18;   /* Cards / superficies elevadas */
+--color-bg: #12151a;        /* Tinta: azul-negro frío (v2.4). NO marrón, NO negro puro */
+--color-surface: #1a1e25;   /* Cards / superficies elevadas */
 --orange-500: #c16f52;      /* Primary terracotta (NO #ce7352, eso era v1) */
 /* Texto: rgba(250, 248, 246, ...) warm off-white (NO blanco puro) */
 ```

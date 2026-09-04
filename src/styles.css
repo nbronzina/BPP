@@ -54,16 +54,16 @@
     --orange-500: #c16f52;  /* Principal (brand) - terracotta desaturado */
 
     /* Base colors - Inclusive dark (lifted warm gray, no pure black) */
-    --color-bg: #1a1512;           /* Dark warm brown - lifted para reducir contraste extremo */
-    --color-surface: #221d18;      /* Surface elevated - warm gray */
-    --color-border: #38312a;       /* Border - warm taupe, más visible */
+    --color-bg: #12151a;           /* Dark warm brown - lifted para reducir contraste extremo */
+    --color-surface: #1a1e25;      /* Surface elevated - warm gray */
+    --color-border: #2b313a;       /* Border - warm taupe, más visible */
 
     /* Text colors - Inclusive design (warm off-white unificado) */
     --color-text: #faf8f6;              /* Blanco cálido principal - reduce fatiga visual */
     --color-text-light: #faf8f6;        /* Unificado con primary */
     --color-text-secondary: rgba(250, 248, 246, 0.87);  /* Warm off-white con opacidad - WCAG AA */
     --color-text-muted: rgba(250, 248, 246, 0.65);      /* Muted pero mantiene temperatura cálida */
-    /* Jerarquía de texto verificada sobre surface #221d18 (WCAG 2.1):
+    /* Jerarquía de texto verificada sobre surface #1a1e25 (WCAG 2.1):
        high 0.95 → 15.6:1 · mid 0.75 → 9.4:1 · low 0.55 → 5.5:1 (mínimo para texto de cuerpo, AA)
        faint 0.40 → 3.6:1: SOLO texto grande (≥24px o ≥18.66px bold) o decorativo. Nunca cuerpo. */
     --color-text-high: rgba(250, 248, 246, 0.95);
@@ -82,10 +82,10 @@
        #c16f52 da 3.2:1 sobre papel: solo texto ≥24px o ≥18.66px bold. */
     --paper: #f4efe8;                 /* superficie de lectura */
     --paper-elevated: #faf7f2;        /* cards sobre paper */
-    --ink-high: rgba(26, 21, 18, 0.95);
-    --ink-mid: rgba(26, 21, 18, 0.78);
-    --ink-low: rgba(26, 21, 18, 0.66);   /* piso para cuerpo y metadata */
-    --ink-border: rgba(26, 21, 18, 0.14);
+    --ink-high: rgba(18, 21, 26, 0.95);
+    --ink-mid: rgba(18, 21, 26, 0.78);
+    --ink-low: rgba(18, 21, 26, 0.66);   /* piso para cuerpo y metadata */
+    --ink-border: rgba(18, 21, 26, 0.14);
     --accent-on-paper: #9a4f36;       /* terracota oscurecido: 5.2:1 sobre paper */
     --accent-on-paper-hover: #7f3f2a; /* hover/active de links sobre paper: 6.9:1 */
 
@@ -171,7 +171,7 @@
 
 html {
     scroll-padding-top: var(--space-24);  /* Altura del navbar sticky + margen para que títulos no queden tapados */
-    background: #1a1512;
+    background: #12151a;
     overflow-x: hidden;
 }
 
@@ -396,7 +396,7 @@ nav {
 body.logo-pinned nav {
     opacity: 1;
     pointer-events: auto;
-    background-color: rgba(26, 21, 18, 0.95);
+    background-color: rgba(18, 21, 26, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(250, 248, 246, 0.06);
@@ -404,7 +404,7 @@ body.logo-pinned nav {
 
 @media (min-width: 769px) {
     body.logo-pinned nav {
-        background-color: rgba(26, 21, 18, 0.65);
+        background-color: rgba(18, 21, 26, 0.65);
         backdrop-filter: blur(16px) saturate(140%);
         -webkit-backdrop-filter: blur(16px) saturate(140%);
     }
@@ -415,7 +415,7 @@ body.logo-pinned nav {
 body.secondary-page nav {
     opacity: 1;
     pointer-events: auto;
-    background-color: rgba(26, 21, 18, 0.95);
+    background-color: rgba(18, 21, 26, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(250, 248, 246, 0.06);
@@ -424,7 +424,7 @@ body.secondary-page nav {
 /* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(1px)) {
     body.logo-pinned nav {
-        background-color: rgba(26, 21, 18, 0.95);
+        background-color: rgba(18, 21, 26, 0.95);
     }
 }
 
@@ -452,7 +452,7 @@ body.logo-pinned .nav-logo {
 body.secondary-page nav {
     opacity: 1;
     pointer-events: auto;
-    background-color: rgba(26, 21, 18, 0.95);
+    background-color: rgba(18, 21, 26, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(250, 248, 246, 0.06);
@@ -460,7 +460,7 @@ body.secondary-page nav {
 
 @media (min-width: 769px) {
     body.secondary-page nav {
-        background-color: rgba(26, 21, 18, 0.65);
+        background-color: rgba(18, 21, 26, 0.65);
         backdrop-filter: blur(16px) saturate(140%);
         -webkit-backdrop-filter: blur(16px) saturate(140%);
     }
@@ -473,7 +473,7 @@ body.secondary-page .nav-logo {
 /* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(1px)) {
     body.secondary-page nav {
-        background-color: rgba(26, 21, 18, 0.95);
+        background-color: rgba(18, 21, 26, 0.95);
     }
 }
 
@@ -496,7 +496,7 @@ body.secondary-page .nav-logo {
     height: 100vh;
     width: 80%;
     min-width: 260px;
-    background-color: rgba(26, 21, 18, 0.98);
+    background-color: rgba(18, 21, 26, 0.98);
     backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
@@ -587,11 +587,14 @@ body.secondary-page .nav-logo {
 }
 
 .hero-fullscreen {
-    min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 0 0 5vh 0; }
+    /* Alto acotado: en 1080p un hero de 100vh dejaba 400px vacíos bajo el bloque, más los
+       160px de padding de Nosotros. Se centra el bloque y la sección siguiente arranca antes. */
+    min-height: clamp(520px, 78svh, 820px); display: flex; justify-content: center; align-items: center; padding: 0; }
+.hero-fullscreen + .section { padding-top: var(--space-12); }
 
 .hero-brand-header {
     
-    max-width: 1200px; padding: var(--space-24) 2rem var(--space-8); z-index: 1; }
+    max-width: 1200px; padding: calc(var(--space-12) + 38px) 2rem var(--space-12); z-index: 1; }
 
 .hero-brand-content {
     display: flex; flex-direction: column; align-items: center; gap: var(--space-12); text-align: center; }
@@ -809,12 +812,14 @@ body.secondary-page .nav-logo {
 /* Desktop: logo más grande, splash completo si queremos */
 @media (min-width: 769px) {
     .hero-fullscreen {
-        min-height: 100vh; /* Desktop puede permitirse fullscreen */
-        padding: 0 0 5vh 0;
+        /* Antes 100vh: en 1080p dejaba ~400px vacíos bajo el bloque. Acotado y centrado. */
+        min-height: clamp(560px, 80svh, 840px);
+        padding: 0;
     }
 
     .hero-brand-header {
-        padding: var(--space-24) 2rem var(--space-8);
+        /* El nav fijo tapa ~76px arriba: un poco más de padding arriba deja el bloque centrado a la vista */
+        padding: calc(var(--space-12) + 38px) 2rem var(--space-12);
     }
 
     .hero-brand-content {
@@ -3037,7 +3042,7 @@ img {
     top: -100px;
     left: 0;
     background: var(--color-accent);
-    color: #1a1512;
+    color: #12151a;
     padding: var(--space-4) var(--space-8);
     z-index: var(--z-modal);
     font-weight: 700;
@@ -3498,7 +3503,7 @@ img {
 .legal-page .back-link:hover,
 .legal-page .back-link:focus-visible {
   background: var(--color-accent);
-  color: #1a1512;
+  color: #12151a;
 }
 
 /* Estilo de la fecha */
@@ -3884,7 +3889,7 @@ img {
    Patrón disclosure: tap/click en el término despliega una
    tarjeta real en el flujo del documento (la inserta el JS
    después del bloque contenedor). Alineado a DESIGN.md:
-   surface #221d18, acento --orange-500, radio 8px, shadow ≤ 0.4.
+   surface #1a1e25, acento --orange-500, radio 8px, shadow ≤ 0.4.
    ========================= */
 
 .tooltip-term {
@@ -4085,7 +4090,7 @@ img {
 /* Exception: cta-primary buttons keep their dark text on orange background */
 .reporte-page .cta-primary,
 .legal-page .cta-primary {
-  color: #1a1512 !important;
+  color: #12151a !important;
 }
 
 .legal-page a:hover,
@@ -4238,7 +4243,7 @@ img {
 .mobile-toc-btn svg {
   width: 24px;
   height: 24px;
-  fill: #1a1512;
+  fill: #12151a;
 }
 
 /* Mobile TOC Overlay */
@@ -4248,7 +4253,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(26, 21, 18, 0.95);
+  background: rgba(18, 21, 26, 0.95);
   z-index: 9998;
   opacity: 0;
   visibility: hidden;
@@ -4480,7 +4485,7 @@ img {
 }
 
 .share-buttons a:hover svg {
-  fill: #1a1512;
+  fill: #12151a;
 }
 
 /* Sticky Download Button (Mobile) */
@@ -4489,7 +4494,7 @@ img {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(26, 21, 18, 0.98);
+  background: rgba(18, 21, 26, 0.98);
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(193, 111, 82, 0.3);
   padding: var(--space-4);
@@ -4515,7 +4520,7 @@ img {
   text-align: center;
   padding: var(--space-3) var(--space-4);
   background: var(--color-accent);
-  color: #1a1512;
+  color: #12151a;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 700;
@@ -5001,7 +5006,7 @@ img {
 /* Variante contain: para portadas con texto (ej: Tesis 01 La Usina).
    El fondo replica el de la portada para que el letterbox sea invisible. */
 .actividad-imagen--contain {
-  background: #1a1512;
+  background: #12151a;
 }
 
 .actividad-imagen--contain img {
@@ -5271,8 +5276,8 @@ img {
    surface (cards). La separación por tono reemplaza al separador por borde. */
 
 :root {
-    --color-bg-deep: #16110e;      /* Registro hondo: services, contacto */
-    --color-bg-warm: #1e1712;      /* Registro tibio: tinte terracotta 4% */
+    --color-bg-deep: #0d1014;      /* Registro hondo: services, contacto */
+    --color-bg-warm: #161a20;      /* Registro tibio: tinte terracotta 4% */
 }
 
 /* Sección de servicios: registro hondo con lámpara terracotta arriba.
@@ -5308,12 +5313,12 @@ img {
 /* Selección de texto en paleta (antes: azul default del browser) */
 ::selection {
     background: rgba(193, 111, 82, 0.85);
-    color: #1a1512;
+    color: #12151a;
 }
 
 /* Scrollbar en paleta (antes: gris default) */
 html {
-    scrollbar-color: #3a2e24 #1a1512;
+    scrollbar-color: #3a2e24 #12151a;
     scrollbar-width: thin;
 }
 
@@ -5322,13 +5327,13 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    background: #1a1512;
+    background: #12151a;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #3a2e24;
     border-radius: 999px;
-    border: 2px solid #1a1512;
+    border: 2px solid #12151a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -5638,8 +5643,8 @@ html {
     --color-border: var(--ink-border);
     --border-card: 1px solid var(--ink-border);
 
-    --color-text: #1a1512;
-    --color-text-light: #1a1512;
+    --color-text: #12151a;
+    --color-text-light: #12151a;
     --color-text-secondary: var(--ink-high);
     --color-text-muted: var(--ink-low);
     --color-text-high: var(--ink-high);
@@ -5651,8 +5656,8 @@ html {
     --color-accent-bright: var(--accent-on-paper-hover);
 
     /* Sombra para papel: misma geometría, tinta en vez de negro. */
-    --shadow-card: 0 16px 32px -24px rgba(26, 21, 18, 0.28);
-    --shadow-card-hover: 0 20px 40px -24px rgba(26, 21, 18, 0.32);
+    --shadow-card: 0 16px 32px -24px rgba(18, 21, 26, 0.28);
+    --shadow-card-hover: 0 20px 40px -24px rgba(18, 21, 26, 0.32);
 }
 
 /* Cuerpo: tinta alta, sin la opacidad 0.75 del registro oscuro
@@ -5744,7 +5749,7 @@ html {
     text-decoration-color: rgba(154, 79, 54, 0.45);
 }
 
-/* .reporte-page .cta-primary fija #1a1512 !important (resto de cuando el
+/* .reporte-page .cta-primary fija #12151a !important (resto de cuando el
    CTA era botón relleno). Sobre papel el CTA vuelve al acento. */
 .page-lectura .reporte-section .cta-primary {
     color: var(--accent-on-paper) !important;
@@ -5763,7 +5768,7 @@ html {
 /* Selección: marcador claro, tinta encima (9.6:1). */
 .page-lectura main > section:not(.hero-section) ::selection {
     background: rgba(154, 79, 54, 0.35);
-    color: #1a1512;
+    color: #12151a;
 }
 
 /* Tesis: bordes de visor y fallback en tinta. */
