@@ -4713,7 +4713,8 @@ img {
   max-width: 46px;
 }
 .logo-item img[src*="trace-logo"],
-.logo-item img[src*="micelio"] {
+.logo-item img[src*="micelio"],
+.logo-item img[src*="otros-futuros"] {
   height: 28px;
 }
 @media (min-width: 769px) {
@@ -4723,7 +4724,8 @@ img {
   .logo-item img[src*="manifiesto-bar"] { height: 42px; max-width: 42px; }
   .logo-item img[src*="logo-cesba"] { height: 56px; max-width: 56px; }
   .logo-item img[src*="trace-logo"],
-  .logo-item img[src*="micelio"] { height: 32px; }
+  .logo-item img[src*="micelio"],
+  .logo-item img[src*="otros-futuros"] { height: 32px; }
 }
 /* Testimonials: sección eliminada — el CSS era huérfano (ningún HTML la usa) */
 
