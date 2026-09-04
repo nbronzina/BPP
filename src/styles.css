@@ -2377,8 +2377,14 @@ footer {
    Un lector del sector público verifica en dos minutos qué pedimos, qué hicimos,
    qué pasó y de dónde salen los datos. */
 .ficha-caso {
-    padding: var(--space-10) 0;
-    margin: var(--space-10) 0;
+    /* Misma columna que las secciones: hereda ancho y padding lateral de .content-section;
+       acá solo el ritmo vertical. Antes margin 0 horizontal la dejaba pegada al borde. */
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-10);
+    margin-left: auto;
+    margin-right: auto;
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }
@@ -2415,7 +2421,7 @@ footer {
 .ficha-caso-fuentes strong { color: var(--color-text-mid); font-weight: 700; }
 /* En páginas de reporte la ficha es una sección más: hereda el ritmo (separador + padding)
    y no suma bordes ni márgenes propios. */
-.reporte-page .ficha-caso { margin: 0; border: 0; padding-bottom: 0; }
+.reporte-page .ficha-caso { margin: 0 auto; border: 0; padding-bottom: 0; }
 .ficha-caso-fuentes a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 @media (min-width: 769px) {
     .ficha-caso-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-12); }
@@ -3535,10 +3541,18 @@ img {
 ──────────────────────────────────────────────*/
 
 .reporte-page .hero-section {
-    padding: var(--space-20) var(--space-8) var(--space-10);
+    /* Mismo padding lateral que .content-section: el hero, la ficha y las cards
+       comparten un solo borde izquierdo. */
+    padding: var(--space-20) var(--spacing-horizontal-mobile) var(--space-10);
     max-width: 1200px;
     margin: 0 auto;
     text-align: left;
+}
+@media (min-width: 769px) {
+    .reporte-page .hero-section {
+        padding-left: var(--space-24);
+        padding-right: var(--space-24);
+    }
 }
 
 .reporte-page .report-label {
