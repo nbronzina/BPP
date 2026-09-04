@@ -110,6 +110,8 @@
     --spacing-section: 80px;             /* DESIGN.md: silencio visual entre bloques */
     --spacing-block: calc(var(--spacing-section) / 2);          /* 40px: mitad del gap, por lado */
     --spacing-block-edge: 64px;                                  /* hero → primer bloque, último → footer */
+    --nav-height: 76px;                                          /* nav fijo: el hero descuenta esto para que el aire arriba sea real */
+    --hero-top: calc(var(--nav-height) + var(--spacing-block-edge)); /* aire visible entre el nav y el primer texto del hero = edge */
     --spacing-hero-bottom: calc(var(--spacing-block-edge) - var(--spacing-block)); /* 24px: lo que aporta el hero */
     --spacing-card: var(--space-12);     /* 48px */
     --spacing-gap: var(--space-8);       /* var(--space-8) */
@@ -3401,7 +3403,7 @@ img {
 /* HERO del reporte - Mobile-first base */
 .hero-section {
     position: relative;
-    padding: 110px var(--space-6) var(--spacing-hero-bottom);
+    padding: var(--hero-top) var(--space-6) var(--spacing-hero-bottom);
     max-width: 1200px;
     margin: 0 auto;
     text-align: left;
@@ -3472,7 +3474,7 @@ img {
 /* Report Pages - Desktop Enhancement */
 @media (min-width: 769px) {
     .hero-section {
-        padding: calc(var(--spacing-section) + 60px) var(--space-8) var(--spacing-hero-bottom);
+        padding: var(--hero-top) var(--space-8) var(--spacing-hero-bottom);
     }
 
     .content-section {
@@ -3500,7 +3502,7 @@ img {
 }
 .legal-page .legal-hero {
   /* Debajo del nav fijo */
-  padding-top: calc(var(--space-16) + 72px);
+  padding-top: var(--hero-top);
   padding-bottom: var(--spacing-hero-bottom);
 }
 .legal-page .legal-content {
@@ -3574,7 +3576,7 @@ img {
 .reporte-page .hero-section {
     /* Mismo padding lateral que .content-section: el hero, la ficha y las cards
        comparten un solo borde izquierdo. */
-    padding: var(--space-20) var(--spacing-horizontal-mobile) var(--spacing-hero-bottom);
+    padding: var(--hero-top) var(--spacing-horizontal-mobile) var(--spacing-hero-bottom);
     max-width: 1200px;
     margin: 0 auto;
     text-align: left;
@@ -4481,6 +4483,7 @@ img {
 .reporte-page .hero-section {
   position: relative;
   overflow: hidden;
+    padding-top: var(--hero-top);
 }
 
 
@@ -6212,3 +6215,6 @@ body.legal-page.page-papel .nav-logo {
    con el panel cerrado colgaban bajo el botón, y abierto separaban el panel del header
    (que ya junta con border-bottom transparente). */
 .reporte-section .scenario-accordion-title { margin: 0; }
+
+/* Dentro del hero, el label de sección no suma su margen superior: el aire arriba lo pone --hero-top. */
+.hero-section .actividades-label { margin-top: 0; }
