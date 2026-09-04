@@ -4702,11 +4702,15 @@ img {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.logo-item img[src*="logo-cesba"],
 .logo-item img[src*="olamestudio"],
 .logo-item img[src*="manifiesto-bar"] {
   height: 36px;
   max-width: 36px;
+}
+.logo-item img[src*="logo-cesba"] {
+  /* Marca con fondo de color: aguanta más tamaño que los trazos sueltos */
+  height: 46px;
+  max-width: 46px;
 }
 .logo-item img[src*="trace-logo"],
 .logo-item img[src*="micelio"] {
@@ -4715,9 +4719,9 @@ img {
 @media (min-width: 769px) {
   .trust-section { padding-left: var(--space-24); padding-right: var(--space-24); }
   .logo-item img { height: 46px; }
-  .logo-item img[src*="logo-cesba"],
   .logo-item img[src*="olamestudio"],
   .logo-item img[src*="manifiesto-bar"] { height: 42px; max-width: 42px; }
+  .logo-item img[src*="logo-cesba"] { height: 56px; max-width: 56px; }
   .logo-item img[src*="trace-logo"],
   .logo-item img[src*="micelio"] { height: 32px; }
 }
