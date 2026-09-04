@@ -1,26 +1,27 @@
 ---
 layout: "layouts/base.njk"
-title: "Sistemas que trabajan juntos – BPP Analytics & Design"
-description: "Diagnóstico técnico-regulatorio y análisis sistémico para Trace Group sobre la inspección y supervisión técnica en el sector hidrocarburífero argentino. Marco normativo, sistemas digitales que no dialogan entre sí y adaptaciones de campo en Vaca Muerta. BPP Analytics & Design 2024-2025."
+title: "Trace Group — De la señal al servicio – BPP Analytics & Design"
+description: "Propuesta en curso para Trace Group (vía Clusterciar): un informe de verificación de emisiones de metano fechado en 2032, construido como prototipo diegético para argumentar un servicio que todavía no existe. Tres señales reales del sector energético argentino y un artefacto de diseño ficción. BPP Analytics & Design, 2026."
 robots: "index, follow"
 ogType: "article"
 section: "proyectos"
-ogTitle: "Sistemas que trabajan juntos"
-ogDescription: "Diagnóstico técnico-regulatorio y análisis sistémico para Trace Group sobre la inspección técnica en el sector hidrocarburífero argentino. Marco normativo, sistemas digitales y adaptaciones de campo en Vaca Muerta."
+ogTitle: "Trace Group: de la señal al servicio"
+ogDescription: "Un informe de verificación de emisiones fechado en 2032, un ejecutable de 3,4 MB y una investigación regulatoria verificada norma por norma. Trace Group no vende esto todavía. Pero podría. Propuesta en curso, 2026."
 bodyClass: "reporte-page secondary-page page-lectura"
 jsonld: "jsonld/proyectos-trace-group.njk"
 ---
   <main id="main-content">
 
     <!-- Sticky TOC (Desktop) -->
-    <aside class="sticky-toc" id="stickyToc" aria-label="Índice del reporte">
+    <aside class="sticky-toc" id="stickyToc" aria-label="Índice del proyecto">
       <p class="toc-heading">Navegación</p>
       <ul>
         <li><a href="#sec-intro">Introducción</a></li>
         <li><a href="#sec-ficha">El caso en cuatro respuestas</a></li>
-        <li><a href="#sec-fase1">Fase 1: Diagnóstico</a></li>
-        <li><a href="#sec-fase2">Fase 2: Teoría Sistémica</a></li>
-        <li><a href="#sec-conclusion">Conclusiones</a></li>
+        <li><a href="#sec-contexto">El contexto</a></li>
+        <li><a href="#sec-enfoque">El enfoque</a></li>
+        <li><a href="#sec-entregables">Los entregables</a></li>
+        <li><a href="#sec-principios">Principios aplicados</a></li>
       </ul>
     </aside>
 
@@ -39,9 +40,10 @@ jsonld: "jsonld/proyectos-trace-group.njk"
         <ul class="report-toc-list editorial-list">
           <li><span class="editorial-arrow">→</span> <a href="#sec-intro">Introducción</a></li>
           <li><span class="editorial-arrow">→</span> <a href="#sec-ficha">El caso en cuatro respuestas</a></li>
-          <li><span class="editorial-arrow">→</span> <a href="#sec-fase1">Fase 1: Diagnóstico Técnico-Regulatorio</a></li>
-          <li><span class="editorial-arrow">→</span> <a href="#sec-fase2">Fase 2: Teoría Sistémica</a></li>
-          <li><span class="editorial-arrow">→</span> <a href="#sec-conclusion">Conclusiones</a></li>
+          <li><span class="editorial-arrow">→</span> <a href="#sec-contexto">El contexto: tres señales</a></li>
+          <li><span class="editorial-arrow">→</span> <a href="#sec-enfoque">El enfoque: un objeto, no un deck</a></li>
+          <li><span class="editorial-arrow">→</span> <a href="#sec-entregables">Los entregables</a></li>
+          <li><span class="editorial-arrow">→</span> <a href="#sec-principios">Principios aplicados</a></li>
         </ul>
       </div>
     </div>
@@ -53,12 +55,12 @@ jsonld: "jsonld/proyectos-trace-group.njk"
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
       </a>
-      <a href="https://twitter.com/intent/tweet?url=https://www.bppanalyticsanddesign.com/proyectos/trace-group/&text=Sistemas%20que%20trabajan%20juntos" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Twitter">
+      <a href="https://twitter.com/intent/tweet?url=https://www.bppanalyticsanddesign.com/proyectos/trace-group/&text=Trace%20Group%3A%20de%20la%20se%C3%B1al%20al%20servicio" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Twitter">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
         </svg>
       </a>
-      <a href="mailto:?subject=Sistemas%20que%20trabajan%20juntos%20-%20BPP&body=Te%20comparto%20este%20proyecto%20sobre%20la%20inspección%20técnica%20en%20Vaca%20Muerta:%20https://www.bppanalyticsanddesign.com/proyectos/trace-group/" aria-label="Compartir por email">
+      <a href="mailto:?subject=Trace%20Group%3A%20de%20la%20se%C3%B1al%20al%20servicio%20-%20BPP&body=Te%20comparto%20este%20proyecto%20sobre%20un%20informe%20de%20verificaci%C3%B3n%20de%20emisiones%20fechado%20en%202032:%20https://www.bppanalyticsanddesign.com/proyectos/trace-group/" aria-label="Compartir por email">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
         </svg>
@@ -67,19 +69,19 @@ jsonld: "jsonld/proyectos-trace-group.njk"
 
     <!-- HERO DEL PROYECTO -->
     <section class="hero-section section-wide">
-      <p class="report-label">DIAGNÓSTICO · 2024-2025</p>
-      <h1 class="tagline">Sistemas que trabajan juntos</h1>
+      <p class="report-label">PROPUESTA · 2026</p>
+      <h1 class="tagline">Trace Group — De la señal al servicio</h1>
       <p class="hero-sub">
-        Diagnóstico Técnico-Regulatorio del Sector Hidrocarburífero Argentino
+        Un informe de verificación de emisiones fechado en 2032. Un ejecutable de 3,4 MB que se abre con doble clic. Una investigación regulatoria completa por debajo, verificada norma por norma. Trace Group no vende esto todavía. Pero podría.
       </p>
       <p class="report-tags">
-        Energía · Inspección Técnica · Teoría de Sistemas
+        Energía · Verificación de emisiones · Diseño ficción
       </p>
       <dl class="ficha-tecnica">
-        <div class="ficha-row"><dt>Año</dt><dd>2024–2025</dd></div>
-        <div class="ficha-row"><dt>Cliente</dt><dd>Trace Group (Clusterciar)</dd></div>
-        <div class="ficha-row"><dt>Campo</dt><dd>Inspección técnica · Vaca Muerta</dd></div>
-        <div class="ficha-row"><dt>Estado</dt><dd>Entregado</dd></div>
+        <div class="ficha-row"><dt>Año</dt><dd>2026</dd></div>
+        <div class="ficha-row"><dt>Cliente</dt><dd>Trace Group (vía Clusterciar)</dd></div>
+        <div class="ficha-row"><dt>Campo</dt><dd>Verificación de emisiones · Prototipo diegético</dd></div>
+        <div class="ficha-row"><dt>Estado</dt><dd>Propuesta en curso</dd></div>
       </dl>
     </section>
 
@@ -87,23 +89,13 @@ jsonld: "jsonld/proyectos-trace-group.njk"
     <section class="content-section reporte-section" id="sec-intro">
       <article class="actividad-card actividad-card--light">
         <h2>Introducción</h2>
+        <p class="ficcion-aviso"><strong>Lo que sigue es un prototipo diegético.</strong> El informe de verificación que describimos está fechado en 2032 y no existe: lo construimos nosotros para argumentar un servicio que Trace Group todavía no ofrece. Las tres señales de contexto son reales y tienen fuente. El informe es ficción, internamente consistente, y se lee como ficción. Si una cifra de 2032 aparece citada como dato, está mal leída.</p>
         <p>
-          Entre 2024 y 2025 trabajamos con Trace Group (grupo Clusterciar) sobre el futuro de la inspección y supervisión técnica en el sector hidrocarburífero argentino. Jorge Petrocelli condujo el proyecto con nosotros. Publicamos acá dos fases: qué dice la norma y cómo se comporta el sistema que la aplica. La tercera, un ejercicio de escenarios a tres años que construimos para discutir con el cliente, la dejamos afuera: nada de lo que contenía se sostiene con una fuente pública.
+          En 2026 le presentamos a Trace Group, vía Clusterciar, una propuesta que sigue en curso. No partimos de un pedido de servicio. Partimos de tres señales del sector energético argentino que apuntaban al mismo lugar y de una pregunta: si detrás de las tres había un servicio nuevo, y cómo se vería.
         </p>
         <p>
-          La primera fase consistió en un <strong>diagnóstico técnico-regulatorio</strong> exhaustivo del marco normativo vigente, identificando las tensiones entre legislación nacional, estándares API y prácticas operativas reales en Vaca Muerta. La segunda fase aplicó marcos de <strong>análisis sistémico</strong> basados en la teoría de Niklas Luhmann para comprender cómo las organizaciones de inspección operan como sistemas autopoiéticos que generan sus propias adaptaciones emergentes.
+          En vez de un deck, llevamos un objeto. Un informe de verificación de emisiones de metano fechado en 2032, con la textura de un documento regulatorio real, y la plataforma que lo antecede. Lo que Trace Group haga con eso no lo publicamos. Lo que sí publicamos es cómo lo construimos y por qué.
         </p>
-        <p>
-          Leer la norma y el sistema que la aplica en paralelo permite diagnosticar el presente con la complejidad real del sector energético argentino, no con la que describen los manuales.
-        </p>
-
-        <!-- ESPACIO RESERVADO PARA IMAGEN -->
-        <!-- <div class="impact-chart">
-          <picture>
-            <source srcset="/img/TraceGroup-Intro.webp" type="image/webp">
-            <img src="/img/TraceGroup-Intro.png" alt="Vaca Muerta - Contexto del proyecto" width="1200" height="800" loading="lazy" decoding="async">
-          </picture>
-        </div> -->
       </article>
     </section>
 
@@ -111,195 +103,130 @@ jsonld: "jsonld/proyectos-trace-group.njk"
     <section class="content-section reporte-section ficha-caso" id="sec-ficha" aria-labelledby="ficha-heading">
       <h2 id="ficha-heading" class="ficha-caso-title">El caso en cuatro respuestas</h2>
       <dl class="ficha-caso-grid">
-        <div class="ficha-caso-item"><dt>Qué nos pidieron</dt><dd>Trace Group (grupo Clusterciar) nos pidió entender hacia dónde va la inspección y supervisión técnica en el sector hidrocarburífero argentino, con Vaca Muerta como campo. La pregunta de fondo: cómo conviven la norma escrita, los sistemas digitales del sector y lo que los equipos de campo hacen en la práctica.</dd></div>
-        <div class="ficha-caso-item"><dt>Qué hicimos</dt><dd>Un diagnóstico técnico-regulatorio del marco vigente (leyes nacionales y normas API) y de los tres sistemas digitales que no se hablan entre sí: SIRCAR, InPro y GIS Neuquén. Después, un análisis sistémico con teoría de Luhmann para explicar por qué las organizaciones de inspección generan adaptaciones propias, y un relevamiento de esas adaptaciones en campo.</dd></div>
-        <div class="ficha-caso-item"><dt>Qué pasó después</dt><dd>Entregamos el diagnóstico y las recomendaciones; lo que Trace Group decidió después no forma parte de lo que publicamos.</dd></div>
-        <div class="ficha-caso-item"><dt>Qué diríamos hoy</dt><dd>Parte de lo que relevamos en campo se apoya en registros internos que nadie publicó. Hoy pesaríamos menos las cifras y más lo que sí se sostiene: tres sistemas que no dialogan, y operadores que ya traducen entre ellos sin que nadie lo documente.</dd></div>
+        <div class="ficha-caso-item"><dt>Qué nos pidieron</dt><dd>El encargo llegó vía Clusterciar y no era un servicio, era una pregunta. Tres señales del sector energético (una resolución argentina, un contrato de exportación de GNL y un reglamento europeo) apuntaban al mismo lugar. Nos propusimos averiguar si detrás había un servicio nuevo para Trace Group, y cómo se vería en la mano de quien lo reciba.</dd></div>
+        <div class="ficha-caso-item"><dt>Qué hicimos</dt><dd>Construimos el artefacto en lugar de argumentarlo. Un informe de verificación de emisiones de metano fechado en 2032, empaquetado como un ejecutable de 3,4 MB, y we.trace, la plataforma que lo antecede. Cada norma citada (ISSA 5000, ISO 14064, OGMP 2.0) se verificó contra fuente real; el resto es ficción internamente consistente.</dd></div>
+        <div class="ficha-caso-item"><dt>Qué pasó después</dt><dd>Presentamos la propuesta en 2026 y sigue en curso. Trace Group no vende este servicio; lo que decida hacer con la propuesta no forma parte de lo que publicamos.</dd></div>
+        <div class="ficha-caso-item"><dt>Qué diríamos hoy</dt><dd>Que lo difícil no fue imaginar 2032 sino resistir la tentación de cerrarlo perfecto. La divergencia metodológica que dejamos declarada, y las normas que tuvimos que corregir sobre la marcha, valen más como argumento que cualquier cifra redonda.</dd></div>
       </dl>
-      <p class="ficha-caso-fuentes"><strong>Fuentes:</strong> Ley 17.319 de Hidrocarburos, Ley 24.076 de Gas Natural y Ley 26.020 de Gas Licuado de Petróleo; normas API (American Petroleum Institute); información pública del proyecto Vaca Muerta Oil Sur (VMOS); los sistemas SIRCAR, InPro y GIS Neuquén; teoría de sistemas de Niklas Luhmann. Lo relevado sobre adaptaciones de campo y percepción de los inspectores proviene de nuestra investigación de campo y de registros internos de operadores no publicados.</p>
+      <p class="ficha-caso-fuentes"><strong>Fuentes:</strong> Resolución 277/2025 (Argentina, junio de 2025); contrato de exportación de GNL entre Southern Energy y SEFE (marzo de 2026); Reglamento (UE) de metano. Referencias técnicas del informe: ISSA 5000, ISO 14064, OGMP 2.0. Las tres señales son reales y están verificadas contra fuente primaria; el informe de 2032 es ficción nuestra.</p>
     </section>
 
-    <!-- FASE 1: DIAGNÓSTICO TÉCNICO-REGULATORIO -->
-    <section class="content-section reporte-section" id="sec-fase1">
+    <!-- 1. EL CONTEXTO -->
+    <section class="content-section reporte-section" id="sec-contexto">
       <article class="actividad-card actividad-card--light">
-        <h2>1. Fase 1: Diagnóstico Técnico-Regulatorio</h2>
-        <p><strong>El marco actual:</strong> análisis exhaustivo del marco normativo vigente en el sector hidrocarburífero argentino.</p>
+        <h2>1. El contexto: tres señales</h2>
+        <p><strong>Lo real:</strong> tres hechos verificados contra fuente primaria. Ninguno proyectado.</p>
 
         <div class="impact-top impact-top--spacing-md">
-          <h3>Marco Regulatorio Dual</h3>
+          <h3>Junio de 2025</h3>
         </div>
         <p>
-          El sector hidrocarburífero argentino opera bajo una peculiar arquitectura normativa de doble capa. Por un lado, las leyes nacionales obligatorias —la Ley 17.319 de Hidrocarburos, la Ley 24.076 de Gas Natural y la Ley 26.020 de Gas Licuado de Petróleo— establecen el marco legal mínimo exigible. Por otro, las normas API (American Petroleum Institute), técnicamente voluntarias, funcionan en la práctica como estándares de facto ampliamente implementados por operadores que buscan certificaciones internacionales o financiamiento externo.
-        </p>
-        <p>
-          Esta dualidad genera una zona gris donde coexisten exigencias legales nacionales con expectativas técnicas internacionales que no siempre dialogan entre sí. El resultado es un ecosistema donde las empresas más sofisticadas implementan ambos marcos simultáneamente, mientras que los operadores más chicos quedan entre el cumplimiento legal mínimo y la presión comercial por certificar.
+          La Resolución 277/2025 reemplazó el registro de auditoras por certificación individual bajo la norma API 653. La habilitación dejó de estar en la empresa y pasó a estar en la persona que firma.
         </p>
 
         <div class="impact-top impact-top--spacing-lg">
-          <h3>Caso de Estudio: Proyecto Vaca Muerta Oil Sur (VMOS)</h3>
+          <h3>Marzo de 2026</h3>
         </div>
         <p>
-          El proyecto Vaca Muerta Oil Sur encarna la escala y complejidad técnica del sector. Con un oleoducto de 437 kilómetros y una inversión de USD 2.500 millones, VMOS representa uno de los despliegues más ambiciosos de infraestructura energética en la región. Lo que hace especialmente relevante a este proyecto para nuestro análisis es su combinación de tecnología de punta con desafíos operativos específicamente patagónicos.
-        </p>
-        <p>
-          La implementación tecnológica incluye drones DJI Matrice 300 RTK para inspección aérea de ductos, soldadura mecanizada de precisión, sensores IoT distribuidos a lo largo de la ruta, y robots de inspección interna que recorren el oleoducto detectando anomalías estructurales. Sin embargo, esta sofisticación tecnológica convive con una realidad operativa mucho más compleja de lo que los manuales técnicos anticipan.
-        </p>
-
-        <!-- ESPACIO RESERVADO PARA IMAGEN -->
-        <!-- <div class="impact-chart">
-          <picture>
-            <source srcset="/img/TraceGroup-VMOS.webp" type="image/webp">
-            <img src="/img/TraceGroup-VMOS.png" alt="Proyecto Vaca Muerta Oil Sur" width="1200" height="800" loading="lazy" decoding="async">
-          </picture>
-        </div> -->
-
-        <div class="impact-top impact-top--spacing-lg">
-          <h3>Ecosistema Digital Fragmentado</h3>
-        </div>
-        <p>
-          Uno de los hallazgos más significativos del diagnóstico fue la fragmentación del ecosistema digital del sector. SIRCAR (Sistema de Información de Recursos y Concesiones de la Argentina) gestiona concesiones y permisos a nivel nacional. InPro coordina procesos de inspección con protocolos estandarizados. GIS Neuquén administra información geoespacial de pozos y ductos en la provincia. Tres sistemas críticos, tres bases de datos, tres interfaces, tres lógicas de operación. Pero ninguna comunicación entre sí.
-        </p>
-        <p>
-          Esta compartimentación genera lo que los operadores describen como "islas de información": un inspector puede tener un reporte completo en InPro, pero necesita abrir SIRCAR para verificar permisos de la concesión y luego consultar GIS Neuquén para confirmar coordenadas exactas del pozo. El mismo dato —ubicación de un activo crítico— existe en tres sistemas que no se hablan entre sí. La consecuencia no es solo ineficiencia, sino riesgo operativo: decisiones basadas en información fragmentada, procesos duplicados, y oportunidades para errores de transcripción manual.
+          Southern Energy firmó con la alemana SEFE el mayor contrato de exportación de GNL de la historia argentina. Gas de Vaca Muerta, licuado en el Golfo San Matías, con destino a Wilhelmshaven.
         </p>
 
         <div class="impact-top impact-top--spacing-lg">
-          <h3>Desafíos Operativos en Condiciones Patagónicas</h3>
+          <h3>Desde 2027</h3>
         </div>
         <p>
-          La Patagonia no es solo un territorio: es una variable operativa. Los vientos sostenidos de 65 km/h convierten operaciones de drones de "rutinarias" a "dependientes del clima". La autonomía de equipos electrónicos se reduce significativamente con temperaturas bajo cero. Los manuales técnicos de equipos diseñados para condiciones estándar se vuelven documentos aspiracionales.
-        </p>
-        <p>
-          En respuesta, los equipos de campo han desarrollado lo que internamente se conoce como "soluciones criollas": adaptaciones no documentadas nacidas de la necesidad operativa. Válvulas artesanales fabricadas localmente cuando las importadas tardan meses en llegar. Selladores alternativos probados empíricamente porque los especificados en protocolo no resisten el frío patagónico. Modificaciones a sensores para aumentar su resistencia al viento. Estas innovaciones emergentes funcionan, pero viven en una zona gris entre ingenio operativo y desviación de protocolo. Nadie las documenta oficialmente. Todos las usan en campo.
+          Ese gas necesita demostrar cómo se midió su huella de metano ante el Reglamento de Metano de la Unión Europea. No alcanza con declarar la huella: hay que mostrar el método de medición.
         </p>
 
         <p class="text-spacing-md">
-          <strong>La mayor parte de los equipos críticos en Vaca Muerta cumplen con legislación local y normas API a la vez.</strong>
+          <strong>Tres señales reales. Verificadas, no proyectadas.</strong>
         </p>
         <p class="text-spacing-sm">
-          El dato que importa es el resto: una fracción menor de equipos críticos opera con adaptaciones o soluciones alternativas, y ahí se mide la distancia entre procedimientos ideales y ejecución real en campo.
+          Juntas abren una pregunta que ningún deck responde solo: ¿quién va a ser el primero en ofrecer esa verificación desde Río Negro?
         </p>
       </article>
     </section>
 
-    <!-- FASE 2: TEORÍA SISTÉMICA -->
-    <section class="content-section reporte-section" id="sec-fase2">
+    <!-- 2. EL ENFOQUE -->
+    <section class="content-section reporte-section" id="sec-enfoque">
       <article class="actividad-card actividad-card--light">
-        <h2>2. Fase 2: Teoría Sistémica y Adaptaciones Emergentes</h2>
-        <p><strong>Cómo funcionan los sistemas:</strong> análisis teórico aplicando marcos de Niklas Luhmann.</p>
+        <h2>2. El enfoque: un objeto, no un deck</h2>
+        <p><strong>Algo que se pueda sostener en la mano:</strong> el artefacto en lugar del argumento.</p>
+
+        <p class="text-spacing-md">
+          Podríamos haber argumentado en abstracto por qué Trace Group debería construir un servicio de verificación de emisiones. Preferimos construir el artefacto: un informe de verificación completo, fechado en 2032, con la textura de un documento regulatorio real. Trazabilidad de buque. Factores de emisión. Una declaración de aseguramiento con su lenguaje técnico. Y una sección que declara una divergencia metodológica en vez de esconderla.
+        </p>
+        <p>
+          Es diseño ficción en el sentido de Sterling: un prototipo diegético que suspende la incredulidad sobre un cambio. No lo vende. Lo hace pensable.
+        </p>
+
+        <div class="impact-top impact-top--spacing-lg">
+          <h3>Futuro mundano</h3>
+        </div>
+        <p>
+          El principio rector es el futuro mundano de Nick Foster. No la fantasía de una planta perfecta: el día de trabajo aburrido de alguien que llega quince minutos antes, revisa una alerta que resulta falsa alarma y sigue con el mate. El futuro no llega con un gran anuncio. Llega como rutina.
+        </p>
+      </article>
+    </section>
+
+    <!-- 3. LOS ENTREGABLES -->
+    <section class="content-section reporte-section" id="sec-entregables">
+      <article class="actividad-card actividad-card--light">
+        <h2>3. Los entregables</h2>
+        <p><strong>Dos piezas:</strong> el informe y la plataforma que lo antecede. Deliberadamente distintas.</p>
 
         <div class="impact-top impact-top--spacing-md">
-          <h3>Sistemas Autopoiéticos en Inspección</h3>
+          <h3>El informe</h3>
         </div>
         <p>
-          La segunda fase del proyecto aplicó la teoría de sistemas de Niklas Luhmann para comprender cómo las organizaciones de inspección técnica operan como <strong>sistemas autopoiéticos</strong>: estructuras que se auto-organizan, se auto-reproducen y generan sus propias lógicas de funcionamiento más allá de las intenciones individuales de sus operadores.
+          Un ejecutable Tauri de 3,4 MB. Sin backend, sin red: se abre con doble clic y muestra un documento de verificación completo. Identificación del cargo, inventario de emisiones por etapa, cálculo de intensidad, declaración de verificación independiente.
         </p>
         <p>
-          Tres mecanismos definen su funcionamiento. Primero, la <strong>clausura operativa</strong>: el sistema establece sus propias reglas internas de validación que pueden no coincidir con protocolos externos. Segundo, la <strong>autorreferencia</strong>: cada inspección hace referencia a inspecciones previas, creando cadenas de precedente que terminan valiendo más que el manual oficial. Tercero, la <strong>auto-reproducción</strong>: el sistema genera sus propios criterios de normalidad a partir de la repetición de patrones, independientemente de si esos patrones fueron diseñados o emergieron por accidente.
-        </p>
-        <p class="quote-box">
-          <strong>Paradoja de la complejidad (Luhmann):</strong><br>
-          "Solo el aumento de complejidad puede llevar a una reducción de la complejidad"
-        </p>
-        <p class="text-spacing-sm">
-          Aplicado a Vaca Muerta, esto significa que agregar más sistemas digitales (aumentar complejidad) puede efectivamente ayudar a gestionar mejor la complejidad operativa, pero solo si esos sistemas pueden integrarse de manera que reduzcan, no multipliquen, las contradicciones. La paradoja es que la solución requiere primero atravesar un período de mayor confusión antes de alcanzar mayor claridad.
+          Cada cifra técnica está trazada. Donde corresponde, normas reales: ISSA 5000, ISO 14064, OGMP 2.0. Donde no, ficción internamente consistente.
         </p>
 
         <div class="impact-top impact-top--spacing-lg">
-          <h3>Adaptaciones Tecnológicas Documentadas</h3>
+          <h3>we.trace</h3>
         </div>
         <p>
-          La investigación de campo identificó un ecosistema de innovaciones emergentes que viven en la zona gris entre lo oficial y lo improvisado. Algunos operadores han modificado drones comerciales agregando sensores piezoeléctricos artesanales, no especificados en ningún manual, pero que reducen los falsos positivos según registros internos de los operadores, no publicados. El llamado "Sistema DualCheck" surgió como práctica espontánea: contrastar mediciones de IA con mediciones manuales realizadas en paralelo por inspectores veteranos, generando un doble registro que aumenta confiabilidad a costa de duplicar trabajo.
-        </p>
-        <p>
-          Trace Group desarrolló el KIT-RT, un módulo portátil para zonas sin conectividad que permite realizar inspecciones offline y sincronizar datos cuando se recupera señal. Lo notable no es la tecnología en sí, sino que fue diseñado en respuesta directa a una realidad operativa: hay lugares en Vaca Muerta donde simplemente no hay red, y los protocolos digitales estándar asumen conectividad permanente. Finalmente, la Red Inspector 4.0 documenta cientos de adaptaciones no oficiales generadas por operadores de campo: un repositorio informal de conocimiento práctico que circula por WhatsApp y reuniones presenciales, pero que nunca ingresó a documentación formal.
-        </p>
-
-        <!-- ESPACIO RESERVADO PARA IMAGEN -->
-        <!-- <div class="impact-chart">
-          <picture>
-            <source srcset="/img/TraceGroup-Adaptaciones.webp" type="image/webp">
-            <img src="/img/TraceGroup-Adaptaciones.png" alt="Adaptaciones tecnológicas documentadas" width="1200" height="800" loading="lazy" decoding="async">
-          </picture>
-        </div> -->
-
-        <div class="impact-top impact-top--spacing-lg">
-          <h3>Tensiones Identificadas</h3>
-        </div>
-        <p>
-          La investigación documentó una fractura generacional profunda en las prácticas de inspección. Los veteranos —técnicos con 20 o 30 años de experiencia— confían fundamentalmente en lo que llaman "validación sensorial directa": ver el equipo, tocarlo, escuchar cómo suena cuando opera, detectar vibraciones anómalas con las manos. Para ellos, un reporte digital es información secundaria que debe ser verificada presencialmente. Los analistas jóvenes, formados en universidades que ya enseñaban data science como parte del currículo de ingeniería, confían en datos digitales y algoritmos. Para ellos, la visita presencial es el paso final de confirmación, no el punto de partida.
-        </p>
-        <p>
-          La tensión no es solo metodológica sino epistemológica: ¿qué cuenta como evidencia suficiente para tomar una decisión crítica? El conocimiento tácito acumulado por décadas de experiencia versus la automatización algorítmica entrenada con millones de datos. Ambos tienen razón. Ambos tienen puntos ciegos. Y el sector necesita que trabajen juntos.
-        </p>
-        <p class="text-spacing-md">
-          De esta tensión emerge un rol profesional nuevo: los <strong>"traductores de datos"</strong>. No son ni operadores de campo ni científicos de datos puros, sino híbridos que median entre ambos mundos. Traducen alertas algorítmicas a lenguaje operativo ("el sensor detectó anomalía térmica en zona 7B" se convierte en "revisá la válvula principal del colector este, probablemente perdiendo presión"). Y viceversa: traducen observaciones sensoriales de veteranos a datos estructurados que los sistemas puedan procesar. No reemplazan a ninguno de los dos grupos. Los conectan.
-        </p>
-
-        <p class="text-spacing-md">
-          <strong>Una parte importante de los inspectores reporta mayor confiabilidad cuando dispone de registros digitales y analógicos simultáneamente.</strong>
+          La plataforma que antecede al informe: login, portafolio de verificaciones, detalle de caso. Es deliberadamente distinta al informe. Sistema visual genérico de SaaS empresarial en vez del cuidado tipográfico del documento.
         </p>
         <p class="text-spacing-sm">
-          Esto sugiere que la solución no es elegir entre digital o analógico, sino integrar ambos modos de validación.
+          El contraste es el argumento. La plataforma es infraestructura; el informe es lo que importa.
         </p>
       </article>
     </section>
 
-    <!-- CONCLUSIONES -->
-    <section class="content-section reporte-section" id="sec-conclusion">
+    <!-- 4. PRINCIPIOS APLICADOS -->
+    <section class="content-section reporte-section" id="sec-principios">
       <article class="actividad-card actividad-card--light">
-        <h2>3. Conclusiones</h2>
-        <p><strong>Qué aprendimos:</strong> Lecciones clave de la investigación.</p>
+        <h2>4. Principios aplicados</h2>
+        <p><strong>Para quien quiera el detalle metodológico:</strong> tres reglas que sostienen el artefacto.</p>
 
-        <p style="margin-top: 2.5rem;">
-          El proyecto arribó a cinco hallazgos principales que desafían suposiciones comunes sobre digitalización en sectores complejos.
-        </p>
-        <p class="text-spacing-sm">
-          Primero: <strong>la complejidad no se resuelve agregando más tecnología</strong>. Se resuelve con integración inteligente entre sistemas digitales, conocimiento empírico acumulado y soluciones nacidas desde el terreno. Más herramientas digitales sin integración efectiva multiplican complejidad en lugar de reducirla.
-        </p>
-        <p class="text-spacing-sm">
-          Segundo: <strong>los falsos positivos son el verdadero enemigo operativo</strong>. El problema no es falta de datos —el sector genera datos masivamente— sino exceso de alertas irrelevantes que generan fatiga cognitiva y parálisis decisional. Filtrar alertas no es perder información, es ganar claridad.
-        </p>
-        <p class="text-spacing-sm">
-          Tercero: <strong>las "soluciones criollas" no son improvisaciones deficientes</strong>. Son innovaciones emergentes generadas por operadores que enfrentan condiciones que los manuales no anticiparon. Merecen documentación formal y sistematización, no tolerancia condescendiente.
-        </p>
-        <p class="text-spacing-sm">
-          Cuarto: <strong>el rol del "traductor de datos" es estratégicamente crítico</strong>. No es función auxiliar sino mediación esencial entre mundos que hablan idiomas incompatibles. Sin estos mediadores técnico-operativos, la integración de sistemas fracasa incluso cuando la tecnología funciona perfectamente.
-        </p>
-        <p class="text-spacing-sm">
-          Quinto: <strong>la validación cruzada (digital + analógica) aumenta confiabilidad operativa</strong>. Una parte importante de los inspectores reporta mayor confianza cuando dispone de ambos tipos de registros simultáneamente. No es redundancia ineficiente, es complementariedad necesaria.
+        <div class="impact-top impact-top--spacing-md">
+          <h3>Verificar antes de citar</h3>
+        </div>
+        <p>
+          Cada norma citada se verificó contra fuente real antes de usarse. Eso incluyó correcciones sobre la marcha: una norma que resultó estar en vías de reemplazo, un factor de conversión que no correspondía al tipo de gas.
         </p>
 
         <div class="impact-top impact-top--spacing-lg">
-          <h3>Recomendaciones Estratégicas para el Sector</h3>
+          <h3>No cerrar perfecto</h3>
         </div>
         <p>
-          A partir de estos hallazgos, el proyecto formula cinco recomendaciones estratégicas para el sector hidrocarburífero argentino.
-        </p>
-        <p class="text-spacing-md">
-          <strong>Documentar adaptaciones no oficiales</strong> creando un repositorio formal de "soluciones criollas" que funcionan en campo. No como curiosidades anecdóticas sino como conocimiento operativo validado que puede replicarse en situaciones similares. Esto requiere cambio cultural: legitimar innovaciones de campo como parte del acervo técnico del sector.
-        </p>
-        <p class="text-spacing-md">
-          <strong>Entrenar traductores de datos</strong> formando profesionales híbridos técnico-operativos que medien entre digital y analógico. No es agregar un rol administrativo más, sino reconocer una función crítica que ya existe informalmente y profesionalizarla con capacitación específica y reconocimiento institucional.
-        </p>
-        <p class="text-spacing-md">
-          <strong>Simplificar protocolos de escalamiento</strong> reemplazando manuales extensos que nadie lee con flowcharts de una página que todos pueden seguir bajo presión. La simplificación no es dumbing down: es diseño para contextos de estrés operativo donde las decisiones se toman en minutos, no en horas de consulta de manuales.
-        </p>
-        <p class="text-spacing-md">
-          <strong>Implementar validación cruzada obligatoria</strong> para alertas críticas mediante duplas experto digital + veterano de campo. Esto no duplica trabajo innecesariamente: reduce el riesgo de decisiones basadas en información unilateral cuando las consecuencias de error son severas.
-        </p>
-        <p class="text-spacing-md">
-          <strong>Diseñar para desconexión</strong> siguiendo la lógica del KIT-RT: sistemas que operan offline por defecto y sincronizan cuando pueden, en lugar de asumir conectividad permanente. Esto no es adaptarse a limitaciones técnicas, es diseñar para condiciones operativas reales.
+          El artefacto no cierra perfecto a propósito, en un solo lugar: declara una divergencia metodológica en vez de resolverla. Es el tercer principio de Foster. El futuro también está roto, y un verificador que lo admite es más creíble que uno que no.
         </p>
 
-        <p style="margin-top: 2rem; font-weight: 700;">
-          Un diagnóstico no cambia nada por sí solo. Lo que hizo este fue mover la conversación: dejar de preguntarse qué sistema comprar y empezar a preguntarse quién traduce entre los que ya existen.
+        <div class="impact-top impact-top--spacing-lg">
+          <h3>Dos voces, dos sistemas</h3>
+        </div>
+        <p>
+          La plataforma y el documento nunca comparten sistema visual. Es la misma lógica que separa, en la vida real, a AlitáWare de Trace Group: dos empresas del mismo grupo, cada una con su propia voz.
         </p>
+
+        <p class="reporte-fuente">BPP Analytics &amp; Design · Buenos Aires · Madrid</p>
       </article>
     </section>
-
-    <!-- CONTACTO CON TRACE GROUP -->
-    
 
     <!-- ENLACE DE RETORNO AL INICIO -->
     <section class="content-section reporte-section">
