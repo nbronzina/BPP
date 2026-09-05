@@ -619,8 +619,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const railFigures = {
         "sec-contexto": {
-          value: "−55,8 %",
-          label: "nacimientos en San Antonio de Areco, 2014–2024"
+          value: "−42,8 %",
+          label: "población de 4 años en la Ciudad de Buenos Aires, 2016–2026"
         },
         "sec-contexto-general": {
           value: "−27 %",
