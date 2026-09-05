@@ -5290,30 +5290,6 @@ html {
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .logos-grid .logo-item {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  .logos-grid.visible .logo-item {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .logos-grid.visible .logo-item:nth-child(1) { transition-delay: 0.00s; }
-  .logos-grid.visible .logo-item:nth-child(2) { transition-delay: 0.07s; }
-  .logos-grid.visible .logo-item:nth-child(3) { transition-delay: 0.14s; }
-  .logos-grid.visible .logo-item:nth-child(4) { transition-delay: 0.21s; }
-  .logos-grid.visible .logo-item:nth-child(5) { transition-delay: 0.28s; }
-  .logos-grid.visible .logo-item:nth-child(6) { transition-delay: 0.35s; }
-  .logos-grid.visible .logo-item:nth-child(7) { transition-delay: 0.42s; }
-  .logos-grid.visible .logo-item:nth-child(8) { transition-delay: 0.49s; }
-  .logos-grid.visible .logo-item:nth-child(9) { transition-delay: 0.56s; }
-  .logos-grid.visible .logo-item:nth-child(10) { transition-delay: 0.63s; }
-}
-
 /* ============ v2.2.1: tratamiento cálido de fotografía ============ */
 /* Las fotos con balance frío chocan con la atmósfera marrón: un velo
    sepia sutil las une a la paleta. Solo material fotográfico e
@@ -5408,23 +5384,6 @@ html {
            cero recorte, encuadre completo con su espacio negativo */
         max-width: none;
     }
-}
-
-/* Reveal escalonado al entrar en viewport (mismo patrón que logos) */
-@media (prefers-reduced-motion: no-preference) {
-    .equipo-grid .equipo-member {
-        opacity: 0;
-        transform: translateY(14px);
-        transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-
-    .equipo-grid.visible .equipo-member {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .equipo-grid.visible .equipo-member:nth-child(2) { transition-delay: 0.12s; }
-    .equipo-grid.visible .equipo-member:nth-child(3) { transition-delay: 0.24s; }
 }
 
 /* Logos tipo ícono (cuadrados: CESBA, Olam, Manifiesto): a igual altura
