@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" style="color-scheme: dark">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,6 @@
     {%- endif %}
     <link rel="preload" href="/main.min.js" as="script">
 
-    {% if homepage %}{% include "partials/critical-home.njk" %}{% else %}{% include "partials/critical-sub.njk" %}{% endif %}
     <link rel="stylesheet" href="/styles.min.css">
     <script defer data-domain="{{ site.plausibleDomain }}" src="https://plausible.io/js/script.js"></script>
     {%- if homepage %}
