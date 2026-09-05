@@ -18,6 +18,17 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Fallback con métricas ajustadas: mientras carga la webfont, Arial ocupa el mismo espacio
+   y el layout no salta (antes vivía en el CSS crítico inline). */
+@font-face {
+    font-family: 'Plus Jakarta Sans Fallback';
+    src: local('Arial');
+    size-adjust: 106.5%;
+    ascent-override: 89.8%;
+    descent-override: 22.2%;
+    line-gap-override: 0%;
+}
+
 /* Plus Jakarta Sans self-hosted (variable 400..700, subset latin). Sin dependencia de Google. */
 @font-face {
     font-family: 'Plus Jakarta Sans';
@@ -48,6 +59,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Reglas base que vivían solo en el CSS crítico inline (nav y logo del hero). Van antes de todo
+   para que cualquier regla posterior de esta hoja las sobrescriba, como pasaba con el inline. */
+.hero-logo{margin-bottom:3rem;height:160px;display:flex;align-items:center;justify-content:center}
+.hero-logo img{max-width:100%;max-height:160px;width:auto;height:auto;opacity:0.9;object-fit:contain}
+.logo{display:flex;align-items:center;gap:1rem}
+.nav-container{width:100%;padding:0 6rem;display:flex;justify-content:space-between;align-items:center}
+.nav-logo-icon{display:block;line-height:0}
+.nav-logo-icon img{height:52px;width:auto;display:block;transition:opacity 0.3s}
+.nav-wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.1875rem;color:rgba(250,248,246,0.9);text-decoration:none;transition:color 0.3s}
+
 
 :root {
     /* Terracotta BPP - DESIGN.md: un solo acento, sin variantes de escala. */
@@ -143,7 +165,7 @@
     /* Typography - Font family - Plus Jakarta Sans (única, versátil) */
     --font-display: 'Plus Jakarta Sans', sans-serif;     /* Display */
     --font-heading: 'Plus Jakarta Sans', sans-serif;     /* Headings */
-    --font-body: 'Plus Jakarta Sans', sans-serif;        /* Body */
+    --font-body: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;        /* Body */
     --font-mono: 'Plus Jakarta Sans', monospace;         /* Mono fallback */
 
     /* Borders & Shadows */
