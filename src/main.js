@@ -217,68 +217,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
-  // CARD REVEAL - Actividades (Hechos section)
+  // SECCIONES VISTAS (tracking)
   // -----------------------------------------------------
-  // Revela cards completas (imagen + texto) con fade-up
+  // Sin apariciones al scroll (v2.9): el contenido está
+  // visible desde el primer render. Solo se registra qué
+  // secciones llegó a ver la persona.
   // =====================================================
-  const actividadCards = document.querySelectorAll('.actividad-entrada');
-
-  if (actividadCards.length && 'IntersectionObserver' in window) {
-    const cardObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            cardObserver.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.15,
-        rootMargin: '0px 0px -80px 0px'
-      }
-    );
-
-    actividadCards.forEach(card => cardObserver.observe(card));
-  }
-
-  // =====================================================
-  // BLOQUE TRACKING / ANIMACIONES
-  // -----------------------------------------------------
-  // IntersectionObserver para animar elementos con
-  // [data-animate] y registrar secciones vistas.
-// =====================================================
-
-  const animatedEls = document.querySelectorAll("[data-animate]");
   const trackedSections = new Set();
-
-  if (animatedEls.length && "IntersectionObserver" in window) {
-    // Mark elements as ready for animation only if motion is allowed
-    if (!prefersReducedMotion) {
-      animatedEls.forEach(el => el.classList.add('animate-ready'));
-    }
-
-    const observer = new IntersectionObserver(
+  const seccionesConId = document.querySelectorAll("main section[id]");
+  if (seccionesConId.length && "IntersectionObserver" in window) {
+    const seccionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-
-            const section = entry.target.closest("section");
-            if (section && section.id && !trackedSections.has(section.id)) {
-              trackedSections.add(section.id);
-              trackEvent("Seccion_vista", { id: section.id });
-            }
+          if (entry.isIntersecting && !trackedSections.has(entry.target.id)) {
+            trackedSections.add(entry.target.id);
+            trackEvent("Seccion_vista", { id: entry.target.id });
           }
         });
       },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
+      { threshold: 0.1 }
     );
-
-    animatedEls.forEach((el) => observer.observe(el));
+    seccionesConId.forEach((s) => seccionObserver.observe(s));
   }
 
   // Año dinámico en el footer (i18n-aware)
