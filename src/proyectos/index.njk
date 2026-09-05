@@ -1,11 +1,11 @@
 ---
 layout: "layouts/base.njk"
 title: "Hechos | BPP Analytics & Design"
-description: "Hechos de BPP Analytics & Design: diseño de futuros, investigación especulativa, workshops educativos y análisis estratégico aplicado."
+description: "Lo hecho por BPP Analytics & Design: casos, clases y jornadas de investigación, diseño de futuros, datos e IA y comunicación, en Buenos Aires y Madrid. Cada uno con fuente."
 robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
 ogType: "website"
 section: "proyectos"
-ogDescription: "Diseño de futuros, investigación especulativa, workshops educativos y análisis estratégico aplicado."
+ogDescription: "Casos, clases y jornadas de investigación, diseño de futuros, datos e IA y comunicación. Cada uno con fuente."
 bodyClass: "secondary-page"
 jsonld: "jsonld/proyectos.njk"
 cierreTitulo: "Casi todos nos escriben con la decisión ya encima."
@@ -32,27 +32,27 @@ cierreCta: "Hablemos antes de esa decisión"
         <h2 id="actividades-content-heading" class="sr-only">Hechos</h2>
 
         <!-- Filtros por categoría -->
-        <div class="filter-bar" role="group" aria-label="Filtrar proyectos por categoría">
+        <div class="filter-bar" role="group" aria-label="Filtrar por movimiento">
             <button class="filter-btn filter-btn--active" data-filter="todos" aria-pressed="true">
                 Todos
             </button>
-            <button class="filter-btn" data-filter="design-fiction" aria-pressed="false">
-                Design fiction
+            <button class="filter-btn" data-filter="investigacion" aria-pressed="false">
+                Investigación
             </button>
-            <button class="filter-btn" data-filter="educacion" aria-pressed="false">
-                Educación
+            <button class="filter-btn" data-filter="futuros" aria-pressed="false">
+                Futuros y prototipos
             </button>
-            <button class="filter-btn" data-filter="datos" aria-pressed="false">
-                Datos
+            <button class="filter-btn" data-filter="datos-ia" aria-pressed="false">
+                Datos e IA
             </button>
-            <button class="filter-btn" data-filter="estrategia" aria-pressed="false">
-                Estrategia
+            <button class="filter-btn" data-filter="comunicacion" aria-pressed="false">
+                Comunicación
             </button>
         </div>
 
         <div class="actividades-container">
-            <!-- Entrada 0: Cuando el artefacto piensa - ORT Uruguay -->
-            <article class="actividad-entrada" data-tags="design-fiction,estrategia" aria-label="Propuesta en curso para Trace Group: un informe de verificación de emisiones fechado en 2032 construido como prototipo diegético">
+            <!-- Entrada 0: Trace Group -->
+            <article class="actividad-entrada" data-tags="futuros,investigacion" aria-label="Propuesta en curso para Trace Group: un informe de verificación de emisiones fechado en 2032 construido como prototipo diegético">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="/img/we-trace-login.webp 1200w" type="image/webp">
@@ -63,12 +63,23 @@ cierreCta: "Hablemos antes de esa decisión"
                     <div class="actividad-meta">
                         <time class="actividad-fecha">Agosto 2026</time>
                         <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Energía · Diseño ficción · Propuesta en curso</span>
+                        <span class="actividad-tags">Energía · Diseño ficción</span>
                     </div>
                     <h3>Trace Group — De la señal al servicio</h3>
                     <p class="actividad-descripcion">
                         Tres señales reales (una resolución argentina, el mayor contrato de exportación de GNL del país, el Reglamento de Metano de la Unión Europea) y un artefacto para discutirlas: un informe de verificación de emisiones fechado en 2032, empaquetado como ejecutable, que argumenta un servicio que Trace Group no vende todavía. Prototipo diegético presentado vía Clusterciar; la propuesta sigue en curso.
                     </p>
+                    <dl class="actividad-datos">
+                        <div class="actividad-dato"><dt>Contexto</dt><dd>Trace Group, vía Clusterciar</dd></div>
+                        <div class="actividad-dato"><dt>Estado</dt><dd>Propuesta en curso</dd></div>
+                        <div class="actividad-dato"><dt>Lectura</dt><dd>6 min</dd></div>
+                    </dl>
+                    <ul class="actividad-entregables" aria-label="Entregables">
+                        <li>Tres señales documentadas con fuente</li>
+                        <li>Informe de verificación fechado en 2032, ejecutable</li>
+                        <li>we.trace, plataforma diegética</li>
+                        <li>Principios metodológicos aplicados</li>
+                    </ul>
                     <a
                       href="/proyectos/trace-group/"
                       class="cta-link"
@@ -78,7 +89,8 @@ cierreCta: "Hablemos antes de esa decisión"
                     </a>
                 </div>
             </article>
-            <article class="actividad-entrada" data-tags="design-fiction,educacion" aria-label="Cuando el artefacto piensa - Clase invitada en ORT Uruguay sobre design fiction">
+            <!-- Entrada 1: Cuando el artefacto piensa - ORT Uruguay -->
+            <article class="actividad-entrada" data-tags="futuros" aria-label="Cuando el artefacto piensa - Clase invitada en ORT Uruguay sobre design fiction">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="/img/cuando-artefacto-piensa-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -89,12 +101,16 @@ cierreCta: "Hablemos antes de esa decisión"
                     <div class="actividad-meta">
                         <time class="actividad-fecha">Mayo 2026</time>
                         <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Design fiction · Educación · Futuros · Artefactos especulativos</span>
+                        <span class="actividad-tags">Design fiction · Docencia</span>
                     </div>
                     <h3>Cuando el artefacto piensa</h3>
                     <p class="actividad-descripcion">
                         Artículo de Nicolás Bronzina sobre design fiction aplicado a la docencia: clase invitada en el Máster de Diseño Estratégico de la ORT Uruguay. Los artefactos especulativos no ilustran ideas, las procesan. Tres criterios operativos para construir futuros creíbles: el artefacto piensa, el ecosistema valida, la fricción es el material.
                     </p>
+                    <dl class="actividad-datos">
+                        <div class="actividad-dato"><dt>Contexto</dt><dd>Máster de Diseño Estratégico, ORT Uruguay</dd></div>
+                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, artículo en Medium</dd></div>
+                    </dl>
                     <a
                       href="https://medium.com/@nbronzina/cuando-el-artefacto-piensa-06e2b89fb380"
                       target="_blank"
@@ -108,7 +124,7 @@ cierreCta: "Hablemos antes de esa decisión"
             </article>
 
             <!-- Entrada 1: Otros Futuros - IED Madrid -->
-            <article class="actividad-entrada" data-tags="design-fiction,educacion" aria-label="Otros Futuros - Tutor invitado en defensa de proyecto IED Madrid">
+            <article class="actividad-entrada" data-tags="futuros" aria-label="Otros Futuros - Tutor invitado en defensa de proyecto IED Madrid">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="/img/otros-futuros-ied-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -121,12 +137,16 @@ cierreCta: "Hablemos antes de esa decisión"
                     <div class="actividad-meta">
                         <time class="actividad-fecha">Febrero 2026</time>
                         <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Design fiction · Educación · Latinoamérica</span>
+                        <span class="actividad-tags">Design fiction · Docencia · Latinoamérica</span>
                     </div>
                     <h3>Otros Futuros: tutor invitado en defensa de proyecto IED Madrid</h3>
                     <p class="actividad-descripcion">
                         Nicolás Bronzina participó como tutor y experto invitado en la defensa del proyecto LATAM·2036 del Máster en Diseño de Producto Digital del IED Madrid. Un ejercicio de diseño especulativo que abordó la fuga de cerebros en Ecuador con una pregunta central: ¿cómo diseñar una ciudad a la que valga la pena pertenecer? Investigación sólida, rigor y ambición en las nuevas generaciones de diseñadores.
                     </p>
+                    <dl class="actividad-datos">
+                        <div class="actividad-dato"><dt>Contexto</dt><dd>Máster en Diseño de Producto Digital, IED Madrid</dd></div>
+                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado</dd></div>
+                    </dl>
                     <a
                       href="https://www.linkedin.com/feed/update/urn:li:activity:7427811274014535680/"
                       target="_blank"
@@ -139,40 +159,9 @@ cierreCta: "Hablemos antes de esa decisión"
                 </div>
             </article>
 
-            <!-- Entrada 2: Alquileres - MOVIDO A PENSAMIENTO -->
-            <!--
-            <article class="actividad-entrada" data-tags="datos" aria-label="Tesis sobre negociación de alquileres en Buenos Aires y asimetrías estructurales del mercado">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/alquileres-negociacion.webp 1200w" type="image/webp">
-                        <img src="/img/alquileres-negociacion.webp" alt="Negociación de alquiler - familia con agente inmobiliario" width="2752" height="1536" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha">Febrero 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Sociología · Datos · Vivienda</span>
-                    </div>
-                    <h3>La ilusión de la "negociación libre": Lo que el aumento de la oferta no cuenta sobre los alquileres</h3>
-                    <p class="actividad-descripcion">
-                        Tesis de licenciatura en Sociología de Ezequiel Politi que analiza el mercado de alquileres en Buenos Aires. La investigación demuestra que eliminar regulaciones no garantiza libertad de negociación: las inmobiliarias se consolidan como reguladores de hecho, el inquilino no tiene opción real de decir "no", y el 81% enfrenta barreras severas de acceso. Los datos revelan una asimetría estructural que convierte la vivienda en subordinación financiera.
-                    </p>
-                    <a
-                      href="https://www.linkedin.com/pulse/la-ilusi%C3%B3n-de-negociaci%C3%B3n-libre-lo-que-el-aumento-oferta-politi-sxcwe/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Abrir artículo sobre negociación de alquileres en LinkedIn (nueva pestaña)"
-                    >
-                        Leer más
-                    </a>
-                </div>
-            </article>
-            -->
 
             <!-- Entrada 3: Inhabiting the Future -->
-            <article class="actividad-entrada" data-tags="design-fiction,educacion" aria-label="Charla outdoor Inhabiting the Future sobre adaptación climática en Matadero Madrid">
+            <article class="actividad-entrada" data-tags="futuros" aria-label="Charla outdoor Inhabiting the Future sobre adaptación climática en Matadero Madrid">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="/img/inhabiting-future.webp 1200w" type="image/webp">
@@ -183,12 +172,16 @@ cierreCta: "Hablemos antes de esa decisión"
                     <div class="actividad-meta">
                         <time class="actividad-fecha">Enero 2026</time>
                         <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Design fiction · Educación · Adaptación climática</span>
+                        <span class="actividad-tags">Design fiction · Adaptación climática</span>
                     </div>
                     <h3>"Inhabiting the Future": charla outdoor en Matadero Madrid</h3>
                     <p class="actividad-descripcion">
                         Charla al aire libre con estudiantes del máster en diseño espacial (DSAA Design Espace, Usages, Territoires) de ESAA La Martinière Diderot (Lyon) en Matadero Madrid, como parte del European Design Encounters. Nicolás Bronzina condujo una experiencia de design fiction sobre adaptación climática usando el contexto urbano como material pedagógico, seguida de una actividad práctica con artefactos diegéticos y escenarios mundanos.
                     </p>
+                    <dl class="actividad-datos">
+                        <div class="actividad-dato"><dt>Contexto</dt><dd>Matadero Madrid, European Design Encounters</dd></div>
+                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, artículo en Medium</dd></div>
+                    </dl>
                     <a
                       href="https://medium.com/heated-consultancy/inhabiting-the-future-0cc470f47b93"
                       target="_blank"
@@ -202,7 +195,7 @@ cierreCta: "Hablemos antes de esa decisión"
             </article>
 
             <!-- Entrada 4: LATAM 2036 -->
-            <article class="actividad-entrada" data-tags="design-fiction,educacion" aria-label="Workshop LATAM·2036 sobre diseño de futuros desde la fuga">
+            <article class="actividad-entrada" data-tags="futuros" aria-label="Workshop LATAM·2036 sobre diseño de futuros desde la fuga">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="/img/workshop-latam2036-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -215,12 +208,16 @@ cierreCta: "Hablemos antes de esa decisión"
                     <div class="actividad-meta">
                         <time class="actividad-fecha">Enero 2026</time>
                         <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Design fiction · Educación · Latinoamérica</span>
+                        <span class="actividad-tags">Design fiction · Docencia · Latinoamérica</span>
                     </div>
                     <h3>Workshop LATAM·2036: Diseñar futuros desde la fuga</h3>
                     <p class="actividad-descripcion">
                         Participación de Nicolás Bronzina como experto invitado en un workshop de diseño de futuros para el Máster en Diseño de Producto Digital del IED Madrid. El proyecto abordó la fuga de cerebros en la industria creativa ecuatoriana, explorando escenarios para Quito 2036 con metodologías de design fiction adaptadas al contexto latinoamericano.
                     </p>
+                    <dl class="actividad-datos">
+                        <div class="actividad-dato"><dt>Contexto</dt><dd>Máster en Diseño de Producto Digital, IED Madrid</dd></div>
+                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, artículo en Medium</dd></div>
+                    </dl>
                     <a
                       href="https://medium.com/@nbronzina/dise%C3%B1ar-futuros-desde-la-fuga-27548f831e36"
                       target="_blank"
@@ -233,42 +230,9 @@ cierreCta: "Hablemos antes de esa decisión"
                 </div>
             </article>
 
-            <!-- Entrada 5: Branding - MOVIDO A PENSAMIENTO -->
-            <!--
-            <article class="actividad-entrada" data-tags="branding,estrategia" aria-label="Artículo sobre branding como fenómeno social y arquitectura simbólica">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/branding-fenomeno-social-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                        <source srcset="/img/branding-fenomeno-social-mobile.png" type="image/png" media="(max-width: 600px)">
-                        <source srcset="/img/branding-fenomeno-social.webp 1200w" type="image/webp">
-                        <img src="/img/branding-fenomeno-social.webp" alt="Ilustración sobre branding como fenómeno social y arquitectura simbólica" width="2752" height="1536" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha">Enero 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Branding · Sociología · Estrategia</span>
-                    </div>
-                    <h3>El Branding como fenómeno social: Por qué tu empresa necesita un sociólogo y no solo un diseñador gráfico</h3>
-                    <p class="actividad-descripcion">
-                        Artículo de Sergio Petrocelli sobre por qué el branding no es una cuestión de estética, sino de arquitectura social. Explora cómo la investigación exploratoria, el capital simbólico y la institucionalización del discurso construyen marcas resilientes que funcionan cuando más importa.
-                    </p>
-                    <a
-                      href="https://www.linkedin.com/pulse/el-branding-como-fen%C3%B3meno-social-por-qu%C3%A9-tu-empresa-uzsdf/?trackingId=iyrgheLEWKIsnlMc8QgE1w%3D%3D"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Abrir artículo sobre branding como fenómeno social en LinkedIn (nueva pestaña)"
-                    >
-                        Leer más
-                    </a>
-                </div>
-            </article>
-            -->
 
             <!-- Entrada 6: CESBA -->
-            <article class="actividad-entrada" data-tags="estrategia" aria-label="Jornada de diseño de futuros para la gestión pública en CESBA">
+            <article class="actividad-entrada" data-tags="investigacion,futuros" aria-label="Jornada de diseño de futuros para la gestión pública en CESBA">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="/img/JornadaCESBA-480.webp 480w, /img/JornadaCESBA-800.webp 800w, /img/JornadaCESBA-1200.webp 1200w, /img/JornadaCESBA-opt.webp 1200w" type="image/webp">
@@ -285,6 +249,10 @@ cierreCta: "Hablemos antes de esa decisión"
                     <p class="actividad-descripcion">
                         Encuentro organizado junto al CESBA (Consejo Económico y Social de la Ciudad de Buenos Aires) sobre diseño de futuros aplicado a gestión pública. Nicolás Bronzina presentó metodologías de prospectiva estratégica junto a referentes internacionales como Fabien Girardin (Near Future Laboratory), Ezequiel Politi (Grupo QuintoAndar) y Miriam Latorre (Escuela de Innovación ITBA).
                     </p>
+                    <dl class="actividad-datos">
+                        <div class="actividad-dato"><dt>Contexto</dt><dd>CESBA, Ciudad de Buenos Aires</dd></div>
+                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, nota del CESBA</dd></div>
+                    </dl>
                     <a
                       href="https://cesba.gob.ar/noticias/como-el-diseno-de-futuros-impulsa-la-gestion-publica-en-buenos-aires/"
                       target="_blank"
@@ -297,10 +265,8 @@ cierreCta: "Hablemos antes de esa decisión"
                 </div>
             </article>
 
-            <!-- Entrada 7: Trace Group -->
-
             <!-- Entrada 8: UDIT -->
-            <article class="actividad-entrada" data-tags="educacion" aria-label="Jornada sobre inteligencia artificial para diseñadores UX en UDIT Madrid">
+            <article class="actividad-entrada" data-tags="datos-ia,futuros" aria-label="Jornada sobre inteligencia artificial para diseñadores UX en UDIT Madrid">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="/img/0_9sTiHf-LbgRlEnRZ.webp 1200w" type="image/webp">
@@ -311,12 +277,16 @@ cierreCta: "Hablemos antes de esa decisión"
                     <div class="actividad-meta">
                         <time class="actividad-fecha">Junio 2025</time>
                         <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Educación · Inteligencia Artificial · Diseño UX</span>
+                        <span class="actividad-tags">Inteligencia artificial · Diseño UX · Docencia</span>
                     </div>
                     <h3>Masterclass sobre inteligencia artificial para diseñadores UX</h3>
                     <p class="actividad-descripcion">
                         Jornada educativa organizada junto a UDIT (Escuela Universitaria de Diseño, Innovación y Tecnología, en Madrid) sobre diseño de experiencia de usuario con inteligencia artificial. Nicolás Bronzina presentó metodologías de prospectiva estratégica junto a referentes internacionales como Fabien Girardin (Near Future Laboratory) y Rohit Gupta (Heated). La jornada cubrió desde fundamentos de IA hasta aplicación práctica en prototipos, con énfasis en diseñar con sistemas probabilísticos.
                     </p>
+                    <dl class="actividad-datos">
+                        <div class="actividad-dato"><dt>Contexto</dt><dd>UDIT, Madrid</dd></div>
+                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, artículo en Medium</dd></div>
+                    </dl>
                     <a
                       href="https://medium.com/@nbronzina/enseñando-inteligencia-artificial-a-diseñadores-ux-694c3a1611d7"
                       target="_blank"
@@ -330,7 +300,7 @@ cierreCta: "Hablemos antes de esa decisión"
             </article>
 
             <!-- Entrada 9: Reporte Natalidad -->
-            <article class="actividad-entrada" data-tags="educacion,datos" aria-label="Reporte sobre impacto de la caída de la natalidad en matrículas escolares">
+            <article class="actividad-entrada" data-tags="datos-ia,investigacion" aria-label="Reporte sobre impacto de la caída de la natalidad en matrículas escolares">
                 <div class="actividad-imagen">
                     <img src="/img/aula-vacia.webp" alt="Aula vacía de una escuela primaria de Buenos Aires, con sillas y pupitres en luz de tarde" width="1200" height="800" loading="lazy" decoding="async">
                 </div>
@@ -344,6 +314,17 @@ cierreCta: "Hablemos antes de esa decisión"
                     <p class="actividad-descripcion">
                         Análisis de tendencias demográficas y su efecto directo en matrículas escolares, con foco en el Colegio Francesco Faà di Bruno y en municipios de la provincia de Buenos Aires. El estudio combina datos, escenarios y recomendaciones para la toma de decisiones institucionales.
                     </p>
+                    <dl class="actividad-datos">
+                        <div class="actividad-dato"><dt>Contexto</dt><dd>Colegio de la Ciudad de Buenos Aires</dd></div>
+                        <div class="actividad-dato"><dt>Estado</dt><dd>Entregado, 2025</dd></div>
+                        <div class="actividad-dato"><dt>Lectura</dt><dd>11 min</dd></div>
+                    </dl>
+                    <ul class="actividad-entregables" aria-label="Entregables">
+                        <li>Ficha del caso con fuentes oficiales</li>
+                        <li>Tres escenarios de matrícula</li>
+                        <li>Estudio demográfico regional, Areco y Giles</li>
+                        <li>Cuatro líneas de trabajo recomendadas</li>
+                    </ul>
                     <a
                       href="/reporte-impacto/"
                       class="cta-link"
@@ -354,6 +335,7 @@ cierreCta: "Hablemos antes de esa decisión"
                 </div>
             </article>
         </div>
+        <p class="filter-vacio" role="status">Todavía no publicamos hechos de este movimiento. Los artículos están en <a href="/pensamiento/">Pensamiento</a>.</p>
 
         <!-- CTA final -->
 {% include "partials/cierre.njk" %}

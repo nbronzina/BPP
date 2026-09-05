@@ -678,6 +678,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
+      // Estado vacío: un movimiento sin piezas publicadas todavía
+      const vacio = document.querySelector('.filter-vacio');
+      if (vacio) {
+        const visibles = Array.from(proyectos).filter(p => !p.classList.contains('hidden')).length;
+        vacio.classList.toggle('filter-vacio--visible', visibles === 0);
+      }
+
       // Track filter usage
       trackEvent('Filtro_proyectos', { categoria: filter });
     };
