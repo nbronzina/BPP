@@ -2771,16 +2771,6 @@ footer {
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.actividad-entrada:not(.visible) {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.actividad-entrada.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: reduce) {
     .actividad-entrada {
         opacity: 1 !important;
@@ -3030,22 +3020,6 @@ footer {
    Animations (Intersection Observer)
    ========================= */
 
-[data-animate] {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-[data-animate].animate-ready:not(.visible) {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-[data-animate].visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* =========================
    Consistencia / Base de Cards
    ========================= */
@@ -3260,13 +3234,7 @@ img {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
-    }
-
-    [data-animate] {
-        opacity: 1 !important;
-        transform: none !important;
-    }
-}
+    }}
 
 /* ===============================
    Tarjetas de impacto (reporte)
@@ -5012,22 +4980,7 @@ img {
    viewport, los brackets se trazan desde la esquina. Refuerza que son
    firma de La Usina, no decoración global. */
 @media (prefers-reduced-motion: no-preference) {
-  .tesis-card[data-animate] .corner-bracket {
-    width: 0;
-    height: 0;
-    opacity: 0;
-    transition:
-      width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.35s,
-      height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.55s,
-      opacity 0.3s ease 0.35s;
   }
-
-  .tesis-card[data-animate].visible .corner-bracket {
-    width: 30px;
-    height: 30px;
-    opacity: 0.55;
-  }
-}
 
 /* ============ Fase B 2026: grano por capas ============ */
 /* Superficies elevadas con noise levemente más denso que el del body
@@ -6370,3 +6323,17 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     .nav-logo { padding: 2px 11px; margin-left: -11px; }
     .close-btn { min-width: 44px; min-height: 44px; }
 }
+
+/* ============ v2.9: casos con imagen de apertura; sin apariciones al scroll ============ */
+.hero-figura {
+    margin: var(--space-10) 0 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+.hero-figura img { display: block; width: 100%; height: auto; }
+.hero-figura--papel { background: var(--paper); padding: var(--space-5); }
+.hero-figura--papel img { border-radius: calc(var(--border-radius) - 6px); }
+.hero-figura__cap { padding: var(--space-4) var(--space-5) 0; font-size: 1rem; line-height: 1.5; color: var(--ink-low); }
+.hero-figura:not(.hero-figura--papel) .hero-figura__cap { color: var(--color-text-low); }
