@@ -6295,6 +6295,7 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     .actividad-entregables { display: block; }
 }
 .actividad-entrada .cta-link { margin-top: var(--space-4); }
+.actividad-ctas { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); }
 .tesis-card__datos { margin: 0 0 var(--space-5); }
 .tesis-card__datos dd { opacity: 1; color: var(--color-text-high); }
 
