@@ -8,6 +8,9 @@ section: "proyectos"
 ogDescription: "Diseño de futuros, investigación especulativa, workshops educativos y análisis estratégico aplicado."
 bodyClass: "secondary-page"
 jsonld: "jsonld/proyectos.njk"
+cierreTitulo: "Casi todos nos escriben con la decisión ya encima."
+cierreTexto: "Se puede trabajar así. Se trabaja mejor tres meses antes."
+cierreCta: "Hablemos antes de esa decisión"
 ---
     <!-- Main Content -->
     <main role="main" id="main-content">
@@ -328,7 +331,7 @@ jsonld: "jsonld/proyectos.njk"
 
             <!-- Entrada 9: Reporte Natalidad -->
             <article class="actividad-entrada" data-animate data-tags="educacion,datos" aria-label="Reporte sobre impacto de la caída de la natalidad en matrículas escolares">
-                <div class="actividad-imagen">
+                <div class="actividad-imagen actividad-imagen--papel">
                     <picture>
                         <source srcset="/img/NatalidadOptima-mobile.webp" type="image/webp" media="(max-width: 600px)">
                         <source srcset="/img/NatalidadOptima-mobile.png" type="image/png" media="(max-width: 600px)">
@@ -358,13 +361,7 @@ jsonld: "jsonld/proyectos.njk"
         </div>
 
         <!-- CTA final -->
-        <div class="proyectos-cta" data-animate>
-            <h3 class="proyectos-cta-headline">Casi todos nos escriben con la decisión ya encima.</h3>
-            <p class="proyectos-cta-text">Se puede trabajar así. Se trabaja mejor tres meses antes.</p>
-            <a href="/#contact" class="cta-primary" data-preview="Te responde uno de nosotros tres en 48 horas hábiles" aria-label="Ir al formulario de contacto">
-                Hablemos antes de esa decisión →
-            </a>
-        </div>
+{% include "partials/cierre.njk" %}
     </section>
 
     </main>

@@ -9,6 +9,8 @@ ogTitle: "Trace Group: de la señal al servicio"
 ogDescription: "Un informe de verificación de emisiones fechado en 2032, un ejecutable de 3,4 MB y una investigación regulatoria verificada norma por norma. Trace Group no vende esto todavía. Pero podría. Propuesta en curso, 2026."
 bodyClass: "reporte-page secondary-page page-lectura"
 jsonld: "jsonld/proyectos-trace-group.njk"
+cierreTitulo: "Si en tu organización hay una señal que nadie mira, hablemos."
+cierreCta: "Escribinos"
 ---
   <main id="main-content">
 
@@ -228,16 +230,8 @@ jsonld: "jsonld/proyectos-trace-group.njk"
       </article>
     </section>
 
-    <!-- ENLACE DE RETORNO AL INICIO -->
-    <section class="content-section reporte-section">
-      <p>
-        <a
-          href="/"
-          class="cta-primary"
-          aria-label="Volver al inicio"
-        >
-          <span class="cta-arrow cta-arrow--left">←</span> Volver al inicio
-        </a>
-      </p>
+    <!-- CIERRE: afirmación + CTA (reemplaza al enlace de retorno; el inicio queda en el nav) -->
+    <section class="section cierre-section" aria-labelledby="cierre-heading">
+{% include "partials/cierre.njk" %}
     </section>
   </main>
