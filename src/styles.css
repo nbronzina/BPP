@@ -6225,3 +6225,54 @@ body.legal-page.page-papel .nav-logo {
     font-size: 1rem;
     color: var(--color-text-low);
 }
+
+/* ============ v2.5: servicios en grilla, jerarquía en orden y controles en sistema ============
+   Cuatro movimientos se ven juntos (2x2 en escritorio), el titular de bloque queda por
+   debajo del h2 de sección, el numeral pasa a "01" junto al label como en el índice de
+   Pensamiento, y "Ver proceso" es un enlace tipográfico como todos los CTAs del sitio. */
+.services-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+    max-width: none;
+}
+.service-block { margin-bottom: 0; }
+.service-number {
+    display: inline;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin: 0 var(--space-2) 0 0;
+}
+.service-category { display: inline; margin: 0; }
+.service-title {
+    font-size: clamp(1.75rem, 2.4vw, 2.25rem);
+    line-height: 1.15;
+    margin: var(--space-4) 0 var(--space-3);
+}
+.service-timeline-toggle,
+.service-timeline-toggle:hover,
+.service-timeline-toggle:focus-visible {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(193, 111, 82, 0.4);
+    text-underline-offset: 4px;
+}
+.service-timeline-toggle { margin-top: var(--space-5); }
+.service-timeline-toggle:hover,
+.service-timeline-toggle:focus-visible { text-decoration-color: var(--color-accent); }
+@media (min-width: 769px) {
+    .service-block { padding: var(--space-8); }
+    .service-title { font-size: clamp(1.75rem, 2.4vw, 2.25rem); }
+}
+@media (min-width: 1025px) {
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-8);
+        align-items: start;  /* al abrir el proceso de una tarjeta, la vecina no se estira */
+    }
+}
