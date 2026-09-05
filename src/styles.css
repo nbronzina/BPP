@@ -816,9 +816,10 @@ body.secondary-page .nav-logo {
 
 /* Hero fullscreen - immersive splash, ocupa viewport inicial completo */
 .hero-fullscreen {
-    /* Mobile: 60vh permite ver que hay contenido abajo sin scroll completo.
-       Principio: "En mobile, el alto es oro" - no desperdiciar 100vh en splash. */
-    min-height: 60vh;
+    /* Mobile: el hero mide lo que mide el bloque de marca (unos 520px a 390px de ancho).
+       Un min-height en vh sumaba aire abajo del bloque en pantallas altas y rompía el
+       ritmo de 64px con Nosotros; en pantallas bajas no hacía nada. */
+    min-height: 0;
     display: flex;
     justify-content: center;
     align-items: center;
