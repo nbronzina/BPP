@@ -2378,15 +2378,6 @@ footer {
 }
 
 /* Contexto narrativo */
-.contact-context h2 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h3);
-    font-weight: 700;
-    color: var(--color-text);
-    opacity: 1;
-    line-height: 1.2;
-    margin-bottom: var(--space-4);
-}
 
 .contact-context p {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -6296,3 +6287,115 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
 .hero-figura--papel img { border-radius: calc(var(--border-radius) - 6px); }
 .hero-figura__cap { padding: var(--space-4) var(--space-5) 0; font-size: 1rem; line-height: 1.5; color: var(--ink-low); }
 .hero-figura:not(.hero-figura--papel) .hero-figura__cap { color: var(--color-text-low); }
+
+/* ============ v3.0: tarjetas con campos fijos, filtros por movimiento, situaciones ============
+   Lo que se repite en Superflux, Near Future Laboratory y Linked by Air: cada tarjeta
+   responde lo mismo en el mismo lugar. Fecha y tags arriba, título, una descripción, y
+   después una ficha corta (contexto, estado, lectura) y, en los casos, los entregables. */
+.actividad-datos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin: var(--space-4) 0 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+.actividad-dato {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: var(--space-3);
+    align-items: baseline;
+}
+.actividad-dato dt {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-low);
+}
+.actividad-dato dd {
+    margin: 0;
+    color: var(--color-text);
+    opacity: 0.85;
+}
+/* Entregables: solo en escritorio, como en Linked by Air. En móvil la tarjeta ya es larga. */
+.actividad-entregables {
+    display: none;
+    list-style: none;
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    color: var(--color-text-low);
+}
+.actividad-entregables li {
+    border-top: 1px solid rgba(250, 248, 246, 0.08);
+    padding: var(--space-2) 0;
+}
+.actividad-entregables li:last-child { border-bottom: 1px solid rgba(250, 248, 246, 0.08); }
+@media (min-width: 1025px) {
+    .actividad-entregables { display: block; }
+}
+.actividad-entrada .cta-link { margin-top: var(--space-4); }
+.tesis-card__datos { margin: 0 0 var(--space-5); }
+.tesis-card__datos dd { opacity: 1; color: var(--color-text-high); }
+
+/* Cuándo escribirnos: tres situaciones antes del contacto (referencia Near Future Laboratory) */
+.contact-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-text);
+    margin: 0 0 var(--space-6);
+    max-width: 800px;
+}
+.situaciones {
+    list-style: none;
+    margin: 0 0 var(--space-10);
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+}
+.situacion {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3);
+    align-items: baseline;
+    border-top: 1px solid rgba(250, 248, 246, 0.08);
+    padding-top: var(--space-4);
+}
+.situacion-num {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+}
+.situacion p {
+    margin: 0;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--color-text);
+    opacity: 0.85;
+}
+.contact-context h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: var(--font-size-h3);
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.2;
+    margin-bottom: var(--space-4);
+}
+@media (min-width: 769px) {
+    .situaciones { grid-template-columns: repeat(3, 1fr); gap: var(--space-8); margin-bottom: var(--space-12); }
+    .situacion { grid-template-columns: 1fr; gap: var(--space-3); align-content: start; }
+}
+.filter-vacio {
+    display: none;
+    margin-top: var(--space-6);
+    font-size: var(--font-size-base);
+    color: var(--color-text-low);
+}
+.filter-vacio--visible { display: block; }
