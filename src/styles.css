@@ -816,9 +816,10 @@ body.secondary-page .nav-logo {
 
 /* Hero fullscreen - immersive splash, ocupa viewport inicial completo */
 .hero-fullscreen {
-    /* Mobile: 60vh permite ver que hay contenido abajo sin scroll completo.
-       Principio: "En mobile, el alto es oro" - no desperdiciar 100vh en splash. */
-    min-height: 60vh;
+    /* Mobile: el hero mide lo que mide el bloque de marca (unos 520px a 390px de ancho).
+       Un min-height en vh sumaba aire abajo del bloque en pantallas altas y rompía el
+       ritmo de 64px con Nosotros; en pantallas bajas no hacía nada. */
+    min-height: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2379,24 +2380,6 @@ footer {
 
 /* Contexto narrativo */
 
-.contact-context p {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    color: var(--color-text);
-    opacity: 0.75;  /* Increased from 0.6 for better contrast */
-    line-height: 1.5;
-}
-
-.contact-response {
-    margin-top: var(--space-4);
-}
-
-.contact-separator {
-    border-top: 1px solid rgba(250, 248, 246, 0.07);
-    margin: var(--space-6) 0;
-}
-
 .contact-addresses {
     display: grid;
     grid-template-columns: 1fr;
@@ -2481,15 +2464,9 @@ footer {
     max-width: 34rem;
 }
 
-.contact-direct-lead {
-    font-size: 1.1875rem;
-    color: var(--color-text-high);
-    margin-bottom: var(--space-4);
-}
-
 .contact-direct-mail {
     display: inline-block;
-    font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+    font-size: clamp(1.0625rem, 4.4vw, 1.75rem);  /* entra en una línea desde 360px */
     font-weight: 700;
     color: var(--color-accent);
     text-decoration: underline;
@@ -2506,6 +2483,7 @@ footer {
 
 .contact-direct-promise {
     font-size: var(--font-size-base);
+    line-height: 1.5;
     color: var(--color-text-mid);
     margin-top: var(--space-4);
 }
@@ -5879,7 +5857,6 @@ body.legal-page.page-papel .nav-logo {
 }
 
 /* --- Contacto --- */
-.page-papel main .contact-separator,
 .page-papel main .about-separator {
     border-top-color: var(--ink-border);
 }
@@ -6360,14 +6337,6 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     line-height: 1.5;
     color: var(--color-text);
     opacity: 0.85;
-}
-.contact-context h3 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h3);
-    font-weight: 700;
-    color: var(--color-text);
-    line-height: 1.2;
-    margin-bottom: var(--space-4);
 }
 @media (min-width: 769px) {
     .situaciones { grid-template-columns: repeat(3, 1fr); gap: var(--space-8); margin-bottom: var(--space-12); }
