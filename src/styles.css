@@ -6342,10 +6342,4 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     .situaciones { grid-template-columns: repeat(3, 1fr); gap: var(--space-8); margin-bottom: var(--space-12); }
     .situacion { grid-template-columns: 1fr; gap: var(--space-3); align-content: start; }
 }
-.filter-vacio {
-    display: none;
-    margin-top: var(--space-6);
-    font-size: var(--font-size-base);
-    color: var(--color-text-low);
-}
-.filter-vacio--visible { display: block; }
+
