@@ -6343,3 +6343,30 @@ body.legal-page.page-papel .nav-logo {
 #indice { padding-bottom: 0; }
 .u-mt-8 { margin-top: var(--space-8); }
 .u-mt-12 { margin-top: var(--space-12); }
+
+/* ============ v2.8: buenas prácticas de interfaz (Web Interface Guidelines) ============ */
+/* Títulos sin viudas, párrafos sin líneas huérfanas */
+h1, h2, h3 { text-wrap: balance; }
+p, li, dd, figcaption { text-wrap: pretty; }
+/* Al saltar a un ancla, el título no queda debajo del nav fijo */
+[id] { scroll-margin-top: calc(var(--nav-height) + var(--space-6)); }
+/* Los enlaces dentro de la prosa se distinguen por algo más que el color */
+main p a, main li a, main dd a {
+    text-decoration: underline;
+    text-decoration-color: rgba(193, 111, 82, 0.45);
+    text-underline-offset: 3px;
+}
+main p a:hover, main li a:hover, main dd a:hover,
+main p a:focus-visible, main li a:focus-visible { text-decoration-color: currentColor; }
+/* Medida de lectura: 70 caracteres por línea en los documentos largos (antes ~95) */
+.page-lectura main :is(p, li, dd, blockquote, figcaption) { max-width: 70ch; }
+/* Objetivos táctiles de 44px donde el puntero es un dedo */
+@media (pointer: coarse) {
+    .nav-links a, .filter-btn, .cta-link, .sticky-toc a, .report-toc-list a, [role="navigation"] a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+    .nav-logo { padding: 2px 11px; margin-left: -11px; }
+    .close-btn { min-width: 44px; min-height: 44px; }
+}
