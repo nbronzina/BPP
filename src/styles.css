@@ -6218,3 +6218,10 @@ body.legal-page.page-papel .nav-logo {
 
 /* Dentro del hero, el label de sección no suma su margen superior: el aire arriba lo pone --hero-top. */
 .hero-section .actividades-label { margin-top: 0; }
+
+/* Proceso de cada servicio: la duración va como rango, no como calendario. */
+.timeline-duration {
+    margin-top: var(--space-4);
+    font-size: 1rem;
+    color: var(--color-text-low);
+}
