@@ -3328,16 +3328,6 @@ img {
   margin-bottom: var(--space-2);
 }
 
-/* Gráficos */
-.impact-chart img {
-  width: 100%;
-  max-height: 350px;
-  object-fit: contain;
-  border-radius: 4px;
-  margin-top: var(--space-4);
-  display: block;
-}
-
 /* Variante sin animación hover (intro + descarga) */
 .card-static {
   background: rgba(250, 248, 246, 0.02);
@@ -3388,12 +3378,6 @@ img {
 
 .actividad-card--light ul {
   padding-left: var(--space-5);
-}
-
-.reporte-section .impact-chart img {
-  border-radius: 8px;
-  width: 100%;
-  height: auto;
 }
 
 /* =========================
@@ -4386,31 +4370,7 @@ img {
   z-index: 1;
 }
 
-/* Highlight Boxes - "Qué significa para vos" */
-.highlight-box {
-  background: linear-gradient(135deg, rgba(193, 111, 82, 0.12), rgba(212, 132, 94, 0.08));
-  border: 2px solid var(--color-accent);
-  border-radius: 8px;
-  padding: var(--space-5) var(--space-6); /* Mobile base */
-  margin: var(--space-8) 0;
-  position: relative;
-}
-
-.highlight-box::before {
-  content: '⚠️';
-  position: absolute;
-  top: -15px;
-  left: var(--space-5);
-  background: var(--color-bg);
-  padding: 0 var(--space-2);
-  font-size: 1.5rem;
-}
-
-.highlight-box p:first-of-type {
-  font-weight: 700;
-  color: var(--color-text);  /* Blanco puro, enfatiza con peso de fuente */
-  margin-bottom: var(--space-3);
-}
+/* "Qué significa para vos": usa .ficcion-aviso, el aviso estándar con borde de acento (v2.6). */
 
 /* Scenario Accordions */
 .scenario-accordion {
@@ -4622,10 +4582,6 @@ img {
   .pull-quote {
     padding: var(--space-8) var(--space-10);
     margin: var(--space-12) 0;
-  }
-
-  .highlight-box {
-    padding: var(--space-6) var(--space-8);
   }
 
   .scenario-accordion-header {
@@ -4941,25 +4897,7 @@ img {
   font-weight: 700;
 }
 
-/* Visor PDF: oculto en mobile (iOS Safari no soporta embed de PDF),
-   visible en desktop. El fallback hace el camino inverso. */
-.thesis-viewer {
-  display: none;
-}
-
-.thesis-viewer-fallback {
-  position: relative;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: var(--space-6) var(--space-4);
-  background: var(--color-surface);
-  border: 1px solid rgba(250, 248, 246, 0.12);
-  border-radius: 8px;
-}
-
-.thesis-viewer-fallback p {
-  margin-bottom: var(--space-4);
-}
+/* El visor PDF embebido se retiró en v2.6: portada + enlaces (.thesis-cover, al final del archivo). */
 
 /* Cita sugerida */
 .thesis-cite {
@@ -4995,24 +4933,6 @@ img {
     gap: var(--space-2) var(--space-5);
   }
 
-  .thesis-viewer {
-    display: block;
-    max-width: 1000px;
-    height: 85vh;
-    margin: 0 auto;
-    border: 1px solid rgba(250, 248, 246, 0.12);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .thesis-viewer embed {
-    width: 100%;
-    height: 100%;
-  }
-
-  .thesis-viewer-fallback {
-    display: none;
-  }
 }
 
 /* Link inline dentro de descripciones de actividad (ej: La Usina) */
@@ -5740,14 +5660,6 @@ html {
     background: rgba(154, 79, 54, 0.07);
 }
 
-.page-papel main .highlight-box {
-    background: rgba(154, 79, 54, 0.08);
-}
-
-.page-papel main .highlight-box::before {
-    background: var(--paper-elevated);  /* la card, no el papel: tapa el borde sin escalón */
-}
-
 .page-papel main .quote-box {
     background: rgba(154, 79, 54, 0.06);
     border-left-color: var(--accent-on-paper);
@@ -5795,12 +5707,6 @@ html {
     color: #12151a;
 }
 
-/* Tesis: bordes de visor y fallback en tinta. */
-.page-papel .thesis-viewer,
-.page-papel .thesis-viewer-fallback {
-    border-color: var(--ink-border);
-}
-
 /* Elementos fijos que flotan sobre el papel: el índice y los botones de
    compartir eran translúcidos sobre oscuro; acá necesitan superficie
    opaca para seguir siendo oscuros (siguen fuera del remapeo de tokens). */
@@ -5821,17 +5727,17 @@ html {
    El tamaño sube apenas porque la serif tiene ojo medio más chico a igual cuerpo.
    Alcance: solo los contenedores de prosa (reporte, tesis, legal). Las cards,
    metadata y CTAs de las páginas de interfaz siguen en la sans (DESIGN.md). */
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-viewer-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote, figcaption, td) {
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote, figcaption, td) {
     font-family: 'Literata', Georgia, 'Times New Roman', serif;
     font-optical-sizing: auto;
     font-size: 1.1875rem; /* 19px: la base del sitio, sin heredar los 16px viejos de .reporte-section */
     line-height: 1.7;
 }
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-viewer-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) strong { font-weight: 700; }
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-viewer-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) em { font-style: italic; }
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) strong { font-weight: 700; }
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) em { font-style: italic; }
 /* Lo que no es prosa vuelve a la sans aunque esté dentro de un párrafo o lista */
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-viewer-section, .thesis-cite-section, .legal-content) :is(.ficha-caso-fuentes, .reporte-fuente, .senal-fuente, .cta-primary, .cta-link, .btn, .ficha-caso dt, .toc-data-rail, .sticky-toc, .share-buttons, .thesis-cite__note, .impact-label, .escenario-label, .senal-label) ,
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-viewer-section, .thesis-cite-section, .legal-content) :is(nav, button, label, .senal-label) * {
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(.ficha-caso-fuentes, .reporte-fuente, .senal-fuente, .cta-primary, .cta-link, .btn, .ficha-caso dt, .toc-data-rail, .sticky-toc, .share-buttons, .thesis-cite__note, .impact-label, .escenario-label, .senal-label) ,
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(nav, button, label, .senal-label) * {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: inherit;
     line-height: inherit;
@@ -6280,4 +6186,128 @@ body.legal-page.page-papel .nav-logo {
         gap: var(--space-8);
         align-items: start;  /* al abrir el proceso de una tarjeta, la vecina no se estira */
     }
+}
+
+/* ============ v2.6: cierre de página, figuras sobre papel, portada de tesis, controles en sistema ============
+   1. Cierre: el bloque de Lo hecho / Pensamiento (afirmación + CTA) pasa a parcial y cierra
+      también las tres páginas de caso, como sección propia: hereda el ritmo (--spacing-block
+      arriba, --spacing-block-edge abajo) y no cuelga su margen interno.
+   2. Figuras: los gráficos con fondo blanco se enmarcan en papel; multiply funde el blanco
+      del PNG con el papel, así no queda un rectángulo dentro del marco.
+   3. Tesis: portada + dos enlaces tipográficos en lugar del visor embebido.
+   4. Botón flotante del índice y chips de filtro: superficie, borde susurro y acento tipográfico,
+      sin discos sólidos ni cajas. */
+
+/* 1. Cierre */
+.cierre-section .proyectos-cta { margin-top: 0; }
+/* El titular del cierre es tamaño h2: toma el interlineado de título (1.15, DESIGN.md), no el de cuerpo (1.8). */
+.proyectos-cta-headline {
+    line-height: 1.15;
+    text-wrap: balance;
+}
+
+/* 2. Figuras */
+.figura {
+    margin: var(--space-6) 0;
+}
+.figura__papel {
+    background: var(--paper);
+    padding: var(--space-4);
+    border-radius: var(--border-radius);
+}
+.figura__papel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: calc(var(--border-radius) - 6px);
+    mix-blend-mode: multiply;
+}
+.figura figcaption,
+.page-lectura main .figura figcaption {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-low);
+    margin-top: var(--space-3);
+}
+
+/* Card de Lo hecho con el gráfico de natalidad: papel + padding, el gráfico se ve entero. */
+.actividad-imagen--papel {
+    background: var(--paper);
+    padding: var(--space-4);
+}
+.actividad-imagen--papel img {
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    filter: none;  /* gráfico de datos: sin velo sepia */
+}
+@media (min-width: 769px) {
+    .actividad-imagen--papel img {
+        inset: var(--space-4);
+        width: calc(100% - 2 * var(--space-4));
+        height: calc(100% - 2 * var(--space-4));
+    }
+}
+
+/* 3. Portada de la tesis */
+.thesis-cover {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.thesis-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(250, 248, 246, 0.12);
+    border-radius: var(--border-radius);
+}
+.thesis-cover figcaption,
+.page-lectura main .thesis-cover figcaption {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9375rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-low);
+    margin-top: var(--space-3);
+}
+.thesis-cover-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-8);
+    max-width: 800px;
+    margin: var(--space-6) auto 0;
+}
+.thesis-cover-links .cta-primary { margin: 0; }  /* sin margen colgante: el bloque cierra en el ritmo */
+
+/* 4a. Botón flotante del índice: superficie + borde susurro, ícono en acento */
+.mobile-toc-btn {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition: border-color 0.3s;
+}
+.mobile-toc-btn:hover,
+.mobile-toc-btn:focus-visible {
+    background: var(--color-surface);
+    border-color: var(--color-accent);
+}
+.mobile-toc-btn svg { fill: var(--color-accent); }
+
+/* 4b. Chips de filtro: etiqueta tipográfica, activo con subrayado de 2px */
+.filter-bar { gap: var(--space-2) var(--space-6); }
+.filter-btn,
+.filter-btn:hover,
+.filter-btn--active {
+    padding: var(--space-2) 0;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    font-size: 0.9375rem;
+    letter-spacing: 0.08em;
+    color: var(--color-text-mid);
+}
+.filter-btn:hover { color: var(--color-accent); }
+.filter-btn--active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
 }

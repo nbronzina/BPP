@@ -8,6 +8,9 @@ section: "pensamiento"
 ogDescription: "Señales que rastreamos con fuente y año, artículos sobre datos y sociedad, y las tesis de La Usina. Todo lo que pensamos en público, en un solo lugar."
 bodyClass: "secondary-page"
 jsonld: "jsonld/pensamiento.njk"
+cierreTitulo: "Estos textos son la parte pública de cómo trabajamos."
+cierreTexto: "Si algo de acá se parece a un problema que tenés arriba de la mesa, escribinos y lo miramos con tu contexto."
+cierreCta: "Hablemos de tu situación"
 ---
     <!-- Main Content -->
     <main role="main" id="main-content">
@@ -318,13 +321,7 @@ jsonld: "jsonld/pensamiento.njk"
         </article>
 
         <!-- CTA final: cierra el hub completo -->
-        <div class="proyectos-cta" data-animate>
-            <h3 class="proyectos-cta-headline">Estos textos son la parte pública de cómo trabajamos.</h3>
-            <p class="proyectos-cta-text">Si algo de acá se parece a un problema que tenés arriba de la mesa, escribinos y lo miramos con tu contexto.</p>
-            <a href="/#contact" class="cta-primary" data-preview="Te responde uno de nosotros tres en 48 horas hábiles" aria-label="Ir al formulario de contacto">
-                Hablemos de tu situación →
-            </a>
-        </div>
+{% include "partials/cierre.njk" %}
     </section>
 
     </main>

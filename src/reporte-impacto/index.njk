@@ -9,6 +9,8 @@ ogTitle: "Impacto de la caída de la natalidad en las matrículas escolares"
 ogDescription: "Reporte 2025 para el Colegio Francesco Faà di Bruno: contexto demográfico, tres escenarios y recomendaciones, sobre series oficiales de natalidad y matrícula."
 bodyClass: "reporte-page secondary-page page-lectura"
 jsonld: "jsonld/reporte-impacto.njk"
+cierreTitulo: "Si tenés una decisión así encima, hablemos antes de la emergencia."
+cierreCta: "Escribinos"
 ---
   <main id="main-content">
 
@@ -205,7 +207,7 @@ jsonld: "jsonld/reporte-impacto.njk"
           de alumnos. No es una hipótesis sobre 2035: son los chicos que ya
           nacieron, contados.
         </p>
-        <div class="highlight-box">
+        <div class="ficcion-aviso">
           <p><strong>Lo que esto significa para vos:</strong></p>
           <ul class="impact-list">
             <li>→ Cursos más chicos cada año</li>
@@ -214,12 +216,15 @@ jsonld: "jsonld/reporte-impacto.njk"
             <li>→ Necesidad de subir cuotas o ajustar gastos</li>
           </ul>
         </div>
-        <div class="impact-chart">
-          <picture>
-            <source srcset="/img/CuadroMatriculaOptima.webp 1174w" type="image/webp">
-            <img src="/img/CuadroMatriculaOptima.webp" alt="Gráfico de proyección de matrícula primaria hacia 2035, con una tendencia descendente suave pero sostenida." width="1174" height="891" loading="lazy" decoding="async">
-          </picture>
-        </div>
+        <figure class="figura">
+          <div class="figura__papel">
+            <picture>
+              <source srcset="/img/CuadroMatriculaOptima.webp 1174w" type="image/webp">
+              <img src="/img/CuadroMatriculaOptima.webp" alt="Gráfico de líneas: población de 4 años y matrícula de sala de 4 en la Ciudad de Buenos Aires, 2016 a 2026, ambas en descenso sostenido; la matrícula desde 2024 va punteada porque es proyección." width="1174" height="891" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption>Población de 4 años y matrícula de sala de 4 (nivel inicial), Ciudad de Buenos Aires, 2016–2026; la línea punteada es proyección. Fuente indicada en el gráfico: Unidad de Evaluación Integral de la Calidad y Equidad Educativa (Ministerio de Educación del GCABA) y Estadísticas Vitales (Ministerio de Salud).</figcaption>
+        </figure>
         <p>
           El gráfico muestra cómo, aun sin cambios bruscos de contexto, la matrícula proyectada desciende año a año,
           obligando a las escuelas a repensar tamaños de curso, uso de aulas y planificación de personal docente.
@@ -237,12 +242,15 @@ jsonld: "jsonld/reporte-impacto.njk"
           provincias, de Santiago del Estero a Tierra del Fuego. Ninguna
           se salva; lo que cambia es cuánto tiempo tiene cada una.
         </p>
-        <div class="impact-chart">
-          <picture>
-            <source srcset="/img/MapaMatriculaOptima.webp 1024w" type="image/webp">
-            <img src="/img/MapaMatriculaOptima.webp" alt="Mapa regional que muestra intensidades distintas de caída de matrícula según provincia y región del país." width="1024" height="741" loading="lazy" decoding="async">
-          </picture>
-        </div>
+        <figure class="figura">
+          <div class="figura__papel">
+            <picture>
+              <source srcset="/img/MapaMatriculaOptima.webp 1024w" type="image/webp">
+              <img src="/img/MapaMatriculaOptima.webp" alt="Mapa de la Ciudad de Buenos Aires dividido en zona norte, centro y sur, con nacimientos de 2012 y 2022 y tasa global de fecundidad por zona; la caída es mayor en el sur (−51,5 %) que en el norte (−30,2 %)." width="1024" height="741" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption>Nacimientos (2012 y 2022) y tasa global de fecundidad por zona de la Ciudad de Buenos Aires: norte, centro y sur. Fuente indicada en el mapa: Unidad de Evaluación Integral de la Calidad y Equidad Educativa (Ministerio de Educación, GCABA) sobre Estadísticas Vitales del Ministerio de Salud y de la Dirección General de Estadística y Censos (GCABA).</figcaption>
+        </figure>
         <p>
           El mapa muestra: algunas zonas tienen descensos moderados que se pueden gestionar.
           Otras concentran caídas pronunciadas que ponen en riesgo la continuidad de varias
@@ -445,16 +453,8 @@ jsonld: "jsonld/reporte-impacto.njk"
       </article>
     </section>
 
-    <!-- ENLACE DE RETORNO AL INICIO -->
-    <section class="content-section reporte-section">
-      <p>
-        <a
-          href="/"
-          class="cta-primary"
-          aria-label="Volver al inicio"
-        >
-          <span class="cta-arrow cta-arrow--left">←</span> Volver al inicio
-        </a>
-      </p>
+    <!-- CIERRE: afirmación + CTA (reemplaza al enlace de retorno; el inicio queda en el nav) -->
+    <section class="section cierre-section" aria-labelledby="cierre-heading">
+{% include "partials/cierre.njk" %}
     </section>
   </main>

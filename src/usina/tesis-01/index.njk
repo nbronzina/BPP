@@ -9,6 +9,8 @@ ogTitle: "El actante siempre disponible — Tesis 01 | La Usina"
 ogDescription: "IA generativa, socialización e identidad en la emergencia de nuevos vínculos humano-IA: una propuesta conceptual desde la teoría del actor-red."
 bodyClass: "secondary-page page-lectura"
 jsonld: "jsonld/usina-tesis-01.njk"
+cierreTitulo: "Si querés discutir la tesis, o traerla a tu organización, escribinos."
+cierreCta: "Hablemos"
 ---
     <!-- Main Content -->
     <main role="main" id="main-content">
@@ -38,23 +40,20 @@ jsonld: "jsonld/usina-tesis-01.njk"
         </article>
     </section>
 
-    <!-- Visor PDF (desktop) -->
-    <section class="section thesis-viewer-section" aria-label="Documento completo de la tesis">
-        <div class="thesis-viewer" data-animate>
-            <embed
-                src="/docs/tesis-01-el-actante-siempre-disponible.pdf#view=FitH"
-                type="application/pdf"
-                title="Tesis 01 — El actante siempre disponible (PDF, 56 páginas)">
-        </div>
-
-        <!-- Fallback mobile: el embed de PDF no funciona en iOS Safari -->
-        <div class="thesis-viewer-fallback" data-animate>
-            <span class="corner-bracket corner-bracket--tl" aria-hidden="true"></span>
-            <span class="corner-bracket corner-bracket--br" aria-hidden="true"></span>
-            <p class="tesis-card__label">Documento completo · PDF · 56 páginas</p>
-            <p>El visor embebido necesita pantalla grande. En el teléfono, la tesis se lee mejor a pantalla completa con el visor del sistema.</p>
-            <a href="/docs/tesis-01-el-actante-siempre-disponible.pdf" class="cta-primary" target="_blank" rel="noopener">Abrir la tesis →</a>
-        </div>
+    <!-- Documento: portada + dos enlaces tipográficos (sin visor embebido: iOS Safari no lo soporta
+         y el PDF se lee mejor en el visor del sistema) -->
+    <section class="section thesis-cover-section" aria-label="Documento completo de la tesis">
+        <figure class="thesis-cover" data-animate>
+            <picture>
+                <source srcset="/img/tesis01-actante-mobile.webp" type="image/webp" media="(max-width: 600px)">
+                <img src="/img/tesis01-actante.webp" alt="Portada de la Tesis 01, El actante siempre disponible, con la red de puntos que ilustra la teoría del actor-red" width="1376" height="768" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Documento de trabajo · PDF · 56 páginas</figcaption>
+        </figure>
+        <p class="thesis-cover-links">
+            <a href="/docs/tesis-01-el-actante-siempre-disponible.pdf" class="cta-primary" download>Descargar PDF ↓</a>
+            <a href="/docs/tesis-01-el-actante-siempre-disponible.pdf" class="cta-primary" target="_blank" rel="noopener">Abrir en el navegador →</a>
+        </p>
     </section>
 
     <!-- Cita sugerida -->
@@ -64,6 +63,11 @@ jsonld: "jsonld/usina-tesis-01.njk"
             <p>Bronzina, N., Petrocelli, S., y Politi, E. (2026). <em>El actante siempre disponible: inteligencia artificial generativa, socialización e identidad en la emergencia de nuevos vínculos humano–IA</em> (La Usina, Documento de Trabajo · Tesis 01). BPP Analytics &amp; Design.</p>
             <p class="thesis-cite__note">Los documentos de trabajo de La Usina comparten investigación en curso para su discusión pública. No pasaron por revisión por pares externa. Los autores son responsables de las opiniones expresadas.</p>
         </div>
+    </section>
+
+    <!-- CIERRE: afirmación + CTA -->
+    <section class="section cierre-section" aria-labelledby="cierre-heading">
+{% include "partials/cierre.njk" %}
     </section>
 
     </main>

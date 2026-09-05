@@ -1,0 +1,12 @@
+{#- Cierre de página: afirmación centrada + CTA tipográfico.
+    Variables (front matter): cierreTitulo, cierreTexto (opcional), cierreCta (texto del link, sin flecha), cierreHref (default /#contact).
+    En Lo hecho y Pensamiento vive dentro de la última .section; en las páginas de caso va envuelto en su propia <section class="section cierre-section">. -#}
+        <div class="proyectos-cta" data-animate>
+            <h3 id="cierre-heading" class="proyectos-cta-headline">{{ cierreTitulo }}</h3>
+{%- if cierreTexto %}
+            <p class="proyectos-cta-text">{{ cierreTexto }}</p>
+{%- endif %}
+            <a href="{{ cierreHref or '/#contact' }}" class="cta-primary" data-preview="Te responde uno de nosotros tres en 48 horas hábiles" aria-label="Ir al formulario de contacto">
+                {{ cierreCta }} →
+            </a>
+        </div>
