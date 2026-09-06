@@ -251,7 +251,6 @@ h4,
 h5,
 h6,
 .service-title,
-.about-headline,
 .service-category,
 .actividad-meta,
 .actividades-label,
@@ -304,16 +303,6 @@ li {
 
 li:last-child {
     margin-bottom: 0;
-}
-
-/* Screen reader only utility */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
 }
 
 /* Touch optimization - eliminate 300ms tap delay */
@@ -1213,8 +1202,7 @@ main > :last-child {
 
 /* Content centering for specific containers - Estandarizado */
 .services-grid,
-.actividades-container,
-.about-content {
+.actividades-container {
     max-width: 1400px;  /* Estandarizado (era 1080px) */
     margin-left: auto;
     margin-right: auto;
@@ -1237,41 +1225,6 @@ main > :last-child {
 /* =========================
    About Section - Two Column Layout
    ========================= */
-
-/* Mobile-first base */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    align-items: start;
-    padding: 0 var(--spacing-horizontal-mobile);
-}
-
-.about-content {
-    grid-column: auto;
-    position: relative;
-    padding: var(--space-6);
-}
-
-.about-headline {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h3); /* Mobile: más chico */
-    font-weight: 700;
-    color: var(--color-text);
-    opacity: 1;
-    line-height: 1.25;
-    margin-bottom: var(--space-8);
-    hyphens: auto;
-}
-
-.about-mission {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    opacity: 0.75;
-    margin-bottom: var(--space-8);
-    max-width: 60ch;
-}
 
 /* Corner brackets (BPP brand) */
 .corner-bracket {
@@ -1297,51 +1250,6 @@ main > :last-child {
     opacity: 0.3;
 }
 
-/* Transformation cards */
-.transformation-cards {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    margin-bottom: var(--space-12);
-}
-
-.transformation-card {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
-    padding: var(--space-4);
-    background: rgba(250, 248, 246, 0.03);
-    transition: background 0.2s ease, box-shadow 0.2s ease;
-}
-
-.transformation-card:hover {
-    background: rgba(250, 248, 246, 0.06);
-}
-
-.transformation-card .card-icon {
-    font-family: var(--font-label);
-    font-size: 1rem;
-    color: var(--color-accent);
-    opacity: 1;
-    flex-shrink: 0;
-    line-height: 1.5;
-}
-
-.transformation-card p {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    opacity: 0.85;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Studio identity badge */
-.studio-identity {
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-8);
-}
-
 /* CTA container for dual buttons */
 .actividades-cta-dual {
     display: flex;
@@ -1353,25 +1261,10 @@ main > :last-child {
 
 /* About Section - Desktop Enhancement */
 @media (min-width: 769px) {
-    .about-grid {
-        grid-template-columns: 1fr 180px;
-        gap: 0 var(--space-12);
-        /* Vertical 0: el padre .section ya aporta var(--spacing-section) */
-        padding: 0 var(--space-24);
-    }
-
     
-    .about-content {
-        grid-column: 1;
-        padding: var(--space-12);
-    }
-
-    .about-headline {
-        font-size: var(--font-size-h2);
-        line-height: 1.2;
-        hyphens: none;
-    }
-
+    
+    
+    
     
     
     .corner-bracket {
@@ -1379,19 +1272,9 @@ main > :last-child {
         height: 40px;
     }
 
-    .transformation-card {
-        gap: var(--space-4);
-        padding: var(--space-5) var(--space-6);
-    }
-
-    .transformation-card .card-icon {
-        font-size: 1.25rem;
-    }
-
-    .transformation-card p {
-        font-size: var(--font-size-base);
-    }
-
+    
+    
+    
     
     
     
@@ -1416,7 +1299,25 @@ main > :last-child {
     color: var(--color-text-light);
     max-width: 70ch;
     margin-bottom: var(--space-12);
-    padding-left: var(--space-6);
+}
+/* Frase que abre Qué hacemos: lo único que quedó de la vieja sección Nosotros */
+.services-lead {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--color-text);
+    max-width: 34ch;
+    margin: 0 0 var(--space-5);
+}
+/* Bajada de sección alineada a la izquierda, bajo un .section-heading */
+.section-lead {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-text-light);
+    max-width: 70ch;
+    margin: 0 0 var(--space-12);
 }
 
 /* Grilla de servicios: una columna; dos desde 1025px (ver v2.5 más abajo) */
@@ -2328,7 +2229,6 @@ img {
         padding: 0 var(--spacing-horizontal-tablet);
     }
 
-    .about-grid,
     .services-container {
         padding: 0 var(--spacing-horizontal-tablet);
     }
@@ -2402,11 +2302,6 @@ img {
 
 .impact-top--spacing-lg {
   margin-top: var(--space-10);
-}
-
-/* Text spacing utilities */
-.text-spacing-sm {
-  margin-top: var(--space-4);
 }
 
 .text-spacing-md {
@@ -4198,8 +4093,6 @@ body.legal-page.page-lectura nav {
    Márgenes y paddings del último (o primer) hijo de un bloque que no separan nada
    adentro del bloque y solo sumaban al gap entre bloques. El espacio interno no cambia.
    Van al final del archivo para ganar en cascada a las reglas de cada componente. */
-.about-content { padding-bottom: 0; }
-.studio-identity { margin-bottom: 0; }
 .actividades-cta { padding-bottom: 0; }
 .logos-grid { padding-bottom: 0; }
 .contact-address > :last-child,
@@ -4374,7 +4267,6 @@ body.legal-page.page-lectura nav {
 .hero-section .hero-sub { max-width: 800px; margin: 0 auto; }
 .hero-sub--seccion { margin: var(--space-3) auto 0; }
 #indice { padding-bottom: 0; }
-.u-mt-8 { margin-top: var(--space-8); }
 .u-mt-12 { margin-top: var(--space-12); }
 
 /* ============ v2.8: buenas prácticas de interfaz (Web Interface Guidelines) ============ */

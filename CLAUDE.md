@@ -31,7 +31,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 - **Structured data**: JSON-LD por página (`src/_includes/jsonld/`): ProfessionalService y Organization en la home, CollectionPage con ItemList en Lo hecho y Pensamiento, CreativeWork, Report, ScholarlyArticle, PrivacyPolicy
 
 ### Pages
-- `index.html` - Homepage (hero, nosotros, cuatro movimientos, lo hecho, red, cuándo escribirnos y contacto)
+- `index.html` - Homepage (hero, cuatro movimientos, lo hecho, nosotros con equipo y red, cuándo escribirnos y contacto)
 - `proyectos/` - Lo hecho, en dos secciones: Casos y Docencia y jornadas
 - `proyectos/trace-group/` - Provocación Trace Group: un caso escrito como pregunta "¿Y si…?" (ficha + objeto + cómo se construyó). No explica el método ni la iniciativa; la fecha 2032 marca la ficción. Nunca se dice que fue adoptada. Ver VOICE.md, "Vocabulario propio"
 - `proyectos/natalidad/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales); `reporte-impacto/` solo redirige
