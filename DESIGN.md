@@ -127,34 +127,20 @@ La paleta tiene cuatro registros y un solo acento. Temperatura cálida unificada
 
 Regla operativa: la jerarquía se construye con tamaño y peso primero, y con los cuatro niveles de alpha después. No se aplica `opacity` a elementos con texto legible: el alpha ya está calibrado y la opacidad encima lo rompe (0.75 × 0.6 = 0.45, que no pasa AA). La jerarquía por opacidad se mantiene intencional. La base cálida (`rgba(250,248,246,...)` en lugar de `rgba(255,255,255,...)`) es el cambio core — permite profundidad jerárquica sin agresividad visual.
 
-## Superficie de lectura (v2.3)
+## Superficie de lectura (v2.3): retirada
 
-**Regla: oscuro = marca, papel = lectura larga.** Nav, footer y el bloque hero/título de cada página siguen en el registro oscuro. El cuerpo de los documentos largos (2.000-3.000 palabras: reporte de natalidad, Trace Group, tesis-01 — `body.page-lectura`) pasa a una superficie de papel cálido. El lector típico tiene 50-60 años y decide en el sector público: lee de corrido, a veces imprime. El corte entre hero oscuro y papel es una línea horizontal limpia, sin degradé. En CSS, el alcance es `.page-lectura main > section:not(.hero-section)`, y ahí se remapean los tokens (`--color-text-*`, `--color-accent`, `--color-surface`, `--color-border`) para que las reglas existentes sigan solas.
+> **Formulación original (2026-09-03):** "Oscuro = marca, papel = lectura larga. Nav, footer y el bloque hero/título de cada página siguen en el registro oscuro. El cuerpo de los documentos largos (reporte de natalidad, Trace Group, tesis-01) pasa a una superficie de papel cálido `#f4efe8`, con tinta `rgba(18, 21, 26, …)` y acento oscurecido `#9a4f36` para cumplir AA."
 
-Tokens (definidos en `:root` de `styles.css`):
+- **Qué resolvía.** La lectura de corrido de documentos de 2.000 a 3.000 palabras por gente que lee mucho en papel, a veces imprime, y se cansa del texto claro sobre oscuro.
+- **Qué cambió.** El 2026-09-04 los socios eligieron todo Tinta con el prototipo a la vista. Las reglas quedaron dormidas bajo `body.page-papel` y el 2026-09-06 se retiraron del CSS: 103 reglas y ocho tokens que ninguna página activaba. Siguen en el historial de git.
+- **Por qué.** Un sistema de dos superficies es dos veces el trabajo de contraste, tokens y componentes para una sola familia de páginas. Lo que el papel aportaba a la lectura larga se conservó por otra vía: Literata en la prosa, cuerpo de 19px, medida de 70ch y nav sólido (`body.page-lectura`).
+- **Qué se perdió.** La opción de imprimir con fondo claro sin hoja de estilos de impresión, y el corte visual entre marco y documento. Si se vuelve a necesitar, la referencia está en el commit que lo retiró.
 
-| Token | Valor | Uso | Contraste sobre `--paper` |
-|---|---|---|---|
-| `--paper` | `#f4efe8` | superficie de lectura (nunca blanco puro) | — |
-| `--paper-elevated` | `#faf7f2` | cards sobre paper | — |
-| `--ink-high` | `rgba(18, 21, 26,0.95)` | headings, cuerpo | 14.1:1 |
-| `--ink-mid` | `rgba(18, 21, 26,0.78)` | segundo nivel (ficha `dd`, strong en fuentes) | 8.3:1 |
-| `--ink-low` | `rgba(18, 21, 26,0.66)` | metadata, fuentes — **piso** para cuerpo y metadata | 5.5:1 |
-| `--ink-border` | `rgba(18, 21, 26,0.14)` | divisores, bordes de card | — |
-| `--accent-on-paper` | `#9a4f36` | links, labels, `dt` de ficha, foco | 5.2:1 |
-| `--accent-on-paper-hover` | `#7f3f2a` | hover de links | 6.9:1 |
-
-- **`#c16f52` no es AA sobre papel para texto de cuerpo:** da 3.2:1, que solo alcanza para texto grande (≥24px, o ≥18.66px bold). Por eso el acento se oscurece a `#9a4f36` en todo el alcance de lectura; el único uso de `#c16f52` sobre papel es la cifra hero del reporte (`.impact-number-hero`, ≥40px bold).
-- No hay registro *faint* sobre papel: `--color-text-faint` se remapea a `--ink-low`.
-- Los links dentro del cuerpo llevan subrayado además del color (acento vs tinta queda en 2.7:1, no alcanza para distinguir solo por color).
-- Foco visible: el anillo terracota al 0.55 da 1.8:1 sobre papel; en el alcance de lectura se usa `--accent-on-paper` sólido (5.2:1).
-- Cards sobre papel: `--paper-elevated` + borde `--ink-border` + sombra de tinta (`rgba(18, 21, 26,0.28)`, misma geometría que `--shadow-card`), no el borde terracota que separaba sobre oscuro.
-- Los elementos fijos que flotan sobre el papel (índice lateral, botones de compartir) pasan a superficie opaca oscura; siguen fuera del remapeo.
-- El grano del `body::after` se mantiene: es ruido neutro y lee igual sobre papel.
+El único "papel" que queda en el sistema es otro: `.figura__papel` (v2.6) enmarca gráficos con fondo blanco sobre una superficie clara para que el PNG no quede como un rectángulo recortado. Es un componente de figura, no una superficie de página.
 
 ## Typography
 
-**Dos familias con roles fijos (self-hosted).** Plus Jakarta Sans para todo lo que es interfaz: títulos, labels, navegación, tarjetas, metadata, CTAs. Literata solo para la prosa de lectura larga sobre papel (`.page-lectura`: reporte de natalidad, Trace Group, tesis): párrafos, listas, definiciones, citas. Decisión de los socios, 2026-09: un documento de tres mil palabras se lee mejor en serif, y la serif no entra en ninguna otra superficie.
+**Dos familias con roles fijos (self-hosted).** Plus Jakarta Sans para todo lo que es interfaz: títulos, labels, navegación, tarjetas, metadata, CTAs. Literata solo para la prosa de lectura larga (`.page-lectura`: reporte de natalidad, Trace Group, tesis): párrafos, listas, definiciones, citas. Decisión de los socios, 2026-09: un documento de tres mil palabras se lee mejor en serif, y la serif no entra en ninguna otra superficie.
 
 **Literata** (Google/TypeTogether, OFL, servida desde `/fonts/`): variable en peso 400..700 y tamaño óptico 7..72, con `font-optical-sizing: auto`. Cuerpo fijo en 1.1875rem (19px, la base del sitio) y `line-height 1.7`. Nunca en headings, nunca fuera de `.page-lectura`, nunca a menos de 17px.
 
@@ -325,8 +311,13 @@ Este archivo (v2 beta-inclusive) cumple parcialmente con la especificación `@go
 
 ## Changelog
 
+**v2.7 sin papel (2026-09-06):**
+- Se retiran del CSS las 103 reglas de `body.page-papel` y los tokens `--paper`, `--paper-elevated`, `--ink-*`, `--accent-on-paper*`. Ver "Superficie de lectura (v2.3): retirada".
+- Regla nueva de contraste: el alfa va en el color o en `opacity`, nunca en los dos; y el accent `#c16f52` nunca lleva `opacity` (sobre `#12151a` da 4,93:1 y cualquier atenuación lo baja de AA).
+- Breakpoints: 769 (con el rango 769–1024 para tablet), 1025, 1280 y 1536 para el índice pegajoso. No se agregan otros.
+
 **v2.3 superficie de lectura (2026-09-03):**
-- Documentos largos (`body.page-lectura`: reporte de natalidad, Trace Group, tesis-01) pasan el cuerpo a papel cálido `#f4efe8`; nav, footer y hero siguen oscuros. Tokens `--paper`, `--paper-elevated`, `--ink-*`, `--accent-on-paper`. Ver "Superficie de lectura (v2.3)".
+- Documentos largos (`body.page-lectura`: reporte de natalidad, Trace Group, tesis-01) pasan el cuerpo a papel cálido `#f4efe8`; nav, footer y hero siguen oscuros. Tokens `--paper`, `--paper-elevated`, `--ink-*`, `--accent-on-paper`. Retirado en v2.7.
 
 **v2.1 beta-inclusive (2026-06-11):**
 - Tipografía: híbrido ZT Bros Oskon + Chivo (especificado, nunca implementado) → Plus Jakarta Sans como familia única en todo el sistema. Decisión de Nicolás tras auditoría completa que mostró 0% de implementación del híbrido.
@@ -351,11 +342,10 @@ Este archivo (v2 beta-inclusive) cumple parcialmente con la especificación `@go
 Decisión de los socios: se mantiene el oscuro, cambia la base. El marrón cálido (`#1a1512`) pesaba y se había vuelto genérico. La base pasa a un azul-negro frío, **Tinta**, y el terracota y el texto crema quedan como lo único cálido: por eso el acento salta más que antes.
 
 - `--color-bg: #12151a` · `--color-surface: #1a1e25` · `--color-bg-deep: #0d1014` · `--color-bg-warm: #161a20` · `--color-border: #2b313a`
-- Tinta sobre papel: `rgba(18, 21, 26, …)`, el mismo azul-negro del marco. El papel sigue cálido (`#f4efe8`).
-- Acento sin cambios: `#c16f52` (y `#9a4f36` sobre papel).
+- Acento sin cambios: `#c16f52`.
 - Retratos del equipo recompuestos sobre `#12151a`.
 - Hero acotado a `clamp(520px, 78svh, 820px)`, bloque centrado; la sección siguiente arranca a 48px.
 
 ### Tinta en todo el sitio (2026-09-04)
 
-Los socios pidieron sacar el papel: los tres documentos largos vuelven a fondo Tinta, con la serif y los 19px de cuerpo intactos. El sistema de superficie de lectura (v2.3) no se borra: sus reglas quedan bajo `body.page-papel`, que ninguna página usa. `body.page-lectura` ahora significa solo "lectura larga": serif en la prosa y nav sólido.
+Los socios pidieron sacar el papel: los tres documentos largos vuelven a fondo Tinta, con la serif y los 19px de cuerpo intactos. `body.page-lectura` significa solo "lectura larga": serif en la prosa y nav sólido. Las reglas del papel quedaron dormidas bajo `body.page-papel` hasta el 2026-09-06, cuando se retiraron del CSS (v2.7).
