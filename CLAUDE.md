@@ -139,7 +139,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 - **Colors**: CSS custom properties in `:root` (`src/styles.css`)
 - **Typography**: Plus Jakarta Sans (interfaz) y Literata (prosa larga), self-hosted en `/fonts/`
 - **Spacing**: 8px base grid (multiples of 8)
-- **Breakpoints**: base móvil; `min-width: 769px` (escritorio), `1025px` (grillas anchas), `1280px` (medida máxima)
+- **Breakpoints**: base móvil; `min-width: 769px` (escritorio, con el rango `769–1024` para tablet), `1025px` (grillas anchas), `1280px` (medida máxima), `1536px` (índice pegajoso de los casos). No agregar otros valores.
 - **Animations**: Fade-up on scroll via IntersectionObserver
 
 ---

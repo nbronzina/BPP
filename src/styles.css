@@ -1899,7 +1899,7 @@ main > :last-child {
 
 /* Mobile-first base */
 .services-container {
-    padding: 0 var(--spacing-horizontal-mobile);
+    padding: 0 var(--space-12);  /* móvil; tablet 64 y escritorio 96 en sus bloques */
 }
 
 .services-label {
@@ -3050,7 +3050,7 @@ img {
 
 /* Desktop grande */
 /* Tablet landscape */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .hero {
         padding: 140px var(--spacing-horizontal-tablet) var(--space-20);
     }
@@ -3085,30 +3085,7 @@ img {
     .services-grid {
         gap: var(--space-10);
     }
-
-    .service-card {
-        padding: var(--space-8);
-    }
 }
-
-@media (max-width: 1024px) {
-    /* Equipo mantiene 2 columnas en tablet */
-}
-
-@media (max-width: 1200px) {
-    .actividades-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 900px) {
-    .services-container {
-        padding: 0 var(--space-12);
-    }
-
-    /* MOBILE-010: Mantener 2 columnas en actividades hasta breakpoint más bajo */
-}
-
 
 /* Mobile-first migration note:
    The previous 285-line max-width:768px block contained many rules that have been
@@ -3135,47 +3112,8 @@ img {
 }
 
 /* Mobile pequeño */
-@media (max-width: 390px) {
-    .tagline {
-        font-size: var(--font-size-h1);
-        font-family: var(--font-display); /* Syne */
-        letter-spacing: -0.025em;
-    }
-
-    .service-card {
-        padding: var(--space-4) var(--space-8);
-        font-size: var(--font-size-base);
-    }
-
-    /* Ensure headings stay readable */
-    h1, h2 {
-        font-family: var(--font-display); /* Syne */
-        letter-spacing: -0.01em;
-    }
-}
-
 /* MOBILE-004: Mobile extra pequeño (320-360px) */
-@media (max-width: 360px) {
-    .hero {
-        padding: var(--space-24) var(--space-4) 60px;
-    }
-
-    .tagline {
-        font-size: var(--font-size-h2);
-        line-height: 1.2;
-    }
-
-
-}
-
 /* Mobile landscape */
-@media (max-height: 500px) and (orientation: landscape) {
-    .hero {
-        min-height: auto;
-        padding: var(--space-20) var(--space-6) var(--space-10);
-    }
-}
-
 /* =========================
    Prefers Reduced Motion
    ========================= */
@@ -3586,7 +3524,7 @@ img {
   gap: calc(var(--space-8) + var(--space-6)) var(--space-8);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1025px) {
   .report-scenarios-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -4522,6 +4460,7 @@ img {
 /* Responsive adjustments */
 /* El índice fijo (280px + margen) solapa la columna de texto (1200px centrados)
    por debajo de ~1536px. Hasta ahí, índice móvil. */
+/* Índice pegajoso solo desde 1536px: a 1440 su columna de 280px pisa el texto de 70ch */
 @media (max-width: 1535px) {
   .sticky-toc {
     display: none;
@@ -5089,7 +5028,7 @@ img {
     display: none;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1536px) {
     .toc-data-rail {
         display: block;
         margin-top: var(--space-5);
