@@ -38,6 +38,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 - `pensamiento/` - Hub único de ideas: señales, artículos y tesis (La Usina vive acá como serie)
 - `usina/` - Solo redirección a `/pensamiento/#tesis` (meta refresh, noindex); `usina/tesis-01/` sigue siendo la URL de la tesis
 - `privacidad/` - Política de privacidad
+- `404.html` - Página de error propia (GitHub Pages la sirve sola)
 
 ---
 
@@ -131,7 +132,6 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ├── docs/                       # *.pdf se publica; *.md nunca
 ├── sitemap.xml, robots.txt, CNAME, favicons, llms.txt   # passthrough
 ├── sw.js / sw.min.js           # kill-switch del SW retirado (borrar en 2027)
-├── build.sh                    # envoltorio de `npm run check`
 └── _site/                      # salida generada (ignorada por git)
 ```
 
@@ -148,7 +148,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 
 ### Making Changes
 1. **Edit sources**: páginas en `src/**/index.njk`, layout y parciales en `src/_includes/`, `src/styles.css`, `src/main.js`
-2. **Build**: `npm run check` (o `./build.sh`) genera `_site/` y corre el chequeo
+2. **Build**: `npm run check` genera `_site/` y corre el chequeo
 3. **Test locally**: `python3 -m http.server 8000 --directory _site`
 4. **Commit**: solo fuentes; `_site/` y los `.min` no se versionan
 5. **Push** y merge a `main`: Actions construye y publica en 2-3 minutos
@@ -214,7 +214,7 @@ La fuente de verdad es `/DESIGN.md` (v2.1 beta-inclusive). Resumen:
 - **CTAs**: tipográficos, color `--orange-500` — nunca botones con fondo sólido
 - **rgba del primary**: `rgba(193, 111, 82, …)`, nunca `rgba(206, 115, 82, …)`
 
-**Updating colors**: validar contra `/DESIGN.md` primero, editar `styles.css` `:root`, correr `./build.sh`
+**Updating colors**: validar contra `/DESIGN.md` primero, editar `src/styles.css` `:root`, correr `npm run check`
 
 ### Typography
 - **Dos familias con rol fijo**: Plus Jakarta Sans para interfaz y títulos; Literata solo para la prosa de lectura larga en páginas `.page-lectura`. Ambas self-hosted en `/fonts/`.
@@ -306,7 +306,7 @@ Uses sharp-cli for conversion, maintains quality.
 - **Accessibility**: ARIA labels on interactive elements, semantic headings
 
 ### Build Process
-- **When to build**: After editing `styles.css` or `main.js`, run `./build.sh`
+- **When to build**: After editing `src/styles.css` or `src/main.js`, run `npm run check`
 - **What it does**: Eleventy genera `_site/`; csso y terser minifican CSS y JS
 - **Commits**: solo fuentes; `_site/` y los `.min` no se versionan
 

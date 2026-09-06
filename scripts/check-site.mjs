@@ -1,7 +1,7 @@
 // Chequeo mínimo del sitio generado: existen las páginas, no quedan rutas relativas
 // rotas, y los assets críticos están en _site/. Corre en CI antes de publicar.
 import { readFileSync, existsSync } from "node:fs";
-const pages = ["index.html","proyectos/index.html","proyectos/trace-group/index.html","proyectos/natalidad/index.html","pensamiento/index.html","usina/tesis-01/index.html","privacidad/index.html","usina/index.html"];
+const pages = ["index.html","proyectos/index.html","proyectos/trace-group/index.html","proyectos/natalidad/index.html","pensamiento/index.html","usina/tesis-01/index.html","privacidad/index.html","404.html","usina/index.html"];
 const assets = ["styles.min.css","main.min.js","fonts/plus-jakarta-sans-latin.woff2","img/logo.svg","sitemap.xml","robots.txt","CNAME"];
 let fail = 0;
 for (const p of pages) {
