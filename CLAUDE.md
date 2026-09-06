@@ -4,7 +4,7 @@
 **Tech Stack**: HTML plano generado con Eleventy 3 (Nunjucks), CSS y JS a mano, sin frameworks en runtime. Sin PWA (retirada 2026-09).
 **Build**: `npm run build` → Eleventy genera `_site/`, csso y terser minifican. Los `.min` ya no se versionan.
 **Deploy**: GitHub Pages desde `_site/`, construido en Actions (`.github/workflows/deploy.yml`)
-**Last Updated**: 2026-03-11
+**Last Updated**: 2026-09-06
 
 ---
 
@@ -28,11 +28,11 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 - **Responsive design**: Mobile-first, desktop adapted, accessible (WCAG 2.1 AA)
 - **Analytics**: Plausible.io for privacy-friendly tracking
 - **Contacto**: mail directo (`mailto:`) con promesa de respuesta en 48 h hábiles. Sin formulario: menos fricción y ningún servicio externo.
-- **Structured data**: JSON-LD for SEO (FAQ, ProfessionalService schemas)
+- **Structured data**: JSON-LD por página (`src/_includes/jsonld/`): ProfessionalService y Organization en la home, CollectionPage con ItemList en Lo hecho y Pensamiento, CreativeWork, Report, ScholarlyArticle, PrivacyPolicy
 
 ### Pages
-- `index.html` - Homepage (hero, about, servicios, hechos, confianza, señales, contacto)
-- `proyectos/` - Hechos (lista de proyectos)
+- `index.html` - Homepage (hero, nosotros, cuatro movimientos, lo hecho, red, cuándo escribirnos y contacto)
+- `proyectos/` - Lo hecho, en dos secciones: Casos y Docencia y jornadas
 - `proyectos/trace-group/` - Caso Trace Group (ficha + diagnóstico, sin ficción ni cifras sin fuente)
 - `proyectos/natalidad/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales); `reporte-impacto/` solo redirige
 - `pensamiento/` - Hub único de ideas: señales, artículos y tesis (La Usina vive acá como serie)
@@ -140,7 +140,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 - **Typography**: Plus Jakarta Sans (interfaz) y Literata (prosa larga), self-hosted en `/fonts/`
 - **Spacing**: 8px base grid (multiples of 8)
 - **Breakpoints**: base móvil; `min-width: 769px` (escritorio, con el rango `769–1024` para tablet), `1025px` (grillas anchas), `1280px` (medida máxima), `1536px` (índice pegajoso de los casos). No agregar otros valores.
-- **Animations**: Fade-up on scroll via IntersectionObserver
+- **Animations**: sin apariciones al scroll; solo transiciones de color y opacidad
 
 ---
 
@@ -170,7 +170,7 @@ npm run serve   # eleventy --serve con recarga
 - [ ] Mobile menu works (open/close/escape/outside click)
 - [ ] Smooth scroll to anchors (`#servicios`, `#nosotros`, etc.)
 - [ ] El `mailto:` de contacto dispara `Contacto_mail` en Plausible
-- [ ] Images load in WebP format with fallbacks
+- [ ] Las imágenes son WebP con variante `-mobile` en las tarjetas
 - [ ] Analytics events tracked (check Plausible)
 
 ---
@@ -262,9 +262,9 @@ These terms refer to the same section but use different wording intentionally �
 ### HTML Rules
 - **Semantic structure**: `<section id="...">` for major blocks
 - **Accessibility**: ARIA labels on buttons, semantic headings (h1 → h2 → h3)
-- **Progressive enhancement**: Works without JS (forms still submit, links still work)
-- **Structured data**: JSON-LD scripts for SEO (FAQ, ProfessionalService)
-- **NEVER assume a file is unused based on index alone** — hay siete páginas en `src/**/index.njk` más parciales en `src/_includes/`. Antes de archivar o borrar un asset: `grep -rn "filename" src/`
+- **Progressive enhancement**: funciona sin JS (no hay formularios; los enlaces y el mailto no dependen de nada)
+- **Structured data**: un include JSON-LD por página
+- **NEVER assume a file is unused based on index alone** — hay ocho páginas en `src/**/index.njk` más `src/404.njk` y los parciales en `src/_includes/`. Antes de archivar o borrar un asset: `grep -rn "filename" src/`
 
 ### Commit Format
 ```
@@ -298,11 +298,11 @@ Uses sharp-cli for conversion, maintains quality.
 - **Null-safe DOM access**: Always check `if (element)` before adding listeners
 - **Page-specific logic**: Use `body.classList.contains("page-class")` for conditionals
 - **Tracking**: Centralize via `trackEvent(name, props)` helper (checks `window.plausible`)
-- **Animations**: IntersectionObserver triggers `.visible` class on `[data-animate]` elements
+- **Sin reveals**: no existe `[data-animate]`; el único IntersectionObserver dispara `Seccion_vista`
 
 ### HTML Patterns
-- **Semantic structure**: `<section id="...">` with `data-animate` for scroll reveals
-- **Progressive enhancement**: Works without JS (forms, navigation)
+- **Semantic structure**: `<section id="...">` con `aria-labelledby`
+- **Progressive enhancement**: funciona sin JS (enlaces, mailto, año del footer horneado en el build)
 - **Accessibility**: ARIA labels on interactive elements, semantic headings
 
 ### Build Process
@@ -313,7 +313,7 @@ Uses sharp-cli for conversion, maintains quality.
 ### Testing Checklist
 - Mobile menu (open/close/escape/outside click)
 - Smooth scroll to anchors
-- Filtros de Lo hecho y Pensamiento (cada botón devuelve al menos una pieza)
+- Filtro de Pensamiento (cada botón devuelve al menos una pieza; Lo hecho no tiene filtro)
 
 ---
 
