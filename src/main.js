@@ -92,11 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentPath = window.location.pathname;
     navLinks.querySelectorAll("a").forEach((link) => {
       const linkPath = new URL(link.href, window.location.origin).pathname;
-      // Match exact paths or parent directories
-      if (linkPath === currentPath ||
-          (currentPath.startsWith(linkPath) && linkPath !== '/' && linkPath !== '../')) {
+      // "page" solo en la página exacta; "true" en sus hijas (Trace Group, natalidad, tesis).
+      // El HTML ya viene marcado desde el layout; esto solo repite el criterio si el JS corre.
+      if (linkPath === currentPath) {
         link.classList.add('current-page');
         link.setAttribute('aria-current', 'page');
+      } else if (currentPath.startsWith(linkPath) && linkPath !== '/' && linkPath !== '../') {
+        link.classList.add('current-page');
+        link.setAttribute('aria-current', 'true');
       }
     });
 
