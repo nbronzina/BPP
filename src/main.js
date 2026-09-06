@@ -563,7 +563,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Extiende el patrón IntersectionObserver del reporte:
     // una cifra grande en accent bajo el sticky TOC que se
     // actualiza según la sección visible. El markup #dataRail
-    // solo existe en /reporte-impacto (null-safe). Las cifras
+    // solo existe en /proyectos/natalidad/ (null-safe). Las cifras
     // son las del contenido de la página, no inventadas.
     const dataRail = document.getElementById("dataRail");
     if (dataRail && "IntersectionObserver" in window) {

@@ -34,7 +34,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 - `index.html` - Homepage (hero, about, servicios, hechos, confianza, señales, contacto)
 - `proyectos/` - Hechos (lista de proyectos)
 - `proyectos/trace-group/` - Caso Trace Group (ficha + diagnóstico, sin ficción ni cifras sin fuente)
-- `reporte-impacto/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales)
+- `proyectos/natalidad/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales); `reporte-impacto/` solo redirige
 - `pensamiento/` - Hub único de ideas: señales, artículos y tesis (La Usina vive acá como serie)
 - `usina/` - Solo redirección a `/pensamiento/#tesis` (meta refresh, noindex); `usina/tesis-01/` sigue siendo la URL de la tesis
 - `privacidad/` - Política de privacidad
@@ -120,7 +120,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 │   ├── _includes/partials/             # nav, footer, critical-home/sub, senales-cards
 │   ├── _includes/jsonld/<pagina>.njk   # JSON-LD por página
 │   ├── _data/site.json                 # nombre, URL, CSP, dominio Plausible
-│   ├── index.njk, proyectos/, reporte-impacto/, pensamiento/, privacidad/, usina/tesis-01/
+│   ├── index.njk, proyectos/, proyectos/natalidad/, pensamiento/, privacidad/, usina/tesis-01/
 │   ├── usina/index.html                # redirección a /pensamiento/#tesis (no se procesa)
 │   ├── styles.css                      # CSS fuente (editar este)
 │   └── main.js                         # JS fuente (editar este)
