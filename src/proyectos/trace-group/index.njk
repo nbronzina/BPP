@@ -18,11 +18,10 @@ cierreCta: "Escribinos"
       <p class="toc-heading">Navegación</p>
       <ul>
         <li><a href="#sec-intro">El escenario</a></li>
-        <li><a href="#sec-ficha">El caso en cuatro respuestas</a></li>
-        <li><a href="#sec-contexto">El contexto</a></li>
-        <li><a href="#sec-enfoque">El enfoque</a></li>
-        <li><a href="#sec-entregables">Los entregables</a></li>
-        <li><a href="#sec-principios">Principios aplicados</a></li>
+        <li><a href="#sec-objeto">El objeto</a></li>
+        <li><a href="#sec-contexto">Lo real</a></li>
+        <li><a href="#sec-como">Cómo lo hicimos</a></li>
+        <li><a href="#sec-creditos">Créditos</a></li>
       </ul>
     </aside>
 
@@ -40,11 +39,10 @@ cierreCta: "Escribinos"
         <p class="toc-title">Navegación del proyecto</p>
         <ul class="report-toc-list editorial-list">
           <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#sec-intro">El escenario: 2032</a></li>
-          <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#sec-ficha">El caso en cuatro respuestas</a></li>
-          <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#sec-contexto">El contexto: tres señales</a></li>
-          <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#sec-enfoque">El enfoque: un objeto, no un deck</a></li>
-          <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#sec-entregables">Los entregables</a></li>
-          <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#sec-principios">Principios aplicados</a></li>
+          <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#sec-objeto">El objeto</a></li>
+          <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#sec-contexto">Lo real: tres señales</a></li>
+          <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#sec-como">Cómo lo hicimos</a></li>
+          <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#sec-creditos">Créditos</a></li>
         </ul>
       </div>
     </div>
@@ -106,29 +104,40 @@ cierreCta: "Escribinos"
         <p>
           Un martes cualquiera de 2032, antes de que el metanero zarpe, alguien en una oficina de Río Negro cierra un documento: identificación del cargo, inventario de emisiones por etapa, cálculo de intensidad, una declaración de verificación independiente con su firma. Llegó quince minutos antes, revisó una alerta que resultó falsa alarma y siguió con el mate. No es un día especial. Es rutina.
         </p>
+        <figure class="figura">
+          <picture>
+            <source srcset="/img/refineria-verificador-mobile.webp" type="image/webp" media="(max-width: 600px)">
+            <img src="/img/refineria-verificador.webp" alt="Un operario con casco y chaleco reflectante, de espaldas, mira una planta de gas que humea bajo un cielo nublado" width="1200" height="669" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>El escenario empieza en una planta, no en un despacho: la verificación se firma donde se mide.</figcaption>
+        </figure>
         <p>
           Este es el objeto que hace tangible ese escenario: el informe de verificación de ese martes, fechado en 2032 y empaquetado como un ejecutable de 3,4 MB que se abre con doble clic, y we.trace, la plataforma que lo emite. Debajo, la investigación regulatoria que lo sostiene, verificada norma por norma. Lo que sigue es ese objeto y cómo lo construimos.
         </p>
       </article>
     </section>
 
-    <!-- FICHA DEL CASO -->
-    <section class="content-section reporte-section ficha-caso" id="sec-ficha" aria-labelledby="ficha-heading">
-      <h2 id="ficha-heading" class="ficha-caso-title">El caso en cuatro respuestas</h2>
-      <dl class="ficha-caso-grid">
-        <div class="ficha-caso-item"><dt>La pregunta</dt><dd>¿Quién va a ser el primero en verificar la huella de metano del gas argentino que se exporta a Europa, y qué va a tener en la mano quien reciba ese informe? Tres señales la vuelven inevitable: una resolución argentina, un contrato de exportación de GNL y un reglamento europeo.</dd></div>
-        <div class="ficha-caso-item"><dt>Lo que construimos</dt><dd>El artefacto en lugar del argumento. Un informe de verificación de emisiones de metano fechado en 2032, empaquetado como un ejecutable de 3,4 MB, y we.trace, la plataforma que lo emite. Cada norma citada (ISSA 5000, ISO 14064, OGMP 2.0) se verificó contra fuente real; el resto es consistente por dentro.</dd></div>
-        <div class="ficha-caso-item"><dt>Lo que abre</dt><dd>Una conversación con Trace Group, vía Clusterciar, sobre un servicio que hoy no existe. Presentada en 2026. Lo que la organización haga con ella no forma parte de lo que publicamos.</dd></div>
-        <div class="ficha-caso-item"><dt>Qué diríamos hoy</dt><dd>Que lo difícil no fue imaginar 2032 sino resistir la tentación de cerrarlo perfecto. La divergencia metodológica que dejamos declarada, y las normas que tuvimos que corregir sobre la marcha, valen más como argumento que cualquier cifra redonda.</dd></div>
-      </dl>
-      <p class="ficha-caso-fuentes"><strong>Fuentes:</strong> Resolución 277/2025 (Argentina, junio de 2025); contrato de exportación de GNL entre Southern Energy y SEFE (marzo de 2026); Reglamento (UE) de metano. Referencias técnicas del informe: ISSA 5000, ISO 14064, OGMP 2.0. Las tres señales están verificadas contra fuente primaria; el informe está fechado en 2032.</p>
+    <!-- EL OBJETO -->
+    <section class="content-section reporte-section" id="sec-objeto">
+      <article class="actividad-card actividad-card--light">
+        <h2>El objeto</h2>
+        <p>
+          Dos piezas, deliberadamente distintas. El informe es un ejecutable de 3,4 MB, sin backend ni red: se abre con doble clic y muestra el documento de verificación completo. Identificación del cargo, inventario de emisiones por etapa, cálculo de intensidad, declaración de verificación independiente. Cada cifra técnica está trazada. Donde corresponde, normas reales: ISSA 5000, ISO 14064, OGMP 2.0. Donde no, consistencia interna.
+        </p>
+        <p>
+          we.trace es la plataforma que lo emite: login, portafolio de verificaciones, detalle de caso. Tiene el sistema visual genérico de cualquier SaaS empresarial, a propósito, frente al cuidado tipográfico del documento. El contraste es el argumento: la plataforma es infraestructura; el informe es lo que importa.
+        </p>
+        <p>
+          El informe no cierra perfecto a propósito, en un solo lugar: declara una divergencia metodológica en vez de resolverla. Un verificador que admite dónde el método no alcanza es más creíble que uno que no.
+        </p>
+      </article>
     </section>
 
-    <!-- 1. EL CONTEXTO -->
+    <!-- LO REAL -->
     <section class="content-section reporte-section" id="sec-contexto">
       <article class="actividad-card actividad-card--light">
-        <h2>1. El contexto: tres señales</h2>
-        <p><strong>Lo real:</strong> tres hechos verificados contra fuente primaria. Ninguno proyectado.</p>
+        <h2>Lo real: tres señales</h2>
+        <p><strong>Tres hechos verificados contra fuente primaria.</strong> Ninguno proyectado. El escenario se apoya en ellos y en nada más.</p>
 
         <div class="impact-top impact-top--spacing-md">
           <h3>Junio de 2025</h3>
@@ -152,91 +161,41 @@ cierreCta: "Escribinos"
         </p>
 
         <p class="text-spacing-md">
-          <strong>Tres señales reales. Verificadas, no proyectadas.</strong>
-        </p>
-        <p class="text-spacing-sm">
           Juntas abren una pregunta que ningún deck responde solo: ¿quién va a ser el primero en ofrecer esa verificación desde Río Negro?
         </p>
+        <p class="ficha-caso-fuentes"><strong>Fuentes:</strong> Resolución 277/2025 (Argentina, junio de 2025); contrato de exportación de GNL entre Southern Energy y SEFE (marzo de 2026); Reglamento (UE) de metano. Referencias técnicas del informe: ISSA 5000, ISO 14064, OGMP 2.0. El informe está fechado en 2032.</p>
       </article>
     </section>
 
-    <!-- 2. EL ENFOQUE -->
-    <section class="content-section reporte-section" id="sec-enfoque">
+    <!-- CÓMO LO HICIMOS -->
+    <section class="content-section reporte-section" id="sec-como">
       <article class="actividad-card actividad-card--light">
-        <h2>2. El enfoque: un objeto, no un deck</h2>
-        <p><strong>Algo que se pueda sostener en la mano:</strong> el artefacto en lugar del argumento.</p>
-
-        <p class="text-spacing-md">
-          Podríamos haber argumentado en abstracto por qué ese servicio tiene sentido. Preferimos construir el artefacto: un informe de verificación completo, fechado en 2032, con la textura de un documento regulatorio real. Trazabilidad de buque. Factores de emisión. Una declaración de aseguramiento con su lenguaje técnico. Y una sección que declara una divergencia metodológica en vez de esconderla.
+        <h2>Cómo lo hicimos</h2>
+        <p>
+          <strong>El objeto en lugar del argumento.</strong> Podríamos haber explicado en abstracto por qué ese servicio tiene sentido. Preferimos construir el informe completo, con la textura de un documento regulatorio real: trazabilidad de buque, factores de emisión, una declaración de aseguramiento con su lenguaje técnico. Un objeto así no vende el servicio. Lo hace pensable.
         </p>
         <p>
-          Un objeto así no vende el servicio. Lo hace pensable.
-        </p>
-
-        <div class="impact-top impact-top--spacing-lg">
-          <h3>Futuro mundano</h3>
-        </div>
-        <p>
-          El principio rector es el futuro mundano de Nick Foster. No la fantasía de una planta perfecta: el día de trabajo aburrido de alguien en una oficina de Río Negro. Por eso el escenario abre un martes cualquiera. El futuro no llega con un gran anuncio. Llega como rutina.
-        </p>
-      </article>
-    </section>
-
-    <!-- 3. LOS ENTREGABLES -->
-    <section class="content-section reporte-section" id="sec-entregables">
-      <article class="actividad-card actividad-card--light">
-        <h2>3. Los entregables</h2>
-        <p><strong>Dos piezas:</strong> el informe y la plataforma que lo antecede. Deliberadamente distintas.</p>
-
-        <div class="impact-top impact-top--spacing-md">
-          <h3>El informe</h3>
-        </div>
-        <p>
-          Un ejecutable Tauri de 3,4 MB. Sin backend, sin red: se abre con doble clic y muestra un documento de verificación completo. Identificación del cargo, inventario de emisiones por etapa, cálculo de intensidad, declaración de verificación independiente.
+          <strong>Futuro mundano.</strong> El principio rector es el de Nick Foster: no la fantasía de una planta perfecta, sino el día de trabajo aburrido de alguien en una oficina de Río Negro. Por eso el escenario abre un martes cualquiera. El futuro no llega con un gran anuncio. Llega como rutina.
         </p>
         <p>
-          Cada cifra técnica está trazada. Donde corresponde, normas reales: ISSA 5000, ISO 14064, OGMP 2.0. Donde no, consistencia interna.
+          <strong>Verificar antes de citar.</strong> Cada norma se contrastó con la fuente real antes de usarse. Eso incluyó correcciones sobre la marcha: una norma que resultó estar en vías de reemplazo, un factor de conversión que no correspondía al tipo de gas. Lo difícil no fue imaginar 2032 sino resistir la tentación de cerrarlo perfecto.
         </p>
-
-        <div class="impact-top impact-top--spacing-lg">
-          <h3>we.trace</h3>
-        </div>
         <p>
-          La plataforma que antecede al informe: login, portafolio de verificaciones, detalle de caso. Es deliberadamente distinta al informe. Sistema visual genérico de SaaS empresarial en vez del cuidado tipográfico del documento.
-        </p>
-        <p class="text-spacing-sm">
-          El contraste es el argumento. La plataforma es infraestructura; el informe es lo que importa.
+          <strong>Lo que abre.</strong> Una conversación con Trace Group, vía Clusterciar, sobre un servicio que hoy no existe. Presentada en 2026. Lo que la organización haga con ella no forma parte de lo que publicamos.
         </p>
       </article>
     </section>
 
-    <!-- 4. PRINCIPIOS APLICADOS -->
-    <section class="content-section reporte-section" id="sec-principios">
+    <!-- CRÉDITOS -->
+    <section class="content-section reporte-section" id="sec-creditos">
       <article class="actividad-card actividad-card--light">
-        <h2>4. Principios aplicados</h2>
-        <p><strong>Para quien quiera el detalle metodológico:</strong> tres reglas que sostienen el artefacto.</p>
-
-        <div class="impact-top impact-top--spacing-md">
-          <h3>Verificar antes de citar</h3>
-        </div>
-        <p>
-          Cada norma citada se verificó contra fuente real antes de usarse. Eso incluyó correcciones sobre la marcha: una norma que resultó estar en vías de reemplazo, un factor de conversión que no correspondía al tipo de gas.
-        </p>
-
-        <div class="impact-top impact-top--spacing-lg">
-          <h3>No cerrar perfecto</h3>
-        </div>
-        <p>
-          El artefacto no cierra perfecto a propósito, en un solo lugar: declara una divergencia metodológica en vez de resolverla. Es el tercer principio de Foster. El futuro también está roto, y un verificador que lo admite es más creíble que uno que no.
-        </p>
-
-        <div class="impact-top impact-top--spacing-lg">
-          <h3>Dos voces, dos sistemas</h3>
-        </div>
-        <p>
-          La plataforma y el documento nunca comparten sistema visual. Es la misma lógica que separa, en la vida real, a AlitáWare de Trace Group: dos empresas del mismo grupo, cada una con su propia voz.
-        </p>
-
+        <h2>Créditos</h2>
+        <dl class="ficha-tecnica">
+          <div class="ficha-row"><dt>Equipo</dt><dd>Nicolás Bronzina, Sergio Petrocelli, Ezequiel Politi · BPP Analytics &amp; Design</dd></div>
+          <div class="ficha-row"><dt>Destinatario</dt><dd>Trace Group, vía Clusterciar</dd></div>
+          <div class="ficha-row"><dt>Año</dt><dd>2026</dd></div>
+          <div class="ficha-row"><dt>Relacionado</dt><dd><a href="/proyectos/natalidad/">Impacto de la caída de la natalidad</a> · <a href="/usina/tesis-01/">El actante siempre disponible</a></dd></div>
+        </dl>
         <p class="reporte-fuente">BPP Analytics &amp; Design · Buenos Aires · Madrid</p>
       </article>
     </section>
