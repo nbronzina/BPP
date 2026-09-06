@@ -9,8 +9,8 @@
             <span></span>
         </button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="/proyectos/"{% if section == "proyectos" %} aria-current="page"{% endif %}>Lo hecho</a></li>
-            <li><a href="/pensamiento/"{% if section == "pensamiento" %} aria-current="page"{% endif %}>Pensamiento</a></li>
+            <li><a href="/proyectos/"{% if section == "proyectos" %} aria-current="{{ 'page' if page.url == '/proyectos/' else 'true' }}"{% endif %}>Lo hecho</a></li>
+            <li><a href="/pensamiento/"{% if section == "pensamiento" %} aria-current="{{ 'page' if page.url == '/pensamiento/' else 'true' }}"{% endif %}>Pensamiento</a></li>
             {%- if not homepage %}
             <li><a href="/#contact">Hablemos</a></li>
             {%- endif %}

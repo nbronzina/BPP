@@ -240,12 +240,6 @@ document.addEventListener("DOMContentLoaded", function () {
     seccionesConId.forEach((s) => seccionObserver.observe(s));
   }
 
-  // Año dinámico en el footer (i18n-aware)
-  const yearSpan = document.getElementById("currentYear");
-  if (yearSpan) {
-    yearSpan.textContent = new Intl.DateTimeFormat('es-AR', { year: 'numeric' }).format(new Date());
-  }
-
   // =====================================================
   // BLOQUE TRACKING ESPECÍFICO INDEX
   // -----------------------------------------------------

@@ -1466,7 +1466,6 @@ main > :last-child {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--color-accent);
-    opacity: 0.8;
     margin-bottom: var(--space-4);
 }
 
@@ -4270,6 +4269,19 @@ img {
   padding-top: var(--space-8);
 }
 
+/* Título del índice móvil: era un <h2> que precedía al <h1> en el DOM. Ahora es un <p>
+   con el mismo aspecto; el nombre del overlay va en su aria-label. */
+.mobile-toc-overlay .toc-title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+  color: var(--color-text);
+  text-wrap: balance;
+  margin: 0 0 var(--space-5);
+}
+
 .mobile-toc-overlay .close-btn {
   position: absolute;
   top: var(--space-6);
@@ -4376,7 +4388,8 @@ img {
 .scenario-accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  visibility: hidden; /* colapsado de verdad: fuera del árbol de accesibilidad y del orden de tabulación */
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out, visibility 0.4s;
   background: rgba(250, 248, 246, 0.02);
   border: 1px solid rgba(193, 111, 82, 0.4);
   border-top: none;
@@ -4387,6 +4400,7 @@ img {
 
 .scenario-accordion-content.active {
   max-height: 2000px;
+  visibility: visible;
   padding: var(--space-5) var(--space-6); /* Mobile base */
 }
 
@@ -5709,7 +5723,6 @@ body.legal-page.page-papel .nav-logo {
 }
 
 /* --- Labels y eyebrows: sin opacity apilada (accent-on-paper ya es 5.2:1) --- */
-.page-papel main .bpp-section-label,
 .page-papel main .contact-city {
     opacity: 1;
 }
