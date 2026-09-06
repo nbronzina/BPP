@@ -4337,3 +4337,65 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     .situacion { grid-template-columns: 1fr; gap: var(--space-3); align-content: start; }
 }
 
+
+/* ============ v3.1: los cuatro movimientos en filas, no en tarjetas ============
+   Misma gramática que las situaciones de Conversemos y el índice de Pensamiento:
+   filas a lo ancho separadas por línea susurro, número grande a la izquierda, texto a
+   la derecha. Sin fondo ni sombra: eran las únicas cajas de la home. El proceso
+   desplegable empuja hacia abajo en vez de desparejar columnas. */
+.services-grid,
+.services-grid.services-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+}
+.service-block,
+.service-block:hover {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+    padding: var(--space-8) 0;
+    background: transparent;
+    background-image: none;
+    border: 0;
+    border-top: 1px solid rgba(250, 248, 246, 0.08);
+    border-radius: 0;
+    box-shadow: none;
+}
+.service-block:last-child { border-bottom: 1px solid rgba(250, 248, 246, 0.08); }
+.service-number {
+    display: block;
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
+    color: var(--color-accent);
+    margin: 0 0 var(--space-3);
+}
+.service-category {
+    display: block;
+    font-size: 0.9375rem;
+    letter-spacing: 0.08em;
+    margin: 0 0 var(--space-2);
+}
+.service-title { margin: 0 0 var(--space-3); }
+.service-lead { max-width: 60ch; }
+.service-deliverable { max-width: 60ch; }
+.service-timeline { max-width: 60ch; }
+@media (min-width: 769px) {
+    .service-block,
+    .service-block:hover {
+        grid-template-columns: 6rem minmax(0, 1fr);
+        column-gap: var(--space-6);
+        padding: var(--space-10) 0;
+    }
+    .service-number { grid-column: 1; grid-row: 1 / span 12; margin: 0; }
+    .service-block > :not(.service-number) { grid-column: 2; }
+}
+/* El proceso desplegado sigue la misma gramática: pasos separados por línea, sin caja */
+.service-timeline {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    margin-top: var(--space-4);
+}
