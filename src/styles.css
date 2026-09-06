@@ -166,7 +166,7 @@
     --font-display: 'Plus Jakarta Sans', sans-serif;     /* Display */
     --font-heading: 'Plus Jakarta Sans', sans-serif;     /* Headings */
     --font-body: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;        /* Body */
-    --font-mono: 'Plus Jakarta Sans', monospace;         /* Mono fallback */
+    --font-label: 'Plus Jakarta Sans', sans-serif;      /* etiquetas y metadata; la mono se retiró en v2.1 */
 
     /* Borders & Shadows */
     --border-radius: 16px;             /* v2.2 soft: 8px → 16px */
@@ -1647,7 +1647,7 @@ main > :last-child {
 }
 
 .transformation-card .card-icon {
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: 1rem;
     color: var(--color-accent);
     opacity: 1;
@@ -1691,7 +1691,7 @@ main > :last-child {
 }
 
 .identity-badge .badge-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: 1rem;  /* 16px - improved readability */
     font-weight: 700;
     color: var(--color-accent);
@@ -1700,7 +1700,7 @@ main > :last-child {
 }
 
 .identity-badge .badge-separator {
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     color: var(--color-text-muted);  /* Warm muted para separador */
 }
 
@@ -1774,7 +1774,7 @@ main > :last-child {
 }
 
 .studio-note {
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     opacity: 0.6;
     padding-left: var(--space-3);
@@ -1789,7 +1789,7 @@ main > :last-child {
 }
 
 .context-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: 1rem;  /* 16px - WCAG minimum (antes 12px) */
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -2024,7 +2024,7 @@ main > :last-child {
 
 .service-deliverable {
     display: block;
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
     /* Atenuación por color, NO por opacity: la opacity de un ancestro
        se multiplica sobre los tooltips ::before descendientes */
@@ -2043,7 +2043,7 @@ main > :last-child {
 }
 
 .proof-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     color: var(--color-text);
     opacity: 0.6;
     font-weight: 700;
@@ -2192,7 +2192,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: 1rem;
     letter-spacing: 0.05em;
     text-align: center;
@@ -2389,8 +2389,7 @@ footer {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
     text-transform: uppercase;
-    color: var(--color-accent);
-    opacity: 0.7;
+    color: var(--color-accent);  /* sin opacity: accent × 0.7 daba 3,01:1 */
     margin-bottom: var(--space-2);
 }
 
@@ -3649,7 +3648,7 @@ img {
 
 .senales-badge {
     display: inline-block;
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: var(--font-size-base);
     color: var(--orange-500);
     text-transform: uppercase;
@@ -3691,7 +3690,7 @@ img {
 
 .senal-label {
     display: inline-block;
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: var(--font-size-base);
     color: var(--orange-500);
     text-transform: uppercase;
@@ -3864,7 +3863,7 @@ img {
 }
 
 .timeline-week {
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: var(--font-size-base);
     font-weight: 700;
     color: var(--orange-500);
@@ -3973,7 +3972,7 @@ img {
 }
 
 .approach-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: var(--font-size-base);
     font-weight: 700;
     color: var(--color-text-muted);
@@ -4829,7 +4828,8 @@ img {
 }
 
 .thesis-download:hover {
-  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 4px;  /* antes opacity 0.75: accent atenuado daba 3,27:1 */
 }
 
 /* Resumen */
