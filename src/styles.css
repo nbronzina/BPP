@@ -1388,6 +1388,14 @@ main > :last-child {
     max-width: 750px;
 }
 
+.service-deliverable-link {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(193, 111, 82, 0.4);
+    text-underline-offset: 3px;
+}
+.service-deliverable-link:hover,
+.service-deliverable-link:focus-visible { text-decoration-color: currentColor; }
 .service-deliverable {
     display: block;
     font-family: var(--font-label);
@@ -2765,62 +2773,6 @@ img {
    surface #1a1e25, acento --orange-500, radio 8px, shadow ≤ 0.4.
    ========================= */
 
-.tooltip-term {
-    display: inline;
-    color: var(--orange-500);
-    text-decoration: underline dotted 1px;
-    text-underline-offset: 3px;
-    cursor: pointer;
-}
-
-.tooltip-term:hover,
-.tooltip-term[aria-expanded="true"] {
-    text-decoration-style: solid;
-}
-
-.tooltip-term:focus-visible {
-    outline: 2px solid var(--orange-500);
-    outline-offset: 2px;
-    border-radius: 2px;
-}
-
-.term-card {
-    display: block;
-    margin: var(--space-3) 0;
-    padding: var(--space-4);
-    background: var(--color-surface);
-    border: 1px solid rgba(193, 111, 82, 0.15);
-    border-left: 2px solid var(--orange-500);
-    border-radius: 12px;
-    box-shadow: var(--shadow-card);
-    animation: termCardIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.term-card[hidden] {
-    display: none;
-}
-
-.term-card-label {
-    display: block;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--orange-500);
-    margin-bottom: var(--space-2);
-}
-
-.term-card-text {
-    display: block;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: rgba(250, 248, 246, 0.95);
-    text-align: left;
-}
-
 @keyframes termCardIn {
     from {
         opacity: 0;
@@ -2829,23 +2781,6 @@ img {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .term-card {
-        animation: none;
-    }
-}
-
-/* Desktop enhancement */
-@media (min-width: 769px) {
-    .term-card {
-        padding: var(--space-4) var(--space-5);
-    }
-
-    .term-card-text {
-        font-size: 1.0625rem;
     }
 }
 
@@ -3559,8 +3494,7 @@ img {
    contenido, respeta el border-radius y no necesita z-index. */
 .service-block,
 .senal-card,
-.tesis-card,
-.term-card {
+.tesis-card {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
@@ -3778,8 +3712,7 @@ img {
    se sienten iluminadas, no dibujadas. */
 .service-block,
 .senal-card,
-.tesis-card,
-.term-card {
+.tesis-card {
     box-shadow: inset 0 1px 0 rgba(250, 248, 246, 0.05), var(--shadow-card);
 }
 
