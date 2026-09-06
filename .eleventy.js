@@ -1,6 +1,8 @@
 // Eleventy: genera el sitio en _site/ a partir de src/.
 // Sin frameworks en runtime: el HTML sale plano, el CSS y el JS se minifican aparte (package.json).
 export default function (eleventyConfig) {
+  // Año del copyright horneado en el build: el footer no depende de JS.
+  eleventyConfig.addGlobalData("buildYear", () => new Date().getFullYear());
   // Assets que se copian tal cual, desde la raíz del repo al de _site/
   eleventyConfig.addPassthroughCopy({
     img: "img",
