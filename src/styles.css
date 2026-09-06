@@ -4399,3 +4399,20 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     padding: 0;
     margin-top: var(--space-4);
 }
+
+/* ============ v3.2: el hero del inicio ocupa la primera pantalla ============
+   El bloque de marca (logo, nombre, frase) se centra en lo que se ve debajo del nav
+   fijo: el alto del nav se descuenta arriba y el resto del aire se reparte parejo.
+   Antes el hero medía 78-80svh y la sección siguiente asomaba en la primera pantalla,
+   con lo que el bloque parecía caído hacia abajo. */
+.hero.hero-fullscreen {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: var(--nav-height) 0 0;
+    align-items: center;
+    justify-content: center;
+}
+.hero-brand-header { padding: var(--space-8) var(--space-6); }
+@media (min-width: 769px) {
+    .hero-brand-header { padding: var(--space-8) 2rem; }
+}
