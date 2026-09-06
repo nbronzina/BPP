@@ -92,11 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentPath = window.location.pathname;
     navLinks.querySelectorAll("a").forEach((link) => {
       const linkPath = new URL(link.href, window.location.origin).pathname;
-      // Match exact paths or parent directories
-      if (linkPath === currentPath ||
-          (currentPath.startsWith(linkPath) && linkPath !== '/' && linkPath !== '../')) {
+      // "page" solo en la página exacta; "true" en sus hijas (Trace Group, natalidad, tesis).
+      // El HTML ya viene marcado desde el layout; esto solo repite el criterio si el JS corre.
+      if (linkPath === currentPath) {
         link.classList.add('current-page');
         link.setAttribute('aria-current', 'page');
+      } else if (currentPath.startsWith(linkPath) && linkPath !== '/' && linkPath !== '../') {
+        link.classList.add('current-page');
+        link.setAttribute('aria-current', 'true');
       }
     });
 
@@ -563,7 +566,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Extiende el patrón IntersectionObserver del reporte:
     // una cifra grande en accent bajo el sticky TOC que se
     // actualiza según la sección visible. El markup #dataRail
-    // solo existe en /reporte-impacto (null-safe). Las cifras
+    // solo existe en /proyectos/natalidad/ (null-safe). Las cifras
     // son las del contenido de la página, no inventadas.
     const dataRail = document.getElementById("dataRail");
     if (dataRail && "IntersectionObserver" in window) {

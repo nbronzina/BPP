@@ -34,7 +34,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 - `index.html` - Homepage (hero, about, servicios, hechos, confianza, señales, contacto)
 - `proyectos/` - Hechos (lista de proyectos)
 - `proyectos/trace-group/` - Caso Trace Group (ficha + diagnóstico, sin ficción ni cifras sin fuente)
-- `reporte-impacto/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales)
+- `proyectos/natalidad/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales); `reporte-impacto/` solo redirige
 - `pensamiento/` - Hub único de ideas: señales, artículos y tesis (La Usina vive acá como serie)
 - `usina/` - Solo redirección a `/pensamiento/#tesis` (meta refresh, noindex); `usina/tesis-01/` sigue siendo la URL de la tesis
 - `privacidad/` - Política de privacidad
@@ -120,7 +120,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 │   ├── _includes/partials/             # nav, footer, critical-home/sub, senales-cards
 │   ├── _includes/jsonld/<pagina>.njk   # JSON-LD por página
 │   ├── _data/site.json                 # nombre, URL, CSP, dominio Plausible
-│   ├── index.njk, proyectos/, reporte-impacto/, pensamiento/, privacidad/, usina/tesis-01/
+│   ├── index.njk, proyectos/, proyectos/natalidad/, pensamiento/, privacidad/, usina/tesis-01/
 │   ├── usina/index.html                # redirección a /pensamiento/#tesis (no se procesa)
 │   ├── styles.css                      # CSS fuente (editar este)
 │   └── main.js                         # JS fuente (editar este)
@@ -137,9 +137,9 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 
 ### Design System
 - **Colors**: CSS custom properties in `:root` (`src/styles.css`)
-- **Typography**: Work Sans (Google Fonts), system fonts as fallback
+- **Typography**: Plus Jakarta Sans (interfaz) y Literata (prosa larga), self-hosted en `/fonts/`
 - **Spacing**: 8px base grid (multiples of 8)
-- **Breakpoints**: 480px (mobile), 768px (tablet), 1024px (desktop)
+- **Breakpoints**: base móvil; `min-width: 769px` (escritorio, con el rango `769–1024` para tablet), `1025px` (grillas anchas), `1280px` (medida máxima), `1536px` (índice pegajoso de los casos). No agregar otros valores.
 - **Animations**: Fade-up on scroll via IntersectionObserver
 
 ---
@@ -169,7 +169,7 @@ npm run serve   # eleventy --serve con recarga
 ### Testing Checklist
 - [ ] Mobile menu works (open/close/escape/outside click)
 - [ ] Smooth scroll to anchors (`#servicios`, `#nosotros`, etc.)
-- [ ] Contact form submits and shows success/error messages
+- [ ] El `mailto:` de contacto dispara `Contacto_mail` en Plausible
 - [ ] Images load in WebP format with fallbacks
 - [ ] Analytics events tracked (check Plausible)
 
@@ -193,9 +193,8 @@ npm run serve   # eleventy --serve con recarga
 - **Privacy**: No cookies, GDPR-compliant, self-hosted script
 
 ### Animations
-- **Scroll reveals**: Elements with `[data-animate]` fade up when visible
-- **Implementation**: IntersectionObserver in `main.js` (lines 102-130)
-- **Performance**: Uses `will-change` and `transform` for GPU acceleration
+- **Sin apariciones al scroll** (retiradas 2026-09-05). El único IntersectionObserver en `main.js` dispara el evento `Seccion_vista`.
+- **Transiciones**: solo color y opacidad en hover/focus; `prefers-reduced-motion` las anula.
 
 ---
 
@@ -308,13 +307,13 @@ Uses sharp-cli for conversion, maintains quality.
 
 ### Build Process
 - **When to build**: After editing `styles.css` or `main.js`, run `./build.sh`
-- **What it does**: Minifies CSS/JS with csso/terser, generates cache-busting hashes
-- **Commits**: Always commit both source and minified files together
+- **What it does**: Eleventy genera `_site/`; csso y terser minifican CSS y JS
+- **Commits**: solo fuentes; `_site/` y los `.min` no se versionan
 
 ### Testing Checklist
 - Mobile menu (open/close/escape/outside click)
 - Smooth scroll to anchors
-- Form submission and validation
+- Filtros de Lo hecho y Pensamiento (cada botón devuelve al menos una pieza)
 
 ---
 
