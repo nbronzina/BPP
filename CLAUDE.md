@@ -33,7 +33,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 ### Pages
 - `index.html` - Homepage (hero, nosotros, cuatro movimientos, lo hecho, red, cuándo escribirnos y contacto)
 - `proyectos/` - Lo hecho, en dos secciones: Casos y Docencia y jornadas
-- `proyectos/trace-group/` - Caso Trace Group (ficha + diagnóstico, sin ficción ni cifras sin fuente)
+- `proyectos/trace-group/` - Provocación Trace Group: caso por iniciativa propia con prototipo diegético (ficha + diagnóstico; la ficción se marca como tal, nunca se dice que fue adoptada)
 - `proyectos/natalidad/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales); `reporte-impacto/` solo redirige
 - `pensamiento/` - Hub único de ideas: señales, artículos y tesis (La Usina vive acá como serie)
 - `usina/` - Solo redirección a `/pensamiento/#tesis` (meta refresh, noindex); `usina/tesis-01/` sigue siendo la URL de la tesis

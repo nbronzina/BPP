@@ -155,3 +155,7 @@ Y al revés: el registro editorial y directo de este archivo exige que el sistem
 Cualquier cambio en registro o en sistema visual que implique modificar alguno de los dos archivos se revisa como una decisión sobre la identidad del estudio, no como una tarea de producción.
 
 **Nota sobre evolución v1 → v2:** El sistema v1 alpha usaba Space Mono monowidth exclusiva — empujaba al texto a ser más breve por limitación de legibilidad en textos largos. El sistema v2 beta-inclusive (Bros Oskon + Chivo) permite textos más extensos (reportes, artículos pensamiento) sin comprometer rigor. La voz se mantiene — solo se expande el rango donde puede aplicarse sin cansar al lector.
+
+Vocabulario propio
+
+Provocación. Un caso que construimos antes de que exista el encargo: elegimos una organización, tomamos señales reales y le llevamos un artefacto terminado para discutir. Es el término del diseño ficción para un objeto hecho para abrir una conversación, no para cerrar una venta. Se escribe "provocación", nunca "propuesta", "pitch", "piloto" ni "propuesta en curso": esas palabras describen una relación comercial que no existe. La ficha lleva Destinatario, no Cliente, y el estado es "Provocación presentada, año". No se afirma que fue adoptada, encargada ni pagada; lo que la organización haga con ella no se publica. Primer caso: Trace Group, 2026.
