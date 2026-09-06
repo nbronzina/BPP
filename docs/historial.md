@@ -34,7 +34,7 @@ Aplicado de lo micro a lo macro, cada capa verificada en navegador antes de la s
 - Vos como registro. Medio estudio está en Madrid y se decidió igual.
 - Dos familias tipográficas con rol fijo, dos pesos, un solo tamaño de cuerpo.
 - Sin formulario, sin PWA, sin cookies.
-- Cada cifra con fuente. Trace Group es una propuesta en curso y se dice así.
+- Cada cifra con fuente. Trace Group es una provocación (un caso construido por iniciativa propia, antes de que exista el encargo) y se dice así, nunca "propuesta", "pitch" ni "piloto".
 
 ## Métricas que importan
 
