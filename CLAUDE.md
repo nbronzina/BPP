@@ -33,7 +33,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 ### Pages
 - `index.html` - Homepage (hero, nosotros, cuatro movimientos, lo hecho, red, cuándo escribirnos y contacto)
 - `proyectos/` - Lo hecho, en dos secciones: Casos y Docencia y jornadas
-- `proyectos/trace-group/` - Provocación Trace Group: caso por iniciativa propia con prototipo diegético (ficha + diagnóstico; la ficción se marca como tal, nunca se dice que fue adoptada)
+- `proyectos/trace-group/` - Provocación Trace Group: un caso escrito como pregunta "¿Y si…?" (ficha + objeto + cómo se construyó). No explica el método ni la iniciativa; la fecha 2032 marca la ficción. Nunca se dice que fue adoptada. Ver VOICE.md, "Vocabulario propio"
 - `proyectos/natalidad/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales); `reporte-impacto/` solo redirige
 - `pensamiento/` - Hub único de ideas: señales, artículos y tesis (La Usina vive acá como serie)
 - `usina/` - Solo redirección a `/pensamiento/#tesis` (meta refresh, noindex); `usina/tesis-01/` sigue siendo la URL de la tesis
