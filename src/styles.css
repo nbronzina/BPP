@@ -4278,6 +4278,11 @@ body.legal-page.page-lectura nav {
 .figura {
     margin: var(--space-6) 0;
 }
+.figura img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
 .figura__papel {
     background: var(--paper);
     padding: var(--space-4);
