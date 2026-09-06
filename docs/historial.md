@@ -23,7 +23,7 @@ Aplicado de lo micro a lo macro, cada capa verificada en navegador antes de la s
 2. **Cortar.** Fuera quiz, PWA y formulario. Contacto por mail con una promesa: respuesta en 48 horas hábiles.
 3. **Casos verificables.** Ficha de cuatro respuestas más fuentes en cada proyecto. Lo que no tiene fuente no se publica; la ficción se marca como tal.
 4. **Un solo lugar para lo que pensamos.** Pensamiento reúne señales, artículos y tesis; `/usina/` redirige.
-5. **Paleta Tinta.** Base azul-negro (`#12151a`) en lugar del marrón; terracota y crema como lo único cálido. El sistema de superficie clara de lectura se probó y quedó dormido (`body.page-papel`).
+5. **Paleta Tinta.** Base azul-negro (`#12151a`) en lugar del marrón; terracota y crema como lo único cálido. El sistema de superficie clara de lectura se probó, quedó dormido y el 2026-09-06 se retiró del CSS (sigue en git, `body.page-papel`).
 6. **Eleventy.** Layout único para head, nav y footer; build en GitHub Actions; los minificados dejan de versionarse.
 7. **Ritmo vertical único.** 160 px entre bloques y 120 en los bordes en escritorio; 80 y 64 en móvil. Medido con script en todas las páginas.
 8. **Seguridad.** CSP sin `unsafe-inline`: sin estilos inline ni CSS crítico; la redirección lleva hash.

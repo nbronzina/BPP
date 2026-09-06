@@ -60,16 +60,7 @@
     box-sizing: border-box;
 }
 
-/* Reglas base que vivían solo en el CSS crítico inline (nav y logo del hero). Van antes de todo
-   para que cualquier regla posterior de esta hoja las sobrescriba, como pasaba con el inline. */
-.hero-logo{margin-bottom:3rem;height:160px;display:flex;align-items:center;justify-content:center}
-.hero-logo img{max-width:100%;max-height:160px;width:auto;height:auto;opacity:0.9;object-fit:contain}
-.logo{display:flex;align-items:center;gap:1rem}
 .nav-container{width:100%;padding:0 6rem;display:flex;justify-content:space-between;align-items:center}
-.nav-logo-icon{display:block;line-height:0}
-.nav-logo-icon img{height:52px;width:auto;display:block;transition:opacity 0.3s}
-.nav-wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.1875rem;color:rgba(250,248,246,0.9);text-decoration:none;transition:color 0.3s}
-
 
 :root {
     /* Terracotta BPP - DESIGN.md: un solo acento, sin variantes de escala. */
@@ -103,13 +94,6 @@
        (piso para cuerpo y metadata) · accent-on-paper 5.2:1 · hover 6.9:1.
        #c16f52 da 3.2:1 sobre papel: solo texto ≥24px o ≥18.66px bold. */
     --paper: #f4efe8;                 /* superficie de lectura */
-    --paper-elevated: #faf7f2;        /* cards sobre paper */
-    --ink-high: rgba(18, 21, 26, 0.95);
-    --ink-mid: rgba(18, 21, 26, 0.78);
-    --ink-low: rgba(18, 21, 26, 0.66);   /* piso para cuerpo y metadata */
-    --ink-border: rgba(18, 21, 26, 0.14);
-    --accent-on-paper: #9a4f36;       /* terracota oscurecido: 5.2:1 sobre paper */
-    --accent-on-paper-hover: #7f3f2a; /* hover/active de links sobre paper: 6.9:1 */
 
     /* Spacing Scale - 8px grid system (como Gmail, Figma, Tailwind) */
     --space-1: 0.25rem;   /* 4px - micro spacing */
@@ -135,8 +119,6 @@
     --nav-height: 76px;                                          /* nav fijo: el hero descuenta esto para que el aire arriba sea real */
     --hero-top: calc(var(--nav-height) + var(--spacing-block-edge)); /* aire visible entre el nav y el primer texto del hero = edge */
     --spacing-hero-bottom: calc(var(--spacing-block-edge) - var(--spacing-block)); /* 24px: lo que aporta el hero */
-    --spacing-card: var(--space-12);     /* 48px */
-    --spacing-gap: var(--space-8);       /* var(--space-8) */
 
     /* Horizontal padding scale (mobile-first) */
     --spacing-horizontal-mobile: var(--space-5);   /* 20px */
@@ -177,7 +159,6 @@
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
-    --transition-slow: 0.6s ease;
 
     /* Z-index layers */
     --z-nav-mobile: 999;
@@ -263,21 +244,19 @@ h1, h2, h3, h4, h5, h6, p, li, span, a {
 }
 
 /* No hyphenation in headings and short elements - looks bad in mobile */
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .service-title,
 .about-headline,
-.perfil-name,
-.perfil-tagline,
 .service-category,
 .actividad-meta,
-.about-label,
-.services-label,
-.equipo-label,
 .actividades-label,
 .contact-label,
-button,
-.about-cta a,
-.services-cta-link {
+button {
     hyphens: none;
 }
 
@@ -343,24 +322,17 @@ a,
 input,
 select,
 textarea,
-.btn-download,
 .mobile-menu-btn,
 .nav-links a,
-.filter-btn,
-.actividades-cta-link,
-.about-cta a,
-.services-cta-link {
+.filter-btn {
     touch-action: manipulation;
 }
 
 /* Interactive elements - cursor pointer only */
 button,
 a,
-.btn-download,
 .mobile-menu-btn,
-.nav-links a,
-.actividades-cta-link,
-.about-cta a {
+.nav-links a {
     cursor: pointer;
 }
 
@@ -509,8 +481,7 @@ body.secondary-page .nav-logo {
 }
 
 /* Layout compartido: index (.nav-container) y reporte (.nav) */
-.nav-container,
-.nav {
+.nav-container {
     width: 100%;
     padding: 0 var(--spacing-horizontal-mobile);
     display: flex;
@@ -655,12 +626,6 @@ body.secondary-page .nav-logo {
 .hero-tagline {
     font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 400; color: rgba(250, 248, 246, 0.85); line-height: 1.4; opacity: 0.85; animation: textReveal 0.7s ease-out 0.35s both; }
 
-.hero-scroll-cue:hover {
-    color: var(--color-text); border-color: rgba(250, 248, 246, 0.4); }
-
-.hero-scroll-cue svg {
-    animation: heroScrollHint 2.4s ease-in-out infinite; }
-
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -693,7 +658,6 @@ body.secondary-page .nav-logo {
 }
 
 /* La página actual se marca solo con color; la flecha sobraba (el hover ya lo explica). */
-
 
 .mobile-menu-btn {
     display: flex;
@@ -767,8 +731,7 @@ body.secondary-page .nav-logo {
 
 /* Navigation - Desktop Enhancement */
 @media (min-width: 769px) {
-    .nav-container,
-    .nav {
+    .nav-container {
         padding: 0 var(--space-24);
     }
 
@@ -914,34 +877,6 @@ body.secondary-page .nav-logo {
     word-break: keep-all;
 }
 
-/* Hero scroll cue */
-.hero-scroll-cue {
-    position: absolute;
-    bottom: var(--space-8);
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-5);
-    border: 1px solid rgba(250, 248, 246, 0.18);
-    border-radius: 4px;
-    color: rgba(250, 248, 246, 0.7);
-    text-decoration: none;
-    font-size: 1rem;
-    letter-spacing: 0.04em;
-    transition: color 0.2s, border-color 0.2s;
-}
-
-.hero-scroll-cue:hover {
-    color: var(--color-text);
-    border-color: rgba(250, 248, 246, 0.4);
-}
-
-.hero-scroll-cue svg {
-    animation: heroScrollHint 2.4s ease-in-out infinite;
-}
-
 @keyframes heroScrollHint {
     0%, 100% { transform: translateY(0); opacity: 0.6; }
     50% { transform: translateY(3px); opacity: 1; }
@@ -963,8 +898,7 @@ body.secondary-page .nav-logo {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero-scroll-cue svg { animation: none; }
-    .hero-wordmark,
+        .hero-wordmark,
     .hero-tagline { animation: none !important; }
 }
 
@@ -977,28 +911,6 @@ body.secondary-page .nav-logo {
     padding: 90px var(--space-6) 60px;
     position: relative;
     background: transparent;
-}
-
-.hero-grid {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    max-width: 1600px;
-    width: 100%;
-    flex-direction: column;
-    gap: var(--space-12);
-}
-
-.hero-content {
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    max-width: 100%;
-    padding-left: 0;
-}
-
-.hero-break {
-    display: none;
 }
 
 .tagline {
@@ -1015,16 +927,6 @@ body.secondary-page .nav-logo {
     max-width: 100%; /* Prevent overflow en mobile */
 }
 
-.subtitle {
-    font-size: var(--font-size-base);
-    color: var(--color-text);  /* Blanco puro para audacia extrema */
-    margin-bottom: var(--space-8);
-    font-weight: 400;
-    opacity: 0.95;
-    max-width: 600px;
-    text-wrap: balance;
-}
-
 /* Desktop: display type a escala completa */
 @media (min-width: 769px) {
     .tagline {
@@ -1036,53 +938,7 @@ body.secondary-page .nav-logo {
         max-width: 1200px; /* Ensure enough space for full title */
     }
 
-    .subtitle {
-        margin-bottom: var(--space-10);
     }
-}
-
-.locations {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.5) */
-    font-weight: 400;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-}
-
-.data-point {
-    fill: var(--color-accent);
-    cursor: pointer;
-    transition: fill 0.3s ease;
-}
-
-.data-point.high {
-    fill: var(--color-accent);
-    opacity: 0.9;
-}
-
-.data-point.medium {
-    fill: var(--color-accent);
-    opacity: 0.75;  /* Increased from 0.6 for better contrast */
-}
-
-.data-point:hover {
-    fill: var(--color-accent-bright);
-    opacity: 1;
-}
-
-.data-label {
-    fill: rgba(250, 248, 246, 0.7);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-.flow-dot {
-    fill: var(--color-accent);
-}
 
 .corner-bracket {
     fill: rgba(250, 248, 246, 0.2);
@@ -1123,59 +979,15 @@ body.secondary-page .nav-logo {
         linear-gradient(135deg, rgba(150, 175, 215, 0.03) 0%, transparent 60%);
 }
 
-.hero-immersive .hero-grid {
-    position: relative;
-    z-index: 1;
-}
-
-.viz-caption {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: var(--space-8);
-    padding: var(--space-4) var(--space-6);
-    background: rgba(193, 111, 82, 0.1);
-    border-radius: var(--border-radius);
-    border: 1px solid rgba(193, 111, 82, 0.3);
-    width: 100%;
-    max-width: 400px;
-}
-
-.viz-label {
-    font-size: var(--font-size-base);
-    color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.6) */
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 400;
-}
-
-.viz-metric {
-    font-size: var(--font-size-base);
-    color: var(--color-accent);
-    font-weight: 700;
-}
-
 /* Hero Section - Desktop Enhancement */
 @media (min-width: 769px) {
     .hero {
         padding: clamp(2rem, 5vh, 4rem) clamp(2rem, 8vw, var(--space-24)) clamp(2rem, 5vh, var(--space-16));
     }
 
-    .hero-grid {
-        flex-direction: row;
-        gap: 0;
+    
+    
     }
-
-    .hero-content {
-        text-align: left;
-        max-width: none;
-        padding-left: 0;
-    }
-
-    .hero-break {
-        display: inline;
-    }
-}
 
 /* =========================
    CTA Buttons - Sistema Unificado Canónico
@@ -1223,10 +1035,6 @@ body.secondary-page .nav-logo {
     transition: transform 0.2s ease;
 }
 
-.cta-primary:hover .cta-arrow--right {
-    transform: translateX(4px);
-}
-
 .cta-primary:hover .cta-arrow--left {
     transform: translateX(-4px);
 }
@@ -1235,12 +1043,10 @@ body.secondary-page .nav-logo {
     .cta-primary .cta-arrow {
         transition: none;
     }
-    .cta-primary:hover .cta-arrow--right,
     .cta-primary:hover .cta-arrow--left {
         transform: none;
     }
 }
-
 
 /* LINK — Para navegación editorial, "ver más", links de sección */
 .cta-link {
@@ -1271,20 +1077,6 @@ body.secondary-page .nav-logo {
    CTA Buttons - Sistema Unificado (LEGACY - A DEPRECAR)
    ========================= */
 
-/* Base común para todos los botones CTA */
-.btn-download {
-    display: inline-block;
-    min-height: 44px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color var(--transition-normal), color var(--transition-normal), border-color var(--transition-normal), transform var(--transition-normal);
-    border: 2px solid var(--color-accent);
-    text-align: center;
-}
-
 /* Arrow micro-interactions */
 .cta-arrow {
     display: inline-block;
@@ -1292,53 +1084,9 @@ body.secondary-page .nav-logo {
     will-change: transform;
 }
 
-/* Animación derecha para flechas → */
-.btn-download:hover .cta-arrow--right,
-.services-cta-link:hover .cta-arrow--right,
-.actividades-cta-link:hover .cta-arrow--right,
-.actividad-link:hover .cta-arrow--right {
-    transform: translateX(4px);
-}
-
 /* Animación izquierda para flechas ← */
-.btn-download:hover .cta-arrow--left,
 .back-to-top:hover .cta-arrow--left {
     transform: translateX(-4px);
-}
-
-/* Variante Secondary (outlined) - Acciones secundarias */
-.btn-download {
-    background: transparent;
-    color: var(--color-accent);
-    padding: var(--space-3) var(--space-6);
-}
-
-.btn-download:hover {
-    color: var(--color-accent-bright);
-    border-color: var(--color-accent-bright);
-}
-
-/* Tamaño small para downloads */
-.btn-download {
-    padding: var(--space-2) var(--space-5);
-    font-size: var(--font-size-base);
-}
-
-/* Mobile-first: tipografía de botones optimizada para mobile */
-.btn-download {
-    font-weight: 700;
-    letter-spacing: 0.01em; /* Slightly loose for clarity */
-}
-
-@media (min-width: 769px) {
-    .btn-download {
-        letter-spacing: normal;
-    }
-}
-
-/* Estados comunes */
-.btn-download:active {
-    transition-duration: 0.1s;
 }
 
 /* =========================
@@ -1407,21 +1155,6 @@ body.secondary-page .nav-logo {
    Services CTA Subtext
    ========================= */
 
-.services-cta-subtext {
-    margin-top: var(--space-2);
-    font-size: 1rem;
-    color: var(--color-text-light);
-    opacity: 0.7;
-}
-
-.btn-download {
-    margin-top: var(--space-6);
-}
-
-.btn-download-main {
-    margin-right: var(--space-3);
-}
-
 /* =========================
    Section Containers
    ========================= */
@@ -1482,8 +1215,7 @@ main > :last-child {
 /* Content centering for specific containers - Estandarizado */
 .services-grid,
 .actividades-container,
-.about-content,
-.section-content {
+.about-content {
     max-width: 1400px;  /* Estandarizado (era 1080px) */
     margin-left: auto;
     margin-right: auto;
@@ -1494,8 +1226,7 @@ main > :last-child {
 /* Desktop wide: slightly larger max-width */
 @media (min-width: 1280px) {
     .services-grid,
-    .actividades-container,
-    .section-content {
+.actividades-container {
         max-width: 1180px;
     }
 }
@@ -1517,23 +1248,6 @@ main > :last-child {
     padding: 0 var(--spacing-horizontal-mobile);
 }
 
-/* Section labels - Mobile-first */
-.about-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text);
-    opacity: 1;
-    padding-left: var(--space-4);
-    margin-top: var(--space-4);
-    margin-bottom: var(--space-6);
-    position: static;
-    display: block;
-    text-align: left;
-}
-
 .about-content {
     grid-column: auto;
     position: relative;
@@ -1549,47 +1263,6 @@ main > :last-child {
     line-height: 1.25;
     margin-bottom: var(--space-8);
     hyphens: auto;
-}
-
-.about-pain-list {
-    list-style: none;
-    padding: 0 0 var(--space-10) 0;
-    margin: 0;
-}
-
-.about-pain-list li {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    opacity: 0.75;  /* Increased from 0.55 for better contrast */
-    line-height: 1.65; /* Mobile: slightly tighter */
-    margin-bottom: var(--space-2);
-    position: relative;
-    padding-left: var(--space-6);
-}
-
-.about-pain-list li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    font-size: 1em;
-    opacity: 0.6;
-    color: var(--orange-500);
-}
-
-.about-separator {
-    border: none;
-    border-top: 1px solid rgba(250, 248, 246, 0.07);
-    margin: var(--space-8) 0;
-}
-
-.about-purpose {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h3);  /* Mobile: same size as about-headline */
-    font-weight: 700;
-    opacity: 0.95;
-    margin-bottom: var(--space-4);
-    padding-top: var(--space-8);
 }
 
 .about-mission {
@@ -1664,73 +1337,10 @@ main > :last-child {
     margin: 0;
 }
 
-.institutional-description {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;  /* 16px - improved readability en mobile */
-    opacity: 0.65;
-    line-height: 1.6;
-    margin-top: var(--space-4);
-    max-width: 60ch;
-}
-
 /* Studio identity badge */
 .studio-identity {
     margin-top: var(--space-8);
     margin-bottom: var(--space-8);
-}
-
-.identity-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-5);
-    background: rgba(193, 111, 82, 0.08);
-    border: 1px solid var(--color-accent);
-    border-radius: 4px;
-    margin-bottom: var(--space-4);
-}
-
-.identity-badge .badge-label {
-    font-family: var(--font-label);
-    font-size: 1rem;  /* 16px - improved readability */
-    font-weight: 700;
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-.identity-badge .badge-separator {
-    font-family: var(--font-label);
-    color: var(--color-text-muted);  /* Warm muted para separador */
-}
-
-.identity-note {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;  /* 16px - WCAG minimum en mobile */
-    opacity: 0.6;
-    line-height: 1.6;
-    margin: 0;
-    max-width: 50ch;
-}
-
-/* Links CTA - Variante secundaria (mayor jerarquía) */
-.about-cta a,
-.actividades-cta-link {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    color: var(--color-accent);
-    text-decoration: none;
-    display: inline-block;
-    padding: var(--space-3) var(--space-6);
-    border: 1.5px solid var(--color-accent);
-    border-radius: 4px;
-    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    background: transparent;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    position: relative;
 }
 
 /* CTA container for dual buttons */
@@ -1742,69 +1352,6 @@ main > :last-child {
     margin-top: var(--space-16);
 }
 
-.about-cta a:hover,
-.actividades-cta-link:hover {
-    border-color: var(--color-accent);
-}
-
-.about-cta {
-    margin-top: var(--space-6);
-}
-
-/* Links CTA - Estandarizado con about-cta */
-.services-cta-link {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    color: var(--color-accent);
-    text-decoration: none;
-    display: inline-block;
-    padding: var(--space-3) var(--space-6);
-    border: 1.5px solid var(--color-accent);
-    border-radius: 4px;
-    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    background: transparent;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-}
-
-.services-cta-link:hover {
-    border-color: var(--color-accent);
-}
-
-.studio-note {
-    font-family: var(--font-label);
-    font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
-    opacity: 0.6;
-    padding-left: var(--space-3);
-    margin-top: var(--space-6);
-    line-height: 1.5;
-}
-
-.institutional-context {
-    border-top: 1px solid rgba(193, 111, 82, 0.3);
-    padding-top: var(--space-6);
-    margin-top: var(--space-8);
-}
-
-.context-label {
-    font-family: var(--font-label);
-    font-size: 1rem;  /* 16px - WCAG minimum (antes 12px) */
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    opacity: 0.5;
-    display: block;
-    margin-bottom: var(--space-2);
-}
-
-.institutional-context p {
-    font-size: 1rem;
-    opacity: 0.75;
-    line-height: 1.6;
-    max-width: 60ch;
-}
-
 /* About Section - Desktop Enhancement */
 @media (min-width: 769px) {
     .about-grid {
@@ -1814,12 +1361,7 @@ main > :last-child {
         padding: 0 var(--space-24);
     }
 
-    .about-label {
-        padding-left: var(--space-6);
-        margin-top: var(--space-8);
-        margin-bottom: var(--space-12);
-    }
-
+    
     .about-content {
         grid-column: 1;
         padding: var(--space-12);
@@ -1831,15 +1373,8 @@ main > :last-child {
         hyphens: none;
     }
 
-    .about-pain-list li {
-        line-height: 1.7;
-    }
-
-    .about-purpose {
-        font-size: var(--font-size-h2);  /* Same size as "Sabemos lo que se siente" */
-        padding-top: var(--space-10);
-    }
-
+    
+    
     .corner-bracket {
         width: 40px;
         height: 40px;
@@ -1858,40 +1393,13 @@ main > :last-child {
         font-size: var(--font-size-base);
     }
 
-    .institutional-description {
-        font-size: var(--font-size-base);
-        line-height: 1.7;
-        margin-top: var(--space-5);
+    
+    
+    
+    
+    
+    
     }
-
-    .identity-badge {
-        padding: var(--space-3) var(--space-6);
-    }
-
-    .identity-note {
-        font-size: var(--font-size-base);
-    }
-
-    .studio-note {
-        padding-left: var(--space-4);
-        margin-top: var(--space-8);
-        line-height: 1.6;
-    }
-
-    .institutional-context {
-        padding-top: var(--space-8);
-        margin-top: var(--space-12);
-    }
-
-    .context-label {
-        margin-bottom: var(--space-3);
-    }
-
-    .institutional-context p {
-        font-size: var(--font-size-base);
-        line-height: 1.7;
-    }
-}
 
 /* =========================
    Services - Editorial Blocks
@@ -1900,19 +1408,6 @@ main > :last-child {
 /* Mobile-first base */
 .services-container {
     padding: 0 var(--space-12);  /* móvil; tablet 64 y escritorio 96 en sus bloques */
-}
-
-.services-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text);  /* Blanco puro, border naranja como marca */
-    opacity: 1;
-    padding-left: var(--space-4);
-    margin-top: var(--space-4);
-    margin-bottom: var(--space-6);
 }
 
 .services-intro {
@@ -1993,35 +1488,6 @@ main > :last-child {
     max-width: 750px;
 }
 
-.service-method {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    color: var(--color-text);
-    opacity: 0.85;
-    line-height: 1.7;
-    margin: var(--space-6) 0;
-    padding: var(--space-5);
-    background: rgba(193, 111, 82, 0.08);
-    border-left: 3px solid var(--orange-500);
-    border-radius: 4px;
-    max-width: 750px;
-}
-
-.method-link {
-    color: var(--orange-500);
-    text-decoration: none;
-    font-weight: 700;
-    transition: color var(--transition-fast);
-    white-space: normal;  /* Permite wrap en mobile */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-.method-link:hover {
-    color: var(--orange-500);
-    text-decoration: underline;
-}
-
 .service-deliverable {
     display: block;
     font-family: var(--font-label);
@@ -2034,48 +1500,6 @@ main > :last-child {
     line-height: 1.6;
 }
 
-.service-proof {
-    margin-top: var(--space-6);
-    padding-top: var(--space-6);
-    border-top: 1px solid rgba(193, 111, 82, 0.15);
-    font-size: var(--font-size-base);
-    line-height: 1.6;
-}
-
-.proof-label {
-    font-family: var(--font-label);
-    color: var(--color-text);
-    opacity: 0.6;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 1rem;
-    margin-right: var(--space-2);
-}
-
-.proof-link {
-    color: var(--orange-500);
-    text-decoration: none;
-    font-family: var(--font-body);
-    transition: color var(--transition-fast);
-}
-
-.proof-link:hover {
-    color: var(--orange-500);
-    text-decoration: underline;
-}
-
-.proof-separator {
-    color: var(--color-text-low);
-    margin: 0 var(--space-3);
-}
-
-/* services-cta-link ahora usa estilos unificados (ver línea 438) */
-.services-cta {
-    padding: var(--space-12) 0;
-    border-top: 1px solid rgba(250, 248, 246, 0.15);
-}
-
 /* Services Section - Desktop Enhancement */
 @media (min-width: 769px) {
     .services-container {
@@ -2083,11 +1507,7 @@ main > :last-child {
         padding: 0 var(--space-24);
     }
 
-    .services-label {
-        padding-left: var(--space-6);
-        margin-top: var(--space-8);
-    }
-
+    
     .service-title {
         font-size: var(--font-size-h1);  /* Desktop: título más grande que mobile */
         margin-bottom: var(--space-4);
@@ -2230,14 +1650,6 @@ footer {
     outline-offset: 2px;
 }
 
-/* Colofón técnico (referencia Linked by Air) */
-.footer-colofon {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9375rem;
-    color: var(--color-text-low);
-    margin-top: var(--space-3);
-}
-
 .social-icons {
     display: flex;
     gap: var(--space-5);
@@ -2352,11 +1764,6 @@ footer {
     padding: var(--spacing-block) var(--space-6);
 }
 
-.contact-grid {
-    display: flex;
-    flex-direction: column;
-}
-
 .contact-label {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: var(--font-size-base);
@@ -2453,9 +1860,6 @@ footer {
 @media (min-width: 769px) {
     .ficha-caso-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-12); }
 }
-
-/* Enlace al archivo completo de señales, debajo del widget del index */
-.senales-more { margin-top: var(--space-8); }
 
 /* Contacto directo: mail en lugar de formulario */
 .contact-direct {
@@ -2554,27 +1958,6 @@ footer {
    Proyectos Intro & CTA
    ========================= */
 
-.proyectos-intro {
-    max-width: 900px;
-    margin: 0 auto var(--space-16);
-    text-align: left;
-}
-
-.proyectos-intro-headline {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
-    font-size: var(--font-size-h2);
-    color: rgba(250, 248, 246, 0.95);
-    margin-bottom: var(--space-4);
-    line-height: 1.3;
-}
-
-.proyectos-intro-text {
-    font-size: var(--font-size-base);
-    color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.6) */
-    line-height: 1.7;
-}
-
 .proyectos-cta {
     max-width: 900px;
     margin: var(--space-16) auto 0;
@@ -2600,74 +1983,6 @@ footer {
 /* =========================
    Proyectos - Linked by Air Layout
    ========================= */
-
-.proyectos-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.proyecto-item {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: var(--space-12);
-    padding: var(--space-12) 0;
-    border-bottom: 1px solid rgba(250, 248, 246, 0.08);
-    align-items: start;
-}
-
-.proyecto-imagen {
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-}
-
-.proyecto-imagen img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.2s ease;
-    display: block;
-}
-
-.proyecto-imagen-link:hover img {
-    opacity: 0.88;
-}
-
-.proyecto-nombre {
-    display: block;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--color-accent);
-    text-decoration: none;
-    margin-bottom: var(--space-3);
-    line-height: 1.3;
-}
-
-.proyecto-nombre:hover {
-    opacity: 0.75;
-}
-
-.proyecto-descripcion {
-    font-size: 1rem;
-    color: rgba(250, 248, 246, 0.75);
-    line-height: 1.6;
-    margin-bottom: var(--space-5);
-}
-
-.proyecto-disciplinas {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-}
-
-.proyecto-disciplinas li {
-    font-size: 1rem;
-    color: rgba(250, 248, 246, 0.65);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
 
 /* =========================
    Últimas Actividades
@@ -2712,7 +2027,6 @@ footer {
 /* Mobile: entradas pares usan misma estructura */
 .actividad-entrada:nth-child(even) {
     grid-template-columns: 1fr;
-    direction: ltr;
 }
 
 .actividad-entrada:nth-child(even) .actividad-imagen {
@@ -2782,10 +2096,6 @@ footer {
     color: var(--color-text-muted);  /* Warm muted para tags */
 }
 
-.actividad-autor {
-    color: var(--color-text-muted);  /* Byline con nombre (referencia Other Internet) */
-}
-
 /* Category badge for Hechos entries */
 .actividad-category-badge {
     display: inline-block;
@@ -2821,20 +2131,6 @@ footer {
     margin-top: var(--space-3);
 }
 
-.actividad-link {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    color: var(--color-accent);
-    opacity: 0.7;
-    text-decoration: none;
-    margin-top: var(--space-6);
-    transition: opacity 0.2s ease;
-}
-
-.actividad-link:hover {
-    opacity: 1;
-}
-
 /* =========================
    Corner Brackets - Animated UI Detail
    ========================= */
@@ -2866,7 +2162,6 @@ footer {
 
     .actividad-entrada:nth-child(even) {
         grid-template-columns: 1fr 1.5fr;
-        direction: ltr;
     }
 
     .actividad-entrada:nth-child(even) .actividad-imagen {
@@ -2897,20 +2192,6 @@ footer {
    Equipo - Tabla Tipográfica (SPACE10 style)
    ========================= */
 
-/* Mobile-first base */
-.equipo-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text);  /* Blanco puro, border naranja como marca */
-    opacity: 1;
-    padding-left: var(--space-6);
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-12);
-}
-
 /* =========================
    TRUST SECTION (Equipo + Clientes fusionado)
    ========================= */
@@ -2918,21 +2199,6 @@ footer {
 .trust-section {
     padding: var(--spacing-block) var(--space-6);  /* Mobile: 24px a los lados; 96px dejaba columnas de 51px para los logos */
     background: transparent;
-}
-
-.trust-section .section-header {
-    margin-bottom: var(--space-16);
-    text-align: center;
-}
-
-.trust-section .section-eyebrow {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-accent);
-    opacity: 0.7;
-    margin-bottom: var(--space-2);
 }
 
 .trust-grid {
@@ -3016,7 +2282,6 @@ img {
     outline-offset: 4px;
 }
 
-
 /* Focus en footer links - handled in .footer-link */
 
 /* Focus en social icons */
@@ -3064,8 +2329,7 @@ img {
     }
 
     .nav-container,
-    .nav,
-    .hero-brand-content {
+.hero-brand-content {
         padding: 0 var(--spacing-horizontal-tablet);
     }
 
@@ -3139,25 +2403,6 @@ img {
   gap: var(--space-4);
 }
 
-.impact-icon {
-  font-size: var(--font-size-base); /* Mobile base */
-  line-height: 1;
-  display: flex;
-  align-items: center;
-}
-
-/* Número destacado */
-.impact-number {
-  font-size: var(--font-size-number-sm); /* Mobile base */
-  font-weight: 700;
-  color: var(--color-text);  /* Blanco puro, destaca por tamaño y peso */
-  margin: var(--space-4) 0;
-}
-
-.impact-number--spacing {
-  margin-top: var(--space-10);
-}
-
 /* Spacing utilities for impact-top */
 .impact-top--spacing-md {
   margin-top: var(--space-8);
@@ -3176,30 +2421,6 @@ img {
   margin-top: var(--space-6);
 }
 
-/* Quote box */
-.quote-box {
-  margin-top: var(--space-6);
-  padding: var(--space-6);
-  background: rgba(255, 165, 0, 0.05);
-  border-left: var(--space-1) solid var(--orange-500);
-}
-
-.quote-box--compact {
-  margin-top: var(--space-4);
-}
-
-/* Section divider */
-.section-divider-top {
-  margin-top: var(--space-10);
-  padding-top: var(--space-8);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Text link with underline */
-.text-link-underline {
-  text-decoration: underline;
-}
-
 /* Lista dentro de tarjeta */
 .impact-list {
   margin-top: var(--space-4);
@@ -3210,27 +2431,7 @@ img {
   margin-bottom: var(--space-2);
 }
 
-/* Variante sin animación hover (intro + descarga) */
-.card-static {
-  background: rgba(250, 248, 246, 0.02);
-  border-radius: 8px;
-  padding: var(--space-8);
-  max-width: 900px;
-  margin: var(--space-8) auto;
-}
-
 /* btn-download ahora usa estilos unificados (ver línea 281) */
-
-/* Desktop enhancements - Impact cards */
-@media (min-width: 769px) {
-  .impact-number {
-    font-size: var(--font-size-number-md);
-  }
-
-  .impact-icon {
-    font-size: var(--font-size-icon);
-  }
-}
 
 /* === ESTILO REPORTE IMPACTO (alineado con index) === */
 
@@ -3243,19 +2444,6 @@ img {
 
 .actividad-card--light h3 {
   color: var(--color-text);
-}
-
-.actividad-card--light .impact-number {
-  font-size: var(--font-size-number-lg);
-  font-weight: 700;
-  color: var(--color-text);  /* Blanco puro para consistencia */
-  margin-top: -0.5rem;
-}
-
-.actividad-card--light .impact-icon {
-  font-size: var(--font-size-icon);
-  vertical-align: middle;
-  margin-right: var(--space-2);
 }
 
 .actividad-card--light ul {
@@ -3287,12 +2475,6 @@ img {
     color: var(--color-text-secondary);
     max-width: 900px;
     text-wrap: balance;
-}
-
-.hero-sub-secondary {
-  margin-top: var(--space-3);
-  font-size: var(--font-size-base);
-  opacity: 0.9;
 }
 
 /* Contenedor principal del reporte - Mobile-first base */
@@ -3359,7 +2541,6 @@ img {
   line-height: var(--line-height-body);
 }
 
-.legal-page .container,
 .legal-page .legal-hero,
 .legal-page .legal-content {
   max-width: 900px;
@@ -3402,37 +2583,6 @@ img {
 .legal-page li {
   margin-bottom: var(--space-2);
   color: var(--color-text-secondary);
-}
-
-/* Botón "Volver al inicio" */
-.legal-page .back-link {
-  display: inline-block;
-  margin-bottom: var(--space-8);
-  padding: var(--space-3) var(--space-6);
-  border: 2px solid var(--color-accent);
-  border-radius: 4px;
-  color: var(--color-accent);
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.legal-page .back-link:hover,
-.legal-page .back-link:focus-visible {
-  background: var(--color-accent);
-  color: #12151a;
-}
-
-/* Estilo de la fecha */
-.legal-page .date {
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-base);
-  margin-bottom: var(--space-12);
-}
-
-/* Utilidad opcional para espaciados extras si se necesita */
-.legal-page .legal-spacing {
-  margin-top: var(--space-12);
 }
 
 /* ──────────────────────────────────────────────
@@ -3489,17 +2639,10 @@ img {
     margin-top: var(--space-4);
 }
 
-
 .reporte-page .actividad-card--light {
     background: rgba(250, 248, 246, 0.02);
     border: 1px solid rgba(193, 111, 82, 0.4);
     border-radius: 8px;
-}
-
-.reporte-page .impact-number {
-    font-size: var(--font-size-number-md);
-    font-weight: 700;
-    color: var(--color-accent);
 }
 
 .reporte-page .impact-number-hero {
@@ -3569,32 +2712,9 @@ img {
    Señales de la Semana Widget
    ========================= */
 
-.senales-widget {
-    background: var(--color-bg);
-    padding: var(--spacing-section) var(--spacing-horizontal-mobile); /* Mobile base */
-}
-
-.senales-container {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
 .senales-header {
     margin-bottom: var(--space-12);
     text-align: center;
-}
-
-.senales-badge {
-    display: inline-block;
-    font-family: var(--font-label);
-    font-size: var(--font-size-base);
-    color: var(--orange-500);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: var(--space-4);
-    padding: var(--space-2) var(--space-4);
-    border: 1px solid var(--orange-500);
-    border-radius: 4px;
 }
 
 .senales-title {
@@ -3645,16 +2765,6 @@ img {
     margin-bottom: var(--space-4);
 }
 
-.senal-sector {
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    color: var(--color-text-muted);
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    margin-bottom: var(--space-3);
-}
-
 .senal-analysis {
     font-family: var(--font-body);
     font-size: var(--font-size-base);
@@ -3663,49 +2773,9 @@ img {
     margin-bottom: var(--space-4);
 }
 
-.senal-location {
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    color: var(--color-text-muted);
-    line-height: var(--line-height-body);
-    margin-bottom: var(--space-4);
-}
-
-.senal-impact {
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    font-style: italic;
-    font-weight: 400;
-    color: var(--color-text);
-    line-height: var(--line-height-body);
-    margin-bottom: var(--space-6);
-    padding-top: var(--space-2);
-    border-top: 1px solid rgba(193, 111, 82, 0.15);
-}
-
-.senal-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    color: var(--orange-500);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-}
-
-.senal-link:hover {
-    color: var(--orange-500);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-
 /* Desktop enhancements - Señales widget */
 @media (min-width: 769px) {
-    .senales-widget {
-        padding: var(--spacing-section) var(--spacing-horizontal-tablet);
-    }
-
+    
     .senales-grid {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: var(--space-8);
@@ -3713,12 +2783,6 @@ img {
 
     .senal-card {
         padding: var(--space-8);
-    }
-}
-
-@media (min-width: 1025px) {
-    .senales-widget {
-        padding: var(--spacing-section) var(--spacing-horizontal-desktop);
     }
 }
 
@@ -3909,49 +2973,6 @@ img {
     }
 }
 
-.approach-label {
-    font-family: var(--font-label);
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-6);
-}
-
-.approach-label--bpp {
-    color: var(--orange-500);
-}
-
-.approach-svg {
-    width: 180px; /* Mobile base */
-    height: 180px; /* Mobile base */
-    margin-bottom: var(--space-6);
-}
-
-.approach-description {
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-body);
-    max-width: 200px;
-}
-
-/* SVG Animation */
-.traditional-line {
-    stroke-dasharray: 200;
-    stroke-dashoffset: 200;
-}
-
-.bpp-path {
-    stroke-dasharray: 250;
-    stroke-dashoffset: 250;
-}
-
-.exploration-dot {
-    opacity: 0;
-}
-
 @keyframes drawLine {
     to {
         stroke-dashoffset: 0;
@@ -3961,26 +2982,6 @@ img {
 @keyframes fadeInDot {
     to {
         opacity: 0.6;
-    }
-}
-
-/* If motion is reduced, show everything immediately */
-@media (prefers-reduced-motion: reduce) {
-    .traditional-line,
-    .bpp-path {
-        stroke-dashoffset: 0;
-    }
-
-    .exploration-dot {
-        opacity: 0.6;
-    }
-}
-
-/* Desktop enhancements - Thinking Method Visual */
-@media (min-width: 769px) {
-    .approach-svg {
-        width: 200px;
-        height: 200px;
     }
 }
 
@@ -4051,17 +3052,6 @@ img {
   opacity: 0.9;
 }
 
-/* Excepción: restaurar estilos normales del navbar en páginas reporte/legal */
-.reporte-page .nav-wordmark,
-.legal-page .nav-wordmark {
-  color: rgba(250, 248, 246, 0.9) !important;
-}
-
-.reporte-page .nav-wordmark:hover,
-.legal-page .nav-wordmark:hover {
-  color: var(--color-accent);
-}
-
 .reporte-page .nav-links a,
 .legal-page .nav-links a {
   color: var(--color-text-light);
@@ -4080,18 +3070,6 @@ img {
 /* ──────────────────────────────────────────────
    Optimizaciones Reporte de Impacto
 ──────────────────────────────────────────────*/
-
-/* Reading Progress Bar */
-.reading-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-bright));
-  z-index: 9999;
-  transition: width 0.1s ease-out;
-}
 
 /* Sticky Table of Contents */
 .sticky-toc {
@@ -4307,11 +3285,6 @@ img {
   border-bottom-color: transparent;
 }
 
-.scenario-accordion-header .icon {
-  font-size: 2rem;
-  margin-right: var(--space-4);
-}
-
 .scenario-accordion-header .toggle-icon {
   font-size: 1.5rem;
   color: var(--color-accent);
@@ -4346,22 +3319,6 @@ img {
   position: relative;
   overflow: hidden;
     padding-top: var(--hero-top);
-}
-
-
-/* SVG Icons for sections */
-.section-icon {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  margin-right: var(--space-3);
-  vertical-align: middle;
-}
-
-.section-icon svg {
-  width: 100%;
-  height: 100%;
-  fill: var(--color-accent);
 }
 
 /* Share Buttons */
@@ -4413,50 +3370,6 @@ img {
   fill: #12151a;
 }
 
-/* Sticky Download Button (Mobile) */
-.sticky-download-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(18, 21, 26, 0.98);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(193, 111, 82, 0.3);
-  padding: var(--space-4);
-  z-index: 1000;
-  display: block; /* Mobile base: visible */
-  transform: translateY(100%);
-  transition: transform 0.3s;
-}
-
-.sticky-download-bar.visible {
-  transform: translateY(0);
-}
-
-.sticky-download-bar .download-buttons {
-  display: flex;
-  gap: var(--space-3);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.sticky-download-bar a {
-  flex: 1;
-  text-align: center;
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-accent);
-  color: #12151a;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: var(--font-size-base);
-  transition: background 0.3s;
-}
-
-.sticky-download-bar a:hover {
-  background: var(--color-accent-bright);
-}
-
 /* Responsive adjustments */
 /* El índice fijo (280px + margen) solapa la columna de texto (1200px centrados)
    por debajo de ~1536px. Hasta ahí, índice móvil. */
@@ -4494,71 +3407,7 @@ img {
     padding: var(--space-6) var(--space-8);
   }
 
-  .sticky-download-bar {
-    display: none;
   }
-}
-
-/* Botón/enlace de retorno en reporte de impacto y proyectos */
-.report-back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-8);
-  margin-top: var(--space-8);
-  border: 2px solid var(--color-accent);
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--color-accent);
-  text-decoration: none;
-  background: transparent;
-  transition: color 0.3s ease, opacity 0.3s ease;
-  min-height: 44px;
-}
-
-.report-back-link .arrow {
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
-}
-
-.report-back-link:hover,
-.report-back-link:focus-visible {
-  background: var(--color-accent);
-  color: var(--color-text);
-  transform: translateX(-4px);
-}
-
-.report-back-link:hover .arrow {
-  transform: translateX(-3px);
-}
-
-.report-back-link:focus-visible {
-  outline: 2px solid var(--color-accent-bright);
-  outline-offset: 4px;
-}
-
-/* Botones de descarga del reporte:
-   contorno en reposo, rellenos al hacer hover */
-.reporte-section a.btn-download,
-.reporte-section a.btn-download:visited {
-  display: inline-block;
-  margin-top: var(--space-6);
-  padding: var(--space-4) var(--space-6);
-  border-radius: 8px;
-  border: 1px solid var(--color-accent);
-  background: transparent;
-  color: var(--color-accent);
-  font-weight: 700;
-  text-decoration: none;
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
-
-.reporte-section a.btn-download:hover,
-.reporte-section a.btn-download:focus-visible {
-  background: var(--color-accent);
-  color: var(--color-text);
-}
 
 /* Footer spacing - simplified with new footer structure */
 
@@ -4566,34 +3415,6 @@ img {
    CLIENTES SECTION - GLASSMORPHISM
    ======================================== */
 
-.clientes-section {
-  padding: var(--space-16) 0;
-  background: transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.clientes-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: var(--font-size-base);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-accent);
-  opacity: 0.7;
-  padding-left: var(--space-6);
-  margin-bottom: var(--space-8);
-}
-
-@media (min-width: 769px) {
-  .clientes-section {
-    padding: var(--space-24) 0;
-  }
-
-  .clientes-label {
-    padding-left: 12rem;
-    margin-bottom: var(--space-12);
-  }
-}
 /* Marquee de logos — mobile-first.
    Mobile: ancho del contenedor (sin hack de 100vw, que el patch
    * { max-width: 100% } de mobile capaba dejándolo descentrado).
@@ -4642,25 +3463,8 @@ img {
 }
 /* Testimonials: sección eliminada — el CSS era huérfano (ningún HTML la usa) */
 
-/* Nota: estas reglas aplicaban globalmente por una llave mal cerrada
-   (los comentarios MOBILE-XXX eran aspiracionales). Se mantienen
-   globales para no cambiar el render actual. */
-.actividad-content {
-  padding: var(--space-6);
-}
-
 .footer-left {
   gap: var(--space-2);
-}
-
-
-.cta-section {
-  text-align: center;
-  margin-top: var(--space-12);
-}
-
-.honeypot {
-  display: none;
 }
 
 /* =========================
@@ -4681,15 +3485,6 @@ img {
    LA USINA — unidad de investigación
    Mobile-first: base = mobile, desktop en min-width: 769px
    ============================================= */
-
-.usina-intro {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.usina-intro p + p {
-  margin-top: var(--space-4);
-}
 
 /* Card de tesis en /usina */
 .tesis-card {
@@ -4834,18 +3629,6 @@ img {
 
 }
 
-/* Link inline dentro de descripciones de actividad (ej: La Usina) */
-.actividad-inline-link {
-  color: var(--color-accent);
-  text-decoration: underline;
-  text-decoration-color: rgba(193, 111, 82, 0.4);
-  text-underline-offset: 3px;
-}
-
-.actividad-inline-link:hover {
-  opacity: 0.75;
-}
-
 /* Variante contain: para portadas con texto (ej: Tesis 01 La Usina).
    El fondo replica el de la portada para que el letterbox sea invisible. */
 .actividad-imagen--contain {
@@ -4932,7 +3715,6 @@ img {
     .actividad-entrada + .actividad-entrada { margin-top: var(--space-12); }
 }
 
-
 /* ============ Fase B 2026: índice archival (/pensamiento) ============ */
 /* Ficha de archivo: filas tipográficas con borde susurro, sin cajas.
    Nº correlativo cronológico (01 = más antiguo), listado como la página:
@@ -4981,17 +3763,6 @@ img {
     color: var(--color-accent);
 }
 
-.indice-fecha,
-.indice-autor {
-    display: none;
-    font-size: 0.9375rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(250, 248, 246, 0.55);
-    white-space: nowrap;
-}
-
 .indice-titulo {
     font-size: 1.0625rem;
     line-height: 1.5;
@@ -5014,11 +3785,7 @@ img {
         column-gap: var(--space-6);
     }
 
-    .indice-fecha,
-    .indice-autor {
-        display: block;
     }
-}
 
 /* ============ Fase B 2026: rail de cifras (scrollytelling reporte) ============ */
 /* Desktop only: bloque bajo el sticky TOC del reporte que muestra la
@@ -5113,7 +3880,6 @@ img {
 
 :root {
     --color-bg-deep: #0d1014;      /* Registro hondo: services, contacto */
-    --color-bg-warm: #161a20;      /* Registro tibio: tinte terracotta 4% */
 }
 
 /* Sección de servicios: registro hondo con lámpara terracotta arriba.
@@ -5398,169 +4164,9 @@ html {
   color: var(--color-accent);
 }
 
-/* ============ v2.3: superficie de lectura, DORMIDA (body.page-papel). Los socios eligieron todo Tinta (2026-09); el sistema de papel queda disponible pero ninguna página lo usa. ============ */
-/* Oscuro = marca (nav, footer, hero). Papel = lectura larga. Las páginas
-   con body.page-papel (reporte de natalidad, Trace Group, tesis-01) son
-   documentos de 2.000-3.000 palabras leídos por gente de 50-60 años del
-   sector público: el cuerpo pasa a --paper, el resto no se toca. El corte
-   entre hero oscuro y papel es una línea, no un degradé. */
-
-/* main es papel de borde a borde. El hero (max-width centrado) vuelve al
-   registro oscuro con sangrado horizontal: box-shadow pinta a los lados y
-   clip-path lo recorta al alto exacto del hero, sin overflow. */
-.page-papel main {
-    background: var(--paper);
-}
-
-.page-papel .hero-section {
-    background: var(--color-bg);
-    box-shadow: 0 0 0 100vmax var(--color-bg);
-    clip-path: inset(0 -100vmax);
-}
-
-/* Alcance: toda sección de main que no sea el hero. Los tokens se remapean
-   acá, así las reglas existentes (headings, ficha, fuentes, links, cards)
-   siguen solas sin duplicar selectores. */
-.page-papel main > section:not(.hero-section) {
-    background: var(--paper);
-    color: var(--ink-high);
-
-    --color-bg: var(--paper);
-    --color-surface: var(--paper-elevated);
-    --color-border: var(--ink-border);
-    --border-card: 1px solid var(--ink-border);
-
-    --color-text: #12151a;
-    --color-text-light: #12151a;
-    --color-text-secondary: var(--ink-high);
-    --color-text-muted: var(--ink-low);
-    --color-text-high: var(--ink-high);
-    --color-text-mid: var(--ink-mid);
-    --color-text-low: var(--ink-low);
-    --color-text-faint: var(--ink-low);   /* sin registro faint sobre papel */
-
-    --color-accent: var(--accent-on-paper);
-    --color-accent-bright: var(--accent-on-paper-hover);
-
-    /* Sombra para papel: misma geometría, tinta en vez de negro. */
-    --shadow-card: 0 16px 32px -24px rgba(18, 21, 26, 0.28);
-    --shadow-card-hover: 0 20px 40px -24px rgba(18, 21, 26, 0.32);
-}
-
-/* Cuerpo: tinta alta, sin la opacidad 0.75 del registro oscuro
-   (DESIGN.md: no se apila opacity sobre texto legible). */
-.page-papel .reporte-section p,
-.page-papel .reporte-section li {
-    color: var(--ink-high);
-    opacity: 1;
-}
-
-/* Metadata y fuentes: ink-low, el piso AA sobre papel. */
-.page-papel .reporte-section .reporte-fuente,
-.page-papel .reporte-section .ficha-caso-fuentes,
-.page-papel .thesis-cite__note {
-    color: var(--ink-low);
-}
-
-.page-papel .reporte-section .reporte-fuente {
-    border-top-color: var(--ink-border);
-}
-
-/* Cards y acordeones: superficie elevada + borde susurro + sombra de tinta,
-   en lugar del borde terracota que separaba sobre fondo oscuro. */
-.page-papel main .actividad-card--light,
-.page-papel main .scenario-accordion-header,
-.page-papel main .scenario-accordion-content {
-    background: var(--paper-elevated);
-    border-color: var(--ink-border);
-}
-
-.page-papel main .actividad-card--light {
-    box-shadow: var(--shadow-card);
-}
-
-.page-papel main .scenario-accordion-header:hover {
-    background: rgba(154, 79, 54, 0.06);
-    border-color: var(--accent-on-paper);
-}
-
-.page-papel main .scenario-accordion-header.active {
-    border-bottom-color: transparent;
-}
-
-/* Separadores entre secciones. El primero, pegado al hero, se apaga:
-   el corte oscuro/papel ya es el separador. */
-.page-papel main .section-separator {
-    border-top-color: var(--ink-border);
-}
-
-.page-papel main .hero-section + .section-separator {
-    border-top-color: transparent;
-}
-
-/* Callouts: tinte del acento de papel, no del terracota de pantalla. */
-.page-papel main .pull-quote {
-    background: rgba(154, 79, 54, 0.07);
-}
-
-.page-papel main .quote-box {
-    background: rgba(154, 79, 54, 0.06);
-    border-left-color: var(--accent-on-paper);
-}
-
-/* Cifra hero del reporte: ≥40px bold, único lugar donde el terracota de
-   marca (#c16f52, 3.2:1) sigue siendo AA sobre papel. */
-.page-papel main .impact-number-hero {
-    color: var(--orange-500);
-}
-
-/* Links dentro del cuerpo: subrayado además del color (acento vs tinta
-   queda en 2.7:1, no alcanza para distinguir solo por color). */
-.page-papel main > section:not(.hero-section) p a,
-.page-papel main > section:not(.hero-section) li a,
-.page-papel main > section:not(.hero-section) dd a {
-    text-decoration: underline;
-    text-decoration-color: rgba(154, 79, 54, 0.45);
-    text-underline-offset: 3px;
-}
-
-.page-papel main .cta-primary {
-    text-decoration-color: rgba(154, 79, 54, 0.45);
-}
-
-/* .reporte-page .cta-primary fija #12151a !important (resto de cuando el
-   CTA era botón relleno). Sobre papel el CTA vuelve al acento. */
-.page-papel .reporte-section .cta-primary {
-    color: var(--accent-on-paper) !important;
-}
-
-.page-papel .reporte-section .cta-primary:hover {
-    color: var(--accent-on-paper-hover) !important;
-}
-
-/* Foco visible sobre papel: el anillo terracota al 0.55 da 1.8:1 sobre
-   --paper; el acento de papel sólido da 5.2:1 (WCAG 2.4.7 pide 3:1). */
-.page-papel main > section:not(.hero-section) :focus-visible {
-    box-shadow: 0 0 0 3px var(--accent-on-paper);
-}
-
-/* Selección: marcador claro, tinta encima (9.6:1). */
-.page-papel main > section:not(.hero-section) ::selection {
-    background: rgba(154, 79, 54, 0.35);
-    color: #12151a;
-}
-
-/* Elementos fijos que flotan sobre el papel: el índice y los botones de
-   compartir eran translúcidos sobre oscuro; acá necesitan superficie
-   opaca para seguir siendo oscuros (siguen fuera del remapeo de tokens). */
-.page-papel .sticky-toc {
-    background: var(--color-surface);
-    backdrop-filter: none;
-}
-
-.page-papel .share-buttons a {
-    background: var(--color-surface);
-}
+/* ============ v2.3: páginas de lectura (.page-lectura) ============
+   El sistema de superficie clara (body.page-papel) se retiró del CSS el 2026-09-06:
+   ninguna página lo usaba desde que los socios eligieron todo Tinta. Queda en git. */
 
 /* En páginas de lectura el nav va sólido. */
 .page-lectura nav { background: var(--color-bg); }
@@ -5586,344 +4192,11 @@ html {
     line-height: inherit;
 }
 
-/* ============ v2.4 (prototipo, DORMIDO): marco oscuro, contenido en papel. Reglas bajo body.page-papel, que ninguna página usa. ============ */
-/* Extiende body.page-papel a index, Hechos, Pensamiento y Privacidad para que
-   los socios decidan una dirección de paleta. Regla: nav, hero y footer siguen
-   oscuros tal cual; cada sección de contenido va sobre --paper con tinta. Los
-   componentes con oscuro hardcodeado (literales rgba(250,248,246,…) y fondos
-   #1a1512/#16110e) se sobreescriben acá, dentro del alcance; las reglas
-   oscuras originales no se tocan. */
-
-/* --- Heros: el del inicio (#hero.hero) y el legal (div.legal-hero) --- */
-.page-papel main > .hero {
-    background: var(--color-bg);
-}
-
-.page-papel .legal-hero {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 110px var(--space-6) var(--space-10);
-    background: var(--color-bg);
-    box-shadow: 0 0 0 100vmax var(--color-bg);
-    clip-path: inset(0 -100vmax);
-}
-
-.page-papel .legal-label {
-    font-size: 0.9375rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: var(--space-4);
-}
-
-.page-papel .legal-date {
-    color: var(--color-text-low);
-}
-
-.page-papel main > .legal-content {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: var(--space-12) var(--space-6) var(--space-16);
-}
-
 /* La nav de la página legal estaba con opacity 0 (solo logo-pinned /
-   secondary-page la mostraban). Sobre papel el marco tiene que verse. */
+   secondary-page la mostraban). */
 body.legal-page.page-lectura nav {
     opacity: 1;
     pointer-events: auto;
-}
-
-body.legal-page.page-papel .nav-logo {
-    opacity: 1;
-}
-
-.page-papel .legal-link:focus-visible {
-    outline-color: var(--accent-on-paper);
-}
-
-@media (min-width: 769px) {
-    .page-papel .legal-hero {
-        padding: calc(var(--spacing-section) + 60px) var(--space-8) var(--space-12);
-    }
-}
-
-/* --- Bandas de papel más cálido: servicios y contacto (registro hondo en oscuro).
-   Mantienen el ritmo de sección con un papel un grado más tostado. --- */
-.page-papel main > .section--orange-950 {
-    background:
-        radial-gradient(1200px 480px at 18% -8%, rgba(154, 79, 54, 0.05), transparent 65%),
-        #efe7dd;
-}
-
-.page-papel main > .contact-form-section {
-    background:
-        radial-gradient(1000px 420px at 85% 0%, rgba(154, 79, 54, 0.045), transparent 60%),
-        #efe7dd;
-}
-
-/* --- Labels y eyebrows: sin opacity apilada (accent-on-paper ya es 5.2:1) --- */
-.page-papel main .contact-city {
-    opacity: 1;
-}
-
-/* --- Cards: superficie elevada, borde tinta, sombra de tinta (sin el
-   highlight interior que solo se ve sobre oscuro) --- */
-.page-papel main .service-block,
-.page-papel main .senal-card,
-.page-papel main .tesis-card {
-    border-color: var(--ink-border);
-    box-shadow: var(--shadow-card);
-}
-
-.page-papel main .service-block:hover,
-.page-papel main .senal-card:hover {
-    box-shadow: var(--shadow-card-hover);
-}
-
-/* --- Servicios --- */
-.page-papel main .service-number {
-    color: var(--orange-500);   /* 32px bold: terracota de marca sigue siendo AA */
-}
-
-.page-papel main .service-category,
-.page-papel main .proof-label {
-    color: var(--ink-low);
-    opacity: 1;
-}
-
-.page-papel main .service-deliverable {
-    color: var(--ink-low);
-}
-
-.page-papel main .method-link,
-.page-papel main .proof-link {
-    color: var(--accent-on-paper);
-}
-
-.page-papel main .method-link:hover,
-.page-papel main .proof-link:hover {
-    color: var(--accent-on-paper-hover);
-}
-
-.page-papel main .services-cta {
-    border-top-color: var(--ink-border);
-}
-
-/* --- Hechos / artículos: la card se cierra con borde de tinta y sombra;
-   el borde lateral de la imagen (susurro claro) se apaga para no duplicar. --- */
-.page-papel main .actividad-entrada {
-    border: 1px solid var(--ink-border);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-card);
-}
-
-.page-papel main .actividad-entrada > .actividad-imagen {
-    border-left: 0;
-    border-radius: 0;
-}
-
-.page-papel main .actividad-category-badge {
-    background: rgba(154, 79, 54, 0.1);
-}
-
-.page-papel main .filter-btn {
-    color: var(--ink-mid);
-    border-color: var(--ink-border);
-}
-
-.page-papel main .filter-btn:hover,
-.page-papel main .filter-btn--active {
-    color: var(--accent-on-paper);
-    border-color: var(--accent-on-paper);
-}
-
-.page-papel main .filter-btn--active {
-    border-color: transparent;
-    border-bottom-color: var(--accent-on-paper);
-}
-
-.page-papel main .proyectos-cta {
-    border-top-color: var(--ink-border);
-}
-
-.page-papel main .proyectos-cta-headline,
-.page-papel main .proyectos-intro-headline {
-    color: var(--ink-high);
-}
-
-.page-papel main .proyectos-cta-text,
-.page-papel main .proyectos-intro-text {
-    color: var(--ink-mid);
-}
-
-/* Tooltip del CTA (data-preview): la superficie ya remapea a papel elevado;
-   el texto era blanco literal. */
-.page-papel main [data-preview]::after {
-    color: var(--ink-high);
-    border-color: var(--accent-on-paper);
-    box-shadow: var(--shadow-card);
-}
-
-/* --- Red: el equipo sigue oscuro. Los tres retratos están compuestos sobre
-   #1a1512 y no se pueden recortar ahora, así que el bloque es una banda
-   oscura deliberada de borde a borde (mismo truco que el hero), con sus
-   tokens de texto devueltos al registro oscuro. --- */
-.page-papel main .trust-socios {
-    --color-bg: #1a1512;
-    --color-surface: #221d18;
-    --color-border: rgba(193, 111, 82, 0.15);
-    --color-text: #faf8f6;
-    --color-text-light: #faf8f6;
-    --color-text-secondary: rgba(250, 248, 246, 0.87);
-    --color-text-muted: rgba(250, 248, 246, 0.65);
-    --color-text-high: rgba(250, 248, 246, 0.95);
-    --color-text-mid: rgba(250, 248, 246, 0.75);
-    --color-text-low: rgba(250, 248, 246, 0.55);
-    --color-text-faint: rgba(250, 248, 246, 0.40);
-    --color-accent: var(--orange-500);
-    --color-accent-bright: var(--orange-500);
-
-    color: var(--color-text-high);
-    background: var(--color-bg);
-    box-shadow: 0 0 0 100vmax var(--color-bg);
-    clip-path: inset(0 -100vmax);
-    padding: var(--space-12) 0;
-}
-
-.page-papel main .trust-socios ::selection {
-    background: rgba(193, 111, 82, 0.85);
-    color: #1a1512;
-}
-
-/* --- Logos de clientes: todos como tinta, un solo set monocromo.
-   (En oscuro eran blancos con brightness 1.35; CESBA venía invertido.) --- */
-.page-papel main .logo-item img {
-    filter: grayscale(100%) brightness(0);
-    opacity: 0.75;
-}
-
-.page-papel main .logo-item:hover img {
-    filter: grayscale(100%) brightness(0);
-    opacity: 1;
-}
-
-/* --- Contacto --- */
-.page-papel main .about-separator {
-    border-top-color: var(--ink-border);
-}
-
-.page-papel main .contact-direct-mail {
-    color: var(--accent-on-paper);
-    text-decoration-color: rgba(154, 79, 54, 0.4);
-}
-
-.page-papel main .contact-direct-mail:hover,
-.page-papel main .contact-direct-mail:focus-visible {
-    color: var(--accent-on-paper-hover);
-    text-decoration-color: var(--accent-on-paper);
-}
-
-/* --- Pensamiento: índice archival --- */
-.page-papel main .indice-fila a,
-.page-papel main .indice-fila:last-child a {
-    border-color: var(--ink-border);
-}
-
-.page-papel main .indice-titulo {
-    color: var(--ink-high);
-}
-
-.page-papel main .indice-fecha,
-.page-papel main .indice-autor {
-    color: var(--ink-low);
-}
-
-/* --- Señales --- */
-.page-papel main .senal-label {
-    color: var(--accent-on-paper);
-}
-
-.page-papel main .senal-lectura {
-    color: var(--ink-mid);
-}
-
-.page-papel main .senal-fuente {
-    border-top-color: var(--ink-border);
-}
-
-.page-papel main .senal-fuente a {
-    color: var(--ink-mid);
-    text-decoration-color: rgba(154, 79, 54, 0.45);
-}
-
-.page-papel main .senal-fuente a:hover {
-    color: var(--accent-on-paper);
-}
-
-.page-papel main .senal-link {
-    color: var(--accent-on-paper);
-}
-
-/* --- Tesis (La Usina): brackets en terracota de marca — son línea, no texto --- */
-.page-papel main .tesis-card__subtitle {
-    color: var(--ink-mid);
-}
-
-.page-papel main .tesis-card__authors {
-    color: var(--ink-low);
-}
-
-.page-papel main .tesis-card .corner-bracket {
-    border-color: var(--orange-500);
-}
-
-/* Prosa de cards con opacity apilada (0.75 / 0.85 sobre --color-text): sobre
-   papel se pasa a tinta con alpha calibrado, así los links inline dentro
-   (La Usina, método) conservan el acento a 5.5:1 en vez de diluirse. */
-.page-papel main .actividad-descripcion,
-.page-papel main .service-method {
-    color: var(--ink-mid);
-    opacity: 1;
-}
-
-/* Plan de trabajo (toggle + timeline) y términos clave: terracota literal
-   (#c16f52, 3.2:1) pasa al acento de papel; la card del término, a tinta. */
-.page-papel main .service-timeline-toggle,
-.page-papel main .tooltip-term,
-.page-papel main .timeline-week,
-.page-papel main .term-card-label {
-    color: var(--accent-on-paper);
-}
-
-.page-papel main .service-timeline-toggle {
-    border-color: var(--accent-on-paper);
-}
-
-.page-papel main .service-timeline-toggle:hover {
-    background: rgba(154, 79, 54, 0.08);
-    border-color: var(--accent-on-paper-hover);
-    color: var(--accent-on-paper-hover);
-}
-
-.page-papel main .service-timeline-toggle:focus-visible,
-.page-papel main .tooltip-term:focus-visible {
-    outline-color: var(--accent-on-paper);
-}
-
-.page-papel main .term-card {
-    border-color: var(--ink-border);
-    border-left-color: var(--accent-on-paper);
-    box-shadow: var(--shadow-card);
-}
-
-.page-papel main .term-card-text {
-    color: var(--ink-high);
-}
-
-/* El índice es navegación, no prosa: sin el subrayado de links de cuerpo. */
-.page-papel main .indice-archival .indice-fila a {
-    text-decoration: none;
 }
 
 /* Tarjetas de artículos: la fila la manda el texto, acotado a siete líneas; la imagen
@@ -6066,24 +4339,6 @@ body.legal-page.page-papel .nav-logo {
     margin-top: var(--space-3);
 }
 
-/* Card de Lo hecho con el gráfico de natalidad: papel + padding, el gráfico se ve entero. */
-.actividad-imagen--papel {
-    background: var(--paper);
-    padding: var(--space-4);
-}
-.actividad-imagen--papel img {
-    object-fit: contain;
-    mix-blend-mode: multiply;
-    filter: none;  /* gráfico de datos: sin velo sepia */
-}
-@media (min-width: 769px) {
-    .actividad-imagen--papel img {
-        inset: var(--space-4);
-        width: calc(100% - 2 * var(--space-4));
-        height: calc(100% - 2 * var(--space-4));
-    }
-}
-
 /* 3. Portada de la tesis */
 .thesis-cover {
     max-width: 800px;
@@ -6193,10 +4448,6 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     background: var(--color-surface);
 }
 .hero-figura img { display: block; width: 100%; height: auto; }
-.hero-figura--papel { background: var(--paper); padding: var(--space-5); }
-.hero-figura--papel img { border-radius: calc(var(--border-radius) - 6px); }
-.hero-figura__cap { padding: var(--space-4) var(--space-5) 0; font-size: 1rem; line-height: 1.5; color: var(--ink-low); }
-.hero-figura:not(.hero-figura--papel) .hero-figura__cap { color: var(--color-text-low); }
 
 /* ============ v3.0: tarjetas con campos fijos, filtros por movimiento, situaciones ============
    Lo que se repite en Superflux, Near Future Laboratory y Linked by Air: cada tarjeta
