@@ -121,7 +121,7 @@ Diferencias con la propuesta del brief: las colecciones son `CollectionPage` y n
 
 El `ScholarlyArticle` ya tiene: headline, alternativeHeadline, author (tres Person), datePublished, inLanguage, isPartOf, url, sameAs. **No tiene:** DOI, licencia, `citation`, abstract, keywords. En el HTML: cero menciones de DOI, ORCID, licencia o BibTeX, y ningún `<time>`.
 
-Lo que falta, en orden: DOI en Zenodo (gratis, requiere subir el PDF y da un DOI permanente); licencia declarada (CC BY 4.0 es lo habitual para documentos de trabajo); `license`, `abstract`, `keywords` y `citation` en el JSON-LD; bloque BibTeX copiable junto a la cita sugerida; abstract en inglés; `<time datetime="2026-08">` en la barra de metadatos.
+Lo que faltaría para que fuera citable por máquina: DOI en Zenodo, licencia declarada, `license`, `abstract`, `keywords` y `citation` en el JSON-LD, bloque BibTeX, abstract en inglés y `<time datetime>` en la barra de metadatos. **Decisión (2026-09-06): no se hace.** La tesis es un documento de trabajo y se cita con la cita sugerida de la página.
 
 ## 2.9 Arquitectura de URLs
 
@@ -200,7 +200,7 @@ Decisión: borrar los seis sin uso y los fallback PNG/JPG (ocho archivos, 2,9 MB
 3. Papel: borrar o conservar. Con eso se decide un tercio del CSS.
 4. Breakpoints: consolidar a tres.
 5. `--font-mono`: renombrar.
-6. Tesis: DOI y licencia.
+6. Tesis: DOI y licencia. **Descartado el 2026-09-06 por decisión de Nicolás**: la tesis se cita con la cita sugerida de la página, sin DOI.
 7. Filtros de Lo hecho: etiquetas por movimiento, o sin filtro.
 8. `/reporte-impacto/`: mover bajo `/proyectos/` o dejar.
 9. Imágenes: catorce archivos a borrar.
