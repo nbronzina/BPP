@@ -25,17 +25,18 @@ cierreCta: "Hablemos antes de esa decisión"
         </p>
     </section>
 
-    <!-- Hechos Section -->
-    <section id="actividades" class="section" aria-labelledby="actividades-content-heading">
-
-        <h2 id="actividades-content-heading" class="sr-only">Hechos</h2>
-
+    <!-- Casos: trabajo para un cliente, con ficha y fuentes -->
+    <section id="casos" class="section" aria-labelledby="casos-heading">
+        <div class="senales-header">
+            <h2 id="casos-heading" class="senales-title">Casos</h2>
+            <p class="hero-sub hero-sub--seccion">Trabajo para una organización, con ficha, fuentes y estado. Lo que no tiene fuente no se publica.</p>
+        </div>
 
         <div class="actividades-container">
-            <!-- Entrada 0: Trace Group -->
-            <article class="actividad-entrada" aria-label="Propuesta en curso para Trace Group: un informe de verificación de emisiones fechado en 2032 construido como prototipo diegético">
+            <article id="caso-trace-group" class="actividad-entrada" aria-label="Propuesta en curso para Trace Group: un informe de verificación de emisiones fechado en 2032 construido como prototipo diegético">
                 <div class="actividad-imagen">
                     <picture>
+                        <source srcset="/img/we-trace-login-mobile.webp" type="image/webp" media="(max-width: 600px)">
                         <source srcset="/img/we-trace-login.webp 1200w" type="image/webp">
                         <img src="/img/we-trace-login.webp" alt="Pantalla de ingreso de we.trace, la plataforma ficticia de verificación de emisiones construida como prototipo diegético para Trace Group" loading="lazy" decoding="async" width="1200" height="898">
                     </picture>
@@ -70,8 +71,56 @@ cierreCta: "Hablemos antes de esa decisión"
                     </a>
                 </div>
             </article>
-            <!-- Entrada 1: Cuando el artefacto piensa - ORT Uruguay -->
-            <article class="actividad-entrada" aria-label="Cuando el artefacto piensa - Clase invitada en ORT Uruguay sobre design fiction">
+
+            <article id="caso-natalidad" class="actividad-entrada" aria-label="Reporte sobre impacto de la caída de la natalidad en matrículas escolares">
+                <div class="actividad-imagen">
+                    <picture>
+                        <source srcset="/img/aula-vacia-mobile.webp" type="image/webp" media="(max-width: 600px)">
+                        <img src="/img/aula-vacia.webp" alt="Aula vacía de una escuela primaria de Buenos Aires, con sillas y pupitres en luz de tarde" width="1200" height="800" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+                <div class="actividad-texto">
+                    <div class="actividad-meta">
+                        <time class="actividad-fecha" datetime="2025-04">Abril 2025</time>
+                        <span class="actividad-separador"> · </span>
+                        <span class="actividad-tags">Educación · Análisis demográfico</span>
+                    </div>
+                    <h3>Impacto de la caída de la natalidad</h3>
+                    <p class="actividad-descripcion">
+                        Lo que la caída de la natalidad hace con la matrícula de un colegio, en tres escenarios y cuatro líneas de trabajo.
+                    </p>
+                    <dl class="actividad-datos">
+                        <div class="actividad-dato"><dt>Contexto</dt><dd>Colegio de la Ciudad de Buenos Aires</dd></div>
+                        <div class="actividad-dato"><dt>Estado</dt><dd>Entregado, 2025</dd></div>
+                        <div class="actividad-dato"><dt>Lectura</dt><dd>11 min</dd></div>
+                    </dl>
+                    <ul class="actividad-entregables" aria-label="Entregables">
+                        <li>Ficha del caso con fuentes oficiales</li>
+                        <li>Tres escenarios de matrícula</li>
+                        <li>Estudio demográfico regional, Areco y Giles</li>
+                        <li>Cuatro líneas de trabajo recomendadas</li>
+                    </ul>
+                    <a
+                      href="/proyectos/natalidad/"
+                      class="cta-link"
+                      aria-label="Ir al reporte completo sobre el impacto de la caída de la natalidad en las matrículas escolares"
+                    >
+                        Ver proyecto
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Docencia y jornadas: donde probamos el método en público -->
+    <section id="docencia" class="section" aria-labelledby="docencia-heading">
+        <div class="senales-header">
+            <h2 id="docencia-heading" class="senales-title">Docencia y jornadas</h2>
+            <p class="hero-sub hero-sub--seccion">Clases, workshops y encuentros donde el método se prueba en público antes de llegar a un cliente.</p>
+        </div>
+
+        <div class="actividades-container">
+            <article id="docencia-ort" class="actividad-entrada" aria-label="Cuando el artefacto piensa - Clase invitada en ORT Uruguay sobre design fiction">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="/img/cuando-artefacto-piensa-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -105,8 +154,7 @@ cierreCta: "Hablemos antes de esa decisión"
                 </div>
             </article>
 
-            <!-- Entrada 1: Otros Futuros - IED Madrid -->
-            <article class="actividad-entrada" aria-label="Otros Futuros - Tutor invitado en defensa de proyecto IED Madrid">
+            <article id="docencia-ied-defensa" class="actividad-entrada" aria-label="Otros Futuros - Tutor invitado en defensa de proyecto IED Madrid">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="/img/otros-futuros-ied-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -140,11 +188,10 @@ cierreCta: "Hablemos antes de esa decisión"
                 </div>
             </article>
 
-
-            <!-- Entrada 3: Inhabiting the Future -->
-            <article class="actividad-entrada" aria-label="Charla outdoor Inhabiting the Future sobre adaptación climática en Matadero Madrid">
+            <article id="docencia-matadero" class="actividad-entrada" aria-label="Charla outdoor Inhabiting the Future sobre adaptación climática en Matadero Madrid">
                 <div class="actividad-imagen">
                     <picture>
+                        <source srcset="/img/inhabiting-future-mobile.webp" type="image/webp" media="(max-width: 600px)">
                         <source srcset="/img/inhabiting-future.webp 1200w" type="image/webp">
                         <img src="/img/inhabiting-future.webp" alt="Charla outdoor Inhabiting the Future - Matadero Madrid" width="1536" height="1152" loading="lazy" decoding="async">
                     </picture>
@@ -175,8 +222,7 @@ cierreCta: "Hablemos antes de esa decisión"
                 </div>
             </article>
 
-            <!-- Entrada 4: LATAM 2036 -->
-            <article class="actividad-entrada" aria-label="Workshop LATAM·2036 sobre diseño de futuros desde la fuga">
+            <article id="docencia-ied-workshop" class="actividad-entrada" aria-label="Workshop LATAM·2036 sobre diseño de futuros desde la fuga">
                 <div class="actividad-imagen">
                     <picture>
                         <source srcset="/img/workshop-latam2036-mobile.webp" type="image/webp" media="(max-width: 600px)">
@@ -210,11 +256,10 @@ cierreCta: "Hablemos antes de esa decisión"
                 </div>
             </article>
 
-
-            <!-- Entrada 6: CESBA -->
-            <article class="actividad-entrada" aria-label="Jornada de diseño de futuros para la gestión pública en CESBA">
+            <article id="docencia-cesba" class="actividad-entrada" aria-label="Jornada de diseño de futuros para la gestión pública en CESBA">
                 <div class="actividad-imagen">
                     <picture>
+                        <source srcset="/img/JornadaCESBA-mobile.webp" type="image/webp" media="(max-width: 600px)">
                         <source srcset="/img/JornadaCESBA-480.webp 480w, /img/JornadaCESBA-800.webp 800w, /img/JornadaCESBA-1200.webp 1200w, /img/JornadaCESBA-opt.webp 1200w" type="image/webp">
                         <img src="/img/JornadaCESBA-opt.webp" alt="Jornada de diseño de futuros en CESBA Buenos Aires con panel de expertos en prospectiva estratégica y gestión pública" width="1067" height="764" loading="lazy" decoding="async">
                     </picture>
@@ -257,10 +302,10 @@ cierreCta: "Hablemos antes de esa decisión"
                 </div>
             </article>
 
-            <!-- Entrada 8: UDIT -->
-            <article class="actividad-entrada" aria-label="Jornada sobre inteligencia artificial para diseñadores UX en UDIT Madrid">
+            <article id="docencia-udit" class="actividad-entrada" aria-label="Jornada sobre inteligencia artificial para diseñadores UX en UDIT Madrid">
                 <div class="actividad-imagen">
                     <picture>
+                        <source srcset="/img/masterclass-ia-udit-mobile.webp" type="image/webp" media="(max-width: 600px)">
                         <source srcset="/img/masterclass-ia-udit.webp 1200w" type="image/webp">
                         <img src="/img/masterclass-ia-udit.webp" alt="Masterclass IA para diseñadores UX en UDIT Madrid con Nicolás Bronzina, Fabien Girardin y Rohit Gupta" width="1199" height="675" loading="lazy" decoding="async">
                     </picture>
@@ -287,42 +332,6 @@ cierreCta: "Hablemos antes de esa decisión"
                       aria-label="Abrir artículo sobre la jornada de IA para diseñadores UX en UDIT Madrid (nueva pestaña)"
                     >
                         Leer más
-                    </a>
-                </div>
-            </article>
-
-            <!-- Entrada 9: Reporte Natalidad -->
-            <article class="actividad-entrada" aria-label="Reporte sobre impacto de la caída de la natalidad en matrículas escolares">
-                <div class="actividad-imagen">
-                    <img src="/img/aula-vacia.webp" alt="Aula vacía de una escuela primaria de Buenos Aires, con sillas y pupitres en luz de tarde" width="1200" height="800" loading="lazy" decoding="async">
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2025-04">Abril 2025</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Educación · Análisis demográfico</span>
-                    </div>
-                    <h3>Impacto de la caída de la natalidad</h3>
-                    <p class="actividad-descripcion">
-                        Lo que la caída de la natalidad hace con la matrícula de un colegio, en tres escenarios y cuatro líneas de trabajo.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Colegio de la Ciudad de Buenos Aires</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Entregado, 2025</dd></div>
-                        <div class="actividad-dato"><dt>Lectura</dt><dd>11 min</dd></div>
-                    </dl>
-                    <ul class="actividad-entregables" aria-label="Entregables">
-                        <li>Ficha del caso con fuentes oficiales</li>
-                        <li>Tres escenarios de matrícula</li>
-                        <li>Estudio demográfico regional, Areco y Giles</li>
-                        <li>Cuatro líneas de trabajo recomendadas</li>
-                    </ul>
-                    <a
-                      href="/proyectos/natalidad/"
-                      class="cta-link"
-                      aria-label="Ir al reporte completo sobre el impacto de la caída de la natalidad en las matrículas escolares"
-                    >
-                        Ver proyecto
                     </a>
                 </div>
             </article>
