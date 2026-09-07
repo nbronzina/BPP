@@ -4259,24 +4259,6 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     color: var(--color-text);
     opacity: 0.85;
 }
-/* Entregables: solo en escritorio, como en Linked by Air. En móvil la tarjeta ya es larga. */
-.actividad-entregables {
-    display: none;
-    list-style: none;
-    margin: var(--space-4) 0 0;
-    padding: 0;
-    font-size: 0.9375rem;
-    line-height: 1.45;
-    color: var(--color-text-low);
-}
-.actividad-entregables li {
-    border-top: 1px solid rgba(250, 248, 246, 0.08);
-    padding: var(--space-2) 0;
-}
-.actividad-entregables li:last-child { border-bottom: 1px solid rgba(250, 248, 246, 0.08); }
-@media (min-width: 1025px) {
-    .actividad-entregables { display: block; }
-}
 .actividad-entrada .cta-link { margin-top: var(--space-4); }
 .actividad-ctas { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); }
 .tesis-card__datos { margin: 0 0 var(--space-5); }
