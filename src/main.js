@@ -276,23 +276,6 @@ document.addEventListener("DOMContentLoaded", function () {
     cta.addEventListener('click', trackCTAClick);
   });
 
-  const linkCesba = document.getElementById("linkCesba");
-  if (linkCesba) {
-    linkCesba.addEventListener("click", () => {
-      trackEvent("Actividad_click", { tipo: "externo", destino: "CESBA" });
-    });
-  }
-
-  const linkReporteNatalidad = document.getElementById("linkReporteNatalidad");
-  if (linkReporteNatalidad) {
-    linkReporteNatalidad.addEventListener("click", () => {
-      trackEvent("Actividad_click", {
-        tipo: "interno",
-        destino: "reporte_impacto_natalidad",
-      });
-    });
-  }
-
   // Contacto directo: un click en cualquier mailto cuenta como conversación iniciada
   document.addEventListener("click", (e) => {
     const a = e.target.closest('a[href^="mailto:"]');
@@ -302,31 +285,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // =====================================================
-  // BLOQUE PÁGINA DE PRIVACIDAD (legal-page)
+  // BLOQUE CASOS LARGOS (reporte-page)
   // -----------------------------------------------------
-  // Eventos de tracking específicos para la política de
-  // privacidad: vista de página y clic en mail de contacto.
+  // Profundidad de lectura y secciones vistas.
   // =====================================================
-
-  if (body.classList.contains("legal-page")) {
-    window.addEventListener("load", function () {
-      trackEvent("Pagina_privacidad_vista");
-    });
-
-    const privacyEmailLink = document.getElementById("privacyEmailLink");
-    if (privacyEmailLink) {
-      privacyEmailLink.addEventListener("click", function () {
-        trackEvent("Privacidad_contacto_click");
-      });
-    }
-  }
-
-  // =====================================================
-  // BLOQUE REPORTE DE IMPACTO (reporte-page)
-  // -----------------------------------------------------
-  // Trackea qué secciones del reporte se vieron y las
-  // descargas de PDFs asociados.
-// =====================================================
 
   if (body.classList.contains("reporte-page")) {
     // Profundidad de lectura: un caso leído hasta el 75 % es la segunda
@@ -368,48 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
       reporteSections.forEach((sec) => sectionObserver.observe(sec));
     }
 
-    // Tracking descargas de PDFs
-    const downloadInformePrincipal = document.getElementById(
-      "downloadInformePrincipal"
-    );
-    if (downloadInformePrincipal) {
-      downloadInformePrincipal.addEventListener("click", () => {
-        trackEvent("PDF_descarga", { tipo: "reporte_principal" });
-      });
-    }
-
-    const downloadEstudioRegional = document.getElementById(
-      "downloadEstudioRegional"
-    );
-    if (downloadEstudioRegional) {
-      downloadEstudioRegional.addEventListener("click", () => {
-        trackEvent("PDF_descarga", { tipo: "estudio_regional" });
-      });
-    }
-
-    // =====================================================
-    // OPTIMIZACIONES REPORTE DE IMPACTO
-    // -----------------------------------------------------
-    // Reading progress bar, sticky TOC, mobile TOC,
-    // scenario accordions, share buttons, sticky download bar
-    // =====================================================
-
-    // 1. Reading Progress Bar
-    const progressBar = document.getElementById("readingProgressBar");
-    if (progressBar) {
-      const updateProgressBar = () => {
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight - windowHeight;
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const progress = (scrollTop / documentHeight) * 100;
-        progressBar.style.width = progress + "%";
-      };
-
-      window.addEventListener("scroll", updateProgressBar);
-      updateProgressBar();
-    }
-
-    // 2. Sticky TOC (Desktop)
+    // Sticky TOC (escritorio) y botones de compartir
     const stickyToc = document.getElementById("stickyToc");
     const shareButtons = document.getElementById("shareButtons");
     if (stickyToc || shareButtons) {

@@ -1,32 +1,36 @@
 # BPP Analytics & Design
-## Convertimos la incertidumbre en decisiones que funcionan
+## Sociología aplicada: de señales débiles a decisiones con fundamentos
 
-> Consultora de diseño estratégico, análisis de futuros y comunicación para organismos públicos y empresas en Buenos Aires y Madrid.
+> Estudio de investigación, diseño de futuros, datos e IA y comunicación estratégica. Trabaja con quienes deciden en el sector público y en empresas, en Buenos Aires y Madrid. Cada cifra que publica lleva fuente.
 
-## Servicios principales
-- Diseño estratégico y prospectivo
-- Análisis de datos y futuros
-- Comunicación institucional
-- Investigación aplicada
+## Qué hace (cuatro movimientos)
+- Investigación exploratoria: rastreo de señales con fuente y año, escenarios, briefing para quien decide.
+- Diseño de futuros y prototipos: un objeto sobre la mesa antes de comprometer presupuesto.
+- Datos e IA aplicada: modelo de datos sobre las fuentes propias, tablero de indicadores, adopción de IA cuando la evidencia lo justifica.
+- Comunicación estratégica: el relato de una decisión antes de que lo escriban otros.
 
 ## Equipo
-- Nicolás Bronzina - Design Researcher (Sociólogo y Magíster en Diseño de Experiencia de Usuario especializado en diseño de futuros)
-- Sergio Petrocelli - Strategic Planning & Communication (Sociólogo especializado en comunicación estratégica institucional y branding corporativo)
-- Ezequiel Politi - Data & Strategy Analyst (Sociólogo especializado en análisis de datos, estrategia y gestión de proyectos)
+- Nicolás Bronzina: investigación y diseño de futuros.
+- Sergio Petrocelli: comunicación estratégica.
+- Ezequiel Politi: datos e IA.
+
+## Páginas
+- Inicio: https://www.bppanalyticsanddesign.com/
+- Lo hecho (casos, clases y jornadas): https://www.bppanalyticsanddesign.com/proyectos/
+- Provocación Trace Group (caso escrito como pregunta "¿Y si…?", fechado en 2032): https://www.bppanalyticsanddesign.com/proyectos/trace-group/
+- Caso natalidad y matrículas en la Ciudad de Buenos Aires: https://www.bppanalyticsanddesign.com/proyectos/natalidad/
+- Pensamiento (señales, artículos y tesis de La Usina): https://www.bppanalyticsanddesign.com/pensamiento/
+- Tesis 01, El actante siempre disponible (PDF): https://www.bppanalyticsanddesign.com/usina/tesis-01/
 
 ## Contacto
-Email: bppanalyticsanddesign@gmail.com
+Email: bppanalyticsanddesign@gmail.com (respuesta en 48 horas hábiles)
 LinkedIn: https://www.linkedin.com/company/103852773
 Instagram: https://instagram.com/bppanalyticsanddesign
-
-## Casos destacados
-Ver proyectos: https://www.bppanalyticsanddesign.com/proyectos/
-Ver reporte de impacto: https://www.bppanalyticsanddesign.com/proyectos/natalidad/
 
 ## Ubicaciones
 - Buenos Aires: Franklin 2190, Of. 4113
 - Madrid: C. de Pablo Vidal 4
 
 ---
-Permitido: Citar con atribución a BPP Analytics & Design
-No permitido: Reproducción sin atribución
+Permitido: citar con atribución a BPP Analytics & Design y enlace a la página de origen.
+No permitido: reproducción sin atribución.
