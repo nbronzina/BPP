@@ -16,8 +16,6 @@ export default function (eleventyConfig) {
     "favicon-16x16.png": "favicon-16x16.png",
     "favicon-32x32.png": "favicon-32x32.png",
     "apple-touch-icon.png": "apple-touch-icon.png",
-    "android-chrome-192x192.png": "android-chrome-192x192.png",
-    "android-chrome-512x512.png": "android-chrome-512x512.png",
     // Kill-switch del service worker retirado: borrar en 2027
     "sw.js": "sw.js",
     "sw.min.js": "sw.min.js",

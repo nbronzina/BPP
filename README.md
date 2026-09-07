@@ -7,7 +7,7 @@ Sitio del estudio: [bppanalyticsanddesign.com](https://www.bppanalyticsanddesign
 HTML plano generado con [Eleventy 3](https://www.11ty.dev/) (Nunjucks), CSS y JavaScript escritos a mano, sin frameworks en el navegador. Fuentes self-hosted, sin cookies, sin formularios ni servicios externos salvo Plausible para métricas agregadas.
 
 - Un layout base con head, nav y footer (`src/_includes/layouts/base.njk`).
-- Siete páginas como templates en `src/**/index.njk`, más una redirección estática en `src/usina/index.html`.
+- Ocho páginas y el 404 como templates en `src/**/index.njk` y `src/404.njk`, más dos redirecciones estáticas (`src/usina/index.html`, `src/reporte-impacto/index.html`).
 - Las señales existen una sola vez (`src/_includes/partials/senales-cards.njk`) y se incluyen donde hacen falta.
 - Política de seguridad estricta: `style-src 'self'`, sin estilos inline.
 
