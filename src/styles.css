@@ -3440,16 +3440,6 @@ img {
 
 }
 
-/* Variante contain: para portadas con texto (ej: Tesis 01 La Usina).
-   El fondo replica el de la portada para que el letterbox sea invisible. */
-.actividad-imagen--contain {
-  background: transparent;
-}
-
-.actividad-imagen--contain img {
-  object-fit: contain;
-}
-
 /* ============ v2.2: tipografía editorial + variable font ============ */
 
 /* Neutralizado por feedback de socios (2026-08-21): el contraste de pesos
