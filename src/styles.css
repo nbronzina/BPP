@@ -4526,3 +4526,14 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     .tachado--xl { width: 14ch; }
     .tachado--lg { width: 11ch; }
 }
+
+/* El hero de los casos no llevaba pie. En Gabinete Extemporáneo el pie hace trabajo
+   narrativo, así que se estila como el de .figura. */
+.hero-figura figcaption,
+.page-lectura main .hero-figura figcaption {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-low);
+    margin-top: var(--space-3);
+}
