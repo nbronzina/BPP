@@ -4388,3 +4388,141 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
 @media (min-width: 769px) {
     .hero-brand-header { padding: var(--space-8) 2rem; }
 }
+
+/* =========================
+   Documentos del sistema (caso Gabinete Extemporáneo)
+   -------------------------
+   Piezas de papel de la instalación, reproducidas como texto en vez de
+   fotografiadas: el caso no puede mostrar el artefacto sin arruinarlo para
+   la próxima cohorte. Lo que no se puede contar va cubierto por .tachado,
+   que son spans vacíos: el texto oculto no existe en el DOM, no se copia
+   ni se lee con un lector de pantalla.
+   La CSP del sitio es style-src 'self': nada de esto puede ir inline.
+   ========================= */
+
+.documento {
+    position: relative;
+    background: var(--paper);
+    border-radius: var(--border-radius);
+    padding: var(--space-6);
+    margin: var(--space-8) 0;
+    max-width: 34rem;
+}
+
+/* El cuerpo del documento va en Plus Jakarta Sans aunque la página sea
+   .page-lectura: es un impreso administrativo, no prosa. Especificidad alta
+   a propósito, para ganarle a la regla de Literata de .page-lectura. */
+.page-lectura main .reporte-section .documento :is(p, li) {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #26221f;
+    max-width: none;
+    margin-bottom: var(--space-3);
+}
+
+.reporte-section .documento :is(p, li) {
+    color: #26221f;
+}
+
+.documento > :last-child { margin-bottom: 0; }
+
+.documento strong { color: #14110f; font-weight: 700; }
+
+.reporte-section .documento .documento__tipo {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8a4b31;
+    margin-bottom: var(--space-4);
+}
+
+.reporte-section .documento .documento__subtipo {
+    font-weight: 700;
+    color: #14110f;
+    margin-top: calc(var(--space-3) * -1 + var(--space-1));
+}
+
+.reporte-section .documento .documento__asunto {
+    font-weight: 700;
+    color: #14110f;
+}
+
+.reporte-section .documento .documento__campos {
+    line-height: 2;
+    color: #45403b;
+}
+
+/* Barra de tachado. Span vacío: no hay texto debajo que se pueda revelar. */
+.tachado {
+    display: inline-block;
+    height: 0.95em;
+    vertical-align: -0.12em;
+    background: #26221f;
+    border-radius: 1px;
+}
+
+.tachado--xs { width: 3.5ch; }
+.tachado--sm { width: 7ch; }
+.tachado--md { width: 11ch; }
+.tachado--lg { width: 16ch; }
+.tachado--xl { width: 22ch; }
+
+/* Renglón en blanco de la hoja de la sala de espera. */
+.documento__linea {
+    border-bottom: 1px solid #bdb2a4;
+    height: var(--space-8);
+    margin-bottom: var(--space-4);
+}
+
+/* Sello ARCHIVADO del documento de incorporación. */
+.documento--sellado { padding-top: var(--space-10); }
+
+.reporte-section .documento .documento__sello {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--space-5);
+    margin: 0;
+    padding: var(--space-1) var(--space-3);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #9c4f34;
+    border: 2px solid #9c4f34;
+    border-radius: var(--space-1);
+    opacity: 0.75;
+    transform: rotate(-6deg);
+}
+
+/* Credencial: el rol tapado y el año legible. Es el orden en que los lee
+   el participante, y el único dato que la página puede dar. */
+.documento--credencial { max-width: 22rem; text-align: center; }
+
+.reporte-section .documento .documento__rol {
+    margin: var(--space-5) 0 var(--space-2);
+}
+
+.reporte-section .documento .documento__anio {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: #14110f;
+    margin-bottom: var(--space-5);
+}
+
+.documento--credencial .documento__campos {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: #6b635b;
+}
+
+.documento--a5 { max-width: 26rem; }
+
+@media (max-width: 600px) {
+    .documento { padding: var(--space-5); }
+    .tachado--xl { width: 14ch; }
+    .tachado--lg { width: 11ch; }
+}
