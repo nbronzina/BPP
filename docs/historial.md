@@ -44,6 +44,6 @@ Dos eventos en Plausible: `Contacto_mail` (conversación iniciada) y `Caso_leido
 
 ## Pendientes conocidos
 
-- Archivos vectoriales de Olam Estudio y Manifiesto para la pared de logos.
+- Archivo vectorial de Olam Estudio para la pared de logos.
 - Un caso con IA real para que el servicio "Datos e IA" tenga con qué sostenerse.
 - Extraer artículos y equipo a datos de Eleventy para que existan una sola vez.

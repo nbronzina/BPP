@@ -3248,10 +3248,14 @@ img {
   transition: opacity 0.3s ease;
 }
 /* Marcas cuadradas: más altas que los wordmarks para que no queden chicas al lado */
-.logo-item img[src*="olamestudio"],
-.logo-item img[src*="manifiesto-bar"] {
+.logo-item img[src*="olamestudio"] {
   height: 64px;
   max-width: 64px;
+}
+/* Speculative Futures Madrid: isotipo + tres líneas de texto. A la altura de un
+   wordmark el texto no se lee; en mobile lo limita el ancho de la celda. */
+.logo-item img[src*="speculative-futures-madrid"] {
+  height: 54px;
 }
 .logo-item img[src*="logo-cesba"] {
   height: 68px;
@@ -3265,8 +3269,8 @@ img {
 @media (min-width: 769px) {
   .trust-section { padding-left: var(--space-24); padding-right: var(--space-24); }
   .logo-item img { height: 46px; }
-  .logo-item img[src*="olamestudio"],
-  .logo-item img[src*="manifiesto-bar"] { height: 84px; max-width: 84px; }
+  .logo-item img[src*="olamestudio"] { height: 84px; max-width: 84px; }
+  .logo-item img[src*="speculative-futures-madrid"] { height: 80px; }
   .logo-item img[src*="logo-cesba"] { height: 88px; max-width: 88px; }
   .logo-item img[src*="trace-logo"],
   .logo-item img[src*="micelio"],
@@ -3860,7 +3864,7 @@ html {
     }
 }
 
-/* Logos tipo ícono (cuadrados: CESBA, Olam, Manifiesto): a igual altura
+/* Logos tipo ícono (cuadrados: CESBA, Olam): a igual altura
    que un wordmark ocupan un cuarto de su superficie visual. Se compensa
    con ~1.5x de altura para igualar el peso óptico. */
  /* Wordmarks con tipografía chica en su lockup (ITBA Escuela de
