@@ -2,6 +2,6 @@
   "name": "BPP Analytics & Design",
   "url": "https://www.bppanalyticsanddesign.com",
   "email": "bppanalyticsanddesign@gmail.com",
-  "ogImage": "https://www.bppanalyticsanddesign.com/img/og-image.jpg?v=2",
+  "ogImage": "https://www.bppanalyticsanddesign.com/img/og-image.jpg?v=3",
   "csp": "default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'self';"
 }

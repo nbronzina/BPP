@@ -54,7 +54,7 @@
 {% if jsonld %}{% include jsonld %}{% endif -%}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
-    <a href="#main-content" class="skip-link" aria-label="Saltar navegación e ir directamente al contenido principal">Saltar al contenido principal</a>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 {% include "partials/nav.njk" %}
 {{ content | safe }}
 {% include "partials/footer.njk" %}

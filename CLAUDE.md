@@ -161,7 +161,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 - Las páginas de caso declaran además `indice` y `compartir`: de ahí salen el índice pegajoso, el índice móvil y los botones de compartir (`partials/caso-nav.njk`). No se copia ese bloque.
 - El cierre (`partials/cierre.njk`) sale de `cierreTitulo`, `cierreTexto` (opcional), `cierreCta` y `cierreAsunto` (asunto del mail, default "Hablemos"). Los casos y la tesis incluyen después `partials/seguir-leyendo.njk`, que tiene adentro la lista de piezas largas: si se suma un caso, se suma ahí.
 - Rutas siempre absolutas desde la raíz (`/img/…`, `/proyectos/`), nunca `../`.
-- Las señales existen una sola vez: `partials/senales-cards.njk`, incluido en index y Pensamiento.
+- Las señales existen una sola vez: `partials/senales-cards.njk`, incluido en Pensamiento (el inicio no tiene radar de señales desde septiembre).
 - `usina/index.html` es una redirección estática; no lleva layout.
 
 ### Build (`package.json`)
@@ -187,7 +187,7 @@ npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS m
 - **Hablemos**: `.nav-cta`, afuera de la lista y a la vista en todas las páginas, también en el teléfono. La página actual se marca con subrayado; solo la página exacta (`aria-current="page"`) deja de ser clicable
 - **Accessibility**: ARIA labels, keyboard navigation (Escape to close). El menú móvil cerrado queda con `visibility: hidden` (no recibe foco). En el inicio el nav escondido aparece si recibe el foco (`nav:focus-within`) o si no hay JS (`@media (scripting: none)`)
 - **Smooth scroll**: Internal anchor links (`#servicios`, `#nosotros`, etc.). El foco va al destino: así funciona "Saltar al contenido principal"
-- **aria-label**: si un enlace lo lleva, empieza por el texto visible ("Leer más: …"). WCAG 2.5.3
+- **aria-label**: si un enlace lo lleva, empieza por el texto visible ("Leer en Medium: …"). WCAG 2.5.3. Los enlaces dicen adónde llevan ("Leer el caso", "Leer en LinkedIn"), nunca "Leer más"
 
 ### Forms
 - **Contacto directo**: bloque `.contact-direct` en `#contact` con `mailto:`; no hay formulario. El CTA de cada cierre también abre el mail, con el asunto de la página (`cierreAsunto`). La dirección vive en `site.email`

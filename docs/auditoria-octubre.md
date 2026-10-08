@@ -6,7 +6,7 @@ Cómo se midió: Chromium 141 sin interfaz (el motor de Chrome y Edge), Lighthou
 
 Cuando todas las decisiones estén tomadas, este archivo se retira como se retiró `auditoria-fase2.md`: queda en git.
 
-**Estado al 8 de octubre:** los puntos 1 a 5 están resueltos y aplicados ("Cambiar 1, corregir 2, arreglar 3, eliminar 4, fijar 5"). El 10 se descartó el mismo día, cuando se sacó Plausible ("Eliminar, sacar, plausible"): el sitio ya no mide visitas. Quedan abiertos 6 a 9 y 11.
+**Estado al 8 de octubre:** los puntos 1 a 5 están resueltos y aplicados ("Cambiar 1, corregir 2, arreglar 3, eliminar 4, fijar 5"). El 10 se descartó el mismo día, cuando se sacó Plausible ("Eliminar, sacar, plausible"): el sitio ya no mide visitas. Los textos del 6 se aplicaron con la pasada de copy; del 6 quedan las imágenes y una decisión. Quedan abiertos 7 a 9 y 11.
 
 ## Orden sugerido
 
@@ -17,7 +17,7 @@ Cuando todas las decisiones estén tomadas, este archivo se retira como se retir
 | 3 | Teclado y accesibilidad | El enlace de salto no salta; CLAUDE.md promete WCAG 2.1 AA | Unas 30 líneas | Aplicado |
 | 4 | El fundido de página | Las herramientas de auditoría no ven el inicio | Una regla de CSS | Aplicado |
 | 5 | Literata más liviana | Hasta 98 KB menos en las páginas de lectura | Dos archivos de fuente | Aplicado |
-| 6 | Lo que se ve al compartir y lo que leen los buscadores | El inicio se comparte con el copy anterior | Textos e imágenes | Abierto |
+| 6 | Lo que se ve al compartir y lo que leen los buscadores | El inicio se comparte con el copy anterior | Textos e imágenes | Textos aplicados; quedan imágenes |
 | 7 | Las tarjetas, en un solo lugar | Ya no coinciden entre el inicio y los listados | Medio día | Abierto |
 | 8 | Que Vercel corra el chequeo | Se perdió al salir de GitHub Actions | Un archivo | Abierto |
 | 9 | Contenido propio en el dominio | Doce de doce textos y clases enlazan afuera | Trabajo editorial | Abierto |
@@ -155,6 +155,8 @@ Resuelto el 8 de octubre: aplicado, con nombres nuevos (`literata-latin-opsz19.w
 - Dos enlaces de Pensamiento a LinkedIn llevan `?trackingId=…` ("Por qué los algoritmos no bastan…" y "El Branding como fenómeno social…").
 
 Decisión: aprobar los textos nuevos, elegir las tres imágenes y decidir si el JSON-LD nombra a QuintoAndar y San Andrés.
+
+Resuelto en parte el 8 de octubre, con la pasada de copy: `og:description`, descripción de la organización, cargos, catálogo de servicios y `serviceType` del JSON-LD iguales a la página; YouTube en `sameAs`; `dateModified` de los casos tomado del `sitemap.lastmod`; el `<title>` de Lo hecho suma "casos, clases y jornadas"; las descripciones quedan en 160 caracteres o menos; los enlaces de Pensamiento sin `?trackingId`. Quedan las imágenes al compartir de Trace Group, Natalidad y la tesis, y decidir si el JSON-LD nombra a QuintoAndar y San Andrés (hoy sí).
 
 ## 7. Las tarjetas, en un solo lugar
 
