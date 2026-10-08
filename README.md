@@ -1,6 +1,6 @@
 # BPP Analytics & Design
 
-Sitio del estudio: [bppanalyticsanddesign.com](https://www.bppanalyticsanddesign.com/). Sociología aplicada a decisiones sobre lo que todavía no pasó. Buenos Aires y Madrid.
+Sitio del estudio: [bppanalyticsanddesign.com](https://www.bppanalyticsanddesign.com/). Sociología aplicada: leemos señales débiles y decidís con fundamento. Buenos Aires y Madrid.
 
 ## Cómo está hecho
 
