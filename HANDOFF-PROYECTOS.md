@@ -6,7 +6,7 @@ Una página de proyecto es una carpeta `src/proyectos/<slug>/` con un único `in
 
 > **Desactualizado en parte (8 de octubre de 2026).** Este documento es una foto del commit `39e75b8`. Desde entonces cambió lo siguiente, y los bloques de código de abajo no lo reflejan:
 >
-> - La publicación es por Vercel al mergear en la rama por defecto. No hay GitHub Pages ni Actions.
+> - La publicación es por Vercel al mergear en la rama por defecto. GitHub Pages no publica nada y el repo no tiene workflows propios.
 > - `scripts/check-site.mjs` ya no corre en CI ni lleva una lista de páginas: recorre `_site/`. Se corre a mano con `npm run check`.
 > - `sitemap.xml` se genera. Cada página declara `sitemap: { lastmod, priority, changefreq }` en su front matter.
 > - El índice pegajoso, el índice móvil y los botones de compartir de un caso salen de `partials/caso-nav.njk` y del front matter (`indice`, `compartir`). Ese bloque ya no se copia en cada página.

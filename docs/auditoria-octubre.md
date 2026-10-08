@@ -2,7 +2,7 @@
 
 Fecha: 8 de octubre de 2026. Medido sobre el build de esta rama, que a la vista es idéntico a producción (`99f266f`): estilos computados de nueve páginas en catorce anchos, estados de hover y foco, capturas y una traza de comportamiento, sin una sola diferencia. Lo que se podía optimizar sin cambiar lo que se ve ni lo que se dice ya está hecho en el mismo PR que trae este archivo. Lo que queda cambia algo visible, algo que se dice o algo que se mide, así que cada punto termina en una decisión de Nicolás.
 
-Cómo se midió: Chromium 141 sin interfaz (el motor de Chrome y Edge), Lighthouse 12.8 y axe-core 4.14, con el sitio servido en local con compresión y caché como las sirve Vercel. "4G lenta" es la de Lighthouse: 150 ms de latencia, 1,6 Mbps y la CPU cuatro veces más lenta. No se pudo medir: producción (PageSpeed respondió 429 desde este entorno), los previews de Vercel (piden login) y Safari.
+Cómo se midió: Chromium 141 sin interfaz (el motor de Chrome y Edge), Lighthouse 12.8 y axe-core 4.14, con el sitio servido en local con compresión y caché como las sirve Vercel. "4G lenta" es la de Lighthouse: 150 ms de latencia, 1,6 Mbps y la CPU cuatro veces más lenta. No se pudo medir: producción (PageSpeed respondió 429 desde este entorno), los previews de Vercel (piden login) y Safari. KB son 1000 bytes.
 
 Cuando todas las decisiones estén tomadas, este archivo se retira como se retiró `auditoria-fase2.md`: queda en git.
 
@@ -14,7 +14,7 @@ Cuando todas las decisiones estén tomadas, este archivo se retira como se retir
 | 2 | `Contacto_mail` cuenta cosas que no son conversaciones | Infla la métrica que más importa | Una línea de JS |
 | 3 | Teclado y accesibilidad | El enlace de salto no salta; CLAUDE.md promete WCAG 2.1 AA | Unas 30 líneas |
 | 4 | El fundido de página | Las herramientas de auditoría no ven el inicio | Una regla de CSS |
-| 5 | Literata más liviana | Hasta 96 KB menos en las páginas de lectura | Dos archivos de fuente |
+| 5 | Literata más liviana | Hasta 98 KB menos en las páginas de lectura | Dos archivos de fuente |
 | 6 | Lo que se ve al compartir y lo que leen los buscadores | El inicio se comparte con el copy anterior | Textos e imágenes |
 | 7 | Las tarjetas, en un solo lugar | Ya no coinciden entre el inicio y los listados | Medio día |
 | 8 | Que Vercel corra el chequeo | Se perdió al salir de GitHub Actions | Un archivo |
@@ -72,7 +72,7 @@ Además, axe-core (todas sus reglas, WCAG 2.1 A y AA) encuentra tres fallos:
 | Criterio | Dónde | Qué pasa | Arreglo |
 |---|---|---|---|
 | 2.5.3 Etiqueta en el nombre (A) | 25 enlaces: los "Leer más" y "Ver proyecto" de las tarjetas, "Ver pensamiento" y "Ver lo hecho" del inicio, y el CTA de cierre de Lo hecho, Pensamiento y la tesis | El `aria-label` no contiene el texto visible: quien navega por voz dice "Leer más" y no pasa nada. `cierre.njk` fija `aria-label="Escribinos"` aunque el enlace diga "Hablemos" | `aria-label` que empiece por el texto visible; en el cierre, sacarlo |
-| 1.4.1 Uso del color (A) | 8 enlaces `.legal-link` en Privacidad y en la 404 | Sin subrayado, y contra el texto vecino 2,66:1 (pide 3:1) | Subrayarlos: `.legal-link { text-decoration: none }` pisa la regla que subraya |
+| 1.4.1 Uso del color (A) | 8 enlaces `.legal-link` en Privacidad y en la 404 | Sin subrayado, y contra el texto vecino 2,66:1 (pide 3:1) | Subrayarlos. Hoy lo impiden `.legal-page a` y `.legal-link`, las dos con `text-decoration: none` y más específicas que la regla que subraya los enlaces de la prosa (`main p a`) |
 | 1.4.3 Contraste (AA) | Las tres etiquetas `.actividad-category-badge` del inicio | 3,89:1 a 15 px (pide 4,5:1) | Fondo más oscuro o sin fondo. Es color: se decide a ojo |
 
 Decisión: sí o no por ítem. Se verifica con la misma traza de teclado y con axe.
@@ -123,10 +123,10 @@ Literata se usa en un solo tamaño, 19 px, con pesos 400 y 700 y su itálica (me
 
 | Página (primera visita, móvil) | Transferido hoy | Recortado | LCP Lighthouse hoy | Recortado |
 |---|---|---|---|---|
-| Trace Group | 227 KB | 180 KB | 2,4 s | 2,0 s |
-| Gabinete Extemporáneo | 351 KB | 255 KB | 2,8 s | 2,4 s |
-| Natalidad | 301 KB | 254 KB | 2,7 s | 2,6 s |
-| Tesis 01 | 283 KB | 187 KB | 2,4 s | 1,9 s |
+| Trace Group | 232 KB | 184 KB | 2,4 s | 2,0 s |
+| Gabinete Extemporáneo | 360 KB | 261 KB | 2,8 s | 2,4 s |
+| Natalidad | 308 KB | 260 KB | 2,7 s | 2,6 s |
+| Tesis 01 | 290 KB | 191 KB | 2,4 s | 1,9 s |
 
 Gabinete y la tesis bajan la itálica completa (88,8 KB) para un puñado de palabras: en Gabinete, "Learn" y "Uninvited Guests"; en la tesis, dos frases del resumen y el título dentro de la cita sugerida.
 
@@ -159,9 +159,9 @@ Decisión: aprobar los textos nuevos, elegir las tres imágenes y decidir si el 
 Hay 20 tarjetas: 5 en el inicio, 9 en Lo hecho, 6 en Pensamiento. Cuatro del inicio repiten tarjetas de los listados y ya no coinciden. Lo que eso produce hoy, a la vista:
 
 - En las tres tarjetas del inicio con etiqueta, el separador y los temas salen en blanco pleno; la fecha de al lado, al 65 %. Usan `.bpp-text-muted`, una clase sin CSS desde el 9 de junio.
-- Las tarjetas de Trace Group y Gabinete del inicio no tienen la imagen móvil: en un teléfono bajan 46,6 y 88,8 KB en lugar de los 17,2 y 21,0 KB que baja Lo hecho.
+- Las tarjetas de Trace Group y Gabinete del inicio no tienen la imagen móvil: en un teléfono bajan 47,8 y 90,9 KB en lugar de los 17,6 y 21,5 KB que baja Lo hecho.
 - Desde 1025 px el espacio entre tarjetas es de 40 px. La regla de 64 px pierde contra otra que viene después en el CSS.
-- En pantallas de densidad 1, cada tarjeta baja el archivo de 1440 a 1600 px para un hueco de unos 690. Recorriendo la página entera, de los 990 KB de imágenes de Lo hecho unos 765 son resolución que no se ve; en Pensamiento, 570 de 694; en el inicio, 615 de 779 (estimado: bytes × (1 − (necesario/real)²)). De las 16 imágenes de tarjeta, 9 ya tienen una versión de 800 px con el mismo encuadre y 1 ya es de 800: alcanza con el marcado. Las otras 6 necesitan una versión nueva.
+- En pantallas de densidad 1, cada tarjeta baja el archivo de 1440 a 1600 px para un hueco de unos 690. Recorriendo la página entera, de los 1014 KB de imágenes de Lo hecho unos 783 son resolución que no se ve; en Pensamiento, 585 de 710; en el inicio, 629 de 798 (estimado: bytes × (1 − (necesario/real)²)). De las 16 imágenes de tarjeta, 9 ya tienen una versión de 800 px con el mismo encuadre y 1 ya es de 800: alcanza con el marcado. Las otras 6 necesitan una versión nueva.
 - Las listas de los datos estructurados de Lo hecho y Pensamiento son una tercera copia, con nombres que ya difieren de los títulos.
 
 Propuesta: un archivo de datos con una entrada por pieza y una sola plantilla de tarjeta. El inicio elige por id; las listas del JSON-LD salen de los mismos datos. Es el pendiente de `historial.md`: "Extraer artículos y equipo a datos de Eleventy para que existan una sola vez". Sumar un caso pasaría a ser una entrada.
@@ -187,7 +187,7 @@ Decisión: sí o no a cada línea.
 
 ## 9. Contenido propio en el dominio
 
-Los seis artículos de Pensamiento enlazan a LinkedIn. Las seis clases y jornadas de Lo hecho enlazan afuera: cuatro a Medium, una a LinkedIn, una a cesba.gob.ar. La página de la tesis tiene 307 palabras; las 56 páginas están en el PDF. El texto largo propio del sitio son los tres casos (1075 a 2429 palabras) y el inicio.
+Los seis artículos de Pensamiento enlazan a LinkedIn. Las seis clases y jornadas de Lo hecho enlazan afuera: a Medium, a LinkedIn y a la nota del CESBA. La página de la tesis tiene 307 palabras; las 56 páginas están en el PDF. El texto largo propio del sitio son los tres casos (1075 a 2429 palabras) y el inicio.
 
 Quien busca un tema, y no el nombre del estudio, encuentra LinkedIn. Publicar los artículos en el sitio, con la página de lectura que ya existe (`.page-lectura`, Literata a 19 px), y usar LinkedIn para distribuir con un enlace de vuelta, cambia eso. La tesis en HTML sería la pieza más fuerte: es investigación propia y ya tiene cita sugerida.
 
@@ -195,7 +195,7 @@ Decisión: si se hace y con qué texto se empieza. Es trabajo editorial, no de c
 
 ## 10. Tres números de Plausible
 
-La primera pantalla del inicio, a 1440 × 900 y a 390 × 844, es el logo, el nombre y la bajada: sin nav (aparece al scrollear), sin CTA y sin indicio de que hay más abajo. La sección siguiente empieza 72 px por debajo del borde en escritorio y 40 px en el teléfono. Si eso cuesta visitas lo dice un número que ya existe:
+La primera pantalla del inicio, a 1440 × 900 y a 390 × 844, es el logo, el nombre y la bajada: sin nav (aparece al scrollear), sin CTA y sin indicio de que hay más abajo. El primer texto de la sección siguiente queda 72 px por debajo del borde en escritorio y 40 px en el teléfono. Si eso cuesta visitas lo dice un número que ya existe:
 
 1. De las visitas a `/`, cuántas mandan `Seccion_vista` con `id: services`: son las que pasaron la primera pantalla.
 2. `Contacto_mail` por fuente de tráfico, una vez arreglado el punto 2.
@@ -207,7 +207,7 @@ Decisión: mirar los tres números antes de tocar el inicio.
 
 ## 11. Menores
 
-- **Flechas.** El archivo de Plus Jakarta Sans es el subset latin de Google, idéntico byte a byte, y no trae → ni ← (sí ↑ y ↓). Las 16 → y la ← que se ven en el sitio las dibuja una fuente del sistema, distinta en cada dispositivo. Además, el JS que envuelve la flecha no encuentra la del CTA de cierre (el texto termina en espacios), y DESIGN.md pide "Usar `translateX(±4px)` en flechas de CTA para hover direccional": solo la flecha a la izquierda lo tiene.
+- **Flechas.** El archivo de Plus Jakarta Sans es el subset latin de Google, idéntico byte a byte, y no trae → ni ← (sí ↑ y ↓). Las 16 → y la ← de las páginas, más las del índice móvil de los casos, las dibuja una fuente del sistema, distinta en cada dispositivo. Además, el JS que envuelve la flecha no encuentra la del CTA de cierre (el texto termina en espacios), y DESIGN.md pide "Usar `translateX(±4px)` en flechas de CTA para hover direccional": solo la flecha a la izquierda lo tiene.
 - **DESIGN.md se contradice, o contradice al código, en ocho puntos.** Como es la fuente de verdad que cualquier agente lee antes de tocar estilos, cada contradicción es una instrucción doble:
 
   | Tema | Una parte dice | Otra parte dice | El código hace |

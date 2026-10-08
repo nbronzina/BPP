@@ -16,7 +16,7 @@ HTML plano generado con [Eleventy 3](https://www.11ty.dev/) (Nunjucks), CSS y Ja
 
 ```bash
 npm ci            # una vez
-npm run check     # genera _site/ y corre el chequeo (estructura, enlaces y anclas internas, imágenes, JSON-LD, sitemap)
+npm run check     # genera _site/ desde cero y corre el chequeo (estructura, enlaces y anclas internas, imágenes, JSON-LD, sitemap)
 python3 -m http.server 8000 --directory _site
 ```
 

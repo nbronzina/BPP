@@ -122,8 +122,9 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 │   ├── _includes/partials/             # nav, footer, cierre, caso-nav, senales-cards
 │   ├── _includes/jsonld/<pagina>.njk   # JSON-LD por página
 │   ├── _data/site.json                 # nombre, URL, CSP, dominio Plausible
-│   ├── index.njk, proyectos/ (+ trace-group/, gabinete-extemporaneo/, natalidad/), pensamiento/, privacidad/, usina/tesis-01/
+│   ├── index.njk, proyectos/ (+ trace-group/, gabinete-extemporaneo/, natalidad/), pensamiento/, privacidad/, usina/tesis-01/, 404.njk
 │   ├── usina/index.html                # redirección a /pensamiento/#tesis (no se procesa)
+│   ├── reporte-impacto/index.html      # redirección a /proyectos/natalidad/ (no se procesa)
 │   ├── sitemap.njk                     # genera sitemap.xml con las páginas que declaran `sitemap:`
 │   ├── styles.css                      # CSS fuente (editar este)
 │   └── main.js                         # JS fuente (editar este)
@@ -165,7 +166,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ### Build (`package.json`)
 ```bash
 npm run build   # eleventy + csso + terser → _site/
-npm run check   # build + scripts/check-site.mjs (estructura de cada página, enlaces y anclas internas, imágenes, JSON-LD, sitemap)
+npm run check   # borra _site/, build y scripts/check-site.mjs (estructura de cada página, enlaces y anclas internas, imágenes, JSON-LD, sitemap)
 npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS minificados al cambiar la fuente
 ```
 
