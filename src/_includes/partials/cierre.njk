@@ -1,14 +1,17 @@
-{#- Cierre de página: afirmación centrada + CTA tipográfico.
-    Variables (front matter): cierreTitulo, cierreTexto (opcional), cierreCta (texto del link, sin flecha), cierreHref (default /#contact).
+{#- Cierre de página: afirmación centrada + CTA tipográfico que abre el mail.
+    Variables (front matter): cierreTitulo, cierreTexto (opcional), cierreCta (texto del link, sin flecha),
+    cierreAsunto (asunto del mail; default "Hablemos"). Con el asunto, el mail dice de qué página viene,
+    y en Plausible el Contacto_mail lleva ubicacion "cierre" y la página.
     En Lo hecho y Pensamiento vive dentro de la última .section; en las páginas de caso va envuelto en su propia <section class="section cierre-section">. -#}
-        <div class="proyectos-cta">
+        <div class="proyectos-cta" data-ubicacion="cierre">
             <h3 id="cierre-heading" class="proyectos-cta-headline">{{ cierreTitulo }}</h3>
 {%- if cierreTexto %}
             <p class="proyectos-cta-text">{{ cierreTexto }}</p>
 {%- endif %}
             {#- Sin aria-label: el texto visible es el nombre del enlace (WCAG 2.5.3) y la flecha no se lee.
                 Texto y flecha van en un solo <span>: .cta-primary es flex y separaría la flecha con el gap. #}
-            <a href="{{ cierreHref or '/#contact' }}" class="cta-primary" data-preview="Te responde uno de nosotros tres en 48 horas hábiles">
+            <a href="mailto:{{ site.email }}?subject={{ (cierreAsunto or 'Hablemos') | urlencode }}" class="cta-primary" data-preview="Te responde uno de nosotros tres en 48 horas hábiles">
                 <span>{{ cierreCta }} <span aria-hidden="true">→</span></span>
             </a>
+            <p class="cierre-mail">{{ site.email }} {% include "partials/copiar-mail.njk" %}</p>
         </div>

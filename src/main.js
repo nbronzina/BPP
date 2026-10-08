@@ -277,15 +277,49 @@ document.addEventListener("DOMContentLoaded", function () {
     cta.addEventListener('click', trackCTAClick);
   });
 
+  // Dónde está un control de contacto: el data-ubicacion más cercano (el cierre de cada
+  // página dice "cierre"), o si no el id de su sección ("contact" en el inicio, "footer").
+  const ubicacionDe = (el) => {
+    const marcado = el.closest("[data-ubicacion]");
+    if (marcado) return marcado.dataset.ubicacion;
+    const section = el.closest("section, footer");
+    return section && section.id ? section.id : (section ? section.tagName.toLowerCase() : "desconocida");
+  };
+
   // Contacto directo: un click en un mail al estudio cuenta como conversación iniciada.
   // No cuentan el "compartir por email" de los casos (mailto sin destinatario) ni los mails
   // de Privacidad y de la 404 (.legal-link: datos personales, enlace roto).
   document.addEventListener("click", (e) => {
     const a = e.target.closest('a[href^="mailto:"]');
     if (!a || a.getAttribute("href").startsWith("mailto:?") || a.classList.contains("legal-link")) return;
-    const section = a.closest("section, footer");
-    trackEvent("Contacto_mail", { ubicacion: section && section.id ? section.id : (section ? section.tagName.toLowerCase() : "desconocida") });
+    trackEvent("Contacto_mail", { ubicacion: ubicacionDe(a) });
   });
+
+  // "Copiar dirección" (partials/copiar-mail.njk): aparece solo si el navegador puede copiar.
+  // Copiar es la otra forma de empezar la conversación: Contacto_copiar, con la misma ubicacion.
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    document.querySelectorAll(".copiar-mail").forEach((btn) => {
+      const aviso = btn.nextElementSibling;  // role="status": lo lee el lector de pantalla
+      const texto = btn.textContent;
+      let vuelta;
+      const avisar = (mensaje) => {
+        btn.textContent = mensaje;
+        if (aviso) aviso.textContent = mensaje;
+        clearTimeout(vuelta);
+        vuelta = setTimeout(() => {
+          btn.textContent = texto;
+          if (aviso) aviso.textContent = "";
+        }, 2500);
+      };
+      btn.hidden = false;
+      btn.addEventListener("click", () => {
+        navigator.clipboard.writeText(btn.dataset.copiar).then(() => {
+          avisar("Dirección copiada");
+          trackEvent("Contacto_copiar", { ubicacion: ubicacionDe(btn) });
+        }, () => avisar("No se pudo copiar"));
+      });
+    });
+  }
 
   // =====================================================
   // BLOQUE CASOS LARGOS (reporte-page)

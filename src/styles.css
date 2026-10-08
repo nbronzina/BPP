@@ -4213,3 +4213,74 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     color: var(--color-text-low);
     margin-top: var(--space-3);
 }
+
+/* ============ v3.3: contacto en un clic, lectura que sigue, índices y fichas en sistema ============
+   1. Cierre: el CTA abre el mail con el asunto de la página (antes llevaba a /#contact, otra
+      página y otro clic) y debajo queda la dirección con "Copiar dirección". En el teléfono
+      el CTA se centra como el resto del bloque (antes quedaba a la izquierda). */
+
+/* Solo para lectores de pantalla: fuera de la vista, dentro del árbol de accesibilidad. */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 1. Cierre y contacto */
+.proyectos-cta .cta-primary {
+    justify-content: center;
+    margin-bottom: 0;
+}
+.cierre-mail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: var(--space-4);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-mid);
+    overflow-wrap: anywhere;
+}
+/* "Copiar dirección": control secundario y tipográfico, sin caja (DESIGN.md). El acento queda
+   para el CTA; este toma el color del texto y pasa al acento con hover o foco. */
+.copiar-mail {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-mid);
+    background: transparent;
+    border: 0;
+    text-decoration: underline;
+    text-decoration-color: rgba(250, 248, 246, 0.3);
+    text-underline-offset: 4px;
+    cursor: pointer;
+    transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+.copiar-mail:hover,
+.copiar-mail:focus-visible {
+    color: var(--color-accent);
+    text-decoration-color: currentColor;
+}
+.copiar-mail:focus-visible {
+    outline: 2px solid var(--orange-500);
+    outline-offset: 2px;
+}
+.copiar-mail[hidden] { display: none; }
+/* En el contacto del inicio va en su propia línea, pegado al mail. */
+.contact-direct .copiar-mail { display: flex; }
+.contact-direct .copiar-mail[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) {
+    .copiar-mail { transition: none; }
+}
