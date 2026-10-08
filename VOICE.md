@@ -48,6 +48,7 @@ Adjetivos de superioridad sin evidencia ("innovador", "disruptivo", "único", "r
 Metáforas de navegación, viaje o construcción ("hoja de ruta", "puente", "pilares", "brújula").
 "Thoughtful founder voice" — el registro de LinkedIn que premia el algoritmo. BPP no es eso.
 El em-dash como recurso de remate ("hacemos X — y eso cambia todo"). Es la puntuación más delatora de texto generado por IA. Se permite solo en dos usos: par apareado que encierra un inciso real (—familia, amigos, instituciones—, sin espacios internos) y separador en títulos o etiquetas (Buenos Aires — Madrid). En prosa corriente se reemplaza por punto, dos puntos o coma, según lo que pida la oración.
+En la web, las comillas rectas ("así") o inglesas (“así”). Van las latinas, «así», y las inglesas solo para una cita dentro de otra. Cómo se cortan las líneas está en DESIGN.md, "Bandera".
 
 Principios operativos
 

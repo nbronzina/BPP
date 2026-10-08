@@ -4,7 +4,7 @@
 **Tech Stack**: HTML plano generado con Eleventy 3 (Nunjucks), CSS y JS a mano, sin frameworks en runtime. Sin PWA (retirada 2026-09).
 **Build**: `npm run build` → Eleventy genera `_site/`, csso y terser minifican. Los `.min` ya no se versionan.
 **Deploy**: Vercel, conectado al repo. Publica producción al mergear en la rama por defecto y arma un preview por cada otra rama. GitHub Pages y `deploy.yml` se retiraron (2026-10).
-**Last Updated**: 2026-10-08 (diseño v3)
+**Last Updated**: 2026-10-08 (diseño v3.1)
 
 ---
 
@@ -31,7 +31,7 @@ Sitio de BPP Analytics & Design: estudio de investigación, diseño de futuros, 
 - **Structured data**: JSON-LD por página (`src/_includes/jsonld/`): ProfessionalService y Organization en la home, CollectionPage con ItemList en Lo hecho y Pensamiento, CreativeWork, Report, ScholarlyArticle, PrivacyPolicy
 
 ### Pages
-- `index.html` - Homepage (nombre y frase, cuatro movimientos, Hechos con los tres casos, Pensamiento en filas, nosotros con equipo y clientes, cuándo escribirnos y contacto)
+- `index.html` - Homepage (logo grande a la izquierda del nombre y la frase, cuatro movimientos, Hechos con los tres casos y Pensamiento con la tesis y dos artículos, los dos en tarjetas, nosotros con equipo y clientes en 5 × 2, cuándo escribirnos y contacto)
 - `proyectos/` - Lo hecho, en dos secciones: Casos y Docencia y jornadas
 - `proyectos/trace-group/` - Provocación Trace Group: un caso escrito como pregunta "¿Y si…?" (ficha + objeto + cómo se construyó). No explica el método ni la iniciativa; la fecha 2032 marca la ficción. Nunca se dice que fue adoptada. Ver VOICE.md, "Vocabulario propio"
 - `proyectos/gabinete-extemporaneo/` - Caso Gabinete Extemporáneo (Escuela de Innovación, ITBA): una instalación de bienvenida entregada como diseño y especificación. No dice que esté construida ni muestra lo de adentro
@@ -129,7 +129,8 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 │   ├── sitemap.njk                     # genera sitemap.xml con las páginas que declaran `sitemap:`
 │   ├── styles.css                      # CSS fuente (editar este)
 │   └── main.js                         # JS fuente (editar este)
-├── .eleventy.js                # config: input src/, output _site/, passthrough de img/, fonts/, docs/*.pdf…
+├── .eleventy.js                # config: input src/, output _site/, passthrough de img/, fonts/, docs/*.pdf…; transform bandera y filtro sentido
+├── lib/bandera.mjs             # composición en bandera: une lo que no se corta (corre en el build sobre cada página)
 ├── package.json                # scripts build / check / serve
 ├── scripts/check-site.mjs      # chequeo del sitio generado (a mano, con npm run check)
 ├── img/, fonts/                # assets (passthrough)
@@ -140,9 +141,10 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ```
 
 ### Design System
-La descripción completa está en `/DESIGN.md` (v3.0). Lo que más se toca:
+La descripción completa está en `/DESIGN.md` (v3.1). Lo que más se toca:
 - **Colors**: CSS custom properties in `:root` (`src/styles.css`)
 - **Typography**: Plus Jakarta Sans (interfaz) y Literata (prosa larga), self-hosted en `/fonts/`. Siete tamaños, `--fs-1` a `--fs-7`; nada por debajo de 15 px. Mayúsculas solo en `.etiqueta`
+- **Bandera** (DESIGN.md, según Enric Jardí): todo a caja izquierda y sin guiones automáticos (`hyphens: manual`). `lib/bandera.mjs` une en el build lo que no se corta (palabras de una o dos letras con la siguiente, cifra y unidad, la última palabra con la anterior…); en titulares, los grupos largos van en `<span class="junto">`. Si un titular pide un corte por el sentido, se marca a mano: `.junto` en el HTML o " | " en `cierreTitulo` y `cierreTexto`. Comillas latinas («así») en el texto visible
 - **Grilla**: un solo borde izquierdo por ancho. Nav, footer, `.cabecera` y cada `.bloque` llevan `--marco` a los lados (24 / 64 / 96 px o lo que sobre de una columna de 1200). Adentro nada se centra; el texto se acota con `--medida` (40rem)
 - **Spacing**: 8px base grid (multiples of 8); 160 px de silencio entre bloques desde 769 (80 en el teléfono)
 - **Breakpoints**: base móvil; `min-width: 769px` (escritorio, con el rango `769–1024` para tablet), `1025px` (grillas anchas), `1280px` (medida máxima e índice pegajoso de los casos). No agregar otros valores. `1536px` dejó de usarse en octubre de 2026, cuando el índice pasó a 1280.
@@ -164,7 +166,7 @@ La descripción completa está en `/DESIGN.md` (v3.0). Lo que más se toca:
 - Cada página es una `.cabecera` y una serie de `<section class="bloque">`: así toma el marco y el ritmo. No se escriben paddings laterales ni márgenes entre secciones a mano.
 - Las tarjetas y las filas salen de `src/_data/piezas.mjs` con las macros de `partials/piezas.njk` (`tarjeta`, `fila`). Sumar un caso, una clase o un artículo es sumar una entrada ahí: Lo hecho, Pensamiento, el JSON-LD de los dos y "Seguí leyendo" (`largas`) la toman solos; el inicio elige por id (`inicio.casos`, `inicio.textos`). Las imágenes de tarjeta son un WebP de 800 px por pieza.
 - Las páginas de caso declaran además `indice` y `compartir`: de ahí salen el índice pegajoso, el índice móvil y los botones de compartir (`partials/caso-nav.njk`). No se copia ese bloque.
-- El cierre (`partials/cierre.njk`, ya es un `.bloque`) sale de `cierreTitulo`, `cierreTexto` (opcional), `cierreCta` y `cierreAsunto` (asunto del mail, default "Hablemos"). Los casos y la tesis incluyen después `partials/seguir-leyendo.njk`, que lista las piezas largas de `piezas.largas` menos la propia.
+- El cierre (`partials/cierre.njk`, ya es un `.bloque`) sale de `cierreTitulo`, `cierreTexto` (opcional), `cierreCta` y `cierreAsunto` (asunto del mail, default "Hablemos"). En `cierreTitulo` y `cierreTexto`, " | " marca dónde se parte la frase por el sentido si no entra en una línea (filtro `sentido`: cada tramo va en un `.junto`; la barra no se ve). Los casos y la tesis incluyen después `partials/seguir-leyendo.njk`, que lista las piezas largas de `piezas.largas` menos la propia.
 - Rutas siempre absolutas desde la raíz (`/img/…`, `/proyectos/`), nunca `../`.
 - Las señales existen una sola vez: `partials/senales-cards.njk`, incluido en Pensamiento (el inicio no tiene radar de señales desde septiembre).
 - `usina/index.html` es una redirección estática; no lleva layout.
@@ -180,7 +182,9 @@ npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS m
 - [ ] Mobile menu works (open/close/escape/outside click)
 - [ ] Smooth scroll to anchors (`#services`, `#nosotros`, `#contact`, etc.)
 - [ ] El `mailto:` de contacto y el CTA de cada cierre abren el mail (el cierre, con el asunto de la página); "Copiar dirección" copia la dirección
-- [ ] Las imágenes de tarjeta son un WebP de 800 px (los archivos `-mobile`), declarado en `src/_data/piezas.mjs`
+- [ ] Las imágenes de tarjeta son un WebP de 800 px (los archivos `-mobile`), declarado en `src/_data/piezas.mjs`; las de los artículos y la tesis llevan el logo abajo a la derecha, en `#c16f52`
+- [ ] Inicio: arriba se ve solo el logo grande; al bajar, el del nav entra cuando el grande se va
+- [ ] Ningún titular nuevo termina una línea en "de", "la", "y", "con"… ni deja una palabra sola en la última línea, de 320 a 1920 px (si pasa, `.junto` o " | ", ver DESIGN.md "Bandera")
 
 ---
 
@@ -190,7 +194,7 @@ npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS m
 - **Desktop**: Horizontal menu in header
 - **Mobile**: Hamburger menu (toggle with `mobileMenuBtn`)
 - **Hablemos**: `.nav-cta`, afuera de la lista y a la vista en todas las páginas, también en el teléfono. La página actual se marca con subrayado; solo la página exacta (`aria-current="page"`) deja de ser clicable
-- **Visible en todas las páginas**: desde v3.0 (2026-10-08) el inicio ya no esconde el nav ni tiene un logo grande en el hero; el logo va una sola vez, en el nav
+- **Visible en todas las páginas**: desde v3.0 (2026-10-08) el inicio ya no esconde el nav. Desde v3.1 el inicio tiene el logo grande a la izquierda del nombre y el logo del nav entra con un fundido cuando el grande pasa debajo del nav (`body.logo-en-nav`, que pone `main.js`): un solo logo a la vista. Sin JS se ven los dos
 - **Accessibility**: ARIA labels, keyboard navigation (Escape to close). El menú móvil cerrado queda con `visibility: hidden` (no recibe foco)
 - **Smooth scroll**: Internal anchor links (`#services`, `#nosotros`, `#contact`, etc.). El foco va al destino: así funciona "Saltar al contenido principal"
 - **aria-label**: si un enlace lo lleva, empieza por el texto visible ("Leer en Medium: …"). WCAG 2.5.3. Los enlaces dicen adónde llevan ("Leer el caso", "Leer en LinkedIn"), nunca "Leer más"
@@ -204,7 +208,7 @@ npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS m
 - **Conversaciones**: se ven en la casilla. El asunto de cada cierre dice desde qué página escribió la persona
 
 ### Animations
-- **Sin apariciones al scroll** (retiradas 2026-09-05) **ni fundido de página** (retirado 2026-10-08: escondía la primera pintura). El único movimiento de entrada es el del título del inicio (`textReveal`). El único IntersectionObserver de `main.js` no anima contenido: cambia la cifra del rail de natalidad.
+- **Sin apariciones al scroll** (retiradas 2026-09-05) **ni fundido de página** (retirado 2026-10-08: escondía la primera pintura). El único movimiento de entrada es el del nombre y la frase del inicio (`textReveal`). Los dos IntersectionObserver de `main.js` no animan contenido: uno cambia la cifra del rail de natalidad y el otro muestra el logo del nav en el inicio cuando el grande se va.
 - **Transiciones**: solo color y opacidad en hover/focus; `prefers-reduced-motion` las anula.
 
 ---
@@ -326,6 +330,7 @@ Uses sharp-cli for conversion, maintains quality.
 - Smooth scroll to anchors
 - Índice de los casos: pegajoso desde 1280 y se va al llegar al cierre; debajo, botón "Índice" que se esconde al bajar y abre un diálogo (Escape cierra, el foco vuelve al botón)
 - Filtro de Pensamiento (cada botón devuelve al menos una pieza; Lo hecho no tiene filtro)
+- Clientes: 5 × 2 desde 769 y 2 × 5 en el teléfono; un logo nuevo va recortado a su contenido y con su `--w` en `styles.css` (DESIGN.md, Inicio)
 
 ---
 

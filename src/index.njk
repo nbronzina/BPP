@@ -9,14 +9,18 @@ homepage: true
 jsonld: "jsonld/index.njk"
 sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
 ---
-{%- from "partials/piezas.njk" import tarjeta, fila %}
+{%- from "partials/piezas.njk" import tarjeta %}
     <!-- Main Content -->
     <main role="main" id="main-content">
 
-    <!-- Hero: el nombre y la frase. El logo va una sola vez, en el nav. -->
+    <!-- Cabecera: el logo grande a la izquierda del nombre y la frase, como una firma. El logo del
+         nav aparece cuando el grande se va (main.js): un solo logo a la vista. -->
     <section id="hero" class="cabecera inicio-hero" aria-labelledby="hero-heading">
+        <img class="inicio-logo" src="/img/logo.svg" alt="" width="113" height="208" decoding="async" fetchpriority="high">
         <h1 id="hero-heading" class="inicio-titulo">BPP Analytics &amp; Design</h1>
-        <p class="inicio-frase">Sociología aplicada: leemos señales débiles y decidís con fundamento</p>
+        {#- La frase se parte por el sentido (DESIGN.md, "Bandera"): después de los dos puntos y antes
+            de la "y". Cada tramo va en .junto; el navegador elige cuántos entran por línea. #}
+        <p class="inicio-frase">Sociología aplicada: <span class="junto">leemos señales débiles</span> <span class="junto">y decidís con fundamento</span></p>
     </section>
 
     <!-- Services Section -->
@@ -144,7 +148,7 @@ sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
     <!-- Hechos: los tres casos, con la misma tarjeta que Lo hecho (src/_data/piezas.mjs) -->
     <section id="actividades" class="bloque" aria-labelledby="actividades-heading">
         <h2 id="actividades-heading">Hechos</h2>
-        <p class="bajada">Trabajo para una organización, con ficha, fuentes y estado. Lo que no tiene fuente no se publica.</p>
+        <p class="bajada">Trabajo para una organización, con ficha, fuentes y estado.</p>
         <div class="tarjetas">
 {%- for p in piezas.inicio.casos %}
 {{ tarjeta(p) }}
@@ -153,14 +157,14 @@ sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
         <p class="bloque-pie"><a href="/proyectos/" class="cta-link">Ir a Lo hecho</a></p>
     </section>
 
-    <!-- Pensamiento: la tesis y los dos artículos más recientes, como lista -->
+    <!-- Pensamiento: la tesis y los dos artículos más recientes, con la misma tarjeta -->
     <section id="textos" class="bloque" aria-labelledby="textos-heading">
         <h2 id="textos-heading">Pensamiento</h2>
-        <ul class="filas">
+        <div class="tarjetas">
 {%- for p in piezas.inicio.textos %}
-{{ fila(p, p.fechaTexto) }}
+{{ tarjeta(p) }}
 {%- endfor %}
-        </ul>
+        </div>
         <p class="bloque-pie"><a href="/pensamiento/" class="cta-link">Ir a Pensamiento</a></p>
     </section>
 
@@ -218,38 +222,21 @@ sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
 
             <div class="nosotros__bloque">
                 <h3>Clientes, instituciones y equipos con los que trabajamos</h3>
-                <div class="logos-grid">
-                    <div class="logo-item">
-                        <img src="/img/speculative-futures-madrid.webp" alt="Speculative Futures Madrid" width="111" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/EscInn.svg" alt="ITBA Escuela de Innovación" width="265" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/logo-cesba.webp" alt="CESBA" width="52" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/trace-logo.svg" alt="TRACE GROUP" width="287" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/Heated.svg" alt="Heated" width="199" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/otros-futuros.svg" alt="Otros Futuros" width="257" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/micelio.svg" alt="Micelio" width="218" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/lab-logo-coral.webp" alt="Lab de Mundanidad Forzada" width="131" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/olamestudio.svg" alt="Olam Estudio" width="38" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/comunicaciones-syp.svg" alt="Comunicaciones S&P" width="200" height="48" loading="lazy">
-                    </div>
-                </div>
+                {#- Diez logos en 5 × 2 (2 × 5 en el teléfono). El orden arma columnas parejas: en la del
+                    medio, los dos que son solo ícono; a los costados, los logotipos con texto. El tamaño
+                    de cada uno está en styles.css (.logo-item--…). -#}
+                <ul class="logos-grid">
+                    <li class="logo-item logo-item--sfm logo-item--gris"><img src="/img/speculative-futures-madrid.webp" alt="Speculative Futures Madrid" width="1003" height="434" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--itba"><img src="/img/EscInn.svg" alt="ITBA Escuela de Innovación" width="265" height="48" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--cesba logo-item--gris"><img src="/img/logo-cesba.webp" alt="CESBA" width="420" height="522" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--trace"><img src="/img/trace-logo.svg" alt="Trace Group" width="287" height="48" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--lab"><img src="/img/lab-logo-coral.webp" alt="Lab de Mundanidad Forzada" width="509" height="186" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--heated"><img src="/img/Heated.svg" alt="Heated" width="199" height="48" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--otros"><img src="/img/otros-futuros.svg" alt="Otros Futuros" width="2143" height="369" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--olam"><img src="/img/olamestudio.svg" alt="Olam Estudio" width="98" height="129" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--micelio"><img src="/img/micelio.svg" alt="Micelio" width="218" height="48" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--syp"><img src="/img/comunicaciones-syp.svg" alt="Comunicaciones S&amp;P" width="200" height="48" loading="lazy" decoding="async"></li>
+                </ul>
             </div>
         </div>
     </section>

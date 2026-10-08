@@ -3,11 +3,12 @@
     Variables (front matter): cierreTitulo, cierreTexto (opcional), cierreCta (texto del enlace;
     la flecha la dibuja el CSS), cierreAsunto (asunto del mail; default "Hablemos"). Con el
     asunto, el mail dice de qué página viene. Sin aria-label: el texto visible es el nombre del
-    enlace (WCAG 2.5.3). -#}
+    enlace (WCAG 2.5.3). En el título y el texto, " | " marca dónde se corta por el sentido
+    (filtro sentido, .eleventy.js): "Estos textos son | la parte pública de cómo trabajamos." -#}
     <section class="bloque cierre" aria-labelledby="cierre-heading">
-        <h2 id="cierre-heading" class="cierre__titulo">{{ cierreTitulo }}</h2>
+        <h2 id="cierre-heading" class="cierre__titulo">{{ cierreTitulo | sentido | safe }}</h2>
 {%- if cierreTexto %}
-        <p class="cierre__texto">{{ cierreTexto }}</p>
+        <p class="cierre__texto">{{ cierreTexto | sentido | safe }}</p>
 {%- endif %}
         <a href="mailto:{{ site.email }}?subject={{ (cierreAsunto or 'Hablemos') | urlencode }}" class="cta-primary" data-preview="Te responde uno de nosotros tres en 48 horas hábiles">{{ cierreCta }}</a>
         <p class="cierre-mail">{{ site.email }} {% include "partials/copiar-mail.njk" %}</p>

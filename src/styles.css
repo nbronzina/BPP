@@ -185,7 +185,7 @@ body {
     background: var(--color-bg);
     overflow-x: clip;
     overflow-wrap: break-word;
-    hyphens: auto;
+    hyphens: manual;
     font-variant-numeric: lining-nums;
     font-feature-settings: 'zero' 0;
     -webkit-tap-highlight-color: rgba(193, 111, 82, 0.18);
@@ -213,7 +213,6 @@ h1, h2, h3, h4 {
     font-weight: 700;
     color: var(--color-text-high);
     text-wrap: balance;
-    hyphens: none;
 }
 
 h1 { font-size: var(--fs-2); line-height: 1.1; letter-spacing: -0.02em; }
@@ -221,7 +220,23 @@ h2 { font-size: var(--fs-3); line-height: 1.15; letter-spacing: -0.01em; margin-
 h3 { font-size: var(--fs-4); line-height: 1.25; }
 h4 { font-size: var(--fs-5); line-height: 1.4; }
 
+/* Composición en bandera (DESIGN.md, "Bandera"): todo a caja izquierda y sin guiones automáticos.
+   Dónde no se puede cortar una línea lo decide el build (lib/bandera.mjs); acá, cómo se reparten:
+   los titulares y los textos grandes, en líneas parejas (balance); el texto corrido, sin una
+   palabra sola en la última línea (pretty). */
 p, li, dd, figcaption { text-wrap: pretty; }
+.inicio-frase,
+.services-lead,
+.pull-quote p,
+.cierre__texto { text-wrap: balance; }
+
+/* Grupo de palabras que va junto en un titular (lib/bandera.mjs): si no entra en la línea, pasa
+   entero a la siguiente; si no entra en ninguna, se corta adentro y nada se desborda. */
+.junto {
+    display: inline-block;
+    max-width: 100%;
+}
+
 strong, b { font-weight: 700; }
 
 a {
@@ -251,9 +266,6 @@ button {
 
 a,
 button { touch-action: manipulation; }
-
-button,
-.etiqueta { hyphens: none; }
 
 ::selection {
     background: rgba(193, 111, 82, 0.85);
@@ -800,12 +812,86 @@ footer {
 
 /* 8. Inicio ============================================================ */
 
-/* Cabecera: el nombre y la frase, alineados a la columna. No ocupa la pantalla entera: la
-   sección siguiente arranca en la primera vista. El logo va una sola vez, en el nav.
-   El título es el único movimiento de entrada del sitio. Abajo lleva medio silencio entero
-   (no el de las otras cabeceras): la banda honda de Cuatro movimientos empieza justo en la
+/* Cabecera: el logo grande a la izquierda del nombre y la frase, como una firma. El logo arranca
+   en el eje de la columna. En el teléfono va al lado del nombre (las dos líneas del título) y la
+   frase abajo, a todo el ancho; desde 769, al lado del nombre y la frase, con la misma altura que
+   los dos juntos. No ocupa la pantalla entera: la sección siguiente asoma en la primera vista.
+   El título y la frase son el único movimiento de entrada del sitio. Abajo lleva medio silencio
+   entero (no el de las otras cabeceras): la banda honda de Cuatro movimientos empieza justo en la
    mitad, como la línea entre dos secciones de un caso. */
-.inicio-hero { padding-bottom: var(--spacing-block); }
+.inicio-hero {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: var(--space-5);
+    align-items: center;
+    padding-bottom: var(--spacing-block);
+}
+
+.inicio-logo {
+    grid-column: 1;
+    grid-row: 1;
+    width: auto;
+    height: calc(2.1 * var(--fs-1));   /* el alto de dos líneas del título */
+}
+
+.inicio-hero .inicio-titulo {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+}
+
+.inicio-hero .inicio-frase {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: var(--space-5);
+}
+
+@media (min-width: 769px) {
+    /* En tablet el aire es más corto: así el nombre entra en una línea desde unos 800 px. */
+    .inicio-hero { column-gap: var(--space-6); }
+
+    /* El alto del nombre (una línea) más el de la frase (dos): el logo cubre el bloque entero. */
+    .inicio-logo {
+        grid-row: 1 / span 2;
+        height: calc(1.05 * var(--fs-1) + var(--space-3) + 2.8 * var(--fs-4));
+    }
+
+    .inicio-hero .inicio-titulo {
+        align-self: end;
+        margin-bottom: var(--space-3);
+    }
+
+    .inicio-hero .inicio-frase {
+        grid-column: 2;
+        align-self: start;
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 1025px) {
+    .inicio-hero { column-gap: var(--space-10); }
+}
+
+/* Un solo logo a la vista: en el inicio, el del nav espera a que el grande se vaya (main.js marca
+   body.logo-en-nav). Sin JavaScript, el del nav está siempre. */
+body:has(.inicio-logo) .nav-logo {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+body.logo-en-nav .nav-logo {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+}
+
+@media (scripting: none) {
+    body:has(.inicio-logo) .nav-logo {
+        opacity: 1;
+        visibility: visible;
+    }
+}
 
 .inicio-titulo {
     font-size: var(--fs-1);
@@ -819,7 +905,7 @@ footer {
     font-size: var(--fs-4);
     line-height: 1.4;
     color: var(--color-text-mid);
-    max-width: 34ch;
+    max-width: 30em;
     animation: textReveal 0.7s ease-out 0.35s both;
 }
 
@@ -1053,47 +1139,64 @@ footer {
     .equipo-foto-wrap { max-width: none; }
 }
 
-/* Logos de clientes en un solo tono: el blanco del texto, atenuado. Los de una sola tinta
-   pasan a silueta; CESBA y Speculative Futures tienen detalle adentro y van en grises. */
+/* Clientes: diez logos en 5 × 2 desde 769 y en 2 × 5 en el teléfono, en un solo tono (el blanco
+   del texto, atenuado; CESBA y Speculative Futures, que tienen detalle adentro, en grises).
+   Columnas a caja izquierda: la primera arranca en el eje del texto, la última termina en el
+   borde derecho y el aire entre columnas es parejo (space-between).
+   Tamaños: cada logo ocupa una superficie pareja con la de los demás, así un ícono y un logotipo
+   largo pesan parecido. Ancho = 6,2 × √(ancho/alto del logo) × ajuste, en cqi (centésimos del
+   ancho de la grilla, en 5 columnas). El ajuste corrige la densidad: un logotipo de trazo grueso
+   (Otros Futuros, micelio) va un poco más chico y uno de trazo fino (ITBA, Speculative Futures)
+   un poco más grande. En el teléfono, todo por 2,6, sin pasar nunca el tamaño del escritorio
+   (--u se queda en 12 px, el centésimo de la columna de 1200). Para sumar un logo: recortarlo a
+   su contenido, calcular su --w con la misma fórmula y ubicarlo donde su forma acompañe a la
+   columna. */
 .logos-grid {
-    display: flex;
-    flex-wrap: wrap;
+    --escala: 2.6;
+    --u: min(var(--escala) * 1cqi, 12px);
+    container-type: inline-size;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
     align-items: center;
-    gap: var(--space-8) var(--space-10);
+    row-gap: var(--space-8);
     padding-top: var(--space-8);
     border-top: 1px solid var(--color-line);
 }
 
+.logo-item {
+    display: flex;
+    align-items: center;
+    min-height: calc(7.4 * var(--u));
+}
+
 .logo-item img {
-    width: auto;
-    height: 40px;
-    max-width: 100%;
+    width: calc(var(--w) * var(--u));
+    height: auto;
     filter: brightness(0) invert(1);
     opacity: 0.75;
 }
 
-.logo-item img[src*="logo-cesba"],
-.logo-item img[src*="speculative-futures-madrid"] { filter: grayscale(1) brightness(1.5); }
+.logo-item--gris img { filter: grayscale(1) brightness(1.5); }
 
-/* Los logos vienen recortados a su contenido; dos ajustes de peso visual: las marcas cuadradas
-   más altas que los wordmarks, y los wordmarks muy anchos más bajos. */
-.logo-item img[src*="olamestudio"] { height: 64px; max-width: 64px; }
-.logo-item img[src*="speculative-futures-madrid"] { height: 54px; }
-.logo-item img[src*="logo-cesba"] { height: 68px; max-width: 68px; }
-.logo-item img[src*="trace-logo"],
-.logo-item img[src*="micelio"],
-.logo-item img[src*="otros-futuros"] { height: 28px; }
+.logo-item--sfm { --w: 11.5; }
+.logo-item--itba { --w: 16.2; }
+.logo-item--cesba { --w: 5; }
+.logo-item--trace { --w: 14.9; }
+.logo-item--lab { --w: 9.8; }
+.logo-item--heated { --w: 12.4; }
+.logo-item--otros { --w: 14.2; }
+.logo-item--olam { --w: 5.5; }
+.logo-item--micelio { --w: 12.2; }
+.logo-item--syp { --w: 13.2; }
 
 @media (min-width: 769px) {
-    .logos-grid { gap: var(--space-10) var(--space-16); }
-
-    .logo-item img { height: 46px; }
-    .logo-item img[src*="olamestudio"] { height: 84px; max-width: 84px; }
-    .logo-item img[src*="speculative-futures-madrid"] { height: 80px; }
-    .logo-item img[src*="logo-cesba"] { height: 88px; max-width: 88px; }
-    .logo-item img[src*="trace-logo"],
-    .logo-item img[src*="micelio"],
-    .logo-item img[src*="otros-futuros"] { height: 32px; }
+    .logos-grid {
+        --escala: 1;
+        grid-template-columns: repeat(5, auto);
+        row-gap: var(--space-10);
+    }
 }
 
 /* Contacto: tres situaciones y el mail. */
@@ -1280,8 +1383,9 @@ footer {
     .tarjetas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* Filas: título enlazado, bajada y tipo · dato. La lista de textos del inicio y "Seguí leyendo".
-   Toda la fila responde al clic; el nombre del enlace es el título. */
+/* Filas: tipo · dato arriba, como en las tarjetas, y abajo el título enlazado y la bajada. Una sola
+   columna, a caja izquierda. Van en "Seguí leyendo". Toda la fila responde al clic; el nombre del
+   enlace es el título. */
 .filas {
     list-style: none;
     border-bottom: 1px solid var(--color-line);
@@ -1316,26 +1420,7 @@ footer {
     max-width: var(--medida);
 }
 
-.fila__dato { margin-top: var(--space-2); }
-
-@media (min-width: 769px) {
-    .fila {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        column-gap: var(--space-12);
-        align-items: baseline;
-    }
-
-    .fila__titulo,
-    .fila__bajada { grid-column: 1; }
-
-    .fila__dato {
-        grid-column: 2;
-        grid-row: 1;
-        margin: 0;
-        text-align: right;
-    }
-}
+.fila__dato { margin-bottom: var(--space-2); }
 
 
 /* 10. Lo hecho y Pensamiento ========================================== */
