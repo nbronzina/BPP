@@ -108,7 +108,7 @@ const docencia = [
     id: "docencia-matadero",
     tipo: "Charla",
     fecha: "2026-01", fechaTexto: "enero 2026",
-    titulo: "\"Inhabiting the Future\": charla al aire libre en Matadero Madrid",
+    titulo: "«Inhabiting the Future»: charla al aire libre en Matadero Madrid",
     descripcion: "Charla al aire libre con estudiantes de Lyon sobre adaptación climática, con la ciudad como material de design fiction.",
     imagen: { src: "/img/inhabiting-future-mobile.webp", w: 800, h: 450, alt: "Charla outdoor Inhabiting the Future - Matadero Madrid" },
     datos: [["Contexto", "Matadero Madrid, European Design Encounters"], ["Estado", "Realizado, artículo en Medium"]],
@@ -205,7 +205,7 @@ const articulos = [
   articulo({
     id: "art-alquileres",
     fecha: "2026-02", fechaTexto: "febrero 2026",
-    titulo: "La ilusión de la \"negociación libre\": Lo que el aumento de la oferta no cuenta sobre los alquileres",
+    titulo: "La ilusión de la «negociación libre»: Lo que el aumento de la oferta no cuenta sobre los alquileres",
     descripcion: "Sin regulación, la negociación del alquiler no es libre: las inmobiliarias regulan de hecho y el inquilino no tiene opción real de decir que no.",
     imagen: { src: "/img/alquileres-negociacion-mobile.webp", w: 800, h: 447, alt: "Ilustración sobre negociación de alquileres y asimetrías del mercado inmobiliario" },
     fuente: "LinkedIn", autor: "Ezequiel Politi", origen: "Tesis de licenciatura en Sociología",

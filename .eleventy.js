@@ -1,6 +1,7 @@
 // Eleventy: genera el sitio en _site/ a partir de src/.
 // Sin frameworks en runtime: el HTML sale plano, el CSS y el JS se minifican aparte (package.json).
 import { execSync } from "node:child_process";
+import { bandera } from "./lib/bandera.mjs";
 
 export default function (eleventyConfig) {
   // Año del copyright horneado en el build: el footer no depende de JS.
@@ -27,6 +28,18 @@ export default function (eleventyConfig) {
   eleventyConfig.addCollection("sitemap", (api) =>
     api.getAll().filter((p) => p.data.sitemap).sort((a, b) => a.url.localeCompare(b.url))
   );
+  // Titulares partidos por el sentido desde el front matter: "Estos textos son | la parte pública…".
+  // Cada tramo entre barras va en un .junto (styles.css); el resto lo resuelve lib/bandera.mjs.
+  // Escapa el texto: devuelve HTML listo para | safe.
+  const escapar = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  eleventyConfig.addFilter("sentido", (s) => {
+    const tramos = String(s ?? "").split(/\s+\|\s+/);
+    return tramos.length < 2 ? escapar(s ?? "") : tramos.map((t) => `<span class="junto">${escapar(t)}</span>`).join(" ");
+  });
+  // Composición en bandera (lib/bandera.mjs): dónde no puede cortar una línea. Solo en el HTML.
+  eleventyConfig.addTransform("bandera", function (content) {
+    return (this.page.outputPath || "").endsWith(".html") ? bandera(content) : content;
+  });
   // styles.css y main.js viven en src/ pero no son templates
   eleventyConfig.ignores.add("src/styles.css");
   eleventyConfig.ignores.add("src/main.js");

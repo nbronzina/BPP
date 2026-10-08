@@ -185,7 +185,7 @@ body {
     background: var(--color-bg);
     overflow-x: clip;
     overflow-wrap: break-word;
-    hyphens: auto;
+    hyphens: manual;
     font-variant-numeric: lining-nums;
     font-feature-settings: 'zero' 0;
     -webkit-tap-highlight-color: rgba(193, 111, 82, 0.18);
@@ -213,7 +213,6 @@ h1, h2, h3, h4 {
     font-weight: 700;
     color: var(--color-text-high);
     text-wrap: balance;
-    hyphens: none;
 }
 
 h1 { font-size: var(--fs-2); line-height: 1.1; letter-spacing: -0.02em; }
@@ -221,7 +220,23 @@ h2 { font-size: var(--fs-3); line-height: 1.15; letter-spacing: -0.01em; margin-
 h3 { font-size: var(--fs-4); line-height: 1.25; }
 h4 { font-size: var(--fs-5); line-height: 1.4; }
 
+/* Composición en bandera (DESIGN.md, "Bandera"): todo a caja izquierda y sin guiones automáticos.
+   Dónde no se puede cortar una línea lo decide el build (lib/bandera.mjs); acá, cómo se reparten:
+   los titulares y los textos grandes, en líneas parejas (balance); el texto corrido, sin una
+   palabra sola en la última línea (pretty). */
 p, li, dd, figcaption { text-wrap: pretty; }
+.inicio-frase,
+.services-lead,
+.pull-quote p,
+.cierre__texto { text-wrap: balance; }
+
+/* Grupo de palabras que va junto en un titular (lib/bandera.mjs): si no entra en la línea, pasa
+   entero a la siguiente; si no entra en ninguna, se corta adentro y nada se desborda. */
+.junto {
+    display: inline-block;
+    max-width: 100%;
+}
+
 strong, b { font-weight: 700; }
 
 a {
@@ -251,9 +266,6 @@ button {
 
 a,
 button { touch-action: manipulation; }
-
-button,
-.etiqueta { hyphens: none; }
 
 ::selection {
     background: rgba(193, 111, 82, 0.85);
