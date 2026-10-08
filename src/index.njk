@@ -9,7 +9,7 @@ homepage: true
 jsonld: "jsonld/index.njk"
 sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
 ---
-{%- from "partials/piezas.njk" import tarjeta, fila %}
+{%- from "partials/piezas.njk" import tarjeta %}
     <!-- Main Content -->
     <main role="main" id="main-content">
 
@@ -155,14 +155,14 @@ sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
         <p class="bloque-pie"><a href="/proyectos/" class="cta-link">Ir a Lo hecho</a></p>
     </section>
 
-    <!-- Pensamiento: la tesis y los dos artículos más recientes, como lista -->
+    <!-- Pensamiento: la tesis y los dos artículos más recientes, con la misma tarjeta -->
     <section id="textos" class="bloque" aria-labelledby="textos-heading">
         <h2 id="textos-heading">Pensamiento</h2>
-        <ul class="filas">
+        <div class="tarjetas">
 {%- for p in piezas.inicio.textos %}
-{{ fila(p, p.fechaTexto) }}
+{{ tarjeta(p) }}
 {%- endfor %}
-        </ul>
+        </div>
         <p class="bloque-pie"><a href="/pensamiento/" class="cta-link">Ir a Pensamiento</a></p>
     </section>
 

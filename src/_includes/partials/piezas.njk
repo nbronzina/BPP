@@ -2,11 +2,11 @@
       {% from "partials/piezas.njk" import tarjeta, fila %}
 
     tarjeta(p, filtro): imagen 16:9, tipo y fecha, título, descripción, ficha corta y enlaces.
-      Va en el inicio (los tres casos), en Lo hecho y en los artículos de Pensamiento.
+      Va en el inicio (Hechos y Pensamiento), en Lo hecho y en los artículos de Pensamiento.
       Con filtro=true lleva data-tags para el filtro de Pensamiento (main.js).
       Si la tarjeta tiene un solo enlace, toda la tarjeta responde al clic (.tarjeta--enlazada).
-    fila(p, dato): título enlazado, bajada y "tipo · dato" en una fila tipográfica. Va en la
-      lista de textos del inicio (dato = la fecha) y en "Seguí leyendo" (dato = el largo). -#}
+    fila(p, dato): "tipo · dato", título enlazado y bajada, en una fila tipográfica. Va en
+      "Seguí leyendo" (dato = el largo). -#}
 
 {% macro tarjeta(p, filtro=false) -%}
 <article class="tarjeta{% if p.enlaces | length == 1 %} tarjeta--enlazada{% endif %}" id="{{ p.id }}"{% if filtro and p.movimientos %} data-tags="{{ p.movimientos }}"{% endif %} aria-labelledby="{{ p.id }}-titulo">
@@ -31,11 +31,11 @@
 
 {% macro fila(p, dato) -%}
 <li class="fila">
+    <p class="fila__dato etiqueta">{{ p.tipo }}{% if p.fuente %} en {{ p.fuente }}{% endif %} · {{ dato }}</p>
     <h3 class="fila__titulo">
 {%- if p.url %}<a href="{{ p.url }}">{{ p.titulo }}</a>
 {%- else %}<a href="{{ p.enlaces[0].href }}" target="_blank" rel="noopener noreferrer" aria-label="{{ p.titulo }} ({{ p.fuente }}, nueva pestaña)">{{ p.titulo }}</a>
 {%- endif %}</h3>
     <p class="fila__bajada">{{ p.bajada or p.descripcion }}</p>
-    <p class="fila__dato etiqueta">{{ p.tipo }}{% if p.fuente %} en {{ p.fuente }}{% endif %} · {{ dato }}</p>
 </li>
 {%- endmacro %}

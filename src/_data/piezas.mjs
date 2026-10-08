@@ -1,7 +1,7 @@
 // Las piezas del sitio, escritas una sola vez: casos, docencia, artículos y la tesis.
-// De acá salen las tarjetas (partials/tarjeta.njk) del inicio, Lo hecho y Pensamiento, la lista
-// del inicio, "Seguí leyendo" (partials/seguir-leyendo.njk) y las listas de los datos
-// estructurados de Lo hecho y Pensamiento. Sumar una pieza es sumar una entrada acá.
+// De acá salen las tarjetas (partials/piezas.njk) del inicio, Lo hecho y Pensamiento, las filas
+// de "Seguí leyendo" (partials/seguir-leyendo.njk) y las listas de los datos estructurados de
+// Lo hecho y Pensamiento. Sumar una pieza es sumar una entrada acá.
 //
 // Campos:
 //   id           ancla de la tarjeta en su página (#caso-…, #docencia-…, #art-…)
@@ -16,7 +16,7 @@
 //   enlaces      [{ texto, href, aria, externo }]. El aria-label empieza por el texto visible
 //                (WCAG 2.5.3) y el texto dice adónde lleva: "Leer en Medium", nunca "Leer más"
 //   lectura      el largo, para "Seguí leyendo" (casos y tesis)
-//   fuente       dónde se publicó (artículos): la lista del inicio lo dice al lado del tipo
+//   fuente       dónde se publicó (artículos): va en la ficha y, en las filas, al lado del tipo
 //   movimientos  para el filtro de Pensamiento: investigacion, futuros, datos-ia, comunicacion
 //   temas        no se muestran: quedan como dato
 
@@ -236,6 +236,7 @@ const tesis = {
   subtitulo: "Inteligencia artificial generativa, socialización e identidad en la emergencia de nuevos vínculos humano–IA: una propuesta conceptual desde la teoría del actor-red.",
   autores: "Nicolás Bronzina · Sergio Petrocelli · Ezequiel Politi",
   descripcion: "Qué le pasa a la red de un adolescente cuando entra un interlocutor no humano, siempre disponible y con menos fricción que una persona.",
+  imagen: { src: "/img/tesis01-cuarto-mobile.webp", w: 800, h: 446, alt: "Una chica en la cama de su cuarto, de noche, con el celular en la mano y la notebook abierta. La única luz viene de las pantallas y de la ventana." },
   datos: [["Estado", "Documento de trabajo, agosto 2026"], ["Formato", "PDF de 56 páginas, descarga directa"]],
   enlaces: [{ texto: "Leer la tesis", href: "/usina/tesis-01/" }],
   lectura: "PDF de 56 páginas",
@@ -256,7 +257,7 @@ export default {
   tesis,
   // Las piezas largas, con página propia y tiempo de lectura: "Seguí leyendo" muestra las demás.
   largas: [...casos, tesis],
-  // El inicio elige por id: los tres casos como tarjetas y tres textos como lista.
+  // El inicio elige por id: los tres casos (Hechos) y tres textos (Pensamiento), todos en tarjetas.
   inicio: {
     casos: ["caso-trace-group", "caso-gabinete-extemporaneo", "caso-natalidad"].map(porId),
     textos: ["tesis-01", "art-potrero", "art-personal-software"].map(porId),

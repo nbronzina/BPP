@@ -1354,8 +1354,9 @@ body.logo-en-nav .nav-logo {
     .tarjetas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* Filas: título enlazado, bajada y tipo · dato. La lista de textos del inicio y "Seguí leyendo".
-   Toda la fila responde al clic; el nombre del enlace es el título. */
+/* Filas: tipo · dato arriba, como en las tarjetas, y abajo el título enlazado y la bajada. Una sola
+   columna, a caja izquierda. Van en "Seguí leyendo". Toda la fila responde al clic; el nombre del
+   enlace es el título. */
 .filas {
     list-style: none;
     border-bottom: 1px solid var(--color-line);
@@ -1390,26 +1391,7 @@ body.logo-en-nav .nav-logo {
     max-width: var(--medida);
 }
 
-.fila__dato { margin-top: var(--space-2); }
-
-@media (min-width: 769px) {
-    .fila {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        column-gap: var(--space-12);
-        align-items: baseline;
-    }
-
-    .fila__titulo,
-    .fila__bajada { grid-column: 1; }
-
-    .fila__dato {
-        grid-column: 2;
-        grid-row: 1;
-        margin: 0;
-        text-align: right;
-    }
-}
+.fila__dato { margin-bottom: var(--space-2); }
 
 
 /* 10. Lo hecho y Pensamiento ========================================== */
