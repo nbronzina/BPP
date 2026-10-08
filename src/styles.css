@@ -535,14 +535,23 @@ body.secondary-page .nav-logo {
     transition: right 0.3s ease, opacity 0.3s ease, visibility 0s;
 }
 
-/* Current page indicator in mobile nav */
-.nav-links a.current-page {
-    color: var(--color-accent);
-    pointer-events: none;
+/* La página actual se marca con la línea de abajo, no con el color: el terracota del nav
+   queda para "Hablemos", que está en todas las páginas. Por atributo y no solo por clase,
+   para que se vea también sin JavaScript. */
+.nav-links a.current-page,
+.nav-links a[aria-current] {
+    color: var(--color-text-light);
     position: relative;
 }
-
-/* La página actual se marca solo con color; la flecha sobraba (el hover ya lo explica). */
+/* Solo la página exacta deja de ser clicable. Desde un caso, "Lo hecho" tiene que llevar
+   de vuelta a la lista: antes también quedaba sin clic. */
+.nav-links a[aria-current="page"] {
+    pointer-events: none;
+}
+.nav-links a.current-page::after,
+.nav-links a[aria-current]::after {
+    width: 100%;
+}
 
 .mobile-menu-btn {
     display: flex;
@@ -646,7 +655,9 @@ body.secondary-page .nav-logo {
     .nav-links a {
         display: inline-flex;
         padding: 0;
-        position: static;
+        /* relative: la línea de hover y la de la página actual van debajo del enlace.
+           Con static se anclaban al nav y cruzaban toda la pantalla. */
+        position: relative;
     }
 
     .mobile-menu-btn {

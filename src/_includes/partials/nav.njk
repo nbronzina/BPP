@@ -11,12 +11,9 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="/proyectos/"{% if section == "proyectos" %} aria-current="{{ 'page' if page.url == '/proyectos/' else 'true' }}"{% endif %}>Lo hecho</a></li>
             <li><a href="/pensamiento/"{% if section == "pensamiento" %} aria-current="{{ 'page' if page.url == '/pensamiento/' else 'true' }}"{% endif %}>Pensamiento</a></li>
-            {%- if not homepage %}
-            <li><a href="/#contact">Hablemos</a></li>
-            {%- endif %}
         </ul>
-        {%- if homepage %}
-        <a href="#contact" class="nav-cta">Hablemos</a>
-        {%- endif %}
+        {#- "Hablemos" va afuera de la lista y a la vista en todas las páginas, también en el teléfono
+            (antes, fuera del inicio, quedaba dentro del menú desplegable). #}
+        <a href="{{ '#contact' if homepage else '/#contact' }}" class="nav-cta">Hablemos</a>
     </div>
 </nav>
