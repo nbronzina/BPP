@@ -1479,9 +1479,8 @@ footer {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--color-text);  /* Blanco puro, border naranja como marca */
+    color: var(--color-text);
     opacity: 1;
-    padding-left: var(--space-4);
     margin-top: 0;  /* primer hijo del bloque: el espacio superior lo pone la sección */
     margin-bottom: var(--space-6);
 }
@@ -1606,7 +1605,6 @@ footer {
     }
 
     .contact-label {
-        padding-left: var(--space-6);
         margin-bottom: var(--space-12);
     }
 
@@ -1678,9 +1676,8 @@ footer {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--color-text);  /* Blanco puro, border naranja como marca */
+    color: var(--color-text);
     opacity: 1;
-    padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
 }
@@ -3062,7 +3059,7 @@ img {
 /* Página de tesis: subtítulo y metadata */
 .thesis-subtitle {
   max-width: 800px;
-  margin: 0 auto var(--space-5);
+  margin: 0 0 var(--space-5);
 }
 
 .thesis-metadata-bar {
@@ -3070,7 +3067,7 @@ img {
   flex-direction: column;
   gap: var(--space-2);
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0;
   padding: var(--space-4) 0;
   border-top: 1px solid rgba(250, 248, 246, 0.12);
   border-bottom: 1px solid rgba(250, 248, 246, 0.12);
@@ -3863,7 +3860,7 @@ html {
 :root { color-scheme: dark; }
 .anchor-offset { position: absolute; top: -100px; }
 .hero-section h1.tagline { margin-bottom: 1.5rem; }
-.hero-section .hero-sub { max-width: 800px; margin: 0 auto; }
+.hero-section .hero-sub { max-width: 800px; margin: 0; }
 .hero-sub--seccion { margin: var(--space-3) auto 0; }
 #indice { padding-bottom: 0; }
 .u-mt-12 { margin-top: var(--space-12); }
@@ -4372,3 +4369,10 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
 .services-intro a:visited {
     color: var(--color-accent);
 }
+
+/* 4. Un solo eje izquierdo en los heros. La bajada iba centrada en 800px bajo un título alineado
+      a la izquierda (168px corrida en Lo hecho, Pensamiento y la tesis; 104px en los casos) y los
+      labels arrastraban 24px de sangría de cuando llevaban un borde de color, que ya no está.
+      Ahora label, título, bajada y metadatos arrancan en la misma línea. En la tesis, la bajada
+      recupera el aire sobre la barra de metadatos que `.hero-section .hero-sub` le pisaba. */
+.hero-section .thesis-subtitle { margin-bottom: var(--space-5); }
