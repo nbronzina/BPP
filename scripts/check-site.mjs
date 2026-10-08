@@ -13,7 +13,7 @@ import { join, relative } from "node:path";
 
 const OUT = process.argv[2] || "_site";
 const SITE = JSON.parse(readFileSync("src/_data/site.json", "utf8")).url; // https://www.bppanalyticsanddesign.com
-const REQUIRED = ["styles.min.css", "main.min.js", "fonts/plus-jakarta-sans-latin.woff2", "fonts/literata-latin.woff2", "img/logo.svg", "img/og-image.jpg", "sitemap.xml", "robots.txt", "llms.txt", "404.html",
+const REQUIRED = ["styles.min.css", "main.min.js", "fonts/plus-jakarta-sans-latin.woff2", "fonts/literata-latin-opsz19.woff2", "img/logo.svg", "img/og-image.jpg", "sitemap.xml", "robots.txt", "llms.txt", "404.html",
   "usina/index.html", "reporte-impacto/index.html"]; // las dos redirecciones viejas: hay enlaces afuera que todavía las usan
 
 const problems = [];
