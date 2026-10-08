@@ -1,10 +1,11 @@
 // =====================================================
 // main.js – Comportamiento global del sitio de BPP
 // -----------------------------------------------------
-// Contiene navegación responsive, animaciones de scroll,
-// tracking con Plausible, formulario de contacto,
-// soporte PWA y lógica específica para páginas internas
-// (política de privacidad y reporte de impacto).
+// Menú móvil, anclas, logo del inicio, eventos de Plausible,
+// y lo propio de cada tipo de página: índice, compartir,
+// escenarios y rail de cifras en los casos; filtro en
+// Pensamiento; "Ver proceso" en los servicios del inicio.
+// Sin apariciones al scroll, sin formulario, sin PWA.
 // =====================================================
 
 // =========================
@@ -97,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (linkPath === currentPath) {
         link.classList.add('current-page');
         link.setAttribute('aria-current', 'page');
-      } else if (currentPath.startsWith(linkPath) && linkPath !== '/' && linkPath !== '../') {
+      } else if (currentPath.startsWith(linkPath) && linkPath !== '/') {
         link.classList.add('current-page');
         link.setAttribute('aria-current', 'true');
       }
@@ -125,15 +126,8 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.style.overflow = '';
     };
 
+    // Es un <button>: Enter y Espacio ya llegan como click.
     mobileMenuBtn.addEventListener("click", toggleMenu);
-
-    // Keyboard support for Enter and Space keys
-    mobileMenuBtn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        toggleMenu();
-      }
-    });
 
     // Cerrar menú al hacer click en un link
     navLinks.querySelectorAll("a").forEach((link) => {
@@ -287,7 +281,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // =====================================================
   // BLOQUE CASOS LARGOS (reporte-page)
   // -----------------------------------------------------
-  // Profundidad de lectura y secciones vistas.
+  // Profundidad de lectura, secciones vistas, índice,
+  // compartir, escenarios y rail de cifras.
   // =====================================================
 
   if (body.classList.contains("reporte-page")) {
@@ -334,28 +329,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const stickyToc = document.getElementById("stickyToc");
     const shareButtons = document.getElementById("shareButtons");
     if (stickyToc || shareButtons) {
+      const showThreshold = 400; // aparecen después de 400px de scroll
+      let stickyVisible = null;
       const handleStickyElements = () => {
-        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        const showThreshold = 400; // Show after scrolling 400px
-
-        if (stickyToc) {
-          if (scrollPosition > showThreshold) {
-            stickyToc.classList.add("visible");
-          } else {
-            stickyToc.classList.remove("visible");
-          }
-        }
-
-        if (shareButtons) {
-          if (scrollPosition > showThreshold) {
-            shareButtons.classList.add("visible");
-          } else {
-            shareButtons.classList.remove("visible");
-          }
-        }
+        const visible = window.scrollY > showThreshold;
+        if (visible === stickyVisible) return; // nada cambió: no se toca el DOM
+        stickyVisible = visible;
+        if (stickyToc) stickyToc.classList.toggle("visible", visible);
+        if (shareButtons) shareButtons.classList.toggle("visible", visible);
       };
 
-      window.addEventListener("scroll", handleStickyElements);
+      window.addEventListener("scroll", handleStickyElements, { passive: true });
       handleStickyElements();
 
       // Highlight active section in TOC
@@ -363,25 +347,23 @@ document.addEventListener("DOMContentLoaded", function () {
         const tocLinks = stickyToc.querySelectorAll("a");
         const sections = document.querySelectorAll("section[id]");
 
+        let currentTocId = null;
         const highlightTocLink = () => {
           let current = "";
           sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.pageYOffset >= sectionTop - 200) {
+            if (window.scrollY >= section.offsetTop - 200) {
               current = section.getAttribute("id");
             }
           });
+          if (current === currentTocId) return; // misma sección: no se toca el DOM
+          currentTocId = current;
 
           tocLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + current) {
-              link.classList.add("active");
-            }
+            link.classList.toggle("active", link.getAttribute("href") === "#" + current);
           });
         };
 
-        window.addEventListener("scroll", highlightTocLink);
+        window.addEventListener("scroll", highlightTocLink, { passive: true });
         highlightTocLink();
       }
     }
@@ -430,15 +412,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const content = document.getElementById(scenarioId);
         if (!content) return;
 
-        // Close all other accordions (optional - remove if you want multiple open)
-        // accordionHeaders.forEach(h => {
-        //   if (h !== header) {
-        //     h.classList.remove("active");
-        //     h.setAttribute("aria-expanded", "false");
-        //     h.nextElementSibling.classList.remove("active");
-        //   }
-        // });
-
         // Toggle current accordion
         if (isActive) {
           header.classList.remove("active");
@@ -452,22 +425,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       };
 
+      // Son <button>: Enter y Espacio ya llegan como click.
       accordionHeaders.forEach((header) => {
         header.addEventListener("click", () => toggleAccordion(header));
-
-        // Keyboard support for Enter and Space
-        header.addEventListener("keydown", (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggleAccordion(header);
-          }
-        });
       });
     }
 
-    // 5. Sticky Download Bar (Mobile)
-
-    // 6. Share Button Tracking
+    // 5. Share Button Tracking
     if (shareButtons) {
       shareButtons.querySelectorAll("a").forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -482,7 +446,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // 7. Rail de cifras (scrollytelling, desktop)
+    // 6. Rail de cifras (scrollytelling, desktop)
     // -----------------------------------------------------
     // Extiende el patrón IntersectionObserver del reporte:
     // una cifra grande en accent bajo el sticky TOC que se
@@ -563,9 +527,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =====================================================
-  // FILTROS DE PROYECTOS
+  // FILTRO DE ARTÍCULOS
   // -----------------------------------------------------
-  // Sistema de filtrado por categorías en página de Hechos
+  // Filtra por movimiento en Pensamiento (única página con
+  // .filter-btn; Lo hecho no tiene filtro).
   // =====================================================
   const filterButtons = document.querySelectorAll('.filter-btn');
   const proyectos = document.querySelectorAll('.actividad-entrada');
@@ -600,16 +565,9 @@ document.addEventListener("DOMContentLoaded", function () {
       trackEvent('Filtro_proyectos', { categoria: filter });
     };
 
+    // Son <button>: Enter y Espacio ya llegan como click.
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => applyFilter(btn));
-
-      // Keyboard support for Enter and Space
-      btn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          applyFilter(btn);
-        }
-      });
     });
   }
 

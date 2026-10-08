@@ -47,8 +47,8 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Plus Jakarta Sans se carga vía <link> en el <head> de cada página
-   (evita la cadena render-blocking de @import dentro del CSS) */
+/* Las dos familias se declaran acá con @font-face; el <head> solo precarga la regular
+   (y Literata en las páginas de lectura). Nunca @import dentro del CSS. */
 
 /* =========================
    Reset & Variables
@@ -60,16 +60,14 @@
     box-sizing: border-box;
 }
 
-.nav-container{width:100%;padding:0 6rem;display:flex;justify-content:space-between;align-items:center}
-
 :root {
     /* Terracotta BPP - DESIGN.md: un solo acento, sin variantes de escala. */
     --orange-500: #c16f52;  /* Principal (brand) - terracotta desaturado */
 
     /* Base colors - Inclusive dark (lifted warm gray, no pure black) */
-    --color-bg: #12151a;           /* Dark warm brown - lifted para reducir contraste extremo */
-    --color-surface: #1a1e25;      /* Surface elevated - warm gray */
-    --color-border: #2b313a;       /* Border - warm taupe, más visible */
+    --color-bg: #12151a;           /* Tinta: azul-negro frío (v2.4) */
+    --color-surface: #1a1e25;      /* Superficie elevada (cards) */
+    --color-border: #2b313a;       /* Borde */
 
     /* Text colors - Inclusive design (warm off-white unificado) */
     --color-text: #faf8f6;              /* Blanco cálido principal - reduce fatiga visual */
@@ -88,12 +86,9 @@
     --color-accent: var(--orange-500);
     --color-accent-bright: var(--orange-500);
 
-    /* v2.3 — Superficie de lectura (body.page-lectura). Papel cálido, nunca
-       blanco puro, para documentos largos. Contraste medido sobre --paper
-       #f4efe8 (WCAG 2.1): ink-high 14.1:1 · ink-mid 8.3:1 · ink-low 5.5:1
-       (piso para cuerpo y metadata) · accent-on-paper 5.2:1 · hover 6.9:1.
-       #c16f52 da 3.2:1 sobre papel: solo texto ≥24px o ≥18.66px bold. */
-    --paper: #f4efe8;                 /* superficie de lectura */
+    /* Papel: fondo de .figura__papel y .documento, las únicas piezas claras que quedan.
+       La superficie de lectura v2.3 (body.page-papel) se retiró el 2026-09-06. */
+    --paper: #f4efe8;
 
     /* Spacing Scale - 8px grid system (como Gmail, Figma, Tailwind) */
     --space-1: 0.25rem;   /* 4px - micro spacing */
@@ -133,12 +128,6 @@
     --font-size-h2: clamp(2.375rem, 5vw, 3.25rem);      /* 32px → 42px */
     --font-size-h1: clamp(3rem, 7vw, 4.5rem);      /* 42px → 56px */
     --font-size-display: clamp(4rem, 9vw, 5.5rem);   /* 56px → 72px - hero */
-
-    /* Typography - Special (numbers, icons) */
-    --font-size-number-sm: 2rem;
-    --font-size-number-md: 2.5rem;
-    --font-size-number-lg: 3rem;
-    --font-size-icon: 1.75rem;
 
     /* Typography - Line heights */
     --line-height-heading: 1.2;
@@ -260,7 +249,7 @@ button {
 }
 
 /* Typography - Tamaño estandarizado con Plus Jakarta Sans */
-/* Solo h1, h2, h3 se diferencian por tamaño. El resto usa --font-size-base (17px) */
+/* Solo h1, h2, h3 se diferencian por tamaño. El resto usa --font-size-base (19px) */
 /* Jerarquía visual viene de: weight, color, spacing */
 
 h1 {
@@ -280,13 +269,13 @@ h3 {
 
 /* h4, h5, h6: mismo tamaño que body (Gmail approach) - jerarquía por weight */
 h4, h5, h6 {
-    font-size: var(--font-size-base);  /* 17px - igual que body */
+    font-size: var(--font-size-base);  /* 19px - igual que body */
     font-weight: 700;  /* Diferenciación por peso, no por tamaño */
     margin-bottom: var(--space-3);
 }
 
 p, li {
-    font-size: var(--font-size-base);  /* 17px - estandarizado */
+    font-size: var(--font-size-base);  /* 19px - estandarizado */
 }
 
 p {
@@ -331,7 +320,7 @@ a,
 }
 
 /* =========================
-   Display Typography - Syne Font
+   Display typography
    ========================= */
 
 h1, h2 {
@@ -354,11 +343,6 @@ h3, h4, h5, h6 {
     h3, h4, h5, h6 {
         hyphens: none;
     }
-}
-
-/* Balance text lines in headings for better typography */
-h1, h2, h3 {
-    text-wrap: balance;
 }
 
 /* =========================
@@ -400,17 +384,6 @@ body.logo-pinned nav {
         backdrop-filter: blur(16px) saturate(140%);
         -webkit-backdrop-filter: blur(16px) saturate(140%);
     }
-}
-
-/* Páginas internas: siempre visible */
-/* Mobile-first: sin blur; desktop agrega blur (ver bloque min-width más abajo) */
-body.secondary-page nav {
-    opacity: 1;
-    pointer-events: auto;
-    background-color: rgba(18, 21, 26, 0.95);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
 }
 
 /* Fallback for browsers without backdrop-filter */
@@ -511,109 +484,15 @@ body.secondary-page .nav-logo {
 .nav-links a {
     color: var(--color-text-light); text-decoration: none; font-size: 1rem; font-weight: 400; line-height: 1; display: block; align-items: center; padding: var(--space-3) var(--space-5); position: relative; transition: color 0.3s; }
 
-.nav-links a:hover {
-    color: var(--color-accent); }
-
-/* Mobile menu button */
-.mobile-menu-btn {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    background: none;
-    border: none;
-    cursor: pointer;
-    min-width: 44px;
-    min-height: 44px;
-    padding: var(--space-3);
-    justify-content: center;
-    align-items: center;
-    z-index: var(--z-nav-btn);
-}
-
-.mobile-menu-btn span {
-    width: 25px;
-    height: 2px;
-    background-color: var(--color-text);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform-origin: center;
-}
-
-/* Hamburger animation to X */
-.mobile-menu-btn.active span:nth-child(1) {
-    transform: translateY(5px) rotate(45deg);
-}
-
-.mobile-menu-btn.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-btn.active span:nth-child(3) {
-    transform: translateY(-5px) rotate(-45deg);
-}
-
-/* Mobile menu overlay */
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: calc(var(--z-nav-mobile) - 1);
-}
-
-.mobile-menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Desktop: hide mobile menu button */
-@media (min-width: 769px) {
-    .mobile-menu-btn {
-        display: none;
-    }
-}
-
-.hero-fullscreen {
-    /* Alto acotado: en 1080p un hero de 100vh dejaba 400px vacíos bajo el bloque, más los
-       160px de padding de Nosotros. Se centra el bloque y la sección siguiente arranca antes. */
-    min-height: clamp(520px, 78svh, 820px); display: flex; justify-content: center; align-items: center; padding: 0; }
 /* Hero del inicio → Nosotros: el hero cierra con el padding de .hero-brand-header
    (24px mobile / 48px desktop, ver abajo); la sección completa hasta --spacing-block-edge.
    El bloque de marca se ancla abajo: si el min-height del splash sobra (pantallas altas),
    el aire queda arriba del bloque y no entre el hero y Nosotros. Antes `.hero` (flex-start)
    pisaba el `center` de .hero-fullscreen y el sobrante caía justo en ese gap. */
-.hero.hero-fullscreen { padding-bottom: 0; align-items: center;  /* el bloque centrado: el aire sobrante del hero se reparte arriba y abajo */ }
 .hero-fullscreen + .section { padding-top: calc(var(--spacing-block-edge) - var(--space-6)); }
 @media (min-width: 769px) {
     .hero-fullscreen + .section { padding-top: calc(var(--spacing-block-edge) - var(--space-12)); }
 }
-
-.hero-brand-header {
-    
-    max-width: 1200px; padding: calc(var(--space-12) + 38px) 2rem var(--space-12); z-index: 1; }
-
-.hero-brand-content {
-    display: flex; flex-direction: column; align-items: center; gap: var(--space-12); text-align: center; }
-
-.hero-logo-large {
-    width: clamp(120px, 15vw, 200px); transition: opacity var(--nav-transition, 0.3s) ease; }
-
-.hero-logo-large img {
-    
-    height: auto; }
-
-.hero-brand-text {
-    display: flex; flex-direction: column; gap: var(--space-3); }
-
-.hero-wordmark {
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: clamp(2.6rem, 5.5vw, 4.6rem); color: rgba(250, 248, 246, 0.95); line-height: 1.15; animation: textReveal 0.7s ease-out 0.15s both; }
-
-.hero-tagline {
-    font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 400; color: rgba(250, 248, 246, 0.85); line-height: 1.4; animation: textReveal 0.7s ease-out 0.35s both; }
 
 .nav-links a::after {
     content: '';
@@ -762,10 +641,6 @@ body.secondary-page .nav-logo {
    Hero
    ========================= */
 
-/* =========================
-   Hero Section
-   ========================= */
-
 /* Hero fullscreen - immersive splash, ocupa viewport inicial completo */
 .hero-fullscreen {
     /* Mobile: el hero mide lo que mide el bloque de marca (unos 520px a 390px de ancho).
@@ -784,7 +659,6 @@ body.secondary-page .nav-logo {
 .hero-brand-header {
     width: 100%;
     max-width: 1200px;
-    padding: var(--space-12) var(--space-6) var(--space-6); /* Padding reducido en mobile */
     z-index: 1;
 }
 
@@ -808,11 +682,6 @@ body.secondary-page .nav-logo {
         /* Antes 100vh: en 1080p dejaba ~400px vacíos bajo el bloque. Acotado y centrado. */
         min-height: clamp(560px, 80svh, 840px);
         padding: 0;
-    }
-
-    .hero-brand-header {
-        /* El nav fijo tapa ~76px arriba: un poco más de padding arriba deja el bloque centrado a la vista */
-        padding: calc(var(--space-12) + 38px) 2rem var(--space-12);
     }
 
     .hero-brand-content {
@@ -865,12 +734,7 @@ body.secondary-page .nav-logo {
     word-break: keep-all;
 }
 
-@keyframes heroScrollHint {
-    0%, 100% { transform: translateY(0); opacity: 0.6; }
-    50% { transform: translateY(3px); opacity: 1; }
-}
-
-/* Text reveal animation - horizontal wipe effect */
+/* Text reveal animation */
 /* Antes: barrido horizontal con clip-path. En móvil, con el nombre en dos líneas,
    se veía como texto cortado a medias. Ahora: fundido suave con leve subida,
    el mismo gesto que usan las secciones al entrar. */
@@ -950,13 +814,6 @@ body.secondary-page .nav-logo {
     opacity: 0.12; /* Subtle - doesn't overpower text, WCAG compliant */
 }
 
-.hero-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
 /* Gradient overlay fallback - speculative/futures aesthetic */
 .hero-visual-gradient {
     width: 100%;
@@ -972,10 +829,7 @@ body.secondary-page .nav-logo {
     .hero {
         padding: clamp(2rem, 5vh, 4rem) clamp(2rem, 8vw, var(--space-24)) clamp(2rem, 5vh, var(--space-16));
     }
-
-    
-    
-    }
+}
 
 /* =========================
    CTA Buttons - Sistema Unificado Canónico
@@ -1062,7 +916,7 @@ body.secondary-page .nav-logo {
 }
 
 /* =========================
-   CTA Buttons - Sistema Unificado (LEGACY - A DEPRECAR)
+   CTA: flechas
    ========================= */
 
 /* Arrow micro-interactions */
@@ -1124,12 +978,6 @@ body.secondary-page .nav-logo {
     [data-preview]::after {
         transition: none;
     }
-
-    /* Disable SVG animations */
-    svg animate,
-    svg animateTransform {
-        display: none;
-    }
 }
 
 /* Touch devices: hide preview entirely (no hover available) */
@@ -1138,10 +986,6 @@ body.secondary-page .nav-logo {
         display: none;
     }
 }
-
-/* =========================
-   Services CTA Subtext
-   ========================= */
 
 /* =========================
    Section Containers
@@ -1218,14 +1062,6 @@ main > :last-child {
     }
 }
 
-/* =========================
-   Executive Summary / About
-   ========================= */
-
-/* =========================
-   About Section - Two Column Layout
-   ========================= */
-
 /* Corner brackets (BPP brand) */
 .corner-bracket {
     position: absolute;
@@ -1259,29 +1095,12 @@ main > :last-child {
     margin-top: var(--space-16);
 }
 
-/* About Section - Desktop Enhancement */
 @media (min-width: 769px) {
-    
-    
-    
-    
-    
-    
     .corner-bracket {
         width: 40px;
         height: 40px;
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    }
+}
 
 /* =========================
    Services - Editorial Blocks
@@ -1323,19 +1142,11 @@ main > :last-child {
 /* Grilla de servicios: una columna; dos desde 1025px (ver v2.5 más abajo) */
 .services-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-6);
     margin-bottom: 0;
     max-width: none;
 }
 
 .service-block {
-    padding: var(--space-4);  /* Reducido de --space-5: menos altura en mobile */
-    border: 1px solid rgba(193, 111, 82, 0.08);  /* v2.2: susurro */
-    border-radius: var(--border-radius);
-    background: var(--color-surface);
-    box-shadow: var(--shadow-card);
-    position: relative;
     transition: box-shadow 0.35s ease, background 0.3s ease, transform 0.3s ease;
     width: 100%;
     max-width: 100%;
@@ -1343,38 +1154,21 @@ main > :last-child {
     box-sizing: border-box;
 }
 
-.service-block:hover {
-    box-shadow: var(--shadow-card-hover);  /* v2.2: brillo cálido, no borde */
-}
-
 .service-number {
-    display: block;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 2rem;  /* Reducido de 2.5rem: menos altura en mobile */
-    font-weight: 700;
-    color: var(--color-text-faint);
-    line-height: 1;
-    color: var(--color-accent);
-    margin-bottom: var(--space-4);  /* Reducido de --space-6 */
 }
 
 .service-category {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
     text-transform: uppercase;
     opacity: 0.7;  /* Increased from 0.5 for better contrast */
-    margin-bottom: var(--space-6);
-    letter-spacing: 0.05em;
 }
 
 .service-title {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h2);  /* Reducido de h1: menos altura en mobile */
     font-weight: 700;
     color: var(--color-text);
     opacity: 1;
-    line-height: 1.1;
-    margin-bottom: var(--space-3);  /* Reducido de --space-4 */
     hyphens: auto;
 }
 
@@ -1385,7 +1179,6 @@ main > :last-child {
     color: var(--color-text);
     opacity: 0.75;
     line-height: 1.5;  /* Reducido de 1.7: texto más compacto en mobile */
-    max-width: 750px;
 }
 
 .service-deliverable-link {
@@ -1415,10 +1208,7 @@ main > :last-child {
         padding: 0 var(--space-24);
     }
 
-    
     .service-title {
-        font-size: var(--font-size-h1);  /* Desktop: título más grande que mobile */
-        margin-bottom: var(--space-4);
         hyphens: none;
     }
 
@@ -1427,16 +1217,11 @@ main > :last-child {
     }
 
     .service-block {
-        padding: var(--space-10);
         width: auto;
         max-width: none;
         overflow: visible;
     }
 
-    .service-number {
-        font-size: 4rem;
-        margin-bottom: var(--space-6);  /* Desktop: más espacio */
-    }
 }
 
 /* =========================
@@ -1466,7 +1251,6 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-4);
     width: 100%;
 }
 
@@ -1583,14 +1367,6 @@ footer {
     fill: var(--color-accent);
 }
 
-.social-icons a:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-    border-radius: 4px;
-}
-
-/* Footer bottom removed - unified into single line */
-
 /* Footer - Desktop Enhancement */
 @media (min-width: 769px) {
     footer {
@@ -1606,7 +1382,6 @@ footer {
 
     .footer-left {
         align-items: flex-start;
-        gap: var(--space-3);
         width: auto;
     }
 
@@ -1656,11 +1431,7 @@ footer {
 }
 
 /* =========================
-   Contact Form
-   ========================= */
-
-/* =========================
-   Contact Form - Editorial Layout
+   Contacto
    ========================= */
 
 /* Mobile-first base */
@@ -1821,38 +1592,17 @@ footer {
 .filter-bar {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2);
     margin-bottom: var(--space-12);
 }
 
 .filter-btn {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;  /* 16px - WCAG minimum en mobile */
-    padding: var(--space-2) var(--space-4);
-    background: transparent;
-    color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.5) */
-    border: 1px solid rgba(250, 248, 246, 0.15);
-    border-radius: 8px;
     cursor: pointer;
     transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.filter-btn:hover {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
-    background: rgba(193, 111, 82, 0.05);
 }
 
 /* Activo: acento tipográfico + borde inferior (DESIGN.md: sin fondos sólidos) */
-.filter-btn--active {
-    background: transparent;
-    color: var(--color-accent);
-    border-color: transparent;
-    border-bottom: 2px solid var(--color-accent);
-    border-radius: 0;
-}
 
 .actividad-entrada.hidden {
     display: none;
@@ -1883,14 +1633,6 @@ footer {
     color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.6) */
     margin-bottom: var(--space-8);
 }
-
-/* =========================
-   Proyectos - Linked by Air Layout
-   ========================= */
-
-/* =========================
-   Últimas Actividades
-   ========================= */
 
 /* =========================
    Actividades - Editorial Layout
@@ -2035,10 +1777,6 @@ footer {
     margin-top: var(--space-3);
 }
 
-/* =========================
-   Corner Brackets - Animated UI Detail
-   ========================= */
-
 /* v2.2: sin brackets en service blocks — reservados para La Usina */
 .service-block {
     position: relative;
@@ -2051,7 +1789,6 @@ footer {
     position: relative;
 }
 
-/* actividades-cta-link ahora usa estilos unificados (ver línea 438) */
 .actividades-cta {
     padding: var(--space-10) 0;
 }
@@ -2091,10 +1828,6 @@ footer {
     }
 
 }
-
-/* =========================
-   Equipo - Tabla Tipográfica (SPACE10 style)
-   ========================= */
 
 /* =========================
    TRUST SECTION (Equipo + Clientes fusionado)
@@ -2141,10 +1874,6 @@ footer {
 }
 
 /* =========================
-   Animations (Intersection Observer)
-   ========================= */
-
-/* =========================
    Consistencia / Base de Cards
    ========================= */
 
@@ -2186,8 +1915,6 @@ img {
     outline-offset: 4px;
 }
 
-/* Focus en footer links - handled in .footer-link */
-
 /* Focus en social icons */
 .social-icons a:focus-visible {
     outline: 2px solid var(--color-accent);
@@ -2217,18 +1944,13 @@ img {
    Responsive
    ========================= */
 
-/* Desktop grande */
-/* Tablet landscape */
+/* Tablet (769–1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
     .hero {
         padding: 140px var(--spacing-horizontal-tablet) var(--space-20);
     }
 
     .section {
-        padding: var(--spacing-block) var(--spacing-horizontal-tablet);
-    }
-
-    .content-section {
         padding: var(--spacing-block) var(--spacing-horizontal-tablet);
     }
 
@@ -2275,9 +1997,6 @@ img {
     }
 }
 
-/* Mobile pequeño */
-/* MOBILE-004: Mobile extra pequeño (320-360px) */
-/* Mobile landscape */
 /* =========================
    Prefers Reduced Motion
    ========================= */
@@ -2286,11 +2005,9 @@ img {
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
-    }}
+    }
+}
 
 /* ===============================
    Tarjetas de impacto (reporte)
@@ -2325,8 +2042,6 @@ img {
 .impact-list li {
   margin-bottom: var(--space-2);
 }
-
-/* btn-download ahora usa estilos unificados (ver línea 281) */
 
 /* === ESTILO REPORTE IMPACTO (alineado con index) === */
 
@@ -2625,14 +2340,7 @@ img {
     border: var(--border-card);
     border-radius: var(--border-radius);
     padding: var(--space-6); /* Mobile base */
-    box-shadow: var(--shadow-card);
     transition: box-shadow 0.35s ease;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .senal-card:hover {
-        box-shadow: var(--shadow-card-hover);  /* v2.2: brillo cálido */
-    }
 }
 
 .senal-label {
@@ -2664,7 +2372,7 @@ img {
 
 /* Desktop enhancements - Señales widget */
 @media (min-width: 769px) {
-    
+
     .senales-grid {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: var(--space-8);
@@ -2724,11 +2432,6 @@ img {
 }
 
 .service-timeline {
-    margin-top: var(--space-6);
-    padding: var(--space-6);
-    background: rgba(250, 248, 246, 0.04);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
     display: none;
 }
 
@@ -2762,38 +2465,6 @@ img {
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     line-height: var(--line-height-body);
-}
-
-/* =========================
-   Términos clave - Mini tarjeta desplegable
-   -------------------------
-   Patrón disclosure: tap/click en el término despliega una
-   tarjeta real en el flujo del documento (la inserta el JS
-   después del bloque contenedor). Alineado a DESIGN.md:
-   surface #1a1e25, acento --orange-500, radio 8px, shadow ≤ 0.4.
-   ========================= */
-
-@keyframes termCardIn {
-    from {
-        opacity: 0;
-        transform: translateY(-4px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes drawLine {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-@keyframes fadeInDot {
-    to {
-        opacity: 0.6;
-    }
 }
 
 /* ==========================
@@ -2832,7 +2503,7 @@ img {
   transition: color var(--transition-normal);
 }
 
-/* Exception: cta-primary buttons keep their dark text on orange background */
+/* Los CTA tipográficos conservan el acento */
 .reporte-page .cta-primary,
 .legal-page .cta-primary {
   color: var(--color-accent);
@@ -2904,7 +2575,6 @@ img {
   visibility: visible;
 }
 
-.sticky-toc h3,
 .sticky-toc .toc-label {
   font-size: var(--font-size-base);
   font-weight: 700;
@@ -2946,8 +2616,6 @@ img {
   right: var(--space-8);
   width: 56px;
   height: 56px;
-  background: var(--color-accent);
-  border: none;
   border-radius: 50%;
   cursor: pointer;
   z-index: 1000;
@@ -2955,17 +2623,11 @@ img {
   display: none;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s, background 0.3s;
-}
-
-.mobile-toc-btn:hover {
-  background: var(--color-accent-bright);
 }
 
 .mobile-toc-btn svg {
   width: 24px;
   height: 24px;
-  fill: #12151a;
 }
 
 /* Mobile TOC Overlay */
@@ -3220,16 +2882,10 @@ img {
 
   }
 
-/* Footer spacing - simplified with new footer structure */
-
 /* ========================================
-   CLIENTES SECTION - GLASSMORPHISM
+   Logos de clientes e instituciones (la grilla está en .logos-grid, más abajo)
    ======================================== */
 
-/* Marquee de logos — mobile-first.
-   Mobile: ancho del contenedor (sin hack de 100vw, que el patch
-   * { max-width: 100% } de mobile capaba dejándolo descentrado).
-   Desktop: full-bleed 100vw. */
 .logo-item {
   flex-shrink: 0;
   display: flex;
@@ -3276,7 +2932,6 @@ img {
   .logo-item img[src*="micelio"],
   .logo-item img[src*="otros-futuros"] { height: 32px; }
 }
-/* Testimonials: sección eliminada — el CSS era huérfano (ningún HTML la usa) */
 
 .footer-left {
   gap: var(--space-2);
@@ -3310,7 +2965,6 @@ img {
   background: var(--color-surface);
   border: 1px solid rgba(250, 248, 246, 0.06);
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow-card);
 }
 
 .tesis-card__label {
@@ -3472,13 +3126,6 @@ img {
   }
 }
 
-/* ============ v2.2: brackets de La Usina que se dibujan ============ */
-/* Única animación de brackets del sitio: al entrar la tesis-card en
-   viewport, los brackets se trazan desde la esquina. Refuerza que son
-   firma de La Usina, no decoración global. */
-@media (prefers-reduced-motion: no-preference) {
-  }
-
 /* ============ Fase B 2026: grano por capas ============ */
 /* Superficies elevadas con noise levemente más denso que el del body
    (opacity 0.05 vs 0.035): gramajes de papel distintos por capa. Se
@@ -3593,8 +3240,8 @@ img {
 
 /* ============ Fase B 2026: rail de cifras (scrollytelling reporte) ============ */
 /* Desktop only: bloque bajo el sticky TOC del reporte que muestra la
-   cifra de la sección visible. El aside ya se oculta bajo 1281px; el
-   gate en 1100px deja el umbral explícito. */
+   cifra de la sección visible. Solo desde 1536px, igual que el índice
+   pegajoso que lo contiene. */
 .toc-data-rail {
     display: none;
 }
@@ -3750,10 +3397,9 @@ html {
     -webkit-tap-highlight-color: rgba(193, 111, 82, 0.18);
 }
 
-/* ============ v2.2.1: logos en grilla con reveal escalonado ============ */
+/* ============ v2.2.1: logos en grilla ============ */
 /* Reemplaza al marquee (ilegible a 200px/s y muerto bajo reduced-motion).
-   Los logos se revelan en secuencia al entrar en viewport y quedan
-   legibles, con hover individual a color. */
+   Sin apariciones al scroll desde v2.9: la grilla está visible de entrada. */
 .logos-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);  /* Mobile: 2×5 */
@@ -3778,8 +3424,8 @@ html {
 
 /* ============ v2.2.1: equipo con retratos visibles ============ */
 /* Las caras del estudio dejan de esconderse detrás de un hover
-   (en mobile no existía forma de verlas). Mobile: fila compacta con
-   thumbnail. Desktop: tres retratos que se revelan al scroll. */
+   (en mobile no existía forma de verlas). Mobile: una columna.
+   Desktop: tres retratos en columnas. */
 .equipo-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -3864,12 +3510,7 @@ html {
     }
 }
 
-/* Logos tipo ícono (cuadrados: CESBA, Olam): a igual altura
-   que un wordmark ocupan un cuarto de su superficie visual. Se compensa
-   con ~1.5x de altura para igualar el peso óptico. */
- /* Wordmarks con tipografía chica en su lockup (ITBA Escuela de
-   Innovación): compensación intermedia entre wordmark e ícono. */
- /* ============ Nav mobile: orden correcto con CTA + hamburguesa ============ */
+/* ============ Nav mobile: orden correcto con CTA + hamburguesa ============ */
 /* En index conviven logo + CTA Hablemos + hamburguesa: con space-between
    el botón quedaba flotando en el centro. Logo a la izquierda (auto-margin),
    CTA y hamburguesa agrupados a la derecha. En páginas sin CTA no cambia
@@ -3995,13 +3636,6 @@ html {
     line-height: inherit;
 }
 
-/* La nav de la página legal estaba con opacity 0 (solo logo-pinned /
-   secondary-page la mostraban). */
-body.legal-page.page-lectura nav {
-    opacity: 1;
-    pointer-events: auto;
-}
-
 /* Tarjetas de artículos: la fila la manda el texto, acotado a siete líneas; la imagen
    ocupa esa altura y se ve entera (contain), nunca recortada. Sin sticky. */
 @media (min-width: 769px) {
@@ -4050,28 +3684,12 @@ body.legal-page.page-lectura nav {
    debajo del h2 de sección, el numeral pasa a "01" junto al label como en el índice de
    Pensamiento, y "Ver proceso" es un enlace tipográfico como todos los CTAs del sitio. */
 .service-block { margin-bottom: 0; }
-.service-number {
-    display: inline;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--color-accent);
-    margin: 0 var(--space-2) 0 0;
-}
-.service-category { display: inline; margin: 0; }
 .service-title {
     font-size: clamp(1.75rem, 2.4vw, 2.25rem);
     line-height: 1.15;
-    margin: var(--space-4) 0 var(--space-3);
-}
-@media (min-width: 769px) {
-    .service-block { padding: var(--space-8); }
-    .service-title { font-size: clamp(1.75rem, 2.4vw, 2.25rem); }
 }
 @media (min-width: 1025px) {
     .services-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--space-8);
         align-items: start;  /* al abrir el proceso de una tarjeta, la vecina no se estira */
     }
 }
@@ -4312,7 +3930,6 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     .situaciones { grid-template-columns: repeat(3, 1fr); gap: var(--space-8); margin-bottom: var(--space-12); }
     .situacion { grid-template-columns: 1fr; gap: var(--space-3); align-content: start; }
 }
-
 
 /* ============ v3.1: los cuatro movimientos en filas, no en tarjetas ============
    Misma gramática que las situaciones de Conversemos y el índice de Pensamiento:

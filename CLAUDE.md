@@ -22,7 +22,7 @@ Estos dos archivos son la fuente de verdad del proyecto. Si una auditoría, un b
 ## 1. Project Overview
 
 ### Purpose
-Corporate website for BPP Analytics & Design, a consulting firm specializing in data analysis and process optimization for the public sector in Argentina and LATAM.
+Sitio de BPP Analytics & Design: estudio de investigación, diseño de futuros, datos e IA y comunicación estratégica. Trabaja con quienes deciden en el sector público y en empresas, en Buenos Aires y Madrid (la misma descripción que `llms.txt`).
 
 ### Key Features
 - **Responsive design**: Mobile-first, desktop adapted, accessible (WCAG 2.1 AA)
@@ -34,6 +34,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 - `index.html` - Homepage (hero, cuatro movimientos, lo hecho, nosotros con equipo y red, cuándo escribirnos y contacto)
 - `proyectos/` - Lo hecho, en dos secciones: Casos y Docencia y jornadas
 - `proyectos/trace-group/` - Provocación Trace Group: un caso escrito como pregunta "¿Y si…?" (ficha + objeto + cómo se construyó). No explica el método ni la iniciativa; la fecha 2032 marca la ficción. Nunca se dice que fue adoptada. Ver VOICE.md, "Vocabulario propio"
+- `proyectos/gabinete-extemporaneo/` - Caso Gabinete Extemporáneo (Escuela de Innovación, ITBA): una instalación de bienvenida entregada como diseño y especificación. No dice que esté construida ni muestra lo de adentro
 - `proyectos/natalidad/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales); `reporte-impacto/` solo redirige
 - `pensamiento/` - Hub único de ideas: señales, artículos y tesis (La Usina vive acá como serie)
 - `usina/` - Solo redirección a `/pensamiento/#tesis` (meta refresh, noindex); `usina/tesis-01/` sigue siendo la URL de la tesis
@@ -118,11 +119,13 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 /
 ├── src/                        # TODO lo que se publica sale de acá
 │   ├── _includes/layouts/base.njk      # head + nav + footer únicos
-│   ├── _includes/partials/             # nav, footer, critical-home/sub, senales-cards
+│   ├── _includes/partials/             # nav, footer, cierre, caso-nav, senales-cards
 │   ├── _includes/jsonld/<pagina>.njk   # JSON-LD por página
 │   ├── _data/site.json                 # nombre, URL, CSP, dominio Plausible
-│   ├── index.njk, proyectos/, proyectos/natalidad/, pensamiento/, privacidad/, usina/tesis-01/
+│   ├── index.njk, proyectos/ (+ trace-group/, gabinete-extemporaneo/, natalidad/), pensamiento/, privacidad/, usina/tesis-01/, 404.njk
 │   ├── usina/index.html                # redirección a /pensamiento/#tesis (no se procesa)
+│   ├── reporte-impacto/index.html      # redirección a /proyectos/natalidad/ (no se procesa)
+│   ├── sitemap.njk                     # genera sitemap.xml con las páginas que declaran `sitemap:`
 │   ├── styles.css                      # CSS fuente (editar este)
 │   └── main.js                         # JS fuente (editar este)
 ├── .eleventy.js                # config: input src/, output _site/, passthrough de img/, fonts/, docs/*.pdf…
@@ -130,7 +133,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ├── scripts/check-site.mjs      # chequeo del sitio generado (a mano, con npm run check)
 ├── img/, fonts/                # assets (passthrough)
 ├── docs/                       # *.pdf se publica; *.md nunca
-├── sitemap.xml, robots.txt, CNAME, favicons, llms.txt   # passthrough
+├── robots.txt, favicons, llms.txt   # passthrough
 ├── sw.js / sw.min.js           # kill-switch del SW retirado (borrar en 2027)
 └── _site/                      # salida generada (ignorada por git)
 ```
@@ -154,7 +157,8 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 5. **Push** a la rama de trabajo y PR contra la rama por defecto (el repo no tiene `main`): Vercel arma el preview de la rama y publica producción al mergear. `npm run check` ya no corre solo: hay que correrlo antes de mergear
 
 **Reglas del layout**
-- Front matter por página: `title`, `description`, `ogType`, `section` (`proyectos` | `pensamiento` | `privacidad` | `inicio`, marca el `aria-current` del nav), `bodyClass`, `jsonld` (ruta del include), `homepage: true` solo en index.
+- Front matter por página: `title`, `description`, `ogType`, `section` (`proyectos` | `pensamiento` | `privacidad` | `inicio`, marca el `aria-current` del nav), `bodyClass`, `jsonld` (ruta del include), `sitemap` (`lastmod`, `priority`, `changefreq`; sin esto la página no entra al sitemap y el chequeo falla), `homepage: true` solo en index.
+- Las páginas de caso declaran además `indice` y `compartir`: de ahí salen el índice pegajoso, el índice móvil y los botones de compartir (`partials/caso-nav.njk`). No se copia ese bloque.
 - Rutas siempre absolutas desde la raíz (`/img/…`, `/proyectos/`), nunca `../`.
 - Las señales existen una sola vez: `partials/senales-cards.njk`, incluido en index y Pensamiento.
 - `usina/index.html` es una redirección estática; no lleva layout.
@@ -162,8 +166,8 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ### Build (`package.json`)
 ```bash
 npm run build   # eleventy + csso + terser → _site/
-npm run check   # build + scripts/check-site.mjs (páginas, assets, JSON-LD, rutas)
-npm run serve   # eleventy --serve con recarga
+npm run check   # borra _site/, build y scripts/check-site.mjs (estructura de cada página, enlaces y anclas internas, imágenes, JSON-LD, sitemap)
+npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS minificados al cambiar la fuente
 ```
 
 ### Testing Checklist
@@ -190,10 +194,10 @@ npm run serve   # eleventy --serve con recarga
 ### Analytics (Plausible)
 - **Helper function**: `trackEvent(name, props)` in `main.js`
 - **Events tracked**: Section views, CTA clicks, `Contacto_mail` (conversación iniciada), `Caso_leido_75` (75 % de scroll en páginas `.reporte-page`). Son las dos métricas que importan; el resto es contexto.
-- **Privacy**: No cookies, GDPR-compliant, self-hosted script
+- **Privacy**: sin cookies. El script se carga desde `plausible.io` (no está self-hosted): es el único origen externo que admite la CSP
 
 ### Animations
-- **Sin apariciones al scroll** (retiradas 2026-09-05). El único IntersectionObserver en `main.js` dispara el evento `Seccion_vista`.
+- **Sin apariciones al scroll** (retiradas 2026-09-05). Los IntersectionObserver de `main.js` no animan contenido: registran secciones vistas (`Seccion_vista`, `Reporte_seccion_vista`), cruzan el logo del inicio con el del nav y cambian la cifra del rail de natalidad.
 - **Transiciones**: solo color y opacidad en hover/focus; `prefers-reduced-motion` las anula.
 
 ---
@@ -218,9 +222,9 @@ La fuente de verdad es `/DESIGN.md` (v2.1 beta-inclusive). Resumen:
 
 ### Typography
 - **Dos familias con rol fijo**: Plus Jakarta Sans para interfaz y títulos; Literata solo para la prosa de lectura larga en páginas `.page-lectura`. Ambas self-hosted en `/fonts/`.
-- **Carga**: `<link>` en el `<head>` de cada página (nunca `@import` en CSS)
+- **Carga**: `@font-face` en `src/styles.css`; el `<head>` solo precarga la regular (y Literata en las páginas `.page-lectura`). Nunca `@import` en CSS
 - **Pesos**: 400 y 700 + itálica 400 únicamente (decisión 2026-08-21, feedback socios) — no agregar otros
-- **Fallback**: sans-serif
+- **Fallback**: `--font-body` cae en `Plus Jakarta Sans Fallback` (Arial con métricas ajustadas, definida en `styles.css`); las reglas que escriben la familia a mano caen en `sans-serif`
 
 ### Tone and Voice
 - **Professional**: Formal but approachable
@@ -298,7 +302,7 @@ Uses sharp-cli for conversion, maintains quality.
 - **Null-safe DOM access**: Always check `if (element)` before adding listeners
 - **Page-specific logic**: Use `body.classList.contains("page-class")` for conditionals
 - **Tracking**: Centralize via `trackEvent(name, props)` helper (checks `window.plausible`)
-- **Sin reveals**: no existe `[data-animate]`; el único IntersectionObserver dispara `Seccion_vista`
+- **Sin reveals**: no existe `[data-animate]`; ningún IntersectionObserver anima contenido
 
 ### HTML Patterns
 - **Semantic structure**: `<section id="...">` con `aria-labelledby`
@@ -342,7 +346,7 @@ git push origin <rama-de-trabajo>
 - `src/styles.css` - All styles (source)
 - `src/main.js` - All behavior (source)
 - `src/index.njk` - Homepage content; `src/_includes/layouts/base.njk` - head/nav/footer
-- `sitemap.xml` - SEO (after adding pages)
+- `sitemap:` en el front matter de la página - el sitemap se genera; `lastmod` se cambia a mano cuando cambia el contenido
 
 ### Files to Never Edit Manually
 - `_site/**` - Generado por Eleventy (no está en git)

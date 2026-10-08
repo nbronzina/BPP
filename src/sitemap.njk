@@ -1,0 +1,30 @@
+---
+permalink: "sitemap.xml"
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+{#- Una entrada por cada página con `sitemap:` en su front matter:
+    sitemap: { lastmod: "AAAA-MM-DD", priority: "0.9", changefreq: "monthly" }
+    `lastmod` es la fecha del último cambio de contenido de esa página y se actualiza a mano
+    junto con el contenido. scripts/check-site.mjs falla si una página indexable no la declara. -#}
+{%- for p in collections.sitemap %}
+  <url>
+    <loc>{{ site.url }}{{ p.url }}</loc>
+    <lastmod>{{ p.data.sitemap.lastmod }}</lastmod>
+{%- if p.data.sitemap.changefreq %}
+    <changefreq>{{ p.data.sitemap.changefreq }}</changefreq>
+{%- endif %}
+{%- if p.data.sitemap.priority %}
+    <priority>{{ p.data.sitemap.priority }}</priority>
+{%- endif %}
+{%- if p.data.homepage %}
+    <image:image>
+      <image:loc>{{ site.url }}/img/og-image.jpg</image:loc>
+      <image:title>{{ site.name }}</image:title>
+    </image:image>
+{%- endif %}
+  </url>
+{%- endfor %}
+</urlset>

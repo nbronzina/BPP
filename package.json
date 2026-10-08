@@ -7,7 +7,8 @@
     "build:css": "csso src/styles.css -o _site/styles.min.css --no-restructure",
     "build:js": "terser src/main.js -o _site/main.min.js --compress passes=2,dead_code=true,drop_console=true --mangle --comments false",
     "serve": "eleventy --serve",
-    "check": "eleventy && npm run build:css && npm run build:js && node scripts/check-site.mjs"
+    "clean": "node -e \"require('node:fs').rmSync('_site', { recursive: true, force: true })\"",
+    "check": "npm run clean && npm run build && node scripts/check-site.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.0",
