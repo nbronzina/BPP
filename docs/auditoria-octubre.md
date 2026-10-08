@@ -6,7 +6,7 @@ Cómo se midió: Chromium 141 sin interfaz (el motor de Chrome y Edge), Lighthou
 
 Cuando todas las decisiones estén tomadas, este archivo se retira como se retiró `auditoria-fase2.md`: queda en git.
 
-**Estado al 8 de octubre:** los puntos 1 a 5 están resueltos y aplicados ("Cambiar 1, corregir 2, arreglar 3, eliminar 4, fijar 5"). El 10 se descartó el mismo día, cuando se sacó Plausible ("Eliminar, sacar, plausible"): el sitio ya no mide visitas. Los textos del 6 se aplicaron con la pasada de copy; del 6 quedan las imágenes y una decisión. Quedan abiertos 7 a 9 y 11.
+**Estado al 8 de octubre:** los puntos 1 a 5 están resueltos y aplicados ("Cambiar 1, corregir 2, arreglar 3, eliminar 4, fijar 5"). El 10 se descartó el mismo día, cuando se sacó Plausible ("Eliminar, sacar, plausible"): el sitio ya no mide visitas. Los textos del 6 se aplicaron con la pasada de copy; del 6 quedan las imágenes y una decisión. El 7 se aplicó con el diseño v3 ("Hacé todo, desde nivel 1 al último"), con los cambios visibles. Del 11 quedan resueltas las flechas y las contradicciones de DESIGN.md y VOICE.md. Quedan abiertos 8, 9 y el resto del 11.
 
 ## Orden sugerido
 
@@ -18,11 +18,11 @@ Cuando todas las decisiones estén tomadas, este archivo se retira como se retir
 | 4 | El fundido de página | Las herramientas de auditoría no ven el inicio | Una regla de CSS | Aplicado |
 | 5 | Literata más liviana | Hasta 98 KB menos en las páginas de lectura | Dos archivos de fuente | Aplicado |
 | 6 | Lo que se ve al compartir y lo que leen los buscadores | El inicio se comparte con el copy anterior | Textos e imágenes | Textos aplicados; quedan imágenes |
-| 7 | Las tarjetas, en un solo lugar | Ya no coinciden entre el inicio y los listados | Medio día | Abierto |
+| 7 | Las tarjetas, en un solo lugar | Ya no coinciden entre el inicio y los listados | Medio día | Aplicado (diseño v3) |
 | 8 | Que Vercel corra el chequeo | Se perdió al salir de GitHub Actions | Un archivo | Abierto |
 | 9 | Contenido propio en el dominio | Doce de doce textos y clases enlazan afuera | Trabajo editorial | Abierto |
 | 10 | Tres números de Plausible | Antes de tocar la primera pantalla del inicio | Mirar el panel | Descartado: sin Plausible |
-| 11 | Menores | | | Abierto |
+| 11 | Menores | | | En parte: flechas, DESIGN.md y VOICE.md resueltos |
 | 12 | Medido y descartado | | | |
 
 ## 1. La política de privacidad dice que el sitio lo aloja GitHub
@@ -172,6 +172,8 @@ Propuesta: un archivo de datos con una entrada por pieza y una sola plantilla de
 
 Decisión: hacerlo, con los cambios visibles de arriba (temas al 65 %, imagen móvil, 64 px, imágenes a medida) o reproduciendo las diferencias de hoy.
 
+Resuelto el 8 de octubre, con el diseño v3 y los cambios visibles: una entrada por pieza en `src/_data/piezas.mjs`, una sola plantilla (`partials/piezas.njk`) y las listas del JSON-LD de Lo hecho y Pensamiento generadas de los mismos datos. Cada tarjeta lleva una sola imagen, de 800 px, en todas las densidades. Los temas dejaron de mostrarse: la etiqueta dice tipo y fecha. El inicio pasó de cinco tarjetas a tres (los casos), más tres textos en filas.
+
 ## 8. Que Vercel corra el chequeo
 
 Hasta el 8 de octubre, `deploy.yml` corría `scripts/check-site.mjs` antes de publicar. Vercel corre el build, no el chequeo. Un `vercel.json` lo recupera:
@@ -214,6 +216,7 @@ Decisión: mirar los tres números antes de tocar el inicio.
 ## 11. Menores
 
 - **Flechas.** El archivo de Plus Jakarta Sans es el subset latin de Google, idéntico byte a byte, y no trae → ni ← (sí ↑ y ↓). Las 16 → y la ← de las páginas, más las del índice móvil de los casos, las dibuja una fuente del sistema, distinta en cada dispositivo. Además, el JS que envuelve la flecha no encuentra la del CTA de cierre (el texto termina en espacios), y DESIGN.md pide "Usar `translateX(±4px)` en flechas de CTA para hover direccional": solo la flecha a la izquierda lo tiene.
+  Resuelto en el diseño v3: la flecha es `/img/flecha.svg`, aplicada por CSS como máscara en el color del texto, igual en todos los dispositivos; todas se corren 4 px hacia donde llevan, y el JS que las envolvía se fue.
 - **DESIGN.md se contradice, o contradice al código, en ocho puntos.** Como es la fuente de verdad que cualquier agente lee antes de tocar estilos, cada contradicción es una instrucción doble:
 
   | Tema | Una parte dice | Otra parte dice | El código hace |
@@ -228,7 +231,9 @@ Decisión: mirar los tres números antes de tocar el inicio.
   | Fondo | "Dark warm gray" (4, 104, 110, 264) | Tinta azul-negro frío (340) | Tinta |
 
   VOICE.md, línea 151, sigue describiendo el sistema híbrido de Bros Oskon y Chivo, que DESIGN.md retiró (línea 323).
-- `HANDOFF-PROYECTOS.md` es una foto del commit `39e75b8` y ya tiene la nota de qué quedó viejo. Regenerarlo o borrarlo.
+
+  Resuelto en el diseño v3: DESIGN.md (v3.0) describe lo que hay, con la formulación anterior de cada punto en su Changelog; VOICE.md habla de Plus Jakarta Sans y Literata sobre Tinta. Las sombras del sitio pasaron a alfa 0,4 y blur 24, sin glow.
+- `HANDOFF-PROYECTOS.md` es una foto del commit `39e75b8` y ya tiene la nota de qué quedó viejo. Regenerarlo o borrarlo. (Con el diseño v3 la nota suma que las tarjetas y el JSON-LD son una entrada en `src/_data/piezas.mjs`.)
 - `docs/framework-senales-debiles.md` es un borrador de marzo, anterior a VOICE.md: usa la raya como remate y frases como "cambia las reglas del juego".
 - Después de la mudanza: confirmar la propiedad en Search Console y volver a mandar el sitemap, y revisar en Vercel, Domains, que `bppanalyticsanddesign.com` redirija a `www`.
 - GitHub sigue corriendo "pages build and deployment" en cada push a la rama de trabajo, y falla. Settings, Pages, Branch: None.

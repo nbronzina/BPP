@@ -67,12 +67,19 @@ Aplicado de lo micro a lo macro, cada capa verificada en navegador antes de la s
   - Biografías. Nicolás: "construyo prototipos y artefactos que hacen tangible un escenario para que el equipo discuta con algo enfrente, no en abstracto." Sergio cerraba con "El relato se construye antes de la crisis; después solo se administra el daño." Ezequiel: "Ese es mi trabajo: sociología de origen, datos de oficio."
   - En todo el sitio salieron los contrastes "no es X, es Y" (queda uno por pieza como mucho), los remates de aforismo ("Un deck se aprueba. Un objeto se discute.", "El futuro no llega con un gran anuncio. Llega como rutina."), "hace tangible", "territorios narrativos", "indicadores que se pueden accionar", "tienen cartas que jugar", las viñetas sin verbo, las mayúsculas sostenidas ("CUÁNDO TIENE SENTIDO", "NO SIGNIFICA") y los "Leer más" y "Ver proyecto": cada enlace dice adónde lleva. Trace Group, que estaba cerrado, solo perdió contrastes y remates.
   - Qué se perdió: la frase de marca de septiembre y la cadencia de remate corto con que cerraban varios párrafos de los casos.
+- **Diseño v3 (8 de octubre).** Pregunta: "Y el tema de armado de la web, del sitio propio, las tarjetas, las secciones, tipografía, botones, etc... todo lo que es diseño persé... se puede optimizar, reversionar, o etc? Decime qué te parece antes de hacer nada." Respuesta: una propuesta en tres niveles, de lo que no toca la identidad a lo que sí. Decisión: "Hacé todo, desde nivel 1 al último". Se mantuvieron Tinta, el terracota, las dos familias, los CTAs tipográficos, los 160 px entre bloques, los documentos de Gabinete y el 01 a 04. El detalle, con cada formulación original, está en el Changelog de DESIGN.md (v3.0).
+  - Nivel 1, sin cambiar la identidad. DESIGN.md describe lo que hay y deja de contradecirse en los ocho puntos que marcó la auditoría. Una grilla: de 7 a 11 bordes izquierdos por ancho de pantalla, a uno. Siete tamaños de letra en lugar de 15 o 16, ninguno por debajo de 15 px (los rótulos de las fichas iban en 13). Una sola tarjeta, con los datos en `src/_data/piezas.mjs` (punto 7 de la auditoría): veinte tarjetas escritas a mano y la copia del JSON-LD pasan a una entrada por pieza, con una imagen de 800 px cada una. La flecha la dibuja el sitio. La cita destacada pierde la caja y la comilla de Georgia.
+  - Nivel 2. Mayúsculas solo en el tipo y el año de cada pieza: de 209 textos en 25 clases a 67. Los casos se leen como documentos, sin cajas alrededor de la prosa. Los logos de clientes, en un solo tono. El inicio se acorta: "Pensamiento y trabajo aplicado" (cinco tarjetas) pasa a "Hechos" (los tres casos) y "Pensamiento" (tres textos en filas). Mide 10.509 px a 390 de ancho (antes 14.354) y 6.480 a 1440 (antes 9.338).
+  - Nivel 3, identidad. Formulación original en DESIGN.md: "Desde el 2026-09-06 el hero del inicio ocupa la primera pantalla entera: descuenta el alto del nav fijo y centra el bloque de marca en lo que se ve, sin que asome la sección siguiente". Ahora la cabecera del inicio no ocupa la pantalla entera, el nav se ve desde el principio (tercera excepción a "la navbar no se toca") y el logo va una sola vez, en el nav. El logo pasa de `#e9804d` al naranja del acento, `#c16f52`, y con él los favicons y la imagen al compartir.
+  - Qué se perdió: la primera pantalla del inicio para la marca sola, con el logo grande; el zigzag de imagen y texto en las tarjetas; el naranja propio del logo; las mayúsculas de rótulos, categorías y temas. Los casos son más largos de bajar: la prosa pasó de 78 a 93 caracteres por línea a unos 70, y Trace Group creció un 7 % de alto a 1440 (11.930 → 12.835 px).
 
 ## Decisiones vigentes que no conviene rediscutir sin motivo
 
 - Oscuro, no claro. Los socios lo eligieron con el prototipo de papel a la vista.
 - Vos como registro. Medio estudio está en Madrid y se decidió igual.
-- Dos familias tipográficas con rol fijo, dos pesos, un solo tamaño de cuerpo.
+- Dos familias tipográficas con rol fijo, dos pesos, siete tamaños y un solo tamaño de cuerpo.
+- Una grilla: un solo borde izquierdo por ancho de pantalla.
+- Un solo naranja: el del acento es también el del logo.
 - Sin animaciones de entrada: ni al scroll ni al cargar la página. La única es la del título del inicio.
 - Sin formulario, sin PWA, sin cookies, sin medición de visitas.
 - Cada cifra con fuente. Trace Group es una provocación (un caso construido antes de que exista el encargo, escrito como pregunta "¿Y si…?") y se dice así, nunca "propuesta", "pitch" ni "piloto". Ver "Vocabulario propio" en VOICE.md.
@@ -85,5 +92,5 @@ Ninguna desde el 8 de octubre de 2026: el sitio no mide visitas. Las conversacio
 
 - Archivo vectorial de Olam Estudio para la pared de logos.
 - Un caso con IA real para que el servicio "Datos e IA" tenga con qué sostenerse.
-- Extraer artículos y equipo a datos de Eleventy para que existan una sola vez.
+- Extraer el equipo a datos de Eleventy para que exista una sola vez (las piezas ya están en `src/_data/piezas.mjs`).
 - Que Vercel corra `npm run check` en cada deploy, para recuperar el chequeo automático.

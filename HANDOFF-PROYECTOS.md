@@ -12,8 +12,9 @@ Una página de proyecto es una carpeta `src/proyectos/<slug>/` con un único `in
 > - El índice pegajoso, el índice móvil y los botones de compartir de un caso salen de `partials/caso-nav.njk` y del front matter (`indice`, `compartir`). Ese bloque ya no se copia en cada página.
 > - `src/styles.css` perdió las reglas que otra pisaba; `src/main.js`, los `keydown` duplicados.
 > - Literata cambió de archivo: `fonts/literata-latin-opsz19.woff2` y su itálica, con el tamaño óptico fijo en 19. Los nombres viejos que aparecen abajo ya no existen.
+> - Diseño v3 (8 de octubre): `src/styles.css` se reescribió con otra estructura de clases (`.cabecera`, `.bloque`, `.etiqueta`, `.tarjeta`, `.fila`) y siete tamaños de letra; ver DESIGN.md. Los pasos 2 y 3 son ahora una sola entrada en `src/_data/piezas.mjs`: de ahí salen la tarjeta de Lo hecho, la del inicio (si su id está en `inicio.casos`), la lista del JSON-LD de Lo hecho y "Seguí leyendo" (`largas`). La tarjeta lleva una sola imagen, de 800 px.
 >
-> De la lista de abajo siguen valiendo los pasos 1, 2, 3 y 6. Para escribir una página nueva conviene partir de los archivos actuales del repo, no de los bloques de este documento.
+> De la lista de abajo siguen valiendo los pasos 1 y 6, y la entrada en `src/_data/piezas.mjs` reemplaza al 2 y al 3. Para escribir una página nueva conviene partir de los archivos actuales del repo, no de los bloques de este documento.
 
 Para publicar una página nueva hay que tocar, además del `index.njk` nuevo:
 

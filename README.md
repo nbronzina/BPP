@@ -8,7 +8,8 @@ HTML plano generado con [Eleventy 3](https://www.11ty.dev/) (Nunjucks), CSS y Ja
 
 - Un layout base con head, nav y footer (`src/_includes/layouts/base.njk`).
 - Ocho páginas y el 404 como templates en `src/**/index.njk` y `src/404.njk`, más dos redirecciones estáticas (`src/usina/index.html`, `src/reporte-impacto/index.html`).
-- Las señales existen una sola vez (`src/_includes/partials/senales-cards.njk`) y se incluyen donde hacen falta. Lo mismo el cierre de página (`cierre.njk`) y la navegación de los casos (`caso-nav.njk`), que salen del front matter, el botón "Copiar dirección" (`copiar-mail.njk`) y "Seguí leyendo" (`seguir-leyendo.njk`), que lleva adentro la lista de casos y tesis.
+- Casos, clases, jornadas, artículos y la tesis son datos: una entrada por pieza en `src/_data/piezas.mjs`. Las tarjetas y las filas salen de dos macros (`src/_includes/partials/piezas.njk`), y las listas del JSON-LD de Lo hecho y Pensamiento, de los mismos datos. Sumar una pieza es sumar una entrada.
+- Las señales existen una sola vez (`src/_includes/partials/senales-cards.njk`) y se incluyen donde hacen falta. Lo mismo el cierre de página (`cierre.njk`) y la navegación de los casos (`caso-nav.njk`), que salen del front matter, el botón "Copiar dirección" (`copiar-mail.njk`) y "Seguí leyendo" (`seguir-leyendo.njk`), que lista las otras piezas largas.
 - `sitemap.xml` se genera (`src/sitemap.njk`) con las páginas que declaran `sitemap:` en su front matter.
 - Política de seguridad estricta: `style-src 'self'`, sin estilos inline.
 
@@ -40,7 +41,7 @@ scripts/check-site.mjs chequeo del sitio generado
 
 ## Antes de tocar algo
 
-Leer `DESIGN.md` (paleta Tinta, tipografía, ritmo vertical, componentes) y `VOICE.md` (registro, reglas de escritura). Si una idea contradice esos archivos, ganan los archivos. El contexto de las decisiones está en `docs/historial.md`.
+Leer `DESIGN.md` (paleta Tinta, siete tamaños de letra, una grilla, ritmo vertical, componentes) y `VOICE.md` (registro, reglas de escritura). Si una idea contradice esos archivos, ganan los archivos. El contexto de las decisiones está en `docs/historial.md`.
 
 ## Contacto
 
