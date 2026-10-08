@@ -19,11 +19,11 @@ npm run check     # genera _site/ y corre el chequeo (páginas, assets, JSON-LD,
 python3 -m http.server 8000 --directory _site
 ```
 
-`npm run serve` levanta Eleventy con recarga. `_site/` y los archivos minificados no se versionan: los genera GitHub Actions al publicar.
+`npm run serve` levanta Eleventy con recarga. `_site/` y los archivos minificados no se versionan: los genera Vercel al publicar.
 
 ## Publicar
 
-Merge a la rama por defecto. El workflow `.github/workflows/deploy.yml` instala, construye, chequea y publica `_site/` en GitHub Pages (fuente: GitHub Actions). Tarda dos o tres minutos.
+Merge a la rama por defecto. Vercel instala, construye y publica `_site/`, y arma un preview por cada otra rama. El chequeo (`npm run check`) ya no corre solo: hay que correrlo antes de mergear.
 
 ## Estructura
 

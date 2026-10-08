@@ -3,8 +3,8 @@
 **Project**: BPP Analytics & Design Corporate Website
 **Tech Stack**: HTML plano generado con Eleventy 3 (Nunjucks), CSS y JS a mano, sin frameworks en runtime. Sin PWA (retirada 2026-09).
 **Build**: `npm run build` → Eleventy genera `_site/`, csso y terser minifican. Los `.min` ya no se versionan.
-**Deploy**: GitHub Pages desde `_site/`, construido en Actions (`.github/workflows/deploy.yml`)
-**Last Updated**: 2026-09-06
+**Deploy**: Vercel, conectado al repo. Publica producción al mergear en la rama por defecto y arma un preview por cada otra rama. GitHub Pages y `deploy.yml` se retiraron (2026-10).
+**Last Updated**: 2026-10-08
 
 ---
 
@@ -38,7 +38,7 @@ Corporate website for BPP Analytics & Design, a consulting firm specializing in 
 - `pensamiento/` - Hub único de ideas: señales, artículos y tesis (La Usina vive acá como serie)
 - `usina/` - Solo redirección a `/pensamiento/#tesis` (meta refresh, noindex); `usina/tesis-01/` sigue siendo la URL de la tesis
 - `privacidad/` - Política de privacidad
-- `404.html` - Página de error propia (GitHub Pages la sirve sola)
+- `404.html` - Página de error propia
 
 ---
 
@@ -127,7 +127,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 │   └── main.js                         # JS fuente (editar este)
 ├── .eleventy.js                # config: input src/, output _site/, passthrough de img/, fonts/, docs/*.pdf…
 ├── package.json                # scripts build / check / serve
-├── scripts/check-site.mjs      # chequeo del sitio generado (corre en CI)
+├── scripts/check-site.mjs      # chequeo del sitio generado (a mano, con npm run check)
 ├── img/, fonts/                # assets (passthrough)
 ├── docs/                       # *.pdf se publica; *.md nunca
 ├── sitemap.xml, robots.txt, CNAME, favicons, llms.txt   # passthrough
@@ -151,7 +151,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 2. **Build**: `npm run check` genera `_site/` y corre el chequeo
 3. **Test locally**: `python3 -m http.server 8000 --directory _site`
 4. **Commit**: solo fuentes; `_site/` y los `.min` no se versionan
-5. **Push** y merge a `main`: Actions construye y publica en 2-3 minutos
+5. **Push** a la rama de trabajo y PR contra la rama por defecto (el repo no tiene `main`): Vercel arma el preview de la rama y publica producción al mergear. `npm run check` ya no corre solo: hay que correrlo antes de mergear
 
 **Reglas del layout**
 - Front matter por página: `title`, `description`, `ogType`, `section` (`proyectos` | `pensamiento` | `privacidad` | `inicio`, marca el `aria-current` del nav), `bodyClass`, `jsonld` (ruta del include), `homepage: true` solo en index.
@@ -334,8 +334,8 @@ git add src/main.js
 git commit -m "feat: evento de descarga"
 
 # Deploy
-git push origin main
-# Wait 2-3 minutes for GitHub Pages to update
+git push origin <rama-de-trabajo>
+# Vercel arma el preview; al mergear el PR en la rama por defecto publica producción
 ```
 
 ### Important Files to Edit
