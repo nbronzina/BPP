@@ -8,7 +8,6 @@ export default function (eleventyConfig) {
     img: "img",
     fonts: "fonts",
     "robots.txt": "robots.txt",
-    "sitemap.xml": "sitemap.xml",
     "llms.txt": "llms.txt",
     CNAME: "CNAME",
     "favicon.ico": "favicon.ico",
@@ -22,6 +21,11 @@ export default function (eleventyConfig) {
   });
   // Documentos públicos (PDF de la tesis). Los .md de docs/ nunca se publican.
   eleventyConfig.addPassthroughCopy("docs/*.pdf");
+  // El sitemap sale de las páginas que declaran `sitemap:` en su front matter (src/sitemap.njk).
+  // Orden fijo por URL para que el archivo generado no cambie entre builds.
+  eleventyConfig.addCollection("sitemap", (api) =>
+    api.getAll().filter((p) => p.data.sitemap).sort((a, b) => a.url.localeCompare(b.url))
+  );
   // styles.css y main.js viven en src/ pero no son templates
   eleventyConfig.ignores.add("src/styles.css");
   eleventyConfig.ignores.add("src/main.js");
