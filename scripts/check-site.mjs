@@ -93,7 +93,9 @@ for (const [url, html] of pages) {
 
 // sitemap ↔ páginas indexables
 const sitemap = existsSync(join(OUT, "sitemap.xml")) ? readFileSync(join(OUT, "sitemap.xml"), "utf8") : "";
-const today = new Date().toISOString().slice(0, 10);
+// "Hoy" es la fecha más adelantada que hay ahora en algún huso (UTC+14): un lastmod puesto pasada
+// la medianoche de Madrid no es futuro aunque el reloj del servidor todavía marque el día anterior.
+const today = new Date(Date.now() + 14 * 3600e3).toISOString().slice(0, 10);
 const inSitemap = new Set();
 for (const m of sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
   const loc = (m[1].match(/<loc>([^<]+)<\/loc>/) || [])[1] || "";
