@@ -68,10 +68,10 @@
 :root {
     color-scheme: dark;
 
-    /* Color. Un solo acento. El texto es un blanco cálido en cuatro niveles de alfa:
-       sobre --color-surface, high 15,6:1 · mid 9,4:1 · low 5,5:1 (mínimo para texto) ·
-       faint 3,6:1 (solo texto grande o decorativo). El alfa va en el color, nunca además
-       en opacity, y el acento nunca lleva opacity (sobre Tinta da 4,93:1). */
+    /* Color. Un solo acento, que es también el color del logo. El texto es un blanco cálido en
+       tres niveles de alfa; sobre --color-surface: high 15,6:1 · mid 9,4:1 · low 5,5:1, el
+       mínimo para texto. El alfa va en el color, nunca además en opacity, y el acento nunca lleva
+       opacity (sobre Tinta da 4,93:1). */
     --orange-500: #c16f52;        /* acento: enlaces, CTAs, cifras, estados activos */
     --color-bg: #12151a;          /* Tinta */
     --color-bg-deep: #0d1014;     /* registro hondo: Cuatro movimientos y contacto */
@@ -81,7 +81,6 @@
     --color-text-high: rgba(250, 248, 246, 0.95);
     --color-text-mid: rgba(250, 248, 246, 0.75);
     --color-text-low: rgba(250, 248, 246, 0.55);
-    --color-text-faint: rgba(250, 248, 246, 0.40);
     --paper: #f4efe8;             /* papel: figuras con fondo blanco y documentos de Gabinete */
     --ink: #26221f;               /* tinta sobre papel */
 
@@ -359,8 +358,8 @@ main > :last-child { padding-bottom: var(--spacing-block-edge); }
 
 /* 5. Piezas comunes ==================================================== */
 
-/* Etiqueta: tipo y fecha de una pieza ("Provocación · 2026"). Es el único lugar del sitio con
-   mayúsculas, y van por CSS: en el HTML el texto está en minúsculas. */
+/* Etiqueta: tipo y fecha de una pieza ("Provocación · agosto 2026"). Es el único lugar del sitio
+   con mayúsculas, y van por CSS: en el HTML el texto va en caja normal, como se lee. */
 .etiqueta {
     font-size: var(--fs-7);
     font-weight: 400;
@@ -923,7 +922,7 @@ footer {
 .timeline-toggle-icon { rotate: 90deg; }
 .service-timeline-toggle[aria-expanded="true"] .timeline-toggle-icon { rotate: -90deg; }
 
-.service-timeline { max-width: 60ch; }
+.service-timeline { max-width: var(--medida); }
 
 .timeline-item {
     display: grid;
@@ -1183,7 +1182,8 @@ footer {
 /* 9. Tarjetas y filas ==================================================
    Una sola tarjeta para casos, docencia y artículos (partials/piezas.njk, datos en
    src/_data/piezas.mjs): imagen 16:9, tipo y fecha, título, descripción, ficha corta y
-   enlace. Sin caja: la separa el aire. Una columna en el teléfono, dos en tablet, tres desde 1025. */
+   enlace. Sin caja: la separa el aire. Una columna en el teléfono; en tablet, una por fila con
+   la imagen a la izquierda; tres columnas desde 1025. */
 
 .tarjetas {
     display: grid;
@@ -1540,8 +1540,9 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
 
 
 /* 11. Casos ============================================================
-   Un caso es un documento: la prosa va sin cajas. Llevan caja solo las piezas que son un objeto
-   en sí: la ficha, las figuras, los documentos de Gabinete, los escenarios y el aviso. */
+   Un caso es un documento: la prosa y la ficha técnica van sin cajas, la ficha con líneas.
+   Llevan caja solo las piezas que son un objeto en sí: las figuras, los documentos de Gabinete,
+   los escenarios (son controles) y el aviso. */
 
 .cabecera--documento .cabecera__titulo {
     font-size: var(--fs-2);
@@ -1661,7 +1662,7 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
 }
 
 .figura__papel img {
-    border-radius: calc(var(--radius) - 8px);
+    border-radius: var(--radius-sm);
     mix-blend-mode: multiply;
 }
 
@@ -1825,7 +1826,7 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
     position: relative;
     max-width: 34rem;
     margin: var(--space-8) 0;
-    padding: var(--space-6);
+    padding: var(--space-5);
     background: var(--paper);
     border-radius: var(--radius);
 }
@@ -1875,8 +1876,8 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
 .tachado--xs { width: 3.5ch; }
 .tachado--sm { width: 7ch; }
 .tachado--md { width: 11ch; }
-.tachado--lg { width: 16ch; }
-.tachado--xl { width: 22ch; }
+.tachado--lg { width: 11ch; }
+.tachado--xl { width: 14ch; }
 
 /* Renglón en blanco de la hoja de la sala de espera. */
 .documento .documento__linea {
@@ -1885,8 +1886,9 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
     margin-bottom: var(--space-4);
 }
 
-/* Sello ARCHIVADO. */
-.documento--sellado { padding-top: var(--space-10); }
+/* Sello ARCHIVADO. En el teléfono no entra al lado del encabezado: el encabezado baja y el
+   sello queda arriba, solo. */
+.documento--sellado { padding-top: var(--space-16); }
 
 .documento .documento__sello {
     position: absolute;
@@ -1929,10 +1931,11 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
 
 .documento--a5 { max-width: 26rem; }
 
-@media (max-width: 768px) {
-    .documento { padding: var(--space-5); }
-    .tachado--xl { width: 14ch; }
-    .tachado--lg { width: 11ch; }
+@media (min-width: 769px) {
+    .documento { padding: var(--space-6); }
+    .documento--sellado { padding-top: var(--space-10); }
+    .tachado--lg { width: 16ch; }
+    .tachado--xl { width: 22ch; }
 }
 
 /* Índice pegajoso (desde 1280), con el rail de cifras de natalidad. main.js lo muestra después
@@ -1942,6 +1945,7 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
     top: 100px;
     right: var(--space-8);
     z-index: 100;
+    display: none;
     width: 280px;
     max-height: calc(100vh - 124px);
     overflow-y: auto;
@@ -2020,7 +2024,7 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
     right: var(--gutter);
     bottom: var(--space-6);
     z-index: 1000;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     min-height: 44px;
@@ -2116,7 +2120,7 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
     top: 50%;
     left: var(--space-8);
     z-index: 100;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: var(--space-4);
     transform: translateY(-50%);
@@ -2158,11 +2162,11 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
 .share-buttons a:hover svg,
 .share-buttons a:focus-visible svg { fill: var(--color-bg); }
 
-@media (max-width: 1279px) {
-    .sticky-toc,
-    .share-buttons { display: none; }
-
-    .mobile-toc-btn { display: flex; }
+/* Debajo de 1280, el botón "Índice"; desde 1280, el índice pegajoso y compartir. */
+@media (min-width: 1280px) {
+    .sticky-toc { display: block; }
+    .share-buttons { display: flex; }
+    .mobile-toc-btn { display: none; }
 }
 
 
@@ -2182,8 +2186,6 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
     line-height: 1.5;
     color: var(--color-text-low);
 }
-
-.thesis-abstract { max-width: 70ch; }
 
 .thesis-cover { max-width: 50rem; }
 
