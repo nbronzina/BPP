@@ -33,8 +33,8 @@
     <meta name="theme-color" content="#12151a">
 
     <meta http-equiv="Content-Security-Policy" content="{{ site.csp }}">
-    <!-- Permissions-Policy solo funciona como header HTTP. GitHub Pages no permite headers
-         propios; si algún día se pone Cloudflare adelante, va ahí y no acá. -->
+    {#- Permissions-Policy y frame-ancestors solo funcionan como header HTTP: van en la
+        configuración del hosting (vercel.json), no acá. Hoy no están puestos. -#}
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <link rel="preconnect" href="https://plausible.io">

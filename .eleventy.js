@@ -9,7 +9,6 @@ export default function (eleventyConfig) {
     fonts: "fonts",
     "robots.txt": "robots.txt",
     "llms.txt": "llms.txt",
-    CNAME: "CNAME",
     "favicon.ico": "favicon.ico",
     "favicon.svg": "favicon.svg",
     "favicon-16x16.png": "favicon-16x16.png",
