@@ -3222,9 +3222,8 @@ img {
 }
 
 /* ============ Fase B 2026: índice archival (/pensamiento) ============ */
-/* Ficha de archivo: filas tipográficas con borde susurro, sin cajas.
-   Nº correlativo cronológico (01 = más antiguo), listado como la página:
-   el más nuevo arriba. */
+/* Ficha de archivo: filas tipográficas con borde susurro, sin cajas. Sin numeración
+   (v3.3): las tres secciones no son una secuencia. */
 .indice-archival {
     max-width: 900px;
     /* #indice lleva padding-bottom: 0 inline; este margen es el cierre del bloque. */
@@ -3249,10 +3248,8 @@ img {
 }
 
 .indice-fila a {
-    display: grid;
-    grid-template-columns: 2.25rem 1fr;
-    align-items: baseline;
-    column-gap: var(--space-4);
+    display: block;
+    line-height: 1.5;  /* la fila mide lo mismo que cuando llevaba el número al lado */
     padding: var(--space-3) 0;
     border-top: 1px solid rgba(250, 248, 246, 0.06);
     text-decoration: none;
@@ -3260,13 +3257,6 @@ img {
 
 .indice-fila:last-child a {
     border-bottom: 1px solid rgba(250, 248, 246, 0.06);
-}
-
-.indice-num {
-    font-variant-numeric: tabular-nums;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-accent);
 }
 
 .indice-titulo {
@@ -3282,16 +3272,6 @@ img {
     color: var(--color-accent);
 }
 
-@media (min-width: 769px) {
-    /* Columnas max-content: se adaptan al texto real (fecha/autor en caps
-       con tracking) — columnas fijas causaban superposición al subir la
-       escala tipográfica. */
-    .indice-fila a {
-        grid-template-columns: 2.5rem max-content max-content 1fr;
-        column-gap: var(--space-6);
-    }
-
-    }
 
 /* ============ Fase B 2026: rail de cifras (scrollytelling reporte) ============ */
 /* Desktop only: bloque bajo el sticky TOC del reporte que muestra la
@@ -3967,19 +3947,8 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     gap: var(--space-5);
 }
 .situacion {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--space-3);
-    align-items: baseline;
     border-top: 1px solid rgba(250, 248, 246, 0.08);
     padding-top: var(--space-4);
-}
-.situacion-num {
-    font-variant-numeric: tabular-nums;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--color-accent);
 }
 .situacion p {
     margin: 0;
@@ -3990,12 +3959,12 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
 }
 @media (min-width: 769px) {
     .situaciones { grid-template-columns: repeat(3, 1fr); gap: var(--space-8); margin-bottom: var(--space-12); }
-    .situacion { grid-template-columns: 1fr; gap: var(--space-3); align-content: start; }
 }
 
 /* ============ v3.1: los cuatro movimientos en filas, no en tarjetas ============
    Misma gramática que las situaciones de Conversemos y el índice de Pensamiento:
-   filas a lo ancho separadas por línea susurro, número grande a la izquierda, texto a
+   filas a lo ancho separadas por línea susurro. El número grande a la izquierda queda
+   solo acá, porque los cuatro movimientos son una secuencia (v3.3); texto a
    la derecha. Sin fondo ni sombra: eran las únicas cajas de la home. El proceso
    desplegable empuja hacia abajo en vez de desparejar columnas. */
 .services-grid,
@@ -4425,3 +4394,7 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
 @media (prefers-reduced-motion: reduce) {
     .mobile-toc-btn { transition: none; }
 }
+
+/* 7. Sin numeración decorativa: el 01-03 del índice de Pensamiento y de las situaciones de
+      Conversemos se fue (no son secuencias). El 01-04 de los cuatro movimientos queda: es un
+      orden de trabajo ("El orden importa cuando el problema es grande"). */
