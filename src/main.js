@@ -179,6 +179,13 @@ document.addEventListener("DOMContentLoaded", function () {
           behavior: prefersReducedMotion ? "auto" : "smooth",
           block: "start"
         });
+        // El foco va al destino, como en un salto nativo: "Saltar al contenido principal" y los
+        // índices dejan el teclado donde quedó la vista. El tabindex temporal se va al salir.
+        if (!target.matches("a[href], button, input, select, textarea, [tabindex]")) {
+          target.setAttribute("tabindex", "-1");
+          target.addEventListener("blur", () => target.removeAttribute("tabindex"), { once: true });
+        }
+        target.focus({ preventScroll: true });
       }
     });
   });

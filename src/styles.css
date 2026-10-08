@@ -383,6 +383,22 @@ body.logo-pinned nav {
     }
 }
 
+/* Teclado: en el inicio el nav está escondido hasta scrollear. Si recibe el foco aparece,
+   para que el foco nunca caiga en algo invisible. Con mouse o dedo no cambia nada. */
+nav:focus-within {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Sin JavaScript nadie marca el scroll: el nav del inicio se ve desde el principio.
+   Esta media query no aplica cuando el JS corre. */
+@media (scripting: none) {
+    nav {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
 /* Nav logo - hidden initially, fades in when hero logo crosses navbar (Superflux pattern) */
 .nav-logo {
     display: block;
@@ -392,8 +408,15 @@ body.logo-pinned nav {
     will-change: opacity; /* Hint for smoother mobile rendering */
 }
 
-body.logo-pinned .nav-logo {
+body.logo-pinned .nav-logo,
+nav:focus-within .nav-logo {
     opacity: 1;
+}
+
+@media (scripting: none) {
+    .nav-logo {
+        opacity: 1;
+    }
 }
 
 .nav-logo img {
@@ -459,8 +482,10 @@ body.secondary-page .nav-logo {
     list-style: none;
     margin: 0;
     padding: var(--space-20) var(--space-8);
-    transition: right 0.3s ease, opacity 0.3s ease;
+    /* Cerrado no recibe foco: visibility se apaga cuando termina el deslizamiento */
+    transition: right 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
     opacity: 0;
+    visibility: hidden;
     z-index: var(--z-nav-mobile);
 }
 
@@ -506,6 +531,8 @@ body.secondary-page .nav-logo {
 .nav-links.active {
     right: 0;
     opacity: 1;
+    visibility: visible;
+    transition: right 0.3s ease, opacity 0.3s ease, visibility 0s;
 }
 
 /* Current page indicator in mobile nav */
@@ -605,10 +632,15 @@ body.secondary-page .nav-logo {
         padding: 0;
         transition: none;
         z-index: auto;
-        /* La base mobile esconde el menú off-canvas con opacity 0 + right -100%;
-           en desktop hay que resetear AMBOS o los links quedan invisibles */
+        /* La base mobile esconde el menú off-canvas con opacity 0, right -100% y
+           visibility hidden; en desktop hay que resetear los tres o los links no se ven */
         opacity: 1;
         right: auto;
+        visibility: visible;
+    }
+
+    .nav-links.active {
+        transition: none;
     }
 
     .nav-links a {
@@ -1744,7 +1776,8 @@ footer {
     padding: var(--space-1) var(--space-3);
     border-radius: 999px;   /* v2.2: pill, sin borde */
     margin-bottom: var(--space-2);
-    background: rgba(193, 111, 82, 0.12);
+    /* Fondo Tinta: el acento sobre #12151a da 4,93:1. Con el terracota al 12 % daba 3,89:1 (AA pide 4,5) */
+    background: var(--color-bg);
     color: var(--color-accent);
 }
 
@@ -1892,6 +1925,14 @@ img {
 *:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px rgba(193, 111, 82, 0.55);
+}
+
+/* El destino de un ancla recibe el foco con un tabindex temporal (main.js): no es un control,
+   así que no lleva anillo. El foco queda ahí para que el próximo Tab siga desde ese punto. */
+[tabindex="-1"]:focus,
+[tabindex="-1"]:focus-visible {
+    outline: none;
+    box-shadow: none;
 }
 
 /* Focus en nav links */
@@ -2480,6 +2521,18 @@ img {
   text-decoration: underline;
   outline: 2px solid var(--orange-500);
   outline-offset: 2px;
+}
+
+/* Los enlaces de Privacidad y de la 404 van en medio del texto: se distinguen por algo más
+   que el color (WCAG 1.4.1), igual que los de la prosa. `.legal-page a` los dejaba sin subrayado. */
+.legal-page .legal-link {
+  text-decoration: underline;
+  text-decoration-color: rgba(193, 111, 82, 0.45);
+  text-underline-offset: 3px;
+}
+.legal-page .legal-link:hover,
+.legal-page .legal-link:focus-visible {
+  text-decoration-color: currentColor;
 }
 
 /* =======================================
