@@ -535,14 +535,23 @@ body.secondary-page .nav-logo {
     transition: right 0.3s ease, opacity 0.3s ease, visibility 0s;
 }
 
-/* Current page indicator in mobile nav */
-.nav-links a.current-page {
-    color: var(--color-accent);
-    pointer-events: none;
+/* La página actual se marca con la línea de abajo, no con el color: el terracota del nav
+   queda para "Hablemos", que está en todas las páginas. Por atributo y no solo por clase,
+   para que se vea también sin JavaScript. */
+.nav-links a.current-page,
+.nav-links a[aria-current] {
+    color: var(--color-text-light);
     position: relative;
 }
-
-/* La página actual se marca solo con color; la flecha sobraba (el hover ya lo explica). */
+/* Solo la página exacta deja de ser clicable. Desde un caso, "Lo hecho" tiene que llevar
+   de vuelta a la lista: antes también quedaba sin clic. */
+.nav-links a[aria-current="page"] {
+    pointer-events: none;
+}
+.nav-links a.current-page::after,
+.nav-links a[aria-current]::after {
+    width: 100%;
+}
 
 .mobile-menu-btn {
     display: flex;
@@ -646,7 +655,9 @@ body.secondary-page .nav-logo {
     .nav-links a {
         display: inline-flex;
         padding: 0;
-        position: static;
+        /* relative: la línea de hover y la de la página actual van debajo del enlace.
+           Con static se anclaban al nav y cruzaban toda la pantalla. */
+        position: relative;
     }
 
     .mobile-menu-btn {
@@ -1468,9 +1479,8 @@ footer {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--color-text);  /* Blanco puro, border naranja como marca */
+    color: var(--color-text);
     opacity: 1;
-    padding-left: var(--space-4);
     margin-top: 0;  /* primer hijo del bloque: el espacio superior lo pone la sección */
     margin-bottom: var(--space-6);
 }
@@ -1595,7 +1605,6 @@ footer {
     }
 
     .contact-label {
-        padding-left: var(--space-6);
         margin-bottom: var(--space-12);
     }
 
@@ -1667,9 +1676,8 @@ footer {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--color-text);  /* Blanco puro, border naranja como marca */
+    color: var(--color-text);
     opacity: 1;
-    padding-left: var(--space-6);
     margin-top: var(--space-8);
     margin-bottom: var(--space-12);
 }
@@ -2653,25 +2661,27 @@ img {
   padding-left: var(--space-2);
 }
 
-/* Mobile TOC Button */
+/* Botón del índice (debajo de 1280px): pastilla con la palabra "Índice", en el registro de las
+   etiquetas de índice del sitio (mayúsculas, acento). Las tres rayas eran las mismas del menú. */
 .mobile-toc-btn {
   position: fixed;
-  bottom: var(--space-8);
-  right: var(--space-8);
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  bottom: var(--space-6);
+  right: var(--spacing-horizontal-mobile);
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
   cursor: pointer;
   z-index: 1000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   display: none;
   align-items: center;
   justify-content: center;
-}
-
-.mobile-toc-btn svg {
-  width: 24px;
-  height: 24px;
 }
 
 /* Mobile TOC Overlay */
@@ -2693,6 +2703,8 @@ img {
 .mobile-toc-overlay.active {
   opacity: 1;
   visibility: visible;
+  /* Al abrir, visible en el acto (así recibe el foco); al cerrar, se va con el fundido. */
+  transition: opacity 0.3s, visibility 0s;
 }
 
 .mobile-toc-overlay .toc-content {
@@ -2888,10 +2900,9 @@ img {
 }
 
 /* Responsive adjustments */
-/* El índice fijo (280px + margen) solapa la columna de texto (1200px centrados)
-   por debajo de ~1536px. Hasta ahí, índice móvil. */
-/* Índice pegajoso solo desde 1536px: a 1440 su columna de 280px pisa el texto de 70ch */
-@media (max-width: 1535px) {
+/* Índice pegajoso y botones de compartir desde 1280px; el caso les deja lugar a la derecha
+   (v3.3, al final del archivo). Debajo, el botón "Índice". */
+@media (max-width: 1279px) {
   .sticky-toc {
     display: none;
   }
@@ -3051,7 +3062,7 @@ img {
 /* Página de tesis: subtítulo y metadata */
 .thesis-subtitle {
   max-width: 800px;
-  margin: 0 auto var(--space-5);
+  margin: 0 0 var(--space-5);
 }
 
 .thesis-metadata-bar {
@@ -3059,7 +3070,7 @@ img {
   flex-direction: column;
   gap: var(--space-2);
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0;
   padding: var(--space-4) 0;
   border-top: 1px solid rgba(250, 248, 246, 0.12);
   border-bottom: 1px solid rgba(250, 248, 246, 0.12);
@@ -3211,9 +3222,8 @@ img {
 }
 
 /* ============ Fase B 2026: índice archival (/pensamiento) ============ */
-/* Ficha de archivo: filas tipográficas con borde susurro, sin cajas.
-   Nº correlativo cronológico (01 = más antiguo), listado como la página:
-   el más nuevo arriba. */
+/* Ficha de archivo: filas tipográficas con borde susurro, sin cajas. Sin numeración
+   (v3.3): las tres secciones no son una secuencia. */
 .indice-archival {
     max-width: 900px;
     /* #indice lleva padding-bottom: 0 inline; este margen es el cierre del bloque. */
@@ -3238,10 +3248,8 @@ img {
 }
 
 .indice-fila a {
-    display: grid;
-    grid-template-columns: 2.25rem 1fr;
-    align-items: baseline;
-    column-gap: var(--space-4);
+    display: block;
+    line-height: 1.5;  /* la fila mide lo mismo que cuando llevaba el número al lado */
     padding: var(--space-3) 0;
     border-top: 1px solid rgba(250, 248, 246, 0.06);
     text-decoration: none;
@@ -3249,13 +3257,6 @@ img {
 
 .indice-fila:last-child a {
     border-bottom: 1px solid rgba(250, 248, 246, 0.06);
-}
-
-.indice-num {
-    font-variant-numeric: tabular-nums;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-accent);
 }
 
 .indice-titulo {
@@ -3271,26 +3272,16 @@ img {
     color: var(--color-accent);
 }
 
-@media (min-width: 769px) {
-    /* Columnas max-content: se adaptan al texto real (fecha/autor en caps
-       con tracking) — columnas fijas causaban superposición al subir la
-       escala tipográfica. */
-    .indice-fila a {
-        grid-template-columns: 2.5rem max-content max-content 1fr;
-        column-gap: var(--space-6);
-    }
-
-    }
 
 /* ============ Fase B 2026: rail de cifras (scrollytelling reporte) ============ */
 /* Desktop only: bloque bajo el sticky TOC del reporte que muestra la
-   cifra de la sección visible. Solo desde 1536px, igual que el índice
+   cifra de la sección visible. Desde 1280px, igual que el índice
    pegajoso que lo contiene. */
 .toc-data-rail {
     display: none;
 }
 
-@media (min-width: 1536px) {
+@media (min-width: 1280px) {
     .toc-data-rail {
         display: block;
         margin-top: var(--space-5);
@@ -3343,8 +3334,7 @@ img {
 
 .ficha-row {
     display: flex;
-    align-items: baseline;
-    gap: var(--space-4);
+    flex-direction: column;  /* móvil: etiqueta arriba y valor abajo, a todo el ancho */
     padding: var(--space-2) 0;
     border-top: 1px solid rgba(250, 248, 246, 0.06);
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -3359,13 +3349,23 @@ img {
 }
 
 .ficha-row dt {
-    flex: 0 0 6.5rem;
     color: rgba(250, 248, 246, 0.55);
 }
 
 .ficha-row dd {
     margin: 0;
     color: rgba(250, 248, 246, 0.75);
+}
+
+/* Escritorio: dos columnas. La de etiquetas entra la más larga (CONSTRUCCIÓN), así todos los
+   valores arrancan en la misma línea. */
+@media (min-width: 769px) {
+    .ficha-row {
+        flex-direction: row;
+        align-items: baseline;
+        gap: var(--space-4);
+    }
+    .ficha-row dt { flex: 0 0 9rem; }
 }
 
 /* ============ v2.2.1: profundidad de fondo + detalles de paleta ============ */
@@ -3672,7 +3672,7 @@ html {
 .page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) strong { font-weight: 700; }
 .page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) em { font-style: italic; }
 /* Lo que no es prosa vuelve a la sans aunque esté dentro de un párrafo o lista */
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(.ficha-caso-fuentes, .reporte-fuente, .senal-fuente, .cta-primary, .cta-link, .btn, .ficha-caso dt, .toc-data-rail, .sticky-toc, .share-buttons, .thesis-cite__note, .impact-label, .escenario-label, .senal-label) ,
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(.ficha-caso-fuentes, .reporte-fuente, .senal-fuente, .cta-primary, .cta-link, .btn, .ficha-caso dt, .ficha-tecnica dd, .toc-data-rail, .sticky-toc, .share-buttons, .thesis-cite__note, .impact-label, .escenario-label, .senal-label) ,
 .page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(nav, button, label, .senal-label) * {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: inherit;
@@ -3815,7 +3815,7 @@ html {
 }
 .thesis-cover-links .cta-primary { margin: 0; }  /* sin margen colgante: el bloque cierra en el ritmo */
 
-/* 4a. Botón flotante del índice: superficie + borde susurro, ícono en acento */
+/* 4a. Botón flotante del índice: superficie + borde susurro, texto en acento */
 .mobile-toc-btn {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -3826,7 +3826,6 @@ html {
     background: var(--color-surface);
     border-color: var(--color-accent);
 }
-.mobile-toc-btn svg { fill: var(--color-accent); }
 
 /* 4b. Chips de filtro: etiqueta tipográfica, activo con subrayado de 2px */
 .filter-bar { gap: var(--space-2) var(--space-6); }
@@ -3852,7 +3851,7 @@ html {
 :root { color-scheme: dark; }
 .anchor-offset { position: absolute; top: -100px; }
 .hero-section h1.tagline { margin-bottom: 1.5rem; }
-.hero-section .hero-sub { max-width: 800px; margin: 0 auto; }
+.hero-section .hero-sub { max-width: 800px; margin: 0; }
 .hero-sub--seccion { margin: var(--space-3) auto 0; }
 #indice { padding-bottom: 0; }
 .u-mt-12 { margin-top: var(--space-12); }
@@ -3948,19 +3947,8 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     gap: var(--space-5);
 }
 .situacion {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--space-3);
-    align-items: baseline;
     border-top: 1px solid rgba(250, 248, 246, 0.08);
     padding-top: var(--space-4);
-}
-.situacion-num {
-    font-variant-numeric: tabular-nums;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--color-accent);
 }
 .situacion p {
     margin: 0;
@@ -3971,12 +3959,12 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
 }
 @media (min-width: 769px) {
     .situaciones { grid-template-columns: repeat(3, 1fr); gap: var(--space-8); margin-bottom: var(--space-12); }
-    .situacion { grid-template-columns: 1fr; gap: var(--space-3); align-content: start; }
 }
 
 /* ============ v3.1: los cuatro movimientos en filas, no en tarjetas ============
    Misma gramática que las situaciones de Conversemos y el índice de Pensamiento:
-   filas a lo ancho separadas por línea susurro, número grande a la izquierda, texto a
+   filas a lo ancho separadas por línea susurro. El número grande a la izquierda queda
+   solo acá, porque los cuatro movimientos son una secuencia (v3.3); texto a
    la derecha. Sin fondo ni sombra: eran las únicas cajas de la home. El proceso
    desplegable empuja hacia abajo en vez de desparejar columnas. */
 .services-grid,
@@ -4202,3 +4190,223 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     color: var(--color-text-low);
     margin-top: var(--space-3);
 }
+
+/* ============ v3.3: contacto en un clic, lectura que sigue, índices y fichas en sistema ============
+   Siete partes, cada una con su comentario: 1. cierre que abre el mail y "Copiar dirección";
+   2. "Seguí leyendo"; 3. enlaces en la bajada de Cuatro movimientos; 4. un solo eje izquierdo
+   en los heros; 5. la ficha técnica igual arriba y en Créditos; 6. índice de los casos desde
+   1280px y botón "Índice"; 7. sin numeración decorativa. (El "Hablemos" del nav está en el
+   bloque del nav.)
+
+   1. Cierre: el CTA abre el mail con el asunto de la página (antes llevaba a /#contact, otra
+      página y otro clic) y debajo queda la dirección con "Copiar dirección". En el teléfono
+      el CTA se centra como el resto del bloque (antes quedaba a la izquierda). */
+
+/* Solo para lectores de pantalla: fuera de la vista, dentro del árbol de accesibilidad. */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 1. Cierre y contacto */
+.proyectos-cta .cta-primary {
+    justify-content: center;
+    margin-bottom: 0;
+}
+.cierre-mail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: var(--space-4);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-mid);
+    overflow-wrap: anywhere;
+}
+/* "Copiar dirección": control secundario y tipográfico, sin caja (DESIGN.md). El acento queda
+   para el CTA; este toma el color del texto y pasa al acento con hover o foco. */
+.copiar-mail {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-mid);
+    background: transparent;
+    border: 0;
+    text-decoration: underline;
+    text-decoration-color: rgba(250, 248, 246, 0.3);
+    text-underline-offset: 4px;
+    cursor: pointer;
+    transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+.copiar-mail:hover,
+.copiar-mail:focus-visible {
+    color: var(--color-accent);
+    text-decoration-color: currentColor;
+}
+.copiar-mail:focus-visible {
+    outline: 2px solid var(--orange-500);
+    outline-offset: 2px;
+}
+.copiar-mail[hidden] { display: none; }
+/* En el cierre la línea va centrada: con un ancho fijo para el rótulo más largo ("Dirección
+   copiada"), la dirección no se corre cuando cambia el texto del botón. */
+.cierre-mail .copiar-mail {
+    min-width: 8.75em;
+    justify-content: center;
+}
+/* En el contacto del inicio va en su propia línea, pegado al mail. */
+.contact-direct .copiar-mail { display: flex; }
+.contact-direct .copiar-mail[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) {
+    .copiar-mail { transition: none; }
+}
+
+/* 2. Seguí leyendo: al final de cada caso y de la tesis, después del cierre. Filas tipográficas
+      como el índice de Pensamiento, en la columna del cierre (900px). Reemplaza las filas
+      "Relacionado" de los créditos. */
+/* En esas páginas el cierre ya no es el último bloque: sin el padding de abajo, que no separaba
+   nada adentro del bloque, el silencio hasta "Seguí leyendo" es el de siempre entre bloques. */
+.cierre-section .proyectos-cta { padding-bottom: 0; }
+.seguir-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.seguir-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.seguir-fila {
+    position: relative;
+    padding: var(--space-5) 0;
+    border-top: 1px solid rgba(250, 248, 246, 0.06);
+}
+.seguir-fila:last-child {
+    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
+}
+.seguir-titulo {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 700;
+    margin: 0 0 var(--space-2);
+}
+.seguir-titulo a {
+    color: var(--color-text-high);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+/* Toda la fila responde al clic: el ::after del enlace la cubre. El nombre del enlace sigue
+   siendo solo el título. */
+.seguir-titulo a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+/* En los casos, `.reporte-page a:visited` pinta de acento todo enlace visitado: acá el título
+   sigue blanco y solo pasa al acento con hover o foco. */
+.seguir-titulo a:visited { color: var(--color-text-high); }
+.seguir-fila:hover .seguir-titulo a,
+.seguir-titulo a:focus-visible {
+    color: var(--color-accent);
+}
+.seguir-bajada {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-mid);
+    margin: 0;
+    max-width: 60ch;
+}
+.seguir-dato {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-text-low);
+    margin: var(--space-2) 0 0;
+}
+@media (min-width: 769px) {
+    .seguir-fila {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: var(--space-12);
+        align-items: baseline;
+    }
+    .seguir-titulo,
+    .seguir-bajada { grid-column: 1; }
+    .seguir-dato {
+        grid-column: 2;
+        grid-row: 1;
+        margin: 0;
+        text-align: right;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .seguir-titulo a { transition: none; }
+}
+
+/* 3. Cuatro movimientos: la bajada nombra dos casos y ahora enlaza a ellos. Acento, como los
+      enlaces dentro del texto de los casos; el subrayado viene de `main p a`. */
+.services-intro a,
+.services-intro a:visited {
+    color: var(--color-accent);
+}
+
+/* 4. Un solo eje izquierdo en los heros. La bajada iba centrada en 800px bajo un título alineado
+      a la izquierda (168px corrida en Lo hecho, Pensamiento y la tesis; 104px en los casos) y los
+      labels arrastraban 24px de sangría de cuando llevaban un borde de color, que ya no está.
+      Ahora label, título, bajada y metadatos arrancan en la misma línea. En la tesis, la bajada
+      recupera el aire sobre la barra de metadatos que `.hero-section .hero-sub` le pisaba. */
+.hero-section .thesis-subtitle { margin-bottom: var(--space-5); }
+
+/* 5. Ficha técnica: la de Créditos es la misma que la del hero. Sus valores caían en la regla de
+      prosa de .page-lectura y salían en Literata de 19px y en mayúsculas; ahora vuelven a la sans
+      (lista de excepciones de la regla de Literata). En escritorio la columna de etiquetas pasa de
+      6.5rem a 9rem: DESTINATARIO y CONSTRUCCIÓN no entraban y corrían su valor 15 y 35px. En el
+      teléfono la etiqueta va arriba del valor (las reglas están en "ficha técnica de proyecto"). */
+
+/* 6. Índice de los casos. El pegajoso aparece desde 1280px (antes 1536) y el caso le deja lugar:
+      el hero y las secciones reservan a la derecha los 280px del índice, su margen de 32 y 32 de
+      aire. La reserva se achica con el ancho y desde 1696px es el padding de siempre. Antes, aun
+      en 1536, el índice pisaba 48px de las tarjetas de Gabinete y Natalidad.
+      main.js lo esconde cuando llega el cierre, que va centrado a todo el ancho. */
+@media (min-width: 1280px) {
+    .reporte-page .hero-section,
+    .reporte-page .content-section {
+        padding-right: max(var(--space-24), calc(944px - 50vw));
+    }
+    /* En una notebook de 1280×800 el índice de Natalidad (con su cifra) mide 710px y se cortaba
+       abajo: si no entra, se scrollea adentro. */
+    .sticky-toc {
+        max-height: calc(100vh - 100px - var(--space-6));
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+}
+/* Debajo de 1280px, el botón "Índice" se esconde mientras se baja leyendo (main.js le pone
+   .is-oculto) para no tapar el final de los renglones, y vuelve al subir. Solo opacidad: con el
+   foco del teclado se ve igual. */
+.mobile-toc-btn {
+    transition: border-color 0.3s, opacity 0.3s;
+}
+.mobile-toc-btn.is-oculto:not(:focus-visible) {
+    opacity: 0;
+    pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .mobile-toc-btn { transition: none; }
+}
+
+/* 7. Sin numeración decorativa: el 01-03 del índice de Pensamiento y de las situaciones de
+      Conversemos se fue (no son secuencias). El 01-04 de los cuatro movimientos queda: es un
+      orden de trabajo ("El orden importa cuando el problema es grande"). */

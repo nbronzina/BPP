@@ -119,9 +119,9 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 /
 ├── src/                        # TODO lo que se publica sale de acá
 │   ├── _includes/layouts/base.njk      # head + nav + footer únicos
-│   ├── _includes/partials/             # nav, footer, cierre, caso-nav, senales-cards
+│   ├── _includes/partials/             # nav, footer, cierre, copiar-mail, seguir-leyendo, caso-nav, senales-cards
 │   ├── _includes/jsonld/<pagina>.njk   # JSON-LD por página
-│   ├── _data/site.json                 # nombre, URL, CSP, dominio Plausible
+│   ├── _data/site.json                 # nombre, URL, mail, CSP, dominio Plausible
 │   ├── index.njk, proyectos/ (+ trace-group/, gabinete-extemporaneo/, natalidad/), pensamiento/, privacidad/, usina/tesis-01/, 404.njk
 │   ├── usina/index.html                # redirección a /pensamiento/#tesis (no se procesa)
 │   ├── reporte-impacto/index.html      # redirección a /proyectos/natalidad/ (no se procesa)
@@ -142,7 +142,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 - **Colors**: CSS custom properties in `:root` (`src/styles.css`)
 - **Typography**: Plus Jakarta Sans (interfaz) y Literata (prosa larga), self-hosted en `/fonts/`
 - **Spacing**: 8px base grid (multiples of 8)
-- **Breakpoints**: base móvil; `min-width: 769px` (escritorio, con el rango `769–1024` para tablet), `1025px` (grillas anchas), `1280px` (medida máxima), `1536px` (índice pegajoso de los casos). No agregar otros valores.
+- **Breakpoints**: base móvil; `min-width: 769px` (escritorio, con el rango `769–1024` para tablet), `1025px` (grillas anchas), `1280px` (medida máxima e índice pegajoso de los casos). No agregar otros valores. `1536px` dejó de usarse en octubre de 2026, cuando el índice pasó a 1280.
 - **Animations**: sin apariciones al scroll; solo transiciones de color y opacidad
 
 ---
@@ -159,6 +159,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 **Reglas del layout**
 - Front matter por página: `title`, `description`, `ogType`, `section` (`proyectos` | `pensamiento` | `privacidad` | `inicio`, marca el `aria-current` del nav), `bodyClass`, `jsonld` (ruta del include), `sitemap` (`lastmod`, `priority`, `changefreq`; sin esto la página no entra al sitemap y el chequeo falla), `homepage: true` solo en index.
 - Las páginas de caso declaran además `indice` y `compartir`: de ahí salen el índice pegajoso, el índice móvil y los botones de compartir (`partials/caso-nav.njk`). No se copia ese bloque.
+- El cierre (`partials/cierre.njk`) sale de `cierreTitulo`, `cierreTexto` (opcional), `cierreCta` y `cierreAsunto` (asunto del mail, default "Hablemos"). Los casos y la tesis incluyen después `partials/seguir-leyendo.njk`, que tiene adentro la lista de piezas largas: si se suma un caso, se suma ahí.
 - Rutas siempre absolutas desde la raíz (`/img/…`, `/proyectos/`), nunca `../`.
 - Las señales existen una sola vez: `partials/senales-cards.njk`, incluido en index y Pensamiento.
 - `usina/index.html` es una redirección estática; no lleva layout.
@@ -173,7 +174,7 @@ npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS m
 ### Testing Checklist
 - [ ] Mobile menu works (open/close/escape/outside click)
 - [ ] Smooth scroll to anchors (`#servicios`, `#nosotros`, etc.)
-- [ ] El `mailto:` de contacto dispara `Contacto_mail` en Plausible
+- [ ] El `mailto:` de contacto y el CTA de cada cierre disparan `Contacto_mail`; "Copiar dirección" copia y dispara `Contacto_copiar`
 - [ ] Las imágenes son WebP con variante `-mobile` en las tarjetas
 - [ ] Analytics events tracked (check Plausible)
 
@@ -184,17 +185,19 @@ npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS m
 ### Navigation
 - **Desktop**: Horizontal menu in header
 - **Mobile**: Hamburger menu (toggle with `mobileMenuBtn`)
+- **Hablemos**: `.nav-cta`, afuera de la lista y a la vista en todas las páginas, también en el teléfono. La página actual se marca con subrayado; solo la página exacta (`aria-current="page"`) deja de ser clicable
 - **Accessibility**: ARIA labels, keyboard navigation (Escape to close). El menú móvil cerrado queda con `visibility: hidden` (no recibe foco). En el inicio el nav escondido aparece si recibe el foco (`nav:focus-within`) o si no hay JS (`@media (scripting: none)`)
 - **Smooth scroll**: Internal anchor links (`#servicios`, `#nosotros`, etc.). El foco va al destino: así funciona "Saltar al contenido principal"
 - **aria-label**: si un enlace lo lleva, empieza por el texto visible ("Leer más: …"). WCAG 2.5.3
 
 ### Forms
-- **Contacto directo**: bloque `.contact-direct` en `#contact` con `mailto:`; no hay formulario
-- **Tracking**: `Contacto_mail` al hacer click en un `mailto:` al estudio (prop `ubicacion` = id de la sección). No cuentan los `mailto:?` sin destinatario (compartir por email) ni los `.legal-link` (Privacidad y 404)
+- **Contacto directo**: bloque `.contact-direct` en `#contact` con `mailto:`; no hay formulario. El CTA de cada cierre también abre el mail, con el asunto de la página (`cierreAsunto`). La dirección vive en `site.email`
+- **Copiar dirección**: `partials/copiar-mail.njk`, bajo el mail del contacto y en cada cierre. Sale con `hidden` y `main.js` lo muestra solo si el navegador puede copiar
+- **Tracking**: `Contacto_mail` al hacer click en un `mailto:` al estudio (prop `ubicacion` = el `data-ubicacion` más cercano, "cierre" en los cierres, o el id de la sección). No cuentan los `mailto:?` sin destinatario (compartir por email) ni los `.legal-link` (Privacidad y 404). `Contacto_copiar` cuando alguien copia la dirección, con la misma prop
 
 ### Analytics (Plausible)
 - **Helper function**: `trackEvent(name, props)` in `main.js`
-- **Events tracked**: Section views, CTA clicks, `Contacto_mail` (conversación iniciada), `Caso_leido_75` (75 % de scroll en páginas `.reporte-page`). Son las dos métricas que importan; el resto es contexto.
+- **Events tracked**: Section views, CTA clicks, `Contacto_mail` (conversación iniciada), `Caso_leido_75` (75 % de scroll en páginas `.reporte-page`, sin contar el bloque "Seguí leyendo"). Son las dos métricas que importan; el resto es contexto: `Contacto_copiar` (copió la dirección), `Seguir_leyendo` (prop `hacia`) y los demás.
 - **Privacy**: sin cookies. El script se carga desde `plausible.io` (no está self-hosted): es el único origen externo que admite la CSP
 
 ### Animations
@@ -318,6 +321,7 @@ Uses sharp-cli for conversion, maintains quality.
 ### Testing Checklist
 - Mobile menu (open/close/escape/outside click)
 - Smooth scroll to anchors
+- Índice de los casos: pegajoso desde 1280 y se va al llegar al cierre; debajo, botón "Índice" que se esconde al bajar y abre un diálogo (Escape cierra, el foco vuelve al botón)
 - Filtro de Pensamiento (cada botón devuelve al menos una pieza; Lo hecho no tiene filtro)
 
 ---

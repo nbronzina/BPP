@@ -8,7 +8,7 @@ HTML plano generado con [Eleventy 3](https://www.11ty.dev/) (Nunjucks), CSS y Ja
 
 - Un layout base con head, nav y footer (`src/_includes/layouts/base.njk`).
 - Ocho páginas y el 404 como templates en `src/**/index.njk` y `src/404.njk`, más dos redirecciones estáticas (`src/usina/index.html`, `src/reporte-impacto/index.html`).
-- Las señales existen una sola vez (`src/_includes/partials/senales-cards.njk`) y se incluyen donde hacen falta. Lo mismo el cierre de página (`cierre.njk`) y la navegación de los casos (`caso-nav.njk`), que salen del front matter.
+- Las señales existen una sola vez (`src/_includes/partials/senales-cards.njk`) y se incluyen donde hacen falta. Lo mismo el cierre de página (`cierre.njk`) y la navegación de los casos (`caso-nav.njk`), que salen del front matter, el botón "Copiar dirección" (`copiar-mail.njk`) y "Seguí leyendo" (`seguir-leyendo.njk`), que lleva adentro la lista de casos y tesis.
 - `sitemap.xml` se genera (`src/sitemap.njk`) con las páginas que declaran `sitemap:` en su front matter.
 - Política de seguridad estricta: `style-src 'self'`, sin estilos inline.
 

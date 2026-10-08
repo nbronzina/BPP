@@ -40,7 +40,7 @@ sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
             <div class="bpp-section-label">Qué hacemos</div>
             <h2 id="services-heading" class="section-heading">Cuatro movimientos</h2>
             <p class="services-lead">Trabajamos cuando las respuestas conocidas dejaron de funcionar y el problema no puede esperar.</p>
-            <p class="services-intro">Entender el contexto, diseñar futuros, validar con datos, comunicar decisiones. Casi todos los proyectos empiezan por uno solo: el reporte de natalidad fue datos, la provocación para Trace Group fue diseño de futuros. El orden importa cuando el problema es grande.</p>
+            <p class="services-intro">Entender el contexto, diseñar futuros, validar con datos, comunicar decisiones. Casi todos los proyectos empiezan por uno solo: <a href="/proyectos/natalidad/">el reporte de natalidad</a> fue datos, <a href="/proyectos/trace-group/">la provocación para Trace Group</a> fue diseño de futuros. El orden importa cuando el problema es grande.</p>
 
             <div class="services-grid">
                 <!-- Servicio 01 -->
@@ -451,24 +451,22 @@ sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
             <div class="contact-label">Conversemos</div>
 
             <h2 id="contact-heading" class="contact-heading">Cuándo escribirnos</h2>
-            <ol class="situaciones" aria-label="Tres situaciones en las que conviene escribirnos">
+            <ul class="situaciones" aria-label="Tres situaciones en las que conviene escribirnos">
                 <li class="situacion">
-                    <span class="situacion-num" aria-hidden="true">01</span>
                     <p>En tres meses tenés que decidir sobre una norma, un mercado o una tecnología que todavía no llegó, y cada reunión termina en opiniones.</p>
                 </li>
                 <li class="situacion">
-                    <span class="situacion-num" aria-hidden="true">02</span>
                     <p>Tenés informes, tableros y una consultora que ya pasó, y nadie te dice qué hacer el lunes.</p>
                 </li>
                 <li class="situacion">
-                    <span class="situacion-num" aria-hidden="true">03</span>
                     <p>Se viene una decisión que va a salir en los diarios, y el relato lo están escribiendo otros.</p>
                 </li>
-            </ol>
+            </ul>
 
             <div class="contact-inner">
                 <div class="contact-direct">
-                    <a class="contact-direct-mail" href="mailto:bppanalyticsanddesign@gmail.com?subject=Hablemos">bppanalyticsanddesign@gmail.com</a>
+                    <a class="contact-direct-mail" href="mailto:{{ site.email }}?subject=Hablemos">{{ site.email }}</a>
+                    {% include "partials/copiar-mail.njk" %}
                     <p class="contact-direct-promise">Te responde uno de nosotros tres en 48 horas hábiles. Si hay caso, agendamos una llamada de 30 minutos esa misma semana.</p>
                 </div>
 

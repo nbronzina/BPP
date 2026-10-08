@@ -1,0 +1,5 @@
+{#- Botón "Copiar dirección": para quien usa el mail en el navegador (en una Mac, un enlace
+    mailto: abre Apple Mail aunque la persona use Gmail). Sale con `hidden` y main.js lo muestra
+    solo si el navegador puede copiar; sin JS no aparece y la dirección sigue a la vista.
+    El <span> avisa a los lectores de pantalla que se copió. -#}
+<button type="button" class="copiar-mail" data-copiar="{{ site.email }}" hidden>Copiar dirección</button><span class="visually-hidden" role="status"></span>

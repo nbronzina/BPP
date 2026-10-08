@@ -277,14 +277,54 @@ document.addEventListener("DOMContentLoaded", function () {
     cta.addEventListener('click', trackCTAClick);
   });
 
+  // Dónde está un control de contacto: el data-ubicacion más cercano (el cierre de cada
+  // página dice "cierre"), o si no el id de su sección ("contact" en el inicio, "footer").
+  const ubicacionDe = (el) => {
+    const marcado = el.closest("[data-ubicacion]");
+    if (marcado) return marcado.dataset.ubicacion;
+    const section = el.closest("section, footer");
+    return section && section.id ? section.id : (section ? section.tagName.toLowerCase() : "desconocida");
+  };
+
   // Contacto directo: un click en un mail al estudio cuenta como conversación iniciada.
   // No cuentan el "compartir por email" de los casos (mailto sin destinatario) ni los mails
   // de Privacidad y de la 404 (.legal-link: datos personales, enlace roto).
   document.addEventListener("click", (e) => {
     const a = e.target.closest('a[href^="mailto:"]');
     if (!a || a.getAttribute("href").startsWith("mailto:?") || a.classList.contains("legal-link")) return;
-    const section = a.closest("section, footer");
-    trackEvent("Contacto_mail", { ubicacion: section && section.id ? section.id : (section ? section.tagName.toLowerCase() : "desconocida") });
+    trackEvent("Contacto_mail", { ubicacion: ubicacionDe(a) });
+  });
+
+  // "Copiar dirección" (partials/copiar-mail.njk): aparece solo si el navegador puede copiar.
+  // Copiar es la otra forma de empezar la conversación: Contacto_copiar, con la misma ubicacion.
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    document.querySelectorAll(".copiar-mail").forEach((btn) => {
+      const aviso = btn.nextElementSibling;  // role="status": lo lee el lector de pantalla
+      const texto = btn.textContent;
+      let vuelta;
+      const avisar = (mensaje) => {
+        btn.textContent = mensaje;
+        if (aviso) aviso.textContent = mensaje;
+        clearTimeout(vuelta);
+        vuelta = setTimeout(() => {
+          btn.textContent = texto;
+          if (aviso) aviso.textContent = "";
+        }, 2500);
+      };
+      btn.hidden = false;
+      btn.addEventListener("click", () => {
+        navigator.clipboard.writeText(btn.dataset.copiar).then(() => {
+          avisar("Dirección copiada");
+          trackEvent("Contacto_copiar", { ubicacion: ubicacionDe(btn) });
+        }, () => avisar("No se pudo copiar"));
+      });
+    });
+  }
+
+  // "Seguí leyendo" (partials/seguir-leyendo.njk): qué pieza se abre desde el final de otra.
+  // La página de origen ya va en el evento; `hacia` dice cuál se eligió.
+  document.querySelectorAll(".seguir-titulo a").forEach((a) => {
+    a.addEventListener("click", () => trackEvent("Seguir_leyendo", { hacia: a.getAttribute("href") }));
   });
 
   // =====================================================
@@ -297,10 +337,14 @@ document.addEventListener("DOMContentLoaded", function () {
   if (body.classList.contains("reporte-page")) {
     // Profundidad de lectura: un caso leído hasta el 75 % es la segunda
     // métrica que importa (la primera es Contacto_mail). Se dispara una vez.
+    // "Seguí leyendo" va después del caso y no cuenta: sin descontarlo, el 75 % caía
+    // 3 a 5 puntos más adentro del texto y la métrica dejaba de compararse con la de antes.
     let casoLeido = false;
+    const seguirLeyendo = document.querySelector(".seguir-leyendo");
     const medirLectura = () => {
       if (casoLeido) return;
-      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const extra = seguirLeyendo ? seguirLeyendo.offsetHeight : 0;
+      const total = document.documentElement.scrollHeight - extra - window.innerHeight;
       if (total > 0 && window.scrollY / total >= 0.75) {
         casoLeido = true;
         trackEvent("Caso_leido_75", { pagina: window.location.pathname });
@@ -334,18 +378,28 @@ document.addEventListener("DOMContentLoaded", function () {
       reporteSections.forEach((sec) => sectionObserver.observe(sec));
     }
 
-    // Sticky TOC (escritorio) y botones de compartir
+    // Sticky TOC (desde 1280px) y botones de compartir
     const stickyToc = document.getElementById("stickyToc");
     const shareButtons = document.getElementById("shareButtons");
+    const cierreCaso = document.querySelector(".cierre-section");
     if (stickyToc || shareButtons) {
       const showThreshold = 400; // aparecen después de 400px de scroll
       let stickyVisible = null;
+      let tocVisible = null;
       const handleStickyElements = () => {
         const visible = window.scrollY > showThreshold;
-        if (visible === stickyVisible) return; // nada cambió: no se toca el DOM
-        stickyVisible = visible;
-        if (stickyToc) stickyToc.classList.toggle("visible", visible);
-        if (shareButtons) shareButtons.classList.toggle("visible", visible);
+        // El índice es del caso: se va cuando el cierre llega a su altura. El cierre y
+        // "Seguí leyendo" van centrados a todo el ancho y el índice los pisaría.
+        const enCaso = !cierreCaso || !stickyToc ||
+          cierreCaso.getBoundingClientRect().top > stickyToc.getBoundingClientRect().bottom + 48;
+        if (visible !== stickyVisible) {
+          stickyVisible = visible;
+          if (shareButtons) shareButtons.classList.toggle("visible", visible);
+        }
+        if (stickyToc && (visible && enCaso) !== tocVisible) {
+          tocVisible = visible && enCaso;
+          stickyToc.classList.toggle("visible", tocVisible);
+        }
       };
 
       window.addEventListener("scroll", handleStickyElements, { passive: true });
@@ -377,37 +431,67 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // 3. Mobile TOC Toggle
+    // 3. Índice de pantalla chica: botón "Índice" y diálogo
     const mobileTocBtn = document.getElementById("mobileTocBtn");
     const mobileTocOverlay = document.getElementById("mobileTocOverlay");
     const closeMobileToc = document.getElementById("closeMobileToc");
 
     if (mobileTocBtn && mobileTocOverlay) {
+      const enfocables = () => [...mobileTocOverlay.querySelectorAll("button, a[href]")];
       mobileTocBtn.addEventListener("click", () => {
         mobileTocOverlay.classList.add("active");
         document.body.style.overflow = "hidden";
+        // El foco entra al diálogo (visibility pasa a visible en el mismo cuadro).
+        if (closeMobileToc) closeMobileToc.focus();
         trackEvent("Mobile_TOC_abierto");
       });
 
-      const closeToc = () => {
+      // Al cerrar sin elegir sección, el foco vuelve al botón. Con un enlace, lo lleva el
+      // manejador de anclas a la sección.
+      const closeToc = (devolverFoco) => {
+        if (!mobileTocOverlay.classList.contains("active")) return;
         mobileTocOverlay.classList.remove("active");
         document.body.style.overflow = "";
+        if (devolverFoco) mobileTocBtn.focus();
       };
 
       if (closeMobileToc) {
-        closeMobileToc.addEventListener("click", closeToc);
+        closeMobileToc.addEventListener("click", () => closeToc(true));
       }
 
       mobileTocOverlay.addEventListener("click", (e) => {
         if (e.target === mobileTocOverlay) {
-          closeToc();
+          closeToc(true);
+        }
+      });
+
+      // Escape cierra; Tab no se sale del diálogo mientras está abierto.
+      mobileTocOverlay.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeToc(true);
+        } else if (e.key === "Tab") {
+          const f = enfocables();
+          const primero = f[0], ultimo = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+          else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
         }
       });
 
       // Close on link click
       mobileTocOverlay.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeToc);
+        link.addEventListener("click", () => closeToc(false));
       });
+
+      // El botón se esconde mientras se baja leyendo (tapaba el final de los renglones) y
+      // vuelve al subir. Arriba de todo queda a la vista. Umbral de 8px para no parpadear.
+      let ultimoY = window.scrollY;
+      const ocultarAlBajar = () => {
+        const y = window.scrollY;
+        if (Math.abs(y - ultimoY) < 8) return;
+        mobileTocBtn.classList.toggle("is-oculto", y > ultimoY && y > 200);
+        ultimoY = y;
+      };
+      window.addEventListener("scroll", ocultarAlBajar, { passive: true });
     }
 
     // 4. Scenario Accordions
