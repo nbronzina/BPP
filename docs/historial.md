@@ -30,6 +30,16 @@ Aplicado de lo micro a lo macro, cada capa verificada en navegador antes de la s
 9. **Auditoría externa en tres fases (6 de septiembre).** Fase 0 reportó, Fase 1 cortó, Fase 2 midió: CSS purgado un 26 % con css-tree y verificado por estilos computados; breakpoints consolidados en cuatro valores; Casos separados de Docencia; privacidad reescrita sobre lo que el sitio hace de verdad; página 404 propia. El informe de mediciones (`docs/auditoria-fase2.md`) se retiró el 7 de septiembre una vez aplicadas todas sus decisiones; sigue en git.
 10. **Imágenes en serie (7 de septiembre).** Las fotos de Trace Group se regeneraron como una sola serie (un lugar, una luz, un sujeto por foto) y volvieron al color: son imágenes del escenario, no de archivo. Las ilustraciones de Pensamiento pasaron al isotipo hueco y a 1600 px de ancho.
 
+## Octubre 2026: publicación por Vercel y limpieza del repo
+
+> **Formulación original (septiembre, punto 6):** "Eleventy. Layout único para head, nav y footer; build en GitHub Actions; los minificados dejan de versionarse."
+
+- **Qué cambió.** El dominio apunta a Vercel, que construye y publica al mergear en la rama por defecto y arma un preview por cada otra rama. GitHub Pages quedó despublicado y se borraron `deploy.yml` y `CNAME` (8 de octubre).
+- **Qué se perdió.** `deploy.yml` era lo único que corría `scripts/check-site.mjs` solo. Vercel corre el build, no el chequeo: `npm run check` se corre a mano antes de mergear. Un cambio que construye pero rompe un enlace sale publicado.
+- **Qué se ganó a cambio.** El chequeo dejó de mirar una lista de páginas escrita a mano y recorre `_site/`: enlaces y anclas internas, `alt` y medidas de cada imagen, ids repetidos, un solo `h1`, canonical, JSON-LD y la coincidencia entre sitemap y páginas indexables.
+- **Limpieza sin cambios a la vista.** `styles.css` sin las declaraciones que otra regla del mismo selector pisaba (125,6 → 113,1 KB de fuente; 68,4 → 63,0 KB minificado); `main.js` sin los `keydown` duplicados de los botones; la navegación de los casos en un parcial; el sitemap generado desde el front matter. Verificado contra el build anterior por estilos computados de las nueve páginas en catorce anchos, estados forzados de hover y foco, capturas y una traza de comportamiento.
+- **Pared de logos.** Entra Speculative Futures Madrid, primero; sale Manifesto.
+
 ## Decisiones vigentes que no conviene rediscutir sin motivo
 
 - Oscuro, no claro. Los socios lo eligieron con el prototipo de papel a la vista.
@@ -47,3 +57,4 @@ Dos eventos en Plausible: `Contacto_mail` (conversación iniciada) y `Caso_leido
 - Archivo vectorial de Olam Estudio para la pared de logos.
 - Un caso con IA real para que el servicio "Datos e IA" tenga con qué sostenerse.
 - Extraer artículos y equipo a datos de Eleventy para que existan una sola vez.
+- Que Vercel corra `npm run check` en cada deploy, para recuperar el chequeo automático.

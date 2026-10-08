@@ -4,6 +4,16 @@ Documento generado el 2026-09-08 desde el repositorio del sitio de BPP Analytics
 
 Una página de proyecto es una carpeta `src/proyectos/<slug>/` con un único `index.njk` (front matter YAML + HTML con Nunjucks). No hay markdown ni componentes: el contenido y la estructura viven en ese archivo, y el layout `src/_includes/layouts/base.njk` pone head, nav y footer alrededor. La URL resultante es `/proyectos/<slug>/`.
 
+> **Desactualizado en parte (8 de octubre de 2026).** Este documento es una foto del commit `39e75b8`. Desde entonces cambió lo siguiente, y los bloques de código de abajo no lo reflejan:
+>
+> - La publicación es por Vercel al mergear en la rama por defecto. No hay GitHub Pages ni Actions.
+> - `scripts/check-site.mjs` ya no corre en CI ni lleva una lista de páginas: recorre `_site/`. Se corre a mano con `npm run check`.
+> - `sitemap.xml` se genera. Cada página declara `sitemap: { lastmod, priority, changefreq }` en su front matter.
+> - El índice pegajoso, el índice móvil y los botones de compartir de un caso salen de `partials/caso-nav.njk` y del front matter (`indice`, `compartir`). Ese bloque ya no se copia en cada página.
+> - `src/styles.css` perdió las reglas que otra pisaba; `src/main.js`, los `keydown` duplicados.
+>
+> De la lista de abajo siguen valiendo los pasos 1, 2, 3 y 6. Para escribir una página nueva conviene partir de los archivos actuales del repo, no de los bloques de este documento.
+
 Para publicar una página nueva hay que tocar, además del `index.njk` nuevo:
 
 1. Un include JSON-LD en `src/_includes/jsonld/` (uno por página, se declara en el front matter).
