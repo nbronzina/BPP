@@ -4261,6 +4261,12 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     outline-offset: 2px;
 }
 .copiar-mail[hidden] { display: none; }
+/* En el cierre la línea va centrada: con un ancho fijo para el rótulo más largo ("Dirección
+   copiada"), la dirección no se corre cuando cambia el texto del botón. */
+.cierre-mail .copiar-mail {
+    min-width: 8.75em;
+    justify-content: center;
+}
 /* En el contacto del inicio va en su propia línea, pegado al mail. */
 .contact-direct .copiar-mail { display: flex; }
 .contact-direct .copiar-mail[hidden] { display: none; }
