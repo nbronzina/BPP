@@ -166,7 +166,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ```bash
 npm run build   # eleventy + csso + terser → _site/
 npm run check   # build + scripts/check-site.mjs (estructura de cada página, enlaces y anclas internas, imágenes, JSON-LD, sitemap)
-npm run serve   # eleventy --serve con recarga
+npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS minificados al cambiar la fuente
 ```
 
 ### Testing Checklist

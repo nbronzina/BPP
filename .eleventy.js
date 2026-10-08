@@ -1,5 +1,7 @@
 // Eleventy: genera el sitio en _site/ a partir de src/.
 // Sin frameworks en runtime: el HTML sale plano, el CSS y el JS se minifican aparte (package.json).
+import { execSync } from "node:child_process";
+
 export default function (eleventyConfig) {
   // Año del copyright horneado en el build: el footer no depende de JS.
   eleventyConfig.addGlobalData("buildYear", () => new Date().getFullYear());
@@ -28,6 +30,15 @@ export default function (eleventyConfig) {
   // styles.css y main.js viven en src/ pero no son templates
   eleventyConfig.ignores.add("src/styles.css");
   eleventyConfig.ignores.add("src/main.js");
+  // `npm run serve`: Eleventy no genera los minificados, así que en local el sitio salía sin CSS
+  // ni JS. Al servir los genera después de cada build y los rehace cuando cambia la fuente.
+  // En `npm run build` esto no corre: ahí los generan build:css y build:js, como siempre.
+  eleventyConfig.addWatchTarget("./src/styles.css");
+  eleventyConfig.addWatchTarget("./src/main.js");
+  eleventyConfig.on("eleventy.after", ({ runMode }) => {
+    if (runMode === "build") return;
+    execSync("npm run --silent build:css && npm run --silent build:js", { stdio: "inherit" });
+  });
   return {
     dir: { input: "src", output: "_site", includes: "_includes", data: "_data" },
     htmlTemplateEngine: false, // src/usina/index.html (redirección) se copia sin procesar

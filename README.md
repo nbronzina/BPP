@@ -20,7 +20,7 @@ npm run check     # genera _site/ y corre el chequeo (estructura, enlaces y ancl
 python3 -m http.server 8000 --directory _site
 ```
 
-`npm run serve` levanta Eleventy con recarga. `_site/` y los archivos minificados no se versionan: los genera Vercel al publicar.
+`npm run serve` levanta Eleventy con recarga y rehace el CSS y el JS minificados cuando cambia la fuente. `_site/` y los archivos minificados no se versionan: los genera Vercel al publicar.
 
 ## Publicar
 
