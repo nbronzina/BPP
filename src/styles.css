@@ -4192,6 +4192,12 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
 }
 
 /* ============ v3.3: contacto en un clic, lectura que sigue, índices y fichas en sistema ============
+   Siete partes, cada una con su comentario: 1. cierre que abre el mail y "Copiar dirección";
+   2. "Seguí leyendo"; 3. enlaces en la bajada de Cuatro movimientos; 4. un solo eje izquierdo
+   en los heros; 5. la ficha técnica igual arriba y en Créditos; 6. índice de los casos desde
+   1280px y botón "Índice"; 7. sin numeración decorativa. (El "Hablemos" del nav está en el
+   bloque del nav.)
+
    1. Cierre: el CTA abre el mail con el asunto de la página (antes llevaba a /#contact, otra
       página y otro clic) y debajo queda la dirección con "Copiar dirección". En el teléfono
       el CTA se centra como el resto del bloque (antes quedaba a la izquierda). */
