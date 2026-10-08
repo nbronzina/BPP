@@ -1,23 +1,13 @@
 // =====================================================
 // main.js – Comportamiento global del sitio de BPP
 // -----------------------------------------------------
-// Menú móvil, anclas, logo del inicio, eventos de Plausible,
-// y lo propio de cada tipo de página: índice, compartir,
-// escenarios y rail de cifras en los casos; filtro en
-// Pensamiento; "Ver proceso" en los servicios del inicio.
-// Sin apariciones al scroll, sin formulario, sin PWA.
+// Menú móvil, anclas, logo del inicio, "Copiar dirección"
+// y lo propio de cada tipo de página: índice, escenarios y
+// rail de cifras en los casos; filtro en Pensamiento;
+// "Ver proceso" en los servicios del inicio.
+// Sin apariciones al scroll, sin formulario, sin PWA y sin
+// medición de visitas (Plausible se retiró el 2026-10-08).
 // =====================================================
-
-// =========================
-// Helper de tracking (Plausible)
-// Centraliza los eventos para evitar errores si el script
-// aún no cargó o no está disponible.
-// =========================
-function trackEvent(name, props) {
-  if (window.plausible && typeof window.plausible === "function") {
-    window.plausible(name, { props: props || {} });
-  }
-}
 
 document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
@@ -220,83 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
     handleScrollFallback();
   }
 
-  // =====================================================
-  // SECCIONES VISTAS (tracking)
-  // -----------------------------------------------------
-  // Sin apariciones al scroll (v2.9): el contenido está
-  // visible desde el primer render. Solo se registra qué
-  // secciones llegó a ver la persona.
-  // =====================================================
-  const trackedSections = new Set();
-  const seccionesConId = document.querySelectorAll("main section[id]");
-  if (seccionesConId.length && "IntersectionObserver" in window) {
-    const seccionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !trackedSections.has(entry.target.id)) {
-            trackedSections.add(entry.target.id);
-            trackEvent("Seccion_vista", { id: entry.target.id });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    seccionesConId.forEach((s) => seccionObserver.observe(s));
-  }
-
-  // =====================================================
-  // BLOQUE TRACKING ESPECÍFICO INDEX
-  // -----------------------------------------------------
-  // Eventos de clic en CTA con intent-level segmentation
-  // =====================================================
-
-  // Track all CTA clicks with intent level
-  function trackCTAClick(event) {
-    const target = event.currentTarget;
-    const ctaText = target.textContent.trim();
-    const page = window.location.pathname || '/';
-
-    // Determine intent level from CSS class
-    let intentLevel = 'mid'; // default
-    if (target.classList.contains('cta-primary')) {
-      intentLevel = 'high';
-    } else if (target.classList.contains('cta-link')) {
-      intentLevel = 'mid';
-    }
-
-    trackEvent("CTA_clicked", {
-      intent_level: intentLevel,
-      page: page,
-      cta_text: ctaText
-    });
-  }
-
-  // Attach listeners to all CTA buttons and links
-  const allCTAs = document.querySelectorAll('.cta-primary, .cta-link');
-  allCTAs.forEach(cta => {
-    cta.addEventListener('click', trackCTAClick);
-  });
-
-  // Dónde está un control de contacto: el data-ubicacion más cercano (el cierre de cada
-  // página dice "cierre"), o si no el id de su sección ("contact" en el inicio, "footer").
-  const ubicacionDe = (el) => {
-    const marcado = el.closest("[data-ubicacion]");
-    if (marcado) return marcado.dataset.ubicacion;
-    const section = el.closest("section, footer");
-    return section && section.id ? section.id : (section ? section.tagName.toLowerCase() : "desconocida");
-  };
-
-  // Contacto directo: un click en un mail al estudio cuenta como conversación iniciada.
-  // No cuentan el "compartir por email" de los casos (mailto sin destinatario) ni los mails
-  // de Privacidad y de la 404 (.legal-link: datos personales, enlace roto).
-  document.addEventListener("click", (e) => {
-    const a = e.target.closest('a[href^="mailto:"]');
-    if (!a || a.getAttribute("href").startsWith("mailto:?") || a.classList.contains("legal-link")) return;
-    trackEvent("Contacto_mail", { ubicacion: ubicacionDe(a) });
-  });
-
   // "Copiar dirección" (partials/copiar-mail.njk): aparece solo si el navegador puede copiar.
-  // Copiar es la otra forma de empezar la conversación: Contacto_copiar, con la misma ubicacion.
   if (navigator.clipboard && navigator.clipboard.writeText) {
     document.querySelectorAll(".copiar-mail").forEach((btn) => {
       const aviso = btn.nextElementSibling;  // role="status": lo lee el lector de pantalla
@@ -313,70 +227,22 @@ document.addEventListener("DOMContentLoaded", function () {
       };
       btn.hidden = false;
       btn.addEventListener("click", () => {
-        navigator.clipboard.writeText(btn.dataset.copiar).then(() => {
-          avisar("Dirección copiada");
-          trackEvent("Contacto_copiar", { ubicacion: ubicacionDe(btn) });
-        }, () => avisar("No se pudo copiar"));
+        navigator.clipboard.writeText(btn.dataset.copiar).then(
+          () => avisar("Dirección copiada"),
+          () => avisar("No se pudo copiar")
+        );
       });
     });
   }
 
-  // "Seguí leyendo" (partials/seguir-leyendo.njk): qué pieza se abre desde el final de otra.
-  // La página de origen ya va en el evento; `hacia` dice cuál se eligió.
-  document.querySelectorAll(".seguir-titulo a").forEach((a) => {
-    a.addEventListener("click", () => trackEvent("Seguir_leyendo", { hacia: a.getAttribute("href") }));
-  });
-
   // =====================================================
   // BLOQUE CASOS LARGOS (reporte-page)
   // -----------------------------------------------------
-  // Profundidad de lectura, secciones vistas, índice,
-  // compartir, escenarios y rail de cifras.
+  // Índice, compartir, escenarios y rail de cifras.
   // =====================================================
 
   if (body.classList.contains("reporte-page")) {
-    // Profundidad de lectura: un caso leído hasta el 75 % es la segunda
-    // métrica que importa (la primera es Contacto_mail). Se dispara una vez.
-    // "Seguí leyendo" va después del caso y no cuenta: sin descontarlo, el 75 % caía
-    // 3 a 5 puntos más adentro del texto y la métrica dejaba de compararse con la de antes.
-    let casoLeido = false;
-    const seguirLeyendo = document.querySelector(".seguir-leyendo");
-    const medirLectura = () => {
-      if (casoLeido) return;
-      const extra = seguirLeyendo ? seguirLeyendo.offsetHeight : 0;
-      const total = document.documentElement.scrollHeight - extra - window.innerHeight;
-      if (total > 0 && window.scrollY / total >= 0.75) {
-        casoLeido = true;
-        trackEvent("Caso_leido_75", { pagina: window.location.pathname });
-        window.removeEventListener("scroll", medirLectura);
-      }
-    };
-    window.addEventListener("scroll", medirLectura, { passive: true });
-
     const reporteSections = document.querySelectorAll("section.reporte-section");
-    const seenReportSections = new Set();
-
-    if (reporteSections.length && "IntersectionObserver" in window) {
-      const sectionObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const sec = entry.target;
-              if (sec.id && !seenReportSections.has(sec.id)) {
-                seenReportSections.add(sec.id);
-                trackEvent("Reporte_seccion_vista", { id: sec.id });
-              }
-            }
-          });
-        },
-        {
-          threshold: 0.2,
-          rootMargin: "0px 0px -50px 0px",
-        }
-      );
-
-      reporteSections.forEach((sec) => sectionObserver.observe(sec));
-    }
 
     // Sticky TOC (desde 1280px) y botones de compartir
     const stickyToc = document.getElementById("stickyToc");
@@ -431,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // 3. Índice de pantalla chica: botón "Índice" y diálogo
+    // Índice de pantalla chica: botón "Índice" y diálogo
     const mobileTocBtn = document.getElementById("mobileTocBtn");
     const mobileTocOverlay = document.getElementById("mobileTocOverlay");
     const closeMobileToc = document.getElementById("closeMobileToc");
@@ -443,7 +309,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.style.overflow = "hidden";
         // El foco entra al diálogo (visibility pasa a visible en el mismo cuadro).
         if (closeMobileToc) closeMobileToc.focus();
-        trackEvent("Mobile_TOC_abierto");
       });
 
       // Al cerrar sin elegir sección, el foco vuelve al botón. Con un enlace, lo lleva el
@@ -494,7 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
       window.addEventListener("scroll", ocultarAlBajar, { passive: true });
     }
 
-    // 4. Scenario Accordions
+    // Escenarios (acordeones)
     const accordionHeaders = document.querySelectorAll(".scenario-accordion-header");
     if (accordionHeaders.length) {
       const toggleAccordion = (header) => {
@@ -514,7 +379,6 @@ document.addEventListener("DOMContentLoaded", function () {
           header.classList.add("active");
           header.setAttribute("aria-expanded", "true");
           content.classList.add("active");
-          trackEvent("Escenario_expandido", { id: scenarioId });
         }
       };
 
@@ -524,25 +388,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // 5. Share Button Tracking
-    if (shareButtons) {
-      shareButtons.querySelectorAll("a").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const label = btn.getAttribute("aria-label") || "";
-          const platform = label.includes("LinkedIn")
-            ? "linkedin"
-            : label.includes("Twitter")
-            ? "twitter"
-            : "email";
-          trackEvent("Compartir_reporte", { plataforma: platform });
-        });
-      });
-    }
-
-    // 6. Rail de cifras (scrollytelling, desktop)
+    // Rail de cifras (scrollytelling, desktop)
     // -----------------------------------------------------
-    // Extiende el patrón IntersectionObserver del reporte:
-    // una cifra grande en accent bajo el sticky TOC que se
+    // Una cifra grande en accent bajo el sticky TOC que se
     // actualiza según la sección visible. El markup #dataRail
     // solo existe en /proyectos/natalidad/ (null-safe). Las cifras
     // son las del contenido de la página, no inventadas.
@@ -653,9 +501,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       });
-
-      // Track filter usage
-      trackEvent('Filtro_proyectos', { categoria: filter });
     };
 
     // Son <button>: Enter y Espacio ya llegan como click.
@@ -689,10 +534,6 @@ document.addEventListener("DOMContentLoaded", function () {
           timeline.removeAttribute('hidden');
           timeline.setAttribute('aria-hidden', 'false');
           toggle.querySelector('span:first-child').textContent = 'Ocultar proceso';
-
-          // Track expansion
-          const categoryEl = toggle.closest('.service-block')?.querySelector('.service-category');
-          trackEvent('Timeline_expandido', { servicio: categoryEl ? categoryEl.textContent : 'desconocido' });
         }
       });
     });

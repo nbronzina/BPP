@@ -57,7 +57,8 @@ Aplicado de lo micro a lo macro, cada capa verificada en navegador antes de la s
   - Índice de los casos desde 1280. Formulación original, en el CSS: "Índice pegajoso solo desde 1536px: a 1440 su columna de 280px pisa el texto de 70ch". Ahora el caso le deja lugar, así que el texto de 1280 a 1695 px queda más angosto (800 px a 1280 en lugar de 1008). Se perdió ese ancho; aun en 1536 el índice pisaba 48 px de dos casos. Debajo de 1280, el botón dice "Índice" y se esconde mientras se baja leyendo.
   - Numeración solo donde hay secuencia: queda el 01 a 04 de los cuatro movimientos y sale del índice de Pensamiento y de las situaciones de Conversemos.
   - Bajada de Lo hecho. Formulación original: "Trabajamos con líderes que enfrentan decisiones críticas. Cada proyecto es una pregunta difícil que necesitaba respuesta antes de que fuera tarde. Investigación, diseño de futuros, análisis estratégico y comunicación aplicados donde más importa." Ahora nombra los tres casos.
-  - El hero del inicio sigue a pantalla completa, como se decidió el 6 de septiembre. Para revisarlo, el dato es el punto 10 de la auditoría.
+  - El hero del inicio sigue a pantalla completa, como se decidió el 6 de septiembre.
+- **Plausible, fuera (8 de octubre).** Formulación original en CLAUDE.md: "Analytics: Plausible.io for privacy-friendly tracking"; en este archivo: "Dos eventos en Plausible: `Contacto_mail` (conversación iniciada) y `Caso_leido_75` (un caso leído hasta el 75 %). El resto es contexto." Decisión: "Eliminar, sacar, plausible". Salieron el script, `plausible.io` de la CSP y todo el código de `main.js` que solo existía para medir; la política de privacidad dice ahora que el sitio no mide visitas. Qué se perdió: cualquier número sobre visitas, de dónde llegan y qué se lee, y con eso el dato que pedía el punto 10 de la auditoría para revisar el hero del inicio.
 
 ## Decisiones vigentes que no conviene rediscutir sin motivo
 
@@ -65,12 +66,12 @@ Aplicado de lo micro a lo macro, cada capa verificada en navegador antes de la s
 - Vos como registro. Medio estudio está en Madrid y se decidió igual.
 - Dos familias tipográficas con rol fijo, dos pesos, un solo tamaño de cuerpo.
 - Sin animaciones de entrada: ni al scroll ni al cargar la página. La única es la del título del inicio.
-- Sin formulario, sin PWA, sin cookies.
+- Sin formulario, sin PWA, sin cookies, sin medición de visitas.
 - Cada cifra con fuente. Trace Group es una provocación (un caso construido antes de que exista el encargo, escrito como pregunta "¿Y si…?") y se dice así, nunca "propuesta", "pitch" ni "piloto". Ver "Vocabulario propio" en VOICE.md.
 
-## Métricas que importan
+## Métricas
 
-Dos eventos en Plausible: `Contacto_mail` (conversación iniciada) y `Caso_leido_75` (un caso leído hasta el 75 %). El resto es contexto. Desde octubre hay dos más: `Contacto_copiar` (alguien copió la dirección, en general para escribir desde otro correo) y `Seguir_leyendo` (qué pieza se abre desde el final de otra). `Caso_leido_75` no cuenta el bloque "Seguí leyendo", así que se sigue comparando con lo anterior.
+Ninguna desde el 8 de octubre de 2026: el sitio no mide visitas. Las conversaciones se cuentan en la casilla de correo, y el asunto de cada cierre dice desde qué página escribió la persona.
 
 ## Pendientes conocidos
 

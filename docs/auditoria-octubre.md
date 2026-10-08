@@ -6,7 +6,7 @@ Cómo se midió: Chromium 141 sin interfaz (el motor de Chrome y Edge), Lighthou
 
 Cuando todas las decisiones estén tomadas, este archivo se retira como se retiró `auditoria-fase2.md`: queda en git.
 
-**Estado al 8 de octubre:** los puntos 1 a 5 están resueltos y aplicados ("Cambiar 1, corregir 2, arreglar 3, eliminar 4, fijar 5"). Quedan abiertos del 6 al 12.
+**Estado al 8 de octubre:** los puntos 1 a 5 están resueltos y aplicados ("Cambiar 1, corregir 2, arreglar 3, eliminar 4, fijar 5"). El 10 se descartó el mismo día, cuando se sacó Plausible ("Eliminar, sacar, plausible"): el sitio ya no mide visitas. Quedan abiertos 6 a 9 y 11.
 
 ## Orden sugerido
 
@@ -21,7 +21,7 @@ Cuando todas las decisiones estén tomadas, este archivo se retira como se retir
 | 7 | Las tarjetas, en un solo lugar | Ya no coinciden entre el inicio y los listados | Medio día | Abierto |
 | 8 | Que Vercel corra el chequeo | Se perdió al salir de GitHub Actions | Un archivo | Abierto |
 | 9 | Contenido propio en el dominio | Doce de doce textos y clases enlazan afuera | Trabajo editorial | Abierto |
-| 10 | Tres números de Plausible | Antes de tocar la primera pantalla del inicio | Mirar el panel | Abierto |
+| 10 | Tres números de Plausible | Antes de tocar la primera pantalla del inicio | Mirar el panel | Descartado: sin Plausible |
 | 11 | Menores | | | Abierto |
 | 12 | Medido y descartado | | | |
 
@@ -182,7 +182,7 @@ Un cambio que rompe un enlace, deja una imagen sin `alt` o saca una página del 
 
 El mismo archivo puede llevar dos cosas más, que no se pueden comprobar desde acá porque los previews piden login:
 
-- `"trailingSlash": true`. GitHub Pages redirigía `/proyectos` a `/proyectos/`. Hay que confirmar qué hace Vercel hoy con `/proyectos` sin barra: si responde la página sin redirigir, Plausible la cuenta como otra página.
+- `"trailingSlash": true`. GitHub Pages redirigía `/proyectos` a `/proyectos/`. Hay que confirmar qué hace Vercel hoy con `/proyectos` sin barra: si responde la página sin redirigir, la misma página vive en dos direcciones (el canonical ya les dice a los buscadores cuál vale; la razón de Plausible, que la contaba como otra página, se fue con Plausible).
 - Headers que solo funcionan como HTTP y no como `<meta>`: `frame-ancestors`, `Permissions-Policy`, `X-Content-Type-Options`. Hoy no están (lo dice el comentario de `base.njk`).
 
 Decisión: sí o no a cada línea.
@@ -196,6 +196,8 @@ Quien busca un tema, y no el nombre del estudio, encuentra LinkedIn. Publicar lo
 Decisión: si se hace y con qué texto se empieza. Es trabajo editorial, no de código.
 
 ## 10. Tres números de Plausible
+
+**Descartado el 8 de octubre:** Plausible salió del sitio, así que estos números ya no existen. El hero del inicio quedó como está.
 
 La primera pantalla del inicio, a 1440 × 900 y a 390 × 844, es el logo, el nombre y la bajada: sin nav (aparece al scrollear), sin CTA y sin indicio de que hay más abajo. El primer texto de la sección siguiente queda 72 px por debajo del borde en escritorio y 40 px en el teléfono. Si eso cuesta visitas lo dice un número que ya existe:
 
@@ -235,4 +237,4 @@ Decisión: mirar los tres números antes de tocar el inicio.
 - **Caché larga para fuentes e imágenes.** En una visita de cinco páginas con 4G lenta, las fuentes quedan listas entre 6 y 158 ms antes: la revalidación del CSS ya cuesta ese viaje. No compensa una regla que obliga a renombrar archivos cada vez que cambian.
 - **Minificar el HTML.** Comprimido, el documento más pesado ocupa 11,1 KB: todos entran en el primer viaje de la conexión. Los comentarios son entre 0 y 2,2 % del HTML.
 - **Imágenes de portada más chicas en el teléfono.** Un teléfono de densidad 3, como los iPhone de los últimos años, necesita el archivo de 1200 px igual. Una versión de 800 px solo ayudaría en densidad 2 o menos, y en Lighthouse. La excepción es Gabinete, que ya tiene la de 800 con el mismo encuadre: se puede sumar sin costo.
-- **Plausible a través de Vercel** para contar a quien usa bloqueadores. Funciona, pero cuenta a quien eligió bloquear la medición. Con la postura de la página de privacidad, queda anotado y no propuesto.
+- **Plausible a través de Vercel** (ya no aplica: Plausible salió del sitio el 8 de octubre) para contar a quien usa bloqueadores. Funciona, pero cuenta a quien eligió bloquear la medición. Con la postura de la página de privacidad, queda anotado y no propuesto.
