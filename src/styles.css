@@ -2661,25 +2661,27 @@ img {
   padding-left: var(--space-2);
 }
 
-/* Mobile TOC Button */
+/* Botón del índice (debajo de 1280px): pastilla con la palabra "Índice", en el registro de las
+   etiquetas de índice del sitio (mayúsculas, acento). Las tres rayas eran las mismas del menú. */
 .mobile-toc-btn {
   position: fixed;
-  bottom: var(--space-8);
-  right: var(--space-8);
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  bottom: var(--space-6);
+  right: var(--spacing-horizontal-mobile);
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
   cursor: pointer;
   z-index: 1000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   display: none;
   align-items: center;
   justify-content: center;
-}
-
-.mobile-toc-btn svg {
-  width: 24px;
-  height: 24px;
 }
 
 /* Mobile TOC Overlay */
@@ -2701,6 +2703,8 @@ img {
 .mobile-toc-overlay.active {
   opacity: 1;
   visibility: visible;
+  /* Al abrir, visible en el acto (así recibe el foco); al cerrar, se va con el fundido. */
+  transition: opacity 0.3s, visibility 0s;
 }
 
 .mobile-toc-overlay .toc-content {
@@ -2896,10 +2900,9 @@ img {
 }
 
 /* Responsive adjustments */
-/* El índice fijo (280px + margen) solapa la columna de texto (1200px centrados)
-   por debajo de ~1536px. Hasta ahí, índice móvil. */
-/* Índice pegajoso solo desde 1536px: a 1440 su columna de 280px pisa el texto de 70ch */
-@media (max-width: 1535px) {
+/* Índice pegajoso y botones de compartir desde 1280px; el caso les deja lugar a la derecha
+   (v3.3, al final del archivo). Debajo, el botón "Índice". */
+@media (max-width: 1279px) {
   .sticky-toc {
     display: none;
   }
@@ -3292,13 +3295,13 @@ img {
 
 /* ============ Fase B 2026: rail de cifras (scrollytelling reporte) ============ */
 /* Desktop only: bloque bajo el sticky TOC del reporte que muestra la
-   cifra de la sección visible. Solo desde 1536px, igual que el índice
+   cifra de la sección visible. Desde 1280px, igual que el índice
    pegajoso que lo contiene. */
 .toc-data-rail {
     display: none;
 }
 
-@media (min-width: 1536px) {
+@media (min-width: 1280px) {
     .toc-data-rail {
         display: block;
         margin-top: var(--space-5);
@@ -3832,7 +3835,7 @@ html {
 }
 .thesis-cover-links .cta-primary { margin: 0; }  /* sin margen colgante: el bloque cierra en el ritmo */
 
-/* 4a. Botón flotante del índice: superficie + borde susurro, ícono en acento */
+/* 4a. Botón flotante del índice: superficie + borde susurro, texto en acento */
 .mobile-toc-btn {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -3843,7 +3846,6 @@ html {
     background: var(--color-surface);
     border-color: var(--color-accent);
 }
-.mobile-toc-btn svg { fill: var(--color-accent); }
 
 /* 4b. Chips de filtro: etiqueta tipográfica, activo con subrayado de 2px */
 .filter-bar { gap: var(--space-2) var(--space-6); }
@@ -4391,3 +4393,35 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
       (lista de excepciones de la regla de Literata). En escritorio la columna de etiquetas pasa de
       6.5rem a 9rem: DESTINATARIO y CONSTRUCCIÓN no entraban y corrían su valor 15 y 35px. En el
       teléfono la etiqueta va arriba del valor (las reglas están en "ficha técnica de proyecto"). */
+
+/* 6. Índice de los casos. El pegajoso aparece desde 1280px (antes 1536) y el caso le deja lugar:
+      el hero y las secciones reservan a la derecha los 280px del índice, su margen de 32 y 32 de
+      aire. La reserva se achica con el ancho y desde 1696px es el padding de siempre. Antes, aun
+      en 1536, el índice pisaba 48px de las tarjetas de Gabinete y Natalidad.
+      main.js lo esconde cuando llega el cierre, que va centrado a todo el ancho. */
+@media (min-width: 1280px) {
+    .reporte-page .hero-section,
+    .reporte-page .content-section {
+        padding-right: max(var(--space-24), calc(944px - 50vw));
+    }
+    /* En una notebook de 1280×800 el índice de Natalidad (con su cifra) mide 710px y se cortaba
+       abajo: si no entra, se scrollea adentro. */
+    .sticky-toc {
+        max-height: calc(100vh - 100px - var(--space-6));
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+}
+/* Debajo de 1280px, el botón "Índice" se esconde mientras se baja leyendo (main.js le pone
+   .is-oculto) para no tapar el final de los renglones, y vuelve al subir. Solo opacidad: con el
+   foco del teclado se ve igual. */
+.mobile-toc-btn {
+    transition: border-color 0.3s, opacity 0.3s;
+}
+.mobile-toc-btn.is-oculto:not(:focus-visible) {
+    opacity: 0;
+    pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .mobile-toc-btn { transition: none; }
+}

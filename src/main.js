@@ -378,18 +378,28 @@ document.addEventListener("DOMContentLoaded", function () {
       reporteSections.forEach((sec) => sectionObserver.observe(sec));
     }
 
-    // Sticky TOC (escritorio) y botones de compartir
+    // Sticky TOC (desde 1280px) y botones de compartir
     const stickyToc = document.getElementById("stickyToc");
     const shareButtons = document.getElementById("shareButtons");
+    const cierreCaso = document.querySelector(".cierre-section");
     if (stickyToc || shareButtons) {
       const showThreshold = 400; // aparecen después de 400px de scroll
       let stickyVisible = null;
+      let tocVisible = null;
       const handleStickyElements = () => {
         const visible = window.scrollY > showThreshold;
-        if (visible === stickyVisible) return; // nada cambió: no se toca el DOM
-        stickyVisible = visible;
-        if (stickyToc) stickyToc.classList.toggle("visible", visible);
-        if (shareButtons) shareButtons.classList.toggle("visible", visible);
+        // El índice es del caso: se va cuando el cierre llega a su altura. El cierre y
+        // "Seguí leyendo" van centrados a todo el ancho y el índice los pisaría.
+        const enCaso = !cierreCaso || !stickyToc ||
+          cierreCaso.getBoundingClientRect().top > stickyToc.getBoundingClientRect().bottom + 48;
+        if (visible !== stickyVisible) {
+          stickyVisible = visible;
+          if (shareButtons) shareButtons.classList.toggle("visible", visible);
+        }
+        if (stickyToc && (visible && enCaso) !== tocVisible) {
+          tocVisible = visible && enCaso;
+          stickyToc.classList.toggle("visible", tocVisible);
+        }
       };
 
       window.addEventListener("scroll", handleStickyElements, { passive: true });
@@ -421,37 +431,67 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // 3. Mobile TOC Toggle
+    // 3. Índice de pantalla chica: botón "Índice" y diálogo
     const mobileTocBtn = document.getElementById("mobileTocBtn");
     const mobileTocOverlay = document.getElementById("mobileTocOverlay");
     const closeMobileToc = document.getElementById("closeMobileToc");
 
     if (mobileTocBtn && mobileTocOverlay) {
+      const enfocables = () => [...mobileTocOverlay.querySelectorAll("button, a[href]")];
       mobileTocBtn.addEventListener("click", () => {
         mobileTocOverlay.classList.add("active");
         document.body.style.overflow = "hidden";
+        // El foco entra al diálogo (visibility pasa a visible en el mismo cuadro).
+        if (closeMobileToc) closeMobileToc.focus();
         trackEvent("Mobile_TOC_abierto");
       });
 
-      const closeToc = () => {
+      // Al cerrar sin elegir sección, el foco vuelve al botón. Con un enlace, lo lleva el
+      // manejador de anclas a la sección.
+      const closeToc = (devolverFoco) => {
+        if (!mobileTocOverlay.classList.contains("active")) return;
         mobileTocOverlay.classList.remove("active");
         document.body.style.overflow = "";
+        if (devolverFoco) mobileTocBtn.focus();
       };
 
       if (closeMobileToc) {
-        closeMobileToc.addEventListener("click", closeToc);
+        closeMobileToc.addEventListener("click", () => closeToc(true));
       }
 
       mobileTocOverlay.addEventListener("click", (e) => {
         if (e.target === mobileTocOverlay) {
-          closeToc();
+          closeToc(true);
+        }
+      });
+
+      // Escape cierra; Tab no se sale del diálogo mientras está abierto.
+      mobileTocOverlay.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeToc(true);
+        } else if (e.key === "Tab") {
+          const f = enfocables();
+          const primero = f[0], ultimo = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+          else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
         }
       });
 
       // Close on link click
       mobileTocOverlay.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeToc);
+        link.addEventListener("click", () => closeToc(false));
       });
+
+      // El botón se esconde mientras se baja leyendo (tapaba el final de los renglones) y
+      // vuelve al subir. Arriba de todo queda a la vista. Umbral de 8px para no parpadear.
+      let ultimoY = window.scrollY;
+      const ocultarAlBajar = () => {
+        const y = window.scrollY;
+        if (Math.abs(y - ultimoY) < 8) return;
+        mobileTocBtn.classList.toggle("is-oculto", y > ultimoY && y > 200);
+        ultimoY = y;
+      };
+      window.addEventListener("scroll", ocultarAlBajar, { passive: true });
     }
 
     // 4. Scenario Accordions
