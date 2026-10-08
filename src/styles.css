@@ -4365,3 +4365,10 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
 @media (prefers-reduced-motion: reduce) {
     .seguir-titulo a { transition: none; }
 }
+
+/* 3. Cuatro movimientos: la bajada nombra dos casos y ahora enlaza a ellos. Acento, como los
+      enlaces dentro del texto de los casos; el subrayado viene de `main p a`. */
+.services-intro a,
+.services-intro a:visited {
+    color: var(--color-accent);
+}
