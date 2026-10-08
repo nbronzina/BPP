@@ -5,329 +5,87 @@ description: "Lo que pensamos en público: señales que rastreamos con fuente y 
 ogType: "website"
 section: "pensamiento"
 ogDescription: "Señales que rastreamos con fuente y año, artículos sobre datos y sociedad, y las tesis de La Usina."
-bodyClass: "secondary-page"
 jsonld: "jsonld/pensamiento.njk"
 cierreTitulo: "Estos textos son la parte pública de cómo trabajamos."
 cierreTexto: "Si algo de acá se parece a un problema que tenés arriba de la mesa, escribinos y lo miramos con tu contexto."
 cierreCta: "Contanos el problema"
 sitemap: { lastmod: "2026-10-08" }
 ---
+{%- from "partials/piezas.njk" import tarjeta %}
     <!-- Main Content -->
     <main role="main" id="main-content">
 
-    <!-- Hero Section -->
-    <section class="hero-section section-wide">
-        <div class="actividades-label">PENSAMIENTO</div>
-        <h1 id="pensamiento-heading" class="tagline"><span class="h1-light">Lo que pensamos</span> en público</h1>
-        <p class="hero-sub">
+    <section class="cabecera" aria-labelledby="pensamiento-heading">
+        <h1 id="pensamiento-heading" class="cabecera__titulo">Lo que pensamos en público</h1>
+        <p class="bajada">
             Señales que estamos rastreando, artículos que publicamos antes de tener la conclusión cerrada y la investigación larga que firmamos desde La Usina.
         </p>
     </section>
 
-    <!-- Índice del hub: tres secciones, en el orden de la página -->
-    <!-- div con role=navigation (NO <nav>): el selector global `nav {}`
-         del sitio fija cualquier <nav> al tope del viewport -->
-    <section id="indice" class="section" aria-label="Índice de la página">
-        <div class="indice-archival" role="navigation" aria-labelledby="indice-heading">
-            <h2 id="indice-heading" class="indice-label">Índice</h2>
-            <ol class="indice-lista">
-                <li class="indice-fila">
-                    <a href="#senales">
-                        <span class="indice-titulo">Señales</span>
-                    </a>
-                </li>
-                <li class="indice-fila">
-                    <a href="#articulos">
-                        <span class="indice-titulo">Artículos</span>
-                    </a>
-                </li>
-                <li class="indice-fila">
-                    <a href="#tesis">
-                        <span class="indice-titulo">Tesis · La Usina</span>
-                    </a>
-                </li>
-            </ol>
+    <!-- Índice del hub: tres secciones, en el orden de la página.
+         div con role=navigation (no <nav>): el selector global `nav {}` fija cualquier <nav> arriba -->
+    <section id="indice" class="bloque indice" aria-label="Índice de la página">
+        <div role="navigation" aria-labelledby="indice-heading">
+            <h2 id="indice-heading" class="indice__titulo">Índice</h2>
+            <ul class="indice__lista">
+                <li><a href="#senales">Señales</a></li>
+                <li><a href="#articulos">Artículos</a></li>
+                <li><a href="#tesis">Tesis · La Usina</a></li>
+            </ul>
         </div>
     </section>
 
     <!-- Señales: las tarjetas viven en partials/senales-cards.njk -->
-    <section id="senales" class="section" aria-labelledby="senales-heading">
-        <div class="senales-header">
-            <h2 id="senales-heading" class="senales-title">Señales</h2>
-            <p class="hero-sub hero-sub--seccion">Lo que estamos rastreando ahora. Señales débiles, con fuente y año.</p>
-        </div>
-
+    <section id="senales" class="bloque" aria-labelledby="senales-heading">
+        <h2 id="senales-heading">Señales</h2>
+        <p class="bajada">Lo que estamos rastreando ahora. Señales débiles, con fuente y año.</p>
         <div class="senales-grid">
 {% include "partials/senales-cards.njk" %}
         </div>
     </section>
 
-    <!-- Artículos -->
-    <section id="articulos" class="section" aria-labelledby="pensamiento-content-heading">
-
-        <div class="senales-header">
-            <h2 id="pensamiento-content-heading" class="senales-title">Artículos</h2>
-        </div>
-
-        <!-- Filter Bar -->
+    <!-- Artículos: las tarjetas salen de src/_data/piezas.mjs; el filtro está en main.js -->
+    <section id="articulos" class="bloque" aria-labelledby="articulos-heading">
+        <h2 id="articulos-heading">Artículos</h2>
         <div class="filter-bar" role="group" aria-label="Filtrar artículos por movimiento">
-            <button class="filter-btn filter-btn--active" data-filter="todos" aria-pressed="true">
-                Todos
-            </button>
-            <button class="filter-btn" data-filter="investigacion" aria-pressed="false">
-                Investigación
-            </button>
-            <button class="filter-btn" data-filter="futuros" aria-pressed="false">
-                Futuros y prototipos
-            </button>
-            <button class="filter-btn" data-filter="datos-ia" aria-pressed="false">
-                Datos e IA
-            </button>
-            <button class="filter-btn" data-filter="comunicacion" aria-pressed="false">
-                Comunicación
-            </button>
+            <button class="filter-btn filter-btn--active" data-filter="todos" aria-pressed="true">Todos</button>
+            <button class="filter-btn" data-filter="investigacion" aria-pressed="false">Investigación</button>
+            <button class="filter-btn" data-filter="futuros" aria-pressed="false">Futuros y prototipos</button>
+            <button class="filter-btn" data-filter="datos-ia" aria-pressed="false">Datos e IA</button>
+            <button class="filter-btn" data-filter="comunicacion" aria-pressed="false">Comunicación</button>
         </div>
-
-        <div class="actividades-container">
-            <!-- Entrada: Algoritmizar el potrero -->
-            <article id="art-potrero" class="actividad-entrada" data-tags="comunicacion,datos-ia" aria-label="¿Se puede algoritmizar el potrero?">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="/img/algoritmizar-potrero-mobile.webp" type="image/webp">
-                        <source srcset="/img/algoritmizar-potrero.webp" type="image/webp">
-                        <img src="/img/algoritmizar-potrero.webp" alt="Ilustración del artículo ¿Se puede algoritmizar el potrero? - diagrama de red neuronal junto a vista aérea de una cancha de fútbol" width="1600" height="893" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-06">Junio 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Sociología · Datos · IA · Fútbol</span>
-                    </div>
-                    <h3>¿Se puede algoritmizar el potrero?</h3>
-                    <p class="actividad-descripcion">
-                        Las marcas llegan al Mundial 2026 con IA y datos en tiempo real. Un algoritmo puede elegir cuándo publicar; el tono para hablarle a una hinchada lo decide la sociología.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Publicado en</dt><dd>LinkedIn</dd></div>
-                        <div class="actividad-dato"><dt>Autor</dt><dd>Sergio Petrocelli</dd></div>
-                    </dl>
-                    <a
-                      href="https://www.linkedin.com/pulse/se-puede-algoritmizar-el-potrero-bpp-analytics-and-design-eodce"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en LinkedIn: ¿Se puede algoritmizar el potrero? (nueva pestaña)"
-                    >
-                        Leer en LinkedIn
-                    </a>
-                </div>
-            </article>
-
-            <!-- Entrada 1: Personal Software -->
-            <article id="art-personal-software" class="actividad-entrada" data-tags="datos-ia,futuros" aria-label="La práctica del personal software">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="/img/personal-software-mobile.webp" type="image/webp">
-                        <source srcset="/img/personal-software.webp" type="image/webp">
-                        <img src="/img/personal-software.webp" alt="Ilustración sobre intent coding y personal software - pantalla con código y nota de pregunta" width="1600" height="893" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-04">Abril 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">IA · Diseño · Estrategia · Personal Software</span>
-                    </div>
-                    <h3>La práctica del personal software</h3>
-                    <p class="actividad-descripcion">
-                        Tres aplicaciones construidas sin saber programar muestran qué cambia cuando prototipar deja de requerir un stack técnico.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Publicado en</dt><dd>LinkedIn</dd></div>
-                        <div class="actividad-dato"><dt>Autor</dt><dd>Nicolás Bronzina</dd></div>
-                    </dl>
-                    <a
-                      href="https://www.linkedin.com/pulse/la-pr%C3%A1ctica-del-personal-software-bpp-analytics-and-design-dwyxe/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en LinkedIn: La práctica del personal software (nueva pestaña)"
-                    >
-                        Leer en LinkedIn
-                    </a>
-                </div>
-            </article>
-
-            <!-- Entrada 2: Año analógico -->
-            <article id="art-ano-analogico" class="actividad-entrada" data-tags="investigacion,futuros" aria-label="2026, año analógico">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="/img/2026-ano-analogico-mobile.webp" type="image/webp">
-                        <source srcset="/img/2026-ano-analogico.webp" type="image/webp">
-                        <img src="/img/2026-ano-analogico.webp" alt="Ilustración del artículo 2026, año analógico - artefactos retro y la cancelación del futuro" width="1600" height="893" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-03">Marzo 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Sociología · Futuro · Diseño · Prospectiva</span>
-                    </div>
-                    <h3>2026, año analógico. O: por qué el futuro ya no llega</h3>
-                    <p class="actividad-descripcion">
-                        iPods, vinilos y casetes leídos como prototipos involuntarios de futuros que nadie diseñó todavía.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Publicado en</dt><dd>LinkedIn</dd></div>
-                        <div class="actividad-dato"><dt>Autor</dt><dd>Nicolás Bronzina</dd></div>
-                    </dl>
-                    <a
-                      href="https://www.linkedin.com/pulse/2026-a%C3%B1o-anal%C3%B3gico-o-por-qu%C3%A9-el-futuro-ya-llega-nrf0e/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en LinkedIn: 2026, año analógico (nueva pestaña)"
-                    >
-                        Leer en LinkedIn
-                    </a>
-                </div>
-            </article>
-
-            <!-- Entrada 3: Algoritmos y sociología -->
-            <article id="art-algoritmos" class="actividad-entrada" data-tags="comunicacion,datos-ia" aria-label="Por qué los algoritmos no bastan">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="/img/algoritmos-sociologia-branding-mobile.webp" type="image/webp">
-                        <source srcset="/img/algoritmos-sociologia-branding.webp" type="image/webp">
-                        <img src="/img/algoritmos-sociologia-branding.webp" alt="Ilustración sobre sociología aplicada a estrategia de marca y las limitaciones de los algoritmos" width="1600" height="893" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-03">Marzo 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Sociología · Branding · Estrategia · Datos</span>
-                    </div>
-                    <h3>Por qué los algoritmos no bastan: El regreso de la sociología a la estrategia de marca</h3>
-                    <p class="actividad-descripcion">
-                        Los algoritmos registran comportamientos. Entender qué significan es trabajo de la sociología, que vuelve a la estrategia de marca.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Publicado en</dt><dd>LinkedIn</dd></div>
-                        <div class="actividad-dato"><dt>Autor</dt><dd>Sergio Petrocelli</dd></div>
-                    </dl>
-                    <a
-                      href="https://www.linkedin.com/pulse/por-qu%C3%A9-los-algoritmos-bastan-el-regreso-de-la-ixf1e/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en LinkedIn: Por qué los algoritmos no bastan (nueva pestaña)"
-                    >
-                        Leer en LinkedIn
-                    </a>
-                </div>
-            </article>
-
-            <!-- Entrada 4: Alquileres -->
-            <article id="art-alquileres" class="actividad-entrada" data-tags="datos-ia,investigacion" aria-label="La ilusión de la negociación libre">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="/img/alquileres-negociacion-mobile.webp" type="image/webp">
-                        <source srcset="/img/alquileres-negociacion.webp" type="image/webp">
-                        <img src="/img/alquileres-negociacion.webp" alt="Ilustración sobre negociación de alquileres y asimetrías del mercado inmobiliario" width="1600" height="893" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-02">Febrero 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Sociología · Datos · Vivienda</span>
-                    </div>
-                    <h3>La ilusión de la "negociación libre": Lo que el aumento de la oferta no cuenta sobre los alquileres</h3>
-                    <p class="actividad-descripcion">
-                        Sin regulación, la negociación del alquiler no es libre: las inmobiliarias regulan de hecho y el inquilino no tiene opción real de decir que no.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Publicado en</dt><dd>LinkedIn</dd></div>
-                        <div class="actividad-dato"><dt>Autor</dt><dd>Ezequiel Politi</dd></div>
-                        <div class="actividad-dato"><dt>Origen</dt><dd>Tesis de licenciatura en Sociología</dd></div>
-                    </dl>
-                    <a
-                      href="https://www.linkedin.com/pulse/la-ilusi%C3%B3n-de-negociaci%C3%B3n-libre-lo-que-el-aumento-oferta-politi-sxcwe/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en LinkedIn: La ilusión de la negociación libre (nueva pestaña)"
-                    >
-                        Leer en LinkedIn
-                    </a>
-                </div>
-            </article>
-
-            <!-- Entrada 5: Branding -->
-            <article id="art-branding" class="actividad-entrada" data-tags="comunicacion" aria-label="El branding como fenómeno social">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="/img/branding-fenomeno-social-mobile.webp" type="image/webp">
-                        <source srcset="/img/branding-fenomeno-social.webp" type="image/webp">
-                        <img src="/img/branding-fenomeno-social.webp" alt="Branding como fenómeno social - arquitectura simbólica y estrategia" width="1600" height="893" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-01">Enero 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Sociología · Branding · Estrategia</span>
-                    </div>
-                    <h3>El Branding como fenómeno social: Por qué tu empresa necesita un sociólogo y no solo un diseñador gráfico</h3>
-                    <p class="actividad-descripcion">
-                        Una marca existe en lo que la gente dice y hace con ella, y eso se estudia con sociología: por eso el equipo de marca necesita un sociólogo además de un diseñador.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Publicado en</dt><dd>LinkedIn</dd></div>
-                        <div class="actividad-dato"><dt>Autor</dt><dd>Sergio Petrocelli</dd></div>
-                    </dl>
-                    <a
-                      href="https://www.linkedin.com/pulse/el-branding-como-fen%C3%B3meno-social-por-qu%C3%A9-tu-empresa-uzsdf/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en LinkedIn: El branding como fenómeno social (nueva pestaña)"
-                    >
-                        Leer en LinkedIn
-                    </a>
-                </div>
-            </article>
+        <div class="tarjetas">
+{%- for p in piezas.articulos %}
+{{ tarjeta(p, true) }}
+{%- endfor %}
         </div>
     </section>
 
-    <!-- Tesis · La Usina: única sección del sitio con corner brackets (DESIGN.md v2.2) -->
-    <section id="tesis" class="section" aria-labelledby="tesis-heading">
-        <div class="senales-header">
-            <h2 id="tesis-heading" class="senales-title">Tesis · La Usina</h2>
-            <p class="hero-sub hero-sub--seccion">Investigación que toma posición: sin cliente, con la misma empiria que usamos en los proyectos, firmada como documento de trabajo.</p>
-        </div>
+    <!-- Tesis · La Usina: la única tarjeta del sitio con corner brackets -->
+{%- set t = piezas.tesis %}
+    <section id="tesis" class="bloque" aria-labelledby="tesis-heading">
+        <h2 id="tesis-heading">Tesis · La Usina</h2>
+        <p class="bajada">Investigación que toma posición: sin cliente, con la misma empiria que usamos en los proyectos, firmada como documento de trabajo.</p>
 
-        <article class="tesis-card" aria-label="Tesis 01: El actante siempre disponible">
+        <article class="tesis-card" aria-labelledby="tesis-card-titulo">
             <span class="corner-bracket corner-bracket--tl" aria-hidden="true"></span>
             <span class="corner-bracket corner-bracket--br" aria-hidden="true"></span>
 
-            <p class="tesis-card__label">USINA #01 · 08.2026 · Tesis 01 · Documento de trabajo</p>
-            <h3 class="tesis-card__title">El actante siempre disponible</h3>
-            <p class="tesis-card__subtitle">Inteligencia artificial generativa, socialización e identidad en la emergencia de nuevos vínculos humano–IA: una propuesta conceptual desde la teoría del actor-red.</p>
-            <p class="tesis-card__authors">Nicolás Bronzina · Sergio Petrocelli · Ezequiel Politi</p>
-            <dl class="actividad-datos tesis-card__datos">
-                <div class="actividad-dato"><dt>Estado</dt><dd>Documento de trabajo, agosto 2026</dd></div>
-                <div class="actividad-dato"><dt>Formato</dt><dd>PDF de 56 páginas, descarga directa</dd></div>
+            <p class="etiqueta">{{ t.serie }} · <time datetime="{{ t.fecha }}">{{ t.fechaTexto }}</time></p>
+            <h3 class="tesis-card__title" id="tesis-card-titulo">{{ t.titulo }}</h3>
+            <p class="tesis-card__subtitle">{{ t.subtitulo }}</p>
+            <p class="tesis-card__authors">{{ t.autores }}</p>
+            <p class="tesis-card__desc">{{ t.descripcion }}</p>
+            <dl class="tarjeta__datos">
+{%- for d in t.datos %}
+                <div><dt>{{ d[0] }}</dt><dd>{{ d[1] }}</dd></div>
+{%- endfor %}
             </dl>
-            <p class="tesis-card__desc">Qué le pasa a la red de un adolescente cuando entra un interlocutor no humano, siempre disponible y con menos fricción que una persona.</p>
-            <a href="/usina/tesis-01/" class="cta-primary">Leer la tesis →</a>
+            <p class="tesis-card__enlace"><a href="{{ t.url }}" class="cta-primary">{{ t.enlaces[0].texto }}</a></p>
         </article>
-
-        <!-- CTA final: cierra el hub completo -->
-{% include "partials/cierre.njk" %}
     </section>
+
+{% include "partials/cierre.njk" %}
 
     </main>
     <!-- End Main Content -->

@@ -40,9 +40,9 @@
       <button class="close-btn" id="closeMobileToc" aria-label="Cerrar índice">×</button>
       <div class="toc-content">
         <p class="toc-title">Navegación del {{ indice.nombre }}</p>
-        <ul class="report-toc-list editorial-list">
+        <ul class="report-toc-list">
 {%- for item in indice.items %}
-          <li><span class="editorial-arrow" aria-hidden="true">→</span> <a href="#{{ item.id }}">{{ item.largo or item.corto }}</a></li>
+          <li><a href="#{{ item.id }}">{{ item.largo or item.corto }}</a></li>
 {%- endfor %}
         </ul>
       </div>

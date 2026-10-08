@@ -1,43 +1,18 @@
 // =====================================================
 // main.js – Comportamiento global del sitio de BPP
 // -----------------------------------------------------
-// Menú móvil, anclas, logo del inicio, "Copiar dirección"
-// y lo propio de cada tipo de página: índice, escenarios y
-// rail de cifras en los casos; filtro en Pensamiento;
-// "Ver proceso" en los servicios del inicio.
+// Menú móvil, anclas, "Copiar dirección" y lo propio de cada
+// tipo de página: índice, escenarios y rail de cifras en los
+// casos; filtro en Pensamiento; "Ver proceso" en el inicio.
 // Sin apariciones al scroll, sin formulario, sin PWA y sin
 // medición de visitas (Plausible se retiró el 2026-10-08).
+// Las flechas de los enlaces las dibuja el CSS (/img/flecha.svg)
+// y el nav del inicio se ve desde el principio (v3, octubre de 2026).
 // =====================================================
 
 document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // =====================================================
-  // ARROW MICRO-INTERACTIONS
-  // -----------------------------------------------------
-  // Wrap arrows in CTA buttons with spans for animation
-  // =====================================================
-  const ctaButtons = document.querySelectorAll('.cta-primary');
-  ctaButtons.forEach(btn => {
-    const text = btn.textContent;
-    // Match arrow characters (→, ←, ↓, ↑) at start or end of text
-    const arrowPattern = /(^[→←↓↑]\s+)|(\s+[→←↓↑]$)/;
-    const match = text.match(arrowPattern);
-
-    if (match) {
-      const arrow = match[0].trim();
-      const isAtStart = match[1] !== undefined;
-      const restText = text.replace(arrowPattern, '').trim();
-
-      if (isAtStart) {
-        btn.innerHTML = `<span class="cta-arrow cta-arrow--left" aria-hidden="true">${arrow}</span> ${restText}`;
-      } else {
-        btn.innerHTML = `${restText} <span class="cta-arrow cta-arrow--right" aria-hidden="true">${arrow}</span>`;
-      }
-    }
-  });
-
 
   // =====================================================
   // SCROLL RESTORATION - Asegurar inicio en top
@@ -180,36 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // -------------------------
-  // Hero → Navbar logo crossfade (Superflux pattern with IntersectionObserver)
-  // -------------------------
-  const heroLogo = document.querySelector('.hero-logo-large');
-  const NAV_HEIGHT = 72; // Navbar height in pixels
-
-  if (heroLogo && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Toggle .logo-pinned class when hero logo crosses navbar bottom edge
-        document.body.classList.toggle('logo-pinned', !entry.isIntersecting);
-      },
-      {
-        // Trigger when hero logo crosses navbar height
-        rootMargin: `-${NAV_HEIGHT}px 0px 0px 0px`,
-        threshold: 0
-      }
-    );
-
-    observer.observe(heroLogo);
-  } else if (heroLogo) {
-    // Fallback for browsers without IntersectionObserver
-    const handleScrollFallback = () => {
-      const logoRect = heroLogo.getBoundingClientRect();
-      document.body.classList.toggle('logo-pinned', logoRect.bottom < NAV_HEIGHT);
-    };
-    window.addEventListener('scroll', handleScrollFallback, { passive: true });
-    handleScrollFallback();
-  }
-
   // "Copiar dirección" (partials/copiar-mail.njk): aparece solo si el navegador puede copiar.
   if (navigator.clipboard && navigator.clipboard.writeText) {
     document.querySelectorAll(".copiar-mail").forEach((btn) => {
@@ -242,12 +187,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // =====================================================
 
   if (body.classList.contains("reporte-page")) {
-    const reporteSections = document.querySelectorAll("section.reporte-section");
+    const reporteSections = document.querySelectorAll("section.caso-seccion");
 
     // Sticky TOC (desde 1280px) y botones de compartir
     const stickyToc = document.getElementById("stickyToc");
     const shareButtons = document.getElementById("shareButtons");
-    const cierreCaso = document.querySelector(".cierre-section");
+    const cierreCaso = document.querySelector(".cierre");
     if (stickyToc || shareButtons) {
       const showThreshold = 400; // aparecen después de 400px de scroll
       let stickyVisible = null;
@@ -474,13 +419,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // .filter-btn; Lo hecho no tiene filtro).
   // =====================================================
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const proyectos = document.querySelectorAll('.actividad-entrada');
+  const articulos = document.querySelectorAll('.tarjeta[data-tags]');
 
-  if (filterButtons.length > 0 && proyectos.length > 0) {
+  if (filterButtons.length > 0 && articulos.length > 0) {
     const applyFilter = (btn) => {
       const filter = btn.getAttribute('data-filter');
 
-      // Update active state
       filterButtons.forEach(b => {
         b.classList.remove('filter-btn--active');
         b.setAttribute('aria-pressed', 'false');
@@ -488,18 +432,11 @@ document.addEventListener("DOMContentLoaded", function () {
       btn.classList.add('filter-btn--active');
       btn.setAttribute('aria-pressed', 'true');
 
-      // Filter projects
-      proyectos.forEach(proyecto => {
-        if (filter === 'todos') {
-          proyecto.classList.remove('hidden');
-        } else {
-          const tags = proyecto.getAttribute('data-tags') || '';
-          if (tags.includes(filter)) {
-            proyecto.classList.remove('hidden');
-          } else {
-            proyecto.classList.add('hidden');
-          }
-        }
+      // La tarjeta que no corresponde se esconde con el atributo hidden: sale de la vista,
+      // de la grilla y del árbol de accesibilidad.
+      articulos.forEach(articulo => {
+        const tags = (articulo.getAttribute('data-tags') || '').split(',');
+        articulo.hidden = filter !== 'todos' && !tags.includes(filter);
       });
     };
 

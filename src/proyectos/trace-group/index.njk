@@ -6,7 +6,7 @@ ogType: "article"
 section: "proyectos"
 ogTitle: "Trace Group — De la señal al servicio"
 ogDescription: "¿Y si un cargamento de gas quedara afuera de Europa por su metano, y no por su precio? El escenario y su objeto: un informe de verificación fechado en 2032. Provocación, 2026."
-bodyClass: "reporte-page secondary-page page-lectura"
+bodyClass: "reporte-page page-lectura"
 jsonld: "jsonld/proyectos-trace-group.njk"
 cierreTitulo: "Si en tu organización hay una señal que nadie mira, hablemos."
 cierreCta: "Escribinos"
@@ -30,14 +30,11 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
 {% include "partials/caso-nav.njk" %}
 
     <!-- HERO DEL PROYECTO -->
-    <section class="hero-section section-wide">
-      <p class="report-label">PROVOCACIÓN · 2026</p>
-      <h1 class="tagline">Trace Group — De la señal al servicio</h1>
-      <p class="hero-sub">
+    <section class="cabecera cabecera--documento">
+      <p class="etiqueta">Provocación · 2026</p>
+      <h1 class="cabecera__titulo">Trace Group — De la señal al servicio</h1>
+      <p class="bajada">
         ¿Y si un cargamento de gas quedara afuera de Europa por su metano, y no por su precio? Este es ese escenario y su objeto: un informe de verificación fechado en 2032.
-      </p>
-      <p class="report-tags">
-        Energía · Verificación de emisiones · 2032
       </p>
       <dl class="ficha-tecnica">
         <div class="ficha-row"><dt>Año</dt><dd>2026</dd></div>
@@ -52,8 +49,8 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
     </section>
 
     <!-- INTRODUCCIÓN -->
-    <section class="content-section reporte-section" id="sec-intro">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-intro">
+      <div class="caso-bloque">
         <h2>El escenario: 2032</h2>
         <p>
           <strong>¿Y si un cargamento de gas quedara afuera de Europa por su metano, y no por su precio?</strong>
@@ -84,12 +81,12 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
         <p>
           Este es el objeto de ese escenario: el informe de verificación de ese lote, fechado en 2032 y empaquetado como un ejecutable de 3,4 MB que se abre con doble clic, y we.trace, la plataforma que lo emite. Debajo, la investigación regulatoria que lo sostiene, verificada norma por norma. Lo que sigue es ese objeto y cómo lo construimos.
         </p>
-      </article>
+      </div>
     </section>
 
     <!-- EL OBJETO -->
-    <section class="content-section reporte-section" id="sec-objeto">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-objeto">
+      <div class="caso-bloque">
         <h2>El objeto</h2>
         <p>
           Dos piezas, deliberadamente distintas. El informe es un ejecutable de 3,4 MB, sin backend ni red: se abre con doble clic y muestra el documento de verificación completo. Identificación del cargo, inventario de emisiones por etapa, cálculo de intensidad, declaración de verificación independiente. Cada cifra técnica está trazada. Donde corresponde, normas reales: ISSA 5000, ISO 14064, OGMP 2.0. Donde no, consistencia interna.
@@ -114,18 +111,16 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
         <p>
           El informe no cierra perfecto a propósito, en un solo lugar: declara una divergencia metodológica en vez de resolverla. Un verificador que admite dónde el método no alcanza es más creíble que uno que no.
         </p>
-      </article>
+      </div>
     </section>
 
     <!-- LO REAL -->
-    <section class="content-section reporte-section" id="sec-contexto">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-contexto">
+      <div class="caso-bloque">
         <h2>Lo real: tres señales</h2>
         <p><strong>Tres hechos verificados contra fuente primaria.</strong> Ninguno proyectado. El escenario se apoya en ellos y en nada más.</p>
 
-        <div class="impact-top impact-top--spacing-md">
-          <h3>Junio de 2025</h3>
-        </div>
+        <h3>Junio de 2025</h3>
         <p>
           La Resolución 277/2025 reemplazó el registro de auditoras por certificación individual bajo la norma API 653. La habilitación dejó de estar en la empresa y pasó a estar en la persona que firma.
         </p>
@@ -137,9 +132,7 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           <figcaption>Lo que se mide en campo es lo que después se firma.</figcaption>
         </figure>
 
-        <div class="impact-top impact-top--spacing-lg">
-          <h3>Marzo de 2026</h3>
-        </div>
+        <h3>Marzo de 2026</h3>
         <p>
           Southern Energy firmó con la alemana SEFE el mayor contrato de exportación de GNL de la historia argentina. Gas de Vaca Muerta, licuado en el Golfo San Matías, con destino a Wilhelmshaven.
         </p>
@@ -151,9 +144,7 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           <figcaption>Una ruta que se sigue de punta a punta.</figcaption>
         </figure>
 
-        <div class="impact-top impact-top--spacing-lg">
-          <h3>Desde 2027</h3>
-        </div>
+        <h3>Desde 2027</h3>
         <p>
           Ese gas necesita demostrar cómo se midió su huella de metano ante el Reglamento de Metano de la Unión Europea. No alcanza con declarar la huella: hay que mostrar el método de medición.
         </p>
@@ -165,16 +156,16 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           <figcaption>La huella se mide en el pozo.</figcaption>
         </figure>
 
-        <p class="text-spacing-md">
+        <p>
           Juntas abren una pregunta: ¿quién va a ser el primero en ofrecer esa verificación desde Río Negro?
         </p>
         <p class="ficha-caso-fuentes"><strong>Fuentes:</strong> Resolución 277/2025 (Argentina, junio de 2025); contrato de exportación de GNL entre Southern Energy y SEFE (marzo de 2026); Reglamento (UE) de metano. Referencias técnicas del informe: ISSA 5000, ISO 14064, OGMP 2.0. El informe está fechado en 2032.</p>
-      </article>
+      </div>
     </section>
 
     <!-- CÓMO LO HICIMOS -->
-    <section class="content-section reporte-section" id="sec-como">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-como">
+      <div class="caso-bloque">
         <h2>Cómo lo hicimos</h2>
         <p>
           <strong>El objeto en lugar del argumento.</strong> Podríamos haber explicado en abstracto por qué ese servicio tiene sentido. Preferimos construir el informe completo, con la textura de un documento regulatorio real: trazabilidad de buque, factores de emisión, una declaración de aseguramiento con su lenguaje técnico. Un objeto así no vende el servicio. Lo hace pensable.
@@ -202,12 +193,12 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
         <p>
           <strong>Lo que abre.</strong> Una conversación con Trace Group, vía Clusterciar, sobre un servicio que hoy no existe. Presentada en 2026. Lo que la organización haga con ella no forma parte de lo que publicamos.
         </p>
-      </article>
+      </div>
     </section>
 
     <!-- CRÉDITOS -->
-    <section class="content-section reporte-section" id="sec-creditos">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-creditos">
+      <div class="caso-bloque">
         <h2>Créditos</h2>
         <dl class="ficha-tecnica">
           <div class="ficha-row"><dt>Equipo</dt><dd>Nicolás Bronzina, Sergio Petrocelli, Ezequiel Politi · BPP Analytics &amp; Design</dd></div>
@@ -215,13 +206,11 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           <div class="ficha-row"><dt>Año</dt><dd>2026</dd></div>
         </dl>
         <p class="reporte-fuente">BPP Analytics &amp; Design · Buenos Aires · Madrid</p>
-      </article>
+      </div>
     </section>
 
-    <!-- CIERRE: afirmación + CTA (reemplaza al enlace de retorno; el inicio queda en el nav) -->
-    <section class="section cierre-section" aria-labelledby="cierre-heading">
+    <!-- CIERRE: afirmación + CTA que abre el mail -->
 {% include "partials/cierre.njk" %}
-    </section>
 
 {% include "partials/seguir-leyendo.njk" %}
   </main>
