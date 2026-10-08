@@ -4,7 +4,7 @@
 // Qué mira, sin dependencias:
 //   - cada página tiene title, description, canonical correcto, un solo h1, nav, main y footer;
 //   - el JSON-LD es JSON válido y no hay ids repetidos;
-//   - todo enlace, imagen, srcset y ancla interna apunta a algo que existe;
+//   - todo enlace, imagen, srcset y ancla interna apunta a algo que existe, y ninguna ruta es relativa;
 //   - cada <img> lleva alt, width y height;
 //   - el sitemap y las páginas indexables coinciden, y las fechas no están en el futuro;
 //   - los assets críticos están, y avisa (sin fallar) de imágenes que nadie usa.
@@ -13,7 +13,8 @@ import { join, relative } from "node:path";
 
 const OUT = process.argv[2] || "_site";
 const SITE = JSON.parse(readFileSync("src/_data/site.json", "utf8")).url; // https://www.bppanalyticsanddesign.com
-const REQUIRED = ["styles.min.css", "main.min.js", "fonts/plus-jakarta-sans-latin.woff2", "fonts/literata-latin.woff2", "img/logo.svg", "img/og-image.jpg", "sitemap.xml", "robots.txt", "llms.txt", "404.html"];
+const REQUIRED = ["styles.min.css", "main.min.js", "fonts/plus-jakarta-sans-latin.woff2", "fonts/literata-latin.woff2", "img/logo.svg", "img/og-image.jpg", "sitemap.xml", "robots.txt", "llms.txt", "404.html",
+  "usina/index.html", "reporte-impacto/index.html"]; // las dos redirecciones viejas: hay enlaces afuera que todavía las usan
 
 const problems = [];
 const warnings = [];
@@ -54,7 +55,7 @@ for (const [url, html] of pages) {
     continue;
   }
   // estructura mínima
-  for (const [name, re] of [["<title>", /<title>[^<]+<\/title>/], ["description", /<meta name="description" content="[^"]+">/], ["lang", /<html lang="[a-z-]+">/], ["nav", /<nav /], ["main", /id="main-content"/], ["footer", /<footer/]]) {
+  for (const [name, re] of [["<title>", /<title>[^<]+<\/title>/], ["description", /<meta name="description" content="[^"]+">/], ["lang", /<html lang="[A-Za-z-]+">/], ["nav", /<nav /], ["main", /id="main-content"/], ["footer", /<footer/]]) {
     if (!re.test(html)) fail(where, `sin ${name}`);
   }
   const canonical = (html.match(/<link rel="canonical" href="([^"]+)">/) || [])[1];
@@ -77,15 +78,19 @@ for (const [url, html] of pages) {
     for (const attr of ["alt", "width", "height"]) if (!new RegExp(`\\s${attr}="`).test(tag)) fail(where, `<img src="${src}"> sin ${attr}`);
   }
 
-  // referencias internas: href, src, srcset, y las URL absolutas al propio sitio (canonical, og:image, JSON-LD…)
+  // referencias internas: href, src, srcset, y las URL absolutas al propio sitio (canonical, og:image, JSON-LD…).
+  // Lo que está dentro de un comentario HTML no se publica como enlace: no se mira.
+  const live = html.replace(/<!--[\s\S]*?-->/g, "");
   const refs = new Set();
-  for (const m of html.matchAll(/\s(?:href|src)="([^"]+)"/g)) refs.add(m[1]);
-  for (const m of html.matchAll(/\ssrcset="([^"]+)"/g)) for (const c of m[1].split(",")) refs.add(c.trim().split(/\s+/)[0]);
+  for (const m of live.matchAll(/\s(?:href|src)="([^"]+)"/g)) refs.add(m[1]);
+  for (const m of live.matchAll(/\ssrcset="([^"]+)"/g)) for (const c of m[1].split(",")) refs.add(c.trim().split(/\s+/)[0]);
   // (se corta en & para no tragarse el resto de un enlace de compartir que lleva la URL como parámetro)
-  for (const m of html.matchAll(new RegExp(SITE.replace(/[.]/g, "\\.") + '(/[^"\\s<>&]*)', "g"))) refs.add(m[1]);
+  for (const m of live.matchAll(new RegExp(SITE.replace(/[.]/g, "\\.") + '(/[^"\\s<>&]*)', "g"))) refs.add(m[1]);
   // Un "@id" de JSON-LD con # nombra un nodo del grafo, no un ancla: se le pide la página, no el id.
   const nodeIds = new Set([...html.matchAll(/"@id":\s*"([^"]+)"/g)].map((m) => m[1].replace(SITE, "")));
   for (const ref of refs) {
+    // Regla del repo: rutas siempre absolutas desde la raíz. Una relativa se rompe al mover la página.
+    if (!/^(\/|#|https?:|mailto:|tel:|data:)/.test(ref)) { fail(where, `ruta relativa: ${ref} (usar /…)`); continue; }
     if (ref.startsWith("#")) { if (ref.length > 1 && !ids.includes(ref.slice(1))) fail(where, `ancla sin destino en la misma página: ${ref}`); links++; continue; }
     if (ref.startsWith("/") && !ref.startsWith("//")) { checkInternal(where, ref, { anchor: !nodeIds.has(ref) }); links++; }
   }
