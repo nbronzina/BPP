@@ -142,7 +142,7 @@ El único "papel" que queda en el sistema es otro: `.figura__papel` (v2.6) enmar
 
 **Dos familias con roles fijos (self-hosted).** Plus Jakarta Sans para todo lo que es interfaz: títulos, labels, navegación, tarjetas, metadata, CTAs. Literata solo para la prosa de lectura larga (`.page-lectura`: reporte de natalidad, Trace Group, tesis): párrafos, listas, definiciones, citas. Decisión de los socios, 2026-09: un documento de tres mil palabras se lee mejor en serif, y la serif no entra en ninguna otra superficie.
 
-**Literata** (Google/TypeTogether, OFL, servida desde `/fonts/`): variable en peso 400..700 y tamaño óptico 7..72, con `font-optical-sizing: auto`. Cuerpo fijo en 1.1875rem (19px, la base del sitio) y `line-height 1.7`. Nunca en headings, nunca fuera de `.page-lectura`, nunca a menos de 17px.
+**Literata** (Google/TypeTogether, OFL, servida desde `/fonts/`): variable en peso 400..700, con el tamaño óptico fijo en 19 (`literata-latin-opsz19.woff2` y su itálica), que es el del cuerpo. Cuerpo fijo en 1.1875rem (19px, la base del sitio) y `line-height 1.7`. Si la serif pasa a usarse en otro tamaño, hay que volver a los archivos con el eje óptico completo (7..72), que siguen en git. Nunca en headings, nunca fuera de `.page-lectura`, nunca a menos de 17px.
 
 
 **Evolución v1 → v2 → v2.1:** La versión alpha usaba Space Mono monowidth exclusiva — identidad radical donde cada texto se leía "como material de estudio". La v2 beta-inclusive especificó un híbrido ZT Bros Oskon (display) + Chivo (body) que **nunca llegó a producción**: el sitio se construyó entero sobre Plus Jakarta Sans. La v2.1 (2026-06-11) reconoce esa realidad y la consolida como decisión: una sola familia, jerarquía por peso y tamaño.
@@ -310,6 +310,13 @@ Este archivo (v2 beta-inclusive) cumple parcialmente con la especificación `@go
 **Decisión**: No corregir estos casos. El sistema prioriza coherencia semántica, diseño inclusivo, y legibilidad del código sobre conformidad estricta con el linter alpha de Google Labs.
 
 ## Changelog
+
+**v2.10 auditoría de octubre (2026-10-08):** decisiones de Nicolás sobre `docs/auditoria-octubre.md`, puntos 3 a 5.
+- Literata con el tamaño óptico fijo en 19 y peso 400..700: 85,7 → 37,4 KB la regular y 88,8 → 38,7 KB la itálica. Antes: "variable en peso 400..700 y tamaño óptico 7..72, con `font-optical-sizing: auto`". Se pierde el ajuste óptico en otros tamaños, que la serif no usa.
+- Sin fundido de página al cargar (el `fadeIn` del body, de noviembre de 2025): Chromium no registraba la primera pintura y Lighthouse no podía medir el inicio. Se pierde el gesto de entrada; queda el del título del inicio.
+- Navbar, excepción validada a "no se toca": en el inicio aparece si recibe el foco del teclado o si no hay JavaScript, y el menú móvil cerrado deja de recibir foco. Con mouse o dedo se ve igual que antes.
+- Etiquetas de categoría (`.actividad-category-badge`): fondo `--color-bg` en lugar del terracota al 12 %, que dejaba el texto en 3,89:1. Sobre Tinta da 4,93:1.
+- Enlaces de las páginas legales (`.legal-link`): subrayados como los de la prosa (WCAG 1.4.1).
 
 **v2.7 sin papel (2026-09-06):**
 - Se retiran del CSS las 103 reglas de `body.page-papel` y los tokens `--paper`, `--paper-elevated`, `--ink-*`, `--accent-on-paper*`. Ver "Superficie de lectura (v2.3): retirada".

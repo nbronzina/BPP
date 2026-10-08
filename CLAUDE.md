@@ -184,12 +184,13 @@ npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS m
 ### Navigation
 - **Desktop**: Horizontal menu in header
 - **Mobile**: Hamburger menu (toggle with `mobileMenuBtn`)
-- **Accessibility**: ARIA labels, keyboard navigation (Escape to close)
-- **Smooth scroll**: Internal anchor links (`#servicios`, `#nosotros`, etc.)
+- **Accessibility**: ARIA labels, keyboard navigation (Escape to close). El menú móvil cerrado queda con `visibility: hidden` (no recibe foco). En el inicio el nav escondido aparece si recibe el foco (`nav:focus-within`) o si no hay JS (`@media (scripting: none)`)
+- **Smooth scroll**: Internal anchor links (`#servicios`, `#nosotros`, etc.). El foco va al destino: así funciona "Saltar al contenido principal"
+- **aria-label**: si un enlace lo lleva, empieza por el texto visible ("Leer más: …"). WCAG 2.5.3
 
 ### Forms
 - **Contacto directo**: bloque `.contact-direct` en `#contact` con `mailto:`; no hay formulario
-- **Tracking**: `Contacto_mail` al hacer click en cualquier `mailto:` (prop `ubicacion` = id de la sección)
+- **Tracking**: `Contacto_mail` al hacer click en un `mailto:` al estudio (prop `ubicacion` = id de la sección). No cuentan los `mailto:?` sin destinatario (compartir por email) ni los `.legal-link` (Privacidad y 404)
 
 ### Analytics (Plausible)
 - **Helper function**: `trackEvent(name, props)` in `main.js`
@@ -197,7 +198,7 @@ npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS m
 - **Privacy**: sin cookies. El script se carga desde `plausible.io` (no está self-hosted): es el único origen externo que admite la CSP
 
 ### Animations
-- **Sin apariciones al scroll** (retiradas 2026-09-05). Los IntersectionObserver de `main.js` no animan contenido: registran secciones vistas (`Seccion_vista`, `Reporte_seccion_vista`), cruzan el logo del inicio con el del nav y cambian la cifra del rail de natalidad.
+- **Sin apariciones al scroll** (retiradas 2026-09-05) **ni fundido de página** (retirado 2026-10-08: escondía la primera pintura). El único movimiento de entrada es el del título del inicio (`textReveal`). Los IntersectionObserver de `main.js` no animan contenido: registran secciones vistas (`Seccion_vista`, `Reporte_seccion_vista`), cruzan el logo del inicio con el del nav y cambian la cifra del rail de natalidad.
 - **Transiciones**: solo color y opacidad en hover/focus; `prefers-reduced-motion` las anula.
 
 ---
@@ -221,7 +222,7 @@ La fuente de verdad es `/DESIGN.md` (v2.1 beta-inclusive). Resumen:
 **Updating colors**: validar contra `/DESIGN.md` primero, editar `src/styles.css` `:root`, correr `npm run check`
 
 ### Typography
-- **Dos familias con rol fijo**: Plus Jakarta Sans para interfaz y títulos; Literata solo para la prosa de lectura larga en páginas `.page-lectura`. Ambas self-hosted en `/fonts/`.
+- **Dos familias con rol fijo**: Plus Jakarta Sans para interfaz y títulos; Literata solo para la prosa de lectura larga en páginas `.page-lectura`. Ambas self-hosted en `/fonts/`. Literata va con el tamaño óptico fijo en 19, el único tamaño en que se usa (`literata-latin-opsz19.woff2` y su itálica).
 - **Carga**: `@font-face` en `src/styles.css`; el `<head>` solo precarga la regular (y Literata en las páginas `.page-lectura`). Nunca `@import` en CSS
 - **Pesos**: 400 y 700 + itálica 400 únicamente (decisión 2026-08-21, feedback socios) — no agregar otros
 - **Fallback**: `--font-body` cae en `Plus Jakarta Sans Fallback` (Arial con métricas ajustadas, definida en `styles.css`); las reglas que escriben la familia a mano caen en `sans-serif`
