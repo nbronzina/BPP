@@ -321,6 +321,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // "Seguí leyendo" (partials/seguir-leyendo.njk): qué pieza se abre desde el final de otra.
+  // La página de origen ya va en el evento; `hacia` dice cuál se eligió.
+  document.querySelectorAll(".seguir-titulo a").forEach((a) => {
+    a.addEventListener("click", () => trackEvent("Seguir_leyendo", { hacia: a.getAttribute("href") }));
+  });
+
   // =====================================================
   // BLOQUE CASOS LARGOS (reporte-page)
   // -----------------------------------------------------
@@ -331,10 +337,14 @@ document.addEventListener("DOMContentLoaded", function () {
   if (body.classList.contains("reporte-page")) {
     // Profundidad de lectura: un caso leído hasta el 75 % es la segunda
     // métrica que importa (la primera es Contacto_mail). Se dispara una vez.
+    // "Seguí leyendo" va después del caso y no cuenta: sin descontarlo, el 75 % caía
+    // 3 a 5 puntos más adentro del texto y la métrica dejaba de compararse con la de antes.
     let casoLeido = false;
+    const seguirLeyendo = document.querySelector(".seguir-leyendo");
     const medirLectura = () => {
       if (casoLeido) return;
-      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const extra = seguirLeyendo ? seguirLeyendo.offsetHeight : 0;
+      const total = document.documentElement.scrollHeight - extra - window.innerHeight;
       if (total > 0 && window.scrollY / total >= 0.75) {
         casoLeido = true;
         trackEvent("Caso_leido_75", { pagina: window.location.pathname });
