@@ -800,12 +800,86 @@ footer {
 
 /* 8. Inicio ============================================================ */
 
-/* Cabecera: el nombre y la frase, alineados a la columna. No ocupa la pantalla entera: la
-   sección siguiente arranca en la primera vista. El logo va una sola vez, en el nav.
-   El título es el único movimiento de entrada del sitio. Abajo lleva medio silencio entero
-   (no el de las otras cabeceras): la banda honda de Cuatro movimientos empieza justo en la
+/* Cabecera: el logo grande a la izquierda del nombre y la frase, como una firma. El logo arranca
+   en el eje de la columna. En el teléfono va al lado del nombre (las dos líneas del título) y la
+   frase abajo, a todo el ancho; desde 769, al lado del nombre y la frase, con la misma altura que
+   los dos juntos. No ocupa la pantalla entera: la sección siguiente asoma en la primera vista.
+   El título y la frase son el único movimiento de entrada del sitio. Abajo lleva medio silencio
+   entero (no el de las otras cabeceras): la banda honda de Cuatro movimientos empieza justo en la
    mitad, como la línea entre dos secciones de un caso. */
-.inicio-hero { padding-bottom: var(--spacing-block); }
+.inicio-hero {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: var(--space-5);
+    align-items: center;
+    padding-bottom: var(--spacing-block);
+}
+
+.inicio-logo {
+    grid-column: 1;
+    grid-row: 1;
+    width: auto;
+    height: calc(2.1 * var(--fs-1));   /* el alto de dos líneas del título */
+}
+
+.inicio-hero .inicio-titulo {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+}
+
+.inicio-hero .inicio-frase {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: var(--space-5);
+}
+
+@media (min-width: 769px) {
+    /* En tablet el aire es más corto: así el nombre entra en una línea desde unos 800 px. */
+    .inicio-hero { column-gap: var(--space-6); }
+
+    /* El alto del nombre (una línea) más el de la frase (dos): el logo cubre el bloque entero. */
+    .inicio-logo {
+        grid-row: 1 / span 2;
+        height: calc(1.05 * var(--fs-1) + var(--space-3) + 2.8 * var(--fs-4));
+    }
+
+    .inicio-hero .inicio-titulo {
+        align-self: end;
+        margin-bottom: var(--space-3);
+    }
+
+    .inicio-hero .inicio-frase {
+        grid-column: 2;
+        align-self: start;
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 1025px) {
+    .inicio-hero { column-gap: var(--space-10); }
+}
+
+/* Un solo logo a la vista: en el inicio, el del nav espera a que el grande se vaya (main.js marca
+   body.logo-en-nav). Sin JavaScript, el del nav está siempre. */
+body:has(.inicio-logo) .nav-logo {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+body.logo-en-nav .nav-logo {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+}
+
+@media (scripting: none) {
+    body:has(.inicio-logo) .nav-logo {
+        opacity: 1;
+        visibility: visible;
+    }
+}
 
 .inicio-titulo {
     font-size: var(--fs-1);
@@ -819,7 +893,7 @@ footer {
     font-size: var(--fs-4);
     line-height: 1.4;
     color: var(--color-text-mid);
-    max-width: 34ch;
+    max-width: 30em;
     animation: textReveal 0.7s ease-out 0.35s both;
 }
 

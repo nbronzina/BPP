@@ -6,8 +6,9 @@
 // casos; filtro en Pensamiento; "Ver proceso" en el inicio.
 // Sin apariciones al scroll, sin formulario, sin PWA y sin
 // medición de visitas (Plausible se retiró el 2026-10-08).
-// Las flechas de los enlaces las dibuja el CSS (/img/flecha.svg)
-// y el nav del inicio se ve desde el principio (v3, octubre de 2026).
+// Las flechas de los enlaces las dibuja el CSS (/img/flecha.svg).
+// El nav del inicio se ve desde el principio; su logo aparece
+// cuando el grande de la cabecera se va (v3.1, octubre de 2026).
 // =====================================================
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -154,6 +155,22 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // Inicio: un solo logo a la vista. Mientras el grande de la cabecera se ve, el del nav no está;
+  // cuando el grande se va por arriba, debajo del nav, aparece el chico. Sin IntersectionObserver
+  // (o sin JS, ver styles.css) el del nav queda siempre.
+  const logoGrande = document.querySelector(".inicio-logo");
+  if (logoGrande) {
+    if ("IntersectionObserver" in window) {
+      const nav = document.getElementById("stickyNav");
+      const alto = nav ? nav.offsetHeight : 76;
+      new IntersectionObserver(([e]) => {
+        body.classList.toggle("logo-en-nav", !e.isIntersecting);
+      }, { rootMargin: `-${alto}px 0px 0px 0px` }).observe(logoGrande);
+    } else {
+      body.classList.add("logo-en-nav");
+    }
+  }
 
   // "Copiar dirección" (partials/copiar-mail.njk): aparece solo si el navegador puede copiar.
   if (navigator.clipboard && navigator.clipboard.writeText) {
