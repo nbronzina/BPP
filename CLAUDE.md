@@ -26,7 +26,7 @@ Sitio de BPP Analytics & Design: estudio de investigación, diseño de futuros, 
 
 ### Key Features
 - **Responsive design**: Mobile-first, desktop adapted, accessible (WCAG 2.1 AA)
-- **Analytics**: Plausible.io for privacy-friendly tracking
+- **Sin medición**: el sitio no mide visitas. Plausible se retiró el 2026-10-08 ("Eliminar, sacar, plausible")
 - **Contacto**: mail directo (`mailto:`) con promesa de respuesta en 48 h hábiles. Sin formulario: menos fricción y ningún servicio externo.
 - **Structured data**: JSON-LD por página (`src/_includes/jsonld/`): ProfessionalService y Organization en la home, CollectionPage con ItemList en Lo hecho y Pensamiento, CreativeWork, Report, ScholarlyArticle, PrivacyPolicy
 
@@ -121,7 +121,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 │   ├── _includes/layouts/base.njk      # head + nav + footer únicos
 │   ├── _includes/partials/             # nav, footer, cierre, copiar-mail, seguir-leyendo, caso-nav, senales-cards
 │   ├── _includes/jsonld/<pagina>.njk   # JSON-LD por página
-│   ├── _data/site.json                 # nombre, URL, mail, CSP, dominio Plausible
+│   ├── _data/site.json                 # nombre, URL, mail, CSP
 │   ├── index.njk, proyectos/ (+ trace-group/, gabinete-extemporaneo/, natalidad/), pensamiento/, privacidad/, usina/tesis-01/, 404.njk
 │   ├── usina/index.html                # redirección a /pensamiento/#tesis (no se procesa)
 │   ├── reporte-impacto/index.html      # redirección a /proyectos/natalidad/ (no se procesa)
@@ -174,9 +174,8 @@ npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS m
 ### Testing Checklist
 - [ ] Mobile menu works (open/close/escape/outside click)
 - [ ] Smooth scroll to anchors (`#servicios`, `#nosotros`, etc.)
-- [ ] El `mailto:` de contacto y el CTA de cada cierre disparan `Contacto_mail`; "Copiar dirección" copia y dispara `Contacto_copiar`
+- [ ] El `mailto:` de contacto y el CTA de cada cierre abren el mail (el cierre, con el asunto de la página); "Copiar dirección" copia la dirección
 - [ ] Las imágenes son WebP con variante `-mobile` en las tarjetas
-- [ ] Analytics events tracked (check Plausible)
 
 ---
 
@@ -193,15 +192,13 @@ npm run serve   # eleventy --serve con recarga; rehace también el CSS y el JS m
 ### Forms
 - **Contacto directo**: bloque `.contact-direct` en `#contact` con `mailto:`; no hay formulario. El CTA de cada cierre también abre el mail, con el asunto de la página (`cierreAsunto`). La dirección vive en `site.email`
 - **Copiar dirección**: `partials/copiar-mail.njk`, bajo el mail del contacto y en cada cierre. Sale con `hidden` y `main.js` lo muestra solo si el navegador puede copiar
-- **Tracking**: `Contacto_mail` al hacer click en un `mailto:` al estudio (prop `ubicacion` = el `data-ubicacion` más cercano, "cierre" en los cierres, o el id de la sección). No cuentan los `mailto:?` sin destinatario (compartir por email) ni los `.legal-link` (Privacidad y 404). `Contacto_copiar` cuando alguien copia la dirección, con la misma prop
 
-### Analytics (Plausible)
-- **Helper function**: `trackEvent(name, props)` in `main.js`
-- **Events tracked**: Section views, CTA clicks, `Contacto_mail` (conversación iniciada), `Caso_leido_75` (75 % de scroll en páginas `.reporte-page`, sin contar el bloque "Seguí leyendo"). Son las dos métricas que importan; el resto es contexto: `Contacto_copiar` (copió la dirección), `Seguir_leyendo` (prop `hacia`) y los demás.
-- **Privacy**: sin cookies. El script se carga desde `plausible.io` (no está self-hosted): es el único origen externo que admite la CSP
+### Medición
+- **No hay.** Plausible se retiró el 2026-10-08 con todo el código que le mandaba eventos (`trackEvent`, secciones vistas, profundidad de lectura). La CSP solo admite el propio dominio y la política de privacidad dice que el sitio no mide visitas: volver a medir es una decisión de los socios y cambia esa página
+- **Conversaciones**: se ven en la casilla. El asunto de cada cierre dice desde qué página escribió la persona
 
 ### Animations
-- **Sin apariciones al scroll** (retiradas 2026-09-05) **ni fundido de página** (retirado 2026-10-08: escondía la primera pintura). El único movimiento de entrada es el del título del inicio (`textReveal`). Los IntersectionObserver de `main.js` no animan contenido: registran secciones vistas (`Seccion_vista`, `Reporte_seccion_vista`), cruzan el logo del inicio con el del nav y cambian la cifra del rail de natalidad.
+- **Sin apariciones al scroll** (retiradas 2026-09-05) **ni fundido de página** (retirado 2026-10-08: escondía la primera pintura). El único movimiento de entrada es el del título del inicio (`textReveal`). Los IntersectionObserver de `main.js` no animan contenido: cruzan el logo del inicio con el del nav y cambian la cifra del rail de natalidad.
 - **Transiciones**: solo color y opacidad en hover/focus; `prefers-reduced-motion` las anula.
 
 ---
@@ -263,7 +260,6 @@ These terms refer to the same section but use different wording intentionally �
 
 ### JavaScript Rules
 - **Null-safe DOM**: Always `if (element)` before adding listeners
-- **Event tracking**: Use `trackEvent(name, props)` helper (checks `window.plausible`)
 - **Page-specific logic**: Conditional on `body.classList.contains("page-class")`
 - **No globals**: Wrap in `DOMContentLoaded` listener
 
@@ -305,7 +301,6 @@ Uses sharp-cli for conversion, maintains quality.
 ### JavaScript Patterns
 - **Null-safe DOM access**: Always check `if (element)` before adding listeners
 - **Page-specific logic**: Use `body.classList.contains("page-class")` for conditionals
-- **Tracking**: Centralize via `trackEvent(name, props)` helper (checks `window.plausible`)
 - **Sin reveals**: no existe `[data-animate]`; ningún IntersectionObserver anima contenido
 
 ### HTML Patterns

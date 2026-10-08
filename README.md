@@ -4,7 +4,7 @@ Sitio del estudio: [bppanalyticsanddesign.com](https://www.bppanalyticsanddesign
 
 ## Cómo está hecho
 
-HTML plano generado con [Eleventy 3](https://www.11ty.dev/) (Nunjucks), CSS y JavaScript escritos a mano, sin frameworks en el navegador. Fuentes self-hosted, sin cookies, sin formularios ni servicios externos salvo Plausible para métricas agregadas.
+HTML plano generado con [Eleventy 3](https://www.11ty.dev/) (Nunjucks), CSS y JavaScript escritos a mano, sin frameworks en el navegador. Fuentes self-hosted, sin cookies, sin formularios, sin medición de visitas y sin servicios externos.
 
 - Un layout base con head, nav y footer (`src/_includes/layouts/base.njk`).
 - Ocho páginas y el 404 como templates en `src/**/index.njk` y `src/404.njk`, más dos redirecciones estáticas (`src/usina/index.html`, `src/reporte-impacto/index.html`).
