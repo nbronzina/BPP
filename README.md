@@ -11,6 +11,7 @@ HTML plano generado con [Eleventy 3](https://www.11ty.dev/) (Nunjucks), CSS y Ja
 - Casos, clases, jornadas, artículos y la tesis son datos: una entrada por pieza en `src/_data/piezas.mjs`. Las tarjetas y las filas salen de dos macros (`src/_includes/partials/piezas.njk`), y las listas del JSON-LD de Lo hecho y Pensamiento, de los mismos datos. Sumar una pieza es sumar una entrada.
 - Las señales existen una sola vez (`src/_includes/partials/senales-cards.njk`) y se incluyen donde hacen falta. Lo mismo el cierre de página (`cierre.njk`) y la navegación de los casos (`caso-nav.njk`), que salen del front matter, el botón "Copiar dirección" (`copiar-mail.njk`) y "Seguí leyendo" (`seguir-leyendo.njk`), que lista las otras piezas largas.
 - `sitemap.xml` se genera (`src/sitemap.njk`) con las páginas que declaran `sitemap:` en su front matter.
+- Cada página pasa por `lib/bandera.mjs` antes de escribirse: el texto va en bandera, sin guiones automáticos, y el build une lo que no conviene cortar (una palabra corta con la siguiente, la cifra con su unidad, la última palabra con la anterior). Las reglas están en `DESIGN.md`, "Bandera".
 - Política de seguridad estricta: `style-src 'self'`, sin estilos inline.
 
 ## Trabajar en local
@@ -36,6 +37,7 @@ docs/                  PDF publicados y docs/historial.md; los .md no se publica
 DESIGN.md, VOICE.md    fuentes de verdad del sistema visual y de la voz
 CLAUDE.md              guía de trabajo para Claude Code
 .eleventy.js           configuración del build
+lib/bandera.mjs        composición en bandera, aplicada en el build
 scripts/check-site.mjs chequeo del sitio generado
 ```
 

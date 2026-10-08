@@ -1,8 +1,8 @@
 ---
-version: v3.0
+version: v3.1
 name: BPP Analytics & Design
-description: Sistema visual del estudio. Fondo Tinta (azul-negro frío), un solo acento terracota que también es el color del logo, dos familias con rol fijo (Plus Jakarta Sans para la interfaz, Literata para la prosa larga), siete tamaños de letra y un solo borde izquierdo por ancho de pantalla. Enlaces tipográficos con una flecha que dibuja el sitio. Cajas solo para lo que es un objeto. Corner brackets como firma exclusiva de La Usina.
-evolution: "v1 (alpha): Space Mono, negro puro y naranja saturado. v2 (beta-inclusive, 2026-05-04): fondo levantado, blanco cálido y terracota desaturado. v2.1 (2026-06-11): Plus Jakarta Sans como familia única. v2.2 (soft-editorial, 2026-08-21): geometría blanda, dos pesos, brackets solo para La Usina, grano análogo. v2.4 (2026-09): base Tinta. v2.6 a v2.11 (septiembre y octubre de 2026): Literata para la lectura larga, sin papel, sin apariciones al scroll ni fundido de página. v3.0 (2026-10-08): el archivo describe lo que hay; una grilla, siete tamaños, una sola tarjeta, logo y acento del mismo color, inicio más corto y con el nav a la vista."
+description: Sistema visual del estudio. Fondo Tinta (azul-negro frío), un solo acento terracota que también es el color del logo, dos familias con rol fijo (Plus Jakarta Sans para la interfaz, Literata para la prosa larga), siete tamaños de letra, todo el texto en bandera y un solo borde izquierdo por ancho de pantalla. Enlaces tipográficos con una flecha que dibuja el sitio. Cajas solo para lo que es un objeto. Corner brackets como firma exclusiva de La Usina.
+evolution: "v1 (alpha): Space Mono, negro puro y naranja saturado. v2 (beta-inclusive, 2026-05-04): fondo levantado, blanco cálido y terracota desaturado. v2.1 (2026-06-11): Plus Jakarta Sans como familia única. v2.2 (soft-editorial, 2026-08-21): geometría blanda, dos pesos, brackets solo para La Usina, grano análogo. v2.4 (2026-09): base Tinta. v2.6 a v2.11 (septiembre y octubre de 2026): Literata para la lectura larga, sin papel, sin apariciones al scroll ni fundido de página. v3.0 (2026-10-08): el archivo describe lo que hay; una grilla, siete tamaños, una sola tarjeta, logo y acento del mismo color, inicio más corto y con el nav a la vista. v3.1 (2026-10-08): composición en bandera según Enric Jardí, el logo grande vuelve al inicio a la izquierda del nombre, Pensamiento con imágenes en el inicio y los clientes en 5 × 2."
 colors:
   primary: "#c16f52"                # acento y logo
   on-primary: "#12151a"
@@ -114,7 +114,7 @@ BPP opera como un estudio de diseño estratégico, no como una agencia corporati
 
 El sistema existe para hacer legible una práctica (investigación, prototipos, futuros, datos) en un formato que quien decide pueda leer sin sentirse empujado. El fondo Tinta da gravedad sin agresividad. Las dos familias tienen rol fijo: la sans ordena y la serif se reserva para leer de corrido. El terracota aparece donde hay acción o dato, nunca como decoración.
 
-Este archivo describe lo que hay en el sitio (v3.0, 8 de octubre de 2026). Si el código y este archivo no coinciden, uno de los dos está mal y se corrige en el mismo cambio. Es la fuente de verdad: si un brief, una auditoría o un agente propone cambiar un token sin pasar por acá, la propuesta se descarta. Los cambios de identidad (color, familias, logo, navegación, la primera pantalla del inicio) los deciden los socios y quedan en el Changelog con la formulación anterior.
+Este archivo describe lo que hay en el sitio (v3.1, 8 de octubre de 2026). Si el código y este archivo no coinciden, uno de los dos está mal y se corrige en el mismo cambio. Es la fuente de verdad: si un brief, una auditoría o un agente propone cambiar un token sin pasar por acá, la propuesta se descarta. Los cambios de identidad (color, familias, logo, navegación, la primera pantalla del inicio) los deciden los socios y quedan en el Changelog con la formulación anterior.
 
 Los archivos con prefijo `_prototype-*` están fuera del sistema por diseño. Si un prototipo se promueve a producción, se alinea primero y después se renombra sin el prefijo.
 
@@ -165,13 +165,34 @@ Reglas:
 
 Los tres primeros crecen con el ancho entre 390 y 1280 px (`clamp`); los otros cuatro son fijos. **15 px es el mínimo** (decisión de los socios, 2026-08-21): no hay texto más chico en ninguna página. Lo único fuera de la escala es el glifo × del botón que cierra el índice del teléfono, que no es texto.
 
-Interletrado: −0,03em en `--fs-1`, −0,02em en `--fs-2`, −0,01em en `--fs-3` y +0,08em en las etiquetas. Los títulos van con `text-wrap: balance` y sin cortes de palabra; los párrafos, con `text-wrap: pretty` y corte automático. Las cifras van en estilo lineal, y tabulares en la numeración y los datos grandes.
+Interletrado: −0,03em en `--fs-1`, −0,02em en `--fs-2`, −0,01em en `--fs-3` y +0,08em en las etiquetas. Las cifras van en estilo lineal, y tabulares en la numeración y los datos grandes. Cómo se cortan las líneas está en Bandera.
 
 ### Mayúsculas
 
 Solo en la **etiqueta** (`.etiqueta`): el tipo y la fecha de una pieza ("Provocación · agosto 2026"), el dato de una fila ("Artículo en LinkedIn · junio 2026", "Tesis · PDF de 56 páginas") y el rótulo de cada señal ("Señal débil") y de la tesis. Es lo que orienta: qué es y de cuándo. Van por CSS (`text-transform: uppercase`): en el HTML el texto va en caja normal, como se lee. Nunca en títulos, cuerpo, CTAs, nav, botones ni rótulos de fichas.
 
 La excepción son los documentos de Gabinete: reproducen papeles administrativos y llevan en mayúsculas el tipo de documento y el sello, adentro de `.documento`.
+
+### Bandera
+
+Todo el texto va en bandera: a caja izquierda, con el borde derecho libre, sin justificar y sin guiones automáticos (`hyphens: manual`). La referencia es Enric Jardí (*Veintidós consejos sobre tipografía*, Actar, 2007, ampliado en *Cincuenta y tantos consejos sobre tipografía*, GG, 2021). Una palabra partida en un titular o en una frase de 19 px molesta más que una bandera un poco despareja.
+
+Dónde no se corta una línea:
+
+- Después de una palabra de una o dos letras (a, y, de, la, en, un, se…), en todo el texto.
+- En los titulares y los textos grandes, tampoco después de un artículo, una preposición, una conjunción o un demostrativo corto (del, las, con, por, que, para, esta…). Los titulares se parten por el sentido: "Sociología aplicada: / leemos señales débiles / y decidís con fundamento".
+- Entre la cifra y su unidad ("48 horas", "−42,8 %"), entre la palabra y su número ("agosto 2026", "Gráfico 4") ni adentro de un nombre de dos palabras ("Buenos Aires", "La Usina", "Matadero Madrid").
+- Antes de una raya o un punto medio separador: ninguna línea empieza con ellos. La raya de un inciso no queda sola al final ni al principio de una línea.
+- En el guion de una palabra compuesta, un rango o un código ("humano–IA", "2016–2026", "TRN-2028-0412"). Un mail se corta solo después de la arroba.
+- Antes de la última palabra de un párrafo o un título de tres palabras o más, salvo que la anterior termine en un signo de puntuación: ahí cortar es natural ("que nadie mira, / hablemos.").
+
+Cómo se reparten las líneas: `text-wrap: balance` en los títulos, la frase del inicio, la bajada de Cuatro movimientos, la cita destacada y el texto del cierre, para que queden parejas; `text-wrap: pretty` en párrafos, listas, definiciones y pies, para que la última línea no quede con una sola palabra.
+
+Cómo se hace: el build pasa cada página por `lib/bandera.mjs` (transform `bandera` en `.eleventy.js`), que une con espacios de no separación lo que va junto. En los titulares, un grupo más largo va en `<span class="junto">` (inline-block con `max-width: 100%`): pasa entero a la línea siguiente y, si no entra en ninguna, se corta adentro, así nada se desborda a 320 px. En el texto corrido solo hay espacios de no separación, para no desparejar la bandera. Cuando un titular pide un corte por el sentido que las reglas no ven, se marca a mano: en el HTML, con `<span class="junto">`; en el front matter, `cierreTitulo` y `cierreTexto` aceptan " | " entre tramos (filtro `sentido`). Si un nombre de dos palabras se parte en un titular, se suma a `TERMINOS` en `lib/bandera.mjs`.
+
+Comillas latinas en todo el texto visible («negociación libre»), con las inglesas adentro si hace falta una cita dentro de otra. Una cita de hasta tres palabras no se parte.
+
+Medido en las nueve páginas y siete anchos, de 320 a 1920 px: desde 390 ninguna línea termina en una palabra de una o dos letras ni un titular en palabra de función, y en ningún ancho hay palabras partidas, cifras separadas de su unidad ni líneas que empiecen con raya. Quedan palabras solas en la última línea solo donde no hay otra salida: los códigos de los documentos de Gabinete, dos títulos a 390 ("Gabinete Extemporáneo" y el de natalidad, donde "matrículas escolares" no entra en una línea) y dos cierres que cortan después de la coma.
 
 ## Layout
 
@@ -185,9 +206,9 @@ La excepción son los documentos de Gabinete: reproducen papeles administrativos
 
 **Separadores.** Entre las secciones de un caso y antes del cierre va una línea susurro del ancho del contenido, en la mitad exacta del silencio. Las bandas hondas (Cuatro movimientos y contacto) separan por fondo, sin línea.
 
-**Navegación.** El nav es fijo y está a la vista en todas las páginas, también en el inicio desde v3.0: logo a la izquierda, las tres secciones en el medio y "Hablemos" a la derecha; en el teléfono, "Hablemos" y el menú. La navbar es elemento fijo del sistema y **no se toca**: cualquier rediseño de navegación requiere validación explícita antes de ejecutar. Hubo tres excepciones validadas, todas en el Changelog (v2.10, v2.11 y v3.0).
+**Navegación.** El nav es fijo y está a la vista en todas las páginas, también en el inicio desde v3.0: logo a la izquierda, las tres secciones en el medio y "Hablemos" a la derecha; en el teléfono, "Hablemos" y el menú. En el inicio, el logo del nav entra cuando el logo grande de la cabecera se va (ver la primera pantalla). La navbar es elemento fijo del sistema y **no se toca**: cualquier rediseño de navegación requiere validación explícita antes de ejecutar. Hubo cuatro excepciones validadas, todas en el Changelog (v2.10, v2.11, v3.0 y v3.1).
 
-**Primera pantalla del inicio.** El nombre y la frase, alineados a la columna, sin ocupar la pantalla entera. A 1440 × 900 la banda de Cuatro movimientos empieza a 439 px y su título se lee en la primera vista; a 390 × 844 empieza a 372 px. El logo va una sola vez, en el nav. El título es el único movimiento de entrada del sitio (`textReveal`).
+**Primera pantalla del inicio.** El logo grande a la izquierda y, a su lado, el nombre y la frase: una firma alineada a la columna, sin ocupar la pantalla entera. Desde 769 el logo tiene el alto del nombre y la frase juntos (155 px a 1440) y el texto arranca a su derecha (a 124 px del eje a 1440). En el teléfono el logo va al lado del nombre, con el alto de sus dos líneas (84 px a 390), y la frase abajo, desde el eje. Hay un solo logo a la vista: el del nav aparece con un fundido cuando el grande pasa por debajo del nav (`main.js`, un IntersectionObserver) y sin JavaScript se ven los dos. A 1440 × 900 la banda de Cuatro movimientos empieza a 431 px y su título se lee en la primera vista; a 390 × 844, a 372 px. El nombre y la frase son el único movimiento de entrada del sitio (`textReveal`, la frase 0,2 s después); el logo no se mueve.
 
 **Casos desde 1280.** El índice pegajoso va a la derecha; la cabecera y las secciones del caso le reservan 344 px (280 de índice, 32 de margen y 32 de aire), o el marco de siempre si es mayor.
 
@@ -240,7 +261,7 @@ BPP no usa botones con fondo. Los CTAs son tipografía en el acento, en negrita,
 
 ### Tarjeta
 
-Una sola plantilla para casos, docencia y artículos: la macro `tarjeta` de `src/_includes/partials/piezas.njk`, con los datos en `src/_data/piezas.mjs`. Hay una entrada por pieza; el inicio elige por id y las listas del JSON-LD salen de los mismos datos.
+Una sola plantilla para casos, docencia, artículos y la tesis: la macro `tarjeta` de `src/_includes/partials/piezas.njk`, con los datos en `src/_data/piezas.mjs`. Hay una entrada por pieza; el inicio elige por id y las listas del JSON-LD salen de los mismos datos.
 
 - Imagen 16:9 de 800 px, con radio de 16 y el velo cálido; etiqueta (tipo · fecha); título `h3`; descripción en 17 px y text-mid; ficha corta opcional (un `dl` de dos columnas en 15 px, rótulos de 6,5rem) sobre una línea susurro; enlaces al pie.
 - **Sin caja:** sin fondo, borde ni sombra. La separa el aire.
@@ -249,11 +270,10 @@ Una sola plantilla para casos, docencia y artículos: la macro `tarjeta` de `src
 
 ### Fila
 
-Para listas de textos: Pensamiento en el inicio y "Seguí leyendo" en los casos y la tesis (macro `fila`).
+Para "Seguí leyendo", al final de los casos y de la tesis (macro `fila`).
 
-- Título enlazado (`h3`, 21 a 24 px, text-high, pasa al acento con hover), bajada en 17 px y una etiqueta con el tipo y un dato (fecha o largo de lectura). Las filas se separan con línea susurro.
+- Etiqueta con el tipo y un dato (fecha o largo de lectura), título enlazado (`h3`, 21 a 24 px, text-high, pasa al acento con hover) y bajada en 17 px. El mismo orden que la tarjeta, en todos los anchos: primero qué es y de cuándo. Las filas se separan con línea susurro.
 - Toda la fila responde al clic; el nombre del enlace es el título.
-- Desde 769, la etiqueta va a la derecha, en la línea del título.
 
 ### Cierre
 
@@ -261,7 +281,7 @@ Lo último de Lo hecho, Pensamiento, los casos y la tesis (`partials/cierre.njk`
 
 ### Nav
 
-- **Logo:** `/img/logo.svg`, 40 px de alto, en `#c16f52`. Una sola vez por página.
+- **Logo:** `/img/logo.svg`, 40 px de alto, en `#c16f52`. Uno solo a la vista: en el inicio entra cuando se va el logo grande de la cabecera.
 - **Enlaces:** 17 px, text-high, acento con hover. La página actual lleva una línea de 1 px en el acento debajo (`aria-current`); solo la página exacta deja de ser clicable.
 - **"Hablemos" (`.nav-cta`):** en el acento, afuera de la lista y a la vista en todas las páginas, también en el teléfono.
 - **Teléfono:** panel desde la derecha con los enlaces a 21 px y un velo sobre la página. Cerrado no recibe foco (`visibility: hidden`); Escape y el clic afuera lo cierran.
@@ -274,9 +294,9 @@ La marca y el año en una línea; la práctica y las ciudades en 15 px; el mail 
 ### Inicio
 
 - **Cuatro movimientos:** filas separadas por línea susurro, con el número (01 a 04) en el acento a `--fs-3`, a la izquierda desde 769. La numeración existe solo acá, porque es un orden de trabajo. "Ver proceso" despliega las etapas.
-- **Hechos** muestra los tres casos en tarjetas; **Pensamiento**, la tesis y los dos artículos más recientes en filas. Cada bloque termina con un enlace a su sección.
+- **Hechos** muestra los tres casos y **Pensamiento** la tesis y los dos artículos más recientes, los dos con la misma tarjeta, con imagen. Cada bloque termina con un enlace a su sección.
 - **Equipo:** retratos recortados y compuestos sobre Tinta, sin marco ni sombra; nombre, rol, ciudad y una bio de perspectiva. Una columna en el teléfono; en tablet, un socio por fila con el retrato a la izquierda; tres columnas desde 1025. Sin efectos de hover.
-- **Clientes:** logos en un solo tono (ver Colors), en una fila que se acomoda al ancho. Dos ajustes de alto: las marcas cuadradas, más altas; los wordmarks muy anchos, más bajos.
+- **Clientes:** diez logos en un solo tono (ver Colors), en 5 × 2 desde 769 y en 2 × 5 en el teléfono. Las columnas van a caja izquierda: la primera arranca en el eje, la última termina en el borde derecho y el aire entre columnas es parejo. Cada logo ocupa una superficie parecida, así un ícono y un logotipo con texto pesan lo mismo: ancho = 6,2 × √(ancho/alto) × un ajuste por el grosor del trazo, en centésimos del ancho de la grilla (`--w` de cada `.logo-item--…`). En el teléfono, por 2,6, sin pasar nunca el tamaño del escritorio. Los dos que son solo ícono (CESBA y Olam) van en la columna del medio; los logotipos con texto, a los costados. Cada archivo va recortado a su contenido, sin aire alrededor.
 - **Contacto:** tres situaciones separadas por línea, el mail en grande, "Copiar dirección", la promesa de respuesta y las dos direcciones.
 
 ### Casos como documento
@@ -306,7 +326,9 @@ Un caso se lee como un documento, no como una grilla de tarjetas.
 
 ### Logo
 
-Archivo `/img/logo.svg` con el relleno en `#c16f52`, el mismo naranja del acento (desde v3.0; antes `#e9804d`). Los favicons, el ícono de Apple, `img/logo.webp` y la imagen al compartir salen del mismo color. Sin filtros ni variantes.
+Archivo `/img/logo.svg` con el relleno en `#c16f52`, el mismo naranja del acento (desde v3.0; antes `#e9804d`). Los favicons, el ícono de Apple, `img/logo.webp`, la imagen al compartir y la marca que llevan en una esquina las imágenes de los artículos y de la tesis salen del mismo color. Sin filtros ni variantes.
+
+Va en el nav de todas las páginas y, grande, en la cabecera del inicio, donde el del nav entra recién cuando el grande se va.
 
 ## Do's and Don'ts
 
@@ -321,6 +343,7 @@ Los errores que se repiten, para que no se reintroduzcan.
 - Llevar todo bloque nuevo al marco (`.bloque` o `.cabecera`) y acotar el texto con `--medida`, alineado a la izquierda.
 - Mantener 160 px de silencio entre bloques desde 769 (80 en el teléfono).
 - Escribir mayúsculas solo en `.etiqueta`, y por CSS.
+- Componer en bandera y partir los titulares por el sentido; si las reglas de `lib/bandera.mjs` no alcanzan, marcar el corte a mano (`.junto` o " | ").
 - Implementar los CTAs como tipografía con la flecha del sitio (`.cta-link`, `.cta-primary`).
 - Sumar una pieza nueva como una entrada en `src/_data/piezas.mjs`, no como una tarjeta escrita a mano.
 - Dar caja solo a lo que es un objeto; separar el resto con aire o con línea susurro.
@@ -340,8 +363,9 @@ Los errores que se repiten, para que no se reintroduzcan.
 - **No usar `transform: scale()` ni `translateY()` en hovers**, ni glow, sombras de color o sombras como estado de hover.
 - **No usar radios fuera de 16, 4, pill y 50 %**, y pill y 50 % solo donde dice Shapes.
 - **No convertir CTAs en botones con fondo** ni escribir la flecha como carácter.
-- **No poner el logo dos veces en una página**, ni en otro color que el acento.
-- **No mostrar los logos de clientes en sus colores.**
+- **No justificar texto ni volver a `hyphens: auto`.** Tampoco comillas rectas ni inglesas en el texto visible: van las latinas.
+- **No mostrar dos logos a la vez**, ni en otro color que el acento.
+- **No mostrar los logos de clientes en sus colores** ni en tamaños que dependan del archivo: cada uno lleva su `--w`.
 - **No trasladar el lenguaje de los overlays OBS a la web.**
 - **No ejecutar auditorías de performance que toquen tipografía o color sin revisar este archivo.** Si una auditoría lo recomienda, se evalúa a mano: no se aplica.
 - **No interpretar "editorial dark" como "bold and dramatic".** El sistema es denso pero sobrio.
@@ -373,6 +397,16 @@ Este archivo (v3) cumple en parte con la especificación `@google/design.md` (al
 **Decisión:** no corregir estos casos. El sistema prioriza coherencia semántica, diseño inclusivo y legibilidad del código sobre la conformidad estricta con el linter alpha de Google Labs.
 
 ## Changelog
+
+**v3.1 bandera, logo y clientes (2026-10-08):** pedidos de Nicolás sobre el preview de v3.0. Las cifras están medidas en las nueve páginas, antes (v3.0) y después.
+- Composición en bandera según Enric Jardí: "Rechequeá los saltos de oración y etc, tiene que estar todo en bandera bien editorializado, basado en enric jardi". Antes: "Los títulos van con `text-wrap: balance` y sin cortes de palabra; los párrafos, con `text-wrap: pretty` y corte automático", es decir, con `hyphens: auto` en el texto corrido y ningún control de dónde terminaba cada línea. Ahora, sin guiones automáticos y con las reglas de Bandera, aplicadas en el build (`lib/bandera.mjs`) y retocadas a mano en la frase del inicio, la cita destacada de natalidad, los escenarios y los cierres. En 9 páginas y 7 anchos (de 320 a 1920 px), las líneas que terminaban en una palabra de una o dos letras pasan de 1.949 a 2; los titulares que terminaban en artículo, preposición o conjunción, de 96 a 3; las palabras partidas entre dos líneas, de 23 a 0; las cifras separadas de su unidad, de 6 a 0; las líneas que empezaban con raya, de 4 a 0, y las palabras solas en la última línea, de 67 a 47. Lo que queda está casi todo a 320 px; desde 390 son 11 casos, todos donde no hay un corte mejor (ver Bandera).
+- Comillas latinas en el texto visible: «Inhabiting the Future», «negociación libre», «propuesta de mejora», «Datos personales». Antes, rectas.
+- Sale la frase "Lo que no tiene fuente no se publica." de la bajada de Hechos, en el inicio, y de la de Casos, en Lo hecho: "Eliminá: Lo que no tiene fuente no se publica."
+- Pensamiento vuelve a tener imágenes en el inicio: la tesis y los dos artículos, con la misma tarjeta que Hechos. Nicolás: "Me gusta el nuevo orden de lo hecho y pensamiento, pero por qué sacaste las imgs de pensamiento?", y eligió "Sí, tarjetas como Hechos". Antes: "**Pensamiento**, la tesis y los dos artículos más recientes en filas". El inicio pasa a medir 11.521 px a 390 (v3.0: 10.509) y 6.602 a 1440 (v3.0: 6.480).
+- El logo vuelve a las imágenes de los seis artículos y de la tesis, en el naranja nuevo: "Volvele a poner el logo de bpp a las imágenes de pensamiento y la tesis, por qué se los sacaste?". En v3.0, al dejar una sola imagen de 800 px por tarjeta, se usaron las versiones para el teléfono, que nunca lo tuvieron. Las nuevas salen de las de 1600 px, con el logo en el mismo lugar.
+- El logo grande vuelve al inicio, a la izquierda del nombre y la frase: "Por qué no hay más logo grande al entrar?" y "Y si ponemos el logo a la izquierda del nombre y quote? queda mejor ordenado visualmente." Antes (v3.0): "El logo va una sola vez, en el nav", y "No poner el logo dos veces en una página". Ahora hay un solo logo a la vista: el del nav entra cuando el grande se va. Es la cuarta excepción validada a "la navbar no se toca". La primera pantalla sigue sin ocupar la pantalla entera: Cuatro movimientos empieza a 431 px en 1440 × 900 (v3.0: 439) y a 372 en 390 × 844 (igual).
+- Clientes en 5 × 2 (2 × 5 en el teléfono): "Los logos dejalos en 5x2 y, en lo posible, bien ordenados, alineados y tamaños iguales o lo más parecidos posible, siempre entendiendo que algunos son sólo íconos y otros tienen texto." Antes: "en una fila que se acomoda al ancho. Dos ajustes de alto: las marcas cuadradas, más altas; los wordmarks muy anchos, más bajos", y la fila se cortaba distinto en cada ancho: 5 y 5 a 1440, 3, 4 y 3 a 1024, 4, 4 y 2 a 768. Ahora cada logo tiene su ancho calculado por superficie y trazo. A 1440, el logo más grande ocupaba 3,2 veces la superficie del más chico; ahora, 1,8. Se recortaron a su contenido los archivos de Otros Futuros y Olam, que traían aire alrededor.
+- En las filas de "Seguí leyendo" la etiqueta va arriba del título, como en la tarjeta. Antes: "Desde 769, la etiqueta va a la derecha, en la línea del título".
 
 **v3.0 un sistema que describe lo que hay (2026-10-08):** propuesta de diseño en tres niveles, aprobada entera por Nicolás: "Hacé todo, desde nivel 1 al último". Se mantienen Tinta, el terracota `#c16f52`, las dos familias, los CTAs tipográficos, el silencio de 160 px, los documentos de Gabinete y la numeración 01 a 04. Las cifras de abajo están medidas en las nueve páginas, antes y después.
 
