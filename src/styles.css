@@ -1,12 +1,14 @@
-/* Literata self-hosted (variable: peso 400..700, tamaño óptico 7..72, subset latin).
-   Solo para el cuerpo de lectura larga sobre papel (.page-lectura). Headings, labels,
-   navegación y UI siguen en Plus Jakarta Sans. */
+/* Literata self-hosted (variable en peso 400..700, subset latin). El tamaño óptico va fijo
+   en 19, el único tamaño en que se usa: el eje completo (7..72) duplicaba el peso del archivo.
+   Si la serif pasa a usarse en otro tamaño, hay que volver a los archivos con el eje completo
+   (en git hasta el 8 de octubre de 2026). Solo para el cuerpo de lectura larga (.page-lectura).
+   Headings, labels, navegación y UI siguen en Plus Jakarta Sans. */
 @font-face {
     font-family: 'Literata';
     font-style: normal;
     font-weight: 400 700;
     font-display: swap;
-    src: url('fonts/literata-latin.woff2') format('woff2');
+    src: url('fonts/literata-latin-opsz19.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -14,7 +16,7 @@
     font-style: italic;
     font-weight: 400 700;
     font-display: swap;
-    src: url('fonts/literata-latin-italic.woff2') format('woff2');
+    src: url('fonts/literata-latin-italic-opsz19.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -218,13 +220,6 @@ body::after {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Fade-in animation only if motion is allowed */
-@media (prefers-reduced-motion: no-preference) {
-    body {
-        animation: fadeIn 0.6s ease-in;
-    }
-}
-
 /* Prevent text overflow globally */
 h1, h2, h3, h4, h5, h6, p, li, span, a {
     word-wrap: break-word;
@@ -314,11 +309,6 @@ a,
     cursor: pointer;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 /* =========================
    Display typography
    ========================= */
@@ -393,6 +383,22 @@ body.logo-pinned nav {
     }
 }
 
+/* Teclado: en el inicio el nav está escondido hasta scrollear. Si recibe el foco aparece,
+   para que el foco nunca caiga en algo invisible. Con mouse o dedo no cambia nada. */
+nav:focus-within {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Sin JavaScript nadie marca el scroll: el nav del inicio se ve desde el principio.
+   Esta media query no aplica cuando el JS corre. */
+@media (scripting: none) {
+    nav {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
 /* Nav logo - hidden initially, fades in when hero logo crosses navbar (Superflux pattern) */
 .nav-logo {
     display: block;
@@ -402,8 +408,15 @@ body.logo-pinned nav {
     will-change: opacity; /* Hint for smoother mobile rendering */
 }
 
-body.logo-pinned .nav-logo {
+body.logo-pinned .nav-logo,
+nav:focus-within .nav-logo {
     opacity: 1;
+}
+
+@media (scripting: none) {
+    .nav-logo {
+        opacity: 1;
+    }
 }
 
 .nav-logo img {
@@ -469,8 +482,10 @@ body.secondary-page .nav-logo {
     list-style: none;
     margin: 0;
     padding: var(--space-20) var(--space-8);
-    transition: right 0.3s ease, opacity 0.3s ease;
+    /* Cerrado no recibe foco: visibility se apaga cuando termina el deslizamiento */
+    transition: right 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
     opacity: 0;
+    visibility: hidden;
     z-index: var(--z-nav-mobile);
 }
 
@@ -516,6 +531,8 @@ body.secondary-page .nav-logo {
 .nav-links.active {
     right: 0;
     opacity: 1;
+    visibility: visible;
+    transition: right 0.3s ease, opacity 0.3s ease, visibility 0s;
 }
 
 /* Current page indicator in mobile nav */
@@ -615,10 +632,15 @@ body.secondary-page .nav-logo {
         padding: 0;
         transition: none;
         z-index: auto;
-        /* La base mobile esconde el menú off-canvas con opacity 0 + right -100%;
-           en desktop hay que resetear AMBOS o los links quedan invisibles */
+        /* La base mobile esconde el menú off-canvas con opacity 0, right -100% y
+           visibility hidden; en desktop hay que resetear los tres o los links no se ven */
         opacity: 1;
         right: auto;
+        visibility: visible;
+    }
+
+    .nav-links.active {
+        transition: none;
     }
 
     .nav-links a {
@@ -736,8 +758,9 @@ body.secondary-page .nav-logo {
 
 /* Text reveal animation */
 /* Antes: barrido horizontal con clip-path. En móvil, con el nombre en dos líneas,
-   se veía como texto cortado a medias. Ahora: fundido suave con leve subida,
-   el mismo gesto que usan las secciones al entrar. */
+   se veía como texto cortado a medias. Ahora: fundido suave con leve subida.
+   Es el único movimiento de entrada del sitio: las secciones dejaron de aparecer al
+   scroll en septiembre y la página dejó de fundirse al cargar en octubre. */
 @keyframes textReveal {
     0% {
         opacity: 0;
@@ -1753,7 +1776,8 @@ footer {
     padding: var(--space-1) var(--space-3);
     border-radius: 999px;   /* v2.2: pill, sin borde */
     margin-bottom: var(--space-2);
-    background: rgba(193, 111, 82, 0.12);
+    /* Fondo Tinta: el acento sobre #12151a da 4,93:1. Con el terracota al 12 % daba 3,89:1 (AA pide 4,5) */
+    background: var(--color-bg);
     color: var(--color-accent);
 }
 
@@ -1901,6 +1925,14 @@ img {
 *:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px rgba(193, 111, 82, 0.55);
+}
+
+/* El destino de un ancla recibe el foco con un tabindex temporal (main.js): no es un control,
+   así que no lleva anillo. El foco queda ahí para que el próximo Tab siga desde ese punto. */
+[tabindex="-1"]:focus,
+[tabindex="-1"]:focus-visible {
+    outline: none;
+    box-shadow: none;
 }
 
 /* Focus en nav links */
@@ -2489,6 +2521,18 @@ img {
   text-decoration: underline;
   outline: 2px solid var(--orange-500);
   outline-offset: 2px;
+}
+
+/* Los enlaces de Privacidad y de la 404 van en medio del texto: se distinguen por algo más
+   que el color (WCAG 1.4.1), igual que los de la prosa. `.legal-page a` los dejaba sin subrayado. */
+.legal-page .legal-link {
+  text-decoration: underline;
+  text-decoration-color: rgba(193, 111, 82, 0.45);
+  text-underline-offset: 3px;
+}
+.legal-page .legal-link:hover,
+.legal-page .legal-link:focus-visible {
+  text-decoration-color: currentColor;
 }
 
 /* =======================================
@@ -3622,7 +3666,6 @@ html {
    metadata y CTAs de las páginas de interfaz siguen en la sans (DESIGN.md). */
 .page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote, figcaption, td) {
     font-family: 'Literata', Georgia, 'Times New Roman', serif;
-    font-optical-sizing: auto;
     font-size: 1.1875rem; /* 19px: la base del sitio, sin heredar los 16px viejos de .reporte-section */
     line-height: 1.7;
 }

@@ -40,12 +40,19 @@ Aplicado de lo micro a lo macro, cada capa verificada en navegador antes de la s
 - **Limpieza sin cambios a la vista.** `styles.css` sin las declaraciones que otra regla del mismo selector pisaba (125,6 → 114,1 KB de fuente; 68,4 → 63,0 KB minificado); `main.js` sin los `keydown` duplicados de los botones; la navegación de los casos en un parcial; el sitemap generado desde el front matter. Verificado contra el build anterior por estilos computados de las nueve páginas en catorce anchos, estados forzados de hover y foco, capturas y una traza de comportamiento.
 - **Pared de logos.** Entra Speculative Futures Madrid, primero; sale Manifiesto Bar.
 - **Lo que quedó para decidir** está en `docs/auditoria-octubre.md`, con lo medido para cada punto. Se retira cuando estén todas las decisiones tomadas.
+- **Decisiones del 8 de octubre (puntos 1 a 5 de la auditoría).**
+  - Privacidad: decía que el sitio lo aloja GitHub; ahora dice Vercel y qué registra.
+  - `Contacto_mail` deja de contar el "compartir por email" de los casos y los mails de Privacidad y de la 404.
+  - Teclado y AA. Formulación original en DESIGN.md: "La navbar superior es elemento fijo del sistema y **no se toca**". Cambió solo lo que pasa con el foco del teclado y sin JavaScript; con mouse o dedo el nav se ve igual. También: el enlace de salto mueve el foco, 25 `aria-label` empiezan por el texto visible, los enlaces legales van subrayados y las etiquetas de categoría pasan a fondo Tinta (3,89:1 → 4,93:1). Se perdió el tinte terracota de esas etiquetas.
+  - Fundido de página. Formulación original, en el CSS de noviembre de 2025: "Fade-in animation only if motion is allowed". Se retiró porque Chromium no registraba la primera pintura (Lighthouse cortaba el inicio con `NO_FCP`) y el texto llegaba a la mitad de opacidad a los 0,4 s en cada página. Se perdió el gesto de entrada.
+  - Literata. Formulación original en DESIGN.md: "variable en peso 400..700 y tamaño óptico 7..72, con `font-optical-sizing: auto`". Pasó a tamaño óptico fijo en 19: 98 KB menos en Gabinete y la tesis. Se perdió el ajuste óptico en otros tamaños; no es idéntico al píxel (en 29 de 644 combinaciones de página y ancho un párrafo corta una línea una palabra antes o después).
 
 ## Decisiones vigentes que no conviene rediscutir sin motivo
 
 - Oscuro, no claro. Los socios lo eligieron con el prototipo de papel a la vista.
 - Vos como registro. Medio estudio está en Madrid y se decidió igual.
 - Dos familias tipográficas con rol fijo, dos pesos, un solo tamaño de cuerpo.
+- Sin animaciones de entrada: ni al scroll ni al cargar la página. La única es la del título del inicio.
 - Sin formulario, sin PWA, sin cookies.
 - Cada cifra con fuente. Trace Group es una provocación (un caso construido antes de que exista el encargo, escrito como pregunta "¿Y si…?") y se dice así, nunca "propuesta", "pitch" ni "piloto". Ver "Vocabulario propio" en VOICE.md.
 

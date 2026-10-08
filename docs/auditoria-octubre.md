@@ -6,22 +6,24 @@ Cómo se midió: Chromium 141 sin interfaz (el motor de Chrome y Edge), Lighthou
 
 Cuando todas las decisiones estén tomadas, este archivo se retira como se retiró `auditoria-fase2.md`: queda en git.
 
+**Estado al 8 de octubre:** los puntos 1 a 5 están resueltos y aplicados ("Cambiar 1, corregir 2, arreglar 3, eliminar 4, fijar 5"). Quedan abiertos del 6 al 12.
+
 ## Orden sugerido
 
-| # | Qué | Por qué en este lugar | Costo |
-|---|---|---|---|
-| 1 | Privacidad dice que el sitio lo aloja GitHub | Es lo único publicado que hoy es falso | Un párrafo |
-| 2 | `Contacto_mail` cuenta cosas que no son conversaciones | Infla la métrica que más importa | Una línea de JS |
-| 3 | Teclado y accesibilidad | El enlace de salto no salta; CLAUDE.md promete WCAG 2.1 AA | Unas 30 líneas |
-| 4 | El fundido de página | Las herramientas de auditoría no ven el inicio | Una regla de CSS |
-| 5 | Literata más liviana | Hasta 98 KB menos en las páginas de lectura | Dos archivos de fuente |
-| 6 | Lo que se ve al compartir y lo que leen los buscadores | El inicio se comparte con el copy anterior | Textos e imágenes |
-| 7 | Las tarjetas, en un solo lugar | Ya no coinciden entre el inicio y los listados | Medio día |
-| 8 | Que Vercel corra el chequeo | Se perdió al salir de GitHub Actions | Un archivo |
-| 9 | Contenido propio en el dominio | Doce de doce textos y clases enlazan afuera | Trabajo editorial |
-| 10 | Tres números de Plausible | Antes de tocar la primera pantalla del inicio | Mirar el panel |
-| 11 | Menores | | |
-| 12 | Medido y descartado | | |
+| # | Qué | Por qué en este lugar | Costo | Estado |
+|---|---|---|---|---|
+| 1 | Privacidad dice que el sitio lo aloja GitHub | Era lo único publicado que era falso | Un párrafo | Aplicado |
+| 2 | `Contacto_mail` cuenta cosas que no son conversaciones | Infla la métrica que más importa | Una línea de JS | Aplicado |
+| 3 | Teclado y accesibilidad | El enlace de salto no salta; CLAUDE.md promete WCAG 2.1 AA | Unas 30 líneas | Aplicado |
+| 4 | El fundido de página | Las herramientas de auditoría no ven el inicio | Una regla de CSS | Aplicado |
+| 5 | Literata más liviana | Hasta 98 KB menos en las páginas de lectura | Dos archivos de fuente | Aplicado |
+| 6 | Lo que se ve al compartir y lo que leen los buscadores | El inicio se comparte con el copy anterior | Textos e imágenes | Abierto |
+| 7 | Las tarjetas, en un solo lugar | Ya no coinciden entre el inicio y los listados | Medio día | Abierto |
+| 8 | Que Vercel corra el chequeo | Se perdió al salir de GitHub Actions | Un archivo | Abierto |
+| 9 | Contenido propio en el dominio | Doce de doce textos y clases enlazan afuera | Trabajo editorial | Abierto |
+| 10 | Tres números de Plausible | Antes de tocar la primera pantalla del inicio | Mirar el panel | Abierto |
+| 11 | Menores | | | Abierto |
+| 12 | Medido y descartado | | | |
 
 ## 1. La política de privacidad dice que el sitio lo aloja GitHub
 
@@ -37,7 +39,7 @@ Redacción posible. Corrige el hecho; el texto final es de ustedes, idealmente c
 
 Con el cambio hay que mover tres fechas: "Última actualización" en la página, `dateModified` en `src/_includes/jsonld/privacidad.njk` y `sitemap.lastmod` en el front matter.
 
-Decisión: aprobar o corregir la redacción.
+Resuelto el 8 de octubre: se publicó la redacción de arriba, con las tres fechas movidas.
 
 ## 2. `Contacto_mail` cuenta cosas que no son conversaciones
 
@@ -54,7 +56,7 @@ El botón de compartir es un `mailto:?subject=…` sin destinatario: quien compa
 
 Arreglo: contar solo los `mailto:` a la dirección del estudio y dejar afuera el de Privacidad (`.legal-link`). La serie cambia desde el día del arreglo.
 
-Decisión: aplicar.
+Resuelto el 8 de octubre: ya no cuentan los `mailto:?` sin destinatario ni los `.legal-link`. La traza de comportamiento pasa de 111 a 107 eventos; los cuatro que se fueron son exactamente esos clics.
 
 ## 3. Teclado y accesibilidad
 
@@ -75,7 +77,7 @@ Además, axe-core (todas sus reglas, WCAG 2.1 A y AA) encuentra tres fallos:
 | 1.4.1 Uso del color (A) | 8 enlaces `.legal-link` en Privacidad y en la 404 | Sin subrayado, y contra el texto vecino 2,66:1 (pide 3:1) | Subrayarlos. Hoy lo impiden `.legal-page a` y `.legal-link`, las dos con `text-decoration: none` y más específicas que la regla que subraya los enlaces de la prosa (`main p a`) |
 | 1.4.3 Contraste (AA) | Las tres etiquetas `.actividad-category-badge` del inicio | 3,89:1 a 15 px (pide 4,5:1) | Fondo más oscuro o sin fondo. Es color: se decide a ojo |
 
-Decisión: sí o no por ítem. Se verifica con la misma traza de teclado y con axe.
+Resuelto el 8 de octubre: aplicados todos. Con teclado simulado, el enlace de salto deja el foco en el contenido en siete páginas y dos anchos, ningún Tab cae en algo invisible y el menú cerrado no recibe foco; la misma prueba contra producción falla 22 veces. axe-core: 0 fallos en las nueve páginas, en móvil y escritorio. Las etiquetas pasaron a fondo Tinta.
 
 ## 4. El fundido de página
 
@@ -110,7 +112,7 @@ Lo que se pierde si se saca: el gesto de entrada. El fundido del título del ini
 
 No está verificado en producción ni en un teléfono real. La comprobación lleva medio minuto: pagespeed.web.dev con la dirección del inicio. Si devuelve el error de "no pintó contenido", es esto.
 
-Decisión: sacarlo, o dejarlo sabiendo el costo.
+Resuelto el 8 de octubre: se sacó. Lighthouse móvil del inicio: rendimiento 100, FCP 1,0 s, LCP 1,5 s.
 
 ## 5. Literata más liviana
 
@@ -136,7 +138,7 @@ Lo mismo con Plus Jakarta Sans entre 400 y 700: 27,3 a 20,2 KB en todas las pág
 
 DESIGN.md: "**No ejecutar auditorías de performance que toquen tipografía o color sin revisar este archivo.** Si la auditoría recomienda cambiar el sistema híbrido por motivos de carga, se evalúa manualmente". Por eso no está aplicado. Si se prueba, los archivos nuevos llevan otro nombre para que ninguna caché mezcle versiones, y se mira el preview en un iPhone.
 
-Decisión: probarlo en un preview o descartarlo.
+Resuelto el 8 de octubre: aplicado, con nombres nuevos (`literata-latin-opsz19.woff2` y su itálica). Plus Jakarta Sans queda como está. Conviene mirar una página de lectura en un iPhone con el preview antes de mergear.
 
 ## 6. Lo que se ve al compartir y lo que leen los buscadores
 

@@ -11,6 +11,7 @@ Una página de proyecto es una carpeta `src/proyectos/<slug>/` con un único `in
 > - `sitemap.xml` se genera. Cada página declara `sitemap: { lastmod, priority, changefreq }` en su front matter.
 > - El índice pegajoso, el índice móvil y los botones de compartir de un caso salen de `partials/caso-nav.njk` y del front matter (`indice`, `compartir`). Ese bloque ya no se copia en cada página.
 > - `src/styles.css` perdió las reglas que otra pisaba; `src/main.js`, los `keydown` duplicados.
+> - Literata cambió de archivo: `fonts/literata-latin-opsz19.woff2` y su itálica, con el tamaño óptico fijo en 19. Los nombres viejos que aparecen abajo ya no existen.
 >
 > De la lista de abajo siguen valiendo los pasos 1, 2, 3 y 6. Para escribir una página nueva conviene partir de los archivos actuales del repo, no de los bloques de este documento.
 
