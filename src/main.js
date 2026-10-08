@@ -270,10 +270,12 @@ document.addEventListener("DOMContentLoaded", function () {
     cta.addEventListener('click', trackCTAClick);
   });
 
-  // Contacto directo: un click en cualquier mailto cuenta como conversación iniciada
+  // Contacto directo: un click en un mail al estudio cuenta como conversación iniciada.
+  // No cuentan el "compartir por email" de los casos (mailto sin destinatario) ni los mails
+  // de Privacidad y de la 404 (.legal-link: datos personales, enlace roto).
   document.addEventListener("click", (e) => {
     const a = e.target.closest('a[href^="mailto:"]');
-    if (!a) return;
+    if (!a || a.getAttribute("href").startsWith("mailto:?") || a.classList.contains("legal-link")) return;
     const section = a.closest("section, footer");
     trackEvent("Contacto_mail", { ubicacion: section && section.id ? section.id : (section ? section.tagName.toLowerCase() : "desconocida") });
   });
