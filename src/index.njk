@@ -9,359 +9,173 @@ homepage: true
 jsonld: "jsonld/index.njk"
 sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
 ---
+{%- from "partials/piezas.njk" import tarjeta, fila %}
     <!-- Main Content -->
     <main role="main" id="main-content">
 
-    <!-- Hero Section with large logo (flows normally) -->
-    <section id="hero" class="hero hero-immersive hero-fullscreen" aria-labelledby="hero-heading">
-        <div class="hero-visual" aria-hidden="true">
-            <div class="hero-visual-gradient"></div>
-        </div>
-
-        <!-- Brand header (logo + wordmark + tagline) - centered splash -->
-        <div class="hero-brand-header">
-            <div class="hero-brand-content">
-                <div class="hero-logo-large">
-                    <img src="/img/logo.svg" alt="BPP Analytics &amp; Design" width="174" height="320" loading="eager" decoding="async" fetchpriority="high">
-                </div>
-                <div class="hero-brand-text">
-                    <h1 id="hero-heading" class="hero-wordmark">BPP <span class="h1-light">Analytics &amp; Design</span></h1>
-                    <p class="hero-tagline">Sociología aplicada: leemos señales débiles y decidís con fundamento</p>
-                </div>
-            </div>
-        </div>
+    <!-- Hero: el nombre y la frase. El logo va una sola vez, en el nav. -->
+    <section id="hero" class="cabecera inicio-hero" aria-labelledby="hero-heading">
+        <h1 id="hero-heading" class="inicio-titulo">BPP Analytics &amp; Design</h1>
+        <p class="inicio-frase">Sociología aplicada: leemos señales débiles y decidís con fundamento</p>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section section--orange-950" aria-labelledby="services-heading">
-        <div class="services-container">
-            <span id="about" class="anchor-offset"></span>
-            <div class="bpp-section-label">Qué hacemos</div>
-            <h2 id="services-heading" class="section-heading">Cuatro movimientos</h2>
-            <p class="services-lead">Trabajamos cuando la decisión no tiene antecedentes que copiar y no puede esperar a tenerlos.</p>
-            <p class="services-intro">Entender el contexto, diseñar futuros, validar con datos, comunicar decisiones. Casi todos los proyectos empiezan por uno solo: <a href="/proyectos/natalidad/">el reporte de natalidad</a> fue datos, <a href="/proyectos/trace-group/">la provocación para Trace Group</a> fue diseño de futuros. Si el problema es grande, conviene hacerlos en ese orden.</p>
+    <section id="services" class="bloque servicios" aria-labelledby="services-heading">
+        <span id="about"></span>
+        <h2 id="services-heading">Cuatro movimientos</h2>
+        <p class="services-lead">Trabajamos cuando la decisión no tiene antecedentes que copiar y no puede esperar a tenerlos.</p>
+        <p class="services-intro">Entender el contexto, diseñar futuros, validar con datos, comunicar decisiones. Casi todos los proyectos empiezan por uno solo: <a href="/proyectos/natalidad/">el reporte de natalidad</a> fue datos, <a href="/proyectos/trace-group/">la provocación para Trace Group</a> fue diseño de futuros. Si el problema es grande, conviene hacerlos en ese orden.</p>
 
-            <div class="services-grid">
-                <!-- Servicio 01 -->
-                <article class="service-block">
-                    <span class="service-number" aria-hidden="true">01</span>
-                    <p class="service-category">Investigación exploratoria</p>
-                    <h3 class="service-title">Sabés qué está cambiando, con fuente y año</h3>
-                    <p class="service-lead">Rastreamos las fuerzas que mueven tu contexto antes de que lo cambien sin vos: una norma en trámite, un contrato que reordena tu mercado, una estadística oficial que nadie cruzó con tu caso.</p>
-                    <span class="service-deliverable">Entregables: informe de señales, escenarios posibles, briefing de una página para quien decide</span>
-                    <button class="service-timeline-toggle" aria-expanded="false">
-                        <span>Ver proceso</span>
-                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
-                    </button>
-                    <div class="service-timeline" hidden>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Inmersión</span>
-                            <p class="timeline-milestone">Entrevistas con quienes deciden, lectura de lo que ya tienen escrito y un primer mapa de qué está en juego.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Señales</span>
-                            <p class="timeline-milestone">Rastreo de fuentes primarias (normas, contratos, estadísticas oficiales, prensa especializada) y selección de las que importan para tu decisión, con fuente y año.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Entrega</span>
-                            <p class="timeline-milestone">Informe de señales con lo que implica cada una, escenarios posibles y un briefing de una página para quien decide.</p>
-                        </div>
-                        <p class="timeline-duration">Duración típica: cuatro a seis semanas.</p>
+        <div class="services-grid">
+            <!-- Servicio 01 -->
+            <article class="service-block">
+                <span class="service-number" aria-hidden="true">01</span>
+                <p class="service-category">Investigación exploratoria</p>
+                <h3 class="service-title">Sabés qué está cambiando, con fuente y año</h3>
+                <p class="service-lead">Rastreamos las fuerzas que mueven tu contexto antes de que lo cambien sin vos: una norma en trámite, un contrato que reordena tu mercado, una estadística oficial que nadie cruzó con tu caso.</p>
+                <span class="service-deliverable">Entregables: informe de señales, escenarios posibles, briefing de una página para quien decide</span>
+                <button class="service-timeline-toggle" aria-expanded="false">
+                    <span>Ver proceso</span>
+                    <span class="timeline-toggle-icon" aria-hidden="true"></span>
+                </button>
+                <div class="service-timeline" hidden>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Inmersión</span>
+                        <p class="timeline-milestone">Entrevistas con quienes deciden, lectura de lo que ya tienen escrito y un primer mapa de qué está en juego.</p>
                     </div>
-                </article>
-
-                <!-- Servicio 02 -->
-                <article class="service-block">
-                    <span class="service-number" aria-hidden="true">02</span>
-                    <p class="service-category">Diseño de futuros y prototipos</p>
-                    <h3 class="service-title">Probás la idea antes de invertir en ella</h3>
-                    <p class="service-lead">Construimos la idea como objeto: un documento, una pantalla o una pieza física. Tu equipo la discute antes de aprobar nada.</p>
-                    <span class="service-deliverable">Entregables: prototipo que se puede probar (digital, físico o con IA), una provocación como la de <a href="/proyectos/trace-group/" class="service-deliverable-link">Trace Group</a>, documento de concepto</span>
-                    <button class="service-timeline-toggle" aria-expanded="false">
-                        <span>Ver proceso</span>
-                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
-                    </button>
-                    <div class="service-timeline" hidden>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Hipótesis</span>
-                            <p class="timeline-milestone">Qué querés probar, qué das por cierto y qué nivel de detalle necesita el prototipo para responder.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Construcción</span>
-                            <p class="timeline-milestone">Una primera versión del artefacto, que se ajusta con las reacciones de quienes la ven.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Prueba y entrega</span>
-                            <p class="timeline-milestone">Se pone frente a quienes decidirían con él. Documento de aprendizajes: qué iterar, qué escalar, qué descartar.</p>
-                        </div>
-                        <p class="timeline-duration">Duración típica: seis a ocho semanas.</p>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Señales</span>
+                        <p class="timeline-milestone">Rastreo de fuentes primarias (normas, contratos, estadísticas oficiales, prensa especializada) y selección de las que importan para tu decisión, con fuente y año.</p>
                     </div>
-                </article>
-
-                <!-- Servicio 03 -->
-                <article class="service-block">
-                    <span class="service-number" aria-hidden="true">03</span>
-                    <p class="service-category">Datos e IA aplicada</p>
-                    <h3 class="service-title">Sabés qué dicen tus datos, y qué no</h3>
-                    <p class="service-lead">Empezamos por la pregunta que la dirección necesita responder y recién después vamos a los datos. Modelamos tus fuentes, armamos el tablero y lo dejamos andando sin nosotros.</p>
-                    <span class="service-deliverable">Entregables: modelo de datos sobre tus fuentes (SQL, BigQuery, Python), tablero de indicadores en Power BI o Looker Studio, plan de adopción de IA cuando la evidencia lo justifica</span>
-                    <button class="service-timeline-toggle" aria-expanded="false">
-                        <span>Ver proceso</span>
-                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
-                    </button>
-                    <div class="service-timeline" hidden>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Relevamiento</span>
-                            <p class="timeline-milestone">Qué decisión hay que tomar, qué datos existen, qué pregunta responde cada fuente y cuáles faltan.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Modelado</span>
-                            <p class="timeline-milestone">Limpieza, cruce y modelado de las fuentes, con control de calidad y versionado; modelos e IA solo donde aportan. Cada hallazgo se valida con métodos cualitativos.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Entrega</span>
-                            <p class="timeline-milestone">Un tablero donde cada indicador responde a una decisión, recomendaciones en orden de impacto y capacitación para que tu equipo lo mantenga.</p>
-                        </div>
-                        <p class="timeline-duration">Duración típica: cuatro a seis semanas.</p>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Entrega</span>
+                        <p class="timeline-milestone">Informe de señales con lo que implica cada una, escenarios posibles y un briefing de una página para quien decide.</p>
                     </div>
-                </article>
+                    <p class="timeline-duration">Duración típica: cuatro a seis semanas.</p>
+                </div>
+            </article>
 
-                <!-- Servicio 04 -->
-                <article class="service-block">
-                    <span class="service-number" aria-hidden="true">04</span>
-                    <p class="service-category">Comunicación estratégica</p>
-                    <h3 class="service-title">Elegís el relato antes de la crisis</h3>
-                    <p class="service-lead">Definimos qué cuenta tu organización, a quién y en qué orden, y dejamos escrito qué hacer el día que algo salga mal.</p>
-                    <span class="service-deliverable">Entregables: posicionamiento con base sociológica, qué contar y en qué orden según el público, protocolo de reputación y gestión de crisis</span>
-                    <button class="service-timeline-toggle" aria-expanded="false">
-                        <span>Ver proceso</span>
-                        <span class="timeline-toggle-icon" aria-hidden="true">↓</span>
-                    </button>
-                    <div class="service-timeline" hidden>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Auditoría</span>
-                            <p class="timeline-milestone">Cómo te ven hoy, adentro y afuera; qué promesa hacés y cuál cumplís; contra quién te comparan.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Definición</span>
-                            <p class="timeline-milestone">Posicionamiento, voz y los temas sobre los que te conviene hablar, probados en las piezas que más circulan.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-week">Implementación</span>
-                            <p class="timeline-milestone">Guía de voz y tono, plantillas y, si hace falta, sistema de identidad. Capacitamos al equipo que las va a usar.</p>
-                        </div>
-                        <p class="timeline-duration">Duración típica: seis a ocho semanas.</p>
+            <!-- Servicio 02 -->
+            <article class="service-block">
+                <span class="service-number" aria-hidden="true">02</span>
+                <p class="service-category">Diseño de futuros y prototipos</p>
+                <h3 class="service-title">Probás la idea antes de invertir en ella</h3>
+                <p class="service-lead">Construimos la idea como objeto: un documento, una pantalla o una pieza física. Tu equipo la discute antes de aprobar nada.</p>
+                <span class="service-deliverable">Entregables: prototipo que se puede probar (digital, físico o con IA), una provocación como la de <a href="/proyectos/trace-group/" class="service-deliverable-link">Trace Group</a>, documento de concepto</span>
+                <button class="service-timeline-toggle" aria-expanded="false">
+                    <span>Ver proceso</span>
+                    <span class="timeline-toggle-icon" aria-hidden="true"></span>
+                </button>
+                <div class="service-timeline" hidden>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Hipótesis</span>
+                        <p class="timeline-milestone">Qué querés probar, qué das por cierto y qué nivel de detalle necesita el prototipo para responder.</p>
                     </div>
-                </article>
-            </div>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Construcción</span>
+                        <p class="timeline-milestone">Una primera versión del artefacto, que se ajusta con las reacciones de quienes la ven.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Prueba y entrega</span>
+                        <p class="timeline-milestone">Se pone frente a quienes decidirían con él. Documento de aprendizajes: qué iterar, qué escalar, qué descartar.</p>
+                    </div>
+                    <p class="timeline-duration">Duración típica: seis a ocho semanas.</p>
+                </div>
+            </article>
 
+            <!-- Servicio 03 -->
+            <article class="service-block">
+                <span class="service-number" aria-hidden="true">03</span>
+                <p class="service-category">Datos e IA aplicada</p>
+                <h3 class="service-title">Sabés qué dicen tus datos, y qué no</h3>
+                <p class="service-lead">Empezamos por la pregunta que la dirección necesita responder y recién después vamos a los datos. Modelamos tus fuentes, armamos el tablero y lo dejamos andando sin nosotros.</p>
+                <span class="service-deliverable">Entregables: modelo de datos sobre tus fuentes (SQL, BigQuery, Python), tablero de indicadores en Power BI o Looker Studio, plan de adopción de IA cuando la evidencia lo justifica</span>
+                <button class="service-timeline-toggle" aria-expanded="false">
+                    <span>Ver proceso</span>
+                    <span class="timeline-toggle-icon" aria-hidden="true"></span>
+                </button>
+                <div class="service-timeline" hidden>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Relevamiento</span>
+                        <p class="timeline-milestone">Qué decisión hay que tomar, qué datos existen, qué pregunta responde cada fuente y cuáles faltan.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Modelado</span>
+                        <p class="timeline-milestone">Limpieza, cruce y modelado de las fuentes, con control de calidad y versionado; modelos e IA solo donde aportan. Cada hallazgo se valida con métodos cualitativos.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Entrega</span>
+                        <p class="timeline-milestone">Un tablero donde cada indicador responde a una decisión, recomendaciones en orden de impacto y capacitación para que tu equipo lo mantenga.</p>
+                    </div>
+                    <p class="timeline-duration">Duración típica: cuatro a seis semanas.</p>
+                </div>
+            </article>
+
+            <!-- Servicio 04 -->
+            <article class="service-block">
+                <span class="service-number" aria-hidden="true">04</span>
+                <p class="service-category">Comunicación estratégica</p>
+                <h3 class="service-title">Elegís el relato antes de la crisis</h3>
+                <p class="service-lead">Definimos qué cuenta tu organización, a quién y en qué orden, y dejamos escrito qué hacer el día que algo salga mal.</p>
+                <span class="service-deliverable">Entregables: posicionamiento con base sociológica, qué contar y en qué orden según el público, protocolo de reputación y gestión de crisis</span>
+                <button class="service-timeline-toggle" aria-expanded="false">
+                    <span>Ver proceso</span>
+                    <span class="timeline-toggle-icon" aria-hidden="true"></span>
+                </button>
+                <div class="service-timeline" hidden>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Auditoría</span>
+                        <p class="timeline-milestone">Cómo te ven hoy, adentro y afuera; qué promesa hacés y cuál cumplís; contra quién te comparan.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Definición</span>
+                        <p class="timeline-milestone">Posicionamiento, voz y los temas sobre los que te conviene hablar, probados en las piezas que más circulan.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-week">Implementación</span>
+                        <p class="timeline-milestone">Guía de voz y tono, plantillas y, si hace falta, sistema de identidad. Capacitamos al equipo que las va a usar.</p>
+                    </div>
+                    <p class="timeline-duration">Duración típica: seis a ocho semanas.</p>
+                </div>
+            </article>
         </div>
     </section>
 
-    <!-- Hechos Section -->
-    <section id="actividades" class="section" aria-labelledby="actividades-heading">
-        <div class="bpp-section-label">Lo hecho</div>
-        <h2 id="actividades-heading" class="section-heading">Pensamiento y trabajo aplicado</h2>
-
-        <div class="bpp-flex-col">
-            <!-- Entrada: Tesis 01 La Usina -->
-            <article class="actividad-entrada" aria-label="Tesis 01 de La Usina sobre IA generativa, socialización e identidad">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="/img/tesis01-cuarto-mobile.webp" type="image/webp">
-                        <source srcset="/img/tesis01-cuarto.webp" type="image/webp">
-                        <img src="/img/tesis01-cuarto.webp" alt="Una chica en la cama de su cuarto, de noche, con el celular en la mano y la notebook abierta. La única luz viene de las pantallas y de la ventana." width="1600" height="892" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <span class="actividad-category-badge">La Usina</span>
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-08">USINA #01 · 08.2026</time>
-                        <span class="bpp-text-muted"> · </span>
-                        <span class="bpp-text-muted">Investigación · IA · Sociología · Identidad</span>
-                    </div>
-                    <h3>El actante siempre disponible</h3>
-                    <p class="actividad-descripcion">
-                        Qué le pasa a la red de un adolescente cuando entra un interlocutor no humano, siempre disponible y con menos fricción que una persona.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Documento de trabajo, agosto 2026</dd></div>
-                        <div class="actividad-dato"><dt>Formato</dt><dd>PDF de 56 páginas</dd></div>
-                    </dl>
-                    <a
-                      href="/usina/tesis-01/"
-                      class="cta-link"
-                      aria-label="Leer la tesis: El actante siempre disponible"
-                    >
-                        Leer la tesis
-                    </a>
-                </div>
-            </article>
-            <article class="actividad-entrada" data-tags="futuros,investigacion" aria-label="Provocación para Trace Group: un informe de verificación de emisiones fechado en 2032">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/we-trace-login.webp 1200w" type="image/webp">
-                        <img src="/img/we-trace-login.webp" alt="Pantalla de ingreso de we.trace, la plataforma de verificación de emisiones que emite el informe de 2032" loading="lazy" decoding="async" width="1200" height="898">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-08">Agosto 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Energía · Verificación de emisiones · 2032</span>
-                    </div>
-                    <h3>Trace Group — De la señal al servicio</h3>
-                    <p class="actividad-descripcion">
-                        ¿Y si un cargamento de gas quedara afuera de Europa por su metano, y no por su precio? Este es ese escenario y su objeto: un informe de verificación fechado en 2032.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Trace Group, vía Clusterciar</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Provocación presentada, 2026</dd></div>
-                        <div class="actividad-dato"><dt>Lectura</dt><dd>6 min</dd></div>
-                    </dl>
-                    <a
-                      href="/proyectos/trace-group/"
-                      class="cta-link"
-                      aria-label="Leer la provocación: Trace Group, de la señal al servicio"
-                    >
-                        Leer la provocación
-                    </a>
-                </div>
-            </article>
-
-            <!-- Entrada: Algoritmizar el potrero -->
-            <article class="actividad-entrada" aria-label="¿Se puede algoritmizar el potrero?">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="/img/algoritmizar-potrero-mobile.webp" type="image/webp">
-                        <source srcset="/img/algoritmizar-potrero.webp" type="image/webp">
-                        <img src="/img/algoritmizar-potrero.webp" alt="Ilustración del artículo ¿Se puede algoritmizar el potrero? - diagrama de red neuronal junto a vista aérea de una cancha de fútbol" width="1600" height="893" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <span class="actividad-category-badge">Pensamiento</span>
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-06">Junio 2026</time>
-                        <span class="bpp-text-muted"> · </span>
-                        <span class="bpp-text-muted">Sociología · Datos · IA · Fútbol</span>
-                    </div>
-                    <h3>¿Se puede algoritmizar el potrero?</h3>
-                    <p class="actividad-descripcion">
-                        Las marcas llegan al Mundial 2026 con IA y datos en tiempo real. Un algoritmo puede elegir cuándo publicar; el tono para hablarle a una hinchada lo decide la sociología.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Publicado en</dt><dd>LinkedIn</dd></div>
-                        <div class="actividad-dato"><dt>Autor</dt><dd>Sergio Petrocelli</dd></div>
-                    </dl>
-                    <a
-                      href="https://www.linkedin.com/pulse/se-puede-algoritmizar-el-potrero-bpp-analytics-and-design-eodce"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en LinkedIn: ¿Se puede algoritmizar el potrero? (nueva pestaña)"
-                    >
-                        Leer en LinkedIn
-                    </a>
-                </div>
-            </article>
-
-            <!-- Entrada: Cuando el artefacto piensa -->
-            <article class="actividad-entrada" aria-label="Clase invitada en ORT Uruguay sobre design fiction y artefactos especulativos">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="/img/cuando-artefacto-piensa-mobile.webp" type="image/webp">
-                        <img src="/img/cuando-artefacto-piensa.webp" alt="Sesión de Zoom con estudiantes del Máster en Diseño Estratégico e Innovación de ORT Uruguay durante la clase de design fiction" width="1600" height="892" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <span class="actividad-category-badge">Hechos</span>
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-05">Mayo 2026</time>
-                        <span class="bpp-text-muted"> · </span>
-                        <span class="bpp-text-muted">Design fiction · Docencia</span>
-                    </div>
-                    <h3>Cuando el artefacto piensa</h3>
-                    <p class="actividad-descripcion">
-                        Clase a distancia: cuatro equipos tienen cincuenta minutos para convertir su escenario y su metáfora en un artefacto para discutir. Lo difícil es elegir cuál.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Máster en Diseño Estratégico e Innovación, ORT Uruguay</dd></div>
-                        <div class="actividad-dato"><dt>Serie</dt><dd>Quinta clase de futuros, la primera a distancia</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, artículo en Medium</dd></div>
-                    </dl>
-                    <a
-                      href="https://medium.com/@nbronzina/cuando-el-artefacto-piensa-06e2b89fb380"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en Medium: Cuando el artefacto piensa (nueva pestaña)"
-                    >
-                        Leer en Medium
-                    </a>
-                </div>
-            </article>
-
-            <!-- Entrada: Gabinete Extemporáneo -->
-            <article class="actividad-entrada" data-tags="futuros,investigacion" aria-label="Gabinete Extemporáneo: instalación de bienvenida para la Escuela de Innovación del ITBA">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/gabinete-espera.webp 1200w" type="image/webp">
-                        <img src="/img/gabinete-espera.webp" alt="Un sillón gris vacío contra una pared blanca, con dos almohadones con el logo del ITBA, frente a una puerta cerrada de madera clara, sobre un piso vinílico con franjas azul marino" loading="lazy" decoding="async" width="1200" height="746">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-03">Marzo 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Educación ejecutiva · Diseño de experiencia · 2028</span>
-                    </div>
-                    <h3>Gabinete Extemporáneo</h3>
-                    <p class="actividad-descripcion">
-                        ¿Y si te asignaran un puesto de trabajo antes de la primera clase? Una instalación que recibe a cada cohorte con un rol de 2028, una herramienta y un documento para firmar.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Escuela de Innovación, ITBA</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Diseño entregado, 2026</dd></div>
-                        <div class="actividad-dato"><dt>Lectura</dt><dd>8 min</dd></div>
-                    </dl>
-                    <a
-                      href="/proyectos/gabinete-extemporaneo/"
-                      class="cta-link"
-                      aria-label="Leer el caso: Gabinete Extemporáneo"
-                    >
-                        Leer el caso
-                    </a>
-                </div>
-            </article>
-
+    <!-- Hechos: los tres casos, con la misma tarjeta que Lo hecho (src/_data/piezas.mjs) -->
+    <section id="actividades" class="bloque" aria-labelledby="actividades-heading">
+        <h2 id="actividades-heading">Hechos</h2>
+        <p class="bajada">Trabajo para una organización, con ficha, fuentes y estado. Lo que no tiene fuente no se publica.</p>
+        <div class="tarjetas">
+{%- for p in piezas.inicio.casos %}
+{{ tarjeta(p) }}
+{%- endfor %}
         </div>
-
-        <!-- Dual CTAs -->
-        <div class="actividades-cta actividades-cta-dual">
-            <a href="/pensamiento/" class="cta-link">Ir a Pensamiento</a>
-            <a href="/proyectos/" class="cta-link">Ir a Lo hecho</a>
-        </div>
+        <p class="bloque-pie"><a href="/proyectos/" class="cta-link">Ir a Lo hecho</a></p>
     </section>
 
-    <!-- Socios Section -->
-    <!-- Trust Section (Equipo + Clientes fusionado) -->
-    <section id="trust" class="section trust-section" aria-labelledby="trust-heading">
-        <!-- Anchor redirects for old links -->
-        <span id="socios" class="anchor-offset"></span>
-        <span id="clientes" class="anchor-offset"></span>
+    <!-- Pensamiento: la tesis y los dos artículos más recientes, como lista -->
+    <section id="textos" class="bloque" aria-labelledby="textos-heading">
+        <h2 id="textos-heading">Pensamiento</h2>
+        <ul class="filas">
+{%- for p in piezas.inicio.textos %}
+{{ fila(p, p.fechaTexto) }}
+{%- endfor %}
+        </ul>
+        <p class="bloque-pie"><a href="/pensamiento/" class="cta-link">Ir a Pensamiento</a></p>
+    </section>
 
-        <span id="nosotros" class="anchor-offset"></span>
-        <div class="bpp-section-label">Nosotros</div>
-        <h2 id="trust-heading" class="section-heading">Quiénes somos y con quiénes trabajamos</h2>
-        <p class="section-lead">Somos tres: investigación y diseño de futuros, comunicación estratégica, datos e IA. Trabajamos con organismos públicos, empresas y universidades, entre Buenos Aires y Madrid.</p>
+    <!-- Nosotros: equipo y clientes. Los span con id sostienen enlaces viejos (#socios, #clientes, #nosotros). -->
+    <section id="trust" class="bloque nosotros" aria-labelledby="trust-heading">
+        <span id="socios"></span><span id="clientes"></span><span id="nosotros"></span>
+        <h2 id="trust-heading">Quiénes somos y con quiénes trabajamos</h2>
+        <p class="bajada">Somos tres: investigación y diseño de futuros, comunicación estratégica, datos e IA. Trabajamos con organismos públicos, empresas y universidades, entre Buenos Aires y Madrid.</p>
 
-        <div class="trust-grid">
-            <!-- Equipo (left, compact) -->
-            <div class="trust-block trust-socios">
+        <div class="nosotros__bloques">
+            <div class="nosotros__bloque">
                 <h3>Equipo</h3>
                 <div class="equipo-grid">
                     <div class="equipo-member">
-                        <div class="equipo-foto-wrap equipo-foto-wrap--cutout"><img class="equipo-foto"
+                        <div class="equipo-foto-wrap"><img class="equipo-foto"
                              src="/img/Nicolas-480.webp"
                              srcset="/img/Nicolas-240.webp 240w, /img/Nicolas-480.webp 480w, /img/Nicolas-768.webp 768w"
                              sizes="(max-width: 768px) 280px, 30vw"
@@ -374,7 +188,7 @@ sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
                         <p class="equipo-bio">Cuando hay que decidir sobre algo que todavía no pasó, la discusión se vuelve una pelea de opiniones. Mi trabajo es sacarla de ahí: construyo prototipos y artefactos para que el equipo discuta con algo enfrente. Sociología de origen, diseño de experiencia de formación. Doy clases de tecnologías emergentes en Madrid, que es donde pruebo la mitad de lo que después uso con clientes.</p>
                     </div>
                     <div class="equipo-member">
-                        <div class="equipo-foto-wrap equipo-foto-wrap--cutout"><img class="equipo-foto"
+                        <div class="equipo-foto-wrap"><img class="equipo-foto"
                              src="/img/Sergio-480.webp"
                              srcset="/img/Sergio-240.webp 240w, /img/Sergio-480.webp 480w, /img/Sergio-768.webp 768w"
                              sizes="(max-width: 768px) 280px, 30vw"
@@ -387,7 +201,7 @@ sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
                         <p class="equipo-bio">Ninguna institución controla su reputación: la negocia todos los días con la gente que la usa, la audita o la vota. Trabajo sobre esa negociación: qué dice la organización, qué escucha su entorno y qué hacer con la distancia entre las dos cosas. Vengo del sector público y de organismos no estatales, donde esa distancia se mide en confianza perdida.</p>
                     </div>
                     <div class="equipo-member">
-                        <div class="equipo-foto-wrap equipo-foto-wrap--cutout"><img class="equipo-foto"
+                        <div class="equipo-foto-wrap"><img class="equipo-foto"
                              src="/img/Ezequiel-480.webp"
                              srcset="/img/Ezequiel-240.webp 240w, /img/Ezequiel-480.webp 480w, /img/Ezequiel-768.webp 768w"
                              sizes="(max-width: 768px) 280px, 30vw"
@@ -402,82 +216,74 @@ sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
                 </div>
             </div>
 
-            <!-- Clientes (right, prominent) -->
-            <div class="trust-block trust-clientes">
+            <div class="nosotros__bloque">
                 <h3>Clientes, instituciones y equipos con los que trabajamos</h3>
-        <div class="logos-grid">
-                <div class="logo-item">
-                    <img src="/img/speculative-futures-madrid.webp" alt="Speculative Futures Madrid" width="111" height="48" loading="lazy">
-                </div>
-                <div class="logo-item">
-                    <img src="/img/EscInn.svg" alt="ITBA Escuela de Innovación" width="265" height="48" loading="lazy">
-                </div>
-                <div class="logo-item">
-                    <img src="/img/logo-cesba.webp" alt="CESBA" width="52" height="48" loading="lazy">
-                </div>
-                <div class="logo-item">
-                    <img src="/img/trace-logo.svg" alt="TRACE GROUP" width="287" height="48" loading="lazy">
-                </div>
-                <div class="logo-item">
-                    <img src="/img/Heated.svg" alt="Heated" width="199" height="48" loading="lazy">
-                </div>
-                <div class="logo-item">
-                    <img src="/img/otros-futuros.svg" alt="Otros Futuros" width="257" height="48" loading="lazy">
-                </div>
-                <div class="logo-item">
-                    <img src="/img/micelio.svg" alt="Micelio" width="218" height="48" loading="lazy">
-                </div>
-                <div class="logo-item">
-                    <img src="/img/lab-logo-coral.webp" alt="Lab de Mundanidad Forzada" width="131" height="48" loading="lazy">
-                </div>
-                <div class="logo-item">
-                    <img src="/img/olamestudio.svg" alt="Olam Estudio" width="38" height="48" loading="lazy">
-                </div>
-                <div class="logo-item">
-                    <img src="/img/comunicaciones-syp.svg" alt="Comunicaciones S&P" width="200" height="48" loading="lazy">
+                <div class="logos-grid">
+                    <div class="logo-item">
+                        <img src="/img/speculative-futures-madrid.webp" alt="Speculative Futures Madrid" width="111" height="48" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="/img/EscInn.svg" alt="ITBA Escuela de Innovación" width="265" height="48" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="/img/logo-cesba.webp" alt="CESBA" width="52" height="48" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="/img/trace-logo.svg" alt="TRACE GROUP" width="287" height="48" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="/img/Heated.svg" alt="Heated" width="199" height="48" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="/img/otros-futuros.svg" alt="Otros Futuros" width="257" height="48" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="/img/micelio.svg" alt="Micelio" width="218" height="48" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="/img/lab-logo-coral.webp" alt="Lab de Mundanidad Forzada" width="131" height="48" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="/img/olamestudio.svg" alt="Olam Estudio" width="38" height="48" loading="lazy">
+                    </div>
+                    <div class="logo-item">
+                        <img src="/img/comunicaciones-syp.svg" alt="Comunicaciones S&P" width="200" height="48" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
+    <!-- Contacto: cuándo escribirnos y el mail -->
+    <section id="contact" class="bloque contacto" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Cuándo escribirnos</h2>
+        <ul class="situaciones" aria-label="Tres situaciones en las que conviene escribirnos">
+            <li class="situacion">
+                <p>En tres meses tenés que decidir sobre una norma, un mercado o una tecnología que todavía no llegó, y cada reunión termina en opiniones.</p>
+            </li>
+            <li class="situacion">
+                <p>Tenés informes, tableros y una consultora que ya pasó, y nadie te dice qué hacer el lunes.</p>
+            </li>
+            <li class="situacion">
+                <p>Se viene una decisión que va a salir en los diarios, y el relato lo están escribiendo otros.</p>
+            </li>
+        </ul>
 
+        <div class="contact-inner">
+            <div class="contact-direct">
+                <a class="contact-direct-mail" href="mailto:{{ site.email }}?subject=Hablemos">{{ site.email }}</a>
+                {% include "partials/copiar-mail.njk" %}
+                <p class="contact-direct-promise">Te responde uno de nosotros tres en 48 horas hábiles. Si hay caso, agendamos una llamada de 30 minutos esa misma semana.</p>
+            </div>
 
-
-    <!-- Contact Form Section -->
-    <section id="contact" class="contact-form-section">
-        <div class="bpp-flex-col">
-            <div class="contact-label">Conversemos</div>
-
-            <h2 id="contact-heading" class="contact-heading">Cuándo escribirnos</h2>
-            <ul class="situaciones" aria-label="Tres situaciones en las que conviene escribirnos">
-                <li class="situacion">
-                    <p>En tres meses tenés que decidir sobre una norma, un mercado o una tecnología que todavía no llegó, y cada reunión termina en opiniones.</p>
-                </li>
-                <li class="situacion">
-                    <p>Tenés informes, tableros y una consultora que ya pasó, y nadie te dice qué hacer el lunes.</p>
-                </li>
-                <li class="situacion">
-                    <p>Se viene una decisión que va a salir en los diarios, y el relato lo están escribiendo otros.</p>
-                </li>
-            </ul>
-
-            <div class="contact-inner">
-                <div class="contact-direct">
-                    <a class="contact-direct-mail" href="mailto:{{ site.email }}?subject=Hablemos">{{ site.email }}</a>
-                    {% include "partials/copiar-mail.njk" %}
-                    <p class="contact-direct-promise">Te responde uno de nosotros tres en 48 horas hábiles. Si hay caso, agendamos una llamada de 30 minutos esa misma semana.</p>
+            <div class="contact-addresses">
+                <div class="contact-address">
+                    <p class="contact-city">Buenos Aires, CABA</p>
+                    <p class="contact-street">Franklin 2190, Of. 4113</p>
                 </div>
-
-                <div class="contact-addresses">
-                    <div class="contact-address">
-                        <p class="contact-city">Buenos Aires, CABA</p>
-                        <p class="contact-street">Franklin 2190, Of. 4113</p>
-                    </div>
-                    <div class="contact-address">
-                        <p class="contact-city">Madrid</p>
-                        <p class="contact-street">C. de Pablo Vidal 4</p>
-                    </div>
+                <div class="contact-address">
+                    <p class="contact-city">Madrid</p>
+                    <p class="contact-street">C. de Pablo Vidal 4</p>
                 </div>
             </div>
         </div>

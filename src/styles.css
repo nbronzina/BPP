@@ -1,8 +1,23 @@
-/* Literata self-hosted (variable en peso 400..700, subset latin). El tamaño óptico va fijo
-   en 19, el único tamaño en que se usa: el eje completo (7..72) duplicaba el peso del archivo.
-   Si la serif pasa a usarse en otro tamaño, hay que volver a los archivos con el eje completo
-   (en git hasta el 8 de octubre de 2026). Solo para el cuerpo de lectura larga (.page-lectura).
-   Headings, labels, navegación y UI siguen en Plus Jakarta Sans. */
+/* =====================================================================
+   BPP Analytics & Design · estilos del sitio
+   ---------------------------------------------------------------------
+   La fuente de verdad del sistema es DESIGN.md (v3). Este archivo lo aplica
+   en este orden: fuentes, tokens, base, grilla y ritmo, piezas comunes, nav,
+   footer, inicio, tarjetas y filas, Lo hecho y Pensamiento, casos, tesis,
+   páginas legales, cierre y preferencias del sistema.
+   Base móvil; escritorio con min-width. Puntos de corte: 769 (tablet hasta
+   1024), 1025 y 1280. No hay otros.
+   ===================================================================== */
+
+
+/* 1. Fuentes ===========================================================
+   Dos familias self-hosted, variables en peso (se usan 400 y 700).
+   Literata solo para la prosa de lectura larga (.page-lectura), con el tamaño
+   óptico fijo en 19, el único en que se usa: si la serif pasa a otro tamaño,
+   hay que volver a los archivos con el eje completo (en git hasta el
+   8 de octubre de 2026). El <head> precarga la regular de Plus Jakarta Sans
+   y, en las páginas de lectura, Literata. Nunca @import. */
+
 @font-face {
     font-family: 'Literata';
     font-style: normal;
@@ -20,8 +35,7 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Fallback con métricas ajustadas: mientras carga la webfont, Arial ocupa el mismo espacio
-   y el layout no salta (antes vivía en el CSS crítico inline). */
+/* Mientras carga la webfont, Arial con métricas ajustadas ocupa el mismo espacio y el layout no salta. */
 @font-face {
     font-family: 'Plus Jakarta Sans Fallback';
     src: local('Arial');
@@ -31,7 +45,6 @@
     line-gap-override: 0%;
 }
 
-/* Plus Jakarta Sans self-hosted (variable 400..700, subset latin). Sin dependencia de Google. */
 @font-face {
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
@@ -49,167 +62,136 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Las dos familias se declaran acá con @font-face; el <head> solo precarga la regular
-   (y Literata en las páginas de lectura). Nunca @import dentro del CSS. */
 
-/* =========================
-   Reset & Variables
-   ========================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* 2. Tokens ============================================================ */
 
 :root {
-    /* Terracotta BPP - DESIGN.md: un solo acento, sin variantes de escala. */
-    --orange-500: #c16f52;  /* Principal (brand) - terracotta desaturado */
+    color-scheme: dark;
 
-    /* Base colors - Inclusive dark (lifted warm gray, no pure black) */
-    --color-bg: #12151a;           /* Tinta: azul-negro frío (v2.4) */
-    --color-surface: #1a1e25;      /* Superficie elevada (cards) */
-    --color-border: #2b313a;       /* Borde */
-
-    /* Text colors - Inclusive design (warm off-white unificado) */
-    --color-text: #faf8f6;              /* Blanco cálido principal - reduce fatiga visual */
-    --color-text-light: #faf8f6;        /* Unificado con primary */
-    --color-text-secondary: rgba(250, 248, 246, 0.87);  /* Warm off-white con opacidad - WCAG AA */
-    --color-text-muted: rgba(250, 248, 246, 0.65);      /* Muted pero mantiene temperatura cálida */
-    /* Jerarquía de texto verificada sobre surface #1a1e25 (WCAG 2.1):
-       high 0.95 → 15.6:1 · mid 0.75 → 9.4:1 · low 0.55 → 5.5:1 (mínimo para texto de cuerpo, AA)
-       faint 0.40 → 3.6:1: SOLO texto grande (≥24px o ≥18.66px bold) o decorativo. Nunca cuerpo. */
+    /* Color. Un solo acento, que es también el color del logo. El texto es un blanco cálido en
+       tres niveles de alfa; sobre --color-surface: high 15,6:1 · mid 9,4:1 · low 5,5:1, el
+       mínimo para texto. El alfa va en el color, nunca además en opacity, y el acento nunca lleva
+       opacity (sobre Tinta da 4,93:1). */
+    --orange-500: #c16f52;        /* acento: enlaces, CTAs, cifras, estados activos */
+    --color-bg: #12151a;          /* Tinta */
+    --color-bg-deep: #0d1014;     /* registro hondo: Cuatro movimientos y contacto */
+    --color-surface: #1a1e25;     /* superficies: señales, tesis, escenarios, avisos */
+    --color-border: #2b313a;      /* borde de superficies y controles */
+    --color-line: rgba(250, 248, 246, 0.08);   /* línea susurro: filas, separadores */
     --color-text-high: rgba(250, 248, 246, 0.95);
     --color-text-mid: rgba(250, 248, 246, 0.75);
     --color-text-low: rgba(250, 248, 246, 0.55);
-    --color-text-faint: rgba(250, 248, 246, 0.40);
+    --paper: #f4efe8;             /* papel: figuras con fondo blanco y documentos de Gabinete */
+    --ink: #26221f;               /* tinta sobre papel */
 
-    /* Accent colors (legacy compatibility) */
-    --color-accent: var(--orange-500);
-    --color-accent-bright: var(--orange-500);
+    /* Tipografía: dos familias, dos pesos (400 y 700) y siete tamaños.
+       Los tres primeros crecen con el ancho entre 390 y 1280 px; el resto es fijo.
+       15 px es el mínimo del sitio (decisión de los socios, 2026-08-21). */
+    --font-body: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
+    --font-lectura: 'Literata', Georgia, 'Times New Roman', serif;
+    --fs-1: clamp(2.5rem, 1.624rem + 3.596vw, 4.5rem);      /* 40 → 72  título del inicio, de Lo hecho y de Pensamiento */
+    --fs-2: clamp(2rem, 1.562rem + 1.798vw, 3rem);          /* 32 → 48  título de documento, cierre, cifra */
+    --fs-3: clamp(1.625rem, 1.406rem + 0.899vw, 2.125rem);  /* 26 → 34  título de bloque, numeración, cita destacada */
+    --fs-4: clamp(1.3125rem, 1.23rem + 0.337vw, 1.5rem);    /* 21 → 24  títulos de tarjeta, servicio y fila; subtítulos; bajadas grandes */
+    --fs-5: 1.1875rem;                                      /* 19  cuerpo, también en Literata */
+    --fs-6: 1.0625rem;                                      /* 17  texto secundario, enlaces, nav, pies de figura */
+    --fs-7: 0.9375rem;                                      /* 15  etiquetas y datos */
 
-    /* Papel: fondo de .figura__papel y .documento, las únicas piezas claras que quedan.
-       La superficie de lectura v2.3 (body.page-papel) se retiró el 2026-09-06. */
-    --paper: #f4efe8;
+    /* Espacio: grilla de 8 */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
 
-    /* Spacing Scale - 8px grid system (como Gmail, Figma, Tailwind) */
-    --space-1: 0.25rem;   /* 4px - micro spacing */
-    --space-2: 0.5rem;    /* 8px - tight spacing */
-    --space-3: 0.75rem;   /* 12px - compact */
-    --space-4: 1rem;      /* 16px - base unit */
-    --space-5: 1.25rem;   /* 20px - comfortable */
-    --space-6: 1.5rem;    /* 24px - relaxed */
-    --space-8: 2rem;      /* 32px - spacious */
-    --space-10: 2.5rem;   /* 40px - generous */
-    --space-12: 3rem;     /* 48px - section gap */
-    --space-16: 4rem;     /* 64px - large section */
-    --space-20: 5rem;     /* 80px - extra large */
-    --space-24: 6rem;     /* 96px - massive */
+    /* Ritmo vertical. Entre dos bloques de <main> hay siempre --spacing-section de silencio
+       (80 en el teléfono, 160 desde 769): cada bloque pone la mitad arriba y la mitad abajo.
+       Cabecera → primer bloque y último bloque → footer: --spacing-block-edge (64 / 120). */
+    --spacing-section: 80px;
+    --spacing-block: calc(var(--spacing-section) / 2);
+    --spacing-block-edge: 64px;
+    --nav-height: 76px;
+    --hero-top: calc(var(--nav-height) + var(--spacing-block-edge));
+    --spacing-hero-bottom: calc(var(--spacing-block-edge) - var(--spacing-block));
 
-    /* Ritmo vertical entre bloques de <main> (mobile base; desktop en la media query de abajo).
-       --spacing-section es el silencio total entre dos bloques; cada bloque aporta la mitad
-       (--spacing-block) arriba y abajo. Hero → primer bloque y último bloque → footer usan
-       --spacing-block-edge. Ver "Ritmo vertical" más abajo. */
-    --spacing-section: 80px;             /* DESIGN.md: silencio visual entre bloques */
-    --spacing-block: calc(var(--spacing-section) / 2);          /* 40px: mitad del gap, por lado */
-    --spacing-block-edge: 64px;                                  /* hero → primer bloque, último → footer */
-    --nav-height: 76px;                                          /* nav fijo: el hero descuenta esto para que el aire arriba sea real */
-    --hero-top: calc(var(--nav-height) + var(--spacing-block-edge)); /* aire visible entre el nav y el primer texto del hero = edge */
-    --spacing-hero-bottom: calc(var(--spacing-block-edge) - var(--spacing-block)); /* 24px: lo que aporta el hero */
+    /* Grilla: un solo borde izquierdo por ancho de pantalla. El nav, el footer, la cabecera y
+       cada bloque de <main> llevan --marco a los lados: el margen (24 / 64 / 96 px) o lo que
+       sobre a cada lado de una columna de 1200 px. Adentro nada se centra ni suma sangría:
+       las medidas de lectura se acotan con max-width, alineadas a la izquierda. */
+    --gutter: 24px;
+    --frame-max: 1200px;
+    --marco: max(var(--gutter), calc((100% - var(--frame-max)) / 2));
+    /* Medida de lectura: unos 70 caracteres por línea a 19 px, en la sans y en Literata.
+       En rem y no en ch: el cero de Plus Jakarta Sans es ancho y 70ch daban casi 100 caracteres. */
+    --medida: 40rem;
 
-    /* Horizontal padding scale (mobile-first) */
-    --spacing-horizontal-mobile: var(--space-5);   /* 20px */
-    --spacing-horizontal-tablet: var(--space-16);  /* 64px */
-    --spacing-horizontal-desktop: var(--space-24); /* var(--space-24) */
-
-    /* Typography - Escala optimizada para Plus Jakarta Sans */
-    --font-size-base: 1.1875rem;  /* 19px — subido de 17px (feedback socios: tipografía chica) */
-
-    /* Solo h1, h2, h3 diferenciados por tamaño - progresión armónica */
-    --font-size-h3: clamp(1.875rem, 4vw, 2.375rem);      /* 26px → 32px */
-    --font-size-h2: clamp(2.375rem, 5vw, 3.25rem);      /* 32px → 42px */
-    --font-size-h1: clamp(3rem, 7vw, 4.5rem);      /* 42px → 56px */
-    --font-size-display: clamp(4rem, 9vw, 5.5rem);   /* 56px → 72px - hero */
-
-    /* Typography - Line heights */
-    --line-height-heading: 1.2;
-    --line-height-body: 1.8;  /* Increased for better readability */
-
-    /* Typography - Font family - Plus Jakarta Sans (única, versátil) */
-    --font-display: 'Plus Jakarta Sans', sans-serif;     /* Display */
-    --font-heading: 'Plus Jakarta Sans', sans-serif;     /* Headings */
-    --font-body: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;        /* Body */
-    --font-label: 'Plus Jakarta Sans', sans-serif;      /* etiquetas y metadata; la mono se retiró en v2.1 */
-
-    /* Borders & Shadows */
-    --border-radius: 16px;             /* v2.2 soft: 8px → 16px */
-    --border-card: 1px solid rgba(193, 111, 82, 0.12);  /* v2.2: susurro, no línea */
-    --shadow-card: 0 24px 48px -28px rgba(0, 0, 0, 0.55);
-    --shadow-card-hover: 0 28px 56px -24px rgba(0, 0, 0, 0.6), 0 0 40px -12px rgba(193, 111, 82, 0.22);
-
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-
-    /* Z-index layers */
-    --z-nav-mobile: 999;
-    --z-nav-btn: 1001;
-    --z-modal: 10000;
-
-    /* Logo crossfade (Superflux pattern) - tunable */
-    --nav-logo-height: 40px;
-    --nav-transition: 0.3s;
+    /* Forma */
+    --radius: 16px;      /* imágenes, figuras, superficies, documentos */
+    --radius-sm: 4px;    /* foco de controles tipográficos */
+    --shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.4);   /* DESIGN.md: alfa ≤ 0,4 y blur ≤ 24 px, siempre negra */
+    --transition: 0.2s ease;
 }
-
-/* =========================
-   Desktop Enhancements (Mobile-First)
-   ========================= */
 
 @media (min-width: 769px) {
     :root {
-        --spacing-section: 160px;  /* DESIGN.md: section 160px es signature del sistema (→ --spacing-block 80px) */
-        --spacing-block-edge: 120px;  /* → --spacing-hero-bottom 40px */
+        --gutter: 64px;
+        --spacing-section: 160px;
+        --spacing-block-edge: 120px;
     }
 }
+
+@media (min-width: 1025px) {
+    :root { --gutter: 96px; }
+}
+
+
+/* 3. Base ============================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+[hidden] { display: none !important; }
 
 html {
-    scroll-padding-top: var(--space-24);  /* Altura del navbar sticky + margen para que títulos no queden tapados */
-    background: #12151a;
+    background: var(--color-bg);
     overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: var(--color-border) var(--color-bg);
+    scrollbar-width: thin;
 }
 
-/* Smooth scroll only if motion is allowed */
 @media (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
-    }
-}
-
-/* Anchor targets - prevent content from being hidden behind fixed navbar */
-section[id],
-main[id],
-article[id] {
-    scroll-margin-top: var(--space-24);
+    html { scroll-behavior: smooth; }
 }
 
 body {
-    font-family: var(--font-body);  /* Plus Jakarta Sans - tipografía única */
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    line-height: var(--line-height-body);  /* 1.8 - improved readability */
-    overflow-x: clip;
     position: relative;
-    z-index: 1;
-    /* Prevent horizontal overflow on mobile */
-    word-wrap: break-word;
+    font-family: var(--font-body);
+    font-size: var(--fs-5);
+    line-height: 1.6;
+    color: var(--color-text-high);
+    background: var(--color-bg);
+    overflow-x: clip;
     overflow-wrap: break-word;
     hyphens: auto;
     font-variant-numeric: lining-nums;
-    font-feature-settings: 'zero' 0;  /* Disable slashed zero */
+    font-feature-settings: 'zero' 0;
+    -webkit-tap-highlight-color: rgba(193, 111, 82, 0.18);
 }
 
-/* v2.2: grano análogo sutil sobre toda la página — rompe el "render
-   perfecto" digital sin ensuciar el texto. */
+/* Grano análogo sobre toda la página (~3,5 %): rompe el render perfecto sin ensuciar el texto. */
 body::after {
     content: '';
     position: fixed;
@@ -220,3987 +202,101 @@ body::after {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Prevent text overflow globally */
-h1, h2, h3, h4, h5, h6, p, li, span, a {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+img,
+svg {
+    display: block;
     max-width: 100%;
-}
-
-/* No hyphenation in headings and short elements - looks bad in mobile */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.service-title,
-.service-category,
-.actividad-meta,
-.actividades-label,
-.contact-label,
-button {
-    hyphens: none;
-}
-
-/* Typography - Tamaño estandarizado con Plus Jakarta Sans */
-/* Solo h1, h2, h3 se diferencian por tamaño. El resto usa --font-size-base (19px) */
-/* Jerarquía visual viene de: weight, color, spacing */
-
-h1 {
-    font-size: var(--font-size-h1);
-    margin-bottom: var(--space-6);
-}
-
-h2 {
-    font-size: var(--font-size-h2);
-    margin-bottom: var(--space-5);
-}
-
-h3 {
-    font-size: var(--font-size-h3);
-    margin-bottom: var(--space-4);
-}
-
-/* h4, h5, h6: mismo tamaño que body (Gmail approach) - jerarquía por weight */
-h4, h5, h6 {
-    font-size: var(--font-size-base);  /* 19px - igual que body */
-    font-weight: 700;  /* Diferenciación por peso, no por tamaño */
-    margin-bottom: var(--space-3);
-}
-
-p, li {
-    font-size: var(--font-size-base);  /* 19px - estandarizado */
-}
-
-p {
-    margin-bottom: var(--space-4);
-}
-
-ul, ol {
-    margin-bottom: var(--space-4);
-}
-
-li {
-    margin-bottom: var(--space-2);  /* Spacing como Gmail */
-}
-
-li:last-child {
-    margin-bottom: 0;
-}
-
-/* Touch optimization - eliminate 300ms tap delay */
-button,
-a,
-input,
-select,
-textarea,
-.mobile-menu-btn,
-.nav-links a,
-.filter-btn {
-    touch-action: manipulation;
-}
-
-/* Interactive elements - cursor pointer only */
-button,
-a,
-.mobile-menu-btn,
-.nav-links a {
-    cursor: pointer;
-}
-
-/* =========================
-   Display typography
-   ========================= */
-
-h1, h2 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: 0;
-    hyphens: auto;
-}
-
-h3, h4, h5, h6 {
-    hyphens: auto;
-}
-
-@media (min-width: 769px) {
-    h1, h2 {
-        letter-spacing: -0.02em;
-        hyphens: none;
-    }
-
-    h3, h4, h5, h6 {
-        hyphens: none;
-    }
-}
-
-/* =========================
-   Navigation
-   ========================= */
-
-/* Sticky nav - hidden at start, appears on scroll */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    padding: var(--space-4) 0;
-    background-color: transparent;  /* Oculto en homepage */
-    backdrop-filter: none;
-    border-bottom: none;
-    opacity: 0;  /* Oculto en homepage por defecto */
-    pointer-events: none;
-    transition: background-color var(--nav-transition, 0.3s) ease,
-                backdrop-filter var(--nav-transition, 0.3s) ease,
-                opacity var(--nav-transition, 0.3s) ease;
-}
-
-/* Homepage: aparece al scrollear */
-/* Mobile-first: sin blur para ahorrar batería; desktop agrega blur */
-body.logo-pinned nav {
-    opacity: 1;
-    pointer-events: auto;
-    background-color: rgba(18, 21, 26, 0.95);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
-}
-
-@media (min-width: 769px) {
-    body.logo-pinned nav {
-        background-color: rgba(18, 21, 26, 0.65);
-        backdrop-filter: blur(16px) saturate(140%);
-        -webkit-backdrop-filter: blur(16px) saturate(140%);
-    }
-}
-
-/* Fallback for browsers without backdrop-filter */
-@supports not (backdrop-filter: blur(1px)) {
-    body.logo-pinned nav {
-        background-color: rgba(18, 21, 26, 0.95);
-    }
-}
-
-/* Teclado: en el inicio el nav está escondido hasta scrollear. Si recibe el foco aparece,
-   para que el foco nunca caiga en algo invisible. Con mouse o dedo no cambia nada. */
-nav:focus-within {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Sin JavaScript nadie marca el scroll: el nav del inicio se ve desde el principio.
-   Esta media query no aplica cuando el JS corre. */
-@media (scripting: none) {
-    nav {
-        opacity: 1;
-        pointer-events: auto;
-    }
-}
-
-/* Nav logo - hidden initially, fades in when hero logo crosses navbar (Superflux pattern) */
-.nav-logo {
-    display: block;
-    line-height: 0;
-    opacity: 0;  /* Oculto en homepage por defecto */
-    transition: opacity var(--nav-transition, 0.3s) ease;
-    will-change: opacity; /* Hint for smoother mobile rendering */
-}
-
-body.logo-pinned .nav-logo,
-nav:focus-within .nav-logo {
-    opacity: 1;
-}
-
-@media (scripting: none) {
-    .nav-logo {
-        opacity: 1;
-    }
-}
-
-.nav-logo img {
-    height: var(--nav-logo-height, 40px);
-    width: auto;
-    display: block;
-}
-
-/* Secondary pages: nav always visible (no Superflux pattern) */
-/* Mobile-first: sin blur para ahorrar batería; desktop agrega blur */
-body.secondary-page nav {
-    opacity: 1;
-    pointer-events: auto;
-    background-color: rgba(18, 21, 26, 0.95);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
-}
-
-@media (min-width: 769px) {
-    body.secondary-page nav {
-        background-color: rgba(18, 21, 26, 0.65);
-        backdrop-filter: blur(16px) saturate(140%);
-        -webkit-backdrop-filter: blur(16px) saturate(140%);
-    }
-}
-
-body.secondary-page .nav-logo {
-    opacity: 1;
-}
-
-/* Fallback for browsers without backdrop-filter */
-@supports not (backdrop-filter: blur(1px)) {
-    body.secondary-page nav {
-        background-color: rgba(18, 21, 26, 0.95);
-    }
-}
-
-/* Layout compartido: index (.nav-container) y reporte (.nav) */
-.nav-container {
-    width: 100%;
-    padding: 0 var(--spacing-horizontal-mobile);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-8);
-}
-
-/* Nav logo placeholder - Mobile-first base */
-.nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 80%;
-    min-width: 260px;
-    background-color: rgba(18, 21, 26, 0.98);
-    backdrop-filter: blur(20px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-8);
-    list-style: none;
-    margin: 0;
-    padding: var(--space-20) var(--space-8);
-    /* Cerrado no recibe foco: visibility se apaga cuando termina el deslizamiento */
-    transition: right 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
-    opacity: 0;
-    visibility: hidden;
-    z-index: var(--z-nav-mobile);
-}
-
-.nav-links li {
-    margin: 0;  /* Reset li margin */
-    padding: 0;  /* Reset li padding */
-    display: flex;  /* Flex para alinear el link */
-    align-items: center;  /* Centra el link dentro del li */
-}
-
-.nav-links a {
-    color: var(--color-text-light); text-decoration: none; font-size: 1rem; font-weight: 400; line-height: 1; display: block; align-items: center; padding: var(--space-3) var(--space-5); position: relative; transition: color 0.3s; }
-
-/* Hero del inicio → Nosotros: el hero cierra con el padding de .hero-brand-header
-   (24px mobile / 48px desktop, ver abajo); la sección completa hasta --spacing-block-edge.
-   El bloque de marca se ancla abajo: si el min-height del splash sobra (pantallas altas),
-   el aire queda arriba del bloque y no entre el hero y Nosotros. Antes `.hero` (flex-start)
-   pisaba el `center` de .hero-fullscreen y el sobrante caía justo en ese gap. */
-.hero-fullscreen + .section { padding-top: calc(var(--spacing-block-edge) - var(--space-6)); }
-@media (min-width: 769px) {
-    .hero-fullscreen + .section { padding-top: calc(var(--spacing-block-edge) - var(--space-12)); }
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--color-accent);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--color-accent);
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.nav-links.active {
-    right: 0;
-    opacity: 1;
-    visibility: visible;
-    transition: right 0.3s ease, opacity 0.3s ease, visibility 0s;
-}
-
-/* La página actual se marca con la línea de abajo, no con el color: el terracota del nav
-   queda para "Hablemos", que está en todas las páginas. Por atributo y no solo por clase,
-   para que se vea también sin JavaScript. */
-.nav-links a.current-page,
-.nav-links a[aria-current] {
-    color: var(--color-text-light);
-    position: relative;
-}
-/* Solo la página exacta deja de ser clicable. Desde un caso, "Lo hecho" tiene que llevar
-   de vuelta a la lista: antes también quedaba sin clic. */
-.nav-links a[aria-current="page"] {
-    pointer-events: none;
-}
-.nav-links a.current-page::after,
-.nav-links a[aria-current]::after {
-    width: 100%;
-}
-
-.mobile-menu-btn {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    background: none;
-    border: none;
-    cursor: pointer;
-    min-width: 44px;
-    min-height: 44px;
-    padding: var(--space-3);
-    justify-content: center;
-    align-items: center;
-    z-index: var(--z-nav-btn);
-}
-
-.mobile-menu-btn span {
-    width: 25px;
-    height: 2px;
-    background-color: var(--color-text);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform-origin: center;
-}
-
-/* Hamburger animation to X */
-.mobile-menu-btn.active span:nth-child(1) {
-    transform: translateY(5px) rotate(45deg);
-}
-
-.mobile-menu-btn.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-btn.active span:nth-child(3) {
-    transform: translateY(-5px) rotate(-45deg);
-}
-
-/* Mobile menu overlay */
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: calc(var(--z-nav-mobile) - 1);
-}
-
-.mobile-menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Nav CTA tipográfico (DESIGN.md: hover = cambio de color, nada más) */
-.nav-cta {
-    color: var(--color-accent);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 400;
-    padding: var(--space-2) 0;
-    transition: color 0.2s ease;
-    display: inline-block;
-}
-
-.nav-cta:hover {
-    color: var(--color-accent-bright);
-}
-
-/* Navigation - Desktop Enhancement */
-@media (min-width: 769px) {
-    .nav-container {
-        padding: 0 var(--space-24);
-    }
-
-    .nav-links {
-        position: static;
-        height: auto;
-        width: auto;
-        min-width: 0;
-        background-color: transparent;
-        backdrop-filter: none;
-        flex-direction: row;
-        gap: var(--space-6);
-        padding: 0;
-        transition: none;
-        z-index: auto;
-        /* La base mobile esconde el menú off-canvas con opacity 0, right -100% y
-           visibility hidden; en desktop hay que resetear los tres o los links no se ven */
-        opacity: 1;
-        right: auto;
-        visibility: visible;
-    }
-
-    .nav-links.active {
-        transition: none;
-    }
-
-    .nav-links a {
-        display: inline-flex;
-        padding: 0;
-        /* relative: la línea de hover y la de la página actual van debajo del enlace.
-           Con static se anclaban al nav y cruzaban toda la pantalla. */
-        position: relative;
-    }
-
-    .mobile-menu-btn {
-        display: none;
-    }
-
-    .nav-cta {
-        font-size: 1rem;
-        padding: var(--space-2) var(--space-5);
-    }
-}
-
-/* =========================
-   Hero
-   ========================= */
-
-/* Hero fullscreen - immersive splash, ocupa viewport inicial completo */
-.hero-fullscreen {
-    /* Mobile: el hero mide lo que mide el bloque de marca (unos 520px a 390px de ancho).
-       Un min-height en vh sumaba aire abajo del bloque en pantallas altas y rompía el
-       ritmo de 64px con Nosotros; en pantallas bajas no hacía nada. */
-    min-height: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 0 3vh 0;
-    position: relative;
-    background: transparent;
-}
-
-/* Hero brand header - centered splash layout */
-.hero-brand-header {
-    width: 100%;
-    max-width: 1200px;
-    z-index: 1;
-}
-
-.hero-brand-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-4); /* Gap reducido en mobile */
-    text-align: center;
-}
-
-/* Hero large logo - más pequeño en mobile para no desperdiciar altura */
-.hero-logo-large {
-    width: clamp(80px, 20vw, 120px); /* Reducido de 100-140 a 80-120 */
-    transition: opacity var(--nav-transition, 0.3s) ease;
-}
-
-/* Desktop: logo más grande, splash completo si queremos */
-@media (min-width: 769px) {
-    .hero-fullscreen {
-        /* Antes 100vh: en 1080p dejaba ~400px vacíos bajo el bloque. Acotado y centrado. */
-        min-height: clamp(560px, 80svh, 840px);
-        padding: 0;
-    }
-
-    .hero-brand-content {
-        gap: var(--space-12);
-    }
-
-    .hero-logo-large {
-        width: clamp(120px, 15vw, 200px);
-    }
-}
-
-/* Optional fade on scroll (not in Superflux original, but looks nice) */
-@media (prefers-reduced-motion: no-preference) {
-    body.logo-pinned .hero-logo-large {
-        opacity: 0.3;
-    }
-}
-
-.hero-logo-large img {
-    width: 100%;
     height: auto;
-    display: block;
 }
 
-.hero-brand-text {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-}
-
-.hero-wordmark {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
-    font-size: clamp(2.6rem, 5.5vw, 4.6rem);
-    color: rgba(250, 248, 246, 0.95);
-    line-height: 1.15;  /* Aumentado para evitar corte de descenders (y, g) */
-    margin: 0;
-    animation: textReveal 0.7s ease-out 0.15s both;
-}
-
-.hero-tagline {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-    font-weight: 400;
-    color: rgba(250, 248, 246, 0.85);
-    line-height: 1.4;
-    margin: 0;
-    animation: textReveal 0.7s ease-out 0.35s both;
-    hyphens: none;
-    word-break: keep-all;
-}
-
-/* Text reveal animation */
-/* Antes: barrido horizontal con clip-path. En móvil, con el nombre en dos líneas,
-   se veía como texto cortado a medias. Ahora: fundido suave con leve subida.
-   Es el único movimiento de entrada del sitio: las secciones dejaron de aparecer al
-   scroll en septiembre y la página dejó de fundirse al cargar en octubre. */
-@keyframes textReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-        .hero-wordmark,
-    .hero-tagline { animation: none !important; }
-}
-
-/* Mobile-first base */
-.hero {
-    height: auto;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 90px var(--space-6) 60px;
-    position: relative;
-    background: transparent;
-}
-
-.tagline {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 7vw, 5rem); /* v2.2: escala editorial — el titular ES el hero */
-    font-weight: 700;
-    line-height: 1.08; /* v2.2: leading apretado a escala grande */
-    margin-bottom: var(--space-8);
-    letter-spacing: -0.01em; /* Looser en mobile - previene overflow */
-    color: var(--color-text);
-    hyphens: auto; /* Mobile: permite partir palabras si hace falta */
-    word-break: normal; /* Mobile: wrapping natural */
-    overflow-wrap: normal; /* Don't force wrap long words */
-    max-width: 100%; /* Prevent overflow en mobile */
-}
-
-/* Desktop: display type a escala completa */
-@media (min-width: 769px) {
-    .tagline {
-        font-size: var(--font-size-display);
-        line-height: 1.05;
-        letter-spacing: -0.04em;
-        hyphens: none; /* No hyphenation - keep words complete */
-        word-break: keep-all; /* Prevent breaking within words */
-        max-width: 1200px; /* Ensure enough space for full title */
-    }
-
-    }
-
-.corner-bracket {
-    fill: rgba(250, 248, 246, 0.2);
-    font-size: 48px;
-    font-weight: 700;
-}
-
-/* Hero Immersive Variant - Editorial Background Imagery */
-.hero-immersive {
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-visual {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.12; /* Subtle - doesn't overpower text, WCAG compliant */
-}
-
-/* Gradient overlay fallback - speculative/futures aesthetic */
-.hero-visual-gradient {
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(ellipse at 30% 40%, rgba(150, 175, 215, 0.07) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 60%, rgba(150, 175, 215, 0.05) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(150, 175, 215, 0.03) 0%, transparent 60%);
-}
-
-/* Hero Section - Desktop Enhancement */
-@media (min-width: 769px) {
-    .hero {
-        padding: clamp(2rem, 5vh, 4rem) clamp(2rem, 8vw, var(--space-24)) clamp(2rem, 5vh, var(--space-16));
-    }
-}
-
-/* =========================
-   CTA Buttons - Sistema Unificado Canónico
-   ========================= */
-
-/* PRIMARY — CTA tipográfico (DESIGN.md: BPP no usa botones con fondo sólido).
-   Color primary + flecha adyacente; hover = cambio de color + translateX en la flecha. */
-.cta-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    background: transparent;
-    color: var(--color-accent);
-    border: none;
-    padding: var(--space-2) 0;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.0625rem;
-    font-weight: 700;
-    text-decoration: underline;
-    text-decoration-color: rgba(193, 111, 82, 0.4);
-    text-underline-offset: 4px;
-    cursor: pointer;
-    transition: color 0.2s ease, text-decoration-color 0.2s ease;
-    min-height: 44px;
-    text-align: left;
-    /* Mobile: botones apilados a ancho completo */
-    width: 100%;
-    margin-bottom: var(--space-4);
-}
-
-@media (min-width: 769px) {
-    .cta-primary {
-        width: auto;
-        margin-bottom: 0;
-    }
-}
-
-.cta-primary:hover {
-    color: var(--color-accent-bright);
-    text-decoration-color: var(--color-accent);
-}
-
-.cta-primary .cta-arrow {
-    display: inline-block;
-    transition: transform 0.2s ease;
-}
-
-.cta-primary:hover .cta-arrow--left {
-    transform: translateX(-4px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .cta-primary .cta-arrow {
-        transition: none;
-    }
-    .cta-primary:hover .cta-arrow--left {
-        transform: none;
-    }
-}
-
-/* LINK — Para navegación editorial, "ver más", links de sección */
-.cta-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    color: var(--color-accent) !important;
-    text-decoration: none;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    background: none !important;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: opacity 0.3s ease, text-shadow 0.3s ease;
-}
-
-.cta-link::after {
-    content: '→';
-}
-
-.cta-link:hover {
-    opacity: 0.85;
-}
-
-/* =========================
-   CTA: flechas
-   ========================= */
-
-/* Arrow micro-interactions */
-.cta-arrow {
-    display: inline-block;
-    transition: transform var(--transition-normal);
-    will-change: transform;
-}
-
-/* Animación izquierda para flechas ← */
-.back-to-top:hover .cta-arrow--left {
-    transform: translateX(-4px);
-}
-
-/* =========================
-   CTA Hover Previews (data-preview)
-   Mismo lenguaje visual que los tooltips (.tooltip-term):
-   surface + borde terracota. Cubre cualquier elemento con el atributo
-   (el selector viejo ni incluía .cta-primary, que es el CTA actual).
-   ========================= */
-
-[data-preview] {
-    position: relative;
-}
-
-[data-preview]::after {
-    content: attr(data-preview);
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    max-width: calc(100vw - 48px);
-    background: var(--color-surface);
-    color: rgba(250, 248, 246, 0.95);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    padding: 8px 14px;
-    border: 1px solid var(--orange-500);
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 10000;
-}
-
-/* Show on hover/focus */
-[data-preview]:hover::after,
-[data-preview]:focus-visible::after {
-    opacity: 1;
-}
-
-/* Respect prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-    [data-preview]::after {
-        transition: none;
-    }
-}
-
-/* Touch devices: hide preview entirely (no hover available) */
-@media (hover: none) {
-    [data-preview]::after {
-        display: none;
-    }
-}
-
-/* =========================
-   Section Containers
-   ========================= */
-
-.section {
-    padding: var(--spacing-block) var(--spacing-horizontal-mobile);
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.section-wide {
-    max-width: 1600px;
-}
-
-@media (min-width: 769px) {
-    .section {
-        padding: var(--spacing-block) var(--space-24);
-    }
-}
-
-/* =========================
-   Ritmo vertical
-   =========================
-   Un solo ritmo en todo el sitio: cada bloque de <main> (.section, .content-section,
-   .contact-form-section, .legal-content…) lleva --spacing-block arriba y abajo, así el
-   silencio entre dos bloques es siempre --spacing-section (160 desktop / 80 mobile).
-   El hero aporta --spacing-hero-bottom y el último bloque cierra contra la línea del footer
-   con --spacing-block-edge (120 / 64). El footer no lleva margen: el bloque de contacto del
-   inicio tiene fondo hondo y su borde tiene que quedar pegado a la línea cobriza. */
-main > :last-child {
-    padding-bottom: var(--spacing-block-edge);
-}
-/* Los cierres de bloque (márgenes colgantes del último hijo) están al final del archivo,
-   en "Ritmo vertical: cierres de bloque", para ganar en cascada a las reglas de cada componente. */
-
-/* Section labels and headings */
-.bpp-section-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-accent);
-    margin-bottom: var(--space-4);
-}
-
-.section-heading {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
-    font-weight: 700;
-    line-height: 1.25;
-    color: var(--color-text);
-    margin-bottom: var(--space-8);
-    max-width: 800px;
-}
-
-/* Content centering for specific containers - Estandarizado */
-.services-grid,
-.actividades-container {
-    max-width: 1400px;  /* Estandarizado (era 1080px) */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;  /* El padding viene del contenedor padre ahora */
-    padding-right: 0;
-}
-
-/* Desktop wide: slightly larger max-width */
-@media (min-width: 1280px) {
-    .services-grid,
-.actividades-container {
-        max-width: 1180px;
-    }
-}
-
-/* Corner brackets (BPP brand) */
-.corner-bracket {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    pointer-events: none;
-}
-
-.corner-bracket--tl {
-    top: 0;
-    left: 0;
-    border-top: 2px solid var(--color-accent);
-    border-left: 2px solid var(--color-accent);
-    opacity: 0.3;
-}
-
-.corner-bracket--br {
-    bottom: 0;
-    right: 0;
-    border-bottom: 2px solid var(--color-accent);
-    border-right: 2px solid var(--color-accent);
-    opacity: 0.3;
-}
-
-/* CTA container for dual buttons */
-.actividades-cta-dual {
-    display: flex;
-    gap: var(--space-6);
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: var(--space-16);
-}
-
-@media (min-width: 769px) {
-    .corner-bracket {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-/* =========================
-   Services - Editorial Blocks
-   ========================= */
-
-/* Mobile-first base */
-.services-container {
-    padding: 0 var(--space-12);  /* móvil; tablet 64 y escritorio 96 en sus bloques */
-}
-
-.services-intro {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    line-height: 1.6;
-    color: var(--color-text-light);
-    max-width: 70ch;
-    margin-bottom: var(--space-12);
-}
-/* Frase que abre Qué hacemos: lo único que quedó de la vieja sección Nosotros */
-.services-lead {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(1.25rem, 1.8vw, 1.5rem);
-    font-weight: 400;
-    line-height: 1.35;
-    color: var(--color-text);
-    max-width: 34ch;
-    margin: 0 0 var(--space-5);
-}
-/* Bajada de sección alineada a la izquierda, bajo un .section-heading */
-.section-lead {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    line-height: 1.6;
-    color: var(--color-text-light);
-    max-width: 70ch;
-    margin: 0 0 var(--space-12);
-}
-
-/* Grilla de servicios: una columna; dos desde 1025px (ver v2.5 más abajo) */
-.services-grid {
-    display: grid;
-    margin-bottom: 0;
-    max-width: none;
-}
-
-.service-block {
-    transition: box-shadow 0.35s ease, background 0.3s ease, transform 0.3s ease;
-    width: 100%;
-    max-width: 100%;
-    overflow: visible;
-    box-sizing: border-box;
-}
-
-.service-number {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.service-category {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    text-transform: uppercase;
-    opacity: 0.7;  /* Increased from 0.5 for better contrast */
-}
-
-.service-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
-    color: var(--color-text);
-    opacity: 1;
-    hyphens: auto;
-}
-
-.service-lead {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    color: var(--color-text);
-    opacity: 0.75;
-    line-height: 1.5;  /* Reducido de 1.7: texto más compacto en mobile */
-}
-
-.service-deliverable-link {
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-decoration-color: rgba(193, 111, 82, 0.4);
-    text-underline-offset: 3px;
-}
-.service-deliverable-link:hover,
-.service-deliverable-link:focus-visible { text-decoration-color: currentColor; }
-.service-deliverable {
-    display: block;
-    font-family: var(--font-label);
-    font-size: 1rem;  /* 16px - WCAG minimum (antes 14px) */
-    /* Atenuación por color, NO por opacity: la opacity de un ancestro
-       se multiplica sobre los tooltips ::before descendientes */
-    color: rgba(250, 248, 246, 0.65);
-    margin-top: var(--space-3);
-    letter-spacing: 0.03em;
-    line-height: 1.6;
-}
-
-/* Services Section - Desktop Enhancement */
-@media (min-width: 769px) {
-    .services-container {
-        /* Vertical 0: el padre .section ya aporta var(--spacing-section) */
-        padding: 0 var(--space-24);
-    }
-
-    .service-title {
-        hyphens: none;
-    }
-
-    .service-lead {
-        line-height: 1.7;  /* Desktop: más aire entre líneas */
-    }
-
-    .service-block {
-        width: auto;
-        max-width: none;
-        overflow: visible;
-    }
-
-}
-
-/* =========================
-   Footer (global)
-   ========================= */
-
-/* Mobile-first base */
-footer {
-    background: transparent;
-    padding: 0 var(--spacing-horizontal-mobile) var(--space-8);
-    border-top: 1px solid rgba(193, 111, 82, 0.2);
-    /* Sin margen: la sección anterior ya trae su padding. Con margen quedaba una banda
-       del color del body entre el bloque hondo de contacto y la línea cobriza. */
-    margin-top: 0;
-}
-
-.footer-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-8);
-    text-align: center;
-    padding: var(--space-6) 0;
-}
-
-.footer-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.footer-main-line {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    flex-wrap: nowrap;
-}
-
-.footer-links-line {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-2);
-}
-
-.footer-brand {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-text);
-    opacity: 1;
-}
-
-.footer-separator {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    color: var(--color-text-low);
-    display: none !important;  /* Force hidden on mobile, even if JS tries to show */
-}
-
-/* Ocultar separador entre brand y copyright (debe estar pegado) */
-.footer-brand + .footer-separator {
-    display: none;
-}
-
-.footer-copy {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    color: var(--color-text);
-    opacity: 0.6;
-}
-
-.footer-practice {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    font-family: var(--font-label);
-    font-size: 1rem;
-    letter-spacing: 0.05em;
-    text-align: center;
-    line-height: 1.4;
-}
-
-.footer-tagline {
-    opacity: 0.5;
-}
-
-.footer-location {
-    color: var(--color-text-low);
-}
-
-.footer-link {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    color: var(--color-text);
-    text-decoration: none;
-    opacity: 0.8;
-    transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-2) 0;
-}
-
-.footer-link:hover {
-    opacity: 1;
-}
-
-.footer-link:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-}
-
-.social-icons {
-    display: flex;
-    gap: var(--space-5);
-    align-items: center;
-    justify-content: center;
-}
-
-.social-icons a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
-    padding: var(--space-2);
-}
-
-.social-icons svg {
-    width: 24px;
-    height: 24px;
-    fill: var(--color-text);
-    opacity: 0.55;
-    transition: opacity var(--transition-normal), transform var(--transition-normal), fill var(--transition-normal);
-}
-
-.social-icons a:hover svg {
-    opacity: 1;
-    fill: var(--color-accent);
-}
-
-/* Footer - Desktop Enhancement */
-@media (min-width: 769px) {
-    footer {
-        padding: 0 var(--space-24) var(--space-8);
-    }
-
-    .footer-grid {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        text-align: left;
-    }
-
-    .footer-left {
-        align-items: flex-start;
-        width: auto;
-    }
-
-    .footer-main-line {
-        justify-content: flex-start;
-        gap: var(--space-4);
-        flex-wrap: wrap;
-    }
-
-    .footer-links-line {
-        flex-direction: row;
-        gap: var(--space-4);
-    }
-
-    .footer-separator {
-        display: inline;  /* Show on desktop */
-    }
-
-    .footer-brand {
-        font-weight: 700;
-        opacity: 0.85;
-    }
-
-    .footer-copy {
-        opacity: 0.7;
-    }
-
-    .footer-practice {
-        text-align: left;
-        line-height: 1.2;
-    }
-
-    .footer-link {
-        opacity: 0.7;
-        min-height: auto;
-        display: inline-block;
-        padding: 0;
-    }
-
-    .footer-link:hover {
-        opacity: 0.85;
-    }
-
-    .social-icons {
-        justify-content: flex-start;
-    }
-}
-
-/* =========================
-   Contacto
-   ========================= */
-
-/* Mobile-first base */
-.contact-form-section {
-    padding: var(--spacing-block) var(--space-6);
-}
-
-.contact-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text);
-    opacity: 1;
-    margin-top: 0;  /* primer hijo del bloque: el espacio superior lo pone la sección */
-    margin-bottom: var(--space-6);
-}
-
-.contact-inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-10);
-    align-items: start;
-}
-
-/* Contexto narrativo */
-
-.contact-addresses {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-}
-
-.contact-city {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    text-transform: uppercase;
-    color: var(--color-accent);  /* sin opacity: accent × 0.7 daba 3,01:1 */
-    margin-bottom: var(--space-2);
-}
-
-.contact-street {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    color: var(--color-text-low);
-    line-height: 1.6;
-}
-
-/* Ficha del caso: cuatro respuestas y fuentes antes del informe largo.
-   Un lector del sector público verifica en dos minutos qué pedimos, qué hicimos,
-   qué pasó y de dónde salen los datos. */
-.ficha-caso {
-    /* Misma columna que las secciones: hereda ancho y padding lateral de .content-section;
-       acá solo el ritmo vertical. Antes margin 0 horizontal la dejaba pegada al borde. */
-    padding-top: var(--space-10);
-    padding-bottom: var(--space-10);
-    margin-top: var(--space-10);
-    margin-bottom: var(--space-10);
-    margin-left: auto;
-    margin-right: auto;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-}
-.ficha-caso-title {
-    font-size: 1.1875rem;
+h1, h2, h3, h4 {
     font-weight: 700;
     color: var(--color-text-high);
-    margin-bottom: var(--space-8);
-}
-.ficha-caso-grid {
-    display: grid;
-    gap: var(--space-6);
-    margin: 0;
-}
-.ficha-caso-item dt {
-    font-size: 0.9375rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: var(--space-2);
-}
-.ficha-caso-item dd {
-    margin: 0;
-    color: var(--color-text-mid);
-    line-height: 1.65;
-}
-.ficha-caso-fuentes {
-    margin-top: var(--space-8);
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: var(--color-text-low);
-}
-.ficha-caso-fuentes strong { color: var(--color-text-mid); font-weight: 700; }
-/* En páginas de reporte la ficha es una sección más: hereda el ritmo (separador + padding)
-   y no suma bordes ni márgenes propios. */
-.reporte-page .ficha-caso { margin: 0 auto; border: 0; }
-.ficha-caso-fuentes a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-@media (min-width: 769px) {
-    .ficha-caso-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-12); }
-}
-
-/* Contacto directo: mail en lugar de formulario */
-.contact-direct {
-    max-width: 34rem;
-}
-
-.contact-direct-mail {
-    display: inline-block;
-    font-size: clamp(1.0625rem, 4.4vw, 1.75rem);  /* entra en una línea desde 360px */
-    font-weight: 700;
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-decoration-color: rgba(193, 111, 82, 0.4);
-    text-underline-offset: 6px;
-    overflow-wrap: anywhere;
-    transition: text-decoration-color 0.2s ease;
-}
-
-.contact-direct-mail:hover,
-.contact-direct-mail:focus-visible {
-    text-decoration-color: var(--color-accent);
-}
-
-.contact-direct-promise {
-    font-size: var(--font-size-base);
-    line-height: 1.5;
-    color: var(--color-text-mid);
-    margin-top: var(--space-4);
-}
-
-/* Contact Form - Desktop Enhancement */
-@media (min-width: 769px) {
-    .contact-form-section {
-        padding: var(--spacing-block) var(--space-24);
-    }
-
-    .contact-label {
-        margin-bottom: var(--space-12);
-    }
-
-    .contact-inner {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .contact-addresses {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-/* =========================
-   Filter Bar
-   ========================= */
-
-.filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: var(--space-12);
-}
-
-.filter-btn {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    cursor: pointer;
-    transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-    text-transform: uppercase;
-}
-
-/* Activo: acento tipográfico + borde inferior (DESIGN.md: sin fondos sólidos) */
-
-.actividad-entrada.hidden {
-    display: none;
-}
-
-/* =========================
-   Proyectos Intro & CTA
-   ========================= */
-
-.proyectos-cta {
-    max-width: 900px;
-    margin: var(--space-16) auto 0;
-    padding: var(--space-12) 0;
-    text-align: center;
-    border-top: 1px solid rgba(250, 248, 246, 0.08);
-}
-
-.proyectos-cta-headline {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
-    font-size: var(--font-size-h2);
-    color: rgba(250, 248, 246, 0.95);
-    margin-bottom: var(--space-4);
-}
-
-.proyectos-cta-text {
-    font-size: var(--font-size-base);
-    color: rgba(250, 248, 246, 0.87);  /* WCAG AA compliant (antes 0.6) */
-    margin-bottom: var(--space-8);
-}
-
-/* =========================
-   Actividades - Editorial Layout
-   ========================= */
-
-.actividades-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text);
-    opacity: 1;
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-12);
-}
-
-.actividades-container {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Mobile-first base */
-.actividad-entrada {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-    gap: 0;
-    align-items: stretch;
-    min-height: auto;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-    overflow: hidden;  /* una sola tarjeta: imagen y texto en el mismo recuadro */
-}
-
-/* Mobile: entradas pares usan misma estructura */
-.actividad-entrada:nth-child(even) {
-    grid-template-columns: 1fr;
-}
-
-.actividad-entrada:nth-child(even) .actividad-imagen {
-    order: -1;  /* Always first on mobile */
-}
-
-.actividad-entrada:nth-child(even) .actividad-texto {
-    order: 0;  /* Always second on mobile */
-}
-
-/* Alternating layout: Order in HTML determines position (no RTL needed) */
-.actividad-imagen {
-    overflow: hidden;
-    height: auto;
-    aspect-ratio: 16 / 9;  /* Las ilustraciones son 16:9: se ven enteras, sin recorte */
-    order: -1;  /* Always first on mobile */
-}
-
-/* Fade-up reveal for entire card (image + text together) */
-.actividad-entrada {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .actividad-entrada {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-    }
-}
-
-/* Border on image when it's on the left (first child) */
-.actividad-imagen img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.actividad-texto {
-    padding: var(--space-5) var(--space-5);  /* Reducido de --space-8: menos altura en mobile */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: transparent;
-    order: 0;  /* Always second on mobile */
-}
-
-.actividad-meta {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    text-transform: uppercase;
-    margin-bottom: var(--space-3);
-}
-
-.actividad-fecha {
-    color: var(--color-text-muted);  /* Warm muted para meta secundaria */
-}
-
-.actividad-separador {
-    color: var(--color-text-muted);  /* Warm muted para separador */
-}
-
-.actividad-tags {
-    color: var(--color-text-muted);  /* Warm muted para tags */
-}
-
-/* Category badge for Hechos entries */
-.actividad-category-badge {
-    display: inline-block;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: var(--space-1) var(--space-3);
-    border-radius: 999px;   /* v2.2: pill, sin borde */
-    margin-bottom: var(--space-2);
-    /* Fondo Tinta: el acento sobre #12151a da 4,93:1. Con el terracota al 12 % daba 3,89:1 (AA pide 4,5) */
-    background: var(--color-bg);
-    color: var(--color-accent);
-}
-
-.actividad-entrada h3 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h3);
-    font-weight: 700;
-    color: var(--color-text);
-    opacity: 1;
-    line-height: 1.3;
-    margin-top: var(--space-3);
-}
-
-.actividad-descripcion {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    color: var(--color-text);
-    opacity: 0.75;
-    line-height: 1.6;
-    margin-top: var(--space-3);
-}
-
-/* v2.2: sin brackets en service blocks — reservados para La Usina */
-.service-block {
-    position: relative;
-}
-
-/* v2.2: los corner brackets quedan reservados como firma de La Usina
-   (.tesis-card). En cards de contenido la elevación la da la superficie,
-   no la línea. */
-.actividad-entrada {
-    position: relative;
-}
-
-.actividades-cta {
-    padding: var(--space-10) 0;
-}
-
-/* Activities Section - Desktop Enhancement */
-@media (min-width: 769px) {
-    .actividad-entrada {
-        grid-template-columns: 1.5fr 1fr;  /* imagen más ancha = más alta: iguala la altura del texto */
-        min-height: 0;
-        align-items: stretch;
-    }
-
-    .actividad-entrada:nth-child(even) {
-        grid-template-columns: 1fr 1.5fr;
-    }
-
-    .actividad-entrada:nth-child(even) .actividad-imagen {
-        order: 2;  /* Right side on even cards */
-    }
-
-    .actividad-entrada:nth-child(even) .actividad-texto {
-        order: 1;  /* Left side on even cards */
-    }
-
-    .actividad-imagen {
-        height: auto;
-        align-self: stretch;
-        position: relative;
-        aspect-ratio: auto;
-        min-height: 0;
-        order: 0;  /* Default order on desktop */
-    }
-
-    .actividad-texto {
-        padding: var(--space-8) var(--space-10);
-        order: 0;  /* Default order on desktop */
-    }
-
-}
-
-/* =========================
-   TRUST SECTION (Equipo + Clientes fusionado)
-   ========================= */
-
-.trust-section {
-    padding: var(--spacing-block) var(--space-6);  /* Mobile: 24px a los lados; 96px dejaba columnas de 51px para los logos */
-    background: transparent;
-}
-
-.trust-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-24);
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 var(--space-8);
-}
-
-/* Los grid items se dimensionan al contenido por defecto (min-width: auto);
-   sin esto el antiguo track de logos infla la columna entera */
-.trust-block {
-    min-width: 0;
-}
-
-.trust-block h3 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: var(--space-8);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-/* Equipo h3 centrado */
-.trust-socios h3 {
-    text-align: center;
-}
-
-/* Clientes h3 alineado izquierda */
-.trust-clientes h3 {
-    text-align: left;
-}
-
-/* =========================
-   Consistencia / Base de Cards
-   ========================= */
-
-/* Estandarizar transiciones */
-a,
-button,
-img {
-    transition: opacity var(--transition-normal);
-}
-
-/* =========================
-   Focus States (Accesibilidad)
-   ========================= */
-
-*:focus {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-}
-
-*:focus:not(:focus-visible) {
-    outline: none;
-}
-
-/* Focus ring global — alpha 0.55 para cumplir contraste no-textual 3:1 (WCAG 2.4.7) */
-*:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(193, 111, 82, 0.55);
-}
-
-/* El destino de un ancla recibe el foco con un tabindex temporal (main.js): no es un control,
-   así que no lleva anillo. El foco queda ahí para que el próximo Tab siga desde ese punto. */
-[tabindex="-1"]:focus,
-[tabindex="-1"]:focus-visible {
-    outline: none;
-    box-shadow: none;
-}
-
-/* Focus en nav links */
-.nav-links a:focus-visible {
-    color: var(--color-accent);
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
-}
-
-.mobile-menu-btn:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
-}
-
-/* Focus en social icons */
-.social-icons a:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
-    border-radius: 4px;
-}
-
-/* Skip link para accesibilidad */
-.skip-link {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: var(--color-accent);
-    color: #12151a;
-    padding: var(--space-4) var(--space-8);
-    z-index: var(--z-modal);
-    font-weight: 700;
-    text-decoration: none;
-    transition: top var(--transition-fast);
-}
-
-.skip-link:focus {
-    top: 0;
-}
-
-/* =========================
-   Responsive
-   ========================= */
-
-/* Tablet (769–1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .hero {
-        padding: 140px var(--spacing-horizontal-tablet) var(--space-20);
-    }
-
-    .section {
-        padding: var(--spacing-block) var(--spacing-horizontal-tablet);
-    }
-
-    .nav-container,
-.hero-brand-content {
-        padding: 0 var(--spacing-horizontal-tablet);
-    }
-
-    .services-container {
-        padding: 0 var(--spacing-horizontal-tablet);
-    }
-
-    .contact-form-section {
-        padding: var(--spacing-block) var(--space-16);
-    }
-
-    footer {
-        padding: 0 var(--space-16) var(--space-8);
-    }
-
-}
-
-/* Mobile-first migration note:
-   The previous 285-line max-width:768px block contained many rules that have been
-   migrated to mobile-first pattern (mobile values in base, desktop overrides in min-width:769px).
-   Only the universal patch below remains, as it cannot be inverted (per migration instructions).
-   If specific rules are needed, they should be added to base styles with desktop overrides. */
-
-@media (max-width: 768px) {
-    /* Universal patch: prevent horizontal overflow on mobile
-       This rule cannot be migrated to mobile-first pattern because it uses the universal
-       selector (*) which must apply ONLY to mobile to avoid breaking desktop layouts.
-       Applying max-width: 100% universally on desktop would break fixed-width elements. */
-    * {
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* Ensure main containers don't overflow */
-    .hero, .section, main {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: clip;
-    }
-}
-
-/* =========================
-   Prefers Reduced Motion
-   ========================= */
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-    }
-}
-
-/* ===============================
-   Tarjetas de impacto (reporte)
-   =============================== */
-
-/* Header de la tarjeta (icono + título) */
-.impact-top {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-}
-
-/* Spacing utilities for impact-top */
-.impact-top--spacing-md {
-  margin-top: var(--space-8);
-}
-
-.impact-top--spacing-lg {
-  margin-top: var(--space-10);
-}
-
-.text-spacing-md {
-  margin-top: var(--space-6);
-}
-
-/* Lista dentro de tarjeta */
-.impact-list {
-  margin-top: var(--space-4);
-  padding-left: var(--space-5);
-}
-
-.impact-list li {
-  margin-bottom: var(--space-2);
-}
-
-/* === ESTILO REPORTE IMPACTO (alineado con index) === */
-
-.actividad-card--light {
-  background: rgba(250, 248, 246, 0.02);
-  border: 1px solid rgba(193, 111, 82, 0.45);
-  padding: var(--space-8);
-  border-radius: 8px;
-}
-
-.actividad-card--light h3 {
-  color: var(--color-text);
-}
-
-.actividad-card--light ul {
-  padding-left: var(--space-5);
-}
-
-/* =========================
-   Layout específico Reporte
-   ========================= */
-
-/* HERO del reporte - Mobile-first base */
-.hero-section {
-    position: relative;
-    padding: var(--hero-top) var(--space-6) var(--spacing-hero-bottom);
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.hero-section h1 {
-    font-size: var(--font-size-h2);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: var(--space-3);
-}
-
-.hero-sub {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    max-width: 900px;
     text-wrap: balance;
+    hyphens: none;
 }
 
-/* Contenedor principal del reporte - Mobile-first base */
-.content-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--spacing-block) var(--spacing-horizontal-mobile);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-8);
-}
-
-.reporte-section h2 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h3);
-    font-weight: 700;
-    color: var(--color-text);
-    text-align: left;
-    line-height: var(--line-height-heading);
-    margin-bottom: var(--space-4);
-}
-
-.reporte-section h3 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    color: var(--color-text);
-    text-align: left;
-    line-height: var(--line-height-heading);
-    margin-bottom: var(--space-3);
-}
-
-.reporte-section p,
-.reporte-section li {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    color: rgba(250, 248, 246, 0.65);  /* antes .87 × opacity .75; el alfa va en un solo lugar */
-    text-align: left;
-    line-height: var(--line-height-body);
-    max-width: 65ch;
-}
-
-/* Report Pages - Desktop Enhancement */
-@media (min-width: 769px) {
-    .hero-section {
-        padding: var(--hero-top) var(--space-8) var(--spacing-hero-bottom);
-    }
-
-    .content-section {
-        padding: var(--spacing-block) var(--spacing-horizontal-desktop);
-    }
-}
-
-/* ──────────────────────────────────────────────
-   ESTILOS ESPECÍFICOS DE PÁGINAS INTERNAS
-──────────────────────────────────────────────*/
-
-/* Política de Privacidad / Páginas legales */
-.legal-page {
-  background-color: var(--color-bg);
-  color: var(--color-text-light);
-  line-height: var(--line-height-body);
-}
-
-.legal-page .legal-hero,
-.legal-page .legal-content {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 var(--space-8);
-}
-.legal-page .legal-hero {
-  /* Debajo del nav fijo */
-  padding-top: var(--hero-top);
-  padding-bottom: var(--spacing-hero-bottom);
-}
-.legal-page .legal-content {
-  padding-top: var(--spacing-block);
-  padding-bottom: var(--spacing-block-edge);  /* último bloque de main: cierra contra el footer */
-}
-
-.legal-page h1 {
-  font-size: var(--font-size-h2);
-  color: var(--color-text);
-  margin-bottom: var(--space-4);
-}
-
-.legal-page h2 {
-  font-size: var(--font-size-h3);
-  color: var(--color-text);  /* Blanco puro para headings */
-  margin-top: var(--space-12);
-  margin-bottom: var(--space-4);
-}
-
-.legal-page p {
-  margin-bottom: var(--space-6);
-  color: var(--color-text-secondary);
-}
-
-.legal-page ul {
-  margin-left: var(--space-8);
-  margin-bottom: var(--space-6);
-}
-
-.legal-page li {
-  margin-bottom: var(--space-2);
-  color: var(--color-text-secondary);
-}
-
-/* ──────────────────────────────────────────────
-   Reporte de Impacto
-──────────────────────────────────────────────*/
-
-.reporte-page .hero-section {
-    /* Mismo padding lateral que .content-section: el hero, la ficha y las cards
-       comparten un solo borde izquierdo. */
-    padding: var(--hero-top) var(--spacing-horizontal-mobile) var(--spacing-hero-bottom);
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: left;
-}
-@media (min-width: 769px) {
-    .reporte-page .hero-section {
-        padding-left: var(--space-24);
-        padding-right: var(--space-24);
-    }
-}
-
-.reporte-page .report-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-6);
-}
-
-.reporte-page .hero-section h1 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-h2);
-    font-weight: 700;
-    color: var(--color-text);
-    text-align: left;
-    line-height: var(--line-height-heading);
-    margin-bottom: var(--space-3);
-}
-
-.reporte-page .hero-sub {
-    font-size: var(--font-size-base);
-    color: rgba(250, 248, 246, 0.65);
-    max-width: 900px;
-}
-
-.reporte-page .report-tags {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: var(--font-size-base);
-    color: rgba(250, 248, 246, 0.61);
-    margin-top: var(--space-4);
-}
-
-.reporte-page .actividad-card--light {
-    background: rgba(250, 248, 246, 0.02);
-    border: 1px solid rgba(193, 111, 82, 0.4);
-    border-radius: 8px;
-}
-
-.reporte-page .impact-number-hero {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    color: var(--color-accent);
-    line-height: 1.1;
-    margin: var(--space-6) 0;
-}
-
-.reporte-page .section-separator {
-    /* La línea queda centrada en el silencio: --spacing-block arriba (padding del bloque
-       anterior) y --spacing-block abajo (padding de .content-section). */
-    border-top: 1px solid rgba(250, 248, 246, 0.08);
-}
-
-.report-scenarios-grid {
-  display: grid;
-  /* Antes: gap 32 + margin-bottom 24 de cada acordeón. Mismo espacio visible entre
-     acordeones, pero sin margen colgando bajo el último (sumaba al gap entre bloques). */
-  gap: calc(var(--space-8) + var(--space-6)) var(--space-8);
-}
-
-@media (min-width: 1025px) {
-  .report-scenarios-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-.report-toc-list {
-  list-style: none;
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.report-toc-list li {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-}
-
-.editorial-arrow {
-  color: var(--color-text-muted);  /* Warm muted para decorativo */
-  font-weight: 400;
-  flex-shrink: 0;
-}
-
-.report-toc-list a {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: var(--font-size-base);
-  font-weight: 400;
-  color: rgba(250, 248, 246, 0.61);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.report-toc-list a:hover {
-  color: var(--color-accent);
-}
-
-/* =========================
-   Señales de la Semana Widget
-   ========================= */
-
-.senales-header {
-    margin-bottom: var(--space-12);
-    text-align: center;
-}
-
-.senales-title {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-h2);
-    font-weight: 700;
-    color: var(--color-text);
-    line-height: var(--line-height-heading);
-}
-
-.senales-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Mobile base: single column */
-    gap: var(--space-6); /* Mobile base */
-}
-
-.senal-card {
-    background: var(--color-surface);
-    border: var(--border-card);
-    border-radius: var(--border-radius);
-    padding: var(--space-6); /* Mobile base */
-    transition: box-shadow 0.35s ease;
-}
-
-.senal-label {
-    display: inline-block;
-    font-family: var(--font-label);
-    font-size: var(--font-size-base);
-    color: var(--orange-500);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-4);
-}
-
-.senal-headline {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    color: var(--color-text);
-    line-height: var(--line-height-heading);
-    margin-bottom: var(--space-4);
-}
-
-.senal-analysis {
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-body);
-    margin-bottom: var(--space-4);
-}
-
-/* Desktop enhancements - Señales widget */
-@media (min-width: 769px) {
-
-    .senales-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: var(--space-8);
-    }
-
-    .senal-card {
-        padding: var(--space-8);
-    }
-}
-
-/* =========================
-   Service Timelines
-   ========================= */
-
-/* "Ver proceso": enlace tipográfico, como todos los CTAs del sitio (v2.5) */
-.service-timeline-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    margin-top: var(--space-5);
-    min-height: 44px;
-    padding: 0;
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    color: var(--color-accent);
-    background: transparent;
-    border: 0;
-    border-radius: 4px;
-    text-decoration: underline;
-    text-decoration-color: rgba(193, 111, 82, 0.4);
-    text-underline-offset: 4px;
-    cursor: pointer;
-    transition: text-decoration-color var(--transition-fast);
-}
-
-.service-timeline-toggle:hover,
-.service-timeline-toggle:focus-visible {
-    text-decoration-color: var(--color-accent);
-}
-
-.service-timeline-toggle:focus-visible {
-    outline: 2px solid var(--orange-500);
-    outline-offset: 2px;
-}
-
-.timeline-toggle-icon {
-    display: inline-block;      /* fuera del subrayado del enlace y con eje de giro estable */
-    font-size: 1rem;
-    line-height: 1;
-    vertical-align: middle;
-    transform-origin: center;
-    transition: transform var(--transition-fast);
-}
-.service-timeline-toggle[aria-expanded="true"] .timeline-toggle-icon {
-    transform: rotate(180deg);
-}
-
-.service-timeline {
-    display: none;
-}
-
-.service-timeline[aria-hidden="false"] {
-    display: block;
-}
-
-.timeline-item {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    padding: var(--space-4) 0;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.timeline-item:last-child {
-    border-bottom: none;
-}
-
-.timeline-week {
-    font-family: var(--font-label);
-    font-size: var(--font-size-base);
-    font-weight: 700;
-    color: var(--orange-500);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.timeline-milestone {
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-body);
-}
-
-/* ==========================
-   Estilo de enlaces legales
-   (política de privacidad)
-   ========================== */
-
-.legal-link {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 400;
-  transition: opacity 0.2s ease;
-}
-
-.legal-link:hover {
-  opacity: 0.9;
-  text-decoration: underline;
-}
-
-.legal-link:focus-visible {
-  opacity: 0.9;
-  text-decoration: underline;
-  outline: 2px solid var(--orange-500);
-  outline-offset: 2px;
-}
-
-/* Los enlaces de Privacidad y de la 404 van en medio del texto: se distinguen por algo más
-   que el color (WCAG 1.4.1), igual que los de la prosa. `.legal-page a` los dejaba sin subrayado. */
-.legal-page .legal-link {
-  text-decoration: underline;
-  text-decoration-color: rgba(193, 111, 82, 0.45);
-  text-underline-offset: 3px;
-}
-.legal-page .legal-link:hover,
-.legal-page .legal-link:focus-visible {
-  text-decoration-color: currentColor;
-}
-
-/* =======================================
-   Enlaces internos en páginas legales
-   y de reporte (mail, volver, etc.)
-======================================= */
-
-.legal-page a,
-.reporte-page a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: color var(--transition-normal);
-}
-
-/* Los CTA tipográficos conservan el acento */
-.reporte-page .cta-primary,
-.legal-page .cta-primary {
-  color: var(--color-accent);
-}
-
-.legal-page a:hover,
-.reporte-page a:hover {
-  color: var(--color-accent-bright);
-}
-
-.legal-page a:visited,
-.reporte-page a:visited {
-  color: var(--color-accent);
-}
-
-/* Footer links should not be accent color in legal/reporte pages */
-.legal-page .footer-link,
-.reporte-page .footer-link,
-.legal-page .footer-link:visited,
-.reporte-page .footer-link:visited {
-  color: var(--color-text) !important;
-  opacity: 0.5;
-}
-
-.legal-page .footer-link:hover,
-.reporte-page .footer-link:hover {
-  color: #c16f52 !important;
-  opacity: 0.9;
-}
-
-.reporte-page .nav-links a,
-.legal-page .nav-links a {
-  color: var(--color-text-light);
-}
-
-.reporte-page .nav-links a:hover,
-.legal-page .nav-links a:hover {
-  color: var(--color-accent);
-}
-
-.reporte-page .nav-links a:visited,
-.legal-page .nav-links a:visited {
-  color: var(--color-text-light);
-}
-
-/* ──────────────────────────────────────────────
-   Optimizaciones Reporte de Impacto
-──────────────────────────────────────────────*/
-
-/* Sticky Table of Contents */
-.sticky-toc {
-  position: fixed;
-  top: 100px;
-  right: var(--space-8);
-  max-width: 280px;
-  background: rgba(250, 248, 246, 0.02);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(193, 111, 82, 0.3);
-  border-radius: 8px;
-  padding: var(--space-6);
-  z-index: 100;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
-}
-
-.sticky-toc.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.sticky-toc .toc-label {
-  font-size: var(--font-size-base);
-  font-weight: 700;
-  color: var(--color-accent);
-  margin-bottom: var(--space-4);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.sticky-toc ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sticky-toc li {
-  margin-bottom: var(--space-3);
-}
-
-.sticky-toc a {
-  font-size: var(--font-size-base);
-  color: var(--color-text-light);
-  text-decoration: none;
-  transition: color 0.3s;
-  display: block;
-  padding: var(--space-1) 0;
-}
-
-.sticky-toc a:hover,
-.sticky-toc a.active {
-  color: var(--color-accent);
-  padding-left: var(--space-2);
-}
-
-/* Botón del índice (debajo de 1280px): pastilla con la palabra "Índice", en el registro de las
-   etiquetas de índice del sitio (mayúsculas, acento). Las tres rayas eran las mismas del menú. */
-.mobile-toc-btn {
-  position: fixed;
-  bottom: var(--space-6);
-  right: var(--spacing-horizontal-mobile);
-  min-height: 44px;
-  padding: 0 var(--space-5);
-  border-radius: 999px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Mobile TOC Overlay */
-.mobile-toc-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(18, 21, 26, 0.95);
-  z-index: 9998;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
-  overflow-y: auto;
-  padding: var(--space-8);
-}
-
-.mobile-toc-overlay.active {
-  opacity: 1;
-  visibility: visible;
-  /* Al abrir, visible en el acto (así recibe el foco); al cerrar, se va con el fundido. */
-  transition: opacity 0.3s, visibility 0s;
-}
-
-.mobile-toc-overlay .toc-content {
-  max-width: 600px;
-  margin: 0 auto;
-  padding-top: var(--space-8);
-}
-
-/* Título del índice móvil: era un <h2> que precedía al <h1> en el DOM. Ahora es un <p>
-   con el mismo aspecto; el nombre del overlay va en su aria-label. */
-.mobile-toc-overlay .toc-title {
-  font-family: var(--font-display);
-  font-size: var(--font-size-h2);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1.2;
-  color: var(--color-text);
-  text-wrap: balance;
-  margin: 0 0 var(--space-5);
-}
-
-.mobile-toc-overlay .close-btn {
-  position: absolute;
-  top: var(--space-6);
-  right: var(--space-6);
-  background: transparent;
-  border: none;
-  color: var(--color-accent);
-  font-size: 2rem;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Pull Quotes */
-.pull-quote {
-  margin: var(--space-8) 0; /* Mobile base */
-  padding: 1.5rem 1.5rem var(--space-6) var(--space-8); /* Mobile base */
-  background: rgba(250, 248, 246, 0.04);
-  border-radius: 8px;
-  position: relative;
-}
-
-.pull-quote::before {
-  content: '"';
-  position: absolute;
-  top: -10px;
-  left: var(--space-5);
-  font-size: 5rem;
-  color: var(--color-accent);
-  opacity: 0.3;
-  font-family: Georgia, serif;
-  line-height: 1;
-}
-
-.pull-quote p {
-  font-size: var(--font-size-base);
-  font-weight: 700;
-  color: var(--color-text);
-  margin: 0;
-  position: relative;
-  z-index: 1;
-}
-
-/* "Qué significa para vos": usa .ficcion-aviso, el aviso estándar con borde de acento (v2.6). */
-
-/* Scenario Accordions */
-.scenario-accordion {
-  margin-bottom: 0;  /* la separación la pone el row-gap de .report-scenarios-grid */
-}
-
-.scenario-accordion-title {
-  margin: 0;
-}
-
-.scenario-accordion-header {
-  width: 100%;
-  background: rgba(250, 248, 246, 0.02);
-  border: 1px solid rgba(193, 111, 82, 0.4);
-  border-radius: 8px;
-  padding: var(--space-5) var(--space-6); /* Mobile base */
-  text-align: left;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-3);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  margin-bottom: 0;
-  font-family: inherit;
-  font-size: var(--font-size-base);
-  font-weight: inherit;
-  color: var(--color-text);
-}
-
-.scenario-accordion-header:hover {
-  background: rgba(193, 111, 82, 0.05);
-  border-color: var(--color-accent);
-}
-
-.scenario-accordion-header.active {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-color: transparent;
-}
-
-.scenario-accordion-header .toggle-icon {
-  font-size: 1.5rem;
-  color: var(--color-accent);
-  transition: transform 0.3s;
-}
-
-.scenario-accordion-header.active .toggle-icon {
-  transform: rotate(180deg);
-}
-
-.scenario-accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  visibility: hidden; /* colapsado de verdad: fuera del árbol de accesibilidad y del orden de tabulación */
-  transition: max-height 0.4s ease-out, padding 0.4s ease-out, visibility 0.4s;
-  background: rgba(250, 248, 246, 0.02);
-  border: 1px solid rgba(193, 111, 82, 0.4);
-  border-top: none;
-  border-bottom-left-radius: var(--space-3);
-  border-bottom-right-radius: var(--space-3);
-  padding: 0 var(--spacing-horizontal-mobile); /* Mobile base */
-}
-
-.scenario-accordion-content.active {
-  max-height: 2000px;
-  visibility: visible;
-  padding: var(--space-5) var(--space-6); /* Mobile base */
-}
-
-/* Hero Background Pattern */
-.reporte-page .hero-section {
-  position: relative;
-  overflow: hidden;
-    padding-top: var(--hero-top);
-}
-
-/* Share Buttons */
-.share-buttons {
-  position: fixed;
-  left: var(--space-8);
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  z-index: 100;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
-}
-
-.share-buttons.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.share-buttons a {
-  width: 44px;
-  height: 44px;
-  background: rgba(250, 248, 246, 0.05);
-  border: 1px solid rgba(193, 111, 82, 0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  text-decoration: none;
-}
-
-.share-buttons a:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-.share-buttons svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--color-text-light);
-  transition: fill 0.3s;
-}
-
-.share-buttons a:hover svg {
-  fill: #12151a;
-}
-
-/* Responsive adjustments */
-/* Índice pegajoso y botones de compartir desde 1280px; el caso les deja lugar a la derecha
-   (v3.3, al final del archivo). Debajo, el botón "Índice". */
-@media (max-width: 1279px) {
-  .sticky-toc {
-    display: none;
-  }
-
-  .mobile-toc-btn {
-    display: flex;
-  }
-
-  .share-buttons {
-    display: none;
-  }
-}
-
-/* Desktop enhancements - Article elements */
-@media (min-width: 769px) {
-  .pull-quote {
-    padding: var(--space-8) var(--space-10);
-    margin: var(--space-12) 0;
-  }
-
-  .scenario-accordion-header {
-    padding: var(--space-6) var(--space-8);
-  }
-
-  .scenario-accordion-content {
-    padding: 0 var(--space-8);
-  }
-
-  .scenario-accordion-content.active {
-    padding: var(--space-6) var(--space-8);
-  }
-
-  }
-
-/* ========================================
-   Logos de clientes e instituciones (la grilla está en .logos-grid, más abajo)
-   ======================================== */
-
-.logo-item {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-item img {
-  /* Los diez logos vienen recortados a su contenido real, así que una sola caja
-     (contain) los escala parejo. Solo dos ajustes de peso visual: marcas
-     cuadradas más chicas, wordmarks muy anchos más bajos. */
-  width: 100%;
-  height: 40px;
-  object-fit: contain;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-/* Marcas cuadradas: más altas que los wordmarks para que no queden chicas al lado */
-.logo-item img[src*="olamestudio"] {
-  height: 64px;
-  max-width: 64px;
-}
-/* Speculative Futures Madrid: isotipo + tres líneas de texto. A la altura de un
-   wordmark el texto no se lee; en mobile lo limita el ancho de la celda. */
-.logo-item img[src*="speculative-futures-madrid"] {
-  height: 54px;
-}
-.logo-item img[src*="logo-cesba"] {
-  height: 68px;
-  max-width: 68px;
-}
-.logo-item img[src*="trace-logo"],
-.logo-item img[src*="micelio"],
-.logo-item img[src*="otros-futuros"] {
-  height: 28px;
-}
-@media (min-width: 769px) {
-  .trust-section { padding-left: var(--space-24); padding-right: var(--space-24); }
-  .logo-item img { height: 46px; }
-  .logo-item img[src*="olamestudio"] { height: 84px; max-width: 84px; }
-  .logo-item img[src*="speculative-futures-madrid"] { height: 80px; }
-  .logo-item img[src*="logo-cesba"] { height: 88px; max-width: 88px; }
-  .logo-item img[src*="trace-logo"],
-  .logo-item img[src*="micelio"],
-  .logo-item img[src*="otros-futuros"] { height: 32px; }
-}
-
-.footer-left {
-  gap: var(--space-2);
-}
-
-/* =========================
-   Accessibility: Reduce Motion
-   ========================= */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* =============================================
-   LA USINA — unidad de investigación
-   Mobile-first: base = mobile, desktop en min-width: 769px
-   ============================================= */
-
-/* Card de tesis en /usina */
-.tesis-card {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: var(--space-6) var(--space-4);
-  background: var(--color-surface);
-  border: 1px solid rgba(250, 248, 246, 0.06);
-  border-radius: var(--border-radius);
-}
-
-.tesis-card__label {
-  font-size: 0.9375rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: var(--space-3);
-}
-
-.tesis-card__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
-}
-
-.tesis-card__subtitle {
-  color: rgba(250, 248, 246, 0.75);
-  margin-bottom: var(--space-3);
-}
-
-.tesis-card__authors {
-  font-size: 1rem;
-  color: rgba(250, 248, 246, 0.55);
-  margin-bottom: var(--space-4);
-}
-
-.tesis-card__desc {
-  margin-bottom: var(--space-5);
-}
-
-.tesis-card__desc em {
-  color: var(--color-accent);
-  font-style: normal;
-  font-weight: 700;
-}
-
-/* Página de tesis: subtítulo y metadata */
-.thesis-subtitle {
-  max-width: 800px;
-  margin: 0 0 var(--space-5);
-}
-
-.thesis-metadata-bar {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  max-width: 800px;
-  margin: 0;
-  padding: var(--space-4) 0;
-  border-top: 1px solid rgba(250, 248, 246, 0.12);
-  border-bottom: 1px solid rgba(250, 248, 246, 0.12);
-  font-size: 0.9375rem;
-  letter-spacing: 0.04em;
-  color: rgba(250, 248, 246, 0.55);
-}
-
-.thesis-download {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 400;
-}
-
-.thesis-download:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;  /* antes opacity 0.75: accent atenuado daba 3,27:1 */
-}
-
-/* Resumen */
-.thesis-abstract {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.thesis-section-label {
-  font-size: 0.9375rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: var(--space-4);
-}
-
-.thesis-abstract p + p {
-  margin-top: var(--space-4);
-}
-
-.thesis-abstract em {
-  color: var(--color-accent);
-  font-style: normal;
-  font-weight: 700;
-}
-
-/* El visor PDF embebido se retiró en v2.6: portada + enlaces (.thesis-cover, al final del archivo). */
-
-/* Cita sugerida */
-.thesis-cite {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: var(--space-4);
-  background: var(--color-surface);
-  border-left: 2px solid var(--color-accent);
-  border-radius: 0 8px 8px 0;
-  font-size: 1rem;
-}
-
-.thesis-cite p + p {
-  margin-top: var(--space-3);
-}
-
-.thesis-cite__note {
-  color: rgba(250, 248, 246, 0.55);
-}
-
-@media (min-width: 769px) {
-  .tesis-card {
-    padding: var(--space-8) var(--space-6);
-  }
-
-  .tesis-card__title {
-    font-size: 1.75rem;
-  }
-
-  .thesis-metadata-bar {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--space-2) var(--space-5);
-  }
-
-}
-
-/* ============ v2.2: tipografía editorial + variable font ============ */
-
-/* Neutralizado por feedback de socios (2026-08-21): el contraste de pesos
-   en el h1 se percibía como una segunda tipografía. Los spans quedan en el
-   HTML como no-op por si se quiere reactivar con un peso más cercano. */
-.h1-light {
-  font-weight: inherit;
-}
-
-/* La fuente variable habilita transición de peso en CTAs tipográficos */
-@media (prefers-reduced-motion: no-preference) {
-  .cta-link {
-    transition: opacity 0.2s ease, font-weight 0.25s ease;
-  }
-
-  .cta-link:hover {
-    font-weight: 700;
-  }
-
-  .cta-primary {
-    transition: color 0.2s ease, text-decoration-color 0.2s ease, font-weight 0.25s ease;
-  }
-
-  .cta-primary:hover {
-    font-weight: 700;
-  }
-}
-
-/* ============ Fase B 2026: grano por capas ============ */
-/* Superficies elevadas con noise levemente más denso que el del body
-   (opacity 0.05 vs 0.035): gramajes de papel distintos por capa. Se
-   aplica como background-image en el propio elemento (no ::before): un
-   pseudo-elemento absoluto pintaría sobre el contenido no posicionado
-   por painting order; la capa de background pinta siempre debajo del
-   contenido, respeta el border-radius y no necesita z-index. */
-.service-block,
-.senal-card,
-.tesis-card {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-}
-
-/* ============ Fase B 2026: offsets en Hechos (desktop) ============ */
-/* Broken grid moderado: cards alternadas corridas ~5% del eje, más
-   silencio vertical entre ellas. width + margin auto (no transform):
-   todo queda dentro del contenedor, cero riesgo de overflow-x. La
-   alternancia imagen/texto (nth-child even) no se toca. */
-@media (min-width: 1025px) {
-    /* Aplica a inicio (#actividades), Lo hecho (#actividades) y Pensamiento (#articulos): las tres listas iguales. */
-    .actividad-entrada {
-        width: 95%;
-        margin-right: auto;   /* impares: hacia la izquierda */
-    }
-
-    .actividad-entrada:nth-child(even) {
-        margin-right: 0;
-        margin-left: auto;    /* pares: hacia la derecha */
-    }
-
-    .actividad-entrada + .actividad-entrada {
-        margin-top: var(--space-16);
-    }
-}/* Mobile: aire entre tarjetas (el borde susurro solo no alcanza) */
-.actividad-entrada + .actividad-entrada { margin-top: var(--space-10); }
-/* Separación también entre 769 y 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .actividad-entrada + .actividad-entrada { margin-top: var(--space-12); }
-}
-
-/* ============ Fase B 2026: índice archival (/pensamiento) ============ */
-/* Ficha de archivo: filas tipográficas con borde susurro, sin cajas. Sin numeración
-   (v3.3): las tres secciones no son una secuencia. */
-.indice-archival {
-    max-width: 900px;
-    /* #indice lleva padding-bottom: 0 inline; este margen es el cierre del bloque. */
-    margin: 0 auto var(--spacing-block);
-    padding: 0 var(--spacing-horizontal-mobile);
-}
-
-.indice-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: var(--space-4);
-}
-
-.indice-lista {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.indice-fila a {
-    display: block;
-    line-height: 1.5;  /* la fila mide lo mismo que cuando llevaba el número al lado */
-    padding: var(--space-3) 0;
-    border-top: 1px solid rgba(250, 248, 246, 0.06);
-    text-decoration: none;
-}
-
-.indice-fila:last-child a {
-    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
-}
-
-.indice-titulo {
-    font-size: 1.0625rem;
-    line-height: 1.5;
-    color: rgba(250, 248, 246, 0.85);
-    transition: color 0.2s ease;
-    min-width: 0;
-}
-
-.indice-fila a:hover .indice-titulo,
-.indice-fila a:focus-visible .indice-titulo {
-    color: var(--color-accent);
-}
-
-
-/* ============ Fase B 2026: rail de cifras (scrollytelling reporte) ============ */
-/* Desktop only: bloque bajo el sticky TOC del reporte que muestra la
-   cifra de la sección visible. Desde 1280px, igual que el índice
-   pegajoso que lo contiene. */
-.toc-data-rail {
-    display: none;
-}
-
-@media (min-width: 1280px) {
-    .toc-data-rail {
-        display: block;
-        margin-top: var(--space-5);
-        padding-top: var(--space-5);
-        border-top: 1px solid rgba(250, 248, 246, 0.06);
-    }
-
-    .data-rail-value {
-        display: block;
-        font-size: 2.25rem;
-        font-weight: 700;
-        line-height: 1.05;
-        letter-spacing: -0.01em;
-        font-variant-numeric: tabular-nums;
-        color: var(--color-accent);
-    }
-
-    .data-rail-label {
-        display: block;
-        margin-top: var(--space-2);
-        font-size: 0.9375rem;
-        font-weight: 400;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        line-height: 1.5;
-        color: rgba(250, 248, 246, 0.55);
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .data-rail-value,
-    .data-rail-label {
-        transition: opacity 0.18s ease;
-    }
-
-    .toc-data-rail.is-switching .data-rail-value,
-    .toc-data-rail.is-switching .data-rail-label {
-        opacity: 0;
-    }
-}
-
-/* ============ Fase B 2026: ficha técnica de proyecto ============ */
-/* Metadata de caso bajo el hero: caps pequeñas (patrón metadata de
-   DESIGN.md), labels en text-low, valores en text-mid, filas separadas
-   por borde susurro. Sin cajas, sin fondos. */
-.ficha-tecnica {
-    margin: var(--space-8) 0 0;
-    max-width: 560px;
-}
-
-.ficha-row {
-    display: flex;
-    flex-direction: column;  /* móvil: etiqueta arriba y valor abajo, a todo el ancho */
-    padding: var(--space-2) 0;
-    border-top: 1px solid rgba(250, 248, 246, 0.06);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.ficha-row:last-child {
-    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
-}
-
-.ficha-row dt {
-    color: rgba(250, 248, 246, 0.55);
-}
-
-.ficha-row dd {
-    margin: 0;
-    color: rgba(250, 248, 246, 0.75);
-}
-
-/* Escritorio: dos columnas. La de etiquetas entra la más larga (CONSTRUCCIÓN), así todos los
-   valores arrancan en la misma línea. */
-@media (min-width: 769px) {
-    .ficha-row {
-        flex-direction: row;
-        align-items: baseline;
-        gap: var(--space-4);
-    }
-    .ficha-row dt { flex: 0 0 9rem; }
-}
-
-/* ============ v2.2.1: profundidad de fondo + detalles de paleta ============ */
-/* El fondo deja de ser un plano único: tres registros del mismo marrón
-   cálido crean espacio sin líneas. bg-deep (secciones de peso), bg (base),
-   surface (cards). La separación por tono reemplaza al separador por borde. */
-
-:root {
-    --color-bg-deep: #0d1014;      /* Registro hondo: services, contacto */
-}
-
-/* Sección de servicios: registro hondo con lámpara terracotta arriba.
-   (La clase existía en el HTML pero su CSS se perdió — se redefine acá.) */
-.section--orange-950 {
-    background:
-        radial-gradient(1200px 480px at 18% -8%, rgba(150, 175, 215, 0.06), transparent 65%),
-        var(--color-bg-deep);
-}
-
-/* Contacto: mismo registro hondo, lámpara desde el otro lado —
-   la variación de posición es deliberada (craft, no template). */
-.contact-form-section {
-    background:
-        radial-gradient(1000px 420px at 85% 0%, rgba(150, 175, 215, 0.05), transparent 60%),
-        var(--color-bg-deep);
-}
-
-/* Luz desde arriba en superficies: 1px de highlight interior — las cards
-   se sienten iluminadas, no dibujadas. */
-.service-block,
-.senal-card,
-.tesis-card {
-    box-shadow: inset 0 1px 0 rgba(250, 248, 246, 0.05), var(--shadow-card);
-}
-
-.service-block:hover,
-.senal-card:hover {
-    box-shadow: inset 0 1px 0 rgba(250, 248, 246, 0.07), var(--shadow-card-hover);
-}
-
-/* Selección de texto en paleta (antes: azul default del browser) */
-::selection {
-    background: rgba(193, 111, 82, 0.85);
-    color: #12151a;
-}
-
-/* Scrollbar en paleta (antes: gris default) */
-html {
-    scrollbar-color: #2b313a #12151a;
-    scrollbar-width: thin;
-}
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #12151a;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #2b313a;
-    border-radius: 999px;
-    border: 2px solid #12151a;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(193, 111, 82, 0.5);
-}
-
-/* Tap highlight mobile en paleta (antes: gris/azul del sistema) */
-* {
-    -webkit-tap-highlight-color: rgba(193, 111, 82, 0.18);
-}
-
-/* ============ v2.2.1: logos en grilla ============ */
-/* Reemplaza al marquee (ilegible a 200px/s y muerto bajo reduced-motion).
-   Sin apariciones al scroll desde v2.9: la grilla está visible de entrada. */
-.logos-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);  /* Mobile: 2×5 */
-  gap: var(--space-6) var(--space-8);
-  padding: var(--space-4) 0;
-}
-
-@media (min-width: 769px) {
-  .logos-grid {
-    grid-template-columns: repeat(5, 1fr);  /* Desktop: 5×2 */
-    gap: var(--space-10) var(--space-8);
-  }
-}
-
-/* ============ v2.2.1: tratamiento cálido de fotografía ============ */
-/* Las fotos con balance frío chocan con la atmósfera marrón: un velo
-   sepia sutil las une a la paleta. Solo material fotográfico e
-   ilustraciones de cards — nunca logos ni gráficos de datos. */
-.actividad-imagen img {
-  filter: sepia(0.12) saturate(0.95);
-}
-
-/* ============ v2.2.1: equipo con retratos visibles ============ */
-/* Las caras del estudio dejan de esconderse detrás de un hover
-   (en mobile no existía forma de verlas). Mobile: una columna.
-   Desktop: tres retratos en columnas. */
-.equipo-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-    border-top: 1px solid rgba(250, 248, 246, 0.06);
-    padding-top: var(--space-6);
-}
-
-/* Mobile: foto primero, texto debajo (mismo orden que desktop) */
-.equipo-member {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-}
-
-.equipo-foto-wrap {
-    position: relative;
-    width: 100%;
-    max-width: 280px;
-    aspect-ratio: 1;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    margin-bottom: var(--space-2);
-    background: var(--color-bg);
-    box-shadow: var(--shadow-card);
-}
-
-/* Retratos recortados (fondo eliminado y compuesto sobre --color-bg):
-   sin marco ni sombra — la figura flota directamente sobre la página. */
-.equipo-foto-wrap--cutout {
-    background: transparent;
-    box-shadow: none;
-    border-radius: 0;
-}
-
-.equipo-foto {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    filter: sepia(0.12) saturate(0.95);
-}
-
-/* Los recortados ya vienen integrados a la paleta: el sepia teñiría
-   su fondo y delataría el rectángulo. */
-.equipo-foto-wrap--cutout .equipo-foto {
-    filter: none;
-}
-
-.equipo-nombre {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-text);
-}
-
-.equipo-rol {
-    font-size: 1.0625rem;
-    color: rgba(250, 248, 246, 0.75);
-    line-height: 1.4;
-}
-
-.equipo-ciudad {
-    font-size: 0.9375rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(250, 248, 246, 0.55);
-}
-
-/* Desktop: tres retratos en columnas */
-@media (min-width: 769px) {
-    .equipo-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-8);
-    }
-
-    .equipo-foto-wrap {
-        /* 1:1 = marco idéntico a las fotos originales cuadradas:
-           cero recorte, encuadre completo con su espacio negativo */
-        max-width: none;
-    }
-}
-
-/* ============ Nav mobile: orden correcto con CTA + hamburguesa ============ */
-/* En index conviven logo + CTA Hablemos + hamburguesa: con space-between
-   el botón quedaba flotando en el centro. Logo a la izquierda (auto-margin),
-   CTA y hamburguesa agrupados a la derecha. En páginas sin CTA no cambia
-   nada (el hamburguesa ya quedaba a la derecha). */
-@media (max-width: 768px) {
-    .nav-container {
-        justify-content: flex-start;
-        gap: var(--space-2);
-    }
-
-    .nav-logo {
-        margin-right: auto;
-    }
-
-    .nav-cta {
-        order: 1;
-    }
-
-    .mobile-menu-btn {
-        order: 2;
-    }
-}
-
-/* Bio extendida por socio: perspectiva, no CV (VOICE.md). Medida de
-   lectura acotada y jerarquía por debajo del rol. */
-.equipo-bio {
-    font-size: var(--font-size-base);
-    line-height: 1.65;
-    color: var(--color-text-mid);
-    margin-top: var(--space-3);
-    max-width: 46ch;
-}
-
-@media (min-width: 769px) {
-    .equipo-bio {
-        margin-top: var(--space-4);
-    }
-}
-
-/* Señales: lectura propia y fuente verificable. La lectura es lo que
-   distingue una señal de una noticia; la fuente es lo que la sostiene. */
-.senal-lectura {
-  font-size: var(--font-size-base);
-  line-height: 1.6;
-  color: rgba(250, 248, 246, 0.75);
-  border-left: 2px solid var(--orange-500);
-  padding-left: var(--space-4);
-  margin-top: var(--space-4);
-}
-
-.senal-fuente {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--color-text-low);
-  margin-top: var(--space-4);
-  padding-top: var(--space-3);
-  border-top: 1px solid rgba(250, 248, 246, 0.06);
-}
-
-.senal-fuente a {
-  color: rgba(250, 248, 246, 0.65);
-  text-decoration: underline;
-  text-decoration-color: rgba(193, 111, 82, 0.4);
-  text-underline-offset: 3px;
-}
-
-.senal-fuente a:hover {
-  color: var(--color-accent);
-}
-
-/* Bloque de fuentes del reporte: subordinado al contenido, pero legible.
-   Un reporte que se circula fuera del sitio se lee con lápiz. */
-.reporte-fuente {
-  font-size: 0.9375rem;
-  line-height: 1.55;
-  color: rgba(250, 248, 246, 0.55);
-  border-top: 1px solid rgba(250, 248, 246, 0.06);
-  padding-top: var(--space-3);
-  margin-top: var(--space-4);
-}
-
-/* Aviso de frontera entre investigación y ficción especulativa.
-   Tiene que interrumpir la lectura: un lector que se saltee esto puede
-   citar una cifra inventada como si fuera un hallazgo. */
-.ficcion-aviso {
-  background: var(--color-surface);
-  border-left: 3px solid var(--orange-500);
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
-  padding: var(--space-5) var(--space-6);
-  margin: var(--space-6) 0;
-  color: rgba(250, 248, 246, 0.85);
-}
-
-.ficcion-aviso strong {
-  color: var(--color-accent);
-}
-
-/* ============ v2.3: páginas de lectura (.page-lectura) ============
-   El sistema de superficie clara (body.page-papel) se retiró del CSS el 2026-09-06:
-   ninguna página lo usaba desde que los socios eligieron todo Tinta. Queda en git. */
-
-/* En páginas de lectura el nav va sólido. */
-.page-lectura nav { background: var(--color-bg); }
-
-/* Serif para lectura larga: el cuerpo del texto de los documentos va en Literata.
-   Títulos, labels, dt, botones, nav y metadata se quedan en Plus Jakarta Sans.
-   El tamaño sube apenas porque la serif tiene ojo medio más chico a igual cuerpo.
-   Alcance: solo los contenedores de prosa (reporte, tesis, legal). Las cards,
-   metadata y CTAs de las páginas de interfaz siguen en la sans (DESIGN.md). */
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote, figcaption, td) {
-    font-family: 'Literata', Georgia, 'Times New Roman', serif;
-    font-size: 1.1875rem; /* 19px: la base del sitio, sin heredar los 16px viejos de .reporte-section */
-    line-height: 1.7;
-}
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) strong { font-weight: 700; }
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) em { font-style: italic; }
-/* Lo que no es prosa vuelve a la sans aunque esté dentro de un párrafo o lista */
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(.ficha-caso-fuentes, .reporte-fuente, .senal-fuente, .cta-primary, .cta-link, .btn, .ficha-caso dt, .ficha-tecnica dd, .toc-data-rail, .sticky-toc, .share-buttons, .thesis-cite__note, .impact-label, .escenario-label, .senal-label) ,
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(nav, button, label, .senal-label) * {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: inherit;
-    line-height: inherit;
-}
-
-/* Tarjetas de artículos: la fila la manda el texto, acotado a siete líneas; la imagen
-   ocupa esa altura y se ve entera (contain), nunca recortada. Sin sticky. */
-@media (min-width: 769px) {
-    .actividad-imagen img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-}
-
-/* =========================
-   Ritmo vertical: cierres de bloque
-   =========================
-   Márgenes y paddings del último (o primer) hijo de un bloque que no separan nada
-   adentro del bloque y solo sumaban al gap entre bloques. El espacio interno no cambia.
-   Van al final del archivo para ganar en cascada a las reglas de cada componente. */
-.actividades-cta { padding-bottom: 0; }
-.logos-grid { padding-bottom: 0; }
-.contact-address > :last-child,
-.contact-direct > :last-child,
-.content-section > :last-child,
-.thesis-abstract > :last-child,
-.legal-hero > :last-child,
-.legal-content > :last-child { margin-bottom: 0; }
-.content-section > :last-child > .cta-primary { margin-bottom: 0; }
-.legal-content > :first-child { margin-top: 0; }
-/* El título del acordeón declara margin: 0 pero `.reporte-section h3` lo pisaba con 12px:
-   con el panel cerrado colgaban bajo el botón, y abierto separaban el panel del header
-   (que ya junta con border-bottom transparente). */
-.reporte-section .scenario-accordion-title { margin: 0; }
-
-/* Dentro del hero, el label de sección no suma su margen superior: el aire arriba lo pone --hero-top. */
-.hero-section .actividades-label { margin-top: 0; }
-
-/* Proceso de cada servicio: la duración va como rango, no como calendario. */
-.timeline-duration {
-    margin-top: var(--space-4);
-    font-size: 1rem;
-    color: var(--color-text-low);
-}
-
-/* ============ v2.5: servicios en grilla, jerarquía en orden y controles en sistema ============
-   Cuatro movimientos se ven juntos (2x2 en escritorio), el titular de bloque queda por
-   debajo del h2 de sección, el numeral pasa a "01" junto al label como en el índice de
-   Pensamiento, y "Ver proceso" es un enlace tipográfico como todos los CTAs del sitio. */
-.service-block { margin-bottom: 0; }
-.service-title {
-    font-size: clamp(1.75rem, 2.4vw, 2.25rem);
-    line-height: 1.15;
-}
-@media (min-width: 1025px) {
-    .services-grid {
-        align-items: start;  /* al abrir el proceso de una tarjeta, la vecina no se estira */
-    }
-}
-
-/* ============ v2.6: cierre de página, figuras sobre papel, portada de tesis, controles en sistema ============
-   1. Cierre: el bloque de Lo hecho / Pensamiento (afirmación + CTA) pasa a parcial y cierra
-      también las tres páginas de caso, como sección propia: hereda el ritmo (--spacing-block
-      arriba, --spacing-block-edge abajo) y no cuelga su margen interno.
-   2. Figuras: los gráficos con fondo blanco se enmarcan en papel; multiply funde el blanco
-      del PNG con el papel, así no queda un rectángulo dentro del marco.
-   3. Tesis: portada + dos enlaces tipográficos en lugar del visor embebido.
-   4. Botón flotante del índice y chips de filtro: superficie, borde susurro y acento tipográfico,
-      sin discos sólidos ni cajas. */
-
-/* 1. Cierre */
-.cierre-section .proyectos-cta { margin-top: 0; }
-/* El titular del cierre es tamaño h2: toma el interlineado de título (1.15, DESIGN.md), no el de cuerpo (1.8). */
-.proyectos-cta-headline {
-    line-height: 1.15;
-    text-wrap: balance;
-}
-
-/* 2. Figuras */
-.figura {
-    margin: var(--space-6) 0;
-}
-.figura img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-.figura__papel {
-    background: var(--paper);
-    padding: var(--space-4);
-    border-radius: var(--border-radius);
-}
-.figura__papel img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: calc(var(--border-radius) - 6px);
-    mix-blend-mode: multiply;
-}
-.figura figcaption,
-.page-lectura main .figura figcaption {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--color-text-low);
-    margin-top: var(--space-3);
-}
-
-/* 3. Portada de la tesis */
-.thesis-cover {
-    max-width: 800px;
-    margin: 0 auto;
-}
-.thesis-cover img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border: 1px solid rgba(250, 248, 246, 0.12);
-    border-radius: var(--border-radius);
-}
-.thesis-cover figcaption,
-.page-lectura main .thesis-cover figcaption {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9375rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-low);
-    margin-top: var(--space-3);
-}
-.thesis-cover-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3) var(--space-8);
-    max-width: 800px;
-    margin: var(--space-6) auto 0;
-}
-.thesis-cover-links .cta-primary { margin: 0; }  /* sin margen colgante: el bloque cierra en el ritmo */
-
-/* 4a. Botón flotante del índice: superficie + borde susurro, texto en acento */
-.mobile-toc-btn {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    transition: border-color 0.3s;
-}
-.mobile-toc-btn:hover,
-.mobile-toc-btn:focus-visible {
-    background: var(--color-surface);
-    border-color: var(--color-accent);
-}
-
-/* 4b. Chips de filtro: etiqueta tipográfica, activo con subrayado de 2px */
-.filter-bar { gap: var(--space-2) var(--space-6); }
-.filter-btn,
-.filter-btn:hover,
-.filter-btn--active {
-    padding: var(--space-2) 0;
-    background: transparent;
-    border: 0;
-    border-bottom: 2px solid transparent;
-    border-radius: 0;
-    font-size: 0.9375rem;
-    letter-spacing: 0.08em;
-    color: var(--color-text-mid);
-}
-.filter-btn:hover { color: var(--color-accent); }
-.filter-btn--active {
-    color: var(--color-accent);
-    border-bottom-color: var(--color-accent);
-}
-
-/* ============ v2.7: sin estilos inline (CSP style-src 'self') ============ */
-:root { color-scheme: dark; }
-.anchor-offset { position: absolute; top: -100px; }
-.hero-section h1.tagline { margin-bottom: 1.5rem; }
-.hero-section .hero-sub { max-width: 800px; margin: 0; }
-.hero-sub--seccion { margin: var(--space-3) auto 0; }
-#indice { padding-bottom: 0; }
-.u-mt-12 { margin-top: var(--space-12); }
+h1 { font-size: var(--fs-2); line-height: 1.1; letter-spacing: -0.02em; }
+h2 { font-size: var(--fs-3); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: var(--space-5); }
+h3 { font-size: var(--fs-4); line-height: 1.25; }
+h4 { font-size: var(--fs-5); line-height: 1.4; }
 
-/* ============ v2.8: buenas prácticas de interfaz (Web Interface Guidelines) ============ */
-/* Títulos sin viudas, párrafos sin líneas huérfanas */
-h1, h2, h3 { text-wrap: balance; }
 p, li, dd, figcaption { text-wrap: pretty; }
-/* Al saltar a un ancla, el título no queda debajo del nav fijo */
-[id] { scroll-margin-top: calc(var(--nav-height) + var(--space-6)); }
-/* Los enlaces dentro de la prosa se distinguen por algo más que el color */
-main p a, main li a, main dd a {
+strong, b { font-weight: 700; }
+
+a {
+    color: var(--orange-500);
+    text-decoration: none;
+    transition: color var(--transition), text-decoration-color var(--transition);
+}
+
+/* Los enlaces dentro de un texto se distinguen por algo más que el color (WCAG 1.4.1). */
+main :is(p, li, dd) a {
     text-decoration: underline;
     text-decoration-color: rgba(193, 111, 82, 0.45);
     text-underline-offset: 3px;
 }
-main p a:hover, main li a:hover, main dd a:hover,
-main p a:focus-visible, main li a:focus-visible { text-decoration-color: currentColor; }
-/* Medida de lectura: 70 caracteres por línea en los documentos largos (antes ~95) */
-.page-lectura main :is(p, li, dd, blockquote, figcaption) { max-width: 70ch; }
-/* Objetivos táctiles de 44px donde el puntero es un dedo */
-@media (pointer: coarse) {
-    .nav-links a, .filter-btn, .cta-link, .sticky-toc a, .report-toc-list a, [role="navigation"] a {
-        min-height: 44px;
-        display: inline-flex;
-        align-items: center;
-    }
-    .nav-logo { padding: 2px 11px; margin-left: -11px; }
-    .close-btn { min-width: 44px; min-height: 44px; }
+main :is(p, li, dd) a:hover,
+main :is(p, li, dd) a:focus-visible {
+    text-decoration-color: currentColor;
 }
 
-/* ============ v2.9: casos con imagen de apertura; sin apariciones al scroll ============ */
-.hero-figura {
-    margin: var(--space-10) 0 0;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
-}
-.hero-figura img { display: block; width: 100%; height: auto; }
-
-/* ============ v3.0: tarjetas con campos fijos, filtros por movimiento, situaciones ============
-   Lo que se repite en Superflux, Near Future Laboratory y Linked by Air: cada tarjeta
-   responde lo mismo en el mismo lugar. Fecha y tags arriba, título, una descripción, y
-   después una ficha corta (contexto, estado, lectura) y, en los casos, los entregables. */
-.actividad-datos {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    margin: var(--space-4) 0 0;
-    font-size: 1rem;
-    line-height: 1.5;
-}
-.actividad-dato {
-    display: grid;
-    grid-template-columns: 7.5rem 1fr;
-    gap: var(--space-3);
-    align-items: baseline;
-}
-.actividad-dato dt {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-low);
-}
-.actividad-dato dd {
-    margin: 0;
-    color: var(--color-text);
-    opacity: 0.85;
-}
-.actividad-entrada .cta-link { margin-top: var(--space-4); }
-.actividad-ctas { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); }
-.tesis-card__datos { margin: 0 0 var(--space-5); }
-.tesis-card__datos dd { opacity: 1; color: var(--color-text-high); }
-
-/* Cuándo escribirnos: tres situaciones antes del contacto (referencia Near Future Laboratory) */
-.contact-heading {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
-    font-weight: 700;
-    line-height: 1.25;
-    color: var(--color-text);
-    margin: 0 0 var(--space-6);
-    max-width: 800px;
-}
-.situaciones {
-    list-style: none;
-    margin: 0 0 var(--space-10);
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-}
-.situacion {
-    border-top: 1px solid rgba(250, 248, 246, 0.08);
-    padding-top: var(--space-4);
-}
-.situacion p {
-    margin: 0;
-    font-size: var(--font-size-base);
-    line-height: 1.5;
-    color: var(--color-text);
-    opacity: 0.85;
-}
-@media (min-width: 769px) {
-    .situaciones { grid-template-columns: repeat(3, 1fr); gap: var(--space-8); margin-bottom: var(--space-12); }
-}
-
-/* ============ v3.1: los cuatro movimientos en filas, no en tarjetas ============
-   Misma gramática que las situaciones de Conversemos y el índice de Pensamiento:
-   filas a lo ancho separadas por línea susurro. El número grande a la izquierda queda
-   solo acá, porque los cuatro movimientos son una secuencia (v3.3); texto a
-   la derecha. Sin fondo ni sombra: eran las únicas cajas de la home. El proceso
-   desplegable empuja hacia abajo en vez de desparejar columnas. */
-.services-grid,
-.services-grid.services-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-}
-.service-block,
-.service-block:hover {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 0;
-    padding: var(--space-8) 0;
-    background: transparent;
-    background-image: none;
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
     border: 0;
-    border-top: 1px solid rgba(250, 248, 246, 0.08);
-    border-radius: 0;
-    box-shadow: none;
-}
-.service-block:last-child { border-bottom: 1px solid rgba(250, 248, 246, 0.08); }
-.service-number {
-    display: block;
-    font-size: clamp(2rem, 3vw, 2.75rem);
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 1;
-    color: var(--color-accent);
-    margin: 0 0 var(--space-3);
-}
-.service-category {
-    display: block;
-    font-size: 0.9375rem;
-    letter-spacing: 0.08em;
-    margin: 0 0 var(--space-2);
-}
-.service-title { margin: 0 0 var(--space-3); }
-.service-lead { max-width: 60ch; }
-.service-deliverable { max-width: 60ch; }
-.service-timeline { max-width: 60ch; }
-@media (min-width: 769px) {
-    .service-block,
-    .service-block:hover {
-        grid-template-columns: 6rem minmax(0, 1fr);
-        column-gap: var(--space-6);
-        padding: var(--space-10) 0;
-    }
-    .service-number { grid-column: 1; grid-row: 1 / span 12; margin: 0; }
-    .service-block > :not(.service-number) { grid-column: 2; }
-}
-/* El proceso desplegado sigue la misma gramática: pasos separados por línea, sin caja */
-.service-timeline {
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    padding: 0;
-    margin-top: var(--space-4);
+    cursor: pointer;
 }
 
-/* ============ v3.2: el hero del inicio ocupa la primera pantalla ============
-   El bloque de marca (logo, nombre, frase) se centra en lo que se ve debajo del nav
-   fijo: el alto del nav se descuenta arriba y el resto del aire se reparte parejo.
-   Antes el hero medía 78-80svh y la sección siguiente asomaba en la primera pantalla,
-   con lo que el bloque parecía caído hacia abajo. */
-.hero.hero-fullscreen {
-    min-height: 100vh;
-    min-height: 100svh;
-    padding: var(--nav-height) 0 0;
-    align-items: center;
-    justify-content: center;
-}
-.hero-brand-header { padding: var(--space-8) var(--space-6); }
-@media (min-width: 769px) {
-    .hero-brand-header { padding: var(--space-8) 2rem; }
+a,
+button { touch-action: manipulation; }
+
+button,
+.etiqueta { hyphens: none; }
+
+::selection {
+    background: rgba(193, 111, 82, 0.85);
+    color: var(--color-bg);
 }
 
-/* =========================
-   Documentos del sistema (caso Gabinete Extemporáneo)
-   -------------------------
-   Piezas de papel de la instalación, reproducidas como texto en vez de
-   fotografiadas: el caso no puede mostrar el artefacto sin arruinarlo para
-   la próxima cohorte. Lo que no se puede contar va cubierto por .tachado,
-   que son spans vacíos: el texto oculto no existe en el DOM, no se copia
-   ni se lee con un lector de pantalla.
-   La CSP del sitio es style-src 'self': nada de esto puede ir inline.
-   ========================= */
-
-.documento {
-    position: relative;
-    background: var(--paper);
-    border-radius: var(--border-radius);
-    padding: var(--space-6);
-    margin: var(--space-8) 0;
-    max-width: 34rem;
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 999px;
+    border: 2px solid var(--color-bg);
 }
+::-webkit-scrollbar-thumb:hover { background: rgba(193, 111, 82, 0.5); }
 
-/* El cuerpo del documento va en Plus Jakarta Sans aunque la página sea
-   .page-lectura: es un impreso administrativo, no prosa. Especificidad alta
-   a propósito, para ganarle a la regla de Literata de .page-lectura. */
-.page-lectura main .reporte-section .documento :is(p, li) {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #26221f;
-    max-width: none;
-    margin-bottom: var(--space-3);
+/* Foco: un anillo de 2 px en el acento (4,93:1 sobre Tinta), solo con teclado. */
+:focus-visible {
+    outline: 2px solid var(--orange-500);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
 }
+:focus:not(:focus-visible) { outline: none; }
 
-.reporte-section .documento :is(p, li) {
-    color: #26221f;
-}
+/* El destino de un ancla recibe el foco con un tabindex temporal (main.js): no es un control,
+   así que no lleva anillo. El foco queda ahí para que el próximo Tab siga desde ese punto. */
+[tabindex="-1"]:focus,
+[tabindex="-1"]:focus-visible { outline: none; }
 
-.documento > :last-child { margin-bottom: 0; }
+/* Al saltar a un ancla, el destino no queda debajo del nav fijo. */
+[id] { scroll-margin-top: calc(var(--nav-height) + var(--space-6)); }
 
-.documento strong { color: #14110f; font-weight: 700; }
-
-.reporte-section .documento .documento__tipo {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #8a4b31;
-    margin-bottom: var(--space-4);
-}
-
-.reporte-section .documento .documento__subtipo {
-    font-weight: 700;
-    color: #14110f;
-    margin-top: calc(var(--space-3) * -1 + var(--space-1));
-}
-
-.reporte-section .documento .documento__asunto {
-    font-weight: 700;
-    color: #14110f;
-}
-
-.reporte-section .documento .documento__campos {
-    line-height: 2;
-    color: #45403b;
-}
-
-/* Barra de tachado. Span vacío: no hay texto debajo que se pueda revelar. */
-.tachado {
-    display: inline-block;
-    height: 0.95em;
-    vertical-align: -0.12em;
-    background: #26221f;
-    border-radius: 1px;
-}
-
-.tachado--xs { width: 3.5ch; }
-.tachado--sm { width: 7ch; }
-.tachado--md { width: 11ch; }
-.tachado--lg { width: 16ch; }
-.tachado--xl { width: 22ch; }
-
-/* Renglón en blanco de la hoja de la sala de espera. */
-.documento__linea {
-    border-bottom: 1px solid #bdb2a4;
-    height: var(--space-8);
-    margin-bottom: var(--space-4);
-}
-
-/* Sello ARCHIVADO del documento de incorporación. */
-.documento--sellado { padding-top: var(--space-10); }
-
-.reporte-section .documento .documento__sello {
+.skip-link {
     position: absolute;
-    top: var(--space-5);
-    right: var(--space-5);
-    margin: 0;
-    padding: var(--space-1) var(--space-3);
-    font-size: 0.8125rem;
+    top: -100px;
+    left: 0;
+    z-index: 10000;
+    padding: var(--space-4) var(--space-8);
+    background: var(--orange-500);
+    color: var(--color-bg);
     font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #9c4f34;
-    border: 2px solid #9c4f34;
-    border-radius: var(--space-1);
-    opacity: 0.75;
-    transform: rotate(-6deg);
+    transition: top var(--transition);
 }
-
-/* Credencial: el rol tapado y el año legible. Es el orden en que los lee
-   el participante, y el único dato que la página puede dar. */
-.documento--credencial { max-width: 22rem; text-align: center; }
-
-.reporte-section .documento .documento__rol {
-    margin: var(--space-5) 0 var(--space-2);
-}
-
-.reporte-section .documento .documento__anio {
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.02em;
-    color: #14110f;
-    margin-bottom: var(--space-5);
-}
-
-.documento--credencial .documento__campos {
-    font-size: 0.8125rem;
-    line-height: 1.5;
-    color: #6b635b;
-}
-
-.documento--a5 { max-width: 26rem; }
-
-@media (max-width: 600px) {
-    .documento { padding: var(--space-5); }
-    .tachado--xl { width: 14ch; }
-    .tachado--lg { width: 11ch; }
-}
-
-/* El hero de los casos no llevaba pie. En Gabinete Extemporáneo el pie hace trabajo
-   narrativo, así que se estila como el de .figura. Va fuera de la <figure>: .hero-figura
-   tiene overflow:hidden y borde, y adentro el texto queda pegado al marco. */
-.hero-figura-pie,
-.page-lectura main .hero-figura-pie {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--color-text-low);
-    margin-top: var(--space-3);
-}
-
-/* ============ v3.3: contacto en un clic, lectura que sigue, índices y fichas en sistema ============
-   Siete partes, cada una con su comentario: 1. cierre que abre el mail y "Copiar dirección";
-   2. "Seguí leyendo"; 3. enlaces en la bajada de Cuatro movimientos; 4. un solo eje izquierdo
-   en los heros; 5. la ficha técnica igual arriba y en Créditos; 6. índice de los casos desde
-   1280px y botón "Índice"; 7. sin numeración decorativa. (El "Hablemos" del nav está en el
-   bloque del nav.)
-
-   1. Cierre: el CTA abre el mail con el asunto de la página (antes llevaba a /#contact, otra
-      página y otro clic) y debajo queda la dirección con "Copiar dirección". En el teléfono
-      el CTA se centra como el resto del bloque (antes quedaba a la izquierda). */
+.skip-link:focus { top: 0; }
 
 /* Solo para lectores de pantalla: fuera de la vista, dentro del árbol de accesibilidad. */
 .visually-hidden {
@@ -4215,198 +311,2061 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
     border: 0;
 }
 
-/* 1. Cierre y contacto */
-.proyectos-cta .cta-primary {
-    justify-content: center;
-    margin-bottom: 0;
+
+/* 4. Grilla y ritmo ====================================================
+   Cada página es una cabecera y una serie de bloques. Todos llevan --marco a los lados. */
+
+.cabecera,
+.bloque {
+    padding-inline: var(--marco);
 }
-.cierre-mail {
+
+.cabecera {
+    padding-top: var(--hero-top);
+    padding-bottom: var(--spacing-hero-bottom);
+}
+
+.bloque {
+    padding-block: var(--spacing-block);
+}
+
+main > :last-child { padding-bottom: var(--spacing-block-edge); }
+
+/* Registro hondo: Cuatro movimientos y contacto. La luz fría viene de lados distintos. */
+.servicios {
+    background:
+        radial-gradient(1200px 480px at 18% -8%, rgba(150, 175, 215, 0.06), transparent 65%),
+        var(--color-bg-deep);
+}
+.contacto {
+    background:
+        radial-gradient(1000px 420px at 85% 0%, rgba(150, 175, 215, 0.05), transparent 60%),
+        var(--color-bg-deep);
+}
+
+/* Línea entre bloques que son partes de un mismo documento (secciones de un caso, el cierre):
+   ocupa el ancho del contenido y queda en la mitad del silencio entre los dos. */
+.caso-seccion + .caso-seccion::before,
+.cierre::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: var(--color-line);
+    margin-top: calc(-1 * var(--spacing-block));
+    margin-bottom: calc(var(--spacing-block) - 1px);
+}
+
+
+/* 5. Piezas comunes ==================================================== */
+
+/* Etiqueta: tipo y fecha de una pieza ("Provocación · agosto 2026"). Es el único lugar del sitio
+   con mayúsculas, y van por CSS: en el HTML el texto va en caja normal, como se lee. */
+.etiqueta {
+    font-size: var(--fs-7);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-low);
+}
+
+/* Bajada: el párrafo que sigue a un título de página o de bloque. */
+.bajada {
+    font-size: var(--fs-5);
+    line-height: 1.6;
+    color: var(--color-text-mid);
+    max-width: var(--medida);
+    margin-bottom: var(--space-10);
+}
+
+.bloque-pie { margin-top: var(--space-12); }
+
+/* Enlaces de acción. Tipográficos, nunca con fondo. La flecha la dibuja el sitio (/img/flecha.svg,
+   como máscara del color del texto): Plus Jakarta Sans no trae →, y cada sistema ponía otra.
+   .cta-primary: la acción principal de un bloque (cierre, tesis), subrayada.
+   .cta-link: enlaces de tarjeta y de bloque. Modificadores: .cta--abajo (descarga, desplegar)
+   y .cta--atras (volver). Hover: color y la flecha se corre 4 px hacia donde lleva. */
+.cta-link,
+.cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--orange-500);
+    text-underline-offset: 4px;
+}
+
+.cta-link {
+    font-size: var(--fs-6);
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.cta-primary {
+    min-height: 44px;
+    font-size: var(--fs-5);
+    line-height: 1.4;
+    text-decoration: underline;
+    text-decoration-color: rgba(193, 111, 82, 0.4);
+}
+
+.cta-link:hover,
+.cta-link:focus-visible {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+}
+.cta-primary:hover,
+.cta-primary:focus-visible { text-decoration-color: currentColor; }
+
+.cta-link::after,
+.cta-primary::after,
+.cta--atras::before,
+.timeline-toggle-icon,
+.toggle-icon {
+    content: '';
+    flex: none;
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    background-color: currentColor;
+    -webkit-mask: url('/img/flecha.svg') center / contain no-repeat;
+    mask: url('/img/flecha.svg') center / contain no-repeat;
+    transition: translate var(--transition), rotate var(--transition);
+}
+
+.cta-link:hover::after,
+.cta-primary:hover::after { translate: 4px 0; }
+
+.cta--abajo::after { rotate: 90deg; }
+.cta--abajo:hover::after { translate: 0 3px; }
+
+.cta--atras::after { content: none; }
+.cta--atras::before { rotate: 180deg; }
+.cta--atras:hover::before { translate: -4px 0; }
+
+/* Aviso al pasar el mouse por el CTA del cierre. Mismo lenguaje que una superficie. */
+[data-preview] { position: relative; }
+[data-preview]::before {
+    content: attr(data-preview);
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    z-index: 10000;
+    width: max-content;
+    max-width: calc(100vw - 48px);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    font-size: var(--fs-6);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-high);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+}
+[data-preview]:hover::before,
+[data-preview]:focus-visible::before { opacity: 1; }
+@media (hover: none) {
+    [data-preview]::before { display: none; }
+}
+
+/* Lista de datos [etiqueta, valor]: la ficha corta de las tarjetas y de la tesis. */
+.tarjeta__datos {
+    display: grid;
+    gap: var(--space-1);
+    font-size: var(--fs-7);
+    line-height: 1.5;
+}
+.tarjeta__datos > div {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    column-gap: var(--space-3);
+    align-items: baseline;
+}
+.tarjeta__datos dt { color: var(--color-text-low); }
+.tarjeta__datos dd { color: var(--color-text-mid); }
+
+
+/* 6. Nav ===============================================================
+   Fijo y visible en todas las páginas, también en el inicio (v3: el inicio dejó de esconderlo
+   hasta que el logo grande cruzaba). Logo a la izquierda, secciones en el medio y "Hablemos"
+   a la derecha; en el teléfono, "Hablemos" y el menú. */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: var(--space-4) 0;
+    background: rgba(18, 21, 26, 0.95);
+    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
+}
+
+@media (min-width: 769px) {
+    nav {
+        background: rgba(18, 21, 26, 0.65);
+        -webkit-backdrop-filter: blur(16px) saturate(140%);
+        backdrop-filter: blur(16px) saturate(140%);
+    }
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+    nav { background: rgba(18, 21, 26, 0.95); }
+}
+
+/* En las páginas de lectura el nav va sólido. */
+.page-lectura nav { background: var(--color-bg); }
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding-inline: var(--marco);
+}
+
+.nav-logo {
+    display: block;
+    margin-right: auto;
+    line-height: 0;
+}
+
+.nav-logo img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-cta {
+    order: 1;
+    padding: var(--space-2) 0 var(--space-2) var(--space-4);
+    font-size: var(--fs-6);
+    color: var(--orange-500);
+}
+
+.nav-cta:hover,
+.nav-cta:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Botón del menú: las rayas se alinean con el borde derecho de la columna. */
+.mobile-menu-btn {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-1);
+    min-width: 44px;
+    min-height: 44px;
+    padding: var(--space-3);
+    margin-right: calc(-1 * var(--space-3));
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 2px;
+    background: var(--color-text-high);
+    transform-origin: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Menú del teléfono: panel desde la derecha. Cerrado no recibe foco (visibility). */
+.nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    width: 80%;
+    min-width: 260px;
+    height: 100vh;
+    padding: var(--space-24) var(--space-8) var(--space-8);
+    list-style: none;
+    background: rgba(18, 21, 26, 0.98);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: right 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.nav-links.active {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: right 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-links a {
+    position: relative;
+    display: block;
+    padding: var(--space-3) 0;
+    font-size: var(--fs-4);
+    line-height: 1.2;
+    color: var(--color-text-high);
+}
+
+/* La página actual se marca con la línea de abajo, no con el color: el acento del nav queda para
+   "Hablemos". Por atributo, para que se vea también sin JavaScript. */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 0;
+    height: 1px;
+    background: var(--orange-500);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--orange-500); }
+.nav-links a:hover::after,
+.nav-links a[aria-current]::after { width: 100%; }
+
+/* Solo la página exacta deja de ser clicable: desde un caso, "Lo hecho" vuelve a la lista. */
+.nav-links a[aria-current="page"] { pointer-events: none; }
+
+.mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (min-width: 769px) {
+    .nav-container {
+        justify-content: space-between;
+        gap: var(--space-8);
+    }
+
+    .nav-logo { margin-right: 0; }
+
+    .nav-links {
+        position: static;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-6);
+        width: auto;
+        min-width: 0;
+        height: auto;
+        padding: 0;
+        background: transparent;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        opacity: 1;
+        visibility: visible;
+        transition: none;
+    }
+
+    .nav-links a {
+        padding: 0;
+        font-size: var(--fs-6);
+        line-height: 1.6;
+    }
+
+    .nav-links a::after { bottom: -4px; }
+
+    .mobile-menu-btn { display: none; }
+}
+
+
+/* 7. Footer ============================================================ */
+
+footer {
+    padding: var(--space-8) var(--marco);
+    border-top: 1px solid rgba(193, 111, 82, 0.2);
+}
+
+.footer-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.footer-main-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: var(--space-3);
+    font-size: var(--fs-6);
+}
+
+.footer-brand {
+    font-weight: 700;
+    color: var(--color-text-high);
+}
+
+.footer-copy { color: var(--color-text-low); }
+
+.footer-separator {
+    display: none;
+    color: var(--color-text-low);
+}
+
+.footer-practice {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--fs-7);
+    line-height: 1.5;
+    color: var(--color-text-low);
+}
+
+.footer-links-line {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-link {
+    font-size: var(--fs-6);
+    line-height: 1.5;
+    color: var(--color-text-mid);
+}
+
+.footer-link:hover,
+.footer-link:focus-visible { color: var(--orange-500); }
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-left: calc(-1 * var(--space-2));
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: var(--space-2);
+}
+
+.social-icons svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-text-low);
+    transition: fill var(--transition);
+}
+
+.social-icons a:hover svg,
+.social-icons a:focus-visible svg { fill: var(--orange-500); }
+
+@media (min-width: 769px) {
+    .footer-grid {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-links-line {
+        flex-direction: row;
+        align-items: baseline;
+        column-gap: var(--space-3);
+    }
+
+    .footer-links-line .footer-separator { display: inline; }
+
+    .social-icons { margin: 0 calc(-1 * var(--space-2)) 0 0; }
+}
+
+
+/* 8. Inicio ============================================================ */
+
+/* Cabecera: el nombre y la frase, alineados a la columna. No ocupa la pantalla entera: la
+   sección siguiente arranca en la primera vista. El logo va una sola vez, en el nav.
+   El título es el único movimiento de entrada del sitio. Abajo lleva medio silencio entero
+   (no el de las otras cabeceras): la banda honda de Cuatro movimientos empieza justo en la
+   mitad, como la línea entre dos secciones de un caso. */
+.inicio-hero { padding-bottom: var(--spacing-block); }
+
+.inicio-titulo {
+    font-size: var(--fs-1);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-5);
+    animation: textReveal 0.7s ease-out 0.15s both;
+}
+
+.inicio-frase {
+    font-size: var(--fs-4);
+    line-height: 1.4;
+    color: var(--color-text-mid);
+    max-width: 34ch;
+    animation: textReveal 0.7s ease-out 0.35s both;
+}
+
+@keyframes textReveal {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+
+/* Cuatro movimientos: filas separadas por línea, con el número a la izquierda. La numeración
+   queda solo acá porque es un orden de trabajo. */
+.services-lead {
+    font-size: var(--fs-4);
+    line-height: 1.35;
+    color: var(--color-text-high);
+    max-width: 34ch;
+    margin-bottom: var(--space-5);
+}
+
+.services-intro {
+    font-size: var(--fs-5);
+    line-height: 1.6;
+    color: var(--color-text-mid);
+    max-width: var(--medida);
+    margin-bottom: var(--space-12);
+}
+
+.services-grid {
+    display: grid;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.service-block {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--color-line);
+}
+
+.service-number {
+    font-size: var(--fs-3);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--orange-500);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: var(--space-4);
+}
+
+.service-category {
+    font-size: var(--fs-6);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-text-mid);
+    margin-bottom: var(--space-2);
+}
+
+.service-title {
+    font-size: var(--fs-4);
+    margin-bottom: var(--space-3);
+}
+
+.service-lead {
+    font-size: var(--fs-5);
+    color: var(--color-text-mid);
+    max-width: var(--medida);
+    margin-bottom: var(--space-4);
+}
+
+.service-deliverable {
+    display: block;
+    font-size: var(--fs-6);
+    line-height: 1.55;
+    color: var(--color-text-low);
+    max-width: var(--medida);
+}
+
+.service-deliverable-link {
+    color: var(--orange-500);
+    text-decoration: underline;
+    text-decoration-color: rgba(193, 111, 82, 0.45);
+    text-underline-offset: 3px;
+}
+.service-deliverable-link:hover,
+.service-deliverable-link:focus-visible { text-decoration-color: currentColor; }
+
+/* "Ver proceso": un enlace tipográfico con la flecha hacia abajo; abierto, hacia arriba. */
+.service-timeline-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    justify-self: start;
+    min-height: 44px;
+    margin-top: var(--space-3);
+    font-size: var(--fs-6);
+    font-weight: 700;
+    color: var(--orange-500);
+    text-underline-offset: 4px;
+}
+.service-timeline-toggle:hover,
+.service-timeline-toggle:focus-visible { text-decoration: underline; }
+.timeline-toggle-icon { rotate: 90deg; }
+.service-timeline-toggle[aria-expanded="true"] .timeline-toggle-icon { rotate: -90deg; }
+
+.service-timeline { max-width: var(--medida); }
+
+.timeline-item {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.timeline-week {
+    font-size: var(--fs-6);
+    font-weight: 700;
+    color: var(--color-text-high);
+}
+
+.timeline-milestone {
+    font-size: var(--fs-6);
+    color: var(--color-text-mid);
+}
+
+.timeline-duration {
+    margin-top: var(--space-4);
+    font-size: var(--fs-6);
+    color: var(--color-text-low);
+}
+
+@media (min-width: 769px) {
+    .service-block {
+        grid-template-columns: 6rem minmax(0, 1fr);
+        column-gap: var(--space-6);
+        padding: var(--space-10) 0;
+    }
+
+    .service-number {
+        grid-column: 1;
+        grid-row: 1 / span 12;
+        margin: 0;
+    }
+
+    .service-block > :not(.service-number) { grid-column: 2; }
+}
+
+/* Nosotros: equipo y clientes. */
+.nosotros__bloques {
+    display: grid;
+    gap: var(--space-16);
+}
+
+.nosotros__bloque > h3 { margin-bottom: var(--space-6); }
+
+.equipo-grid {
+    display: grid;
+    gap: var(--space-12);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-line);
+}
+
+.equipo-member {
+    display: grid;
+    align-content: start;
+    gap: var(--space-1);
+}
+
+.equipo-foto-wrap {
+    width: 100%;
+    max-width: 240px;
+    aspect-ratio: 1;
+    margin-bottom: var(--space-3);
+}
+
+/* Retratos recortados y compuestos sobre Tinta: sin marco ni sombra. */
+.equipo-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.equipo-nombre {
+    font-size: var(--fs-5);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-text-high);
+}
+
+.equipo-rol {
+    font-size: var(--fs-6);
+    line-height: 1.4;
+    color: var(--color-text-mid);
+}
+
+.equipo-ciudad {
+    font-size: var(--fs-7);
+    line-height: 1.5;
+    color: var(--color-text-low);
+}
+
+/* Bio: perspectiva, no CV (VOICE.md). */
+.equipo-bio {
+    margin-top: var(--space-3);
+    font-size: var(--fs-6);
+    line-height: 1.6;
+    color: var(--color-text-mid);
+    max-width: 46ch;
+}
+
+/* Tablet: cada socio en una fila, retrato a la izquierda. Tres columnas no entran. */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .equipo-member {
+        grid-template-columns: 200px minmax(0, 1fr);
+        column-gap: var(--space-8);
+    }
+
+    .equipo-foto-wrap {
+        grid-row: 1 / span 6;
+        max-width: none;
+        margin: 0;
+    }
+
+    .equipo-member > :not(.equipo-foto-wrap) { grid-column: 2; }
+}
+
+@media (min-width: 1025px) {
+    .equipo-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: var(--space-8);
+    }
+
+    .equipo-foto-wrap { max-width: none; }
+}
+
+/* Logos de clientes en un solo tono: el blanco del texto, atenuado. Los de una sola tinta
+   pasan a silueta; CESBA y Speculative Futures tienen detalle adentro y van en grises. */
+.logos-grid {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    column-gap: var(--space-4);
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--color-text-mid);
-    overflow-wrap: anywhere;
-}
-/* "Copiar dirección": control secundario y tipográfico, sin caja (DESIGN.md). El acento queda
-   para el CTA; este toma el color del texto y pasa al acento con hover o foco. */
-.copiar-mail {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 0;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--color-text-mid);
-    background: transparent;
-    border: 0;
-    text-decoration: underline;
-    text-decoration-color: rgba(250, 248, 246, 0.3);
-    text-underline-offset: 4px;
-    cursor: pointer;
-    transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
-}
-.copiar-mail:hover,
-.copiar-mail:focus-visible {
-    color: var(--color-accent);
-    text-decoration-color: currentColor;
-}
-.copiar-mail:focus-visible {
-    outline: 2px solid var(--orange-500);
-    outline-offset: 2px;
-}
-.copiar-mail[hidden] { display: none; }
-/* En el cierre la línea va centrada: con un ancho fijo para el rótulo más largo ("Dirección
-   copiada"), la dirección no se corre cuando cambia el texto del botón. */
-.cierre-mail .copiar-mail {
-    min-width: 8.75em;
-    justify-content: center;
-}
-/* En el contacto del inicio va en su propia línea, pegado al mail. */
-.contact-direct .copiar-mail { display: flex; }
-.contact-direct .copiar-mail[hidden] { display: none; }
-@media (prefers-reduced-motion: reduce) {
-    .copiar-mail { transition: none; }
+    gap: var(--space-8) var(--space-10);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-line);
 }
 
-/* 2. Seguí leyendo: al final de cada caso y de la tesis, después del cierre. Filas tipográficas
-      como el índice de Pensamiento, en la columna del cierre (900px). Reemplaza las filas
-      "Relacionado" de los créditos. */
-/* En esas páginas el cierre ya no es el último bloque: sin el padding de abajo, que no separaba
-   nada adentro del bloque, el silencio hasta "Seguí leyendo" es el de siempre entre bloques. */
-.cierre-section .proyectos-cta { padding-bottom: 0; }
-.seguir-inner {
-    max-width: 900px;
-    margin: 0 auto;
+.logo-item img {
+    width: auto;
+    height: 40px;
+    max-width: 100%;
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
 }
-.seguir-lista {
+
+.logo-item img[src*="logo-cesba"],
+.logo-item img[src*="speculative-futures-madrid"] { filter: grayscale(1) brightness(1.5); }
+
+/* Los logos vienen recortados a su contenido; dos ajustes de peso visual: las marcas cuadradas
+   más altas que los wordmarks, y los wordmarks muy anchos más bajos. */
+.logo-item img[src*="olamestudio"] { height: 64px; max-width: 64px; }
+.logo-item img[src*="speculative-futures-madrid"] { height: 54px; }
+.logo-item img[src*="logo-cesba"] { height: 68px; max-width: 68px; }
+.logo-item img[src*="trace-logo"],
+.logo-item img[src*="micelio"],
+.logo-item img[src*="otros-futuros"] { height: 28px; }
+
+@media (min-width: 769px) {
+    .logos-grid { gap: var(--space-10) var(--space-16); }
+
+    .logo-item img { height: 46px; }
+    .logo-item img[src*="olamestudio"] { height: 84px; max-width: 84px; }
+    .logo-item img[src*="speculative-futures-madrid"] { height: 80px; }
+    .logo-item img[src*="logo-cesba"] { height: 88px; max-width: 88px; }
+    .logo-item img[src*="trace-logo"],
+    .logo-item img[src*="micelio"],
+    .logo-item img[src*="otros-futuros"] { height: 32px; }
+}
+
+/* Contacto: tres situaciones y el mail. */
+.situaciones {
     list-style: none;
-    margin: 0;
-    padding: 0;
+    display: grid;
+    gap: var(--space-6);
+    margin: var(--space-8) 0 var(--space-12);
 }
-.seguir-fila {
-    position: relative;
-    padding: var(--space-5) 0;
-    border-top: 1px solid rgba(250, 248, 246, 0.06);
+
+.situacion {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-line);
 }
-.seguir-fila:last-child {
-    border-bottom: 1px solid rgba(250, 248, 246, 0.06);
-}
-.seguir-titulo {
-    font-size: 1.25rem;
-    line-height: 1.3;
-    font-weight: 700;
-    margin: 0 0 var(--space-2);
-}
-.seguir-titulo a {
+
+.situacion p {
+    font-size: var(--fs-5);
+    line-height: 1.5;
     color: var(--color-text-high);
-    text-decoration: none;
-    transition: color var(--transition-fast);
+    max-width: var(--medida);
 }
-/* Toda la fila responde al clic: el ::after del enlace la cubre. El nombre del enlace sigue
-   siendo solo el título. */
-.seguir-titulo a::after {
-    content: "";
+
+.contact-inner {
+    display: grid;
+    gap: var(--space-10);
+}
+
+.contact-direct-mail {
+    display: inline-block;
+    font-size: var(--fs-6);
+    font-weight: 700;
+    line-height: 1.3;
+    text-decoration: underline;
+    text-decoration-color: rgba(193, 111, 82, 0.4);
+    text-underline-offset: 6px;
+    overflow-wrap: anywhere;
+}
+
+.contact-direct-mail:hover,
+.contact-direct-mail:focus-visible { text-decoration-color: currentColor; }
+
+.contact-direct .copiar-mail { display: flex; }
+
+.contact-direct-promise {
+    margin-top: var(--space-4);
+    font-size: var(--fs-5);
+    line-height: 1.5;
+    color: var(--color-text-mid);
+    max-width: var(--medida);
+}
+
+.contact-addresses {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.contact-city {
+    font-size: var(--fs-6);
+    font-weight: 700;
+    color: var(--color-text-high);
+}
+
+.contact-street {
+    font-size: var(--fs-6);
+    color: var(--color-text-mid);
+}
+
+@media (min-width: 769px) {
+    .contact-direct-mail { font-size: var(--fs-4); }
+    .contact-addresses { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1025px) {
+    .situaciones {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-8);
+    }
+
+    .contact-inner {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: var(--space-12);
+    }
+}
+
+
+/* 9. Tarjetas y filas ==================================================
+   Una sola tarjeta para casos, docencia y artículos (partials/piezas.njk, datos en
+   src/_data/piezas.mjs): imagen 16:9, tipo y fecha, título, descripción, ficha corta y
+   enlace. Sin caja: la separa el aire. Una columna en el teléfono; en tablet, una por fila con
+   la imagen a la izquierda; tres columnas desde 1025. */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-16) var(--space-8);
+}
+
+.tarjeta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta__imagen {
+    aspect-ratio: 16 / 9;
+    margin-bottom: var(--space-5);
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--color-surface);
+}
+
+/* Velo cálido sutil: une las fotos frías a la paleta. Solo fotos e ilustraciones de tarjeta. */
+.tarjeta__imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.12) saturate(0.95);
+}
+
+.tarjeta__meta { margin-bottom: var(--space-2); }
+
+.tarjeta__titulo { margin-bottom: var(--space-3); }
+
+.tarjeta__descripcion {
+    font-size: var(--fs-6);
+    line-height: 1.55;
+    color: var(--color-text-mid);
+    max-width: var(--medida);
+}
+
+.tarjeta .tarjeta__datos {
+    max-width: var(--medida);
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-line);
+}
+
+.tarjeta__enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    margin-top: auto;
+    padding-top: var(--space-5);
+}
+
+/* Con un solo enlace, toda la tarjeta responde al clic: el ::before del enlace la cubre.
+   El nombre del enlace sigue siendo su texto ("Leer el caso: …"). */
+.tarjeta--enlazada .cta-link::before {
+    content: '';
     position: absolute;
     inset: 0;
 }
-/* En los casos, `.reporte-page a:visited` pinta de acento todo enlace visitado: acá el título
-   sigue blanco y solo pasa al acento con hover o foco. */
-.seguir-titulo a:visited { color: var(--color-text-high); }
-.seguir-fila:hover .seguir-titulo a,
-.seguir-titulo a:focus-visible {
-    color: var(--color-accent);
+.tarjeta--enlazada:hover .cta-link {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
 }
-.seguir-bajada {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--color-text-mid);
-    margin: 0;
-    max-width: 60ch;
-}
-.seguir-dato {
-    font-size: 0.9375rem;
-    line-height: 1.5;
-    color: var(--color-text-low);
-    margin: var(--space-2) 0 0;
-}
-@media (min-width: 769px) {
-    .seguir-fila {
+.tarjeta--enlazada:hover .cta-link::after { translate: 4px 0; }
+
+/* Tablet: una tarjeta por fila, con la imagen a la izquierda. En dos columnas, los tres casos
+   dejaban uno solo abajo. */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .tarjetas { row-gap: var(--space-12); }
+
+    .tarjeta {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        align-content: start;
+        column-gap: var(--space-8);
+    }
+
+    .tarjeta > * { grid-column: 2; }
+
+    .tarjeta__imagen {
+        grid-column: 1;
+        grid-row: 1 / span 6;
+        align-self: start;
+        margin-bottom: 0;
+    }
+
+    .tarjeta__enlaces { margin-top: 0; }
+}
+
+@media (min-width: 1025px) {
+    .tarjetas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Filas: título enlazado, bajada y tipo · dato. La lista de textos del inicio y "Seguí leyendo".
+   Toda la fila responde al clic; el nombre del enlace es el título. */
+.filas {
+    list-style: none;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.fila {
+    position: relative;
+    padding: var(--space-6) 0;
+    border-top: 1px solid var(--color-line);
+}
+
+.fila__titulo { margin-bottom: var(--space-2); }
+
+.fila__titulo a {
+    color: var(--color-text-high);
+    text-decoration: none;
+}
+
+.fila__titulo a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.fila:hover .fila__titulo a,
+.fila__titulo a:focus-visible { color: var(--orange-500); }
+
+.fila__bajada {
+    font-size: var(--fs-6);
+    line-height: 1.55;
+    color: var(--color-text-mid);
+    max-width: var(--medida);
+}
+
+.fila__dato { margin-top: var(--space-2); }
+
+@media (min-width: 769px) {
+    .fila {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
         column-gap: var(--space-12);
         align-items: baseline;
     }
-    .seguir-titulo,
-    .seguir-bajada { grid-column: 1; }
-    .seguir-dato {
+
+    .fila__titulo,
+    .fila__bajada { grid-column: 1; }
+
+    .fila__dato {
         grid-column: 2;
         grid-row: 1;
         margin: 0;
         text-align: right;
     }
 }
-@media (prefers-reduced-motion: reduce) {
-    .seguir-titulo a { transition: none; }
+
+
+/* 10. Lo hecho y Pensamiento ========================================== */
+
+.cabecera__titulo {
+    font-size: var(--fs-1);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 20ch;
+    margin-bottom: var(--space-6);
 }
 
-/* 3. Cuatro movimientos: la bajada nombra dos casos y ahora enlaza a ellos. Acento, como los
-      enlaces dentro del texto de los casos; el subrayado viene de `main p a`. */
-.services-intro a,
-.services-intro a:visited {
-    color: var(--color-accent);
+.cabecera .etiqueta { margin-bottom: var(--space-5); }
+.cabecera .bajada { margin-bottom: 0; }
+
+/* Índice de Pensamiento: tres filas. */
+.indice__titulo {
+    font-size: var(--fs-6);
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: var(--color-text-mid);
+    margin-bottom: var(--space-3);
 }
 
-/* 4. Un solo eje izquierdo en los heros. La bajada iba centrada en 800px bajo un título alineado
-      a la izquierda (168px corrida en Lo hecho, Pensamiento y la tesis; 104px en los casos) y los
-      labels arrastraban 24px de sangría de cuando llevaban un borde de color, que ya no está.
-      Ahora label, título, bajada y metadatos arrancan en la misma línea. En la tesis, la bajada
-      recupera el aire sobre la barra de metadatos que `.hero-section .hero-sub` le pisaba. */
-.hero-section .thesis-subtitle { margin-bottom: var(--space-5); }
+.indice__lista {
+    list-style: none;
+    max-width: 40rem;
+    border-bottom: 1px solid var(--color-line);
+}
 
-/* 5. Ficha técnica: la de Créditos es la misma que la del hero. Sus valores caían en la regla de
-      prosa de .page-lectura y salían en Literata de 19px y en mayúsculas; ahora vuelven a la sans
-      (lista de excepciones de la regla de Literata). En escritorio la columna de etiquetas pasa de
-      6.5rem a 9rem: DESTINATARIO y CONSTRUCCIÓN no entraban y corrían su valor 15 y 35px. En el
-      teléfono la etiqueta va arriba del valor (las reglas están en "ficha técnica de proyecto"). */
+.indice__lista a {
+    display: block;
+    text-decoration: none;
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--color-line);
+    font-size: var(--fs-5);
+    color: var(--color-text-high);
+}
 
-/* 6. Índice de los casos. El pegajoso aparece desde 1280px (antes 1536) y el caso le deja lugar:
-      el hero y las secciones reservan a la derecha los 280px del índice, su margen de 32 y 32 de
-      aire. La reserva se achica con el ancho y desde 1696px es el padding de siempre. Antes, aun
-      en 1536, el índice pisaba 48px de las tarjetas de Gabinete y Natalidad.
-      main.js lo esconde cuando llega el cierre, que va centrado a todo el ancho. */
+.indice__lista a:hover,
+.indice__lista a:focus-visible { color: var(--orange-500); }
+
+/* Señales: superficies, la lectura propia con línea de acento y la fuente al pie. */
+.senales-grid {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.senal-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 48rem;
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    border: 1px solid rgba(193, 111, 82, 0.12);
+    border-radius: var(--radius);
+    box-shadow: inset 0 1px 0 rgba(250, 248, 246, 0.05), var(--shadow);
+}
+
+.senal-card .etiqueta { margin-bottom: var(--space-4); }
+
+.senal-headline {
+    font-size: var(--fs-5);
+    line-height: 1.35;
+    margin-bottom: var(--space-4);
+}
+
+.senal-analysis {
+    font-size: var(--fs-6);
+    color: var(--color-text-mid);
+    margin-bottom: var(--space-4);
+}
+
+.senal-lectura {
+    font-size: var(--fs-6);
+    color: var(--color-text-high);
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--orange-500);
+    margin-bottom: var(--space-4);
+}
+
+.senal-fuente {
+    margin-top: auto;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-line);
+    font-size: var(--fs-7);
+    line-height: 1.5;
+    color: var(--color-text-low);
+}
+
+main .senal-fuente a {
+    color: var(--color-text-mid);
+    text-decoration-color: rgba(193, 111, 82, 0.4);
+}
+
+main .senal-fuente a:hover,
+main .senal-fuente a:focus-visible { color: var(--orange-500); }
+
+@media (min-width: 769px) {
+    .senal-card { padding: var(--space-8); }
+}
+
+/* Tres señales lado a lado solo cuando entran: debajo de 1280 las columnas quedaban en 190 px de texto. */
 @media (min-width: 1280px) {
-    .reporte-page .hero-section,
-    .reporte-page .content-section {
-        padding-right: max(var(--space-24), calc(944px - 50vw));
+    .senales-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-8);
     }
-    /* En una notebook de 1280×800 el índice de Natalidad (con su cifra) mide 710px y se cortaba
-       abajo: si no entra, se scrollea adentro. */
-    .sticky-toc {
-        max-height: calc(100vh - 100px - var(--space-6));
-        overflow-y: auto;
-        overscroll-behavior: contain;
+
+    .senal-card { max-width: none; }
+}
+
+/* Filtro de artículos por movimiento: etiquetas tipográficas, la activa subrayada. */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    margin-bottom: var(--space-10);
+}
+
+.filter-btn {
+    padding: var(--space-2) 0;
+    border-bottom: 2px solid transparent;
+    font-size: var(--fs-6);
+    color: var(--color-text-mid);
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.filter-btn:hover { color: var(--orange-500); }
+
+.filter-btn--active {
+    color: var(--orange-500);
+    border-bottom-color: var(--orange-500);
+}
+
+/* Tesis de La Usina: la única pieza con corner brackets, la firma de La Usina. */
+.tesis-card {
+    position: relative;
+    max-width: 50rem;
+    padding: var(--space-8) var(--space-6);
+    background-color: var(--color-surface);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    box-shadow: inset 0 1px 0 rgba(250, 248, 246, 0.05), var(--shadow);
+}
+
+.tesis-card .etiqueta { margin-bottom: var(--space-3); }
+
+.tesis-card__title {
+    font-size: var(--fs-3);
+    line-height: 1.15;
+    margin-bottom: var(--space-3);
+}
+
+.tesis-card__subtitle {
+    color: var(--color-text-mid);
+    margin-bottom: var(--space-3);
+}
+
+.tesis-card__authors {
+    font-size: var(--fs-6);
+    color: var(--color-text-low);
+    margin-bottom: var(--space-5);
+}
+
+.tesis-card .tarjeta__datos {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-line);
+}
+
+.tesis-card__enlace { margin-top: var(--space-6); }
+
+.corner-bracket {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.corner-bracket--tl {
+    top: 0;
+    left: 0;
+    border-top: 2px solid var(--orange-500);
+    border-left: 2px solid var(--orange-500);
+}
+
+.corner-bracket--br {
+    right: 0;
+    bottom: 0;
+    border-right: 2px solid var(--orange-500);
+    border-bottom: 2px solid var(--orange-500);
+}
+
+@media (min-width: 769px) {
+    .tesis-card { padding: var(--space-10); }
+    .corner-bracket { width: 40px; height: 40px; }
+}
+
+
+/* 11. Casos ============================================================
+   Un caso es un documento: la prosa y la ficha técnica van sin cajas, la ficha con líneas.
+   Llevan caja solo las piezas que son un objeto en sí: las figuras, los documentos de Gabinete,
+   los escenarios (son controles) y el aviso. */
+
+.cabecera--documento .cabecera__titulo {
+    font-size: var(--fs-2);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    max-width: 28ch;
+}
+
+/* Ficha técnica: debajo del título y en Créditos. Etiqueta arriba del valor en el teléfono;
+   desde 769, dos columnas con la de etiquetas al ancho de la más larga ("Construcción"). */
+.ficha-tecnica {
+    max-width: 40rem;
+    margin-top: var(--space-8);
+    border-bottom: 1px solid var(--color-line);
+}
+
+.ficha-row {
+    display: grid;
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--color-line);
+}
+
+.ficha-row dt {
+    font-size: var(--fs-7);
+    line-height: 1.5;
+    color: var(--color-text-low);
+}
+
+.ficha-row dd {
+    font-family: var(--font-body);
+    font-size: var(--fs-6);
+    line-height: 1.5;
+    color: var(--color-text-mid);
+}
+
+@media (min-width: 769px) {
+    .ficha-row {
+        grid-template-columns: 9rem minmax(0, 1fr);
+        column-gap: var(--space-4);
+        align-items: baseline;
     }
 }
-/* Debajo de 1280px, el botón "Índice" se esconde mientras se baja leyendo (main.js le pone
-   .is-oculto) para no tapar el final de los renglones, y vuelve al subir. Solo opacidad: con el
-   foco del teclado se ve igual. */
+
+.hero-figura {
+    margin-top: var(--space-10);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+}
+
+.hero-figura img { width: 100%; }
+
+.hero-figura-pie {
+    margin-top: var(--space-3);
+    font-size: var(--fs-6);
+    line-height: 1.5;
+    color: var(--color-text-low);
+    max-width: var(--medida);
+}
+
+/* Desde 1280 el índice pegajoso va a la derecha: la cabecera y las secciones del caso le dejan
+   su ancho (280), su margen (32) y aire (32). En pantallas anchas manda el marco de siempre. */
+@media (min-width: 1280px) {
+    .reporte-page .cabecera,
+    .reporte-page .caso-seccion {
+        padding-right: max(var(--marco), 344px);
+    }
+}
+
+/* Prosa de lectura larga en Literata: casos y tesis. Con :where la regla no pesa, así que
+   cualquier componente con clase propia la pisa sin pelear la cascada. */
+:where(.page-lectura) :where(.caso-seccion, .tesis-seccion) :is(p, li, dd) {
+    font-family: var(--font-lectura);
+    font-size: var(--fs-5);
+    line-height: 1.7;
+    color: var(--color-text-mid);
+    max-width: var(--medida);
+}
+
+:where(.caso-seccion, .tesis-seccion) :is(p, li) strong { color: var(--color-text-high); }
+:where(.caso-seccion, .tesis-seccion) em { font-style: italic; }
+
+:where(.caso-bloque, .thesis-abstract) > p { margin-bottom: var(--space-5); }
+:where(.caso-bloque, .thesis-abstract) > :last-child { margin-bottom: 0; }
+
+:where(.caso-seccion) ul {
+    padding-left: 1.25em;
+    margin-bottom: var(--space-5);
+}
+
+:where(.caso-seccion) li { margin-bottom: var(--space-2); }
+:where(.caso-seccion) li:last-child { margin-bottom: 0; }
+
+.caso-seccion h2 {
+    max-width: 30ch;
+    margin-bottom: var(--space-6);
+}
+
+.caso-seccion h3 { margin: var(--space-10) 0 var(--space-4); }
+
+.caso-seccion > * + * { margin-top: var(--space-12); }
+.caso-seccion > * + .caso-bloque { margin-top: var(--space-16); }
+
+/* Figuras: los gráficos con fondo blanco van sobre papel (multiply funde el blanco del PNG). */
+.figura { margin: var(--space-8) 0; }
+
+.figura img {
+    width: 100%;
+    border-radius: var(--radius);
+}
+
+.figura__papel {
+    padding: var(--space-4);
+    background: var(--paper);
+    border-radius: var(--radius);
+}
+
+.figura__papel img {
+    border-radius: var(--radius-sm);
+    mix-blend-mode: multiply;
+}
+
+.figura figcaption {
+    margin-top: var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--fs-6);
+    line-height: 1.5;
+    color: var(--color-text-low);
+    max-width: var(--medida);
+}
+
+/* Cita destacada: una frase del propio caso, en la sans, con la línea de acento a la izquierda. */
+.pull-quote {
+    padding-left: var(--space-6);
+    border-left: 3px solid var(--orange-500);
+}
+
+.pull-quote p {
+    font-family: var(--font-body);
+    font-size: var(--fs-3);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--color-text-high);
+    max-width: 28ch;
+}
+
+/* Cifra: un dato grande en el acento, antes del párrafo que lo explica. */
+.cifra {
+    margin: var(--space-8) 0 var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--fs-2);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--orange-500);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Aviso: interrumpe la lectura a propósito (frontera entre dato y ficción, lo que implica). */
+.ficcion-aviso {
+    max-width: var(--medida);
+    margin: var(--space-8) 0;
+    padding: var(--space-5) var(--space-6);
+    background: var(--color-surface);
+    border-left: 3px solid var(--orange-500);
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.ficcion-aviso p { color: var(--color-text-high); }
+.ficcion-aviso strong { color: var(--orange-500); }
+
+/* Fuentes: subordinadas al texto, pero legibles. */
+.reporte-fuente,
+.ficha-caso-fuentes {
+    font-family: var(--font-body);
+    font-size: var(--fs-7);
+    line-height: 1.6;
+    color: var(--color-text-low);
+    max-width: 36rem;   /* a 15 px, la misma medida de unos 75 caracteres */
+}
+
+.reporte-fuente {
+    margin-top: var(--space-4);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-line);
+}
+
+.ficha-caso-fuentes { margin-top: var(--space-8); }
+.ficha-caso-fuentes strong { color: var(--color-text-mid); }
+
+/* El caso en cuatro respuestas: dos columnas desde 1025. */
+.ficha-caso-grid {
+    display: grid;
+    gap: var(--space-8);
+}
+
+.ficha-caso-item dt {
+    font-size: var(--fs-5);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-text-high);
+    margin-bottom: var(--space-2);
+}
+
+@media (min-width: 1025px) {
+    .ficha-caso-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-10) var(--space-12);
+    }
+}
+
+/* Escenarios: acordeones, uno debajo del otro. Son controles, así que llevan caja. */
+.report-scenarios-grid {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 48rem;
+}
+
+.caso-seccion .scenario-accordion-title { margin: 0; }
+
+.scenario-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    width: 100%;
+    padding: var(--space-5) var(--space-6);
+    font-family: var(--font-body);
+    font-size: var(--fs-5);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-text-high);
+    text-align: left;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    transition: border-color var(--transition);
+}
+
+.scenario-accordion-header:hover { border-color: var(--orange-500); }
+
+.scenario-accordion-header.active {
+    border-bottom-color: transparent;
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.toggle-icon {
+    color: var(--orange-500);
+    rotate: 90deg;
+}
+
+.scenario-accordion-header.active .toggle-icon { rotate: -90deg; }
+
+.scenario-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;   /* colapsado de verdad: fuera del árbol de accesibilidad y del tabulado */
+    padding: 0 var(--space-6);
+    background: var(--color-surface);
+    border: 0 solid var(--color-border);
+    border-radius: 0 0 var(--radius) var(--radius);
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out, visibility 0.4s;
+}
+
+.scenario-accordion-content.active {
+    max-height: 2000px;
+    visibility: visible;
+    padding: var(--space-2) var(--space-6) var(--space-6);
+    border-width: 0 1px 1px;
+}
+
+.scenario-accordion-content > p { margin-bottom: var(--space-4); }
+.scenario-accordion-content > :last-child { margin-bottom: 0; }
+
+/* Documentos del sistema (Gabinete Extemporáneo): piezas de papel de la instalación,
+   reproducidas como texto. Lo que no se puede contar va cubierto por .tachado, spans vacíos:
+   el texto oculto no existe en el DOM, no se copia ni se lee. */
+.documento {
+    position: relative;
+    max-width: 34rem;
+    margin: var(--space-8) 0;
+    padding: var(--space-5);
+    background: var(--paper);
+    border-radius: var(--radius);
+}
+
+.documento :is(p, li) {
+    font-family: var(--font-body);
+    font-size: var(--fs-6);
+    line-height: 1.6;
+    color: var(--ink);
+    max-width: none;
+    margin-bottom: var(--space-3);
+}
+
+.documento > :last-child { margin-bottom: 0; }
+.documento strong { color: #14110f; }
+
+.documento .documento__tipo {
+    font-size: var(--fs-7);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8a4b31;
+    margin-bottom: var(--space-4);
+}
+
+.documento .documento__subtipo,
+.documento .documento__asunto {
+    font-weight: 700;
+    color: #14110f;
+}
+
+.documento .documento__subtipo { margin-top: calc(-1 * var(--space-2)); }
+
+.documento .documento__campos {
+    line-height: 2;
+    color: #45403b;
+}
+
+.tachado {
+    display: inline-block;
+    height: 0.95em;
+    vertical-align: -0.12em;
+    background: var(--ink);
+    border-radius: 1px;
+}
+
+.tachado--xs { width: 3.5ch; }
+.tachado--sm { width: 7ch; }
+.tachado--md { width: 11ch; }
+.tachado--lg { width: 11ch; }
+.tachado--xl { width: 14ch; }
+
+/* Renglón en blanco de la hoja de la sala de espera. */
+.documento .documento__linea {
+    height: var(--space-8);
+    border-bottom: 1px solid #bdb2a4;
+    margin-bottom: var(--space-4);
+}
+
+/* Sello ARCHIVADO. En el teléfono no entra al lado del encabezado: el encabezado baja y el
+   sello queda arriba, solo. */
+.documento--sellado { padding-top: var(--space-16); }
+
+.documento .documento__sello {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--space-5);
+    margin: 0;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--fs-7);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #9c4f34;      /* 5,3:1 sobre el papel */
+    border: 2px solid #9c4f34;
+    border-radius: var(--radius-sm);
+    transform: rotate(-6deg);
+}
+
+/* Credencial: el rol tapado y el año legible. */
+.documento--credencial {
+    max-width: 24rem;
+    text-align: center;
+}
+
+.documento .documento__rol { margin: var(--space-5) 0 var(--space-2); }
+
+.documento .documento__anio {
+    font-size: var(--fs-2);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: #14110f;
+    margin-bottom: var(--space-5);
+}
+
+.documento--credencial .documento__campos {
+    font-size: var(--fs-7);
+    line-height: 1.5;
+    color: #6b635b;
+}
+
+.documento--a5 { max-width: 26rem; }
+
+@media (min-width: 769px) {
+    .documento { padding: var(--space-6); }
+    .documento--sellado { padding-top: var(--space-10); }
+    .tachado--lg { width: 16ch; }
+    .tachado--xl { width: 22ch; }
+}
+
+/* Índice pegajoso (desde 1280), con el rail de cifras de natalidad. main.js lo muestra después
+   de 400 px de scroll y lo saca cuando llega el cierre. */
+.sticky-toc {
+    position: fixed;
+    top: 100px;
+    right: var(--space-8);
+    z-index: 100;
+    display: none;
+    width: 280px;
+    max-height: calc(100vh - 124px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--space-6);
+    background: rgba(26, 30, 37, 0.85);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.sticky-toc.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.toc-label {
+    font-size: var(--fs-7);
+    font-weight: 700;
+    color: var(--color-text-low);
+    margin-bottom: var(--space-3);
+}
+
+.sticky-toc ul { list-style: none; }
+
+.sticky-toc a {
+    display: block;
+    text-decoration: none;
+    padding: var(--space-1) 0;
+    font-size: var(--fs-6);
+    line-height: 1.4;
+    color: var(--color-text-mid);
+}
+
+.sticky-toc a:hover,
+.sticky-toc a.active { color: var(--orange-500); }
+
+.toc-data-rail {
+    margin-top: var(--space-5);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-line);
+}
+
+.data-rail-value {
+    display: block;
+    font-size: var(--fs-3);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--orange-500);
+    font-variant-numeric: tabular-nums;
+}
+
+.data-rail-label {
+    display: block;
+    margin-top: var(--space-2);
+    font-size: var(--fs-7);
+    line-height: 1.5;
+    color: var(--color-text-low);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .data-rail-value,
+    .data-rail-label { transition: opacity 0.18s ease; }
+
+    .toc-data-rail.is-switching .data-rail-value,
+    .toc-data-rail.is-switching .data-rail-label { opacity: 0; }
+}
+
+/* Botón "Índice" (debajo de 1280): se esconde mientras se baja leyendo y vuelve al subir. */
 .mobile-toc-btn {
+    position: fixed;
+    right: var(--gutter);
+    bottom: var(--space-6);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 var(--space-5);
+    font-size: var(--fs-6);
+    font-weight: 700;
+    color: var(--orange-500);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    box-shadow: var(--shadow);
     transition: border-color 0.3s, opacity 0.3s;
 }
+
+.mobile-toc-btn:hover,
+.mobile-toc-btn:focus-visible { border-color: var(--orange-500); }
+
 .mobile-toc-btn.is-oculto:not(:focus-visible) {
     opacity: 0;
     pointer-events: none;
 }
-@media (prefers-reduced-motion: reduce) {
-    .mobile-toc-btn { transition: none; }
+
+.mobile-toc-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    overflow-y: auto;
+    padding: var(--space-8) var(--gutter);
+    background: rgba(18, 21, 26, 0.97);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
 }
 
-/* 7. Sin numeración decorativa: el 01-03 del índice de Pensamiento y de las situaciones de
-      Conversemos se fue (no son secuencias). El 01-04 de los cuatro movimientos queda: es un
-      orden de trabajo ("El orden importa cuando el problema es grande"). */
+/* Al abrir, visibility cambia en el acto (no tiene transición): el botón «Cerrar» puede recibir
+   el foco en el mismo clic. Con transition: visibility 0s, la regla de movimiento reducido la
+   volvía 0,01 ms y el foco se perdía. Al cerrar, el fundido sí la espera. */
+.mobile-toc-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s;
+}
+
+.toc-content {
+    max-width: 40rem;
+    padding-top: var(--space-12);
+}
+
+.toc-title {
+    font-size: var(--fs-3);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--color-text-high);
+    margin-bottom: var(--space-6);
+}
+
+.report-toc-list {
+    list-style: none;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.report-toc-list a {
+    display: block;
+    text-decoration: none;
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--color-line);
+    font-size: var(--fs-5);
+    color: var(--color-text-high);
+}
+
+.report-toc-list a:hover,
+.report-toc-list a:focus-visible { color: var(--orange-500); }
+
+.close-btn {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-right: calc(-1 * var(--space-3));
+    font-size: 2rem;   /* glifo, no texto: fuera de la escala */
+    line-height: 1;
+    color: var(--orange-500);
+}
+
+/* Compartir: botones redondos a la izquierda, desde 1280. */
+.share-buttons {
+    position: fixed;
+    top: 50%;
+    left: var(--space-8);
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    gap: var(--space-4);
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.share-buttons.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.share-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(250, 248, 246, 0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    transition: background-color var(--transition), border-color var(--transition);
+}
+
+.share-buttons a:hover,
+.share-buttons a:focus-visible {
+    background: var(--orange-500);
+    border-color: var(--orange-500);
+}
+
+.share-buttons svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-text-high);
+    transition: fill var(--transition);
+}
+
+.share-buttons a:hover svg,
+.share-buttons a:focus-visible svg { fill: var(--color-bg); }
+
+/* Debajo de 1280, el botón "Índice"; desde 1280, el índice pegajoso y compartir. */
+@media (min-width: 1280px) {
+    .sticky-toc { display: block; }
+    .share-buttons { display: flex; }
+    .mobile-toc-btn { display: none; }
+}
+
+
+/* 12. Tesis ============================================================ */
+
+.cabecera .thesis-subtitle { margin-bottom: var(--space-6); }
+
+.thesis-metadata-bar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    max-width: 50rem;
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    font-size: var(--fs-6);
+    line-height: 1.5;
+    color: var(--color-text-low);
+}
+
+.thesis-cover { max-width: 50rem; }
+
+.thesis-cover img {
+    width: 100%;
+    border: 1px solid rgba(250, 248, 246, 0.12);
+    border-radius: var(--radius);
+}
+
+.thesis-cover figcaption {
+    margin-top: var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--fs-6);
+    line-height: 1.5;
+    color: var(--color-text-low);
+}
+
+.thesis-cover-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-8);
+    margin-top: var(--space-6);
+}
+
+.thesis-cite {
+    max-width: var(--medida);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border-left: 3px solid var(--orange-500);
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.thesis-cite h2 {
+    font-size: var(--fs-4);
+    line-height: 1.25;
+    letter-spacing: 0;
+    margin-bottom: var(--space-4);
+}
+
+.thesis-cite p + p { margin-top: var(--space-3); }
+
+.thesis-cite .thesis-cite__note {
+    font-family: var(--font-body);
+    font-size: var(--fs-6);
+    line-height: 1.55;
+    color: var(--color-text-low);
+}
+
+@media (min-width: 769px) {
+    .thesis-metadata-bar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--space-2) var(--space-6);
+    }
+}
+
+
+/* 13. Privacidad y 404 =================================================
+   Texto corrido en la sans. Los títulos de cada apartado van en el tamaño de un subtítulo:
+   son partes de un solo bloque, no bloques. */
+
+.legal-date {
+    margin-bottom: var(--space-5);
+    font-size: var(--fs-6);
+    color: var(--color-text-low);
+}
+
+.legal-content h2 {
+    font-size: var(--fs-4);
+    line-height: 1.25;
+    letter-spacing: 0;
+    margin: var(--space-12) 0 var(--space-4);
+}
+
+.legal-content > :first-child { margin-top: 0; }
+
+.legal-content :is(p, li) {
+    color: var(--color-text-mid);
+    max-width: var(--medida);
+}
+
+.legal-content p { margin-bottom: var(--space-5); }
+
+.legal-content ul {
+    padding-left: 1.25em;
+    margin-bottom: var(--space-5);
+}
+
+.legal-content li { margin-bottom: var(--space-2); }
+
+.legal-content strong { color: var(--color-text-high); }
+
+.legal-content > :last-child { margin-bottom: 0; }
+
+.u-mt-12 { margin-top: var(--space-12); }
+
+
+/* 14. Cierre y "Seguí leyendo" =========================================
+   El cierre: una afirmación y el CTA que abre el mail con el asunto de la página; debajo, la
+   dirección y "Copiar dirección". "Seguí leyendo" va después, en los casos y la tesis. */
+
+.cierre__titulo {
+    font-size: var(--fs-2);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    max-width: 24ch;
+    margin-bottom: var(--space-5);
+}
+
+.cierre__texto {
+    font-size: var(--fs-5);
+    color: var(--color-text-mid);
+    max-width: 50ch;
+    margin-bottom: var(--space-5);
+}
+
+.cierre-mail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: var(--space-4);
+    margin-top: var(--space-3);
+    font-size: var(--fs-6);
+    line-height: 1.5;
+    color: var(--color-text-mid);
+    overflow-wrap: anywhere;
+}
+
+/* "Copiar dirección": control secundario y tipográfico, en el color del texto; pasa al acento
+   con hover o foco. Ancho fijo para el rótulo más largo, así la dirección no se corre. */
+.copiar-mail {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    min-width: 8.75em;
+    font-size: var(--fs-6);
+    line-height: 1.5;
+    color: var(--color-text-mid);
+    text-decoration: underline;
+    text-decoration-color: rgba(250, 248, 246, 0.3);
+    text-underline-offset: 4px;
+    transition: color var(--transition), text-decoration-color var(--transition);
+}
+
+.copiar-mail:hover,
+.copiar-mail:focus-visible {
+    color: var(--orange-500);
+    text-decoration-color: currentColor;
+}
+
+.seguir-leyendo .filas { margin-top: var(--space-2); }
+
+
+/* 15. Preferencias del sistema ========================================= */
+
+@media (pointer: coarse) {
+    .nav-links a,
+    .filter-btn,
+    .cta-link,
+    .footer-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+
+    .nav-logo {
+        padding: 2px 11px;
+        margin-left: -11px;
+    }
+}
+
+/* Movimiento reducido: sin animaciones ni transiciones. "none" y no una duración mínima: con
+   0,01 ms todo elemento transicionaba hasta las propiedades heredadas, y el botón «Cerrar» del
+   índice seguía oculto (visibility) en el instante en que tenía que recibir el foco. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

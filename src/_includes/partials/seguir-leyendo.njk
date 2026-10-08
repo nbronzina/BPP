@@ -1,30 +1,14 @@
 {#- "Seguí leyendo": las otras piezas largas del sitio, al final de cada caso y de la tesis.
-    Va después del cierre: primero la conversación, después la lectura que sigue. Reemplaza
-    las filas "Relacionado" que había en los créditos de dos casos.
-    La lista vive acá, en el orden de Lo hecho, y cada página muestra las demás. Las bajadas salen
-    de las tarjetas de Lo hecho y Pensamiento: si cambian allá, hay que cambiarlas acá. Si se suma
-    una pieza y la lista pasa de cuatro, hay que elegir cuáles van: tres por página como mucho. -#}
-{%- set piezas = [
-  { url: "/proyectos/trace-group/", titulo: "Trace Group — De la señal al servicio", tipo: "Provocación", dato: "6 min de lectura",
-    bajada: "¿Y si un cargamento de gas quedara afuera de Europa por su metano, y no por su precio?" },
-  { url: "/proyectos/gabinete-extemporaneo/", titulo: "Gabinete Extemporáneo", tipo: "Caso", dato: "8 min de lectura",
-    bajada: "¿Y si te asignaran un puesto de trabajo antes de la primera clase?" },
-  { url: "/proyectos/natalidad/", titulo: "Impacto de la caída de la natalidad", tipo: "Caso", dato: "11 min de lectura",
-    bajada: "Lo que la caída de la natalidad hace con la matrícula de un colegio, en tres escenarios y cuatro líneas de trabajo." },
-  { url: "/usina/tesis-01/", titulo: "El actante siempre disponible", tipo: "Tesis", dato: "PDF de 56 páginas",
-    bajada: "Qué le pasa a la red de un adolescente cuando entra un interlocutor no humano, siempre disponible y con menos fricción que una persona." }
-] %}
-    <section class="section seguir-leyendo" aria-labelledby="seguir-heading">
-        <div class="seguir-inner">
-            <h2 id="seguir-heading" class="indice-label">Seguí leyendo</h2>
-            <ul class="seguir-lista">
-{%- for p in piezas %}{% if p.url != page.url %}
-                <li class="seguir-fila">
-                    <h3 class="seguir-titulo"><a href="{{ p.url }}">{{ p.titulo }}</a></h3>
-                    <p class="seguir-bajada">{{ p.bajada }}</p>
-                    <p class="seguir-dato">{{ p.tipo }} · {{ p.dato }}</p>
-                </li>
+    Va después del cierre: primero la conversación, después la lectura que sigue.
+    La lista es piezas.largas (src/_data/piezas.mjs), en el orden de Lo hecho, y cada página
+    muestra las demás. Si las piezas largas pasan de cuatro, hay que elegir cuáles van:
+    tres por página como mucho. -#}
+{%- from "partials/piezas.njk" import fila %}
+    <section class="bloque seguir-leyendo" aria-labelledby="seguir-heading">
+        <h2 id="seguir-heading">Seguí leyendo</h2>
+        <ul class="filas">
+{%- for p in piezas.largas %}{% if p.url != page.url %}
+{{ fila(p, p.lectura) }}
 {%- endif %}{% endfor %}
-            </ul>
-        </div>
+        </ul>
     </section>

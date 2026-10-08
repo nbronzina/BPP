@@ -6,7 +6,7 @@ ogType: "article"
 section: "proyectos"
 ogTitle: "Impacto de la caída de la natalidad en las matrículas escolares"
 ogDescription: "Caso 2025: lo que encontramos para el Colegio Francesco Faà di Bruno sobre natalidad y matrícula, con tres escenarios y cuatro líneas de trabajo, sobre series oficiales."
-bodyClass: "reporte-page secondary-page page-lectura"
+bodyClass: "reporte-page page-lectura"
 jsonld: "jsonld/natalidad.njk"
 cierreTitulo: "Si tenés una decisión así encima, hablemos antes de la emergencia."
 cierreCta: "Escribinos"
@@ -36,14 +36,11 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
 {% include "partials/caso-nav.njk" %}
 
     <!-- HERO DEL REPORTE -->
-    <section class="hero-section section-wide">
-      <p class="report-label">ANÁLISIS ESTRATÉGICO · 2025</p>
-      <h1 class="tagline">Impacto de la caída de la natalidad <span class="h1-light">en las matrículas escolares</span></h1>
-      <p class="hero-sub">
+    <section class="cabecera cabecera--documento">
+      <p class="etiqueta">Análisis estratégico · 2025</p>
+      <h1 class="cabecera__titulo">Impacto de la caída de la natalidad en las matrículas escolares</h1>
+      <p class="bajada">
         En 2025 el Colegio Francesco Faà di Bruno nos pidió entender qué iba a pasar con su matrícula a medida que caen los nacimientos. Cruzamos series oficiales de la Ciudad, del país y de dos partidos bonaerenses, y construimos tres escenarios. Esto es lo que encontramos.
-      </p>
-      <p class="report-tags">
-        Educación · Prospectiva · Datos &amp; escenarios
       </p>
       <dl class="ficha-tecnica">
         <div class="ficha-row"><dt>Año</dt><dd>2025</dd></div>
@@ -58,8 +55,8 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
     </section>
 
     <!-- RESUMEN EJECUTIVO -->
-    <section class="content-section reporte-section section-separator" id="sec-contexto">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-contexto">
+      <div class="caso-bloque">
         <h2>Resumen ejecutivo</h2>
         <p><strong>Lo que ya estaba decidido:</strong><br>Los alumnos de primer grado de los próximos seis años ya nacieron, y son menos.</p>
         <p>
@@ -81,7 +78,7 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           que se pudieran tomar ese mismo año, antes de que la caída llegara a
           las aulas.
         </p>
-      </article>
+      </div>
 
       <!-- Pull Quote -->
       <div class="pull-quote">
@@ -89,30 +86,28 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
       </div>
 
       <!-- STRIP DE KPIs -->
-      <article class="actividad-card actividad-card--light">
+      <div class="caso-bloque">
         <h2>Las cifras que pesaron más</h2>
         <p>
           Antes de proyectar nada, ordenamos las series que muestran que el
           problema ya empezó. Seis datos.
         </p>
 
-        <div class="impact-list">
-          <ul>
-            <li><strong>En la Ciudad de Buenos Aires:</strong> la población de 4 años pasó de 44.076 en 2016 a 25.201 proyectados para 2026, <strong>−42,8&nbsp;%</strong> (Gráfico 4, UEICEE).</li>
-            <li><strong>En el estudio regional:</strong> los nacimientos cayeron <strong>−55,8&nbsp;%</strong> en San Antonio de Areco y <strong>−43,3&nbsp;%</strong> en San Andrés de Giles entre 2014 y 2024. Ambos partidos caen más fuerte que el promedio bonaerense.</li>
-            <li><strong>En el país:</strong> los nacimientos bajaron <strong>−31,8&nbsp;%</strong> entre 2011 y 2021.</li>
-            <li><strong>Matrícula primaria:</strong> la proyección oficial es de <strong>−27&nbsp;%</strong> entre 2025 y 2030, más de un millón de alumnos menos.</li>
-            <li><strong>Por provincia:</strong> todas caen, de <strong>−19,4&nbsp;%</strong> en Santiago del Estero a <strong>−36,1&nbsp;%</strong> en Tierra del Fuego.</li>
-            <li><strong>En CABA y PBA:</strong> la población envejece y cada cohorte escolar es más chica que la anterior.</li>
-          </ul>
-        </div>
+        <ul>
+          <li><strong>En la Ciudad de Buenos Aires:</strong> la población de 4 años pasó de 44.076 en 2016 a 25.201 proyectados para 2026, <strong>−42,8&nbsp;%</strong> (Gráfico 4, UEICEE).</li>
+          <li><strong>En el estudio regional:</strong> los nacimientos cayeron <strong>−55,8&nbsp;%</strong> en San Antonio de Areco y <strong>−43,3&nbsp;%</strong> en San Andrés de Giles entre 2014 y 2024. Ambos partidos caen más fuerte que el promedio bonaerense.</li>
+          <li><strong>En el país:</strong> los nacimientos bajaron <strong>−31,8&nbsp;%</strong> entre 2011 y 2021.</li>
+          <li><strong>Matrícula primaria:</strong> la proyección oficial es de <strong>−27&nbsp;%</strong> entre 2025 y 2030, más de un millón de alumnos menos.</li>
+          <li><strong>Por provincia:</strong> todas caen, de <strong>−19,4&nbsp;%</strong> en Santiago del Estero a <strong>−36,1&nbsp;%</strong> en Tierra del Fuego.</li>
+          <li><strong>En CABA y PBA:</strong> la población envejece y cada cohorte escolar es más chica que la anterior.</li>
+        </ul>
         <p><strong>Traducido:</strong> para un colegio que no se adapta, esto son aulas vacías y una presión financiera que no se sostiene.</p>
         <p class="reporte-fuente"><em>Fuentes: nacimientos por partido, Ministerio de Salud de la provincia de Buenos Aires, dataset «Nacidos vivos» (serie 2005–2024). Nacimientos nacionales, DEIS, Ministerio de Salud de la Nación (serie 2011–2021). Proyección de matrícula, Dirección Nacional de Población–RENAPER, «Natalidad y educación en Argentina» (agosto de 2025); para las figuras de la Ciudad, UEICEE (Ministerio de Educación, GCABA) sobre Estadísticas Vitales. Todas son series oficiales; la lectura para el caso del colegio es nuestra.</em></p>
-      </article>
+      </div>
     </section>
 
     <!-- FICHA DEL CASO: cuatro respuestas fijas + fuentes, antes del reporte largo -->
-    <section class="content-section reporte-section section-separator ficha-caso" id="sec-ficha" aria-labelledby="ficha-heading">
+    <section class="bloque caso-seccion ficha-caso" id="sec-ficha" aria-labelledby="ficha-heading">
       <h2 id="ficha-heading" class="ficha-caso-title">El caso en cuatro respuestas</h2>
       <dl class="ficha-caso-grid">
         <div class="ficha-caso-item"><dt>Qué nos pidieron</dt><dd>El Colegio Francesco Faà di Bruno, en la Ciudad de Buenos Aires, nos pidió entender qué iba a pasar con su matrícula a medida que caen los nacimientos. No querían un diagnóstico nacional: querían una lectura para su zona, más un estudio complementario de dos partidos bonaerenses, San Antonio de Areco y San Andrés de Giles, con decisiones que se pudieran tomar hoy.</dd></div>
@@ -124,8 +119,8 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
     </section>
 
     <!-- CONTEXTO GENERAL -->
-    <section class="content-section reporte-section section-separator" id="sec-contexto-general">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-contexto-general">
+      <div class="caso-bloque">
         <h2>1. Contexto general</h2>
         <p><strong>Por qué esto no se revierte:</strong><br>Es una tendencia de largo plazo y no le pega igual a todas las escuelas.</p>
         <p>
@@ -146,13 +141,11 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           un capital simbólico fuerte, una comunidad estable y margen para
           sumar propuestas nuevas. Fue lo primero que anotamos.
         </p>
-      </article>
+      </div>
 
       <!-- DATOS DEMOGRÁFICOS Y MATRÍCULA -->
-      <article class="actividad-card actividad-card--light">
-        <div class="impact-top">
-          <h3>1.1. Datos demográficos y efectos en la matrícula</h3>
-        </div>
+      <div class="caso-bloque">
+        <h3>1.1. Datos demográficos y efectos en la matrícula</h3>
         <p>
           La baja natalidad se traduce, con algunos años de demora, en menor
           cantidad de alumnos en los niveles inicial y primario. Analizamos
@@ -163,7 +156,7 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
             <div class="figura__papel"><img src="/img/CuadroMatriculaOptima.webp" alt="Gráfico 4: población de 4 años y matrícula de sala de 4 en la Ciudad de Buenos Aires, 2016 a 2026" width="1174" height="891" loading="lazy" decoding="async"></div>
             <figcaption>Población de 4 años y matrícula de sala de 4 (nivel inicial), Ciudad de Buenos Aires, 2016–2026; la línea punteada es proyección. Fuente indicada en el gráfico: Unidad de Evaluación Integral de la Calidad y Equidad Educativa (Ministerio de Educación del GCABA) y Estadísticas Vitales (Ministerio de Salud).</figcaption>
           </figure>
-        <p class="impact-number-hero">−27&nbsp;%</p>
+        <p class="cifra">−27&nbsp;%</p>
         <p>
           Es la caída proyectada de la matrícula primaria del país entre 2025
           y 2030, según la Dirección Nacional de Población. Más de un millón
@@ -177,14 +170,12 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           Aun sin cambios bruscos de contexto, la matrícula proyectada baja año a año. Eso obliga a
           cualquier escuela a revisar el tamaño de los cursos, el uso de las aulas y la planta docente.
         </p>
-      </article>
+      </div>
 
       <!-- DISTRIBUCIÓN REGIONAL -->
-      <article class="actividad-card actividad-card--light">
-        <div class="impact-top">
-          <h3>1.2. Diferencias regionales</h3>
-        </div>
-        <p class="impact-number-hero">−19&nbsp;% a −36&nbsp;%</p>
+      <div class="caso-bloque">
+        <h3>1.2. Diferencias regionales</h3>
+        <p class="cifra">−19&nbsp;% a −36&nbsp;%</p>
         <p>
           Es el rango de caída proyectada de matrícula primaria entre
           provincias, de Santiago del Estero a Tierra del Fuego. Ninguna
@@ -204,30 +195,28 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           un 43,4&nbsp;% en el centro y un 51,5&nbsp;% en el sur. Donde la caída es más fuerte,
           puede estar en juego la continuidad de varias escuelas de la misma zona.
         </p>
-      </article>
+      </div>
     </section>
 
     <!-- METODOLOGÍA -->
-    <section class="content-section reporte-section section-separator" id="sec-metodologia">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-metodologia">
+      <div class="caso-bloque">
         <h2>2. Cómo construimos este análisis</h2>
         <p><strong>Cómo lo calculamos:</strong><br>Datos oficiales, contexto territorial y tres escenarios para
         ordenar qué convenía decidir ese año y qué podía esperar.</p>
         <p>
           Combinamos tres enfoques:
         </p>
-        <ul class="impact-list">
+        <ul>
           <li><strong>Datos demográficos y educativos:</strong> series históricas y proyecciones oficiales de nacimientos, población por edad y matrícula.</li>
           <li><strong>Territorio:</strong> la Ciudad de Buenos Aires, la zona de influencia del colegio y el estudio regional de San Antonio de Areco y San Andrés de Giles.</li>
           <li><strong>Escenarios:</strong> tres futuros posibles para el colegio, con sus riesgos, sus oportunidades y las líneas de acción que abre cada uno.</li>
         </ul>
-      </article>
+      </div>
 
       <!-- ESCUELAS CONFESIONALES -->
-      <article class="actividad-card actividad-card--light">
-        <div class="impact-top">
-          <h3>2.1. Lo que juega a favor de las escuelas religiosas</h3>
-        </div>
+      <div class="caso-bloque">
+        <h3>2.1. Lo que juega a favor de las escuelas religiosas</h3>
         <p>
           Frente a la caída de la natalidad, las escuelas de inspiración
           religiosa tienen ventajas propias. Anotamos cuatro: la tradición y
@@ -242,19 +231,19 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           la matrícula, llegar más allá de su barrio y responder a demandas que
           hoy no atiende.
         </p>
-      </article>
+      </div>
     </section>
 
     <!-- ESCENARIOS -->
-    <section class="content-section reporte-section section-separator" id="sec-escenarios">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-escenarios">
+      <div class="caso-bloque">
         <h2>3. Los escenarios que planteamos</h2>
         <p><strong>Tres escenarios, ninguno gratis:</strong><br>Los armamos para que el colegio pudiera ordenar qué cambiar ese año y qué dejar para después.</p>
         <p>
           Salen de los datos y de cómo funciona hoy el colegio. Cada uno dice qué cambia,
           cuándo tiene sentido y qué implica.
         </p>
-      </article>
+      </div>
 
       <div class="report-scenarios-grid">
         <!-- Escenario 1 - Accordion -->
@@ -262,7 +251,7 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           <h3 class="scenario-accordion-title">
             <button class="scenario-accordion-header" aria-expanded="false" aria-controls="scenario1Content">
               3.1. Escenario tendencial — sostener con lo mínimo
-              <span class="toggle-icon" aria-hidden="true">▼</span>
+              <span class="toggle-icon" aria-hidden="true"></span>
             </button>
           </h3>
           <div class="scenario-accordion-content" id="scenario1Content">
@@ -272,7 +261,7 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
             <p><strong>Cuándo tiene sentido:</strong><br>Para un colegio cuya matrícula alcanza para sostenerse cinco a siete años
             más y que prefiere cambiar de a poco.</p>
             <p><strong>Qué implica:</strong></p>
-            <ul class="impact-list">
+            <ul>
               <li>Matrícula en descenso progresivo, cursos más chicos, posible cierre de divisiones.</li>
               <li>Edificio usado por debajo de su capacidad.</li>
               <li>Mayor presión financiera, dependencia de aumentos de cuota.</li>
@@ -286,7 +275,7 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           <h3 class="scenario-accordion-title">
             <button class="scenario-accordion-header" aria-expanded="false" aria-controls="scenario2Content">
               3.2. Escenario transformador — reconvertir para sostener
-              <span class="toggle-icon" aria-hidden="true">▼</span>
+              <span class="toggle-icon" aria-hidden="true"></span>
             </button>
           </h3>
           <div class="scenario-accordion-content" id="scenario2Content">
@@ -296,7 +285,7 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
             <p><strong>Cuándo tiene sentido:</strong><br>Para un colegio que ve señales de caída próxima y quiere adelantarse
             con cambios que preserven su identidad y amplíen su alcance.</p>
             <p><strong>Qué implica:</strong></p>
-            <ul class="impact-list">
+            <ul>
               <li>Revisión de formatos pedagógicos y curriculares.</li>
               <li>Incorporación de talleres, actividades extracurriculares y servicios complementarios.</li>
               <li>Uso más eficiente de la infraestructura en distintos horarios.</li>
@@ -310,7 +299,7 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
           <h3 class="scenario-accordion-title">
             <button class="scenario-accordion-header" aria-expanded="false" aria-controls="scenario3Content">
               3.3. Escenario disruptivo — expandir la misión educativa
-              <span class="toggle-icon" aria-hidden="true">▼</span>
+              <span class="toggle-icon" aria-hidden="true"></span>
             </button>
           </h3>
           <div class="scenario-accordion-content" id="scenario3Content">
@@ -320,7 +309,7 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
             <p><strong>Cuándo tiene sentido:</strong><br>Para un colegio con una conducción capaz de sostener un cambio grande
             y una comunidad dispuesta a probar otra forma de hacer escuela.</p>
             <p><strong>Qué implica:</strong></p>
-            <ul class="impact-list">
+            <ul>
               <li>Propuestas educativas flexibles para infancias, adolescentes, adultos y personas mayores.</li>
               <li>Formación continua, actividades culturales y espacios comunitarios.</li>
               <li>Uso intensivo del edificio, con horarios extendidos y fines de semana.</li>
@@ -336,22 +325,22 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
     </section>
 
     <!-- OPORTUNIDADES Y ESTUDIO REGIONAL -->
-    <section class="content-section reporte-section section-separator" id="sec-oportunidades">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-oportunidades">
+      <div class="caso-bloque">
         <h2>4. Las oportunidades que identificamos</h2>
         <p><strong>Dónde quedaba margen:</strong><br>Aun con menos nacimientos, el colegio tenía por dónde crecer.</p>
         <p>
           Las cuatro que dejamos por escrito:
         </p>
-        <ul class="impact-list">
+        <ul>
           <li>Diseñar propuestas educativas que sumen tecnología y acompañamiento personalizado.</li>
           <li>Abrir la escuela a nuevos públicos: familias, personas mayores, jóvenes en formación laboral.</li>
           <li>Usar los datos de matrícula y demografía cada año para planificar.</li>
           <li>Armar redes con otras escuelas, parroquias y organizaciones sociales de la zona.</li>
         </ul>
-      </article>
+      </div>
 
-      <article class="actividad-card actividad-card--light" id="sec-estudio-regional">
+      <div class="caso-bloque" id="sec-estudio-regional">
         <h2>5. Estudio demográfico regional</h2>
         <p><strong>Areco y Giles, en concreto:</strong><br>San Antonio de Areco y San Andrés de Giles muestran cómo se combinan
         baja natalidad y baja densidad poblacional.</p>
@@ -363,39 +352,35 @@ sitemap: { lastmod: "2026-10-08", priority: "0.9", changefreq: "monthly" }
         <p>
           El informe regional profundizó en:
         </p>
-        <ul class="impact-list">
+        <ul>
           <li>Evolución de la población total y de las cohortes en edad escolar.</li>
           <li>Distribución de la matrícula entre escuelas estatales y de gestión privada.</li>
           <li>Riesgos de cierre o subutilización de instituciones educativas.</li>
           <li>Posibles líneas de acción conjunta entre el municipio y la comunidad.</li>
         </ul>
-      </article>
+      </div>
     </section>
 
     <!-- RECOMENDACIONES AL COLEGIO -->
-    <section class="content-section reporte-section section-separator" id="sec-recomendaciones">
-      <article class="actividad-card actividad-card--light">
+    <section class="bloque caso-seccion" id="sec-recomendaciones">
+      <div class="caso-bloque">
         <h2>6. Lo que recomendamos</h2>
         <p>
           Le propusimos al Colegio Francesco Faà di Bruno cuatro líneas de
           trabajo al cerrar el estudio. Van en orden: cada una necesita la
           anterior.
         </p>
-        <div class="impact-list">
-          <ul>
-            <li><strong>Profundizar con datos propios.</strong> Le pedimos cruzar la matrícula histórica del colegio con los nacimientos de su zona de la Ciudad. Nosotros trabajamos con series oficiales; la proyección fina exige los números internos de la institución.</li>
-            <li><strong>Conversar con la comunidad.</strong> Que la discusión se abriera con equipo directivo, docentes y familias antes de que la caída de matrícula se convirtiera en una decisión de emergencia.</li>
-            <li><strong>Probar a escala chica.</strong> Ensayar propuestas educativas o comunitarias nuevas mientras todavía hubiera margen financiero para que alguna fallara.</li>
-            <li><strong>Planificar a cinco años.</strong> Un plan escrito que integrara misión, oferta y sostenibilidad, con los números adentro y revisión anual.</li>
-          </ul>
-        </div>
-      </article>
+        <ul>
+          <li><strong>Profundizar con datos propios.</strong> Le pedimos cruzar la matrícula histórica del colegio con los nacimientos de su zona de la Ciudad. Nosotros trabajamos con series oficiales; la proyección fina exige los números internos de la institución.</li>
+          <li><strong>Conversar con la comunidad.</strong> Que la discusión se abriera con equipo directivo, docentes y familias antes de que la caída de matrícula se convirtiera en una decisión de emergencia.</li>
+          <li><strong>Probar a escala chica.</strong> Ensayar propuestas educativas o comunitarias nuevas mientras todavía hubiera margen financiero para que alguna fallara.</li>
+          <li><strong>Planificar a cinco años.</strong> Un plan escrito que integrara misión, oferta y sostenibilidad, con los números adentro y revisión anual.</li>
+        </ul>
+      </div>
     </section>
 
-    <!-- CIERRE: afirmación + CTA (reemplaza al enlace de retorno; el inicio queda en el nav) -->
-    <section class="section cierre-section" aria-labelledby="cierre-heading">
+    <!-- CIERRE: afirmación + CTA que abre el mail -->
 {% include "partials/cierre.njk" %}
-    </section>
 
 {% include "partials/seguir-leyendo.njk" %}
   </main>

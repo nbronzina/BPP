@@ -5,363 +5,48 @@ description: "Casos, clases y jornadas de investigación, diseño de futuros, da
 ogType: "website"
 section: "proyectos"
 ogDescription: "Casos, clases y jornadas de investigación, diseño de futuros, datos e IA y comunicación. Cada uno con fuente."
-bodyClass: "secondary-page"
 jsonld: "jsonld/proyectos.njk"
 cierreTitulo: "Casi todos nos escriben con la decisión ya encima."
 cierreTexto: "Se puede trabajar así. Se trabaja mejor tres meses antes."
 cierreCta: "Hablemos antes de esa decisión"
 sitemap: { lastmod: "2026-10-08", priority: "0.8", changefreq: "monthly" }
 ---
+{%- from "partials/piezas.njk" import tarjeta %}
     <!-- Main Content -->
     <main role="main" id="main-content">
 
-    <!-- Hero Section -->
-    <section class="hero-section section-wide">
-        <div class="actividades-label">HECHOS</div>
-        <h1 id="proyectos-heading" class="tagline"><span class="h1-light">Lo que hicimos</span> y dónde lo probamos</h1>
-        <p class="hero-sub">
+    <section class="cabecera" aria-labelledby="proyectos-heading">
+        <h1 id="proyectos-heading" class="cabecera__titulo">Lo que hicimos y dónde lo probamos</h1>
+        <p class="bajada">
             Un colegio porteño que va a tener cada año menos alumnos, una escuela donde nada marcaba que habías
             empezado y un cargamento de gas que podría quedar afuera de Europa por su metano. Abajo, cada caso
             con su ficha y el estado en que quedó.
         </p>
     </section>
 
-    <!-- Casos: trabajo para un cliente, con ficha y fuentes -->
-    <section id="casos" class="section" aria-labelledby="casos-heading">
-        <div class="senales-header">
-            <h2 id="casos-heading" class="senales-title">Casos</h2>
-            <p class="hero-sub hero-sub--seccion">Trabajo para una organización, con ficha, fuentes y estado. Lo que no tiene fuente no se publica.</p>
-        </div>
-
-        <div class="actividades-container">
-            <article id="caso-trace-group" class="actividad-entrada" aria-label="Provocación para Trace Group: un informe de verificación de emisiones fechado en 2032">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/we-trace-login-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                        <source srcset="/img/we-trace-login.webp 1200w" type="image/webp">
-                        <img src="/img/we-trace-login.webp" alt="Pantalla de ingreso de we.trace, la plataforma de verificación de emisiones que emite el informe de 2032" loading="lazy" decoding="async" width="1200" height="898">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-08">Agosto 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Energía · Verificación de emisiones · 2032</span>
-                    </div>
-                    <h3>Trace Group — De la señal al servicio</h3>
-                    <p class="actividad-descripcion">
-                        ¿Y si un cargamento de gas quedara afuera de Europa por su metano, y no por su precio? Este es ese escenario y su objeto: un informe de verificación fechado en 2032.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Trace Group, vía Clusterciar</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Provocación presentada, 2026</dd></div>
-                        <div class="actividad-dato"><dt>Lectura</dt><dd>6 min</dd></div>
-                    </dl>
-                    <a
-                      href="/proyectos/trace-group/"
-                      class="cta-link"
-                      aria-label="Leer la provocación: Trace Group, de la señal al servicio"
-                    >
-                        Leer la provocación
-                    </a>
-                </div>
-            </article>
-
-            <article id="caso-gabinete-extemporaneo" class="actividad-entrada" aria-label="Gabinete Extemporáneo: instalación de bienvenida para la Escuela de Innovación del ITBA">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/gabinete-espera-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                        <source srcset="/img/gabinete-espera.webp 1200w" type="image/webp">
-                        <img src="/img/gabinete-espera.webp" alt="Un sillón gris vacío contra una pared blanca, con dos almohadones con el logo del ITBA, frente a una puerta cerrada de madera clara, sobre un piso vinílico con franjas azul marino" loading="lazy" decoding="async" width="1200" height="746">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-03">Marzo 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Educación ejecutiva · Diseño de experiencia · 2028</span>
-                    </div>
-                    <h3>Gabinete Extemporáneo</h3>
-                    <p class="actividad-descripcion">
-                        ¿Y si te asignaran un puesto de trabajo antes de la primera clase? Una instalación que recibe a cada cohorte con un rol de 2028, una herramienta y un documento para firmar.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Escuela de Innovación, ITBA</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Diseño entregado, 2026</dd></div>
-                        <div class="actividad-dato"><dt>Lectura</dt><dd>8 min</dd></div>
-                    </dl>
-                    <a
-                      href="/proyectos/gabinete-extemporaneo/"
-                      class="cta-link"
-                      aria-label="Leer el caso: Gabinete Extemporáneo"
-                    >
-                        Leer el caso
-                    </a>
-                </div>
-            </article>
-
-            <article id="caso-natalidad" class="actividad-entrada" aria-label="Reporte sobre impacto de la caída de la natalidad en matrículas escolares">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/aula-vacia-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                        <img src="/img/aula-vacia.webp" alt="Aula vacía de una escuela primaria de Buenos Aires, con sillas y pupitres en luz de tarde" width="1200" height="800" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2025-04">Abril 2025</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Educación · Análisis demográfico</span>
-                    </div>
-                    <h3>Impacto de la caída de la natalidad</h3>
-                    <p class="actividad-descripcion">
-                        Lo que la caída de la natalidad hace con la matrícula de un colegio, en tres escenarios y cuatro líneas de trabajo.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Colegio de la Ciudad de Buenos Aires</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Entregado, 2025</dd></div>
-                        <div class="actividad-dato"><dt>Lectura</dt><dd>11 min</dd></div>
-                    </dl>
-                    <a
-                      href="/proyectos/natalidad/"
-                      class="cta-link"
-                      aria-label="Leer el caso: impacto de la caída de la natalidad en las matrículas escolares"
-                    >
-                        Leer el caso
-                    </a>
-                </div>
-            </article>
+    <!-- Casos: trabajo para un cliente, con ficha y fuentes. Las tarjetas salen de src/_data/piezas.mjs -->
+    <section id="casos" class="bloque" aria-labelledby="casos-heading">
+        <h2 id="casos-heading">Casos</h2>
+        <p class="bajada">Trabajo para una organización, con ficha, fuentes y estado. Lo que no tiene fuente no se publica.</p>
+        <div class="tarjetas">
+{%- for p in piezas.casos %}
+{{ tarjeta(p) }}
+{%- endfor %}
         </div>
     </section>
 
     <!-- Docencia y jornadas: donde probamos el método en público -->
-    <section id="docencia" class="section" aria-labelledby="docencia-heading">
-        <div class="senales-header">
-            <h2 id="docencia-heading" class="senales-title">Docencia y jornadas</h2>
-            <p class="hero-sub hero-sub--seccion">Clases, workshops y encuentros donde el método se prueba en público antes de llegar a un cliente.</p>
+    <section id="docencia" class="bloque" aria-labelledby="docencia-heading">
+        <h2 id="docencia-heading">Docencia y jornadas</h2>
+        <p class="bajada">Clases, workshops y encuentros donde el método se prueba en público antes de llegar a un cliente.</p>
+        <div class="tarjetas">
+{%- for p in piezas.docencia %}
+{{ tarjeta(p) }}
+{%- endfor %}
         </div>
-
-        <div class="actividades-container">
-            <article id="docencia-ort" class="actividad-entrada" aria-label="Cuando el artefacto piensa - Clase invitada en ORT Uruguay sobre design fiction">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/cuando-artefacto-piensa-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                        <img src="/img/cuando-artefacto-piensa.webp" alt="Sesión de Zoom con estudiantes del Máster en Diseño Estratégico e Innovación de ORT Uruguay durante la clase de design fiction" width="1600" height="892" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-05">Mayo 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Design fiction · Docencia</span>
-                    </div>
-                    <h3>Cuando el artefacto piensa</h3>
-                    <p class="actividad-descripcion">
-                        Clase a distancia: cuatro equipos tienen cincuenta minutos para convertir su escenario y su metáfora en un artefacto para discutir. Lo difícil es elegir cuál.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Máster en Diseño Estratégico e Innovación, ORT Uruguay</dd></div>
-                        <div class="actividad-dato"><dt>Serie</dt><dd>Quinta clase de futuros, la primera a distancia</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, artículo en Medium</dd></div>
-                    </dl>
-                    <a
-                      href="https://medium.com/@nbronzina/cuando-el-artefacto-piensa-06e2b89fb380"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en Medium: Cuando el artefacto piensa (nueva pestaña)"
-                    >
-                        Leer en Medium
-                    </a>
-                </div>
-            </article>
-
-            <article id="docencia-ied-defensa" class="actividad-entrada" aria-label="Otros Futuros - Tutor invitado en defensa de proyecto IED Madrid">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/otros-futuros-ied-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                        <source srcset="/img/otros-futuros-ied.webp 1200w" type="image/webp">
-                        <img src="/img/otros-futuros-ied.webp" alt="Otros Futuros - Tutor invitado en defensa de proyecto IED Madrid" width="1200" height="1020" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-02">Febrero 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Design fiction · Docencia · Latinoamérica</span>
-                    </div>
-                    <h3>Otros Futuros: tutor invitado en defensa de proyecto IED Madrid</h3>
-                    <p class="actividad-descripcion">
-                        Tutoría y jurado en la defensa de LATAM·2036, un proyecto de diseño especulativo sobre la fuga de cerebros en Ecuador.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Máster en Diseño de Producto Digital, IED Madrid</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado</dd></div>
-                    </dl>
-                    <a
-                      href="https://www.linkedin.com/feed/update/urn:li:activity:7427811274014535680/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en LinkedIn: post sobre la defensa de LATAM·2036 en IED Madrid (nueva pestaña)"
-                    >
-                        Leer en LinkedIn
-                    </a>
-                </div>
-            </article>
-
-            <article id="docencia-matadero" class="actividad-entrada" aria-label="Charla al aire libre Inhabiting the Future sobre adaptación climática en Matadero Madrid">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/inhabiting-future-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                        <source srcset="/img/inhabiting-future.webp 1200w" type="image/webp">
-                        <img src="/img/inhabiting-future.webp" alt="Charla outdoor Inhabiting the Future - Matadero Madrid" width="1200" height="900" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-01">Enero 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Design fiction · Adaptación climática</span>
-                    </div>
-                    <h3>"Inhabiting the Future": charla al aire libre en Matadero Madrid</h3>
-                    <p class="actividad-descripcion">
-                        Charla al aire libre con estudiantes de Lyon sobre adaptación climática, con la ciudad como material de design fiction.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Matadero Madrid, European Design Encounters</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, artículo en Medium</dd></div>
-                    </dl>
-                    <a
-                      href="https://medium.com/heated-consultancy/inhabiting-the-future-0cc470f47b93"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en Medium: Inhabiting the Future (nueva pestaña)"
-                    >
-                        Leer en Medium
-                    </a>
-                </div>
-            </article>
-
-            <article id="docencia-ied-workshop" class="actividad-entrada" aria-label="Workshop LATAM·2036 sobre diseño de futuros desde la fuga">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/workshop-latam2036-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                        <source srcset="/img/workshop-latam2036.webp 1200w" type="image/webp">
-                        <img src="/img/workshop-latam2036.webp" alt="Tablero de Miro del workshop LATAM·2036: matriz de escenarios, notas y plantillas de los equipos" width="1118" height="935" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2026-01">Enero 2026</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Design fiction · Docencia · Latinoamérica</span>
-                    </div>
-                    <h3>Workshop LATAM·2036: Diseñar futuros desde la fuga</h3>
-                    <p class="actividad-descripcion">
-                        Workshop de diseño de futuros sobre la fuga de talento creativo ecuatoriano, con escenarios para Quito 2036.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Máster en Diseño de Producto Digital, IED Madrid</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, artículo en Medium</dd></div>
-                    </dl>
-                    <a
-                      href="https://medium.com/@nbronzina/dise%C3%B1ar-futuros-desde-la-fuga-27548f831e36"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en Medium: Diseñar futuros desde la fuga (nueva pestaña)"
-                    >
-                        Leer en Medium
-                    </a>
-                </div>
-            </article>
-
-            <article id="docencia-cesba" class="actividad-entrada" aria-label="Jornada de diseño de futuros para la gestión pública en CESBA">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/JornadaCESBA-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                        <source srcset="/img/JornadaCESBA-480.webp 480w, /img/JornadaCESBA-800.webp 800w" type="image/webp">
-                        <img src="/img/JornadaCESBA-800.webp" alt="Jornada de diseño de futuros en CESBA Buenos Aires con panel de expertos en prospectiva estratégica y gestión pública" width="800" height="573" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2025-10">Octubre 2025</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Gestión pública · Diseño ficción</span>
-                    </div>
-                    <h3>Jornada de diseño de futuros para la gestión pública</h3>
-                    <p class="actividad-descripcion">
-                        Diseño ficción ante el Gobierno porteño: el Mercado de San Telmo en 2030 como artefacto para debatir y la propuesta de una unidad de anticipación de futuros que arranque como piloto.
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>CESBA, con la Subsecretaría de Análisis Prospectivo de la Ciudad</dd></div>
-                        <div class="actividad-dato"><dt>Panel</dt><dd>Nicolás Bronzina y Ezequiel Politi, con Fabien Girardin (Near Future Laboratory, Girardin &amp; Nova) y Miriam Latorre (Escuela de Innovación del ITBA)</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, insumo de una recomendación al Gobierno de la Ciudad</dd></div>
-                    </dl>
-                    <div class="actividad-ctas">
-                        <a
-                          href="https://cesba.gob.ar/noticias/como-el-diseno-de-futuros-impulsa-la-gestion-publica-en-buenos-aires/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="cta-link"
-                          aria-label="Nota del CESBA sobre la jornada (nueva pestaña)"
-                        >
-                            Nota del CESBA
-                        </a>
-                        <a
-                          href="https://medium.com/@nbronzina/what-if-the-state-designed-futures-661a303aeb8f"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="cta-link"
-                          aria-label="Artículo en Medium: What if the State Designed Futures? (nueva pestaña)"
-                        >
-                            Artículo en Medium
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article id="docencia-udit" class="actividad-entrada" aria-label="Jornada sobre inteligencia artificial para diseñadores UX en UDIT Madrid">
-                <div class="actividad-imagen">
-                    <picture>
-                        <source srcset="/img/masterclass-ia-udit-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                        <source srcset="/img/masterclass-ia-udit.webp 1200w" type="image/webp">
-                        <img src="/img/masterclass-ia-udit.webp" alt="Masterclass IA para diseñadores UX en UDIT Madrid con Nicolás Bronzina, Fabien Girardin y Rohit Gupta" width="1199" height="675" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="actividad-texto">
-                    <div class="actividad-meta">
-                        <time class="actividad-fecha" datetime="2025-06">Junio 2025</time>
-                        <span class="actividad-separador"> · </span>
-                        <span class="actividad-tags">Inteligencia artificial · Diseño UX · Docencia</span>
-                    </div>
-                    <h3>Masterclass sobre inteligencia artificial para diseñadores UX</h3>
-                    <p class="actividad-descripcion">
-                        Tres clases magistrales y dos días de tutorías sobre cómo diseñar cuando el resultado es probabilístico, junto a Fabien Girardin y Rohit Gupta (Heated Studio).
-                    </p>
-                    <dl class="actividad-datos">
-                        <div class="actividad-dato"><dt>Contexto</dt><dd>Máster en Experiencia de Usuario, UDIT Madrid</dd></div>
-                        <div class="actividad-dato"><dt>Estado</dt><dd>Realizado, artículo en Medium</dd></div>
-                    </dl>
-                    <a
-                      href="https://medium.com/@nbronzina/enseñando-inteligencia-artificial-a-diseñadores-ux-694c3a1611d7"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="cta-link"
-                      aria-label="Leer en Medium: artículo sobre la masterclass en UDIT Madrid (nueva pestaña)"
-                    >
-                        Leer en Medium
-                    </a>
-                </div>
-            </article>
-        </div>
-
-        <!-- CTA final -->
-{% include "partials/cierre.njk" %}
     </section>
+
+{% include "partials/cierre.njk" %}
 
     </main>
     <!-- End Main Content -->

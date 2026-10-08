@@ -1,0 +1,41 @@
+{#- Las dos formas de mostrar una pieza de src/_data/piezas.mjs. Se importan con
+      {% from "partials/piezas.njk" import tarjeta, fila %}
+
+    tarjeta(p, filtro): imagen 16:9, tipo y fecha, título, descripción, ficha corta y enlaces.
+      Va en el inicio (los tres casos), en Lo hecho y en los artículos de Pensamiento.
+      Con filtro=true lleva data-tags para el filtro de Pensamiento (main.js).
+      Si la tarjeta tiene un solo enlace, toda la tarjeta responde al clic (.tarjeta--enlazada).
+    fila(p, dato): título enlazado, bajada y "tipo · dato" en una fila tipográfica. Va en la
+      lista de textos del inicio (dato = la fecha) y en "Seguí leyendo" (dato = el largo). -#}
+
+{% macro tarjeta(p, filtro=false) -%}
+<article class="tarjeta{% if p.enlaces | length == 1 %} tarjeta--enlazada{% endif %}" id="{{ p.id }}"{% if filtro and p.movimientos %} data-tags="{{ p.movimientos }}"{% endif %} aria-labelledby="{{ p.id }}-titulo">
+    <div class="tarjeta__imagen"><img src="{{ p.imagen.src }}" alt="{{ p.imagen.alt }}" width="{{ p.imagen.w }}" height="{{ p.imagen.h }}" loading="lazy" decoding="async"></div>
+    <p class="tarjeta__meta etiqueta">{{ p.tipo }} · <time datetime="{{ p.fecha }}">{{ p.fechaTexto }}</time></p>
+    <h3 class="tarjeta__titulo" id="{{ p.id }}-titulo">{{ p.titulo }}</h3>
+    <p class="tarjeta__descripcion">{{ p.descripcion }}</p>
+{%- if p.datos %}
+    <dl class="tarjeta__datos">
+{%- for d in p.datos %}
+        <div><dt>{{ d[0] }}</dt><dd>{{ d[1] }}</dd></div>
+{%- endfor %}
+    </dl>
+{%- endif %}
+    <p class="tarjeta__enlaces">
+{%- for e in p.enlaces %}
+        <a href="{{ e.href }}" class="cta-link"{% if e.externo %} target="_blank" rel="noopener noreferrer"{% endif %}{% if e.aria %} aria-label="{{ e.aria }}"{% endif %}>{{ e.texto }}</a>
+{%- endfor %}
+    </p>
+</article>
+{%- endmacro %}
+
+{% macro fila(p, dato) -%}
+<li class="fila">
+    <h3 class="fila__titulo">
+{%- if p.url %}<a href="{{ p.url }}">{{ p.titulo }}</a>
+{%- else %}<a href="{{ p.enlaces[0].href }}" target="_blank" rel="noopener noreferrer" aria-label="{{ p.titulo }} ({{ p.fuente }}, nueva pestaña)">{{ p.titulo }}</a>
+{%- endif %}</h3>
+    <p class="fila__bajada">{{ p.bajada or p.descripcion }}</p>
+    <p class="fila__dato etiqueta">{{ p.tipo }}{% if p.fuente %} en {{ p.fuente }}{% endif %} · {{ dato }}</p>
+</li>
+{%- endmacro %}
