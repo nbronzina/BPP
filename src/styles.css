@@ -3351,8 +3351,7 @@ img {
 
 .ficha-row {
     display: flex;
-    align-items: baseline;
-    gap: var(--space-4);
+    flex-direction: column;  /* móvil: etiqueta arriba y valor abajo, a todo el ancho */
     padding: var(--space-2) 0;
     border-top: 1px solid rgba(250, 248, 246, 0.06);
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -3367,13 +3366,23 @@ img {
 }
 
 .ficha-row dt {
-    flex: 0 0 6.5rem;
     color: rgba(250, 248, 246, 0.55);
 }
 
 .ficha-row dd {
     margin: 0;
     color: rgba(250, 248, 246, 0.75);
+}
+
+/* Escritorio: dos columnas. La de etiquetas entra la más larga (CONSTRUCCIÓN), así todos los
+   valores arrancan en la misma línea. */
+@media (min-width: 769px) {
+    .ficha-row {
+        flex-direction: row;
+        align-items: baseline;
+        gap: var(--space-4);
+    }
+    .ficha-row dt { flex: 0 0 9rem; }
 }
 
 /* ============ v2.2.1: profundidad de fondo + detalles de paleta ============ */
@@ -3680,7 +3689,7 @@ html {
 .page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) strong { font-weight: 700; }
 .page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(p, li, dd, blockquote) em { font-style: italic; }
 /* Lo que no es prosa vuelve a la sans aunque esté dentro de un párrafo o lista */
-.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(.ficha-caso-fuentes, .reporte-fuente, .senal-fuente, .cta-primary, .cta-link, .btn, .ficha-caso dt, .toc-data-rail, .sticky-toc, .share-buttons, .thesis-cite__note, .impact-label, .escenario-label, .senal-label) ,
+.page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(.ficha-caso-fuentes, .reporte-fuente, .senal-fuente, .cta-primary, .cta-link, .btn, .ficha-caso dt, .ficha-tecnica dd, .toc-data-rail, .sticky-toc, .share-buttons, .thesis-cite__note, .impact-label, .escenario-label, .senal-label) ,
 .page-lectura main > :is(.reporte-section, .thesis-abstract-section, .thesis-cover-section, .thesis-cite-section, .legal-content) :is(nav, button, label, .senal-label) * {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: inherit;
@@ -4376,3 +4385,9 @@ main p a:focus-visible, main li a:focus-visible { text-decoration-color: current
       Ahora label, título, bajada y metadatos arrancan en la misma línea. En la tesis, la bajada
       recupera el aire sobre la barra de metadatos que `.hero-section .hero-sub` le pisaba. */
 .hero-section .thesis-subtitle { margin-bottom: var(--space-5); }
+
+/* 5. Ficha técnica: la de Créditos es la misma que la del hero. Sus valores caían en la regla de
+      prosa de .page-lectura y salían en Literata de 19px y en mayúsculas; ahora vuelven a la sans
+      (lista de excepciones de la regla de Literata). En escritorio la columna de etiquetas pasa de
+      6.5rem a 9rem: DESTINATARIO y CONSTRUCCIÓN no entraban y corrían su valor 15 y 35px. En el
+      teléfono la etiqueta va arriba del valor (las reglas están en "ficha técnica de proyecto"). */
