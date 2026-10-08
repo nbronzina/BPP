@@ -220,38 +220,21 @@ sitemap: { lastmod: "2026-10-08", priority: "1.0", changefreq: "weekly" }
 
             <div class="nosotros__bloque">
                 <h3>Clientes, instituciones y equipos con los que trabajamos</h3>
-                <div class="logos-grid">
-                    <div class="logo-item">
-                        <img src="/img/speculative-futures-madrid.webp" alt="Speculative Futures Madrid" width="111" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/EscInn.svg" alt="ITBA Escuela de Innovación" width="265" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/logo-cesba.webp" alt="CESBA" width="52" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/trace-logo.svg" alt="TRACE GROUP" width="287" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/Heated.svg" alt="Heated" width="199" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/otros-futuros.svg" alt="Otros Futuros" width="257" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/micelio.svg" alt="Micelio" width="218" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/lab-logo-coral.webp" alt="Lab de Mundanidad Forzada" width="131" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/olamestudio.svg" alt="Olam Estudio" width="38" height="48" loading="lazy">
-                    </div>
-                    <div class="logo-item">
-                        <img src="/img/comunicaciones-syp.svg" alt="Comunicaciones S&P" width="200" height="48" loading="lazy">
-                    </div>
-                </div>
+                {#- Diez logos en 5 × 2 (2 × 5 en el teléfono). El orden arma columnas parejas: en la del
+                    medio, los dos que son solo ícono; a los costados, los logotipos con texto. El tamaño
+                    de cada uno está en styles.css (.logo-item--…). -#}
+                <ul class="logos-grid">
+                    <li class="logo-item logo-item--sfm logo-item--gris"><img src="/img/speculative-futures-madrid.webp" alt="Speculative Futures Madrid" width="1003" height="434" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--itba"><img src="/img/EscInn.svg" alt="ITBA Escuela de Innovación" width="265" height="48" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--cesba logo-item--gris"><img src="/img/logo-cesba.webp" alt="CESBA" width="420" height="522" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--trace"><img src="/img/trace-logo.svg" alt="Trace Group" width="287" height="48" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--lab"><img src="/img/lab-logo-coral.webp" alt="Lab de Mundanidad Forzada" width="509" height="186" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--heated"><img src="/img/Heated.svg" alt="Heated" width="199" height="48" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--otros"><img src="/img/otros-futuros.svg" alt="Otros Futuros" width="2143" height="369" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--olam"><img src="/img/olamestudio.svg" alt="Olam Estudio" width="98" height="129" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--micelio"><img src="/img/micelio.svg" alt="Micelio" width="218" height="48" loading="lazy" decoding="async"></li>
+                    <li class="logo-item logo-item--syp"><img src="/img/comunicaciones-syp.svg" alt="Comunicaciones S&amp;P" width="200" height="48" loading="lazy" decoding="async"></li>
+                </ul>
             </div>
         </div>
     </section>

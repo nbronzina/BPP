@@ -1127,47 +1127,64 @@ body.logo-en-nav .nav-logo {
     .equipo-foto-wrap { max-width: none; }
 }
 
-/* Logos de clientes en un solo tono: el blanco del texto, atenuado. Los de una sola tinta
-   pasan a silueta; CESBA y Speculative Futures tienen detalle adentro y van en grises. */
+/* Clientes: diez logos en 5 × 2 desde 769 y en 2 × 5 en el teléfono, en un solo tono (el blanco
+   del texto, atenuado; CESBA y Speculative Futures, que tienen detalle adentro, en grises).
+   Columnas a caja izquierda: la primera arranca en el eje del texto, la última termina en el
+   borde derecho y el aire entre columnas es parejo (space-between).
+   Tamaños: cada logo ocupa una superficie pareja con la de los demás, así un ícono y un logotipo
+   largo pesan parecido. Ancho = 6,2 × √(ancho/alto del logo) × ajuste, en cqi (centésimos del
+   ancho de la grilla, en 5 columnas). El ajuste corrige la densidad: un logotipo de trazo grueso
+   (Otros Futuros, micelio) va un poco más chico y uno de trazo fino (ITBA, Speculative Futures)
+   un poco más grande. En el teléfono, todo por 2,6, sin pasar nunca el tamaño del escritorio
+   (--u se queda en 12 px, el centésimo de la columna de 1200). Para sumar un logo: recortarlo a
+   su contenido, calcular su --w con la misma fórmula y ubicarlo donde su forma acompañe a la
+   columna. */
 .logos-grid {
-    display: flex;
-    flex-wrap: wrap;
+    --escala: 2.6;
+    --u: min(var(--escala) * 1cqi, 12px);
+    container-type: inline-size;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
     align-items: center;
-    gap: var(--space-8) var(--space-10);
+    row-gap: var(--space-8);
     padding-top: var(--space-8);
     border-top: 1px solid var(--color-line);
 }
 
+.logo-item {
+    display: flex;
+    align-items: center;
+    min-height: calc(7.4 * var(--u));
+}
+
 .logo-item img {
-    width: auto;
-    height: 40px;
-    max-width: 100%;
+    width: calc(var(--w) * var(--u));
+    height: auto;
     filter: brightness(0) invert(1);
     opacity: 0.75;
 }
 
-.logo-item img[src*="logo-cesba"],
-.logo-item img[src*="speculative-futures-madrid"] { filter: grayscale(1) brightness(1.5); }
+.logo-item--gris img { filter: grayscale(1) brightness(1.5); }
 
-/* Los logos vienen recortados a su contenido; dos ajustes de peso visual: las marcas cuadradas
-   más altas que los wordmarks, y los wordmarks muy anchos más bajos. */
-.logo-item img[src*="olamestudio"] { height: 64px; max-width: 64px; }
-.logo-item img[src*="speculative-futures-madrid"] { height: 54px; }
-.logo-item img[src*="logo-cesba"] { height: 68px; max-width: 68px; }
-.logo-item img[src*="trace-logo"],
-.logo-item img[src*="micelio"],
-.logo-item img[src*="otros-futuros"] { height: 28px; }
+.logo-item--sfm { --w: 11.5; }
+.logo-item--itba { --w: 16.2; }
+.logo-item--cesba { --w: 5; }
+.logo-item--trace { --w: 14.9; }
+.logo-item--lab { --w: 9.8; }
+.logo-item--heated { --w: 12.4; }
+.logo-item--otros { --w: 14.2; }
+.logo-item--olam { --w: 5.5; }
+.logo-item--micelio { --w: 12.2; }
+.logo-item--syp { --w: 13.2; }
 
 @media (min-width: 769px) {
-    .logos-grid { gap: var(--space-10) var(--space-16); }
-
-    .logo-item img { height: 46px; }
-    .logo-item img[src*="olamestudio"] { height: 84px; max-width: 84px; }
-    .logo-item img[src*="speculative-futures-madrid"] { height: 80px; }
-    .logo-item img[src*="logo-cesba"] { height: 88px; max-width: 88px; }
-    .logo-item img[src*="trace-logo"],
-    .logo-item img[src*="micelio"],
-    .logo-item img[src*="otros-futuros"] { height: 32px; }
+    .logos-grid {
+        --escala: 1;
+        grid-template-columns: repeat(5, auto);
+        row-gap: var(--space-10);
+    }
 }
 
 /* Contacto: tres situaciones y el mail. */
