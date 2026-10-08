@@ -37,7 +37,6 @@
         configuración del hosting (vercel.json), no acá. Hoy no están puestos. #}
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <link rel="preconnect" href="https://plausible.io">
     {%- if homepage %}
     <link rel="preload" as="image" href="/img/logo.svg" type="image/svg+xml" fetchpriority="high">
     {%- endif %}
@@ -48,7 +47,6 @@
     <link rel="preload" href="/main.min.js" as="script">
 
     <link rel="stylesheet" href="/styles.min.css">
-    <script defer data-domain="{{ site.plausibleDomain }}" src="https://plausible.io/js/script.js"></script>
     {%- if homepage %}
     <link rel="prefetch" href="/proyectos/" as="document">
     <link rel="prefetch" href="/pensamiento/" as="document">

@@ -3,6 +3,5 @@
   "url": "https://www.bppanalyticsanddesign.com",
   "email": "bppanalyticsanddesign@gmail.com",
   "ogImage": "https://www.bppanalyticsanddesign.com/img/og-image.jpg?v=2",
-  "plausibleDomain": "bppanalyticsanddesign.com",
-  "csp": "default-src 'self'; script-src 'self' https://plausible.io; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://plausible.io; base-uri 'self'; form-action 'none'; object-src 'self';"
+  "csp": "default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'self';"
 }
