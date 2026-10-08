@@ -47,6 +47,18 @@ Aplicado de lo micro a lo macro, cada capa verificada en navegador antes de la s
   - Fundido de página. Formulación original, en el CSS de noviembre de 2025: "Fade-in animation only if motion is allowed". Se retiró porque Chromium no registraba la primera pintura (Lighthouse cortaba el inicio con `NO_FCP`) y el texto llegaba a la mitad de opacidad a los 0,4 s en cada página. Se perdió el gesto de entrada.
   - Literata. Formulación original en DESIGN.md: "variable en peso 400..700 y tamaño óptico 7..72, con `font-optical-sizing: auto`". Pasó a tamaño óptico fijo en 19: 98 KB menos en Gabinete y la tesis. Se perdió el ajuste óptico en otros tamaños; no es idéntico al píxel (en 29 de 644 combinaciones de página y ancho un párrafo corta una línea una palabra antes o después).
 
+- **Decisiones de interfaz del 8 de octubre ("Hacer todo", sobre nueve propuestas).**
+  - "Hablemos" a la vista en todas las páginas. Formulación original en DESIGN.md: "La navbar superior es elemento fijo del sistema y **no se toca**". Segunda excepción validada: fuera del inicio, "Hablemos" era un ítem más del menú y en el teléfono quedaba adentro del desplegable. Ahora va afuera, en acento, y la página actual se marca con subrayado.
+  - El cierre abre el mail. Antes, "Escribinos →" llevaba a `/#contact`: otra página y otro clic antes del mail. Ahora abre el mail con el asunto de cada página, y debajo están la dirección y "Copiar dirección" (en una Mac, un enlace de mail abre Apple Mail aunque la persona use Gmail).
+  - "Seguí leyendo" al final de los casos y la tesis. Reemplaza las filas "Relacionado" de los créditos, que estaban en mayúsculas y solo en dos de los cuatro textos.
+  - Cuatro movimientos enlaza los dos casos que nombra.
+  - Un solo eje izquierdo en los heros: la bajada iba centrada bajo un título alineado a la izquierda (168 px corrida en Lo hecho, Pensamiento y la tesis; 104 en los casos).
+  - La ficha de Créditos igual a la del hero: sus valores salían en Literata de 19 px y en mayúsculas.
+  - Índice de los casos desde 1280. Formulación original, en el CSS: "Índice pegajoso solo desde 1536px: a 1440 su columna de 280px pisa el texto de 70ch". Ahora el caso le deja lugar, así que el texto de 1280 a 1695 px queda más angosto (800 px a 1280 en lugar de 1008). Se perdió ese ancho; aun en 1536 el índice pisaba 48 px de dos casos. Debajo de 1280, el botón dice "Índice" y se esconde mientras se baja leyendo.
+  - Numeración solo donde hay secuencia: queda el 01 a 04 de los cuatro movimientos y sale del índice de Pensamiento y de las situaciones de Conversemos.
+  - Bajada de Lo hecho. Formulación original: "Trabajamos con líderes que enfrentan decisiones críticas. Cada proyecto es una pregunta difícil que necesitaba respuesta antes de que fuera tarde. Investigación, diseño de futuros, análisis estratégico y comunicación aplicados donde más importa." Ahora nombra los tres casos.
+  - El hero del inicio sigue a pantalla completa, como se decidió el 6 de septiembre. Para revisarlo, el dato es el punto 10 de la auditoría.
+
 ## Decisiones vigentes que no conviene rediscutir sin motivo
 
 - Oscuro, no claro. Los socios lo eligieron con el prototipo de papel a la vista.
@@ -58,7 +70,7 @@ Aplicado de lo micro a lo macro, cada capa verificada en navegador antes de la s
 
 ## Métricas que importan
 
-Dos eventos en Plausible: `Contacto_mail` (conversación iniciada) y `Caso_leido_75` (un caso leído hasta el 75 %). El resto es contexto.
+Dos eventos en Plausible: `Contacto_mail` (conversación iniciada) y `Caso_leido_75` (un caso leído hasta el 75 %). El resto es contexto. Desde octubre hay dos más: `Contacto_copiar` (alguien copió la dirección, en general para escribir desde otro correo) y `Seguir_leyendo` (qué pieza se abre desde el final de otra). `Caso_leido_75` no cuenta el bloque "Seguí leyendo", así que se sigue comparando con lo anterior.
 
 ## Pendientes conocidos
 

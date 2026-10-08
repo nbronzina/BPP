@@ -311,6 +311,16 @@ Este archivo (v2 beta-inclusive) cumple parcialmente con la especificación `@go
 
 ## Changelog
 
+**v2.11 UX de octubre (2026-10-08):** decisiones de Nicolás sobre nueve propuestas de interfaz ("Hacer todo").
+- Navbar, segunda excepción validada a "no se toca": "Hablemos" va afuera del menú y a la vista en todas las páginas, también en el teléfono (antes, fuera del inicio, quedaba adentro del menú desplegable). La página actual se marca con el subrayado y el acento queda para "Hablemos". Desde un caso, "Lo hecho" vuelve a ser clicable.
+- Cierre de página: el CTA abre el mail con un asunto propio de cada página en lugar de llevar a `/#contact`. Debajo van la dirección y "Copiar dirección", un control secundario y tipográfico: color de texto, subrayado susurro y acento con hover o foco. El mismo botón va bajo el mail del contacto del inicio.
+- "Seguí leyendo": al final de los casos y de la tesis, después del cierre, las otras piezas largas en filas tipográficas como las del índice de Pensamiento. Reemplaza las filas "Relacionado" de los créditos.
+- Un solo eje izquierdo en los heros: label, título, bajada y metadatos arrancan en la misma línea. La bajada iba centrada en 800 px y los labels tenían 24 px de sangría, resto del borde de color que llevaban antes de v2.2.
+- Ficha técnica: la de Créditos es la misma que la del hero, en Plus Jakarta Sans (sus valores salían en Literata). En escritorio la columna de etiquetas mide 9rem, lo que ocupa la más larga; en el teléfono la etiqueta va arriba del valor.
+- Índice de los casos desde 1280 px (antes 1536): el caso le reserva el ancho a la derecha hasta 1696 px y el índice se va cuando llega el cierre. El breakpoint de 1536 deja de usarse. Debajo de 1280, el botón flotante pasa de un círculo con las tres rayas del menú a una pastilla que dice "Índice", y se esconde mientras se baja leyendo.
+- Numeración solo donde hay secuencia: queda el 01 a 04 de los cuatro movimientos y sale del índice de Pensamiento y de las situaciones de Conversemos.
+- El hero del inicio sigue a pantalla completa (decisión del 2026-09-06). Se corrigió su descripción en "Paleta Tinta", que seguía diciendo 78svh.
+
 **v2.10 auditoría de octubre (2026-10-08):** decisiones de Nicolás sobre `docs/auditoria-octubre.md`, puntos 3 a 5.
 - Literata con el tamaño óptico fijo en 19 y peso 400..700: 85,7 → 37,4 KB la regular y 88,8 → 38,7 KB la itálica. Antes: "variable en peso 400..700 y tamaño óptico 7..72, con `font-optical-sizing: auto`". Se pierde el ajuste óptico en otros tamaños, que la serif no usa.
 - Sin fundido de página al cargar (el `fadeIn` del body, de noviembre de 2025): Chromium no registraba la primera pintura y Lighthouse no podía medir el inicio. Se pierde el gesto de entrada; queda el del título del inicio.
@@ -351,7 +361,7 @@ Decisión de los socios: se mantiene el oscuro, cambia la base. El marrón cáli
 - `--color-bg: #12151a` · `--color-surface: #1a1e25` · `--color-bg-deep: #0d1014` · `--color-bg-warm: #161a20` · `--color-border: #2b313a`
 - Acento sin cambios: `#c16f52`.
 - Retratos del equipo recompuestos sobre `#12151a`.
-- Hero acotado a `clamp(520px, 78svh, 820px)`, bloque centrado; la sección siguiente arranca a 48px.
+- Hero acotado a `clamp(520px, 78svh, 820px)`, bloque centrado; la sección siguiente arranca a 48px. Desde el 2026-09-06 el hero del inicio ocupa la primera pantalla entera: descuenta el alto del nav fijo y centra el bloque de marca en lo que se ve, sin que asome la sección siguiente.
 
 ### Tinta en todo el sitio (2026-09-04)
 
