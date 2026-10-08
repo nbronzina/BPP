@@ -6,7 +6,9 @@
 {%- if cierreTexto %}
             <p class="proyectos-cta-text">{{ cierreTexto }}</p>
 {%- endif %}
-            <a href="{{ cierreHref or '/#contact' }}" class="cta-primary" data-preview="Te responde uno de nosotros tres en 48 horas hábiles" aria-label="Escribinos">
-                {{ cierreCta }} →
+            {#- Sin aria-label: el texto visible es el nombre del enlace (WCAG 2.5.3) y la flecha no se lee.
+                Texto y flecha van en un solo <span>: .cta-primary es flex y separaría la flecha con el gap. #}
+            <a href="{{ cierreHref or '/#contact' }}" class="cta-primary" data-preview="Te responde uno de nosotros tres en 48 horas hábiles">
+                <span>{{ cierreCta }} <span aria-hidden="true">→</span></span>
             </a>
         </div>
