@@ -4,7 +4,7 @@
 **Tech Stack**: HTML plano generado con Eleventy 3 (Nunjucks), CSS y JS a mano, sin frameworks en runtime. Sin PWA (retirada 2026-09).
 **Build**: `npm run build` → Eleventy genera `_site/`, csso y terser minifican. Los `.min` ya no se versionan.
 **Deploy**: Vercel, conectado al repo. Publica producción al mergear en la rama por defecto y arma un preview por cada otra rama. GitHub Pages y `deploy.yml` se retiraron (2026-10).
-**Last Updated**: 2026-10-08 (diseño v3.1)
+**Last Updated**: 2026-10-17 (diseño v3.2)
 
 ---
 
@@ -31,7 +31,7 @@ Sitio de BPP Analytics & Design: estudio de investigación, diseño de futuros, 
 - **Structured data**: JSON-LD por página (`src/_includes/jsonld/`): ProfessionalService y Organization en la home, CollectionPage con ItemList en Lo hecho y Pensamiento, CreativeWork, Report, ScholarlyArticle, PrivacyPolicy
 
 ### Pages
-- `index.html` - Homepage (logo grande a la izquierda del nombre y la frase, cuatro movimientos, Hechos con los tres casos y Pensamiento con la tesis y dos artículos, los dos en tarjetas, nosotros con equipo y clientes en 5 × 2, cuándo escribirnos y contacto)
+- `index.html` - Homepage (logo grande a la izquierda del nombre y la frase, "Sociología aplicada", cuatro movimientos, Hechos con los tres casos y Pensamiento con la tesis y dos artículos, los dos en tarjetas, nosotros con equipo y clientes en 5 × 2, cuándo escribirnos y contacto)
 - `proyectos/` - Lo hecho, en dos secciones: Casos y Docencia y jornadas
 - `proyectos/trace-group/` - Provocación Trace Group: un caso escrito como pregunta "¿Y si…?" (ficha + objeto + cómo se construyó). No explica el método ni la iniciativa; la fecha 2032 marca la ficción. Nunca se dice que fue adoptada. Ver VOICE.md, "Vocabulario propio"
 - `proyectos/gabinete-extemporaneo/` - Caso Gabinete Extemporáneo (Escuela de Innovación, ITBA): una instalación de bienvenida entregada como diseño y especificación. No dice que esté construida ni muestra lo de adentro
@@ -141,7 +141,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ```
 
 ### Design System
-La descripción completa está en `/DESIGN.md` (v3.1). Lo que más se toca:
+La descripción completa está en `/DESIGN.md` (v3.2). Lo que más se toca:
 - **Colors**: CSS custom properties in `:root` (`src/styles.css`)
 - **Typography**: Plus Jakarta Sans (interfaz) y Literata (prosa larga), self-hosted en `/fonts/`. Siete tamaños, `--fs-1` a `--fs-7`; nada por debajo de 15 px. Mayúsculas solo en `.etiqueta`
 - **Bandera** (DESIGN.md, según Enric Jardí): todo a caja izquierda y sin guiones automáticos (`hyphens: manual`). `lib/bandera.mjs` une en el build lo que no se corta (palabras de una o dos letras con la siguiente, cifra y unidad, la última palabra con la anterior…); en titulares, los grupos largos van en `<span class="junto">`. Si un titular pide un corte por el sentido, se marca a mano: `.junto` en el HTML o " | " en `cierreTitulo` y `cierreTexto`. Comillas latinas («así») en el texto visible
