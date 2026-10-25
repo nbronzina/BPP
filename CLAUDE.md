@@ -159,7 +159,7 @@ La descripción completa está en `/DESIGN.md` (v3.2). Lo que más se toca:
 2. **Build**: `npm run check` genera `_site/` y corre el chequeo
 3. **Test locally**: `python3 -m http.server 8000 --directory _site`
 4. **Commit**: solo fuentes; `_site/` y los `.min` no se versionan
-5. **Push** a la rama de trabajo y PR contra la rama por defecto (el repo no tiene `main`): Vercel arma el preview de la rama y publica producción al mergear. `npm run check` ya no corre solo: hay que correrlo antes de mergear
+5. **Push** directo a la rama por defecto, la única que tiene el repo (no hay `main` ni ramas de trabajo desde 2026-10-25): Vercel publica producción en cada push. `npm run check` no corre solo: hay que correrlo **antes** de pushear, porque no hay preview ni merge donde frenar. Para un cambio grande que convenga ver antes de publicar, abrir una rama puntual, mirar su preview y borrarla al mergear
 
 **Reglas del layout**
 - Front matter por página: `title`, `description`, `ogType`, `section` (`proyectos` | `pensamiento` | `privacidad` | `inicio`, marca el `aria-current` del nav), `bodyClass` (solo en los casos, `reporte-page page-lectura`, y en la tesis, `page-lectura`), `jsonld` (ruta del include), `sitemap` (`lastmod`, `priority`, `changefreq`; sin esto la página no entra al sitemap y el chequeo falla), `homepage: true` solo en index.
@@ -351,8 +351,9 @@ git add src/main.js
 git commit -m "feat: evento de descarga"
 
 # Deploy
-git push origin <rama-de-trabajo>
-# Vercel arma el preview; al mergear el PR en la rama por defecto publica producción
+npm run check   # antes de pushear: el push publica
+git push
+# Vercel publica producción directo desde la rama por defecto
 ```
 
 ### Important Files to Edit
