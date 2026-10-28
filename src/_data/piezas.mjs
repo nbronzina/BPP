@@ -1,4 +1,4 @@
-// Las piezas del sitio, escritas una sola vez: casos, docencia, artículos y la tesis.
+// Las piezas del sitio, escritas una sola vez: casos, docencia, artículos y La Usina (tesis y análisis).
 // De acá salen las tarjetas (partials/piezas.njk) del inicio, Lo hecho y Pensamiento, las filas
 // de "Seguí leyendo" (partials/seguir-leyendo.njk) y las listas de los datos estructurados de
 // Lo hecho y Pensamiento. Sumar una pieza es sumar una entrada acá.
@@ -15,7 +15,9 @@
 //   datos        la ficha corta de la tarjeta, [etiqueta, valor]
 //   enlaces      [{ texto, href, aria, externo }]. El aria-label empieza por el texto visible
 //                (WCAG 2.5.3) y el texto dice adónde lleva: "Leer en Medium", nunca "Leer más"
-//   lectura      el largo, para "Seguí leyendo" (casos y tesis)
+//   lectura      el largo, para "Seguí leyendo" (casos y La Usina)
+//   seguir       ids de las tres piezas de "Seguí leyendo" en su página; si no está, van
+//                las tres primeras de las demás piezas largas
 //   fuente       dónde se publicó (artículos): va en la ficha y, en las filas, al lado del tipo
 //   movimientos  para el filtro de Pensamiento: investigacion, futuros, datos-ia, comunicacion
 //   temas        no se muestran: quedan como dato
@@ -69,6 +71,7 @@ const casos = [
   {
     id: "caso-natalidad",
     url: "/proyectos/natalidad/",
+    seguir: ["analisis-01", "caso-trace-group", "tesis-01"],
     tipo: "Análisis estratégico",
     fecha: "2025-04", fechaTexto: "abril 2025",
     titulo: "Impacto de la caída de la natalidad",
@@ -243,7 +246,28 @@ const tesis = {
   temas: ["Investigación", "IA", "Sociología", "Identidad"],
 };
 
-const todas = [...casos, ...docencia, ...articulos, tesis];
+const analisis = {
+  id: "analisis-01",
+  url: "/usina/analisis-01/",
+  tipo: "Análisis",
+  serie: "La Usina · Análisis 01",
+  fecha: "2026-10", fechaTexto: "octubre 2026",
+  titulo: "Instituciones en demografía regresiva",
+  subtitulo: "Cómo cambiar de relato cuando tu público histórico se achica.",
+  autores: "Sergio Petrocelli",
+  descripcion: "Qué tiene que cambiar en lo que cuentan un colegio, una prepaga o un club cuando los nacimientos cayeron casi a la mitad en diez años y cuatro de cada diez hogares porteños son de una sola persona.",
+  datos: [["Estado", "Análisis, octubre 2026"], ["Formato", "PDF de 7 páginas, descarga directa"]],
+  enlaces: [{ texto: "Leer el análisis", href: "/usina/analisis-01/" }],
+  lectura: "PDF de 7 páginas",
+  seguir: ["caso-natalidad", "tesis-01", "caso-trace-group"],
+  temas: ["Demografía", "Comunicación estratégica", "Sociología"],
+};
+
+// La Usina en Pensamiento, de la más reciente a la más vieja.
+const usina = [analisis, tesis];
+
+const todas = [...casos, ...docencia, ...articulos, ...usina];
+const largas = [...casos, tesis, analisis];   // en el orden de Lo hecho; la tesis antes que el análisis
 const porId = (id) => {
   const p = todas.find((x) => x.id === id);
   if (!p) throw new Error(`piezas.mjs: no hay ninguna pieza con id "${id}"`);
@@ -255,8 +279,15 @@ export default {
   docencia,
   articulos,
   tesis,
+  analisis,
+  usina,
   // Las piezas largas, con página propia y tiempo de lectura: "Seguí leyendo" muestra las demás.
-  largas: [...casos, tesis],
+  largas,
+  // "Seguí leyendo" de cada página, por url: tres piezas como mucho.
+  seguir: Object.fromEntries(largas.map((p) => [
+    p.url,
+    (p.seguir ? p.seguir.map(porId) : largas.filter((x) => x !== p)).slice(0, 3),
+  ])),
   // El inicio elige por id: los tres casos (Hechos) y tres textos (Pensamiento), todos en tarjetas.
   inicio: {
     casos: ["caso-trace-group", "caso-gabinete-extemporaneo", "caso-natalidad"].map(porId),

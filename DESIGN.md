@@ -239,7 +239,7 @@ Sin 8, 10, 12 ni 24 px. Si algo pide "un poco más redondo", la pregunta es si p
 
 **Cajas solo para objetos.** La prosa, las tarjetas, las filas, la ficha técnica y el cierre van sin caja: los separa el aire o una línea susurro. Llevan caja (superficie o papel, con radio) las piezas que son un objeto en sí: las señales y la tesis en Pensamiento, las figuras, los documentos de Gabinete, los escenarios (son controles), el aviso de ficción y la cita sugerida de la tesis.
 
-**Corner brackets:** firma exclusiva de La Usina. Solo en la tarjeta de la tesis (`.tesis-card`): esquinas superior izquierda e inferior derecha, en el acento al 30 %. En el resto del sitio no se usan (v2.2).
+**Corner brackets:** firma exclusiva de La Usina. Solo en sus tarjetas en Pensamiento (`.tesis-card`, una por tesis o análisis): esquinas superior izquierda e inferior derecha, en el acento al 30 %. En el resto del sitio no se usan (v2.2).
 
 ## Components
 
@@ -322,7 +322,7 @@ Un caso se lee como un documento, no como una grilla de tarjetas.
 - **Índice:** tres filas tipográficas al principio de la página.
 - **Señales:** superficies con la etiqueta, el titular en 19 px, el análisis, la lectura propia con línea de acento y la fuente al pie. Una columna; tres desde 1280.
 - **Filtro:** botones tipográficos en 17 px; el activo, en el acento y subrayado con 2 px.
-- **Tesis de La Usina:** la única tarjeta con corner brackets.
+- **La Usina:** tesis y análisis, de la más reciente a la más vieja; las únicas tarjetas con corner brackets.
 
 ### Logo
 
@@ -397,6 +397,8 @@ Este archivo (v3) cumple en parte con la especificación `@google/design.md` (al
 **Decisión:** no corregir estos casos. El sistema prioriza coherencia semántica, diseño inclusivo y legibilidad del código sobre la conformidad estricta con el linter alpha de Google Labs.
 
 ## Changelog
+
+**v3.2 La Usina con análisis (2026-10-28):** "Quiero agregar este pdf a la usina, pero no es tesis". La sección de Pensamiento pasa de "Tesis · La Usina" a "La Usina", con la bajada "Trabajo propio que toma posición: sin cliente, con la misma empiria que usamos en los proyectos, firmado por sus autores." Antes: "Investigación que toma posición: sin cliente, con la misma empiria que usamos en los proyectos, firmada como documento de trabajo." Suma una segunda serie, Análisis, con su página (`/usina/analisis-01/`, la plantilla de la tesis sin figura) y su tarjeta, también con corner brackets. Antes los brackets iban "solo en la tarjeta de la tesis"; siguen siendo exclusivos de La Usina. "Seguí leyendo" pasa a elegir tres piezas por página (`seguir` en `piezas.mjs`): el caso natalidad y el análisis se recomiendan entre sí.
 
 **v3.2 frase del inicio (2026-10-17):** "Dejá sólamente en la frase de inicio de la web sociología aplicada y borrá todo lo siguiente." Antes: "Sociología aplicada: leemos señales débiles y decidís con fundamento", en dos líneas desde 769 y en tres en el teléfono. Ahora "Sociología aplicada", en una. El logo grande sigue teniendo el alto del nombre y la frase juntos, así que baja de 155 a 121 px a 1440. Cuatro movimientos sube: empieza a 397 px en 1440 × 900 (antes 431) y a 313 en 390 × 844 (antes 372). La frase larga sigue en la descripción para buscadores y redes, en la imagen al compartir, en `llms.txt` y en el README.
 

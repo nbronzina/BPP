@@ -3,18 +3,20 @@
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Pensamiento: señales, artículos y tesis - BPP Analytics & Design",
-  "description": "Señales que rastreamos con fuente y año, artículos sobre datos y sociedad, y las tesis de La Usina.",
+  "name": "Pensamiento: señales, artículos y La Usina - BPP Analytics & Design",
+  "description": "Señales que rastreamos con fuente y año, artículos sobre datos y sociedad, y las tesis y análisis de La Usina.",
   "url": "https://www.bppanalyticsanddesign.com/pensamiento/",
   "publisher": { "@type": "Organization", "name": "BPP Analytics & Design", "url": "https://www.bppanalyticsanddesign.com/" },
   "mainEntity": {
     "@type": "ItemList",
     "itemListOrder": "https://schema.org/ItemListOrderDescending",
-    "numberOfItems": {{ (piezas.articulos | length) + 1 }},
+    "numberOfItems": {{ (piezas.articulos | length) + (piezas.usina | length) }},
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": {{ (piezas.tesis.titulo + " (Tesis 01, La Usina)") | dump | safe }}, "url": "{{ site.url }}{{ piezas.tesis.url }}" },
+{%- for t in piezas.usina %}
+      { "@type": "ListItem", "position": {{ loop.index }}, "name": {{ (t.titulo + " (" + t.serie | replace("La Usina · ", "") + ", La Usina)") | dump | safe }}, "url": "{{ site.url }}{{ t.url }}" },
+{%- endfor %}
 {%- for p in piezas.articulos %}
-      { "@type": "ListItem", "position": {{ loop.index + 1 }}, "name": {{ p.titulo | dump | safe }}, "url": "{{ p.enlaces[0].href }}" }{{ "," if not loop.last }}
+      { "@type": "ListItem", "position": {{ loop.index + (piezas.usina | length) }}, "name": {{ p.titulo | dump | safe }}, "url": "{{ p.enlaces[0].href }}" }{{ "," if not loop.last }}
 {%- endfor %}
     ]
   }

@@ -20,8 +20,9 @@
 - Provocación Trace Group (caso escrito como pregunta "¿Y si…?", fechado en 2032): https://www.bppanalyticsanddesign.com/proyectos/trace-group/
 - Caso Gabinete Extemporáneo (instalación de bienvenida para la Escuela de Innovación del ITBA, roles de 2028): https://www.bppanalyticsanddesign.com/proyectos/gabinete-extemporaneo/
 - Caso natalidad y matrículas en la Ciudad de Buenos Aires: https://www.bppanalyticsanddesign.com/proyectos/natalidad/
-- Pensamiento (señales, artículos y tesis de La Usina): https://www.bppanalyticsanddesign.com/pensamiento/
+- Pensamiento (señales, artículos y La Usina, con sus tesis y análisis): https://www.bppanalyticsanddesign.com/pensamiento/
 - Tesis 01, El actante siempre disponible (PDF): https://www.bppanalyticsanddesign.com/usina/tesis-01/
+- Análisis 01, Instituciones en demografía regresiva (PDF): https://www.bppanalyticsanddesign.com/usina/analisis-01/
 
 ## Contacto
 Email: bppanalyticsanddesign@gmail.com (respuesta en 48 horas hábiles)

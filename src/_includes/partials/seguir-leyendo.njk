@@ -1,14 +1,13 @@
-{#- "Seguí leyendo": las otras piezas largas del sitio, al final de cada caso y de la tesis.
+{#- "Seguí leyendo": otras piezas largas del sitio, al final de cada caso y de La Usina.
     Va después del cierre: primero la conversación, después la lectura que sigue.
-    La lista es piezas.largas (src/_data/piezas.mjs), en el orden de Lo hecho, y cada página
-    muestra las demás. Si las piezas largas pasan de cuatro, hay que elegir cuáles van:
-    tres por página como mucho. -#}
+    La lista sale de piezas.seguir (src/_data/piezas.mjs): tres piezas como mucho por página,
+    las que declare la pieza en `seguir` o, si no declara, las tres primeras de las demás. -#}
 {%- from "partials/piezas.njk" import fila %}
     <section class="bloque seguir-leyendo" aria-labelledby="seguir-heading">
         <h2 id="seguir-heading">Seguí leyendo</h2>
         <ul class="filas">
-{%- for p in piezas.largas %}{% if p.url != page.url %}
+{%- for p in piezas.seguir[page.url] %}
 {{ fila(p, p.lectura) }}
-{%- endif %}{% endfor %}
+{%- endfor %}
         </ul>
     </section>

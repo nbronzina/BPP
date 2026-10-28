@@ -36,8 +36,8 @@ Sitio de BPP Analytics & Design: estudio de investigación, diseño de futuros, 
 - `proyectos/trace-group/` - Provocación Trace Group: un caso escrito como pregunta "¿Y si…?" (ficha + objeto + cómo se construyó). No explica el método ni la iniciativa; la fecha 2032 marca la ficción. Nunca se dice que fue adoptada. Ver VOICE.md, "Vocabulario propio"
 - `proyectos/gabinete-extemporaneo/` - Caso Gabinete Extemporáneo (Escuela de Innovación, ITBA): una instalación de bienvenida entregada como diseño y especificación. No dice que esté construida ni muestra lo de adentro
 - `proyectos/natalidad/` - Caso natalidad y matrículas (ficha + informe con fuentes oficiales); `reporte-impacto/` solo redirige
-- `pensamiento/` - Hub único de ideas: señales, artículos y tesis (La Usina vive acá como serie)
-- `usina/` - Solo redirección a `/pensamiento/#tesis` (meta refresh, noindex); `usina/tesis-01/` sigue siendo la URL de la tesis
+- `pensamiento/` - Hub único de ideas: señales, artículos y La Usina (tesis y análisis, en tarjetas con corner brackets)
+- `usina/` - Solo redirección a `/pensamiento/#tesis` (meta refresh, noindex); `usina/tesis-01/` sigue siendo la URL de la tesis y `usina/analisis-01/` la del primer análisis (misma plantilla que la tesis, sin figura)
 - `privacidad/` - Política de privacidad
 - `404.html` - Página de error propia
 
@@ -122,7 +122,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 │   ├── _includes/partials/             # nav, footer, cierre, copiar-mail, seguir-leyendo, caso-nav, senales-cards, piezas (macros tarjeta y fila)
 │   ├── _includes/jsonld/<pagina>.njk   # JSON-LD por página
 │   ├── _data/site.json                 # nombre, URL, mail, CSP
-│   ├── _data/piezas.mjs                # casos, docencia, artículos y tesis: una entrada por pieza
+│   ├── _data/piezas.mjs                # casos, docencia, artículos y La Usina (tesis y análisis): una entrada por pieza
 │   ├── index.njk, proyectos/ (+ trace-group/, gabinete-extemporaneo/, natalidad/), pensamiento/, privacidad/, usina/tesis-01/, 404.njk
 │   ├── usina/index.html                # redirección a /pensamiento/#tesis (no se procesa)
 │   ├── reporte-impacto/index.html      # redirección a /proyectos/natalidad/ (no se procesa)
@@ -162,11 +162,11 @@ La descripción completa está en `/DESIGN.md` (v3.2). Lo que más se toca:
 5. **Push** directo a la rama por defecto, la única que tiene el repo (no hay `main` ni ramas de trabajo desde 2026-10-25): Vercel publica producción en cada push. `npm run check` no corre solo: hay que correrlo **antes** de pushear, porque no hay preview ni merge donde frenar. Para un cambio grande que convenga ver antes de publicar, abrir una rama puntual, mirar su preview y borrarla al mergear
 
 **Reglas del layout**
-- Front matter por página: `title`, `description`, `ogType`, `section` (`proyectos` | `pensamiento` | `privacidad` | `inicio`, marca el `aria-current` del nav), `bodyClass` (solo en los casos, `reporte-page page-lectura`, y en la tesis, `page-lectura`), `jsonld` (ruta del include), `sitemap` (`lastmod`, `priority`, `changefreq`; sin esto la página no entra al sitemap y el chequeo falla), `homepage: true` solo en index.
+- Front matter por página: `title`, `description`, `ogType`, `section` (`proyectos` | `pensamiento` | `privacidad` | `inicio`, marca el `aria-current` del nav), `bodyClass` (solo en los casos, `reporte-page page-lectura`, y en las piezas de La Usina, `page-lectura`), `jsonld` (ruta del include), `sitemap` (`lastmod`, `priority`, `changefreq`; sin esto la página no entra al sitemap y el chequeo falla), `homepage: true` solo en index.
 - Cada página es una `.cabecera` y una serie de `<section class="bloque">`: así toma el marco y el ritmo. No se escriben paddings laterales ni márgenes entre secciones a mano.
 - Las tarjetas y las filas salen de `src/_data/piezas.mjs` con las macros de `partials/piezas.njk` (`tarjeta`, `fila`). Sumar un caso, una clase o un artículo es sumar una entrada ahí: Lo hecho, Pensamiento, el JSON-LD de los dos y "Seguí leyendo" (`largas`) la toman solos; el inicio elige por id (`inicio.casos`, `inicio.textos`). Las imágenes de tarjeta son un WebP de 800 px por pieza.
 - Las páginas de caso declaran además `indice` y `compartir`: de ahí salen el índice pegajoso, el índice móvil y los botones de compartir (`partials/caso-nav.njk`). No se copia ese bloque.
-- El cierre (`partials/cierre.njk`, ya es un `.bloque`) sale de `cierreTitulo`, `cierreTexto` (opcional), `cierreCta` y `cierreAsunto` (asunto del mail, default "Hablemos"). En `cierreTitulo` y `cierreTexto`, " | " marca dónde se parte la frase por el sentido si no entra en una línea (filtro `sentido`: cada tramo va en un `.junto`; la barra no se ve). Los casos y la tesis incluyen después `partials/seguir-leyendo.njk`, que lista las piezas largas de `piezas.largas` menos la propia.
+- El cierre (`partials/cierre.njk`, ya es un `.bloque`) sale de `cierreTitulo`, `cierreTexto` (opcional), `cierreCta` y `cierreAsunto` (asunto del mail, default "Hablemos"). En `cierreTitulo` y `cierreTexto`, " | " marca dónde se parte la frase por el sentido si no entra en una línea (filtro `sentido`: cada tramo va en un `.junto`; la barra no se ve). Los casos y las piezas de La Usina incluyen después `partials/seguir-leyendo.njk`, que lista tres piezas de `piezas.seguir`: las que la pieza declara en `seguir` o, si no declara, las tres primeras de las demás piezas largas.
 - Rutas siempre absolutas desde la raíz (`/img/…`, `/proyectos/`), nunca `../`.
 - Las señales existen una sola vez: `partials/senales-cards.njk`, incluido en Pensamiento (el inicio no tiene radar de señales desde septiembre).
 - `usina/index.html` es una redirección estática; no lleva layout.

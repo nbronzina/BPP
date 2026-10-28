@@ -1,15 +1,15 @@
 ---
 layout: "layouts/base.njk"
-title: "Pensamiento: señales, artículos y tesis | BPP Analytics & Design"
-description: "Lo que pensamos en público: señales que rastreamos con fuente y año, artículos sobre datos y sociedad, y las tesis de La Usina."
+title: "Pensamiento: señales, artículos y La Usina | BPP Analytics & Design"
+description: "Lo que pensamos en público: señales que rastreamos con fuente y año, artículos sobre datos y sociedad, y las tesis y análisis de La Usina."
 ogType: "website"
 section: "pensamiento"
-ogDescription: "Señales que rastreamos con fuente y año, artículos sobre datos y sociedad, y las tesis de La Usina."
+ogDescription: "Señales que rastreamos con fuente y año, artículos sobre datos y sociedad, y las tesis y análisis de La Usina."
 jsonld: "jsonld/pensamiento.njk"
 cierreTitulo: "Estos textos son | la parte pública de cómo trabajamos."
 cierreTexto: "Si algo de acá se parece a un problema que tenés arriba de la mesa, | escribinos y lo miramos con tu contexto."
 cierreCta: "Contanos el problema"
-sitemap: { lastmod: "2026-10-08" }
+sitemap: { lastmod: "2026-10-28" }
 ---
 {%- from "partials/piezas.njk" import tarjeta %}
     <!-- Main Content -->
@@ -18,7 +18,7 @@ sitemap: { lastmod: "2026-10-08" }
     <section class="cabecera" aria-labelledby="pensamiento-heading">
         <h1 id="pensamiento-heading" class="cabecera__titulo">Lo que pensamos en público</h1>
         <p class="bajada">
-            Señales que estamos rastreando, artículos que publicamos antes de tener la conclusión cerrada y la investigación larga que firmamos desde La Usina.
+            Señales que estamos rastreando, artículos que publicamos antes de tener la conclusión cerrada y el trabajo propio que firmamos desde La Usina.
         </p>
     </section>
 
@@ -61,18 +61,20 @@ sitemap: { lastmod: "2026-10-08" }
         </div>
     </section>
 
-    <!-- La Usina: la única tarjeta del sitio con corner brackets -->
-{%- set t = piezas.tesis %}
+    <!-- La Usina: las únicas tarjetas del sitio con corner brackets. Salen de piezas.usina,
+         de la más reciente a la más vieja. El ancla sigue siendo #tesis: /usina/ redirige ahí -->
     <section id="tesis" class="bloque" aria-labelledby="tesis-heading">
         <h2 id="tesis-heading">La Usina</h2>
         <p class="bajada">Trabajo propio que toma posición: sin cliente, con la misma empiria que usamos en los proyectos, firmado por sus autores.</p>
 
-        <article class="tesis-card" aria-labelledby="tesis-card-titulo">
+        <div class="usina-lista">
+{%- for t in piezas.usina %}
+        <article class="tesis-card" id="{{ t.id }}" aria-labelledby="{{ t.id }}-titulo">
             <span class="corner-bracket corner-bracket--tl" aria-hidden="true"></span>
             <span class="corner-bracket corner-bracket--br" aria-hidden="true"></span>
 
             <p class="etiqueta">{{ t.serie }} · <time datetime="{{ t.fecha }}">{{ t.fechaTexto }}</time></p>
-            <h3 class="tesis-card__title" id="tesis-card-titulo">{{ t.titulo }}</h3>
+            <h3 class="tesis-card__title" id="{{ t.id }}-titulo">{{ t.titulo }}</h3>
             <p class="tesis-card__subtitle">{{ t.subtitulo }}</p>
             <p class="tesis-card__authors">{{ t.autores }}</p>
             <p class="tesis-card__desc">{{ t.descripcion }}</p>
@@ -83,6 +85,8 @@ sitemap: { lastmod: "2026-10-08" }
             </dl>
             <p class="tesis-card__enlace"><a href="{{ t.url }}" class="cta-primary">{{ t.enlaces[0].texto }}</a></p>
         </article>
+{%- endfor %}
+        </div>
     </section>
 
 {% include "partials/cierre.njk" %}

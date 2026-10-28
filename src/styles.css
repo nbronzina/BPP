@@ -1557,7 +1557,13 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
     border-bottom-color: var(--orange-500);
 }
 
-/* Tesis de La Usina: la única pieza con corner brackets, la firma de La Usina. */
+/* La Usina (tesis y análisis): las únicas piezas con corner brackets, la firma de La Usina.
+   Una debajo de la otra, de la más reciente a la más vieja. */
+.usina-lista {
+    display: grid;
+    gap: var(--space-8);
+}
+
 .tesis-card {
     position: relative;
     max-width: 50rem;
