@@ -306,6 +306,7 @@ Un caso se lee como un documento, no como una grilla de tarjetas.
 - **Cabecera:** etiqueta, título en `--fs-2`, bajada y ficha técnica (filas con línea susurro, rótulo en 15 px y valor en 17 px; desde 769, rótulos en una columna de 9rem). La portada, si hay, con borde y radio de 16.
 - **Secciones:** título `h2` en `--fs-3` y prosa en Literata (19 px, 1,7, text-mid, `--medida`), sin cajas.
 - **Figura:** imagen con radio de 16; los gráficos de fondo blanco van sobre papel (`.figura__papel`). Pie en la sans, 17 px, text-low.
+- **Video:** la misma figura que la portada de la tesis (`.thesis-cover`: borde, radio de 16 y pie en 17 px, text-low), con los controles del navegador. Sin precarga: se ve el póster y el MP4 se baja solo si alguien le da play. El archivo vive en `/video/`, servido desde el dominio. Hoy hay uno solo, en la tesis.
 - **Cita destacada:** una frase del propio caso, en la sans a `--fs-3` y en negrita, con una línea de 3 px del acento a la izquierda. Sin caja ni comillas.
 - **Cifra:** un dato en `--fs-2` y en el acento, antes del párrafo que lo explica.
 - **Aviso** (`.ficcion-aviso`): interrumpe la lectura a propósito (la frontera entre dato y ficción, lo que implica). Superficie con línea de acento a la izquierda.
@@ -397,6 +398,8 @@ Este archivo (v3) cumple en parte con la especificación `@google/design.md` (al
 **Decisión:** no corregir estos casos. El sistema prioriza coherencia semántica, diseño inclusivo y legibilidad del código sobre la conformidad estricta con el linter alpha de Google Labs.
 
 ## Changelog
+
+**v3.2 video de la tesis (2026-10-30):** "Subimos el video largo y la portada a la web dentro de la página misma del actante". La página de la Tesis 01 suma, entre el resumen y el documento, el video con los ocho reels de la serie (6 minutos, 16:9) y su póster. Usa la figura de la portada (`.thesis-cover`), sin componente nuevo. El MP4 va en `/video/` (passthrough nuevo en `.eleventy.js`) porque la CSP no admite reproductores de afuera. Falta la pista de subtítulos.
 
 **v3.2 La Usina con análisis (2026-10-28):** "Quiero agregar este pdf a la usina, pero no es tesis". La sección de Pensamiento pasa de "Tesis · La Usina" a "La Usina", con la bajada "Trabajo propio que toma posición: sin cliente, con la misma empiria que usamos en los proyectos, firmado por sus autores." Antes: "Investigación que toma posición: sin cliente, con la misma empiria que usamos en los proyectos, firmada como documento de trabajo." Suma una segunda serie, Análisis, con su página (`/usina/analisis-01/`, la plantilla de la tesis sin figura) y su tarjeta, también con corner brackets. Antes los brackets iban "solo en la tarjeta de la tesis"; siguen siendo exclusivos de La Usina. "Seguí leyendo" pasa a elegir tres piezas por página (`seguir` en `piezas.mjs`): el caso natalidad y el análisis se recomiendan entre sí.
 

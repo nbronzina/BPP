@@ -2280,10 +2280,17 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
 
 .thesis-cover { max-width: 50rem; }
 
-.thesis-cover img {
+.thesis-cover img,
+.thesis-cover video {
     width: 100%;
     border: 1px solid rgba(250, 248, 246, 0.12);
     border-radius: var(--radius);
+}
+
+.thesis-cover video {
+    display: block;
+    height: auto;
+    background: var(--color-bg);
 }
 
 .thesis-cover figcaption {

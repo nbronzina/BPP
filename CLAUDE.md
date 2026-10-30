@@ -134,6 +134,7 @@ Las siguientes skills están disponibles en `~/.claude/skills/` y deben cargarse
 ├── package.json                # scripts build / check / serve
 ├── scripts/check-site.mjs      # chequeo del sitio generado (a mano, con npm run check)
 ├── img/, fonts/                # assets (passthrough)
+├── video/                      # MP4 propios (passthrough), servidos desde el dominio; hoy el de la tesis
 ├── docs/                       # *.pdf se publica; *.md nunca
 ├── robots.txt, favicons, llms.txt   # passthrough
 ├── sw.js / sw.min.js           # kill-switch del SW retirado (borrar en 2027)

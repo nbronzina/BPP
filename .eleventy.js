@@ -23,6 +23,8 @@ export default function (eleventyConfig) {
   });
   // Documentos públicos (PDF de la tesis). Los .md de docs/ nunca se publican.
   eleventyConfig.addPassthroughCopy("docs/*.pdf");
+  // Videos propios (MP4 servido desde el dominio: la CSP no admite reproductores de afuera)
+  eleventyConfig.addPassthroughCopy({ video: "video" });
   // El sitemap sale de las páginas que declaran `sitemap:` en su front matter (src/sitemap.njk).
   // Orden fijo por URL para que el archivo generado no cambie entre builds.
   eleventyConfig.addCollection("sitemap", (api) =>
