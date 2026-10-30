@@ -41,32 +41,33 @@ sitemap: { lastmod: "2026-10-30", priority: "0.8", changefreq: "yearly" }
         </div>
     </section>
 
-    <!-- Video: los ocho reels de la serie, uno detrás del otro. Sin precarga: el MP4 pesa
-         y solo se baja si alguien le da play -->
-    <section class="bloque tesis-seccion" aria-label="Video de la tesis">
-        <figure class="thesis-cover">
-            <video controls preload="none" playsinline width="1920" height="1080" poster="/img/tesis01-video.webp">
-                <source src="/video/tesis-01-el-actante-siempre-disponible.mp4" type="video/mp4">
-                <p><a href="/video/tesis-01-el-actante-siempre-disponible.mp4" class="cta-link">Descargar el video</a></p>
-            </video>
-            <figcaption>La tesis en ocho piezas · Video · 6 minutos</figcaption>
-        </figure>
-    </section>
-
-    <!-- Documento: portada + dos enlaces tipográficos (sin visor embebido: iOS Safari no lo soporta
-         y el PDF se lee mejor en el visor del sistema) -->
-    <section class="bloque tesis-seccion" aria-label="Documento completo de la tesis">
-        <figure class="thesis-cover">
-            <picture>
-                <source srcset="/img/tesis01-cuarto-mobile.webp" type="image/webp" media="(max-width: 600px)">
-                <img src="/img/tesis01-cuarto.webp" alt="Una chica en la cama de su cuarto, de noche, con el celular en la mano y la notebook abierta. La única luz viene de las pantallas y de la ventana." width="1600" height="892" loading="lazy" decoding="async">
-            </picture>
-            <figcaption>Un interlocutor que siempre está disponible · Documento de trabajo · PDF · 56 páginas</figcaption>
-        </figure>
-        <p class="thesis-cover-links">
-            <a href="/docs/tesis-01-el-actante-siempre-disponible.pdf" class="cta-primary cta--abajo" download>Descargar PDF</a>
-            <a href="/docs/tesis-01-el-actante-siempre-disponible.pdf" class="cta-primary" target="_blank" rel="noopener">Abrir en el navegador</a>
-        </p>
+    <!-- Video y documento, uno al lado del otro desde 1025 (en el teléfono y la tablet, uno debajo
+         del otro). Video: los ocho reels de la serie, sin precarga: el MP4 pesa y solo se baja si
+         alguien le da play. Documento: portada + dos enlaces tipográficos (sin visor embebido: iOS
+         Safari no lo soporta y el PDF se lee mejor en el visor del sistema) -->
+    <section class="bloque tesis-seccion" aria-label="Video y documento de la tesis">
+        <div class="thesis-media">
+            <figure class="thesis-cover">
+                <video controls preload="none" playsinline width="1920" height="1080" poster="/img/tesis01-video.webp">
+                    <source src="/video/tesis-01-el-actante-siempre-disponible.mp4" type="video/mp4">
+                    <p><a href="/video/tesis-01-el-actante-siempre-disponible.mp4" class="cta-link">Descargar el video</a></p>
+                </video>
+                <figcaption>La tesis en ocho piezas · Video · 6 minutos</figcaption>
+            </figure>
+            <div class="thesis-media__doc">
+                <figure class="thesis-cover">
+                    <picture>
+                        <source srcset="/img/tesis01-cuarto-mobile.webp" type="image/webp" media="(max-width: 600px)">
+                        <img src="/img/tesis01-cuarto.webp" alt="Una chica en la cama de su cuarto, de noche, con el celular en la mano y la notebook abierta. La única luz viene de las pantallas y de la ventana." width="1600" height="892" loading="lazy" decoding="async">
+                    </picture>
+                    <figcaption>Un interlocutor que siempre está disponible · Documento de trabajo · PDF · 56 páginas</figcaption>
+                </figure>
+                <p class="thesis-cover-links">
+                    <a href="/docs/tesis-01-el-actante-siempre-disponible.pdf" class="cta-primary cta--abajo" download>Descargar PDF</a>
+                    <a href="/docs/tesis-01-el-actante-siempre-disponible.pdf" class="cta-primary" target="_blank" rel="noopener">Abrir en el navegador</a>
+                </p>
+            </div>
+        </div>
     </section>
 
     <!-- Cita sugerida -->

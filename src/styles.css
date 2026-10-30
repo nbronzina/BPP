@@ -2301,6 +2301,30 @@ main .senal-fuente a:focus-visible { color: var(--orange-500); }
     color: var(--color-text-low);
 }
 
+/* Video y documento de la tesis: uno debajo del otro hasta 1024; desde 1025, en dos columnas
+   parejas. Las dos piezas van en 16:9 (la portada mide 1600 × 892 y pierde menos de 1 %) para
+   que los pies arranquen a la misma altura. */
+.thesis-media {
+    display: grid;
+    row-gap: var(--space-12);
+}
+
+@media (min-width: 1025px) {
+    .thesis-media {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--space-10);
+        align-items: start;
+    }
+
+    .thesis-media .thesis-cover { max-width: none; }
+
+    .thesis-media img,
+    .thesis-media video {
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+}
+
 .thesis-cover-links {
     display: flex;
     flex-wrap: wrap;
